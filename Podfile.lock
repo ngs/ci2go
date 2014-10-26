@@ -1,0 +1,64 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BlocksKit (2.2.5):
+    - BlocksKit/All
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - GoogleAnalytics-iOS-SDK (3.0.9)
+  - MagicalRecord/Shorthand (2.3.0-beta.4)
+  - MBProgressHUD (0.9)
+  - UIColor+Mix (1.0.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BlocksKit
+  - GoogleAnalytics-iOS-SDK
+  - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `develop`)
+  - MBProgressHUD (~> 0.8)
+  - UIColor+Mix
+
+EXTERNAL SOURCES:
+  MagicalRecord:
+    :branch: develop
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+
+SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
+  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
+  MagicalRecord: 59e5cec04ba1f9c9d4b70c2ec0a3ea8dceeb352e
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  UIColor+Mix: aee34e3723940d58679a1c1244cb7443bd5fbe87
+
+COCOAPODS: 0.34.4
