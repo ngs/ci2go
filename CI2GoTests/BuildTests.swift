@@ -28,8 +28,8 @@ class BuildTests: XCTestCase {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
     let obj = fixtureData("build") as NSDictionary
     let build = Build.MR_importFromObject(obj)
-    
-    
+    XCTAssertEqual(build.authorDate, NSDate(timeIntervalSince1970: 1414719610))
+    XCTAssertEqual(build.buildParameters! as NSDictionary, ["foo": "bar"])
     XCTAssertEqual(Int(Commit.MR_countOfEntities()), 5, "0 record exist")
     XCTAssertEqual(Int(User.MR_countOfEntities()), 1, "0 record exist")
     XCTAssertEqual(Int(Build.MR_countOfEntities()), 1, "0 record exist")
@@ -39,7 +39,6 @@ class BuildTests: XCTestCase {
     Build.MR_importFromObject(obj)
     XCTAssertEqual(Int(Commit.MR_countOfEntities()), 5, "0 record exist")
     XCTAssertEqual(Int(User.MR_countOfEntities()), 1, "0 record exist")
-    NSLog("%@", User.findAll())
     XCTAssertEqual(Int(Build.MR_countOfEntities()), 1, "0 record exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 40, "0 record exist")
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 60, "0 record exist")

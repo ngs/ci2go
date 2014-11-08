@@ -14,7 +14,7 @@
             </userInfo>
         </attribute>
         <attribute name="buildID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="buildParameters" optional="YES" attributeType="String" syncable="YES">
+        <attribute name="buildParametersData" optional="YES" attributeType="Binary" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="build_parameters"/>
             </userInfo>
@@ -302,7 +302,7 @@
     </entity>
     <elements>
         <element name="Branch" positionX="-263" positionY="120" width="128" height="120"/>
-        <element name="Build" positionX="-0" positionY="108" width="128" height="435"/>
+        <element name="Build" positionX="-0" positionY="108" width="128" height="433"/>
         <element name="BuildAction" positionX="-0" positionY="189" width="128" height="388"/>
         <element name="BuildStep" positionX="187" positionY="27" width="128" height="118"/>
         <element name="Commit" positionX="0" positionY="189" width="128" height="193"/>

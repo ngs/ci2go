@@ -12,7 +12,7 @@ import CoreData
 public class Build: CI2GoManagedObject {
   
   @NSManaged public var authorDate: NSDate
-  @NSManaged public var buildParameters: String
+  @NSManaged public var buildParametersData: NSData?
   @NSManaged public var compareURLString: String
   @NSManaged public var isCanceled: NSNumber
   @NSManaged public var isInrastructureFail: NSNumber
@@ -74,6 +74,28 @@ public class Build: CI2GoManagedObject {
       return true
     }
     return false
+  }
+  
+  public func importBuildParametersData(json: NSDictionary!) -> Bool {
+    buildParameters = json as? Dictionary<String, AnyObject>
+    return true
+  }
+  
+  public var buildParameters: Dictionary<String, AnyObject>? {
+    set(value) {
+      var error: NSError? = nil
+      if let dict = value as NSDictionary? {
+        buildParametersData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.allZeros, error: &error)
+      } else {
+        buildParametersData = NSData()
+      }
+    }
+    get {
+      if buildParametersData == nil { return nil }
+      var error: NSError? = nil
+      let json = NSJSONSerialization.JSONObjectWithData(buildParametersData!, options: NSJSONReadingOptions.AllowFragments, error: &error) as? Dictionary<String, AnyObject>
+      return json
+    }
   }
   
 }
