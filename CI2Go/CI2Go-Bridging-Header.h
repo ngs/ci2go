@@ -23,3 +23,9 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "AMR_ANSIEscapeHelper.h"
+
+@interface NSManagedObject (MRPrivate)
+
+- (NSManagedObject *) MR_findObjectForRelationship:(NSRelationshipDescription *)relationshipInfo withData:(id)singleRelatedObjectData;
+
+@end

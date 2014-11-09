@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-let kNodeIDFormat = "%@@%@:%@/%@"
-
 public class Node: CI2GoManagedObject {
 
   @NSManaged public var imageID: String

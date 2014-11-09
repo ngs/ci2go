@@ -10,12 +10,15 @@ import Foundation
 import CoreData
 
 public class Build: CI2GoManagedObject {
-  
+
   @NSManaged public var authorDate: NSDate
   @NSManaged public var buildParametersData: NSData?
-  @NSManaged public var compareURLString: String
+  @NSManaged public var compareURLString: String?
+  @NSManaged public var buildID: String?
+  @NSManaged public var urlString: String?
+  @NSManaged public var dontBuild: String?
   @NSManaged public var isCanceled: NSNumber
-  @NSManaged public var isInrastructureFail: NSNumber
+  @NSManaged public var isInfrastructureFail: NSNumber
   @NSManaged public var isOpenSource: NSNumber
   @NSManaged public var isTimedout: NSNumber
   @NSManaged public var lifecycle: String
@@ -27,60 +30,73 @@ public class Build: CI2GoManagedObject {
   @NSManaged public var stoppedAt: NSDate
   @NSManaged public var timeMillis: NSNumber
   @NSManaged public var why: String
-  @NSManaged public var branch: Branch
-  @NSManaged public var commits: NSSet
-  @NSManaged public var nodes: NSSet
-  @NSManaged public var project: Project
-  @NSManaged public var retries: NSSet
-  @NSManaged public var retryOf: Build
-  @NSManaged public var steps: NSSet
-  @NSManaged public var triggeredCommit: Commit
-  @NSManaged public var user: User
-  
-  public func importCommits(data: NSDictionary!) -> Bool {
-    if let commitDetails = data["all_commit_details"] as? [NSDictionary] {
-      let mSet = NSMutableSet()
-      if commitDetails.count > 0 {
-        for commitData in commitDetails {
-          let commit = Commit.MR_importFromObject(commitData)
-          mSet.addObject(commit)
-        }
-      }
-      self.commits = mSet.copy() as NSSet
-      return true
-    }
-    return false
-  }
-  
-  public func importSteps(data: NSDictionary!) -> Bool {
-    if let steps = data["steps"] as? [NSDictionary] {
-      let mSet = NSMutableSet()
-      if steps.count > 0 {
-        for stepData in steps {
-          let step = BuildStep.MR_importFromObject(stepData)
-          mSet.addObject(step)
-        }
-      }
-      self.steps = mSet.copy() as NSSet
-      return true
-    }
-    return false
-  }
-  
+  @NSManaged public var branch: Branch?
+  @NSManaged public var commits: NSSet?
+  @NSManaged public var nodes: NSSet?
+  @NSManaged public var project: Project?
+  @NSManaged public var retries: NSSet?
+  @NSManaged public var retryOf: Build?
+  @NSManaged public var steps: NSSet?
+  @NSManaged public var triggeredCommit: Commit?
+  @NSManaged public var user: User?
+
   public func importUser(json: NSDictionary!) -> Bool {
-    if let email = json["author_email"] as? String {
-      let dict = ["email": email] as NSDictionary
-      user = User.MR_importFromObject(dict)
+    if let userJSON = json["user"] as? Dictionary<String, AnyObject> {
+      user = User.MR_importFromObject(userJSON)
       return true
     }
     return false
   }
-  
+
+  public func importTriggeredCommit(json: NSDictionary!) -> Bool {
+    return true
+  }
+
+  public func importRetryOf(json: NSDictionary!) -> Bool {
+    if let num = json["retry_of"] as? Int {
+      retryOf = Build.MR_findFirstByAttribute("number", withValue: num)
+    }
+    return true
+  }
+
+  public func importRetries(json: NSDictionary!) -> Bool {
+    if let nums = json["retries"] as? [Int] {
+      let mSet = NSMutableSet()
+      for num in nums {
+        if let b = Build.MR_findFirstByAttribute("number", withValue: num) {
+          mSet.addObject(b)
+        }
+      }
+      retries = mSet.copy() as? NSSet
+    }
+    return true
+  }
+
+  public func importProject(json: NSDictionary!) -> Bool {
+    project = Project.MR_importFromObject(json)
+    return true
+  }
+
   public func importBuildParametersData(json: NSDictionary!) -> Bool {
     buildParameters = json as? Dictionary<String, AnyObject>
     return true
   }
-  
+
+  public func importBranch(json: NSDictionary!) -> Bool {
+    if project == nil {
+      importProject(json)
+    }
+    if let name = json["branch"] as? String {
+      let data = [
+        "name": name,
+        "branchID": "\(project?.urlString!)#\(name)"
+      ]
+      branch = Branch.MR_importFromObject(data)
+      branch?.project = project
+    }
+    return true
+  }
+
   public var buildParameters: Dictionary<String, AnyObject>? {
     set(value) {
       var error: NSError? = nil
@@ -95,6 +111,37 @@ public class Build: CI2GoManagedObject {
       var error: NSError? = nil
       let json = NSJSONSerialization.JSONObjectWithData(buildParametersData!, options: NSJSONReadingOptions.AllowFragments, error: &error) as? Dictionary<String, AnyObject>
       return json
+    }
+  }
+
+  public var compareURL: NSURL? {
+    get {
+      return compareURLString == nil ? nil : NSURL(string: compareURLString!)
+    }
+  }
+
+  public var URL: NSURL? {
+    get {
+      return urlString == nil ? nil : NSURL(string: urlString!)
+    }
+  }
+
+  public override func didImport(data: AnyObject!) {
+    if let json = data as? NSDictionary {
+      if let rev = json["vcs_revision"] as? String {
+        triggeredCommit = Commit.MR_findFirstByAttribute("sha1", withValue: rev)
+      }
+    }
+  }
+
+  public var retriesArray: [Build] {
+    get {
+      if retries == nil {
+        return [Build]()
+      }
+      return retries!.allObjects.sorted { (a: AnyObject, b: AnyObject) -> Bool in
+        return (a as Build).number.integerValue < (b as Build).number.integerValue
+        } as [Build]
     }
   }
   

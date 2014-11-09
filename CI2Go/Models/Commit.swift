@@ -36,7 +36,6 @@ public class Commit: CI2GoManagedObject {
     return false
   }
   
-  
   public func importCommitter(data: AnyObject!) -> Bool {
     if let json = data as? NSDictionary {
       let email = json["committer_email"] as? String

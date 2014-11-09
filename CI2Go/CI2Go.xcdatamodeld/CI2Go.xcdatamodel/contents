@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Branch" representedClassName="CI2Go.Branch" syncable="YES">
-        <attribute name="branchID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="branchID" optional="YES" attributeType="String" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="branchID"/>
+            </userInfo>
+        </attribute>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="name"/>
+            </userInfo>
+        </attribute>
         <relationship name="builds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="branch" inverseEntity="Build" syncable="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="branches" inverseEntity="Project" syncable="YES"/>
         <relationship name="pushers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="pushedBranches" inverseEntity="User" syncable="YES"/>
@@ -13,51 +21,133 @@
                 <entry key="mappedKeyName" value="author_date"/>
             </userInfo>
         </attribute>
-        <attribute name="buildID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="buildID" optional="YES" attributeType="String" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="build_url"/>
+            </userInfo>
+        </attribute>
         <attribute name="buildParametersData" optional="YES" attributeType="Binary" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="build_parameters"/>
             </userInfo>
         </attribute>
-        <attribute name="compareURLString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isCanceled" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isInrastructureFail" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isOpenSource" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isTimedout" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="lifecycle" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="compareURLString" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="compare"/>
+            </userInfo>
+        </attribute>
+        <attribute name="dontBuild" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="dont_build"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isCanceled" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="canceled"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isInfrastructureFail" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="infrastructure_fail"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isOpenSource" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="oss"/>
+            </userInfo>
+        </attribute>
+        <attribute name="isTimedout" optional="YES" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="timedout"/>
+            </userInfo>
+        </attribute>
+        <attribute name="lifecycle" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="lifecycle"/>
+            </userInfo>
+        </attribute>
+        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="build_num"/>
+            </userInfo>
+        </attribute>
+        <attribute name="outcome" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="outcome"/>
+            </userInfo>
+        </attribute>
         <attribute name="parallelCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="parallel"/>
             </userInfo>
         </attribute>
-        <attribute name="queuedAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="startedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="queuedAt" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"/>
+                <entry key="mappedKeyName" value="queued_at"/>
+            </userInfo>
+        </attribute>
+        <attribute name="startedAt" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"/>
+                <entry key="mappedKeyName" value="start_time"/>
+            </userInfo>
+        </attribute>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="status"/>
             </userInfo>
         </attribute>
-        <attribute name="stoppedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="stoppedAt" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="dateFormat" value="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"/>
+                <entry key="mappedKeyName" value="stop_time"/>
+            </userInfo>
+        </attribute>
         <attribute name="timeMillis" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="build_time_millis"/>
             </userInfo>
         </attribute>
-        <attribute name="why" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlString" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="build_url"/>
+            </userInfo>
+        </attribute>
+        <attribute name="why" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="why"/>
+            </userInfo>
+        </attribute>
         <relationship name="branch" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Branch" inverseName="builds" inverseEntity="Branch" syncable="YES"/>
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="builds" inverseEntity="Commit" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="all_commit_details"/>
             </userInfo>
         </relationship>
-        <relationship name="nodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Node" inverseName="builds" inverseEntity="Node" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="builds" inverseEntity="Project" syncable="YES"/>
+        <relationship name="nodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Node" inverseName="builds" inverseEntity="Node" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="node"/>
+            </userInfo>
+        </relationship>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="builds" inverseEntity="Project" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="reponame"/>
+            </userInfo>
+        </relationship>
         <relationship name="retries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="retryOf" inverseEntity="Build" syncable="YES"/>
         <relationship name="retryOf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Build" inverseName="retries" inverseEntity="Build" syncable="YES"/>
         <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BuildStep" inverseName="build" inverseEntity="BuildStep" syncable="YES"/>
-        <relationship name="triggeredCommit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Commit" inverseName="triggeredBuilds" inverseEntity="Commit" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="builds" inverseEntity="User" syncable="YES"/>
+        <relationship name="triggeredCommit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Commit" inverseName="triggeredBuilds" inverseEntity="Commit" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="vcs_revision"/>
+            </userInfo>
+        </relationship>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="builds" inverseEntity="User" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="author_email"/>
+            </userInfo>
+        </relationship>
     </entity>
     <entity name="BuildAction" representedClassName="CI2Go.BuildAction" syncable="YES">
         <attribute name="bashCommand" optional="YES" attributeType="String" syncable="YES">
@@ -169,9 +259,6 @@
             </userInfo>
         </attribute>
         <relationship name="buildStep" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BuildStep" inverseName="actions" inverseEntity="BuildStep" syncable="YES"/>
-        <userInfo>
-            <entry key="relatedByAttribute" value="buildActionID"/>
-        </userInfo>
     </entity>
     <entity name="BuildStep" representedClassName="CI2Go.BuildStep" syncable="YES">
         <attribute name="buildStepID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
@@ -192,6 +279,11 @@
         <attribute name="body" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="body"/>
+            </userInfo>
+        </attribute>
+        <attribute name="commitID" optional="YES" attributeType="String" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="commit_url"/>
             </userInfo>
         </attribute>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES">
@@ -227,9 +319,6 @@
         </relationship>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="commits" inverseEntity="Project" syncable="YES"/>
         <relationship name="triggeredBuilds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="triggeredCommit" inverseEntity="Build" syncable="YES"/>
-        <userInfo>
-            <entry key="relatedByAttribute" value="urlString"/>
-        </userInfo>
     </entity>
     <entity name="Node" representedClassName="CI2Go.Node" syncable="YES">
         <attribute name="imageID" optional="YES" attributeType="String" syncable="YES">
@@ -263,15 +352,33 @@
             </userInfo>
         </attribute>
         <relationship name="builds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="nodes" inverseEntity="Build" syncable="YES"/>
-        <userInfo>
-            <entry key="relatedByAttribute" value="nodeID"/>
-        </userInfo>
     </entity>
     <entity name="Project" representedClassName="CI2Go.Project" syncable="YES">
-        <attribute name="parallelCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="repositoryName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vcsURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parallelCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="parallel"/>
+            </userInfo>
+        </attribute>
+        <attribute name="projectID" optional="YES" attributeType="String" indexed="YES" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="vcs_url"/>
+            </userInfo>
+        </attribute>
+        <attribute name="repositoryName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="reponame"/>
+            </userInfo>
+        </attribute>
+        <attribute name="urlString" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="vcs_url"/>
+            </userInfo>
+        </attribute>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="username"/>
+            </userInfo>
+        </attribute>
         <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Branch" inverseName="project" inverseEntity="Branch" syncable="YES"/>
         <relationship name="builds" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Build" inverseName="project" inverseEntity="Build" syncable="YES"/>
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="project" inverseEntity="Commit" syncable="YES"/>
@@ -301,13 +408,13 @@
         </userInfo>
     </entity>
     <elements>
-        <element name="Branch" positionX="-263" positionY="120" width="128" height="120"/>
-        <element name="Build" positionX="-0" positionY="108" width="128" height="433"/>
+        <element name="Branch" positionX="-263" positionY="120" width="128" height="118"/>
+        <element name="Build" positionX="-0" positionY="108" width="128" height="478"/>
         <element name="BuildAction" positionX="-0" positionY="189" width="128" height="388"/>
         <element name="BuildStep" positionX="187" positionY="27" width="128" height="118"/>
-        <element name="Commit" positionX="0" positionY="189" width="128" height="193"/>
+        <element name="Commit" positionX="0" positionY="189" width="128" height="208"/>
         <element name="Node" positionX="-45" positionY="144" width="128" height="150"/>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="User" positionX="9" positionY="144" width="128" height="148"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="User" positionX="9" positionY="144" width="128" height="150"/>
     </elements>
 </model>

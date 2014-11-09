@@ -11,14 +11,10 @@ import CoreData
 
 public class Branch: CI2GoManagedObject {
 
-  @NSManaged public var name: String
-  @NSManaged public var builds: NSSet
-  @NSManaged public var branchID: NSString
-  @NSManaged public var project: Project
-  @NSManaged public var pushers: NSSet
-
-  public override class func idFromObjectData(data: AnyObject!) -> String? {
-    return nil
-  }
+  @NSManaged public var name: String?
+  @NSManaged public var builds: NSSet?
+  @NSManaged public var branchID: NSString?
+  @NSManaged public var project: Project?
+  @NSManaged public var pushers: NSSet?
 
 }

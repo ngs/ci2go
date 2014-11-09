@@ -52,4 +52,16 @@ public class CI2GoManagedObject :NSManagedObject {
     return ret
   }
 
+  public override func MR_relatedValueForRelationship(relationshipInfo: NSRelationshipDescription!) -> AnyObject! {
+    return super.MR_relatedValueForRelationship(relationshipInfo)
+  }
+
+  public override func MR_findObjectForRelationship(relationshipInfo: NSRelationshipDescription!, withData singleRelatedObjectData: AnyObject!) -> NSManagedObject! {
+    let klazz: AnyClass! = NSClassFromString(relationshipInfo.destinationEntity?.managedObjectClassName)
+    let data2 = klazz.addPrimaryAttributeWithObjectData(singleRelatedObjectData)
+    return super.MR_findObjectForRelationship(relationshipInfo, withData: data2)
+  }
+
+  
+
 }

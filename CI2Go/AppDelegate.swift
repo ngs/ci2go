@@ -55,9 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
   func initializeDB() {
     if !dbInitialized {
+      let env = NSProcessInfo().environment
+      var dbName = env["DB_NAME"] as? String
+      if dbName == nil {
+        dbName = "CI2Go"
+      }
       let dbURL = NSFileManager.defaultManager()
         .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
-        .URLByAppendingPathComponent("CI2Go.sqlite")
+        .URLByAppendingPathComponent("\(dbName!).sqlite")
       MagicalRecord.setupCoreDataStackWithStoreAtURL(dbURL)
       dbInitialized = true
     }
