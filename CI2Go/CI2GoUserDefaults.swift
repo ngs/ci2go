@@ -14,9 +14,11 @@ public let kCI2GoColorSchemeUserDefaultsKey = "CI2GoColorScheme"
 public let kCI2GoCircleCIAPITokenDefaultsKey = "CI2GoColorCircleCIAPIToken"
 public let kCI2GoLogRefreshIntervalDefaultsKey = "CI2GoLogRefreshInterval"
 public let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
+public let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
+public let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
 
 public class CI2GoUserDefaults: NSObject {
-  
+
   public func reset() {
     for k in [
       kCI2GoColorSchemeUserDefaultsKey,
@@ -27,8 +29,8 @@ public class CI2GoUserDefaults: NSObject {
         userDefaults.removeObjectForKey(k)
     }
   }
-  
-  
+
+
   public class func standardUserDefaults() -> CI2GoUserDefaults {
     if nil == _standardUserDefaults {
       _standardUserDefaults = CI2GoUserDefaults()
@@ -48,7 +50,7 @@ public class CI2GoUserDefaults: NSObject {
     }
     return _userDefaults!
   }
-  
+
   public var colorSchemeName: NSString? {
     set(value) {
       if (value != nil && find(ColorScheme.names(), value!) != nil) {
@@ -62,7 +64,7 @@ public class CI2GoUserDefaults: NSObject {
       return userDefaults.stringForKey(kCI2GoColorSchemeUserDefaultsKey)
     }
   }
-  
+
   public var circleCIAPIToken: NSString? {
     set(value) {
       if (value != nil) {
@@ -76,7 +78,7 @@ public class CI2GoUserDefaults: NSObject {
       return userDefaults.stringForKey(kCI2GoCircleCIAPITokenDefaultsKey)
     }
   }
-  
+
   public var logRefreshInterval: Double {
     set(value) {
       userDefaults.setDouble(value, forKey: kCI2GoLogRefreshIntervalDefaultsKey)
@@ -86,7 +88,7 @@ public class CI2GoUserDefaults: NSObject {
       return userDefaults.doubleForKey(kCI2GoLogRefreshIntervalDefaultsKey)
     }
   }
-  
+
   public var apiRefreshInterval: Double {
     set(value) {
       userDefaults.setDouble(value, forKey: kCI2GoAPIRefreshIntervalDefaultsKey)
@@ -95,6 +97,42 @@ public class CI2GoUserDefaults: NSObject {
     get {
       return userDefaults.doubleForKey(kCI2GoAPIRefreshIntervalDefaultsKey)
     }
+  }
+
+  public var selectedBranch: Branch? {
+    set(value) {
+      let branchID = value?.branchID
+      userDefaults.setValue(branchID, forKey: kCI2GoSelectedBranchDefaultsKey)
+      selectedProject = value?.project
+      userDefaults.synchronize()
+    }
+    get {
+      if let branchID = userDefaults.stringForKey(kCI2GoSelectedBranchDefaultsKey) {
+        return Branch.MR_findFirstByAttribute("branchID", withValue: branchID)
+      }
+      return nil
+    }
+  }
+
+  public var selectedProject: Project? {
+    set(value) {
+      let projectID = value?.projectID
+      userDefaults.setValue(projectID, forKey: kCI2GoSelectedProjectDefaultsKey)
+      userDefaults.synchronize()
+    }
+    get {
+      if let projectID = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey) {
+        return Project.MR_findFirstByAttribute("projectID", withValue: projectID)
+      }
+      return nil
+    }
+  }
+
+  public var buildsAPIPath: NSString {
+    if let p = selectedProject {
+      return "project/\(p.username!)/\(p.repositoryName!)"
+    }
+    return "recent-builds"
   }
   
 }

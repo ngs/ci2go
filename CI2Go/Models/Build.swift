@@ -42,7 +42,7 @@ public class Build: CI2GoManagedObject {
 
   public func importUser(json: NSDictionary!) -> Bool {
     if let userJSON = json["user"] as? Dictionary<String, AnyObject> {
-      user = User.MR_importFromObject(userJSON)
+      user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User
       return true
     }
     return false
@@ -54,7 +54,7 @@ public class Build: CI2GoManagedObject {
 
   public func importRetryOf(json: NSDictionary!) -> Bool {
     if let num = json["retry_of"] as? Int {
-      retryOf = Build.MR_findFirstByAttribute("number", withValue: num)
+      retryOf = Build.MR_findFirstByAttribute("number", withValue: num, inContext: managedObjectContext)
     }
     return true
   }
@@ -63,7 +63,7 @@ public class Build: CI2GoManagedObject {
     if let nums = json["retries"] as? [Int] {
       let mSet = NSMutableSet()
       for num in nums {
-        if let b = Build.MR_findFirstByAttribute("number", withValue: num) {
+        if let b = Build.MR_findFirstByAttribute("number", withValue: num, inContext: managedObjectContext) {
           mSet.addObject(b)
         }
       }
@@ -73,7 +73,7 @@ public class Build: CI2GoManagedObject {
   }
 
   public func importProject(json: NSDictionary!) -> Bool {
-    project = Project.MR_importFromObject(json)
+    project = Project.MR_importFromObject(json, inContext: managedObjectContext!) as? Project
     return true
   }
 
@@ -88,10 +88,10 @@ public class Build: CI2GoManagedObject {
     }
     if let name = json["branch"] as? String {
       let data = [
-        "name": name,
+        "name": name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
         "branchID": "\(project?.urlString!)#\(name)"
       ]
-      branch = Branch.MR_importFromObject(data)
+      branch = Branch.MR_importFromObject(data, inContext: managedObjectContext!) as? Branch
       branch?.project = project
     }
     return true
@@ -129,7 +129,7 @@ public class Build: CI2GoManagedObject {
   public override func didImport(data: AnyObject!) {
     if let json = data as? NSDictionary {
       if let rev = json["vcs_revision"] as? String {
-        triggeredCommit = Commit.MR_findFirstByAttribute("sha1", withValue: rev)
+        triggeredCommit = Commit.MR_findFirstByAttribute("sha1", withValue: rev, inContext: managedObjectContext)
       }
     }
   }

@@ -29,7 +29,7 @@ public class Commit: CI2GoManagedObject {
       let name = json["author_name"] as? String
       if email != nil && login != nil && name != nil {
         let dict = ["email": email!, "login": login!, "name": name!] as NSDictionary
-        author = User.MR_importFromObject(dict)
+        author = User.MR_importFromObject(dict, inContext: managedObjectContext!) as? User
         return true
       }
     }
@@ -43,7 +43,7 @@ public class Commit: CI2GoManagedObject {
       let name = json["committer_name"] as? String
       if email != nil && login != nil && name != nil {
         let dict = ["email": email!, "login": login!, "name": name!] as NSDictionary
-        committer = User.MR_importFromObject(dict)
+        committer = User.MR_importFromObject(dict, inContext: managedObjectContext!) as? User
         return true
       }
     }

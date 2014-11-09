@@ -102,12 +102,17 @@ public class ColorScheme: NSObject {
   public func statusBarStyle() -> UIStatusBarStyle {
     return isLight() ? UIStatusBarStyle.Default : UIStatusBarStyle.LightContent
   }
-  
+
+  public func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {
+    return isLight() ? UIScrollViewIndicatorStyle.Black : UIScrollViewIndicatorStyle.White
+  }
+
   public func apply() {
     let bg = backgroundColor()
     let fg = foregroundColor()
     let bd = boldColor()
     let bg2 = groupTableViewBackgroundColor()
+    UIScrollView.appearance().indicatorStyle = scrollViewIndicatorStyle()
     UIView.appearance().tintColor = bd
     UINavigationBar.appearance().barTintColor = bg
     UITableView.appearance().separatorColor = UIColor(white: 0.5, alpha: 0.5)

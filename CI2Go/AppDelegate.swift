@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
       }
       let dbURL = NSFileManager.defaultManager()
         .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
-        .URLByAppendingPathComponent("\(dbName!).sqlite")
+        .URLByAppendingPathComponent(dbName! + ".sqlite")
       MagicalRecord.setupCoreDataStackWithStoreAtURL(dbURL)
       dbInitialized = true
     }

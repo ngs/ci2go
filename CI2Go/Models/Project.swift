@@ -32,10 +32,10 @@ public class Project: CI2GoManagedObject {
       if let repo = json["vcs_url"] as? String {
         for branchName in branchesData.keys.array {
           let dict = [
-            "name": branchName,
+            "name": branchName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
             "branchID": "\(repo)#\(branchName)"
           ]
-          if let b = Branch.MR_importFromObject(dict) {
+          if let b = Branch.MR_importFromObject(dict, inContext: managedObjectContext!) as? Branch {
             mSet.addObject(b)
           }
         }

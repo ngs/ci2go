@@ -51,7 +51,7 @@ public class BuildStep: CI2GoManagedObject {
       }
       let mSet = NSMutableSet()
       for actionData in actions {
-        let action = BuildAction.MR_importFromObject(actionData)
+        let action = BuildAction.MR_importFromObject(actionData, inContext: managedObjectContext!) as BuildAction
         mSet.addObject(action)
       }
       self.actions = mSet.copy() as? NSSet
