@@ -384,7 +384,7 @@
                 <entry key="mappedKeyName" value="branches"/>
             </userInfo>
         </relationship>
-        <relationship name="builds" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Build" inverseName="project" inverseEntity="Build" syncable="YES"/>
+        <relationship name="builds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="project" inverseEntity="Build" syncable="YES"/>
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="project" inverseEntity="Commit" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="CI2Go.User" syncable="YES">

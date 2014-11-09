@@ -16,7 +16,7 @@ public class Project: CI2GoManagedObject {
   @NSManaged public var username: String?
   @NSManaged public var urlString: String?
   @NSManaged public var branches: NSSet?
-  @NSManaged public var builds: Build?
+  @NSManaged public var builds: NSSet?
   @NSManaged public var commits: NSSet?
   @NSManaged public var projectID: String?
 

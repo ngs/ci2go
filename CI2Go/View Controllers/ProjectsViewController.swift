@@ -36,7 +36,7 @@ public class ProjectsViewController: BaseTableViewController {
   public override func viewDidAppear(animated: Bool) {
     CircleCIAPISessionManager().GET("projects", parameters: nil,
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
-        MagicalRecord.saveWithBlockAndWait({ (context: NSManagedObjectContext!) -> Void in
+        MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
             Project.MR_importFromArray(ar, inContext: context)
           }

@@ -27,7 +27,7 @@ public class BuildsViewController: BaseTableViewController {
   }
 
   public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
-    return Build.fetchAllSortedBy("queuedAt", ascending: true, withPredicate: predicate(), groupBy: nil, delegate: self, inContext: context)
+    return Build.fetchAllSortedBy("queuedAt", ascending: false, withPredicate: predicate(), groupBy: nil, delegate: self, inContext: context)
   }
 
   public override func predicate() -> NSPredicate? {
@@ -57,7 +57,7 @@ public class BuildsViewController: BaseTableViewController {
     isLoading = true
     CircleCIAPISessionManager().GET(CI2GoUserDefaults.standardUserDefaults().buildsAPIPath, parameters: ["limit": 100, "offset": offset],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
-        MagicalRecord.saveWithBlockAndWait({ (context: NSManagedObjectContext!) -> Void in
+        MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
             Build.MR_importFromArray(ar, inContext: context)
           }
