@@ -21,15 +21,15 @@ public class Build: CI2GoManagedObject {
   @NSManaged public var isInfrastructureFail: NSNumber
   @NSManaged public var isOpenSource: NSNumber
   @NSManaged public var isTimedout: NSNumber
-  @NSManaged public var lifecycle: String
+  @NSManaged public var lifecycle: String?
   @NSManaged public var number: NSNumber
   @NSManaged public var parallelCount: NSNumber
-  @NSManaged public var queuedAt: NSDate
-  @NSManaged public var startedAt: NSDate
+  @NSManaged public var queuedAt: NSDate?
+  @NSManaged public var startedAt: NSDate?
   @NSManaged public var status: String
-  @NSManaged public var stoppedAt: NSDate
-  @NSManaged public var timeMillis: NSNumber
-  @NSManaged public var why: String
+  @NSManaged public var stoppedAt: NSDate?
+  @NSManaged public var timeMillis: NSNumber?
+  @NSManaged public var why: String?
   @NSManaged public var branch: Branch?
   @NSManaged public var commits: NSSet?
   @NSManaged public var nodes: NSSet?
@@ -145,6 +145,21 @@ public class Build: CI2GoManagedObject {
         return (a as Build).number.integerValue < (b as Build).number.integerValue
         } as [Build]
     }
+  }
+
+  public var displayStatus: String {
+    get {
+      let words = status.componentsSeparatedByString("_")
+      var ret = [String]()
+      for word in words {
+        let firstChar = word.substringToIndex(advance(status.startIndex, 1)).uppercaseString
+        let remainingChars = word.substringFromIndex(advance(status.startIndex, 1))
+        let w = firstChar + remainingChars
+        ret.append(w)
+      }
+      return " ".join(ret)
+    }
+
   }
   
 }

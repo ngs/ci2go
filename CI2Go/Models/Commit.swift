@@ -49,4 +49,10 @@ public class Commit: CI2GoManagedObject {
     }
     return false
   }
+
+  public var shortHash: String? {
+    get {
+      return sha1 == nil ? nil : sha1?.substringToIndex(advance(sha1!.startIndex, 7))
+    }
+  }
 }

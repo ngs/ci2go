@@ -51,6 +51,26 @@ public class ColorScheme: NSObject {
   public func color(#code: Int) -> UIColor? {
     return color(key: NSString(format: "Ansi %d", code))
   }
+
+  public func greenColor() -> UIColor? {
+    return color(code: 2)
+  }
+
+  public func redColor() -> UIColor? {
+    return color(code: 1)
+  }
+
+  public func blueColor() -> UIColor? {
+    return color(code: 4)
+  }
+
+  public func yelloColor() -> UIColor? {
+    return color(code: 3)
+  }
+
+  public func grayColor() -> UIColor? {
+    return foregroundColor()?.colorWithAlphaComponent(0.4)
+  }
   
   public func foregroundColor() -> UIColor? {
     return color(key: "Foreground")
