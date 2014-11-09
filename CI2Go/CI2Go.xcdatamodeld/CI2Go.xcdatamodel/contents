@@ -379,7 +379,11 @@
                 <entry key="mappedKeyName" value="username"/>
             </userInfo>
         </attribute>
-        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Branch" inverseName="project" inverseEntity="Branch" syncable="YES"/>
+        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Branch" inverseName="project" inverseEntity="Branch" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="branches"/>
+            </userInfo>
+        </relationship>
         <relationship name="builds" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Build" inverseName="project" inverseEntity="Build" syncable="YES"/>
         <relationship name="commits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Commit" inverseName="project" inverseEntity="Commit" syncable="YES"/>
     </entity>
@@ -414,7 +418,7 @@
         <element name="BuildStep" positionX="187" positionY="27" width="128" height="118"/>
         <element name="Commit" positionX="0" positionY="189" width="128" height="208"/>
         <element name="Node" positionX="-45" positionY="144" width="128" height="150"/>
-        <element name="Project" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="User" positionX="9" positionY="144" width="128" height="150"/>
     </elements>
 </model>

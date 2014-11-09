@@ -26,4 +26,25 @@ public class Project: CI2GoManagedObject {
     }
   }
 
+  public func importBranches(json: NSDictionary!) -> Bool {
+    if let branchesData = json["branches"] as? Dictionary<String, AnyObject> {
+      let mSet = NSMutableSet()
+      if let repo = json["vcs_url"] as? String {
+        for branchName in branchesData.keys.array {
+          let dict = [
+            "name": branchName,
+            "branchID": "\(repo)#\(branchName)"
+          ]
+          if let b = Branch.MR_importFromObject(dict) {
+            mSet.addObject(b)
+          }
+        }
+      }
+      branches = mSet.copy() as? NSSet
+    }
+    return true
+  }
+
+  
+  
 }

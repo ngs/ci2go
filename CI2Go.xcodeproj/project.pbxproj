@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		850779201A0FCE6A00206708 /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8507791F1A0FCE6A00206708 /* ProjectTests.swift */; };
 		85128E7F1A05ADB800D5993A /* CommitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85128E7E1A05ADB800D5993A /* CommitTests.swift */; };
 		85128E811A06714400D5993A /* BuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85128E801A06714400D5993A /* BuildTests.swift */; };
 		8542509D1A0478DF00056DD2 /* CI2GoManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542509C1A0478DF00056DD2 /* CI2GoManagedObject.swift */; };
@@ -162,6 +163,7 @@
 		85BD8BD11A045D840018B05D /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BD8BD01A045D840018B05D /* TestHelper.swift */; };
 		85BD8BD41A04601A0018B05D /* build.json in Resources */ = {isa = PBXBuildFile; fileRef = 85BD8BD31A04601A0018B05D /* build.json */; };
 		85BD8BD61A0474DC0018B05D /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BD8BD51A0474DC0018B05D /* NodeTests.swift */; };
+		85C0905A1A0FD3E300F7C4DB /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85C090591A0FD3E300F7C4DB /* projects.json */; };
 		85C19A681A0E39BE0010ED28 /* BuildStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C19A671A0E39BE0010ED28 /* BuildStepTests.swift */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
 		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
@@ -179,6 +181,7 @@
 
 /* Begin PBXFileReference section */
 		52A1D27FE8ADE715DD7D44C9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8507791F1A0FCE6A00206708 /* ProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
 		85128E7E1A05ADB800D5993A /* CommitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTests.swift; sourceTree = "<group>"; };
 		85128E801A06714400D5993A /* BuildTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTests.swift; sourceTree = "<group>"; };
 		8542509C1A0478DF00056DD2 /* CI2GoManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CI2GoManagedObject.swift; sourceTree = "<group>"; };
@@ -341,6 +344,7 @@
 		85BD8BD01A045D840018B05D /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		85BD8BD31A04601A0018B05D /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
 		85BD8BD51A0474DC0018B05D /* NodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
+		85C090591A0FD3E300F7C4DB /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85C19A671A0E39BE0010ED28 /* BuildStepTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepTests.swift; sourceTree = "<group>"; };
 		85DBC76319FCB7C800546F40 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85DBC76419FCB7F700546F40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -632,6 +636,7 @@
 				85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */,
 				85C19A671A0E39BE0010ED28 /* BuildStepTests.swift */,
 				85128E801A06714400D5993A /* BuildTests.swift */,
+				8507791F1A0FCE6A00206708 /* ProjectTests.swift */,
 				8547282B19FC997400EB802B /* CI2GoTests-Bridging-Header.h */,
 				8548E04A19FDCAE800390CCB /* CI2GoUserDefaultsTests.swift */,
 				8548E05519FF15A100390CCB /* CircleCIAPISessionManagerTests.swift */,
@@ -657,6 +662,7 @@
 		85BD8BD21A04601A0018B05D /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				85C090591A0FD3E300F7C4DB /* projects.json */,
 				85BD8BD31A04601A0018B05D /* build.json */,
 			);
 			path = Fixtures;
@@ -895,6 +901,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85BD8BD41A04601A0018B05D /* build.json in Resources */,
+				85C0905A1A0FD3E300F7C4DB /* projects.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,6 +988,7 @@
 				85BD8BD11A045D840018B05D /* TestHelper.swift in Sources */,
 				8548E04419FD46F000390CCB /* AMR_ANSIEscapeHelper.m in Sources */,
 				8548E03F19FD043B00390CCB /* ColorSchemesViewControllerTests.swift in Sources */,
+				850779201A0FCE6A00206708 /* ProjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
