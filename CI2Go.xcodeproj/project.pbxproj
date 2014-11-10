@@ -145,7 +145,6 @@
 		8547283B19FCB47900EB802B /* BuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547283A19FCB47900EB802B /* BuildsViewController.swift */; };
 		8548E03D19FCFD3F00390CCB /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E03C19FCFD3F00390CCB /* SettingsTableView.swift */; };
 		8548E03F19FD043B00390CCB /* ColorSchemesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E03E19FD043B00390CCB /* ColorSchemesViewControllerTests.swift */; };
-		8548E04419FD46F000390CCB /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
 		8548E04619FDBA7C00390CCB /* CI2GoUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04519FDBA7C00390CCB /* CI2GoUserDefaults.swift */; };
 		8548E04819FDBF3E00390CCB /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04719FDBF3E00390CCB /* AppGlobal.swift */; };
 		8548E04B19FDCAE800390CCB /* CI2GoUserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04A19FDCAE800390CCB /* CI2GoUserDefaultsTests.swift */; };
@@ -173,6 +172,7 @@
 		85CC3D261A109DDA00742B74 /* NSNumber+timeFormattedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D251A109DDA00742B74 /* NSNumber+timeFormattedTests.swift */; };
 		85CC3D281A10A32F00742B74 /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D271A10A32F00742B74 /* String+humanize.swift */; };
 		85CC3D2A1A10A43C00742B74 /* String+humanizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D291A10A43C00742B74 /* String+humanizeTests.swift */; };
+		85CC3D2B1A10B29C00742B74 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
 		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -981,6 +981,7 @@
 				8547283019FC99B700EB802B /* ColorScheme.swift in Sources */,
 				854250A31A04BA9300056DD2 /* Node.swift in Sources */,
 				854250A51A04BA9300056DD2 /* User.swift in Sources */,
+				85CC3D2B1A10B29C00742B74 /* AMR_ANSIEscapeHelper.m in Sources */,
 				8547283B19FCB47900EB802B /* BuildsViewController.swift in Sources */,
 				8548E04819FDBF3E00390CCB /* AppGlobal.swift in Sources */,
 				854250AD1A04BA9400056DD2 /* Branch.swift in Sources */,
@@ -1017,7 +1018,6 @@
 				8548E04B19FDCAE800390CCB /* CI2GoUserDefaultsTests.swift in Sources */,
 				8548E05619FF15A100390CCB /* CircleCIAPISessionManagerTests.swift in Sources */,
 				85BD8BD11A045D840018B05D /* TestHelper.swift in Sources */,
-				8548E04419FD46F000390CCB /* AMR_ANSIEscapeHelper.m in Sources */,
 				8548E03F19FD043B00390CCB /* ColorSchemesViewControllerTests.swift in Sources */,
 				850779201A0FCE6A00206708 /* ProjectTests.swift in Sources */,
 				85CC3D2A1A10A43C00742B74 /* String+humanizeTests.swift in Sources */,

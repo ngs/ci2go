@@ -210,8 +210,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yog-U0-e7A" id="AV2-f9-4Vn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="60" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r3I-oo-sJv">
-                                                    <rect key="frame" x="498" y="8.5" width="94" height="29"/>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="60" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r3I-oo-sJv">
+                                                    <rect key="frame" x="498" y="7.5" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="intervalValueChanged:" destination="o99-g4-N94" eventType="valueChanged" id="VBw-GS-2vL"/>
                                                     </connections>
@@ -258,8 +258,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1ZW-fM-cFz" id="Y0R-ad-75x">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="5" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-gM-Gj6">
-                                                    <rect key="frame" x="498" y="8.5" width="94" height="29"/>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="5" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-gM-Gj6">
+                                                    <rect key="frame" x="498" y="7.5" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="intervalValueChanged:" destination="o99-g4-N94" eventType="valueChanged" id="f91-ks-2cD"/>
                                                     </connections>
@@ -735,16 +735,16 @@
                                                 <constraint firstAttribute="width" constant="10" id="rFw-Gr-cr9"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" misplaced="YES" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OA9-DY-YXz">
-                                            <rect key="frame" x="536" y="8" width="55.5" height="43.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OA9-DY-YXz">
+                                            <rect key="frame" x="563.5" y="18" width="28" height="23.5"/>
                                             <string key="text">config
 00:00</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9td-ub-TmJ">
-                                            <rect key="frame" x="20" y="8.5" width="511" height="43.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9td-ub-TmJ">
+                                            <rect key="frame" x="20" y="22" width="538.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -829,6 +829,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="mWD-mi-hos"/>
+                    <connections>
+                        <outlet property="textView" destination="TRK-rV-Tuw" id="IqJ-ST-VAZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCk-E4-l1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -885,6 +888,6 @@
         <image name="740-gear-toolbar" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qTS-BG-nvl"/>
+        <segue reference="edM-oE-ips"/>
     </inferredMetricsTieBreakers>
 </document>

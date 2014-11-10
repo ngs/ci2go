@@ -39,67 +39,67 @@ public class ColorScheme: NSObject {
     }
     return _dictionary!
   }
-  
+
   override convenience init() {
     self.init(name: CI2GoUserDefaults.standardUserDefaults().colorSchemeName!)
   }
-  
+
   public init(name: String) {
     _name = name
   }
-  
+
   public func color(#code: Int) -> UIColor? {
     return color(key: NSString(format: "Ansi %d", code))
   }
-  
+
   public func greenColor() -> UIColor? {
     return color(code: 2)
   }
-  
+
   public func redColor() -> UIColor? {
     return color(code: 1)
   }
-  
+
   public func blueColor() -> UIColor? {
     return color(code: 4)
   }
-  
+
   public func yelloColor() -> UIColor? {
     return color(code: 3)
   }
-  
+
   public func grayColor() -> UIColor? {
     return foregroundColor()?.colorWithAlphaComponent(0.4)
   }
-  
+
   public func foregroundColor() -> UIColor? {
     return color(key: "Foreground")
   }
-  
-  public func backgroundColor() -> UIColor? {
-    return color(key: "Background")
-  }
-  
+
   public func selectedTextColor() -> UIColor? {
     return color(key: "Selected Text")
   }
-  
+
+  public func backgroundColor() -> UIColor? {
+    return color(key: "Background")
+  }
+
   public func selectionTextColor() -> UIColor? {
     return color(key: "Selection")
   }
-  
+
   public func boldColor() -> UIColor? {
     return color(key: "Bold")
   }
-  
+
   public func placeholderColor() -> UIColor? {
     return foregroundColor()?.colorWithAlphaComponent(0.2)
   }
-  
+
   public func groupTableViewBackgroundColor() -> UIColor? {
     return UIColor(betweenColor: backgroundColor(), andColor: boldColor(), percentage: 0.05)
   }
-  
+
   public func color(#key: String) -> UIColor? {
     if let cmps = dictionary[key + " Color"] {
       let red = CGFloat(cmps["Red Component"]!.floatValue)
@@ -141,7 +141,7 @@ public class ColorScheme: NSObject {
     }
     return UIColor.grayColor()
   }
-  
+
   public func isLight() -> Bool {
     if let bg = backgroundColor() {
       var brightness: CGFloat = 0.0;
@@ -150,15 +150,15 @@ public class ColorScheme: NSObject {
     }
     return false
   }
-  
+
   public func statusBarStyle() -> UIStatusBarStyle {
     return isLight() ? UIStatusBarStyle.Default : UIStatusBarStyle.LightContent
   }
-  
+
   public func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {
     return isLight() ? UIScrollViewIndicatorStyle.Black : UIScrollViewIndicatorStyle.White
   }
-  
+
   public func apply() {
     let bg = backgroundColor()
     let fg = foregroundColor()
@@ -173,6 +173,7 @@ public class ColorScheme: NSObject {
     SettingsTableView.appearance().backgroundColor = bg2
     UITableViewCell.appearance().backgroundColor = bg
     UITextField.appearance().textColor = fg
+    UILabel.appearance().highlightedTextColor = selectedTextColor()
     UILabel.appearance().textColor = fg
     UIButton.appearance().setTitleColor(bd, forState: UIControlState.Normal)
     UIButton.appearance().setTitleColor(fg, forState: UIControlState.Selected)
@@ -187,7 +188,7 @@ public class ColorScheme: NSObject {
     resetViews()
     setAsCurrent()
   }
-  
+
   public func resetViews() {
     let windows = UIApplication.sharedApplication().windows as [UIWindow]
     for window in windows {
@@ -198,9 +199,28 @@ public class ColorScheme: NSObject {
       }
     }
   }
-  
+
   public func setAsCurrent() {
     CI2GoUserDefaults.standardUserDefaults().colorSchemeName = name
+  }
+
+  private var _ansiHelper: AMR_ANSIEscapeHelper? = nil
+  public var ansiHelper: AMR_ANSIEscapeHelper {
+    get {
+      if nil == _ansiHelper {
+        let s = ColorScheme()
+        _ansiHelper = AMR_ANSIEscapeHelper()
+        for var i: Int = 0; i < 8; i++ {
+          let color1 = s.color(code: i)
+          let color2 = s.color(code: i + 8)
+          _ansiHelper?.ansiColors[30 + i] = color1
+          _ansiHelper?.ansiColors[40 + i] = color1
+          _ansiHelper?.ansiColors[50 + i] = color2
+        }
+        _ansiHelper?.defaultStringColor = foregroundColor()
+      }
+      return _ansiHelper!
+    }
   }
   
 }

@@ -90,5 +90,11 @@ public class BuildStepsViewController: BaseTableViewController {
     }
     return false
   }
+
+  public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let cell = sender as? BuildActionTableViewCell
+    let vc = segue.destinationViewController as? BuildLogViewController
+    vc?.buildAction = cell?.buildAction
+  }
   
 }

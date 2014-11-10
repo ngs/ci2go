@@ -8,5 +8,31 @@
 
 import UIKit
 
-class BuildLogViewController: UIViewController {
+public class BuildLogViewController: UIViewController {
+  @IBOutlet weak var textView: BuildLogTextView!
+  public var buildAction: BuildAction? = nil
+
+  override public func viewDidLoad() {
+    super.viewDidLoad()
+    load()
+  }
+
+  func load() {
+    if buildAction?.outputURL != nil {
+      AFHTTPSessionManager().GET(buildAction!.outputURLString!, parameters: [],
+        success: { (task: NSURLSessionDataTask!, res: AnyObject!) -> Void in
+          if let ar = res as? NSArray {
+            if let dict = ar.firstObject as? NSDictionary {
+              if let msg = dict["message"] as? String {
+                self.textView.logText = msg
+              }
+            }
+          }
+        },
+        failure: { (task: NSURLSessionDataTask!, error: NSError!) -> Void in
+        }
+      )
+    }
+  }
+  
 }

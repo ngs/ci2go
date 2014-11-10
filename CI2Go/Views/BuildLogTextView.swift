@@ -8,5 +8,21 @@
 
 import UIKit
 
-class BuildLogTextView: UITextView {
+public class BuildLogTextView: UITextView {
+
+
+  public var logText: String? = nil {
+    didSet {
+      let s = ColorScheme()
+      if logText != nil {
+        attributedText = s.ansiHelper.attributedStringWithANSIEscapedString(logText!)
+      } else {
+        attributedText = nil
+      }
+      setContentOffset(contentOffset, animated: false)
+      scrollRangeToVisible(NSMakeRange(attributedText.length, 0))
+    }
+  }
+
+
 }

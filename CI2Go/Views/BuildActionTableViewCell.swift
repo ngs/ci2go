@@ -38,13 +38,9 @@ public class BuildActionTableViewCell: UITableViewCell {
     } else {
       timeLabel.text = timeMillis.timeFormatted
     }
-    if buildAction?.bashCommand != nil {
-      nameLabel.text = "$ \(buildAction!.name!)"
-    } else {
-      nameLabel.text = buildAction?.name
-    }
-    nameLabel.textColor = s.foregroundColor()
-    timeLabel.textColor = s.foregroundColor()
+    let pcnt = buildAction?.isParallel.boolValue == true ? " (\(buildAction!.nodeIndex))" : ""
+    let cmdprefix = buildAction?.bashCommand != nil ? "$ " : ""
+    nameLabel.text = cmdprefix + buildAction!.name! + pcnt
     super.layoutSubviews()
   }
 
