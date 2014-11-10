@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public class BuildAction: CI2GoManagedObject {
-  
+
   @NSManaged public var bashCommand: String?
   @NSManaged public var command: String?
   @NSManaged public var endedAt: NSDate?
@@ -34,7 +34,7 @@ public class BuildAction: CI2GoManagedObject {
   @NSManaged public var type: String?
   @NSManaged public var buildStep: BuildStep
   @NSManaged public var buildActionID: String
-  
+
   public override class func idFromObjectData(data: AnyObject!) -> String? {
     if let json = data as? NSDictionary {
       let command = json["command"] as String!
@@ -47,11 +47,11 @@ public class BuildAction: CI2GoManagedObject {
     }
     return nil
   }
-  
+
   public var outputURL: NSURL? {
     get {
       return outputURLString == nil ? nil : NSURL(string: outputURLString!)
     }
   }
-  
+
 }

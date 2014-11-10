@@ -45,6 +45,23 @@ public class Project: CI2GoManagedObject {
     return true
   }
 
+  public var apiPath: String? {
+    get {
+      if nil == path {
+        return nil
+      }
+      return "project/\(path!)"
+    }
+  }
+
+  public var path: String? {
+    get {
+      if nil == username || nil == repositoryName {
+        return nil
+      }
+      return "\(username!)/\(repositoryName!)"
+    }
+  }
   
   
 }

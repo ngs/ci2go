@@ -168,6 +168,11 @@
 		85BD8BD61A0474DC0018B05D /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BD8BD51A0474DC0018B05D /* NodeTests.swift */; };
 		85C0905A1A0FD3E300F7C4DB /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85C090591A0FD3E300F7C4DB /* projects.json */; };
 		85C19A681A0E39BE0010ED28 /* BuildStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C19A671A0E39BE0010ED28 /* BuildStepTests.swift */; };
+		85CC3D221A108E6A00742B74 /* BuildActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D211A108E6A00742B74 /* BuildActionTableViewCell.swift */; };
+		85CC3D241A109BB800742B74 /* NSNumber+timeFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D231A109BB800742B74 /* NSNumber+timeFormatted.swift */; };
+		85CC3D261A109DDA00742B74 /* NSNumber+timeFormattedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D251A109DDA00742B74 /* NSNumber+timeFormattedTests.swift */; };
+		85CC3D281A10A32F00742B74 /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D271A10A32F00742B74 /* String+humanize.swift */; };
+		85CC3D2A1A10A43C00742B74 /* String+humanizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D291A10A43C00742B74 /* String+humanizeTests.swift */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
 		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -352,6 +357,11 @@
 		85C090591A0FD3E300F7C4DB /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		85C19A671A0E39BE0010ED28 /* BuildStepTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepTests.swift; sourceTree = "<group>"; };
+		85CC3D211A108E6A00742B74 /* BuildActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildActionTableViewCell.swift; sourceTree = "<group>"; };
+		85CC3D231A109BB800742B74 /* NSNumber+timeFormatted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+timeFormatted.swift"; sourceTree = "<group>"; };
+		85CC3D251A109DDA00742B74 /* NSNumber+timeFormattedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+timeFormattedTests.swift"; sourceTree = "<group>"; };
+		85CC3D271A10A32F00742B74 /* String+humanize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+humanize.swift"; sourceTree = "<group>"; };
+		85CC3D291A10A43C00742B74 /* String+humanizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+humanizeTests.swift"; sourceTree = "<group>"; };
 		85DBC76319FCB7C800546F40 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85DBC76419FCB7F700546F40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -382,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				854250AF1A04D2BE00056DD2 /* NSManagedObject+entityName.swift */,
+				85CC3D231A109BB800742B74 /* NSNumber+timeFormatted.swift */,
+				85CC3D271A10A32F00742B74 /* String+humanize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -538,6 +550,7 @@
 				8548E03C19FCFD3F00390CCB /* SettingsTableView.swift */,
 				8548E04F19FF0A4D00390CCB /* BuildLogTextView.swift */,
 				855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */,
+				85CC3D211A108E6A00742B74 /* BuildActionTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -656,6 +669,8 @@
 				85BD8BD51A0474DC0018B05D /* NodeTests.swift */,
 				85BB1BC419FC804F003A1FBE /* Supporting Files */,
 				85BD8BD01A045D840018B05D /* TestHelper.swift */,
+				85CC3D251A109DDA00742B74 /* NSNumber+timeFormattedTests.swift */,
+				85CC3D291A10A43C00742B74 /* String+humanizeTests.swift */,
 			);
 			path = CI2GoTests;
 			sourceTree = "<group>";
@@ -973,9 +988,12 @@
 				8547283719FCB43A00EB802B /* ProjectsViewController.swift in Sources */,
 				85BB1BB119FC804F003A1FBE /* AppDelegate.swift in Sources */,
 				8542509D1A0478DF00056DD2 /* CI2GoManagedObject.swift in Sources */,
+				85CC3D221A108E6A00742B74 /* BuildActionTableViewCell.swift in Sources */,
 				8548E05019FF0A4D00390CCB /* BuildLogTextView.swift in Sources */,
+				85CC3D281A10A32F00742B74 /* String+humanize.swift in Sources */,
 				8547283519FCB40900EB802B /* ColorSchemesViewController.swift in Sources */,
 				8548E03D19FCFD3F00390CCB /* SettingsTableView.swift in Sources */,
+				85CC3D241A109BB800742B74 /* NSNumber+timeFormatted.swift in Sources */,
 				8548E05419FF104600390CCB /* CircleCIRequestSerializer.swift in Sources */,
 				855C5FA81A0FF1D000473033 /* BuildTableViewCell.swift in Sources */,
 				854250B01A04D2BE00056DD2 /* NSManagedObject+entityName.swift in Sources */,
@@ -994,6 +1012,7 @@
 				85128E7F1A05ADB800D5993A /* CommitTests.swift in Sources */,
 				85B869E81A0DB1CD00D12E8A /* BuildActionTests.swift in Sources */,
 				8547282D19FC997400EB802B /* ColorSchemeTests.swift in Sources */,
+				85CC3D261A109DDA00742B74 /* NSNumber+timeFormattedTests.swift in Sources */,
 				85BD8BD61A0474DC0018B05D /* NodeTests.swift in Sources */,
 				8548E04B19FDCAE800390CCB /* CI2GoUserDefaultsTests.swift in Sources */,
 				8548E05619FF15A100390CCB /* CircleCIAPISessionManagerTests.swift in Sources */,
@@ -1001,6 +1020,7 @@
 				8548E04419FD46F000390CCB /* AMR_ANSIEscapeHelper.m in Sources */,
 				8548E03F19FD043B00390CCB /* ColorSchemesViewControllerTests.swift in Sources */,
 				850779201A0FCE6A00206708 /* ProjectTests.swift in Sources */,
+				85CC3D2A1A10A43C00742B74 /* String+humanizeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

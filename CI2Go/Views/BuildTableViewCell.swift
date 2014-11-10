@@ -22,9 +22,11 @@ public class BuildTableViewCell: UITableViewCell {
   public var build: Build? {
     set(value) {
       _build = value
+      if value == nil { return }
+      let status = value!.status
       // textLabel.text = value?.number.description
-      if let status = value?.status as String! {
-        statusLabel.text = value?.displayStatus
+      if status != nil {
+        statusLabel.text = value?.status?.humanize
         statusLabel.hidden = false
       } else {
         statusLabel.hidden = true
@@ -35,7 +37,11 @@ public class BuildTableViewCell: UITableViewCell {
         branchNameLabel.text = value?.branch?.name
       }
       buildNumLabel.text = "#\(value!.number.intValue)"
-      projectNameLabel.text = "\(value!.project!.username!)/\(value!.project!.repositoryName!)"
+      if value?.project?.repositoryName != nil && value?.project?.username != nil {
+        projectNameLabel.text = value?.project?.path
+      } else {
+        projectNameLabel.text = ""
+      }
       subjectLabel.text = value?.triggeredCommit?.subject
       userLabel.text = value?.user?.name
       if let timeAgo = value?.startedAt?.timeAgoSimple() {
@@ -57,19 +63,8 @@ public class BuildTableViewCell: UITableViewCell {
     statusLabel.layer.masksToBounds = true
     statusLabel.textColor = scheme.backgroundColor()
     var color: UIColor?
-    let status: String! = build?.status
-    switch status {
-    case "fixed", "success":
-      color = scheme.greenColor()
-    case "running":
-      color = scheme.blueColor()
-    case "failed", "timedout":
-      color = scheme.redColor()
-    default:
-      color = UIColor.grayColor()
-    }
     buildNumLabel.sizeToFit()
-    statusLabel.backgroundColor = color
+    statusLabel.backgroundColor = scheme.badgeColor(status: build?.status)
     branchIconImageView.image = UIImage(named: "1081-branch-toolbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     branchIconImageView.tintColor = scheme.foregroundColor()
   }

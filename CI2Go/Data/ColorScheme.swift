@@ -23,7 +23,7 @@ public class ColorScheme: NSObject {
     }
     return _names!
   }
-  
+
   private var _name: String
   public var name: String { return _name }
   private var _dictionary: Dictionary<String, Dictionary<String, NSNumber>>?
@@ -51,23 +51,23 @@ public class ColorScheme: NSObject {
   public func color(#code: Int) -> UIColor? {
     return color(key: NSString(format: "Ansi %d", code))
   }
-
+  
   public func greenColor() -> UIColor? {
     return color(code: 2)
   }
-
+  
   public func redColor() -> UIColor? {
     return color(code: 1)
   }
-
+  
   public func blueColor() -> UIColor? {
     return color(code: 4)
   }
-
+  
   public func yelloColor() -> UIColor? {
     return color(code: 3)
   }
-
+  
   public func grayColor() -> UIColor? {
     return foregroundColor()?.colorWithAlphaComponent(0.4)
   }
@@ -109,6 +109,38 @@ public class ColorScheme: NSObject {
     }
     return nil
   }
+
+  public func badgeColor(#status: String?) -> UIColor? {
+    if status != nil {
+      switch status! {
+      case "fixed", "success":
+        return greenColor()
+      case "running":
+        return blueColor()
+      case "failed", "timedout":
+        return redColor()
+      default:
+        return UIColor.grayColor()
+      }
+    }
+    return UIColor.grayColor()
+  }
+
+  public func actionColor(#status: String?) -> UIColor? {
+    if status != nil {
+      switch status! {
+      case "success":
+        return greenColor()
+      case "running":
+        return yelloColor()
+      case "failed", "timedout":
+        return redColor()
+      default:
+        return UIColor.grayColor()
+      }
+    }
+    return UIColor.grayColor()
+  }
   
   public func isLight() -> Bool {
     if let bg = backgroundColor() {
@@ -122,11 +154,11 @@ public class ColorScheme: NSObject {
   public func statusBarStyle() -> UIStatusBarStyle {
     return isLight() ? UIStatusBarStyle.Default : UIStatusBarStyle.LightContent
   }
-
+  
   public func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {
     return isLight() ? UIScrollViewIndicatorStyle.Black : UIScrollViewIndicatorStyle.White
   }
-
+  
   public func apply() {
     let bg = backgroundColor()
     let fg = foregroundColor()

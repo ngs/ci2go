@@ -26,7 +26,7 @@ public class Build: CI2GoManagedObject {
   @NSManaged public var parallelCount: NSNumber
   @NSManaged public var queuedAt: NSDate?
   @NSManaged public var startedAt: NSDate?
-  @NSManaged public var status: String
+  @NSManaged public var status: String?
   @NSManaged public var stoppedAt: NSDate?
   @NSManaged public var timeMillis: NSNumber?
   @NSManaged public var why: String?
@@ -147,29 +147,14 @@ public class Build: CI2GoManagedObject {
     }
   }
 
-  public var displayStatus: String {
-    get {
-      let words = status.componentsSeparatedByString("_")
-      var ret = [String]()
-      for word in words {
-        let firstChar = word.substringToIndex(advance(status.startIndex, 1)).uppercaseString
-        let remainingChars = word.substringFromIndex(advance(status.startIndex, 1))
-        let w = firstChar + remainingChars
-        ret.append(w)
-      }
-      return " ".join(ret)
-    }
-
-  }
-
   public var apiPath: String? {
     get {
-      if(project == nil) {
+      let path = project?.apiPath
+      if(path == nil) {
         return nil
       }
-      return "project/\(project!.username!)/\(project!.repositoryName!)/\(number)"
+      return "\(path!)/\(number)"
     }
-
   }
   
 }

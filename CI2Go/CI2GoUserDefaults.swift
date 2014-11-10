@@ -128,9 +128,9 @@ public class CI2GoUserDefaults: NSObject {
     }
   }
 
-  public var buildsAPIPath: NSString {
+  public var buildsAPIPath: String {
     if let p = selectedProject {
-      return "project/\(p.username!)/\(p.repositoryName!)"
+      return p.apiPath!
     }
     return "recent-builds"
   }

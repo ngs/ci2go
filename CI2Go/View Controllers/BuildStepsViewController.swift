@@ -36,6 +36,7 @@ public class BuildStepsViewController: BaseTableViewController {
           completion: { (success: Bool, error: NSError!) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
               self.isLoading = false
+              self.tableView.reloadData()
               self.scrollToBottom(animated: true)
             })
             return
@@ -63,12 +64,12 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-    if let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction {
-      cell.textLabel.text = action.name
-      let hasOutput = action.hasOutput.boolValue
-      cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
-      cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
-    }
+    let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction
+    let actionCell = cell as? BuildActionTableViewCell
+    actionCell?.buildAction = action
+    let hasOutput = action?.hasOutput.boolValue == true
+    cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
+    cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
   }
 
   public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

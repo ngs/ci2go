@@ -49,7 +49,7 @@ class BuildTests: XCTestCase {
     XCTAssertEqual(build.parallelCount, 2)
     XCTAssertEqual(build.queuedAt!, NSDate(timeIntervalSince1970: 1414719612.209))
     XCTAssertEqual(build.startedAt!, NSDate(timeIntervalSince1970: 1414719612.799))
-    XCTAssertEqual(build.status, "success")
+    XCTAssertEqual(build.status!, "success")
     XCTAssertEqual(build.stoppedAt!, NSDate(timeIntervalSince1970: 1414719714.735))
     XCTAssertEqual(build.timeMillis!, 101936)
     XCTAssertEqual(build.why!, "github")
