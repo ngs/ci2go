@@ -22,7 +22,7 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   public override func viewDidLoad() {
-    scrollToBottom(animated: false)
+    // scrollToBottom(animated: false)
   }
 
   public override func awakeFromNib() {
@@ -53,7 +53,7 @@ public class BuildStepsViewController: BaseTableViewController {
             dispatch_async(dispatch_get_main_queue(), {
               self.isLoading = false
               self.tableView.reloadData()
-              self.scrollToBottom(animated: true)
+              // self.scrollToBottom(animated: true)
             })
             return
         })
@@ -72,7 +72,7 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
-    return BuildAction.fetchAllSortedBy("index,nodeIndex", ascending: true, withPredicate: predicate(), groupBy: "type", delegate: self, inContext: context)
+    return BuildAction.fetchAllSortedBy("index", ascending: false, withPredicate: predicate(), groupBy: "type", delegate: self, inContext: context)
   }
 
   public override func predicate() -> NSPredicate? {
