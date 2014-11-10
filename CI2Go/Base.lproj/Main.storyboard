@@ -714,7 +714,7 @@
             </objects>
             <point key="canvasLocation" x="814.5" y="740"/>
         </scene>
-        <!--Build Steps View Controller-->
+        <!--#1234-->
         <scene sceneID="hDv-Ni-Zb1">
             <objects>
                 <tableViewController id="w1T-PU-rde" customClass="BuildStepsViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
@@ -773,7 +773,7 @@
                                     <outlet property="buildStatusBar" destination="pt3-CT-J6L" id="f7m-di-fvh"/>
                                     <outlet property="nameLabel" destination="9td-ub-TmJ" id="ii8-At-W7a"/>
                                     <outlet property="timeLabel" destination="OA9-DY-YXz" id="f2N-Qz-UL4"/>
-                                    <segue destination="cfZ-lg-upH" kind="showDetail" id="qTS-BG-nvl"/>
+                                    <segue destination="4Pm-bp-c0z" kind="showDetail" id="DnU-us-QO8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -782,6 +782,9 @@
                             <outlet property="delegate" destination="w1T-PU-rde" id="VK3-Or-daD"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="#1234" id="jQA-07-YND">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="SJb-1m-VyB"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYa-TI-Cuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -799,7 +802,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customClass="BuildLogTextView" customModule="CI2Go" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customClass="BuildLogTextView" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -828,7 +831,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="mWD-mi-hos"/>
+                    <navigationItem key="navigationItem" id="ILl-8V-UbW"/>
                     <connections>
                         <outlet property="textView" destination="TRK-rV-Tuw" id="IqJ-ST-VAZ"/>
                     </connections>
@@ -888,6 +891,6 @@
         <image name="740-gear-toolbar" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="edM-oE-ips"/>
+        <segue reference="DnU-us-QO8"/>
     </inferredMetricsTieBreakers>
 </document>

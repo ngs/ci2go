@@ -16,6 +16,7 @@ public let kCI2GoLogRefreshIntervalDefaultsKey = "CI2GoLogRefreshInterval"
 public let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
 public let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
 public let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
+public let kCI2GoBranchChangedNotification = "CI2GoBranchChanged"
 
 public class CI2GoUserDefaults: NSObject {
 
@@ -105,6 +106,7 @@ public class CI2GoUserDefaults: NSObject {
       userDefaults.setValue(branchID, forKey: kCI2GoSelectedBranchDefaultsKey)
       selectedProject = value?.project
       userDefaults.synchronize()
+      NSNotificationCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
     }
     get {
       if let branchID = userDefaults.stringForKey(kCI2GoSelectedBranchDefaultsKey) {

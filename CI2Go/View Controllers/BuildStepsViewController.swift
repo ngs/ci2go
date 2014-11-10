@@ -12,8 +12,8 @@ public class BuildStepsViewController: BaseTableViewController {
   public var isLoading = false
   public var build: Build? = nil {
     didSet(value) {
-      if build?.number != nil {
-        title = "#\(build!.number)"
+      if build?.number != nil && build?.project?.repositoryName != nil {
+        title = "\(build!.project!.repositoryName!) #\(build!.number)"
         load()
       } else {
         title = ""
@@ -25,10 +25,26 @@ public class BuildStepsViewController: BaseTableViewController {
     scrollToBottom(animated: false)
   }
 
+  public override func awakeFromNib() {
+    super.awakeFromNib()
+    refreshControl = UIRefreshControl()
+    refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    tableView.addSubview(refreshControl!)
+  }
+
+  func refresh(sender :AnyObject?) {
+    load()
+  }
+
   public func load() {
+    if isLoading {
+      refreshControl?.endRefreshing()
+      return
+    }
     let m = CircleCIAPISessionManager()
     m.GET(build?.apiPath!, parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
+        self.refreshControl?.endRefreshing()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           Build.MR_importFromObject(data, inContext: context)
           return
@@ -93,8 +109,11 @@ public class BuildStepsViewController: BaseTableViewController {
 
   public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let cell = sender as? BuildActionTableViewCell
-    let vc = segue.destinationViewController as? BuildLogViewController
+    let nvc = segue.destinationViewController as? UINavigationController
+    let vc = nvc?.topViewController as? BuildLogViewController
     vc?.buildAction = cell?.buildAction
+    vc?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+    vc?.navigationItem.leftItemsSupplementBackButton = true
   }
   
 }

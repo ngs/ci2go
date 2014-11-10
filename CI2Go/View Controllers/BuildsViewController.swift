@@ -11,7 +11,14 @@ import UIKit
 public class BuildsViewController: BaseTableViewController {
 
   public var offset = 0, isLoading = false
-  
+
+  public override func awakeFromNib() {
+    super.awakeFromNib()
+    refreshControl = UIRefreshControl()
+    refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+    tableView.addSubview(refreshControl!)
+  }
+
   public override func viewDidAppear(animated: Bool) {
     let d = CI2GoUserDefaults.standardUserDefaults()
     if !(d.circleCIAPIToken?.length > 0) {
@@ -24,6 +31,17 @@ public class BuildsViewController: BaseTableViewController {
   public override func viewWillAppear(animated: Bool) {
     self.updatePredicate()
     super.viewWillAppear(animated)
+    NSNotificationCenter().addObserverForName(kCI2GoBranchChangedNotification, object: self, queue: nil) { (n: NSNotification!) -> Void in
+      dispatch_async(dispatch_get_main_queue(), {
+        self.updatePredicate()
+        self.load(false)
+      })
+    }
+  }
+
+  public override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    NSNotificationCenter().removeObserver(self)
   }
 
   public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
@@ -48,7 +66,10 @@ public class BuildsViewController: BaseTableViewController {
   }
 
   public func load(more: Bool) {
-    if isLoading { return }
+    if isLoading {
+      refreshControl?.endRefreshing()
+      return
+    }
     if more {
       offset += 50
     } else {
@@ -57,11 +78,17 @@ public class BuildsViewController: BaseTableViewController {
     isLoading = true
     CircleCIAPISessionManager().GET(CI2GoUserDefaults.standardUserDefaults().buildsAPIPath, parameters: ["limit": 100, "offset": offset],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
+        self.refreshControl?.endRefreshing()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
             Build.MR_importFromArray(ar, inContext: context)
           }
-          self.isLoading = false
+          return
+          }, completion: { (success: Bool, error: NSError!) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+              self.isLoading = false
+            })
+            return
         })
       })
       { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
@@ -88,4 +115,8 @@ public class BuildsViewController: BaseTableViewController {
     vc?.build = build
   }
 
+  func refresh(sender :AnyObject?) {
+    load(false)
+  }
+  
 }

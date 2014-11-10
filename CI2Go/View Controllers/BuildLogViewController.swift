@@ -10,7 +10,11 @@ import UIKit
 
 public class BuildLogViewController: UIViewController {
   @IBOutlet weak var textView: BuildLogTextView!
-  public var buildAction: BuildAction? = nil
+  public var buildAction: BuildAction? = nil {
+    didSet {
+      title = buildAction?.name
+    }
+  }
 
   override public func viewDidLoad() {
     super.viewDidLoad()

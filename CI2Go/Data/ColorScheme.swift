@@ -218,6 +218,7 @@ public class ColorScheme: NSObject {
           _ansiHelper?.ansiColors[50 + i] = color2
         }
         _ansiHelper?.defaultStringColor = foregroundColor()
+        _ansiHelper?.font = UIFont.sourceCodeProRegular(size: 12)
       }
       return _ansiHelper!
     }

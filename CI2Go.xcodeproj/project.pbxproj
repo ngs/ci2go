@@ -173,6 +173,15 @@
 		85CC3D281A10A32F00742B74 /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D271A10A32F00742B74 /* String+humanize.swift */; };
 		85CC3D2A1A10A43C00742B74 /* String+humanizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D291A10A43C00742B74 /* String+humanizeTests.swift */; };
 		85CC3D2B1A10B29C00742B74 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
+		85CC3D2E1A10B9A100742B74 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D2D1A10B9A100742B74 /* SourceCodePro-Regular.ttf */; };
+		85CC3D301A10B9CC00742B74 /* UIFont+appFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D2F1A10B9CC00742B74 /* UIFont+appFonts.swift */; };
+		85CC3D321A10BB2300742B74 /* SourceCodePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D311A10BB2300742B74 /* SourceCodePro-Bold.ttf */; };
+		85CC3D381A10BDD400742B74 /* SourceCodePro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D331A10BDD400742B74 /* SourceCodePro-Semibold.ttf */; };
+		85CC3D391A10BDD400742B74 /* SourceCodePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D341A10BDD400742B74 /* SourceCodePro-Medium.ttf */; };
+		85CC3D3A1A10BDD400742B74 /* SourceCodePro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D351A10BDD400742B74 /* SourceCodePro-Light.ttf */; };
+		85CC3D3B1A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D361A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf */; };
+		85CC3D3C1A10BDD400742B74 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */; };
+		85CC3D3D1A10C63300742B74 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
 		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -362,6 +371,14 @@
 		85CC3D251A109DDA00742B74 /* NSNumber+timeFormattedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+timeFormattedTests.swift"; sourceTree = "<group>"; };
 		85CC3D271A10A32F00742B74 /* String+humanize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+humanize.swift"; sourceTree = "<group>"; };
 		85CC3D291A10A43C00742B74 /* String+humanizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+humanizeTests.swift"; sourceTree = "<group>"; };
+		85CC3D2D1A10B9A100742B74 /* SourceCodePro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Regular.ttf"; sourceTree = "<group>"; };
+		85CC3D2F1A10B9CC00742B74 /* UIFont+appFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+appFonts.swift"; sourceTree = "<group>"; };
+		85CC3D311A10BB2300742B74 /* SourceCodePro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Bold.ttf"; sourceTree = "<group>"; };
+		85CC3D331A10BDD400742B74 /* SourceCodePro-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Semibold.ttf"; sourceTree = "<group>"; };
+		85CC3D341A10BDD400742B74 /* SourceCodePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Medium.ttf"; sourceTree = "<group>"; };
+		85CC3D351A10BDD400742B74 /* SourceCodePro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Light.ttf"; sourceTree = "<group>"; };
+		85CC3D361A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-ExtraLight.ttf"; sourceTree = "<group>"; };
+		85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Black.ttf"; sourceTree = "<group>"; };
 		85DBC76319FCB7C800546F40 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85DBC76419FCB7F700546F40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -394,6 +411,7 @@
 				854250AF1A04D2BE00056DD2 /* NSManagedObject+entityName.swift */,
 				85CC3D231A109BB800742B74 /* NSNumber+timeFormatted.swift */,
 				85CC3D271A10A32F00742B74 /* String+humanize.swift */,
+				85CC3D2F1A10B9CC00742B74 /* UIFont+appFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -538,8 +556,8 @@
 				8547283819FCB45800EB802B /* BranchesViewController.swift */,
 				8547283A19FCB47900EB802B /* BuildsViewController.swift */,
 				8548E04D19FF035200390CCB /* BuildLogViewController.swift */,
-				85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */,
 				855C5FA91A103DC100473033 /* BuildStepsViewController.swift */,
+				85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -623,6 +641,7 @@
 		85BB1BAD19FC804F003A1FBE /* CI2Go */ = {
 			isa = PBXGroup;
 			children = (
+				85CC3D2C1A10B9A100742B74 /* Fonts */,
 				854250AE1A04D2B400056DD2 /* Extensions */,
 				8548E06A1A0247DE00390CCB /* Models */,
 				8548E04919FDBF7600390CCB /* CI2Go.entitlements */,
@@ -690,6 +709,20 @@
 				85BD8BD31A04601A0018B05D /* build.json */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		85CC3D2C1A10B9A100742B74 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				85CC3D331A10BDD400742B74 /* SourceCodePro-Semibold.ttf */,
+				85CC3D341A10BDD400742B74 /* SourceCodePro-Medium.ttf */,
+				85CC3D351A10BDD400742B74 /* SourceCodePro-Light.ttf */,
+				85CC3D361A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf */,
+				85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */,
+				85CC3D311A10BB2300742B74 /* SourceCodePro-Bold.ttf */,
+				85CC3D2D1A10B9A100742B74 /* SourceCodePro-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		9799039170D895F7CB9DE851 /* Pods */ = {
@@ -815,6 +848,7 @@
 				854727C219FC947800EB802B /* Blazer.itermcolors in Resources */,
 				854727F819FC947800EB802B /* NightLion v1.itermcolors in Resources */,
 				854727E219FC947800EB802B /* Hybrid.itermcolors in Resources */,
+				85CC3D3A1A10BDD400742B74 /* SourceCodePro-Light.ttf in Resources */,
 				854727B919FC947800EB802B /* AdventureTime.itermcolors in Resources */,
 				854727CD19FC947800EB802B /* Darkside.itermcolors in Resources */,
 				854727E719FC947800EB802B /* Jackie Brown.itermcolors in Resources */,
@@ -830,12 +864,14 @@
 				8547281719FC947800EB802B /* Symfonic.itermcolors in Resources */,
 				8547282A19FC947800EB802B /* Zenburn.itermcolors in Resources */,
 				854727E419FC947800EB802B /* IC_Orange_PPL.itermcolors in Resources */,
+				85CC3D321A10BB2300742B74 /* SourceCodePro-Bold.ttf in Resources */,
 				8547280719FC947800EB802B /* Royal.itermcolors in Resources */,
 				854727C119FC947800EB802B /* BirdsOfParadise.itermcolors in Resources */,
 				8547281F19FC947800EB802B /* Tomorrow.itermcolors in Resources */,
 				854727F419FC947800EB802B /* MonaLisa.itermcolors in Resources */,
 				8547282219FC947800EB802B /* Twilight.itermcolors in Resources */,
 				854727E019FC947800EB802B /* Homebrew.itermcolors in Resources */,
+				85CC3D3B1A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf in Resources */,
 				8547280C19FC947800EB802B /* Smyck.itermcolors in Resources */,
 				854727E619FC947800EB802B /* IR_Black.itermcolors in Resources */,
 				854727D819FC947800EB802B /* FunForrest.itermcolors in Resources */,
@@ -863,6 +899,7 @@
 				854727F719FC947800EB802B /* Neopolitan.itermcolors in Resources */,
 				8547281C19FC947800EB802B /* Tomorrow Night Bright.itermcolors in Resources */,
 				854727D219FC947800EB802B /* Elemental.itermcolors in Resources */,
+				85CC3D3C1A10BDD400742B74 /* SourceCodePro-Black.ttf in Resources */,
 				854727DE19FC947800EB802B /* Highway.itermcolors in Resources */,
 				854727D019FC947800EB802B /* Dracula.itermcolors in Resources */,
 				854727F619FC947800EB802B /* N0tch2k.itermcolors in Resources */,
@@ -871,6 +908,7 @@
 				8547281819FC947800EB802B /* Teerb.itermcolors in Resources */,
 				854727ED19FC947800EB802B /* LiquidCarbonTransparent.itermcolors in Resources */,
 				854727F119FC947800EB802B /* Medallion.itermcolors in Resources */,
+				85CC3D2E1A10B9A100742B74 /* SourceCodePro-Regular.ttf in Resources */,
 				8547282419FC947800EB802B /* Vaughn.itermcolors in Resources */,
 				8547280A19FC947800EB802B /* Seti.itermcolors in Resources */,
 				8547281D19FC947800EB802B /* Tomorrow Night Eighties.itermcolors in Resources */,
@@ -895,11 +933,13 @@
 				854727F919FC947800EB802B /* NightLion v2.itermcolors in Resources */,
 				8547281419FC947800EB802B /* Spring.itermcolors in Resources */,
 				854727D419FC947800EB802B /* Espresso.itermcolors in Resources */,
+				85CC3D381A10BDD400742B74 /* SourceCodePro-Semibold.ttf in Resources */,
 				854727FD19FC947800EB802B /* Ollie.itermcolors in Resources */,
 				854727DD19FC947800EB802B /* Harper.itermcolors in Resources */,
 				8547280619FC947800EB802B /* Rippedcasts.itermcolors in Resources */,
 				854727C019FC947800EB802B /* Belafonte Night.itermcolors in Resources */,
 				854727DA19FC947800EB802B /* Grape.itermcolors in Resources */,
+				85CC3D391A10BDD400742B74 /* SourceCodePro-Medium.ttf in Resources */,
 				854727BC19FC947800EB802B /* Argonaut.itermcolors in Resources */,
 				8547280019FC947800EB802B /* PencilDark.itermcolors in Resources */,
 				854727FC19FC947800EB802B /* Ocean.itermcolors in Resources */,
@@ -982,6 +1022,7 @@
 				854250A31A04BA9300056DD2 /* Node.swift in Sources */,
 				854250A51A04BA9300056DD2 /* User.swift in Sources */,
 				85CC3D2B1A10B29C00742B74 /* AMR_ANSIEscapeHelper.m in Sources */,
+				85CC3D301A10B9CC00742B74 /* UIFont+appFonts.swift in Sources */,
 				8547283B19FCB47900EB802B /* BuildsViewController.swift in Sources */,
 				8548E04819FDBF3E00390CCB /* AppGlobal.swift in Sources */,
 				854250AD1A04BA9400056DD2 /* Branch.swift in Sources */,
@@ -1016,6 +1057,7 @@
 				85CC3D261A109DDA00742B74 /* NSNumber+timeFormattedTests.swift in Sources */,
 				85BD8BD61A0474DC0018B05D /* NodeTests.swift in Sources */,
 				8548E04B19FDCAE800390CCB /* CI2GoUserDefaultsTests.swift in Sources */,
+				85CC3D3D1A10C63300742B74 /* AMR_ANSIEscapeHelper.m in Sources */,
 				8548E05619FF15A100390CCB /* CircleCIAPISessionManagerTests.swift in Sources */,
 				85BD8BD11A045D840018B05D /* TestHelper.swift in Sources */,
 				8548E03F19FD043B00390CCB /* ColorSchemesViewControllerTests.swift in Sources */,
