@@ -23,12 +23,17 @@ public class BuildLogViewController: UIViewController {
 
   func load() {
     if buildAction?.outputURL != nil {
+      if let cache = buildAction?.logData {
+        self.textView.logText = cache
+        return
+      }
       AFHTTPSessionManager().GET(buildAction!.outputURLString!, parameters: [],
         success: { (task: NSURLSessionDataTask!, res: AnyObject!) -> Void in
           if let ar = res as? NSArray {
             if let dict = ar.firstObject as? NSDictionary {
               if let msg = dict["message"] as? String {
                 self.textView.logText = msg
+                self.buildAction?.logData = msg
               }
             }
           }

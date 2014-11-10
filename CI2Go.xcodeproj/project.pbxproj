@@ -183,6 +183,7 @@
 		85CC3D3C1A10BDD400742B74 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */; };
 		85CC3D3D1A10C63300742B74 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
+		85FCC41B1A1176430054662E /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCC41A1A1176430054662E /* String+md5.swift */; };
 		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -381,6 +382,7 @@
 		85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Black.ttf"; sourceTree = "<group>"; };
 		85DBC76319FCB7C800546F40 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85DBC76419FCB7F700546F40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		85FCC41A1A1176430054662E /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BDF96A3B3C02DDBD1561F68F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -412,6 +414,7 @@
 				85CC3D231A109BB800742B74 /* NSNumber+timeFormatted.swift */,
 				85CC3D271A10A32F00742B74 /* String+humanize.swift */,
 				85CC3D2F1A10B9CC00742B74 /* UIFont+appFonts.swift */,
+				85FCC41A1A1176430054662E /* String+md5.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				85CC3D241A109BB800742B74 /* NSNumber+timeFormatted.swift in Sources */,
 				8548E05419FF104600390CCB /* CircleCIRequestSerializer.swift in Sources */,
 				855C5FA81A0FF1D000473033 /* BuildTableViewCell.swift in Sources */,
+				85FCC41B1A1176430054662E /* String+md5.swift in Sources */,
 				854250B01A04D2BE00056DD2 /* NSManagedObject+entityName.swift in Sources */,
 				8548E04E19FF035200390CCB /* BuildLogViewController.swift in Sources */,
 				8547283319FCB3D300EB802B /* SettingsViewController.swift in Sources */,

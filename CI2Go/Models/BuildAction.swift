@@ -54,4 +54,40 @@ public class BuildAction: CI2GoManagedObject {
     }
   }
 
+  public var logDir: NSURL {
+    get {
+      return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!.URLByAppendingPathComponent("BuildLog", isDirectory: true)
+    }
+  }
+
+  public var logFileName: String {
+    get {
+      let fn = buildActionID.md5
+      let si = fn.startIndex
+      let ei = advance(si, 2)
+      return fn.substringToIndex(ei) + "/" + fn.substringFromIndex(ei)
+    }
+  }
+
+  public var logFile: NSURL {
+    return logDir.URLByAppendingPathComponent(logFileName)
+  }
+
+  public var logData: String? {
+    get {
+      var error: NSError? = nil
+      let m = String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding, error: &error)
+      if error != nil { NSLog("%@", error!.localizedDescription) }
+      return m
+    }
+    set(value) {
+      var error: NSError? = nil
+      let m = NSFileManager.defaultManager()
+      m.createDirectoryAtURL(logFile.URLByDeletingLastPathComponent!, withIntermediateDirectories: true, attributes: nil, error: &error)
+      if error != nil { NSLog("%@", error!.localizedDescription) }
+      value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+      if error != nil { NSLog("%@", error!.localizedDescription) }
+    }
+  }
+
 }

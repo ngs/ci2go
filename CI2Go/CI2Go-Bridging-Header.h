@@ -24,6 +24,7 @@
 #import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "AMR_ANSIEscapeHelper.h"
 #import <NSDate+TimeAgo/NSDate+TimeAgo.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 @interface NSManagedObject (MRPrivate)
 
