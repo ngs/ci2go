@@ -85,9 +85,7 @@ public class BuildsViewController: BaseTableViewController {
           }
           return
           }, completion: { (success: Bool, error: NSError!) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-              self.isLoading = false
-            })
+            self.isLoading = false
             return
         })
       })

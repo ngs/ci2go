@@ -40,6 +40,39 @@ public class Build: CI2GoManagedObject {
   @NSManaged public var triggeredCommit: Commit?
   @NSManaged public var user: User?
 
+  public override class func addPrimaryAttributeWithObjectData(data: AnyObject!) -> NSDictionary? {
+    var dic = super.addPrimaryAttributeWithObjectData(data) as Dictionary<String, AnyObject>?
+    if let steps = dic?["steps"] as? [Dictionary<String, AnyObject>] {
+      var sec: String? = nil
+      , secIndex = 0
+      , steps2 = [Dictionary<String, AnyObject>]()
+      for step in steps {
+        var step2 = step
+        , actions2 = [Dictionary<String, AnyObject>]()
+        if var actions = step["actions"] as? [Dictionary<String, AnyObject>] {
+          for action in actions {
+            var action2 = action
+            if let type = action["type"] as? String {
+              if sec != type {
+                secIndex++
+                sec = type
+              }
+              if (type.rangeOfString("^\\d+:", options: NSStringCompareOptions.RegularExpressionSearch) == nil) {
+                action2["type"] = "\(secIndex): \(type)"
+              }
+            }
+            actions2.append(action2)
+          }
+        }
+        step2["actions"] = actions2
+        steps2.append(step2)
+      }
+      dic?["steps"] = steps2
+    }
+    return dic
+  }
+
+
   public func importUser(json: NSDictionary!) -> Bool {
     if let userJSON = json["user"] as? Dictionary<String, AnyObject> {
       user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User

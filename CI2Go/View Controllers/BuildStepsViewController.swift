@@ -21,10 +21,6 @@ public class BuildStepsViewController: BaseTableViewController {
     }
   }
 
-  public override func viewDidLoad() {
-    // scrollToBottom(animated: false)
-  }
-
   public override func awakeFromNib() {
     super.awakeFromNib()
     refreshControl = UIRefreshControl()
@@ -50,10 +46,9 @@ public class BuildStepsViewController: BaseTableViewController {
           return
           },
           completion: { (success: Bool, error: NSError!) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
               self.isLoading = false
               self.tableView.reloadData()
-              // self.scrollToBottom(animated: true)
             })
             return
         })
@@ -63,16 +58,8 @@ public class BuildStepsViewController: BaseTableViewController {
     }
   }
 
-  public func scrollToBottom(animated: Bool = false) {
-    let h = tableView.frame.size.height
-    let w = tableView.frame.size.width
-    let y = tableView.contentSize.height - h
-    var rectBottom = CGRectMake(0, y, w, h)
-    tableView.scrollRectToVisible(rectBottom, animated: animated)
-  }
-
   public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
-    return BuildAction.fetchAllSortedBy("index", ascending: false, withPredicate: predicate(), groupBy: "type", delegate: self, inContext: context)
+    return BuildAction.MR_fetchAllGroupedBy("type", withPredicate: predicate(), sortedBy: "type,index,nodeIndex", ascending: false, delegate: self, inContext: context)
   }
 
   public override func predicate() -> NSPredicate? {
@@ -83,7 +70,7 @@ public class BuildStepsViewController: BaseTableViewController {
     let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction
     let actionCell = cell as? BuildActionTableViewCell
     actionCell?.buildAction = action
-    let hasOutput = action?.hasOutput.boolValue == true
+    let hasOutput = action?.outputURL != nil
     cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
     cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
   }
@@ -91,7 +78,7 @@ public class BuildStepsViewController: BaseTableViewController {
   public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     let sectionInfo = fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
     if let action = sectionInfo.objects[0] as? BuildAction {
-      return action.type
+      return action.type?.componentsSeparatedByString(": ").last?.humanize
     }
     return nil
   }
@@ -100,7 +87,7 @@ public class BuildStepsViewController: BaseTableViewController {
     if let cell = sender as? UITableViewCell {
       if let indexPath = tableView.indexPathForCell(cell) {
         if let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction {
-          return action.hasOutput.boolValue
+          return action.outputURL != nil
         }
       }
     }
