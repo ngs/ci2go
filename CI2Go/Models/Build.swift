@@ -161,5 +161,15 @@ public class Build: CI2GoManagedObject {
     }
 
   }
+
+  public var apiPath: String? {
+    get {
+      if(project == nil) {
+        return nil
+      }
+      return "project/\(project!.username!)/\(project!.repositoryName!)/\(number)"
+    }
+
+  }
   
 }

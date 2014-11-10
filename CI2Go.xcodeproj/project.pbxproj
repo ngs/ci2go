@@ -156,6 +156,7 @@
 		8548E05619FF15A100390CCB /* CircleCIAPISessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E05519FF15A100390CCB /* CircleCIAPISessionManagerTests.swift */; };
 		8548E05919FF241D00390CCB /* CI2Go.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8548E05719FF241D00390CCB /* CI2Go.xcdatamodeld */; };
 		855C5FA81A0FF1D000473033 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */; };
+		855C5FAA1A103DC100473033 /* BuildStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C5FA91A103DC100473033 /* BuildStepsViewController.swift */; };
 		8577FBB31A0FDD6B00B7FAB0 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */; };
 		85B869E81A0DB1CD00D12E8A /* BuildActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */; };
 		85BB1BB119FC804F003A1FBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB1BB019FC804F003A1FBE /* AppDelegate.swift */; };
@@ -335,6 +336,7 @@
 		8548E05519FF15A100390CCB /* CircleCIAPISessionManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleCIAPISessionManagerTests.swift; sourceTree = "<group>"; };
 		8548E05819FF241D00390CCB /* CI2Go.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CI2Go.xcdatamodel; sourceTree = "<group>"; };
 		855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewCell.swift; sourceTree = "<group>"; };
+		855C5FA91A103DC100473033 /* BuildStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewController.swift; sourceTree = "<group>"; };
 		85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildActionTests.swift; sourceTree = "<group>"; };
 		85BB1BAB19FC804F003A1FBE /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BB1BAF19FC804F003A1FBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				8547283A19FCB47900EB802B /* BuildsViewController.swift */,
 				8548E04D19FF035200390CCB /* BuildLogViewController.swift */,
 				85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */,
+				855C5FA91A103DC100473033 /* BuildStepsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				8547283B19FCB47900EB802B /* BuildsViewController.swift in Sources */,
 				8548E04819FDBF3E00390CCB /* AppGlobal.swift in Sources */,
 				854250AD1A04BA9400056DD2 /* Branch.swift in Sources */,
+				855C5FAA1A103DC100473033 /* BuildStepsViewController.swift in Sources */,
 				8547283719FCB43A00EB802B /* ProjectsViewController.swift in Sources */,
 				85BB1BB119FC804F003A1FBE /* AppDelegate.swift in Sources */,
 				8542509D1A0478DF00056DD2 /* CI2GoManagedObject.swift in Sources */,

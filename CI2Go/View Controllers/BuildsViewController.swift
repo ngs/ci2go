@@ -80,4 +80,12 @@ public class BuildsViewController: BaseTableViewController {
     }
   }
 
+  public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let vc = segue.destinationViewController as? BuildStepsViewController
+    let cell = sender as? BuildTableViewCell
+    var build = sender as? Build
+    if build == nil { build = cell?.build }
+    vc?.build = build
+  }
+
 }

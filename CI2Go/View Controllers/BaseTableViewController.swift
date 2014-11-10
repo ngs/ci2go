@@ -34,6 +34,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
   }
 
   override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if section < 0 { return 0 }
     let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
     return sectionInfo.numberOfObjects
   }
