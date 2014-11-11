@@ -14,8 +14,6 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   @IBOutlet weak var doneButtonItem: UIBarButtonItem!
   @IBOutlet weak var apiIntervalStepper: UIStepper!
   @IBOutlet weak var apiIntervalLabel: UILabel!
-  @IBOutlet weak var logIntervalStepper: UIStepper!
-  @IBOutlet weak var logIntervalLabel: UILabel!
   @IBOutlet weak var apiTokenField: UITextField!
   @IBOutlet weak var colorSchemeLabel: UILabel!
   
@@ -34,9 +32,6 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     if stepper == apiIntervalStepper {
       setStepperValue(value!, forStepper: nil, withLabel: apiIntervalLabel)
       d.apiRefreshInterval = value!
-    } else if stepper == logIntervalStepper {
-      setStepperValue(value!, forStepper: nil, withLabel: logIntervalLabel)
-      d.logRefreshInterval = value!
     }
   }
   
@@ -114,7 +109,6 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     let placeholderAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: scheme.placeholderColor()!]
     self.apiTokenField.setValue(scheme.placeholderColor(), forKeyPath: "_placeholderLabel.textColor")
     setStepperValue(d.apiRefreshInterval, forStepper: apiIntervalStepper, withLabel: apiIntervalLabel)
-    setStepperValue(d.logRefreshInterval, forStepper: logIntervalStepper, withLabel: logIntervalLabel)
     apiTokenField.text = d.circleCIAPIToken
     cancelButtonItem.enabled = d.circleCIAPIToken?.length == 40
     doneButtonItem.enabled = d.circleCIAPIToken?.length == 40
