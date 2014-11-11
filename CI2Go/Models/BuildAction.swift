@@ -54,12 +54,6 @@ public class BuildAction: CI2GoManagedObject {
     }
   }
 
-  public var logDir: NSURL {
-    get {
-      return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!.URLByAppendingPathComponent("BuildLog", isDirectory: true)
-    }
-  }
-
   public var logFileName: String {
     get {
       let fn = buildActionID.md5
@@ -70,12 +64,18 @@ public class BuildAction: CI2GoManagedObject {
   }
 
   public var logFile: NSURL {
-    return logDir.URLByAppendingPathComponent(logFileName)
+    return NSFileManager.defaultManager()
+      .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!
+      .URLByAppendingPathComponent("BuildLog", isDirectory: true)
+      .URLByAppendingPathComponent(logFileName)
   }
 
   public var logData: String? {
     get {
       var error: NSError? = nil
+      if !NSFileManager.defaultManager().fileExistsAtPath(logFile.absoluteString!) {
+        return nil
+      }
       let m = String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding, error: &error)
       if error != nil { NSLog("%@", error!.localizedDescription) }
       return m
@@ -83,10 +83,18 @@ public class BuildAction: CI2GoManagedObject {
     set(value) {
       var error: NSError? = nil
       let m = NSFileManager.defaultManager()
-      m.createDirectoryAtURL(logFile.URLByDeletingLastPathComponent!, withIntermediateDirectories: true, attributes: nil, error: &error)
-      if error != nil { NSLog("%@", error!.localizedDescription) }
+      let dir = logFile.URLByDeletingLastPathComponent!
+      if !m.fileExistsAtPath(dir.absoluteString!) {
+        m.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil, error: &error)
+        if error != nil {
+          NSLog("%@", error!.localizedDescription)
+          return
+        }
+      }
       value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
-      if error != nil { NSLog("%@", error!.localizedDescription) }
+      if error != nil {
+        NSLog("%@", error!.localizedDescription)
+      }
     }
   }
 

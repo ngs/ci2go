@@ -10,6 +10,8 @@ import UIKit
 
 public class BaseTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
+  private var refreshTimer: NSTimer? = nil
+
   public func predicate() -> NSPredicate? {
     return nil
   }
@@ -116,4 +118,22 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
     self.tableView.endUpdates()
   }
 
+  // MARK: refresh timer
+
+  public func scheduleNextRefresh() {
+    invalidateRefreshTimer()
+    let interval = CI2GoUserDefaults.standardUserDefaults().apiRefreshInterval
+    if isViewLoaded() && view.window != nil && interval > 0 {
+      refreshTimer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: "refresh:", userInfo: nil, repeats: false)
+    }
+  }
+
+  public func invalidateRefreshTimer() {
+    refreshTimer?.invalidate()
+    refreshTimer = nil
+  }
+
+
+  public func refresh(sender :AnyObject?) {
+  }
 }

@@ -28,7 +28,8 @@ public class BuildStepsViewController: BaseTableViewController {
     tableView.addSubview(refreshControl!)
   }
 
-  public func refresh(sender :AnyObject?) {
+  public override func refresh(sender :AnyObject?) {
+    tableView.reloadData()
     load()
   }
 
@@ -84,6 +85,9 @@ public class BuildStepsViewController: BaseTableViewController {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
               self.isLoading = false
               self.tableView.reloadData()
+              if self.build?.lifecycle == "running" {
+                self.scheduleNextRefresh()
+              }
             })
             return
         })

@@ -41,6 +41,7 @@ public class BuildsViewController: BaseTableViewController {
 
   public override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
+    invalidateRefreshTimer()
     NSNotificationCenter().removeObserver(self)
   }
 
@@ -76,6 +77,7 @@ public class BuildsViewController: BaseTableViewController {
       offset = 0
     }
     isLoading = true
+    invalidateRefreshTimer()
     CircleCIAPISessionManager().GET(CI2GoUserDefaults.standardUserDefaults().buildsAPIPath, parameters: ["limit": 100, "offset": offset],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         self.refreshControl?.endRefreshing()
@@ -86,11 +88,13 @@ public class BuildsViewController: BaseTableViewController {
           return
           }, completion: { (success: Bool, error: NSError!) -> Void in
             self.isLoading = false
+            self.scheduleNextRefresh()
             return
         })
       })
       { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
         self.isLoading = false
+        self.scheduleNextRefresh()
     }
   }
 
@@ -113,7 +117,8 @@ public class BuildsViewController: BaseTableViewController {
     vc?.build = build
   }
 
-  public func refresh(sender :AnyObject?) {
+  public override func refresh(sender :AnyObject?) {
+    tableView.reloadData()
     load(false)
   }
   

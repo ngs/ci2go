@@ -112,6 +112,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     apiTokenField.text = d.circleCIAPIToken
     cancelButtonItem.enabled = d.circleCIAPIToken?.length == 40
     doneButtonItem.enabled = d.circleCIAPIToken?.length == 40
+    apiIntervalStepper.value = d.apiRefreshInterval
     super.viewWillAppear(animated)
   }
   
