@@ -545,6 +545,7 @@
 		8547282E19FC99AD00EB802B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8548E04519FDBA7C00390CCB /* CI2GoUserDefaults.swift */,
 				8547282F19FC99B700EB802B /* ColorScheme.swift */,
 			);
 			path = Data;
@@ -650,7 +651,6 @@
 				8548E04919FDBF7600390CCB /* CI2Go.entitlements */,
 				85BB1BB019FC804F003A1FBE /* AppDelegate.swift */,
 				8548E04719FDBF3E00390CCB /* AppGlobal.swift */,
-				8548E04519FDBA7C00390CCB /* CI2GoUserDefaults.swift */,
 				85BB1BD019FC8B10003A1FBE /* Images.xcassets */,
 				8547282E19FC99AD00EB802B /* Data */,
 				85BB1BB919FC804F003A1FBE /* LaunchScreen.xib */,
