@@ -9,6 +9,7 @@
 import UIKit
 
 private var _names: [String]? = nil
+private var _cache = Dictionary<String, Dictionary<String, Dictionary<String, NSNumber>>>()
 
 public class ColorScheme: NSObject {
   public class func names() -> [String] {
@@ -29,9 +30,13 @@ public class ColorScheme: NSObject {
   private var _dictionary: Dictionary<String, Dictionary<String, NSNumber>>?
   public var dictionary: Dictionary<String, Dictionary<String, NSNumber>> {
     if nil == _dictionary {
+      _dictionary = _cache[name]
+    }
+    if nil == _dictionary {
       let path = NSBundle.mainBundle().pathForResource(name, ofType: "itermcolors")
       if nil != path {
         _dictionary = NSDictionary(contentsOfFile: path!) as Dictionary<String, Dictionary<String, NSNumber>>?
+        _cache[name] = _dictionary
       }
     }
     if nil == _dictionary {

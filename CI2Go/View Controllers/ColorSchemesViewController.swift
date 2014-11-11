@@ -53,6 +53,7 @@ public class ColorSchemesViewController: UITableViewController {
       if row != nil {
         let indexPath = NSIndexPath(forRow: row!, inSection: section!)
         tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
       }
     }
   }
@@ -66,8 +67,8 @@ public class ColorSchemesViewController: UITableViewController {
   }
   
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as UITableViewCell
-    cell.textLabel.text = sections[indexPath.section][indexPath.row]
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as ColorSchemeTableViewCell
+    cell.colorSchemeName = sections[indexPath.section][indexPath.row]
     return cell
   }
   

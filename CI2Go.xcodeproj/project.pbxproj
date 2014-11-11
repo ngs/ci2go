@@ -182,6 +182,7 @@
 		85CC3D3B1A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D361A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf */; };
 		85CC3D3C1A10BDD400742B74 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */; };
 		85CC3D3D1A10C63300742B74 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
+		85CC3D3F1A11F23100742B74 /* ColorSchemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D3E1A11F23100742B74 /* ColorSchemeTableViewCell.swift */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
 		85FCC41B1A1176430054662E /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCC41A1A1176430054662E /* String+md5.swift */; };
 		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
@@ -380,6 +381,7 @@
 		85CC3D351A10BDD400742B74 /* SourceCodePro-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Light.ttf"; sourceTree = "<group>"; };
 		85CC3D361A10BDD400742B74 /* SourceCodePro-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-ExtraLight.ttf"; sourceTree = "<group>"; };
 		85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Black.ttf"; sourceTree = "<group>"; };
+		85CC3D3E1A11F23100742B74 /* ColorSchemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeTableViewCell.swift; sourceTree = "<group>"; };
 		85DBC76319FCB7C800546F40 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85DBC76419FCB7F700546F40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		85FCC41A1A1176430054662E /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				8548E04F19FF0A4D00390CCB /* BuildLogTextView.swift */,
 				855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */,
 				85CC3D211A108E6A00742B74 /* BuildActionTableViewCell.swift */,
+				85CC3D3E1A11F23100742B74 /* ColorSchemeTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				8542509F1A04BA9200056DD2 /* BuildStep.swift in Sources */,
 				8548E04619FDBA7C00390CCB /* CI2GoUserDefaults.swift in Sources */,
 				854250A71A04BA9300056DD2 /* Build.swift in Sources */,
+				85CC3D3F1A11F23100742B74 /* ColorSchemeTableViewCell.swift in Sources */,
 				8548E05919FF241D00390CCB /* CI2Go.xcdatamodeld in Sources */,
 				854250A91A04BA9300056DD2 /* Project.swift in Sources */,
 				8547283019FC99B700EB802B /* ColorScheme.swift in Sources */,

@@ -15,7 +15,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   @IBOutlet weak var apiIntervalStepper: UIStepper!
   @IBOutlet weak var apiIntervalLabel: UILabel!
   @IBOutlet weak var apiTokenField: UITextField!
-  @IBOutlet weak var colorSchemeLabel: UILabel!
+  @IBOutlet weak var colorSchemeCell: ColorSchemeTableViewCell!
   
   @IBAction func doneButtonTapped(sender: AnyObject) {
     validateAPIToken(dismissAfterSuccess: true)
@@ -105,7 +105,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   public override func viewWillAppear(animated: Bool) {
     let d = CI2GoUserDefaults.standardUserDefaults()
     let scheme = ColorScheme()
-    self.colorSchemeLabel.text = d.colorSchemeName
+    self.colorSchemeCell.colorScheme = scheme
     let placeholderAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: scheme.placeholderColor()!]
     self.apiTokenField.setValue(scheme.placeholderColor(), forKeyPath: "_placeholderLabel.textColor")
     setStepperValue(d.apiRefreshInterval, forStepper: apiIntervalStepper, withLabel: apiIntervalLabel)
