@@ -783,7 +783,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="#1234" id="jQA-07-YND">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="SJb-1m-VyB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="SJb-1m-VyB">
+                            <connections>
+                                <action selector="openActionSheet:" destination="w1T-PU-rde" id="vGW-sQ-V0a"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYa-TI-Cuc" userLabel="First Responder" sceneMemberID="firstResponder"/>

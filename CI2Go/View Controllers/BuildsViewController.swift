@@ -113,7 +113,7 @@ public class BuildsViewController: BaseTableViewController {
     vc?.build = build
   }
 
-  func refresh(sender :AnyObject?) {
+  public func refresh(sender :AnyObject?) {
     load(false)
   }
   

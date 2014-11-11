@@ -81,9 +81,9 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
   public func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
     switch type {
     case .Insert:
-      self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+      self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .None)
     case .Delete:
-      self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+      self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .None)
     default:
       return
     }
@@ -92,17 +92,17 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
   func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
     switch type {
     case .Insert:
-      tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+      tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
     case .Delete:
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
     case .Update:
       let cell = tableView.cellForRowAtIndexPath(newIndexPath)
       if cell != nil {
         self.configureCell(cell!, atIndexPath: newIndexPath)
       }
     case .Move:
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-      tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+      tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
     default:
       return
     }

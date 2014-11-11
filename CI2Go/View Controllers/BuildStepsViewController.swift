@@ -28,8 +28,44 @@ public class BuildStepsViewController: BaseTableViewController {
     tableView.addSubview(refreshControl!)
   }
 
-  func refresh(sender :AnyObject?) {
+  public func refresh(sender :AnyObject?) {
     load()
+  }
+
+  private func retryBuild() {
+    callAPI("retry", progressMessage: "Queuing Retry", successMessage: "Queued", failureMessage: "Failed")
+  }
+
+  private func cancelBuild() {
+    callAPI("cancel", progressMessage: "Canceling Build", successMessage: "Canceled", failureMessage: "Failed")
+  }
+
+  private func compareChanges() {
+    if let url = self.build?.compareURL {
+      UIApplication.sharedApplication().openURL(url)
+    }
+  }
+
+  private func callAPI(path: String, progressMessage: String, successMessage: String, failureMessage: String) {
+    let hud = MBProgressHUD(view: self.navigationController?.view)
+    self.navigationController?.view.addSubview(hud)
+    hud.animationType = MBProgressHUDAnimationFade
+    hud.dimBackground = true
+    hud.labelText = progressMessage
+    hud.show(true)
+    CircleCIAPISessionManager().POST(build?.apiPath!.stringByAppendingPathComponent(path), parameters: [],
+      success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
+        hud.labelText = successMessage
+        hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
+        hud.mode = MBProgressHUDModeCustomView
+        hud.hide(true, afterDelay: 1)
+      })
+      { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
+        hud.labelText = failureMessage
+        hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
+        hud.mode = MBProgressHUDModeCustomView
+        hud.hide(true, afterDelay: 1)
+    }
   }
 
   public func load() {
@@ -37,8 +73,7 @@ public class BuildStepsViewController: BaseTableViewController {
       refreshControl?.endRefreshing()
       return
     }
-    let m = CircleCIAPISessionManager()
-    m.GET(build?.apiPath!, parameters: [],
+    CircleCIAPISessionManager().GET(build?.apiPath!, parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         self.refreshControl?.endRefreshing()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
@@ -101,6 +136,36 @@ public class BuildStepsViewController: BaseTableViewController {
     vc?.buildAction = cell?.buildAction
     vc?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
     vc?.navigationItem.leftItemsSupplementBackButton = true
+  }
+
+  @IBAction func openActionSheet(sender: AnyObject) {
+    let asheet = UIActionSheet()
+    let lifecycle = self.build?.lifecycle
+    asheet.cancelButtonIndex = 0
+    if lifecycle != "not_run" {
+      asheet.bk_addButtonWithTitle("Rebuild", handler: {
+        self.retryBuild()
+      })
+      asheet.cancelButtonIndex++
+    }
+    if lifecycle == "running" {
+      asheet.bk_addButtonWithTitle("Cancel Build", handler: {
+        self.cancelBuild()
+      })
+      asheet.cancelButtonIndex++
+    }
+    if self.build?.compareURL != nil {
+      asheet.bk_addButtonWithTitle("Compare", handler: {
+        self.compareChanges()
+      })
+      asheet.cancelButtonIndex++
+    }
+    asheet.addButtonWithTitle("Cancel")
+    if let barButtonItem = sender as? UIBarButtonItem {
+      asheet.showFromBarButtonItem(barButtonItem, animated: true)
+    } else {
+      asheet.showInView(self.navigationController?.view)
+    }
   }
   
 }
