@@ -15,8 +15,8 @@ class ColorSchemesViewControllerTests: XCTestCase {
     let c = ColorSchemesViewController()
     XCTAssertEqual(c.sectionIndexes, [
       "3", "A", "B", "C", "D", "E", "F", "G", "H", "I",
-      "i", "J", "K", "L", "M", "N", "O", "P", "R", "S",
-      "T", "U", "V", "W", "Z"], "lists section indexes")
+      "J", "K", "L", "M", "N", "O", "P", "R", "S",
+      "T", "U", "V", "W", "Z", "i"], "lists section indexes")
   }
   func testSections() {
     let c = ColorSchemesViewController()

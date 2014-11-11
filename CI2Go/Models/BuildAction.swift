@@ -37,13 +37,23 @@ public class BuildAction: CI2GoManagedObject {
 
   public override class func idFromObjectData(data: AnyObject!) -> String? {
     if let json = data as? NSDictionary {
-      let command = json["command"] as String!
-      let name = json["name"] as String!
-      let type = json["type"] as String!
-      let startTime = json["start_time"] as String!
-      let index = json["index"] as Int
-      let step = json["step"] as Int
-      return "\(startTime) \(type) (\(index), \(step)) - \(name)"
+      var idcomps = [String]()
+      if let startTime = json["start_time"] as? String {
+        idcomps.append(startTime)
+      }
+      if let type = json["type"] as? String {
+        idcomps.append(type)
+      }
+      if let name = json["name"] as? String {
+        idcomps.append(name)
+      }
+      if let index = json["index"] as? Int {
+        idcomps.append(index.description)
+      }
+      if let step = json["step"] as? Int {
+        idcomps.append(step.description)
+      }
+      return " ".join(idcomps)
     }
     return nil
   }

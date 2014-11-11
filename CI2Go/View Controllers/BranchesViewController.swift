@@ -8,24 +8,34 @@
 
 import UIKit
 
-public class BranchesViewController: BaseTableViewController {
-  public var project: Project?
-
-  public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
-    return Branch.MR_fetchAllSortedBy("name", ascending: false, withPredicate: predicate(), groupBy: nil, delegate: self, inContext: context)
+public class BranchesViewController: UITableViewController {
+  public var project: Project? {
+    didSet {
+      if project == nil {
+        branches = [Branch]()
+      } else {
+        branches = project!.branches!.allObjects.sorted({ (a: AnyObject, b: AnyObject) -> Bool in
+          return a.name < b.name
+        }) as [Branch]
+      }
+      tableView.reloadData()
+    }
   }
+  public var branches: [Branch] = [Branch]()
 
-  public override func predicate() -> NSPredicate? {
-    return NSPredicate(format: "project = %@", project!)
-  }
-
-  override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+  func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 0 {
       cell.textLabel.text = "All branches"
     } else {
-      let b = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0)) as Branch
+      let b = branches[indexPath.row]
       cell.textLabel.text = b.name
     }
+  }
+
+  public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
+    configureCell(cell, atIndexPath: indexPath)
+    return cell
   }
 
   public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -33,13 +43,13 @@ public class BranchesViewController: BaseTableViewController {
   }
 
   public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return section == 0 ? 1 : (fetchedResultsController.sections![0] as NSFetchedResultsSectionInfo).numberOfObjects
+    return section == 0 ? 1 : branches.count
   }
 
   public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let d = CI2GoUserDefaults.standardUserDefaults()
     if indexPath.section == 1 {
-      d.selectedBranch = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0)) as? Branch
+      d.selectedBranch = branches[indexPath.row]
     } else {
       d.selectedBranch = nil
     }

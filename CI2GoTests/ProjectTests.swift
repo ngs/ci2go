@@ -35,10 +35,9 @@ class ProjectTests: XCTestCase {
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 2, "2 records exist")
     Project.MR_importFromArray(array)
     Project.MR_importFromArray(array)
+    XCTAssertEqual(projects[0].apiPath!, "project/circleci/mongofinil")
     XCTAssertEqual(Int(Branch.MR_countOfEntities()), 4, "4 records exist")
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 2, "2 records exist")
   }
-
-
 
 }

@@ -21,6 +21,9 @@ public class ColorScheme: NSObject {
           _names!.append(file.lastPathComponent.stringByDeletingPathExtension)
         }
       }
+      _names?.sort({ (a: String, b: String) -> Bool in
+        return a < b
+      })
     }
     return _names!
   }

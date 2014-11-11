@@ -123,7 +123,8 @@ public class CI2GoUserDefaults: NSObject {
       userDefaults.synchronize()
     }
     get {
-      if let projectID = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey) {
+      let projectID = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey)
+      if projectID?.isEmpty != true {
         return Project.MR_findFirstByAttribute("projectID", withValue: projectID)
       }
       return nil

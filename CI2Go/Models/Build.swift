@@ -120,9 +120,10 @@ public class Build: CI2GoManagedObject {
       importProject(json)
     }
     if let name = json["branch"] as? String {
+      let decodedName = name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
       let data = [
-        "name": name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
-        "branchID": "\(project!.urlString!)#\(name)"
+        "name": decodedName,
+        "branchID": "\(project!.urlString!)#\(decodedName)"
       ]
       branch = Branch.MR_importFromObject(data, inContext: managedObjectContext!) as? Branch
       if project != nil {

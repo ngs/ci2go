@@ -8,38 +8,55 @@
 
 import UIKit
 
-public class ProjectsViewController: BaseTableViewController {
+public class ProjectsViewController: UITableViewController {
+
+  public var projects: [Project] = [Project]()
+
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    refresh()
+  }
+
+  public func refresh() {
+    projects = Project.MR_findAll().sorted({ (a: AnyObject, b: AnyObject) -> Bool in
+      let prjA = a as Project, prjB = b as Project
+      return prjA.projectID < prjB.projectID
+    }) as [Project]
+    tableView.reloadData()
+  }
 
   @IBAction func cancelButtonTapped(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
   }
 
-  override public func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
-    return Project.MR_fetchAllSortedBy("projectID", ascending: false, withPredicate: predicate(), groupBy: nil, delegate: self)
-  }
-
-  override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+  func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 0 {
       cell.textLabel.text = "All projects"
     } else {
-      let project = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0)) as Project
+      let project = projects[indexPath.row]
       cell.textLabel.text = project.repositoryName
       cell.detailTextLabel?.text = project.username
       cell.detailTextLabel?.alpha = 0.5
     }
   }
 
-  public override func tableView(tableView: UITableView, cellIdentifierAtIndexPath indexPath: NSIndexPath) -> String {
-    return "Cell\(indexPath.section)"
+  public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)") as UITableViewCell
+    configureCell(cell, atIndexPath: indexPath)
+    return cell
   }
 
   public override func viewDidAppear(animated: Bool) {
-    CircleCIAPISessionManager().GET("projects", parameters: nil,
+    CircleCIAPISessionManager().GET("projects", parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
             Project.MR_importFromArray(ar, inContext: context)
           }
+          }, completion: { (success: Bool, error: NSError!) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+              self.refresh()
+            })
         })
       })
       { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
@@ -51,7 +68,7 @@ public class ProjectsViewController: BaseTableViewController {
   }
 
   public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return section == 0 ? 1 : (fetchedResultsController.sections![0] as NSFetchedResultsSectionInfo).numberOfObjects
+    return section == 0 ? 1 : projects.count
   }
 
   public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -59,7 +76,7 @@ public class ProjectsViewController: BaseTableViewController {
     let cell = sender as? UITableViewCell
     if vc != nil && cell != nil {
       if let indexPath = tableView.indexPathForCell(cell!) {
-        vc?.project = fetchedResultsController.objectAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: 0)) as? Project
+        vc?.project = projects[indexPath.row]
       }
     }
   }

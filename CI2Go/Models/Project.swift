@@ -31,11 +31,13 @@ public class Project: CI2GoManagedObject {
       let mSet = NSMutableSet()
       if let repo = json["vcs_url"] as? String {
         for branchName in branchesData.keys.array {
+          let decodedName = branchName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
           let dict = [
-            "name": branchName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
-            "branchID": "\(repo)#\(branchName)"
+            "name": decodedName,
+            "branchID": "\(repo)#\(decodedName)"
           ]
           if let b = Branch.MR_importFromObject(dict, inContext: managedObjectContext!) as? Branch {
+            b.project = self
             mSet.addObject(b)
           }
         }
