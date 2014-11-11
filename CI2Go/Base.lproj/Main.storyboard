@@ -143,7 +143,7 @@
         <scene sceneID="o9g-kd-3rk">
             <objects>
                 <tableViewController id="o99-g4-N94" customClass="SettingsViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ynp-4Z-Rx5" customClass="SettingsTableView" customModule="CI2Go" customModuleProvider="target">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ynp-4Z-Rx5" customClass="SettingsTableView" customModule="CI2Go" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -156,7 +156,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="API Token" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRQ-5I-Wfp">
-                                                    <rect key="frame" x="15" y="13.5" width="570" height="17"/>
+                                                    <rect key="frame" x="15" y="16.5" width="570" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
@@ -211,13 +211,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" maximumValue="60" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r3I-oo-sJv">
-                                                    <rect key="frame" x="498" y="8" width="94" height="29"/>
+                                                    <rect key="frame" x="498" y="10" width="94" height="29"/>
                                                     <connections>
                                                         <action selector="intervalValueChanged:" destination="o99-g4-N94" eventType="valueChanged" id="VBw-GS-2vL"/>
                                                     </connections>
                                                 </stepper>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="5.0 second" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOC-nF-1rU">
-                                                    <rect key="frame" x="18" y="12" width="470" height="19.5"/>
+                                                    <rect key="frame" x="18" y="15" width="470" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
