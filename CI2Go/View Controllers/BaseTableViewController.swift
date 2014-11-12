@@ -86,6 +86,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
   var _fetchedResultsController: NSFetchedResultsController? = nil
 
   public func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    UIView.setAnimationsEnabled(false)
     self.tableView.beginUpdates()
   }
 
@@ -125,6 +126,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   public func controllerDidChangeContent(controller: NSFetchedResultsController) {
     self.tableView.endUpdates()
+    UIView.setAnimationsEnabled(true)
   }
 
   // MARK: refresh timer
