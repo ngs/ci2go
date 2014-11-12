@@ -16,6 +16,13 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   @IBOutlet weak var apiIntervalLabel: UILabel!
   @IBOutlet weak var apiTokenField: UITextField!
   @IBOutlet weak var colorSchemeCell: ColorSchemeTableViewCell!
+
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: "Settings Screen")
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
+  }
   
   @IBAction func doneButtonTapped(sender: AnyObject) {
     if CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken == apiTokenField.text? {
@@ -37,8 +44,11 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
       setStepperValue(value!, forStepper: nil, withLabel: apiIntervalLabel)
       d.apiRefreshInterval = value!
     }
+    let tracker = GAI.sharedInstance().defaultTracker
+    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "api-interval-change", label: value!.description, value: value!).build()
+    tracker.send(dict)
   }
-  
+
   private func setStepperValue(value: Double, forStepper stepper: UIStepper?, withLabel label: UILabel?) {
     let unit = value == 1.0 ? "second" : "seconds"
     label?.text = value > 0 ? NSString(format: "%.01f %@", value, unit) : "Manual"

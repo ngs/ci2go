@@ -48,6 +48,10 @@ public class ProjectsViewController: UITableViewController {
   }
 
   public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: "Projects Screen")
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
     CircleCIAPISessionManager().GET("projects", parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
@@ -89,6 +93,9 @@ public class ProjectsViewController: UITableViewController {
       d.selectedBranch = nil
       NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
       self.dismissViewControllerAnimated(true, completion: nil)
+      let tracker = GAI.sharedInstance().defaultTracker
+      let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build()
+      tracker.send(dict)
     }
   }
   

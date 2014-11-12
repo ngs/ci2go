@@ -15,6 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
   var dbInitialized = false
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+    // Google Analytics
+    let gai = GAI.sharedInstance()
+    gai.trackUncaughtExceptions = true
+    gai.dispatchInterval = 20
+    if (NSProcessInfo().environment["VERBOSE"] as? String) == "1" {
+      gai.logger.logLevel = .Verbose
+    }
+    gai.trackerWithTrackingId(kCI2GoGATrackingId)
+
+    //
+
     initializeDB()
 
     // AFNetworking

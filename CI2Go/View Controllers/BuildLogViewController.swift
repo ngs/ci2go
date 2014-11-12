@@ -13,7 +13,17 @@ public class BuildLogViewController: UIViewController {
   public var buildAction: BuildAction? = nil {
     didSet {
       title = buildAction?.name
+      let tracker = GAI.sharedInstance().defaultTracker
+      let dict = GAIDictionaryBuilder.createEventWithCategory("build-log", action: "set", label: buildAction?.type, value: 1).build()
+      tracker.send(dict)
     }
+  }
+
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: "Build Log Screen")
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
   }
 
   override public func viewDidLoad() {

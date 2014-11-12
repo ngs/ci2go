@@ -57,6 +57,13 @@ public class ColorSchemesViewController: UITableViewController {
       }
     }
   }
+
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: "ColorScheme Screen")
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
+  }
   
   public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return sectionIndexes.count
@@ -83,6 +90,9 @@ public class ColorSchemesViewController: UITableViewController {
   public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let item = sections[indexPath.section][indexPath.row]
     ColorScheme(name: item).apply()
+    let tracker = GAI.sharedInstance().defaultTracker
+    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "color-scheme-change", label: item, value: 1).build()
+    tracker.send(dict)
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
   

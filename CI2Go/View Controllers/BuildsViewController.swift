@@ -19,13 +19,19 @@ public class BuildsViewController: BaseTableViewController {
     tableView.addSubview(refreshControl!)
   }
 
+
   public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
     let d = CI2GoUserDefaults.standardUserDefaults()
     if !(d.circleCIAPIToken?.length > 0) {
+      tracker.set(kGAIScreenName, value: "Initial Launch")
       performSegueWithIdentifier("showSettings", sender: nil)
     } else {
+      tracker.set(kGAIScreenName, value: "Builds Screen")
       load(false)
     }
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
   }
 
   public override func viewWillAppear(animated: Bool) {

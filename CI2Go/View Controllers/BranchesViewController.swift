@@ -23,6 +23,13 @@ public class BranchesViewController: UITableViewController {
   }
   public var branches: [Branch] = [Branch]()
 
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: "Branches Screen")
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
+  }
+
   public override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = ColorScheme().backgroundColor()
@@ -54,13 +61,22 @@ public class BranchesViewController: UITableViewController {
   public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let d = CI2GoUserDefaults.standardUserDefaults()
     d.selectedProject = project
+    var action: String? = nil, label: String? = nil
     if indexPath.section == 1 {
-      d.selectedBranch = branches[indexPath.row]
+      let branch = branches[indexPath.row]
+      d.selectedBranch = branch
+      action = "select-branch"
+      label = branch.branchID
     } else {
       d.selectedBranch = nil
+      action = "select-project"
+      label = project?.projectID
     }
     NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
     self.dismissViewControllerAnimated(true, completion: nil)
+    let tracker = GAI.sharedInstance().defaultTracker
+    let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: action!, label: label, value: 1).build()
+    tracker.send(dict)
   }
   
 }

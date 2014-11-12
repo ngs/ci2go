@@ -14,11 +14,21 @@ public class BuildStepsViewController: BaseTableViewController {
     didSet(value) {
       if build?.number != nil && build?.project?.repositoryName != nil {
         title = "\(build!.project!.repositoryName!) #\(build!.number)"
+        let tracker = GAI.sharedInstance().defaultTracker
+        let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: build?.apiPath, value: 1).build()
+        tracker.send(dict)
         load()
       } else {
         title = ""
       }
     }
+  }
+
+  public override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    let tracker = GAI.sharedInstance().defaultTracker
+    tracker.set(kGAIScreenName, value: "Build Steps Screen")
+    tracker.send(GAIDictionaryBuilder.createAppView().build())
   }
 
   public override func viewWillAppear(animated: Bool) {
