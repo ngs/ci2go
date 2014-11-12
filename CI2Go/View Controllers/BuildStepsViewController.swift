@@ -21,6 +21,33 @@ public class BuildStepsViewController: BaseTableViewController {
     }
   }
 
+  public override func viewWillAppear(animated: Bool) {
+    self.updatePredicate()
+    super.viewWillAppear(animated)
+    let c = NSNotificationCenter.defaultCenter()
+    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+      dispatch_async(dispatch_get_main_queue(), {
+        self.load()
+      })
+    }
+  }
+
+  public override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    invalidateRefreshTimer()
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    let c = NSNotificationCenter.defaultCenter()
+    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+      dispatch_async(dispatch_get_main_queue(), {
+        self.load()
+      })
+    }
+  }
+
   public override func awakeFromNib() {
     super.awakeFromNib()
     refreshControl = UIRefreshControl()
@@ -74,6 +101,7 @@ public class BuildStepsViewController: BaseTableViewController {
       refreshControl?.endRefreshing()
       return
     }
+    invalidateRefreshTimer()
     CircleCIAPISessionManager().GET(build?.apiPath!, parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         self.refreshControl?.endRefreshing()

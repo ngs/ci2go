@@ -25,6 +25,15 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
     }
   }
 
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+
+  public override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    self.view.backgroundColor = ColorScheme().backgroundColor()
+  }
+
   public func updatePredicate() {
     self.fetchedResultsController.fetchRequest.predicate = predicate()
     self.fetchedResultsController.performFetch(nil)

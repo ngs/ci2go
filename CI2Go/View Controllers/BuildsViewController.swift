@@ -31,9 +31,15 @@ public class BuildsViewController: BaseTableViewController {
   public override func viewWillAppear(animated: Bool) {
     self.updatePredicate()
     super.viewWillAppear(animated)
-    NSNotificationCenter().addObserverForName(kCI2GoBranchChangedNotification, object: self, queue: nil) { (n: NSNotification!) -> Void in
+    let c = NSNotificationCenter.defaultCenter()
+    c.addObserverForName(kCI2GoBranchChangedNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
       dispatch_async(dispatch_get_main_queue(), {
         self.updatePredicate()
+        self.load(false)
+      })
+    }
+    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+      dispatch_async(dispatch_get_main_queue(), {
         self.load(false)
       })
     }
@@ -42,7 +48,7 @@ public class BuildsViewController: BaseTableViewController {
   public override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     invalidateRefreshTimer()
-    NSNotificationCenter().removeObserver(self)
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
   public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {

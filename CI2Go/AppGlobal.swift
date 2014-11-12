@@ -8,5 +8,5 @@
 
 import Foundation
 
-public let kCI2GoAppGroupIdentifier = "group.io.ngs.ios.CI2Go"
+public let kCI2GoAppGroupIdentifier = "group.com.ci2go.ios.Circle"
 public let kCI2GoCircleCIAPIBaseURL = NSURL(string: "https://circleci.com/api/v1/")

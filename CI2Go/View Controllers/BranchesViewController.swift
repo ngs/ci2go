@@ -23,6 +23,11 @@ public class BranchesViewController: UITableViewController {
   }
   public var branches: [Branch] = [Branch]()
 
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.backgroundColor = ColorScheme().backgroundColor()
+  }
+
   func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 0 {
       cell.textLabel.text = "All branches"
@@ -48,12 +53,13 @@ public class BranchesViewController: UITableViewController {
 
   public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let d = CI2GoUserDefaults.standardUserDefaults()
+    d.selectedProject = project
     if indexPath.section == 1 {
       d.selectedBranch = branches[indexPath.row]
     } else {
       d.selectedBranch = nil
     }
-    d.selectedProject = project
+    NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
     self.dismissViewControllerAnimated(true, completion: nil)
   }
   

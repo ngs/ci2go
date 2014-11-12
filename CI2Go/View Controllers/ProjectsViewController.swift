@@ -14,6 +14,7 @@ public class ProjectsViewController: UITableViewController {
 
   public override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = ColorScheme().backgroundColor()
     refresh()
   }
 
@@ -86,6 +87,7 @@ public class ProjectsViewController: UITableViewController {
       let d = CI2GoUserDefaults.standardUserDefaults()
       d.selectedProject = nil
       d.selectedBranch = nil
+      NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
       self.dismissViewControllerAnimated(true, completion: nil)
     }
   }

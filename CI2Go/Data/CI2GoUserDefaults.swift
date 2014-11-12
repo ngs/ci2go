@@ -17,6 +17,7 @@ public let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
 public let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
 public let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
 public let kCI2GoBranchChangedNotification = "CI2GoBranchChanged"
+public let kCI2GoColorSchemeChangedNotification = "CI2GoColorSchemeChanged"
 
 public class CI2GoUserDefaults: NSObject {
 
@@ -60,6 +61,7 @@ public class CI2GoUserDefaults: NSObject {
         userDefaults.removeObjectForKey(kCI2GoColorSchemeUserDefaultsKey)
       }
       userDefaults.synchronize()
+      NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoColorSchemeChangedNotification, object: nil)
     }
     get {
       return userDefaults.stringForKey(kCI2GoColorSchemeUserDefaultsKey)
@@ -104,9 +106,7 @@ public class CI2GoUserDefaults: NSObject {
     set(value) {
       let branchID = value?.branchID
       userDefaults.setValue(branchID, forKey: kCI2GoSelectedBranchDefaultsKey)
-      selectedProject = value?.project
       userDefaults.synchronize()
-      NSNotificationCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
     }
     get {
       if let branchID = userDefaults.stringForKey(kCI2GoSelectedBranchDefaultsKey) {
