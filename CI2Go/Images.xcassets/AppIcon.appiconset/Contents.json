@@ -115,9 +115,8 @@
       "scale" : "2x"
     },
     {
-      "size" : "120x120",
       "idiom" : "car",
-      "filename" : "Icon-Small-40@3x-1.png",
+      "size" : "120x120",
       "scale" : "1x"
     }
   ],
