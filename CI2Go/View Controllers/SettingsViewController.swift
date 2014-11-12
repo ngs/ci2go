@@ -18,7 +18,11 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   @IBOutlet weak var colorSchemeCell: ColorSchemeTableViewCell!
   
   @IBAction func doneButtonTapped(sender: AnyObject) {
-    validateAPIToken(dismissAfterSuccess: true)
+    if CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken == apiTokenField.text? {
+      dismissViewControllerAnimated(true, completion: nil)
+    } else {
+      validateAPIToken(dismissAfterSuccess: true)
+    }
   }
   
   @IBAction func cancelButtonTapped(sender: AnyObject) {
