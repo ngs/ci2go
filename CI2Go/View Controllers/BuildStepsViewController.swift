@@ -143,6 +143,24 @@ public class BuildStepsViewController: BaseTableViewController {
     return NSPredicate(format: "buildStep.build.buildID = %@", build!.buildID!)
   }
 
+  public override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 30
+  }
+
+  public override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let v = UIView(), s = ColorScheme()
+    let label = UILabel(frame: CGRectMake(0, 0, 0, 30))
+    label.backgroundColor = UIColor.clearColor()
+    label.textColor = s.foregroundColor()
+    label.text = self.tableView(tableView, titleForHeaderInSection: section)
+    label.font = UIFont(name: "Helvetica Neue Bold Italic", size: 14)
+    label.sizeToFit()
+    label.frame = CGRect(origin: CGPointMake(10, 7), size: label.frame.size)
+    v.addSubview(label)
+    v.backgroundColor = s.backgroundColor()?.colorWithAlphaComponent(0.7)
+    return v
+  }
+
   override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
     let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction
     let actionCell = cell as? BuildActionTableViewCell
