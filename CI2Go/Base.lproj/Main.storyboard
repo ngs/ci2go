@@ -961,11 +961,6 @@
                                 <segue destination="kFZ-8K-EBT" kind="presentation" identifier="showSettings" id="Hec-7w-ePI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="1081-branch-toolbar" id="LXp-iW-Ynl">
-                            <connections>
-                                <segue destination="IfH-1Z-563" kind="presentation" id="Wtu-UZ-4TH"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFZ-v2-Cjr" userLabel="First Responder" sceneMemberID="firstResponder"/>
