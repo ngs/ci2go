@@ -32,10 +32,10 @@ public class ProjectsViewController: UITableViewController {
 
   func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 0 {
-      cell.textLabel.text = "All projects"
+      cell.textLabel?.text = "All projects"
     } else {
       let project = projects[indexPath.row]
-      cell.textLabel.text = project.repositoryName
+      cell.textLabel?.text = project.repositoryName
       cell.detailTextLabel?.text = project.username
       cell.detailTextLabel?.alpha = 0.5
     }

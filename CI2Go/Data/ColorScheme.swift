@@ -18,7 +18,7 @@ public class ColorScheme: NSObject {
       let files = NSBundle.mainBundle().URLsForResourcesWithExtension("itermcolors", subdirectory: nil) as [NSURL]?
       if files != nil {
         for file in files! {
-          _names!.append(file.lastPathComponent.stringByDeletingPathExtension)
+          _names!.append(file.lastPathComponent!.stringByDeletingPathExtension)
         }
       }
       _names?.sort({ (a: String, b: String) -> Bool in
