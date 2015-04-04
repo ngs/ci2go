@@ -5,6 +5,7 @@ machine:
     XCODE_SCHEME: CI2GoTests
     XCODE_WORKSPACE: CI2Go.xcworkspace
     BUILD_URL: "https://circleci.com/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM"
+    ICON_URL: "https://github.com/ngs/ci2go/raw/master/CI2Go/Images.xcassets/AppIcon.appiconset/Icon-60@3x.png"
     RELEASE_NOTE: "Auto build from $BUILD_URL"
 general:
   artifacts:
@@ -20,6 +21,7 @@ test:
   post:
     - /bin/bash Scripts/build-adhoc.sh
     - /bin/bash Scripts/distribute-deploygate.sh
+    - /bin/bash Scripts/distribute-s3.sh
 deployment:
   master:
     branch: /master|publish\-.+/
