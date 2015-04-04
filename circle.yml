@@ -1,0 +1,22 @@
+machine:
+  environment:
+    APPNAME: CI2Go
+    LANG: en_US.UTF-8
+    XCODE_SCHEME: CI2GoTests
+    XCODE_WORKSPACE: CI2Go.xcworkspace
+    BUILD_URL: "https://circleci.com/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM"
+    RELEASE_NOTE: "Auto build from $BUILD_URL"
+general:
+  artifacts:
+    - Distribution
+dependencies:
+  post:
+    - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
+test:
+  pre:
+    - /bin/bash Scripts/import-circle-keychain.sh
+    - bundle exec rake env:export
+  post:
+    - /bin/bash Scripts/build-adhoc.sh
+    - /bin/bash Scripts/distribute-deploygate.sh
+    - /bin/bash Scripts/build-release.sh

@@ -37,10 +37,10 @@ public class BranchesViewController: UITableViewController {
 
   func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
     if indexPath.section == 0 {
-      cell.textLabel.text = "All branches"
+      cell.textLabel?.text = "All branches"
     } else {
       let b = branches[indexPath.row]
-      cell.textLabel.text = b.name
+      cell.textLabel?.text = b.name
     }
   }
 

@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.4.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.4.1)
+    - AFNetworking/NSURLSession (= 2.4.1)
+    - AFNetworking/Reachability (= 2.4.1)
+    - AFNetworking/Security (= 2.4.1)
+    - AFNetworking/Serialization (= 2.4.1)
+    - AFNetworking/UIKit (= 2.4.1)
   - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -21,7 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - BlocksKit (2.2.5):
-    - BlocksKit/All
+    - BlocksKit/All (= 2.2.5)
   - BlocksKit/All (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
@@ -36,7 +36,7 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - GoogleAnalytics-iOS-SDK (3.0.9)
-  - MagicalRecord/Shorthand (2.3.0-beta.4)
+  - MagicalRecord/Shorthand (2.3.0-beta.5)
   - MBProgressHUD (0.9)
   - NSDate+TimeAgo (1.0.3)
   - UIColor+Mix (1.0.0)
@@ -45,23 +45,28 @@ DEPENDENCIES:
   - AFNetworking
   - BlocksKit
   - GoogleAnalytics-iOS-SDK
-  - MagicalRecord/Shorthand (from `https://github.com/magicalpanda/MagicalRecord.git`, branch `develop`)
+  - MagicalRecord/Shorthand (from `git@github.com:magicalpanda/MagicalRecord.git`, tag `v2.3.0-beta.5`)
   - MBProgressHUD (~> 0.8)
   - NSDate+TimeAgo
   - UIColor+Mix
 
 EXTERNAL SOURCES:
   MagicalRecord:
-    :branch: develop
-    :git: https://github.com/magicalpanda/MagicalRecord.git
+    :git: git@github.com:magicalpanda/MagicalRecord.git
+    :tag: v2.3.0-beta.5
+
+CHECKOUT OPTIONS:
+  MagicalRecord:
+    :git: git@github.com:magicalpanda/MagicalRecord.git
+    :tag: v2.3.0-beta.5
 
 SPEC CHECKSUMS:
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
-  GoogleAnalytics-iOS-SDK: d9e198b1f955259a72886769be7377cdfcdb2250
-  MagicalRecord: 59e5cec04ba1f9c9d4b70c2ec0a3ea8dceeb352e
-  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  NSDate+TimeAgo: f3533e0198fab05b716368b19f8c2185d53d6f3b
-  UIColor+Mix: aee34e3723940d58679a1c1244cb7443bd5fbe87
+  AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  GoogleAnalytics-iOS-SDK: 3b0994bef22ed2e176a9e2a4d1660c7c2542eb47
+  MagicalRecord: 5b7e807bc07c5d642af1f7d894b7fe0d3c317ca2
+  MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
+  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  UIColor+Mix: fdb1c1620bc1d127f75665c7a6322028b3ebb9d5
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.36.0

@@ -1,7 +1,7 @@
 CI2Go
 =====
 
-[![Build Status](https://travis-ci.org/ngs/ci2go.svg?branch=master)](https://travis-ci.org/ngs/ci2go)
+[![Circle CI](https://circleci.com/gh/ngs/ci2go/tree/master.svg?style=svg&circle-token=1f0b6a414c7ad111b00900086c9d4446a6a022a9)](https://circleci.com/gh/ngs/ci2go/tree/master)
 
 CI2Go is a CircleCI client for iOS.
 
