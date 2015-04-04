@@ -20,4 +20,9 @@ test:
   post:
     - /bin/bash Scripts/build-adhoc.sh
     - /bin/bash Scripts/distribute-deploygate.sh
-    - /bin/bash Scripts/build-release.sh
+deployment:
+  master:
+    branch: /master|publish\-.+/
+    commands:
+      - /bin/bash Scripts/build-release.sh
+      - /bin/bash Scripts/distribute-itunesconnect.sh
