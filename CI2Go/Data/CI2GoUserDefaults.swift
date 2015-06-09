@@ -37,7 +37,7 @@ public class CI2GoUserDefaults: NSObject {
     if nil == _standardUserDefaults {
       _standardUserDefaults = CI2GoUserDefaults()
     }
-    return _standardUserDefaults! as CI2GoUserDefaults
+    return _standardUserDefaults! as! CI2GoUserDefaults
   }
 
   private var _userDefaults: NSUserDefaults? = nil
@@ -55,7 +55,7 @@ public class CI2GoUserDefaults: NSObject {
 
   public var colorSchemeName: NSString? {
     set(value) {
-      if (value != nil && find(ColorScheme.names(), value!) != nil) {
+      if (value != nil && find(ColorScheme.names(), value! as String) != nil) {
         userDefaults.setValue(value, forKey: kCI2GoColorSchemeUserDefaultsKey)
       } else {
         userDefaults.removeObjectForKey(kCI2GoColorSchemeUserDefaultsKey)

@@ -22,6 +22,6 @@ extension String  {
       hash.appendFormat("%02x", result[i])
     }
     result.destroy()
-    return String(format: hash)
+    return String(format: hash as String)
   }
 }

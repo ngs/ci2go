@@ -33,7 +33,7 @@ class BuildTests: XCTestCase {
     XCTAssertEqual(Int(Node.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 0, "0 record exist")
 
-    let obj = fixtureData("build") as NSDictionary
+    let obj = fixtureData("build") as! NSDictionary
     let build = Build.MR_importFromObject(obj)
     XCTAssertEqual(build.authorDate, NSDate(timeIntervalSince1970: 1414719610))
     XCTAssertEqual(build.buildParameters! as NSDictionary, ["foo": "bar"])

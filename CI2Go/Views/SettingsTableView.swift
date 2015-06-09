@@ -10,10 +10,11 @@ import UIKit
 
 class SettingsTableView: UITableView {
   @IBOutlet weak var apiTokenField: UITextField!
-  override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+  
+  override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
     if apiTokenField.isFirstResponder() {
       apiTokenField.resignFirstResponder()
     }
-    super.touchesBegan(touches, withEvent: event)
+    super.touchesBegan(touches as Set<NSObject>, withEvent: event)
   }
 }

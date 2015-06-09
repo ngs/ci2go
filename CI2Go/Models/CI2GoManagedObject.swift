@@ -20,7 +20,7 @@ public class CI2GoManagedObject :NSManagedObject {
     if let dict  = data as? NSDictionary {
       if let id = idFromObjectData(data) {
         let key = MR_primaryKeyNameFromString(entityName.componentsSeparatedByString("_")[0])
-        let mDict = dict.mutableCopy() as NSMutableDictionary
+        let mDict = dict.mutableCopy() as! NSMutableDictionary
         mDict.setValue(id, forKey: key)
         let nullKeys = mDict.allKeysForObject(NSNull())
         mDict.removeObjectsForKeys(nullKeys)
@@ -33,7 +33,7 @@ public class CI2GoManagedObject :NSManagedObject {
 
   public override class func MR_importFromObject(data: AnyObject!, inContext context: NSManagedObjectContext!) -> CI2GoManagedObject! {
     let data2 = addPrimaryAttributeWithObjectData(data)
-    return super.MR_importFromObject(data2, inContext: context) as CI2GoManagedObject!
+    return super.MR_importFromObject(data2, inContext: context) as! CI2GoManagedObject
   }
   
   public override func MR_importValuesForKeysWithObject(data: AnyObject!) -> Bool {
@@ -43,12 +43,12 @@ public class CI2GoManagedObject :NSManagedObject {
   
 
   public class func MR_findOrCreateByAttribute(attribute: NSString, withValue searchValue: AnyObject!) -> CI2GoManagedObject! {
-    var ret = MR_findFirstByAttribute(attribute, withValue: searchValue)
+    var ret = MR_findFirstByAttribute(attribute as String, withValue: searchValue)
     if nil != ret {
       return ret
     }
     ret = MR_createEntity()
-    ret.setValue(searchValue, forKey: attribute)
+    ret.setValue(searchValue, forKey: attribute as String)
     return ret
   }
 

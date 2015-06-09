@@ -18,7 +18,7 @@ class BuildActionTests: XCTestCase {
   
   func testImportObject() {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
-    let obj = ((((fixtureData("build") as NSDictionary)["steps"] as NSArray)[1] as NSDictionary)["actions"] as NSArray)[0] as NSDictionary
+    let obj = ((((fixtureData("build") as! NSDictionary)["steps"] as! NSArray)[1] as! NSDictionary)["actions"] as! NSArray)[0] as! NSDictionary
     let action = BuildAction.MR_importFromObject(obj)
     XCTAssertFalse(action.isTruncated.boolValue)
     XCTAssertEqual(action.nodeIndex, 0)
@@ -50,7 +50,7 @@ class BuildActionTests: XCTestCase {
   
   func testImportObject2() {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
-    let obj = ((((fixtureData("build") as NSDictionary)["steps"] as NSArray)[20] as NSDictionary)["actions"] as NSArray)[0] as NSDictionary
+    let obj = ((((fixtureData("build") as! NSDictionary)["steps"] as! NSArray)[20] as! NSDictionary)["actions"] as! NSArray)[0] as! NSDictionary
     let action = BuildAction.MR_importFromObject(obj)
     XCTAssertFalse(action.isTruncated.boolValue)
     XCTAssertEqual(action.nodeIndex, 0)

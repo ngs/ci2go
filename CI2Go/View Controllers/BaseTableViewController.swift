@@ -46,7 +46,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section < 0 { return 0 }
-    let sectionInfo = self.fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+    let sectionInfo = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
     return sectionInfo.numberOfObjects
   }
 
@@ -57,7 +57,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cellIdentifier = self.tableView(tableView, cellIdentifierAtIndexPath: indexPath)
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UITableViewCell
     self.configureCell(cell, atIndexPath: indexPath)
     return cell
   }
@@ -77,7 +77,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   var fetchedResultsController: NSFetchedResultsController {
     if (_fetchedResultsController == nil) {
-      var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+      var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
       appDelegate.initializeDB()
       _fetchedResultsController = self.createFetchedResultsController(NSManagedObjectContext.MR_defaultContext())
     }
@@ -101,27 +101,23 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
     }
   }
 
-  func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+  public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
     switch type {
     case .Insert:
-      tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
+      tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
     case .Delete:
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+      tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
     case .Update:
-      let cell = tableView.cellForRowAtIndexPath(newIndexPath)
+      let cell = tableView.cellForRowAtIndexPath(newIndexPath!)
       if cell != nil {
-        self.configureCell(cell!, atIndexPath: newIndexPath)
+        self.configureCell(cell!, atIndexPath: newIndexPath!)
       }
     case .Move:
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-      tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
+      tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
+      tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
     default:
       return
     }
-  }
-
-  public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-    self.configureCell(self.tableView.cellForRowAtIndexPath(indexPath!)!, atIndexPath: indexPath!)
   }
 
   public func controllerDidChangeContent(controller: NSFetchedResultsController) {

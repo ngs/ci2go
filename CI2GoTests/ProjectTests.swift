@@ -20,11 +20,11 @@ class ProjectTests: XCTestCase {
   func testImportObject() {
     XCTAssertEqual(Int(Branch.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 0, "0 record exist")
-    let array = fixtureData("projects") as NSArray
-    let projects = Project.MR_importFromArray(array) as [Project]
+    let array = fixtureData("projects") as! NSArray
+    let projects = Project.MR_importFromArray(array as [AnyObject]) as! [Project]
     let branches = projects[0].branches?.allObjects.sorted({ (a: AnyObject, b: AnyObject) -> Bool in
       return a.name == "master"
-    }) as [Branch]
+    }) as! [Branch]
     XCTAssertEqual(projects.count, 2)
     XCTAssertEqual(branches.count, 2)
     XCTAssertEqual(projects[0].repositoryName!, "mongofinil")
@@ -33,8 +33,8 @@ class ProjectTests: XCTestCase {
     XCTAssertEqual(branches[1].name!, "develop")
     XCTAssertEqual(Int(Branch.MR_countOfEntities()), 4, "4 records exist")
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 2, "2 records exist")
-    Project.MR_importFromArray(array)
-    Project.MR_importFromArray(array)
+    Project.MR_importFromArray(array as [AnyObject])
+    Project.MR_importFromArray(array as [AnyObject])
     XCTAssertEqual(projects[0].apiPath!, "project/circleci/mongofinil")
     XCTAssertEqual(Int(Branch.MR_countOfEntities()), 4, "4 records exist")
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 2, "2 records exist")
