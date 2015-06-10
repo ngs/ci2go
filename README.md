@@ -22,6 +22,6 @@ Author
 License
 =======
 
-Copyright &copy; 2014 [Atushi Nagase]. All rights reserved.
+Copyright &copy; 2014-2015 [Atushi Nagase]. All rights reserved.
 
 [Atushi Nagase]: http://ngs.io/
