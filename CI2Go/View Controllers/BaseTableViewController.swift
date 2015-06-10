@@ -102,6 +102,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
   }
 
   public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    if(nil == newIndexPath) { return }
     switch type {
     case .Insert:
       tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)

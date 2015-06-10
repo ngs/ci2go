@@ -76,6 +76,12 @@ class AdHocPage
   def bundle_version
     plist_print :CFBundleVersion
   end
+  def short_version
+    plist_print :CFBundleShortVersionString
+  end
+  def version
+    "#{short_version} (#{bundle_version})"
+  end
   def title
     APP_NAME
   end
@@ -98,6 +104,6 @@ namespace :adhoc do
     AdHocPage.new('app.plist').upload
     page = AdHocPage.new('index.html')
     page_url = page.upload
-    %x{./Scripts/slack-notify.sh "<#{page_url}|*Build #{page.bundle_version}*> is available :iphone:"}
+    %x{./Scripts/slack-notify.sh "<#{page_url}|*Build #{page.version}*> is available :iphone:"}
   end
 end
