@@ -31,7 +31,7 @@ public class BuildsViewController: BaseTableViewController {
       tracker.set(kGAIScreenName, value: "Builds Screen")
       load(false)
     }
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
 
   public override func viewWillAppear(animated: Bool) {
@@ -73,7 +73,7 @@ public class BuildsViewController: BaseTableViewController {
   }
 
   override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-    let buildCell = cell as BuildTableViewCell
+    let buildCell = cell as! BuildTableViewCell
     let build = fetchedResultsController.objectAtIndexPath(indexPath) as? Build
     buildCell.build = build
   }
@@ -95,7 +95,7 @@ public class BuildsViewController: BaseTableViewController {
         self.refreshControl?.endRefreshing()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
-            Build.MR_importFromArray(ar, inContext: context)
+            Build.MR_importFromArray(ar as [AnyObject], inContext: context)
           }
           return
           }, completion: { (success: Bool, error: NSError!) -> Void in

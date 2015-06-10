@@ -20,7 +20,7 @@ class CommitTests: XCTestCase {
   func testImportObject() {
     XCTAssertEqual(Int(Commit.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(User.MR_countOfEntities()), 0, "0 record exist")
-    let obj = (((fixtureData("build") as NSDictionary)["all_commit_details"] as NSArray)[1] as NSDictionary)
+    let obj = (((fixtureData("build") as! NSDictionary)["all_commit_details"] as! NSArray)[1] as! NSDictionary)
     let commit = Commit.MR_importFromObject(obj)
     XCTAssertEqual(commit.body!, "不要な設定項目の削除")
     XCTAssertEqual(commit.date!, NSDate(timeIntervalSince1970: 1414006582))

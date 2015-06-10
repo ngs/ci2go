@@ -19,19 +19,19 @@ class CircleCIAPISessionManagerTests: XCTestCase {
   func testAPIToken() {
     let m = CircleCIAPISessionManager()
     XCTAssertTrue(m.requestSerializer.isKindOfClass(CircleCIRequestSerializer.self), "request serializer is a CircleCIRequestSerializer")
-    XCTAssertNil((m.requestSerializer as CircleCIRequestSerializer).apiToken, "apiToken is nil")
+    XCTAssertNil((m.requestSerializer as! CircleCIRequestSerializer).apiToken, "apiToken is nil")
   }
   
   func testAPITokenInConstructor() {
     let m = CircleCIAPISessionManager(apiToken: "foo")
-    XCTAssert((m.requestSerializer as CircleCIRequestSerializer).apiToken == "foo", "apiToken is assigned")
+    XCTAssert((m.requestSerializer as! CircleCIRequestSerializer).apiToken == "foo", "apiToken is assigned")
     XCTAssert(m.apiToken == "foo", "apiToken is assigned")
   }
   
   func testAPITokenInUserDefaults() {
     CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken = "foo"
     let m = CircleCIAPISessionManager()
-    XCTAssert((m.requestSerializer as CircleCIRequestSerializer).apiToken == "foo", "apiToken is assigned")
+    XCTAssert((m.requestSerializer as! CircleCIRequestSerializer).apiToken == "foo", "apiToken is assigned")
     XCTAssert(m.apiToken == "foo", "apiToken is assigned")
   }
   

@@ -28,3 +28,4 @@ Certificates/
 CI2Go/Environment.swift
 Distribution
 MobileProvisionings
+*.swp

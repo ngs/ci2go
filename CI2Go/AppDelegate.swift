@@ -36,8 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     ColorScheme().apply()
 
     // Setup view controllers
-    let splitViewController = self.window!.rootViewController as UISplitViewController
-    let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as UINavigationController
+    let splitViewController = self.window!.rootViewController as! UISplitViewController
+    let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
     splitViewController.delegate = self
 
@@ -75,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
       let dbURL = NSFileManager.defaultManager()
         .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
         .URLByAppendingPathComponent(dbName! + ".sqlite")
+      MagicalRecord.enableShorthandMethods()
       MagicalRecord.setupCoreDataStackWithStoreAtURL(dbURL)
       dbInitialized = true
     }

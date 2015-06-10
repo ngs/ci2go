@@ -20,7 +20,7 @@ class BuildStepTests: XCTestCase {
   func testImportObject() {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 0, "0 record exist")
-    let obj = ((fixtureData("build") as NSDictionary)["steps"] as NSArray)[1] as NSDictionary
+    let obj = ((fixtureData("build") as! NSDictionary)["steps"] as! NSArray)[1] as! NSDictionary
     let step = BuildStep.MR_importFromObject(obj)
     XCTAssertEqual(step.index, 1)
     XCTAssertEqual(step.name, "Start container")
@@ -38,7 +38,7 @@ class BuildStepTests: XCTestCase {
   func testImportObject2() {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 0, "0 record exist")
-    let obj = ((fixtureData("build") as NSDictionary)["steps"] as NSArray)[20] as NSDictionary
+    let obj = ((fixtureData("build") as! NSDictionary)["steps"] as! NSArray)[20] as! NSDictionary
     let step = BuildStep.MR_importFromObject(obj)
     XCTAssertEqual(step.index, 20)
     XCTAssertEqual(step.name, "NODE_ENV=production npm run-script compile")

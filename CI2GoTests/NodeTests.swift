@@ -18,7 +18,7 @@ class NodeTests: XCTestCase {
 
   func testImportObject() {
     XCTAssertEqual(Int(Node.MR_countOfEntities()), 0, "0 record exist")
-    let obj = (((fixtureData("build") as NSDictionary)["node"] as NSArray)[0] as NSDictionary)
+    let obj = (((fixtureData("build") as! NSDictionary)["node"] as! NSArray)[0] as! NSDictionary)
     let node = Node.MR_importFromObject(obj)
     XCTAssertEqual(node.imageID, "circletar-0266-843f4-20141022T174739Z")
     XCTAssertEqual(node.port, 64587, "Port should be 64587")
@@ -35,7 +35,7 @@ class NodeTests: XCTestCase {
   func testImportObject2() {
     Node.MR_deleteAllMatchingPredicate(NSPredicate(format: "0 < 1"))
     XCTAssertEqual(Int(Node.MR_countOfEntities()), 0, "0 record exist")
-    let obj = (((fixtureData("build") as NSDictionary)["node"] as NSArray)[1] as NSDictionary)
+    let obj = (((fixtureData("build") as! NSDictionary)["node"] as! NSArray)[1] as! NSDictionary)
     let node = Node.MR_importFromObject(obj)
     XCTAssertEqual(node.imageID, "circletar-0266-843f4-20141022T174739Z")
     XCTAssertEqual(node.port, 64770, "Port should be 64770")

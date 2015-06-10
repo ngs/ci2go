@@ -15,7 +15,7 @@ public class ColorScheme: NSObject {
   public class func names() -> [String] {
     if _names == nil {
       _names = [String]()
-      let files = NSBundle.mainBundle().URLsForResourcesWithExtension("itermcolors", subdirectory: nil) as [NSURL]?
+      let files = NSBundle.mainBundle().URLsForResourcesWithExtension("itermcolors", subdirectory: nil) as! [NSURL]?
       if files != nil {
         for file in files! {
           _names!.append(file.lastPathComponent!.stringByDeletingPathExtension)
@@ -38,7 +38,7 @@ public class ColorScheme: NSObject {
     if nil == _dictionary {
       let path = NSBundle.mainBundle().pathForResource(name, ofType: "itermcolors")
       if nil != path {
-        _dictionary = NSDictionary(contentsOfFile: path!) as Dictionary<String, Dictionary<String, NSNumber>>?
+        _dictionary = NSDictionary(contentsOfFile: path!) as! Dictionary<String, Dictionary<String, NSNumber>>?
         _cache[name] = _dictionary
       }
     }
@@ -49,7 +49,7 @@ public class ColorScheme: NSObject {
   }
 
   override convenience init() {
-    self.init(name: CI2GoUserDefaults.standardUserDefaults().colorSchemeName!)
+    self.init(name: CI2GoUserDefaults.standardUserDefaults().colorSchemeName! as String)
   }
 
   public init(name: String) {
@@ -57,7 +57,7 @@ public class ColorScheme: NSObject {
   }
 
   public func color(#code: Int) -> UIColor? {
-    return color(key: NSString(format: "Ansi %d", code))
+    return color(key: NSString(format: "Ansi %d", code) as String)
   }
 
   public func greenColor() -> UIColor? {
@@ -198,9 +198,9 @@ public class ColorScheme: NSObject {
   }
 
   public func resetViews() {
-    let windows = UIApplication.sharedApplication().windows as [UIWindow]
+    let windows = UIApplication.sharedApplication().windows as! [UIWindow]
     for window in windows {
-      let subviews = window.subviews as [UIView]
+      let subviews = window.subviews as! [UIView]
       for v in subviews {
         v.removeFromSuperview()
         window.addSubview(v)

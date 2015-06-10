@@ -41,7 +41,7 @@ public class Build: CI2GoManagedObject {
   @NSManaged public var user: User?
 
   public override class func addPrimaryAttributeWithObjectData(data: AnyObject!) -> NSDictionary? {
-    var dic = super.addPrimaryAttributeWithObjectData(data) as Dictionary<String, AnyObject>?
+    var dic = super.addPrimaryAttributeWithObjectData(data) as! Dictionary<String, AnyObject>?
     if let steps = dic?["steps"] as? [Dictionary<String, AnyObject>] {
       var sec: String? = nil
       , secIndex = 0
@@ -176,8 +176,8 @@ public class Build: CI2GoManagedObject {
         return [Build]()
       }
       return retries!.allObjects.sorted { (a: AnyObject, b: AnyObject) -> Bool in
-        return (a as Build).number.integerValue < (b as Build).number.integerValue
-        } as [Build]
+        return (a as! Build).number.integerValue < (b as! Build).number.integerValue
+        } as! [Build]
     }
   }
 

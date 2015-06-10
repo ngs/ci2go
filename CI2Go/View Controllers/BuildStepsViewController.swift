@@ -15,7 +15,7 @@ public class BuildStepsViewController: BaseTableViewController {
       if build?.number != nil && build?.project?.repositoryName != nil {
         title = "\(build!.project!.repositoryName!) #\(build!.number)"
         let tracker = GAI.sharedInstance().defaultTracker
-        let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: build?.apiPath, value: 1).build()
+        let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: build?.apiPath, value: 1).build() as [NSObject : AnyObject]
         tracker.send(dict)
         load()
       } else {
@@ -28,7 +28,7 @@ public class BuildStepsViewController: BaseTableViewController {
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "Build Steps Screen")
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
 
   public override func viewWillAppear(animated: Bool) {
@@ -87,7 +87,7 @@ public class BuildStepsViewController: BaseTableViewController {
   private func callAPI(path: String, progressMessage: String, successMessage: String, failureMessage: String) {
     let hud = MBProgressHUD(view: self.navigationController?.view)
     self.navigationController?.view.addSubview(hud)
-    hud.animationType = MBProgressHUDAnimationFade
+    hud.animationType = MBProgressHUDAnimation.Fade
     hud.dimBackground = true
     hud.labelText = progressMessage
     hud.show(true)
@@ -95,13 +95,13 @@ public class BuildStepsViewController: BaseTableViewController {
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         hud.labelText = successMessage
         hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
-        hud.mode = MBProgressHUDModeCustomView
+        hud.mode = MBProgressHUDMode.CustomView
         hud.hide(true, afterDelay: 1)
       })
       { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
         hud.labelText = failureMessage
         hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
-        hud.mode = MBProgressHUDModeCustomView
+        hud.mode = MBProgressHUDMode.CustomView
         hud.hide(true, afterDelay: 1)
     }
   }
@@ -171,7 +171,7 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    let sectionInfo = fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
+    let sectionInfo = fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
     if let action = sectionInfo.objects[0] as? BuildAction {
       return action.type?.componentsSeparatedByString(": ").last?.humanize
     }

@@ -15,7 +15,7 @@
 #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
 #import <UIColor+Mix/UIColor+Mix.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#define MR_SHORTHAND
 #import <MagicalRecord/MagicalRecord.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord+ShorthandMethods.h>
+#import <MagicalRecord/MagicalRecordShorthandMethodAliases.h>
 #import "AMR_ANSIEscapeHelper.h"

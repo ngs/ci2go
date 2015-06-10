@@ -62,7 +62,7 @@ public class ColorSchemesViewController: UITableViewController {
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "ColorScheme Screen")
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
   
   public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -74,7 +74,7 @@ public class ColorSchemesViewController: UITableViewController {
   }
   
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as ColorSchemeTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as! ColorSchemeTableViewCell
     cell.colorSchemeName = sections[indexPath.section][indexPath.row]
     return cell
   }
@@ -91,7 +91,7 @@ public class ColorSchemesViewController: UITableViewController {
     let item = sections[indexPath.section][indexPath.row]
     ColorScheme(name: item).apply()
     let tracker = GAI.sharedInstance().defaultTracker
-    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "color-scheme-change", label: item, value: 1).build()
+    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "color-scheme-change", label: item, value: 1).build() as [NSObject : AnyObject]
     tracker.send(dict)
     self.navigationController?.popToRootViewControllerAnimated(true)
   }

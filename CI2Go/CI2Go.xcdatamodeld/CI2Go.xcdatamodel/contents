@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Branch" representedClassName="CI2Go.Branch" syncable="YES">
         <attribute name="branchID" optional="YES" attributeType="String" indexed="YES" syncable="YES">
             <userInfo>
@@ -136,7 +136,11 @@
             </userInfo>
         </relationship>
         <relationship name="retries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="retryOf" inverseEntity="Build" syncable="YES"/>
-        <relationship name="retryOf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Build" inverseName="retries" inverseEntity="Build" syncable="YES"/>
+        <relationship name="retryOf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Build" inverseName="retries" inverseEntity="Build" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="retry_of"/>
+            </userInfo>
+        </relationship>
         <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BuildStep" inverseName="build" inverseEntity="BuildStep" syncable="YES"/>
         <relationship name="triggeredCommit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Commit" inverseName="triggeredBuilds" inverseEntity="Commit" syncable="YES">
             <userInfo>
@@ -308,13 +312,13 @@
         </attribute>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="authedCommits" inverseEntity="User" syncable="YES">
             <userInfo>
-                <entry key="mappedKeyName" value="author.email"/>
+                <entry key="mappedKeyName" value="author_email"/>
             </userInfo>
         </relationship>
         <relationship name="builds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Build" inverseName="commits" inverseEntity="Build" syncable="YES"/>
         <relationship name="committer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="commits" inverseEntity="User" syncable="YES">
             <userInfo>
-                <entry key="mappedKeyName" value="committer.email"/>
+                <entry key="mappedKeyName" value="committer_email"/>
             </userInfo>
         </relationship>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="commits" inverseEntity="Project" syncable="YES"/>
@@ -413,10 +417,10 @@
     </entity>
     <elements>
         <element name="Branch" positionX="-263" positionY="120" width="128" height="118"/>
-        <element name="Build" positionX="-0" positionY="108" width="128" height="478"/>
+        <element name="Build" positionX="-0" positionY="108" width="128" height="480"/>
         <element name="BuildAction" positionX="-0" positionY="189" width="128" height="388"/>
         <element name="BuildStep" positionX="187" positionY="27" width="128" height="118"/>
-        <element name="Commit" positionX="0" positionY="189" width="128" height="208"/>
+        <element name="Commit" positionX="0" positionY="189" width="128" height="210"/>
         <element name="Node" positionX="-45" positionY="144" width="128" height="150"/>
         <element name="Project" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="User" positionX="9" positionY="144" width="128" height="150"/>

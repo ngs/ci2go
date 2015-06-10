@@ -16,7 +16,7 @@ public class BranchesViewController: UITableViewController {
       } else {
         branches = project!.branches!.allObjects.sorted({ (a: AnyObject, b: AnyObject) -> Bool in
           return a.name < b.name
-        }) as [Branch]
+        }) as! [Branch]
       }
       tableView.reloadData()
     }
@@ -27,7 +27,7 @@ public class BranchesViewController: UITableViewController {
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "Branches Screen")
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
 
   public override func viewDidLoad() {
@@ -45,7 +45,7 @@ public class BranchesViewController: UITableViewController {
   }
 
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
     configureCell(cell, atIndexPath: indexPath)
     return cell
   }
@@ -66,7 +66,7 @@ public class BranchesViewController: UITableViewController {
       let branch = branches[indexPath.row]
       d.selectedBranch = branch
       action = "select-branch"
-      label = branch.branchID
+      label = branch.branchID as String?
     } else {
       d.selectedBranch = nil
       action = "select-project"
@@ -75,7 +75,7 @@ public class BranchesViewController: UITableViewController {
     NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
     self.dismissViewControllerAnimated(true, completion: nil)
     let tracker = GAI.sharedInstance().defaultTracker
-    let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: action!, label: label, value: 1).build()
+    let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: action!, label: label, value: 1).build() as [NSObject : AnyObject]
     tracker.send(dict)
   }
   

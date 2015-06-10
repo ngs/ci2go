@@ -21,11 +21,11 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "Settings Screen")
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
   
   @IBAction func doneButtonTapped(sender: AnyObject) {
-    if CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken == apiTokenField.text? {
+    if CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken == apiTokenField.text {
       dismissViewControllerAnimated(true, completion: nil)
     } else {
       validateAPIToken(dismissAfterSuccess: true)
@@ -45,19 +45,23 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
       d.apiRefreshInterval = value!
     }
     let tracker = GAI.sharedInstance().defaultTracker
-    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "api-interval-change", label: value!.description, value: value!).build()
+    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "api-interval-change", label: value!.description, value: value!).build() as [NSObject : AnyObject]
     tracker.send(dict)
   }
 
   private func setStepperValue(value: Double, forStepper stepper: UIStepper?, withLabel label: UILabel?) {
     let unit = value == 1.0 ? "second" : "seconds"
-    label?.text = value > 0 ? NSString(format: "%.01f %@", value, unit) : "Manual"
+    if(value > 0) {
+      label?.text = NSString(format: "%.01f %@", Double(value), unit) as String
+    } else {
+      label?.text = "Manual"
+    }
   }
   
   private func validateAPIToken(dismissAfterSuccess: Bool = false) {
     let hud = MBProgressHUD(view: self.navigationController?.view)
     self.navigationController?.view.addSubview(hud)
-    hud.animationType = MBProgressHUDAnimationFade
+    hud.animationType = MBProgressHUDAnimation.Fade
     hud.dimBackground = true
     hud.labelText = "Authenticating"
     hud.show(true)
@@ -68,7 +72,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
         CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken = token
         hud.labelText = "Authenticated"
         hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
-        hud.mode = MBProgressHUDModeCustomView
+        hud.mode = MBProgressHUDMode.CustomView
         hud.hide(true, afterDelay: 1)
         if dismissAfterSuccess {
           self.dismissViewControllerAnimated(true, completion: nil)
@@ -77,7 +81,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
       failure: { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
         hud.labelText = "Failed to authenticate"
         hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
-        hud.mode = MBProgressHUDModeCustomView
+        hud.mode = MBProgressHUDMode.CustomView
         hud.hide(true, afterDelay: 1)
       }
     )
@@ -123,7 +127,11 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     let placeholderAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: scheme.placeholderColor()!]
     self.apiTokenField.setValue(scheme.placeholderColor(), forKeyPath: "_placeholderLabel.textColor")
     setStepperValue(d.apiRefreshInterval, forStepper: apiIntervalStepper, withLabel: apiIntervalLabel)
-    apiTokenField.text = d.circleCIAPIToken
+    if(d.circleCIAPIToken != nil) {
+      apiTokenField.text = d.circleCIAPIToken as! String
+    } else {
+      apiTokenField.text = ""
+    }
     cancelButtonItem.enabled = d.circleCIAPIToken?.length == 40
     doneButtonItem.enabled = d.circleCIAPIToken?.length == 40
     apiIntervalStepper.value = d.apiRefreshInterval

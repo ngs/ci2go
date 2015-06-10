@@ -14,7 +14,7 @@ public class BuildLogViewController: UIViewController {
     didSet {
       title = buildAction?.name
       let tracker = GAI.sharedInstance().defaultTracker
-      let dict = GAIDictionaryBuilder.createEventWithCategory("build-log", action: "set", label: buildAction?.type, value: 1).build()
+      let dict = GAIDictionaryBuilder.createEventWithCategory("build-log", action: "set", label: buildAction?.type, value: 1).build() as [NSObject : AnyObject]
       tracker.send(dict)
     }
   }
@@ -23,7 +23,7 @@ public class BuildLogViewController: UIViewController {
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "Build Log Screen")
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
 
   override public func viewDidLoad() {

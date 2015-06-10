@@ -22,9 +22,9 @@ public class CircleCIAPISessionManager: AFHTTPRequestOperationManager {
     self.apiToken = apiToken
   }
   
-  public override convenience init() {
+  convenience init() {
     self.init(baseURL: kCI2GoCircleCIAPIBaseURL)
-    self.apiToken = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken
+    self.apiToken = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken as String?
   }
   
   required public init(coder aDecoder: NSCoder) {
@@ -33,10 +33,10 @@ public class CircleCIAPISessionManager: AFHTTPRequestOperationManager {
   
   public var apiToken: String? {
     set(value) {
-      (self.requestSerializer as CircleCIRequestSerializer).apiToken = value
+      (self.requestSerializer as! CircleCIRequestSerializer).apiToken = value
     }
     get {
-      return (self.requestSerializer as CircleCIRequestSerializer).apiToken
+      return (self.requestSerializer as! CircleCIRequestSerializer).apiToken
     }
   }
   

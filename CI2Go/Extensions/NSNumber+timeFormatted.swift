@@ -15,8 +15,8 @@ extension NSNumber {
     let minutes = Int(floor(val % 3600 / 60))
     let seconds = Int(floor(val % 60))
     if hours > 0 {
-      return NSString(format: "%d:%02d:%02d", hours, minutes, seconds)
+      return NSString(format: "%d:%02d:%02d", hours, minutes, seconds) as String
     }
-    return NSString(format: "%02d:%02d", minutes, seconds)
+    return NSString(format: "%02d:%02d", minutes, seconds) as String
   }
 }

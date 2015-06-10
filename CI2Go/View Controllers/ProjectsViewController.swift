@@ -20,9 +20,9 @@ public class ProjectsViewController: UITableViewController {
 
   public func refresh() {
     projects = Project.MR_findAll().sorted({ (a: AnyObject, b: AnyObject) -> Bool in
-      let prjA = a as Project, prjB = b as Project
+      let prjA = a as! Project, prjB = b as! Project
       return prjA.projectID < prjB.projectID
-    }) as [Project]
+    }) as! [Project]
     tableView.reloadData()
   }
 
@@ -42,7 +42,7 @@ public class ProjectsViewController: UITableViewController {
   }
 
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)") as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)") as! UITableViewCell
     configureCell(cell, atIndexPath: indexPath)
     return cell
   }
@@ -51,12 +51,12 @@ public class ProjectsViewController: UITableViewController {
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "Projects Screen")
-    tracker.send(GAIDictionaryBuilder.createAppView().build())
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     CircleCIAPISessionManager().GET("projects", parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
-            Project.MR_importFromArray(ar, inContext: context)
+            Project.MR_importFromArray(ar as [AnyObject], inContext: context)
           }
           }, completion: { (success: Bool, error: NSError!) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -94,7 +94,7 @@ public class ProjectsViewController: UITableViewController {
       NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
       self.dismissViewControllerAnimated(true, completion: nil)
       let tracker = GAI.sharedInstance().defaultTracker
-      let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build()
+      let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build() as [NSObject : AnyObject]
       tracker.send(dict)
     }
   }
