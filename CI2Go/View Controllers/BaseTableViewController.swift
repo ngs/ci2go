@@ -102,20 +102,29 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
   }
 
   public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-    if(nil == newIndexPath) { return }
     switch type {
     case .Insert:
-      tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
+      if(nil != newIndexPath) {
+        tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
+      }
+      break
     case .Delete:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
+      break
     case .Update:
-      let cell = tableView.cellForRowAtIndexPath(newIndexPath!)
-      if cell != nil {
-        self.configureCell(cell!, atIndexPath: newIndexPath!)
+      if(nil != newIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(newIndexPath!)
+        if cell != nil {
+          self.configureCell(cell!, atIndexPath: newIndexPath!)
+        }
       }
+      break
     case .Move:
       tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.None)
-      tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
+      if(nil != newIndexPath) {
+        tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
+      }
+      break
     default:
       return
     }

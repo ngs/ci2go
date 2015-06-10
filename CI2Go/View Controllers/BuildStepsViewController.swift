@@ -115,8 +115,10 @@ public class BuildStepsViewController: BaseTableViewController {
     CircleCIAPISessionManager().GET(build?.apiPath!, parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         self.refreshControl?.endRefreshing()
+        AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           Build.MR_importFromObject(data, inContext: context)
+          AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
           return
           },
           completion: { (success: Bool, error: NSError!) -> Void in
@@ -126,6 +128,7 @@ public class BuildStepsViewController: BaseTableViewController {
               if self.build?.lifecycle == "running" {
                 self.scheduleNextRefresh()
               }
+              AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
             })
             return
         })

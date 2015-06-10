@@ -93,14 +93,17 @@ public class BuildsViewController: BaseTableViewController {
     CircleCIAPISessionManager().GET(CI2GoUserDefaults.standardUserDefaults().buildsAPIPath, parameters: ["limit": 100, "offset": offset],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
         self.refreshControl?.endRefreshing()
+        AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
             Build.MR_importFromArray(ar as [AnyObject], inContext: context)
           }
+          AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
           return
           }, completion: { (success: Bool, error: NSError!) -> Void in
             self.isLoading = false
             self.scheduleNextRefresh()
+            AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
             return
         })
       })
