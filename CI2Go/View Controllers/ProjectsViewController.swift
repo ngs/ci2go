@@ -54,11 +54,14 @@ public class ProjectsViewController: UITableViewController {
     tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     CircleCIAPISessionManager().GET("projects", parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
+        AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
         MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
           if let ar = data as? NSArray {
             Project.MR_importFromArray(ar as [AnyObject], inContext: context)
           }
+          AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
           }, completion: { (success: Bool, error: NSError!) -> Void in
+            AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
               self.refresh()
             })
