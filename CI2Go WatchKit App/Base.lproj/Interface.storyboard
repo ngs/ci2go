@@ -109,7 +109,7 @@
                     </items>
                     <menu key="menu" id="fSS-Gg-0AM">
                         <items>
-                            <menuItem title="Refresh" icon="repeat" id="4qm-P9-xcE">
+                            <menuItem title="Retry" icon="repeat" id="4qm-P9-xcE">
                                 <connections>
                                     <action selector="handleRefreshMenuItem" destination="uZg-6N-t1c" id="Pwo-xF-mvO"/>
                                 </connections>
