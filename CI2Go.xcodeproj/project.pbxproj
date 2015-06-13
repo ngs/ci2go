@@ -143,6 +143,8 @@
 		8547283719FCB43A00EB802B /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547283619FCB43A00EB802B /* ProjectsViewController.swift */; };
 		8547283919FCB45800EB802B /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547283819FCB45800EB802B /* BranchesViewController.swift */; };
 		8547283B19FCB47900EB802B /* BuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547283A19FCB47900EB802B /* BuildsViewController.swift */; };
+		854816261B2CCEA900916C98 /* CI2Go.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 854816241B2CCEA900916C98 /* CI2Go.xcdatamodeld */; };
+		854816281B2CD4C800916C98 /* WKInterfaceController+initializeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854816271B2CD4C800916C98 /* WKInterfaceController+initializeDB.swift */; };
 		8548E03D19FCFD3F00390CCB /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E03C19FCFD3F00390CCB /* SettingsTableView.swift */; };
 		8548E03F19FD043B00390CCB /* ColorSchemesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E03E19FD043B00390CCB /* ColorSchemesViewControllerTests.swift */; };
 		8548E04619FDBA7C00390CCB /* CI2GoUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04519FDBA7C00390CCB /* CI2GoUserDefaults.swift */; };
@@ -157,6 +159,145 @@
 		855C5FA81A0FF1D000473033 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */; };
 		855C5FAA1A103DC100473033 /* BuildStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C5FA91A103DC100473033 /* BuildStepsViewController.swift */; };
 		857077901B2C96A000F7269E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8570778F1B2C96A000F7269E /* libPods.a */; };
+		857077931B2CA23900F7269E /* 3024 Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274319FC947800EB802B /* 3024 Day.itermcolors */; };
+		857077941B2CA23900F7269E /* 3024 Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274419FC947800EB802B /* 3024 Night.itermcolors */; };
+		857077951B2CA23900F7269E /* AdventureTime.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274519FC947800EB802B /* AdventureTime.itermcolors */; };
+		857077961B2CA23900F7269E /* Afterglow.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274619FC947800EB802B /* Afterglow.itermcolors */; };
+		857077971B2CA23900F7269E /* AlienBlood.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274719FC947800EB802B /* AlienBlood.itermcolors */; };
+		857077981B2CA23900F7269E /* Argonaut.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274819FC947800EB802B /* Argonaut.itermcolors */; };
+		857077991B2CA23900F7269E /* Arthur.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274919FC947800EB802B /* Arthur.itermcolors */; };
+		8570779A1B2CA23900F7269E /* Atom.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274A19FC947800EB802B /* Atom.itermcolors */; };
+		8570779B1B2CA23900F7269E /* Belafonte Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274B19FC947800EB802B /* Belafonte Day.itermcolors */; };
+		8570779C1B2CA23900F7269E /* Belafonte Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274C19FC947800EB802B /* Belafonte Night.itermcolors */; };
+		8570779D1B2CA23900F7269E /* BirdsOfParadise.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274D19FC947800EB802B /* BirdsOfParadise.itermcolors */; };
+		8570779E1B2CA23900F7269E /* Blazer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274E19FC947800EB802B /* Blazer.itermcolors */; };
+		8570779F1B2CA23900F7269E /* Broadcast.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547274F19FC947800EB802B /* Broadcast.itermcolors */; };
+		857077A01B2CA23900F7269E /* Brogrammer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275019FC947800EB802B /* Brogrammer.itermcolors */; };
+		857077A11B2CA23900F7269E /* C64.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275119FC947800EB802B /* C64.itermcolors */; };
+		857077A21B2CA23900F7269E /* Chalk.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275219FC947800EB802B /* Chalk.itermcolors */; };
+		857077A31B2CA23900F7269E /* Chalkboard.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275319FC947800EB802B /* Chalkboard.itermcolors */; };
+		857077A41B2CA23900F7269E /* Ciapre.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275419FC947800EB802B /* Ciapre.itermcolors */; };
+		857077A51B2CA23900F7269E /* CLRS.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275519FC947800EB802B /* CLRS.itermcolors */; };
+		857077A61B2CA23900F7269E /* Cobalt2.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275619FC947800EB802B /* Cobalt2.itermcolors */; };
+		857077A71B2CA23900F7269E /* CrayonPonyFish.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275719FC947800EB802B /* CrayonPonyFish.itermcolors */; };
+		857077A81B2CA23900F7269E /* Dark Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275819FC947800EB802B /* Dark Pastel.itermcolors */; };
+		857077A91B2CA23900F7269E /* Darkside.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275919FC947800EB802B /* Darkside.itermcolors */; };
+		857077AA1B2CA23900F7269E /* Desert.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275A19FC947800EB802B /* Desert.itermcolors */; };
+		857077AB1B2CA23900F7269E /* DimmedMonokai.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275B19FC947800EB802B /* DimmedMonokai.itermcolors */; };
+		857077AC1B2CA23900F7269E /* Dracula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275C19FC947800EB802B /* Dracula.itermcolors */; };
+		857077AD1B2CA23900F7269E /* Earthsong.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275D19FC947800EB802B /* Earthsong.itermcolors */; };
+		857077AE1B2CA23900F7269E /* Elemental.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275E19FC947800EB802B /* Elemental.itermcolors */; };
+		857077AF1B2CA23900F7269E /* Espresso Libre.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547275F19FC947800EB802B /* Espresso Libre.itermcolors */; };
+		857077B01B2CA23900F7269E /* Espresso.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276019FC947800EB802B /* Espresso.itermcolors */; };
+		857077B11B2CA23900F7269E /* FishTank.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276119FC947800EB802B /* FishTank.itermcolors */; };
+		857077B21B2CA23900F7269E /* Flat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276219FC947800EB802B /* Flat.itermcolors */; };
+		857077B31B2CA23900F7269E /* FrontEndDelight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276319FC947800EB802B /* FrontEndDelight.itermcolors */; };
+		857077B41B2CA23900F7269E /* FunForrest.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276419FC947800EB802B /* FunForrest.itermcolors */; };
+		857077B51B2CA23900F7269E /* Github.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276519FC947800EB802B /* Github.itermcolors */; };
+		857077B61B2CA23900F7269E /* Grape.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276619FC947800EB802B /* Grape.itermcolors */; };
+		857077B71B2CA23900F7269E /* Grass.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276719FC947800EB802B /* Grass.itermcolors */; };
+		857077B81B2CA23900F7269E /* Hardcore.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276819FC947800EB802B /* Hardcore.itermcolors */; };
+		857077B91B2CA23900F7269E /* Harper.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276919FC947800EB802B /* Harper.itermcolors */; };
+		857077BA1B2CA23900F7269E /* Highway.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276A19FC947800EB802B /* Highway.itermcolors */; };
+		857077BB1B2CA23900F7269E /* Hipster Green.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276B19FC947800EB802B /* Hipster Green.itermcolors */; };
+		857077BC1B2CA23900F7269E /* Homebrew.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276C19FC947800EB802B /* Homebrew.itermcolors */; };
+		857077BD1B2CA23900F7269E /* Hurtado.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276D19FC947800EB802B /* Hurtado.itermcolors */; };
+		857077BE1B2CA23900F7269E /* Hybrid.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276E19FC947800EB802B /* Hybrid.itermcolors */; };
+		857077BF1B2CA23900F7269E /* IC_Green_PPL.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547276F19FC947800EB802B /* IC_Green_PPL.itermcolors */; };
+		857077C01B2CA23900F7269E /* IC_Orange_PPL.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277019FC947800EB802B /* IC_Orange_PPL.itermcolors */; };
+		857077C11B2CA23900F7269E /* idleToes.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277119FC947800EB802B /* idleToes.itermcolors */; };
+		857077C21B2CA23900F7269E /* IR_Black.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277219FC947800EB802B /* IR_Black.itermcolors */; };
+		857077C31B2CA23900F7269E /* Jackie Brown.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277319FC947800EB802B /* Jackie Brown.itermcolors */; };
+		857077C41B2CA23900F7269E /* Japanesque.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277419FC947800EB802B /* Japanesque.itermcolors */; };
+		857077C51B2CA23900F7269E /* Jellybeans.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277519FC947800EB802B /* Jellybeans.itermcolors */; };
+		857077C61B2CA23900F7269E /* Kibble.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277619FC947800EB802B /* Kibble.itermcolors */; };
+		857077C71B2CA23900F7269E /* Lavandula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277719FC947800EB802B /* Lavandula.itermcolors */; };
+		857077C81B2CA23900F7269E /* LiquidCarbon.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277819FC947800EB802B /* LiquidCarbon.itermcolors */; };
+		857077C91B2CA23900F7269E /* LiquidCarbonTransparent.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277919FC947800EB802B /* LiquidCarbonTransparent.itermcolors */; };
+		857077CA1B2CA23900F7269E /* LiquidCarbonTransparentInverse.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277A19FC947800EB802B /* LiquidCarbonTransparentInverse.itermcolors */; };
+		857077CB1B2CA23900F7269E /* Man Page.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277B19FC947800EB802B /* Man Page.itermcolors */; };
+		857077CC1B2CA23900F7269E /* Mathias.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277C19FC947800EB802B /* Mathias.itermcolors */; };
+		857077CD1B2CA23900F7269E /* Medallion.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277D19FC947800EB802B /* Medallion.itermcolors */; };
+		857077CE1B2CA23900F7269E /* Misterioso.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277E19FC947800EB802B /* Misterioso.itermcolors */; };
+		857077CF1B2CA23900F7269E /* Molokai.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547277F19FC947800EB802B /* Molokai.itermcolors */; };
+		857077D01B2CA23900F7269E /* MonaLisa.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278019FC947800EB802B /* MonaLisa.itermcolors */; };
+		857077D11B2CA23900F7269E /* Monokai Soda.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278119FC947800EB802B /* Monokai Soda.itermcolors */; };
+		857077D21B2CA23900F7269E /* N0tch2k.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278219FC947800EB802B /* N0tch2k.itermcolors */; };
+		857077D31B2CA23900F7269E /* Neopolitan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278319FC947800EB802B /* Neopolitan.itermcolors */; };
+		857077D41B2CA23900F7269E /* NightLion v1.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278419FC947800EB802B /* NightLion v1.itermcolors */; };
+		857077D51B2CA23900F7269E /* NightLion v2.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278519FC947800EB802B /* NightLion v2.itermcolors */; };
+		857077D61B2CA23900F7269E /* Novel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278619FC947800EB802B /* Novel.itermcolors */; };
+		857077D71B2CA23900F7269E /* Obsidian.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278719FC947800EB802B /* Obsidian.itermcolors */; };
+		857077D81B2CA23900F7269E /* Ocean.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278819FC947800EB802B /* Ocean.itermcolors */; };
+		857077D91B2CA23900F7269E /* Ollie.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278919FC947800EB802B /* Ollie.itermcolors */; };
+		857077DA1B2CA23900F7269E /* Parasio Dark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278A19FC947800EB802B /* Parasio Dark.itermcolors */; };
+		857077DB1B2CA23900F7269E /* PaulMillr.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278B19FC947800EB802B /* PaulMillr.itermcolors */; };
+		857077DC1B2CA23900F7269E /* PencilDark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278C19FC947800EB802B /* PencilDark.itermcolors */; };
+		857077DD1B2CA23900F7269E /* PencilLight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278D19FC947800EB802B /* PencilLight.itermcolors */; };
+		857077DE1B2CA23900F7269E /* Pnevma.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278E19FC947800EB802B /* Pnevma.itermcolors */; };
+		857077DF1B2CA23900F7269E /* Pro.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547278F19FC947800EB802B /* Pro.itermcolors */; };
+		857077E01B2CA23900F7269E /* Red Alert.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279019FC947800EB802B /* Red Alert.itermcolors */; };
+		857077E11B2CA23900F7269E /* Red Sands.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279119FC947800EB802B /* Red Sands.itermcolors */; };
+		857077E21B2CA23900F7269E /* Rippedcasts.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279219FC947800EB802B /* Rippedcasts.itermcolors */; };
+		857077E31B2CA23900F7269E /* Royal.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279319FC947800EB802B /* Royal.itermcolors */; };
+		857077E41B2CA23900F7269E /* Seafoam Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279419FC947800EB802B /* Seafoam Pastel.itermcolors */; };
+		857077E51B2CA23900F7269E /* SeaShells.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279519FC947800EB802B /* SeaShells.itermcolors */; };
+		857077E61B2CA23900F7269E /* Seti.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279619FC947800EB802B /* Seti.itermcolors */; };
+		857077E71B2CA23900F7269E /* Shaman.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279719FC947800EB802B /* Shaman.itermcolors */; };
+		857077E81B2CA23900F7269E /* Smyck.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279819FC947800EB802B /* Smyck.itermcolors */; };
+		857077E91B2CA23900F7269E /* SoftServer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279919FC947800EB802B /* SoftServer.itermcolors */; };
+		857077EA1B2CA23900F7269E /* Solarized Darcula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279A19FC947800EB802B /* Solarized Darcula.itermcolors */; };
+		857077EB1B2CA23900F7269E /* Solarized Dark Higher Contrast.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279B19FC947800EB802B /* Solarized Dark Higher Contrast.itermcolors */; };
+		857077EC1B2CA23900F7269E /* Solarized Dark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279C19FC947800EB802B /* Solarized Dark.itermcolors */; };
+		857077ED1B2CA23900F7269E /* Solarized Light.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279D19FC947800EB802B /* Solarized Light.itermcolors */; };
+		857077EE1B2CA23900F7269E /* Spacedust.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279E19FC947800EB802B /* Spacedust.itermcolors */; };
+		857077EF1B2CA23900F7269E /* SpaceGray.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 8547279F19FC947800EB802B /* SpaceGray.itermcolors */; };
+		857077F01B2CA23900F7269E /* Spring.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A019FC947800EB802B /* Spring.itermcolors */; };
+		857077F11B2CA23900F7269E /* Square.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A119FC947800EB802B /* Square.itermcolors */; };
+		857077F21B2CA23900F7269E /* Sundried.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A219FC947800EB802B /* Sundried.itermcolors */; };
+		857077F31B2CA23900F7269E /* Symfonic.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A319FC947800EB802B /* Symfonic.itermcolors */; };
+		857077F41B2CA23900F7269E /* Teerb.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A419FC947800EB802B /* Teerb.itermcolors */; };
+		857077F51B2CA23900F7269E /* Terminal Basic.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A519FC947800EB802B /* Terminal Basic.itermcolors */; };
+		857077F61B2CA23900F7269E /* Thayer Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A619FC947800EB802B /* Thayer Bright.itermcolors */; };
+		857077F71B2CA23900F7269E /* Tomorrow Night Blue.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A719FC947800EB802B /* Tomorrow Night Blue.itermcolors */; };
+		857077F81B2CA23900F7269E /* Tomorrow Night Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A819FC947800EB802B /* Tomorrow Night Bright.itermcolors */; };
+		857077F91B2CA23900F7269E /* Tomorrow Night Eighties.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727A919FC947800EB802B /* Tomorrow Night Eighties.itermcolors */; };
+		857077FA1B2CA23900F7269E /* Tomorrow Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727AA19FC947800EB802B /* Tomorrow Night.itermcolors */; };
+		857077FB1B2CA23900F7269E /* Tomorrow.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727AB19FC947800EB802B /* Tomorrow.itermcolors */; };
+		857077FC1B2CA23900F7269E /* ToyChest.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727AC19FC947800EB802B /* ToyChest.itermcolors */; };
+		857077FD1B2CA23900F7269E /* Treehouse.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727AD19FC947800EB802B /* Treehouse.itermcolors */; };
+		857077FE1B2CA23900F7269E /* Twilight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727AE19FC947800EB802B /* Twilight.itermcolors */; };
+		857077FF1B2CA23900F7269E /* Urple.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727AF19FC947800EB802B /* Urple.itermcolors */; };
+		857078001B2CA23900F7269E /* Vaughn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B019FC947800EB802B /* Vaughn.itermcolors */; };
+		857078011B2CA23900F7269E /* VibrantInk.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B119FC947800EB802B /* VibrantInk.itermcolors */; };
+		857078021B2CA23900F7269E /* WarmNeon.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B219FC947800EB802B /* WarmNeon.itermcolors */; };
+		857078031B2CA23900F7269E /* Wez.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B319FC947800EB802B /* Wez.itermcolors */; };
+		857078041B2CA23900F7269E /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B419FC947800EB802B /* Wombat.itermcolors */; };
+		857078051B2CA23900F7269E /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B519FC947800EB802B /* Wryan.itermcolors */; };
+		857078061B2CA23900F7269E /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 854727B619FC947800EB802B /* Zenburn.itermcolors */; };
+		857078091B2CA2B300F7269E /* CI2GoUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04519FDBA7C00390CCB /* CI2GoUserDefaults.swift */; };
+		8570780A1B2CA3F900F7269E /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250AC1A04BA9400056DD2 /* Branch.swift */; };
+		8570780B1B2CA3F900F7269E /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250A61A04BA9300056DD2 /* Build.swift */; };
+		8570780C1B2CA3F900F7269E /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250AA1A04BA9300056DD2 /* BuildAction.swift */; };
+		8570780D1B2CA3F900F7269E /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542509E1A04BA9200056DD2 /* BuildStep.swift */; };
+		8570780E1B2CA3F900F7269E /* CI2GoManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8542509C1A0478DF00056DD2 /* CI2GoManagedObject.swift */; };
+		8570780F1B2CA3F900F7269E /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250A01A04BA9300056DD2 /* Commit.swift */; };
+		857078101B2CA3F900F7269E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250A21A04BA9300056DD2 /* Node.swift */; };
+		857078111B2CA3F900F7269E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250A81A04BA9300056DD2 /* Project.swift */; };
+		857078121B2CA3F900F7269E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250A41A04BA9300056DD2 /* User.swift */; };
+		857078141B2CA4A600F7269E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
+		857078151B2CA4C600F7269E /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04719FDBF3E00390CCB /* AppGlobal.swift */; };
+		857078181B2CA51F00F7269E /* NSManagedObject+entityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854250AF1A04D2BE00056DD2 /* NSManagedObject+entityName.swift */; };
+		857078191B2CA51F00F7269E /* NSNumber+timeFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D231A109BB800742B74 /* NSNumber+timeFormatted.swift */; };
+		8570781A1B2CA51F00F7269E /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D271A10A32F00742B74 /* String+humanize.swift */; };
+		8570781B1B2CA51F00F7269E /* UIFont+appFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D2F1A10B9CC00742B74 /* UIFont+appFonts.swift */; };
+		8570781C1B2CA51F00F7269E /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCC41A1A1176430054662E /* String+md5.swift */; };
+		8570781E1B2CA54C00F7269E /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8547282F19FC99B700EB802B /* ColorScheme.swift */; };
+		857078201B2CA59300F7269E /* ColorScheme+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8570781F1B2CA59300F7269E /* ColorScheme+UIKit.swift */; };
+		857078211B2CA5E700F7269E /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
+		857078251B2CABB900F7269E /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857078241B2CABB900F7269E /* BuildTableRowController.swift */; };
+		857078261B2CB70800F7269E /* CircleCIAPISessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E05119FF0D3400390CCB /* CircleCIAPISessionManager.swift */; };
+		857078271B2CB70800F7269E /* CircleCIRequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548E05319FF104600390CCB /* CircleCIRequestSerializer.swift */; };
 		8577FBB31A0FDD6B00B7FAB0 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */; };
 		85B869E81A0DB1CD00D12E8A /* BuildActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */; };
 		85BB1BB119FC804F003A1FBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB1BB019FC804F003A1FBE /* AppDelegate.swift */; };
@@ -184,7 +325,7 @@
 		85CC3D3C1A10BDD400742B74 /* SourceCodePro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CC3D371A10BDD400742B74 /* SourceCodePro-Black.ttf */; };
 		85CC3D3D1A10C63300742B74 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8548E04319FD46F000390CCB /* AMR_ANSIEscapeHelper.m */; };
 		85CC3D3F1A11F23100742B74 /* ColorSchemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CC3D3E1A11F23100742B74 /* ColorSchemeTableViewCell.swift */; };
-		85CF5AC41B2C711D004882EB /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF5AC31B2C711D004882EB /* InterfaceController.swift */; };
+		85CF5AC41B2C711D004882EB /* BuildsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF5AC31B2C711D004882EB /* BuildsInterfaceController.swift */; };
 		85CF5AC61B2C711D004882EB /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF5AC51B2C711D004882EB /* NotificationController.swift */; };
 		85CF5AC81B2C711D004882EB /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF5AC71B2C711D004882EB /* GlanceController.swift */; };
 		85CF5ACA1B2C711D004882EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85CF5AC91B2C711D004882EB /* Images.xcassets */; };
@@ -374,6 +515,8 @@
 		8547283619FCB43A00EB802B /* ProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		8547283819FCB45800EB802B /* BranchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8547283A19FCB47900EB802B /* BuildsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildsViewController.swift; sourceTree = "<group>"; };
+		854816251B2CCEA900916C98 /* CI2Go.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CI2Go.xcdatamodel; sourceTree = "<group>"; };
+		854816271B2CD4C800916C98 /* WKInterfaceController+initializeDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKInterfaceController+initializeDB.swift"; sourceTree = "<group>"; };
 		8548E03C19FCFD3F00390CCB /* SettingsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
 		8548E03E19FD043B00390CCB /* ColorSchemesViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemesViewControllerTests.swift; sourceTree = "<group>"; };
 		8548E04219FD46F000390CCB /* AMR_ANSIEscapeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMR_ANSIEscapeHelper.h; sourceTree = "<group>"; };
@@ -391,6 +534,9 @@
 		855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewCell.swift; sourceTree = "<group>"; };
 		855C5FA91A103DC100473033 /* BuildStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewController.swift; sourceTree = "<group>"; };
 		8570778F1B2C96A000F7269E /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		8570781F1B2CA59300F7269E /* ColorScheme+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorScheme+UIKit.swift"; sourceTree = "<group>"; };
+		857078221B2CA61A00F7269E /* CI2Go WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CI2Go WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		857078241B2CABB900F7269E /* BuildTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
 		85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildActionTests.swift; sourceTree = "<group>"; };
 		85BB1BAB19FC804F003A1FBE /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BB1BAF19FC804F003A1FBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -423,7 +569,7 @@
 		85CF5ABE1B2C711C004882EB /* CI2Go WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CI2Go WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85CF5AC11B2C711D004882EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85CF5AC21B2C711D004882EB /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		85CF5AC31B2C711D004882EB /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		85CF5AC31B2C711D004882EB /* BuildsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsInterfaceController.swift; sourceTree = "<group>"; };
 		85CF5AC51B2C711D004882EB /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		85CF5AC71B2C711D004882EB /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		85CF5AC91B2C711D004882EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -459,6 +605,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857078141B2CA4A600F7269E /* QuartzCore.framework in Frameworks */,
 				857077901B2C96A000F7269E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +621,7 @@
 				85CC3D271A10A32F00742B74 /* String+humanize.swift */,
 				85CC3D2F1A10B9CC00742B74 /* UIFont+appFonts.swift */,
 				85FCC41A1A1176430054662E /* String+md5.swift */,
+				8570781F1B2CA59300F7269E /* ColorScheme+UIKit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -795,11 +943,15 @@
 		85CF5ABF1B2C711D004882EB /* CI2Go WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				85CF5AC31B2C711D004882EB /* InterfaceController.swift */,
+				854816241B2CCEA900916C98 /* CI2Go.xcdatamodeld */,
+				857078221B2CA61A00F7269E /* CI2Go WatchKit Extension.entitlements */,
+				85CF5AC31B2C711D004882EB /* BuildsInterfaceController.swift */,
 				85CF5AC51B2C711D004882EB /* NotificationController.swift */,
 				85CF5AC71B2C711D004882EB /* GlanceController.swift */,
 				85CF5AC91B2C711D004882EB /* Images.xcassets */,
 				85CF5AC01B2C711D004882EB /* Supporting Files */,
+				857078241B2CABB900F7269E /* BuildTableRowController.swift */,
+				854816271B2CD4C800916C98 /* WKInterfaceController+initializeDB.swift */,
 			);
 			path = "CI2Go WatchKit Extension";
 			sourceTree = "<group>";
@@ -950,6 +1102,11 @@
 					85CF5ABD1B2C711C004882EB = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = 3Y8APYUG2G;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					85CF5ACC1B2C711D004882EB = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -1124,6 +1281,122 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857077931B2CA23900F7269E /* 3024 Day.itermcolors in Resources */,
+				857077941B2CA23900F7269E /* 3024 Night.itermcolors in Resources */,
+				857077951B2CA23900F7269E /* AdventureTime.itermcolors in Resources */,
+				857077961B2CA23900F7269E /* Afterglow.itermcolors in Resources */,
+				857077971B2CA23900F7269E /* AlienBlood.itermcolors in Resources */,
+				857077981B2CA23900F7269E /* Argonaut.itermcolors in Resources */,
+				857077991B2CA23900F7269E /* Arthur.itermcolors in Resources */,
+				8570779A1B2CA23900F7269E /* Atom.itermcolors in Resources */,
+				8570779B1B2CA23900F7269E /* Belafonte Day.itermcolors in Resources */,
+				8570779C1B2CA23900F7269E /* Belafonte Night.itermcolors in Resources */,
+				8570779D1B2CA23900F7269E /* BirdsOfParadise.itermcolors in Resources */,
+				8570779E1B2CA23900F7269E /* Blazer.itermcolors in Resources */,
+				8570779F1B2CA23900F7269E /* Broadcast.itermcolors in Resources */,
+				857077A01B2CA23900F7269E /* Brogrammer.itermcolors in Resources */,
+				857077A11B2CA23900F7269E /* C64.itermcolors in Resources */,
+				857077A21B2CA23900F7269E /* Chalk.itermcolors in Resources */,
+				857077A31B2CA23900F7269E /* Chalkboard.itermcolors in Resources */,
+				857077A41B2CA23900F7269E /* Ciapre.itermcolors in Resources */,
+				857077A51B2CA23900F7269E /* CLRS.itermcolors in Resources */,
+				857077A61B2CA23900F7269E /* Cobalt2.itermcolors in Resources */,
+				857077A71B2CA23900F7269E /* CrayonPonyFish.itermcolors in Resources */,
+				857077A81B2CA23900F7269E /* Dark Pastel.itermcolors in Resources */,
+				857077A91B2CA23900F7269E /* Darkside.itermcolors in Resources */,
+				857077AA1B2CA23900F7269E /* Desert.itermcolors in Resources */,
+				857077AB1B2CA23900F7269E /* DimmedMonokai.itermcolors in Resources */,
+				857077AC1B2CA23900F7269E /* Dracula.itermcolors in Resources */,
+				857077AD1B2CA23900F7269E /* Earthsong.itermcolors in Resources */,
+				857077AE1B2CA23900F7269E /* Elemental.itermcolors in Resources */,
+				857077AF1B2CA23900F7269E /* Espresso Libre.itermcolors in Resources */,
+				857077B01B2CA23900F7269E /* Espresso.itermcolors in Resources */,
+				857077B11B2CA23900F7269E /* FishTank.itermcolors in Resources */,
+				857077B21B2CA23900F7269E /* Flat.itermcolors in Resources */,
+				857077B31B2CA23900F7269E /* FrontEndDelight.itermcolors in Resources */,
+				857077B41B2CA23900F7269E /* FunForrest.itermcolors in Resources */,
+				857077B51B2CA23900F7269E /* Github.itermcolors in Resources */,
+				857077B61B2CA23900F7269E /* Grape.itermcolors in Resources */,
+				857077B71B2CA23900F7269E /* Grass.itermcolors in Resources */,
+				857077B81B2CA23900F7269E /* Hardcore.itermcolors in Resources */,
+				857077B91B2CA23900F7269E /* Harper.itermcolors in Resources */,
+				857077BA1B2CA23900F7269E /* Highway.itermcolors in Resources */,
+				857077BB1B2CA23900F7269E /* Hipster Green.itermcolors in Resources */,
+				857077BC1B2CA23900F7269E /* Homebrew.itermcolors in Resources */,
+				857077BD1B2CA23900F7269E /* Hurtado.itermcolors in Resources */,
+				857077BE1B2CA23900F7269E /* Hybrid.itermcolors in Resources */,
+				857077BF1B2CA23900F7269E /* IC_Green_PPL.itermcolors in Resources */,
+				857077C01B2CA23900F7269E /* IC_Orange_PPL.itermcolors in Resources */,
+				857077C11B2CA23900F7269E /* idleToes.itermcolors in Resources */,
+				857077C21B2CA23900F7269E /* IR_Black.itermcolors in Resources */,
+				857077C31B2CA23900F7269E /* Jackie Brown.itermcolors in Resources */,
+				857077C41B2CA23900F7269E /* Japanesque.itermcolors in Resources */,
+				857077C51B2CA23900F7269E /* Jellybeans.itermcolors in Resources */,
+				857077C61B2CA23900F7269E /* Kibble.itermcolors in Resources */,
+				857077C71B2CA23900F7269E /* Lavandula.itermcolors in Resources */,
+				857077C81B2CA23900F7269E /* LiquidCarbon.itermcolors in Resources */,
+				857077C91B2CA23900F7269E /* LiquidCarbonTransparent.itermcolors in Resources */,
+				857077CA1B2CA23900F7269E /* LiquidCarbonTransparentInverse.itermcolors in Resources */,
+				857077CB1B2CA23900F7269E /* Man Page.itermcolors in Resources */,
+				857077CC1B2CA23900F7269E /* Mathias.itermcolors in Resources */,
+				857077CD1B2CA23900F7269E /* Medallion.itermcolors in Resources */,
+				857077CE1B2CA23900F7269E /* Misterioso.itermcolors in Resources */,
+				857077CF1B2CA23900F7269E /* Molokai.itermcolors in Resources */,
+				857077D01B2CA23900F7269E /* MonaLisa.itermcolors in Resources */,
+				857077D11B2CA23900F7269E /* Monokai Soda.itermcolors in Resources */,
+				857077D21B2CA23900F7269E /* N0tch2k.itermcolors in Resources */,
+				857077D31B2CA23900F7269E /* Neopolitan.itermcolors in Resources */,
+				857077D41B2CA23900F7269E /* NightLion v1.itermcolors in Resources */,
+				857077D51B2CA23900F7269E /* NightLion v2.itermcolors in Resources */,
+				857077D61B2CA23900F7269E /* Novel.itermcolors in Resources */,
+				857077D71B2CA23900F7269E /* Obsidian.itermcolors in Resources */,
+				857077D81B2CA23900F7269E /* Ocean.itermcolors in Resources */,
+				857077D91B2CA23900F7269E /* Ollie.itermcolors in Resources */,
+				857077DA1B2CA23900F7269E /* Parasio Dark.itermcolors in Resources */,
+				857077DB1B2CA23900F7269E /* PaulMillr.itermcolors in Resources */,
+				857077DC1B2CA23900F7269E /* PencilDark.itermcolors in Resources */,
+				857077DD1B2CA23900F7269E /* PencilLight.itermcolors in Resources */,
+				857077DE1B2CA23900F7269E /* Pnevma.itermcolors in Resources */,
+				857077DF1B2CA23900F7269E /* Pro.itermcolors in Resources */,
+				857077E01B2CA23900F7269E /* Red Alert.itermcolors in Resources */,
+				857077E11B2CA23900F7269E /* Red Sands.itermcolors in Resources */,
+				857077E21B2CA23900F7269E /* Rippedcasts.itermcolors in Resources */,
+				857077E31B2CA23900F7269E /* Royal.itermcolors in Resources */,
+				857077E41B2CA23900F7269E /* Seafoam Pastel.itermcolors in Resources */,
+				857077E51B2CA23900F7269E /* SeaShells.itermcolors in Resources */,
+				857077E61B2CA23900F7269E /* Seti.itermcolors in Resources */,
+				857077E71B2CA23900F7269E /* Shaman.itermcolors in Resources */,
+				857077E81B2CA23900F7269E /* Smyck.itermcolors in Resources */,
+				857077E91B2CA23900F7269E /* SoftServer.itermcolors in Resources */,
+				857077EA1B2CA23900F7269E /* Solarized Darcula.itermcolors in Resources */,
+				857077EB1B2CA23900F7269E /* Solarized Dark Higher Contrast.itermcolors in Resources */,
+				857077EC1B2CA23900F7269E /* Solarized Dark.itermcolors in Resources */,
+				857077ED1B2CA23900F7269E /* Solarized Light.itermcolors in Resources */,
+				857077EE1B2CA23900F7269E /* Spacedust.itermcolors in Resources */,
+				857077EF1B2CA23900F7269E /* SpaceGray.itermcolors in Resources */,
+				857077F01B2CA23900F7269E /* Spring.itermcolors in Resources */,
+				857077F11B2CA23900F7269E /* Square.itermcolors in Resources */,
+				857077F21B2CA23900F7269E /* Sundried.itermcolors in Resources */,
+				857077F31B2CA23900F7269E /* Symfonic.itermcolors in Resources */,
+				857077F41B2CA23900F7269E /* Teerb.itermcolors in Resources */,
+				857077F51B2CA23900F7269E /* Terminal Basic.itermcolors in Resources */,
+				857077F61B2CA23900F7269E /* Thayer Bright.itermcolors in Resources */,
+				857077F71B2CA23900F7269E /* Tomorrow Night Blue.itermcolors in Resources */,
+				857077F81B2CA23900F7269E /* Tomorrow Night Bright.itermcolors in Resources */,
+				857077F91B2CA23900F7269E /* Tomorrow Night Eighties.itermcolors in Resources */,
+				857077FA1B2CA23900F7269E /* Tomorrow Night.itermcolors in Resources */,
+				857077FB1B2CA23900F7269E /* Tomorrow.itermcolors in Resources */,
+				857077FC1B2CA23900F7269E /* ToyChest.itermcolors in Resources */,
+				857077FD1B2CA23900F7269E /* Treehouse.itermcolors in Resources */,
+				857077FE1B2CA23900F7269E /* Twilight.itermcolors in Resources */,
+				857077FF1B2CA23900F7269E /* Urple.itermcolors in Resources */,
+				857078001B2CA23900F7269E /* Vaughn.itermcolors in Resources */,
+				857078011B2CA23900F7269E /* VibrantInk.itermcolors in Resources */,
+				857078021B2CA23900F7269E /* WarmNeon.itermcolors in Resources */,
+				857078031B2CA23900F7269E /* Wez.itermcolors in Resources */,
+				857078041B2CA23900F7269E /* Wombat.itermcolors in Resources */,
+				857078051B2CA23900F7269E /* Wryan.itermcolors in Resources */,
+				857078061B2CA23900F7269E /* Zenburn.itermcolors in Resources */,
 				85CF5ACA1B2C711D004882EB /* Images.xcassets in Resources */,
 				85CF5ACE1B2C711D004882EB /* CI2Go WatchKit App.app in Resources */,
 			);
@@ -1213,6 +1486,7 @@
 				8548E04E19FF035200390CCB /* BuildLogViewController.swift in Sources */,
 				8547283319FCB3D300EB802B /* SettingsViewController.swift in Sources */,
 				854250AB1A04BA9300056DD2 /* BuildAction.swift in Sources */,
+				857078201B2CA59300F7269E /* ColorScheme+UIKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1241,8 +1515,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857078261B2CB70800F7269E /* CircleCIAPISessionManager.swift in Sources */,
+				857078271B2CB70800F7269E /* CircleCIRequestSerializer.swift in Sources */,
+				857078211B2CA5E700F7269E /* AMR_ANSIEscapeHelper.m in Sources */,
+				8570781E1B2CA54C00F7269E /* ColorScheme.swift in Sources */,
+				857078181B2CA51F00F7269E /* NSManagedObject+entityName.swift in Sources */,
+				857078191B2CA51F00F7269E /* NSNumber+timeFormatted.swift in Sources */,
+				8570781A1B2CA51F00F7269E /* String+humanize.swift in Sources */,
+				8570781B1B2CA51F00F7269E /* UIFont+appFonts.swift in Sources */,
+				8570781C1B2CA51F00F7269E /* String+md5.swift in Sources */,
+				857078151B2CA4C600F7269E /* AppGlobal.swift in Sources */,
+				8570780A1B2CA3F900F7269E /* Branch.swift in Sources */,
+				8570780B1B2CA3F900F7269E /* Build.swift in Sources */,
+				8570780C1B2CA3F900F7269E /* BuildAction.swift in Sources */,
+				854816261B2CCEA900916C98 /* CI2Go.xcdatamodeld in Sources */,
+				8570780D1B2CA3F900F7269E /* BuildStep.swift in Sources */,
+				8570780E1B2CA3F900F7269E /* CI2GoManagedObject.swift in Sources */,
+				8570780F1B2CA3F900F7269E /* Commit.swift in Sources */,
+				857078101B2CA3F900F7269E /* Node.swift in Sources */,
+				857078111B2CA3F900F7269E /* Project.swift in Sources */,
+				854816281B2CD4C800916C98 /* WKInterfaceController+initializeDB.swift in Sources */,
+				857078121B2CA3F900F7269E /* User.swift in Sources */,
+				857078091B2CA2B300F7269E /* CI2GoUserDefaults.swift in Sources */,
 				85CF5AC61B2C711D004882EB /* NotificationController.swift in Sources */,
-				85CF5AC41B2C711D004882EB /* InterfaceController.swift in Sources */,
+				85CF5AC41B2C711D004882EB /* BuildsInterfaceController.swift in Sources */,
+				857078251B2CABB900F7269E /* BuildTableRowController.swift in Sources */,
 				85CF5AC81B2C711D004882EB /* GlanceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1453,7 +1750,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52A1D27FE8ADE715DD7D44C9 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit Extension/CI2Go WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1468,6 +1767,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 			};
@@ -1477,7 +1777,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit Extension/CI2Go WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1489,6 +1791,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 			};
@@ -1584,6 +1887,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		854816241B2CCEA900916C98 /* CI2Go.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				854816251B2CCEA900916C98 /* CI2Go.xcdatamodel */,
+			);
+			currentVersion = 854816251B2CCEA900916C98 /* CI2Go.xcdatamodel */;
+			path = CI2Go.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		8548E05719FF241D00390CCB /* CI2Go.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

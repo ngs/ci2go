@@ -62,14 +62,8 @@ public class BuildsViewController: BaseTableViewController {
   }
 
   public override func predicate() -> NSPredicate? {
-    let d = CI2GoUserDefaults.standardUserDefaults()
-    if let branch = d.selectedBranch {
-      return NSPredicate(format: "branch = %@", branch)
-    }
-    if let project = d.selectedProject {
-      return NSPredicate(format: "project = %@", project)
-    }
-    return super.predicate()
+    let pred = CI2GoUserDefaults.standardUserDefaults().buildsPredicate
+    return pred == nil ? super.predicate() : pred
   }
 
   override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {

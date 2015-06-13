@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 LittleApps Inc. All rights reserved.
 //
 
-import UIKit
-
 private var _names: [String]? = nil
 private var _cache = Dictionary<String, Dictionary<String, Dictionary<String, NSNumber>>>()
 
@@ -165,47 +163,6 @@ public class ColorScheme: NSObject {
 
   public func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {
     return isLight() ? UIScrollViewIndicatorStyle.Black : UIScrollViewIndicatorStyle.White
-  }
-
-  public func apply() {
-    let bg = backgroundColor()
-    let fg = foregroundColor()
-    let bd = boldColor()
-    let bg2 = groupTableViewBackgroundColor()
-    UIScrollView.appearance().indicatorStyle = scrollViewIndicatorStyle()
-    UIView.appearance().tintColor = bd
-    UINavigationBar.appearance().barTintColor = bg
-    UITableView.appearance().separatorColor = UIColor(white: 0.5, alpha: 0.5)
-    UITableView.appearance().backgroundColor = bg
-    UITableView.appearance().sectionIndexBackgroundColor = bg
-    SettingsTableView.appearance().backgroundColor = bg2
-    UITableViewCell.appearance().backgroundColor = bg
-    UITextField.appearance().textColor = fg
-    UILabel.appearance().highlightedTextColor = selectedTextColor()
-    UILabel.appearance().textColor = fg
-    UIButton.appearance().setTitleColor(bd, forState: UIControlState.Normal)
-    UIButton.appearance().setTitleColor(fg, forState: UIControlState.Selected)
-    let cellSelectedView = UIView()
-    cellSelectedView.backgroundColor = UIColor(betweenColor: bg!, andColor: bd!, percentage: 0.5)
-    UITableViewCell.appearance().selectedBackgroundView = cellSelectedView
-    let navbarAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: fg!]
-    UINavigationBar.appearance().titleTextAttributes = navbarAttr
-    BuildLogTextView.appearance().backgroundColor = bg
-    BuildLogTextView.appearance().textColor = fg
-    UIApplication.sharedApplication().setStatusBarStyle(statusBarStyle(), animated: true)
-    resetViews()
-    setAsCurrent()
-  }
-
-  public func resetViews() {
-    let windows = UIApplication.sharedApplication().windows as! [UIWindow]
-    for window in windows {
-      let subviews = window.subviews as! [UIView]
-      for v in subviews {
-        v.removeFromSuperview()
-        window.addSubview(v)
-      }
-    }
   }
 
   public func setAsCurrent() {

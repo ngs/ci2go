@@ -1,26 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14A389" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="15A178w" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Builds-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="builds" title="Builds" id="AgC-eL-Hgc" customClass="BuildsInterfaceController" customModule="CI2Go_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="35G-6e-pGd">
+                            <items>
+                                <tableRow identifier="default" id="vWO-MJ-0XU" customClass="BuildTableRowController" customModule="CI2Go_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" spacing="4" id="J1b-0c-05J">
+                                        <items>
+                                            <group width="5" height="1" alignment="left" radius="0.0" id="tSg-e7-vBV">
+                                                <color key="backgroundColor" red="0.45882352939999999" green="0.65098039220000004" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </group>
+                                            <group width="0.94999999999999996" alignment="left" layout="vertical" radius="0.0" id="7Rt-pR-YOe">
+                                                <items>
+                                                    <group width="1" alignment="left" spacing="2" id="EMw-Iy-XGX">
+                                                        <items>
+                                                            <imageView width="12" height="1" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="7b1-7k-7Fi"/>
+                                                            <label width="1" widthAdjustment="-13" alignment="left" text="master" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="qj2-UM-0sR">
+                                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                            </label>
+                                                        </items>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="3" bottom="0.0"/>
+                                                    </group>
+                                                    <group width="1" widthAdjustment="-10" alignment="left" id="K6H-m1-ZJK">
+                                                        <items>
+                                                            <label alignment="left" text="#123" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="AXE-Ub-74J">
+                                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                            </label>
+                                                            <label alignment="left" text="ngs/ci2go" id="JZ0-5A-9Jf">
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </label>
+                                                        </items>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="3"/>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="branchLabel" destination="qj2-UM-0sR" id="c1X-8n-p83"/>
+                                        <outlet property="buildNumLabel" destination="AXE-Ub-74J" id="3SE-Pb-BoZ"/>
+                                        <outlet property="repoLabel" destination="JZ0-5A-9Jf" id="dNk-hq-OCy"/>
+                                        <outlet property="statusColorBar" destination="tSg-e7-vBV" id="j2u-Au-RIr"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="interfaceTable" destination="35G-6e-pGd" id="CVf-NJ-d0E"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModuleProvider="target">
+                <glanceController spacing="0.0" topTemplateType="body1Medium" id="0uZ-2p-rRc" customClass="GlanceController" customModule="CI2Go_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="t8f-Gd-c4y"/>
-                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                        <label alignment="left" id="M4y-dh-SgG"/>
+                        <label alignment="left" minimumScaleFactor="0.10000000000000001" id="14E-3X-GZU"/>
+                        <group alignment="left" layout="vertical" id="uCw-4Q-Ouw">
+                            <items>
+                                <group width="1" alignment="left" radius="5" id="Feq-f5-njg">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" textAlignment="center" id="Tz4-3A-DPu">
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="10" bottom="10"/>
+                                </group>
+                                <group width="1" alignment="left" id="xBo-sc-Hc5">
+                                    <items>
+                                        <imageView width="12" height="29" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="bQD-OZ-Zbb"/>
+                                        <label width="1" widthAdjustment="-13" height="1" alignment="left" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="Qgl-Gh-abW">
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="branchLabel" destination="Qgl-Gh-abW" id="N3c-IM-e5U"/>
+                        <outlet property="buildNumLabel" destination="M4y-dh-SgG" id="q4O-tK-1zi"/>
+                        <outlet property="repoLabel" destination="14E-3X-GZU" id="qHE-jU-vvT"/>
+                        <outlet property="statusGroup" destination="Feq-f5-njg" id="j9m-q4-JQO"/>
+                        <outlet property="statusLabel" destination="Tz4-3A-DPu" id="rn3-Ly-Hha"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="235" y="672"/>
@@ -44,7 +122,7 @@
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="CI2Go_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>

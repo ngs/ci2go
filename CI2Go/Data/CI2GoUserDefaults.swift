@@ -137,5 +137,15 @@ public class CI2GoUserDefaults: NSObject {
     }
     return "recent-builds"
   }
+
+  public var buildsPredicate: NSPredicate? {
+    if (selectedBranch != nil) {
+      return NSPredicate(format: "branch = %@", selectedBranch!)
+    }
+    if (selectedProject != nil) {
+      return NSPredicate(format: "project = %@", selectedProject!)
+    }
+    return nil
+  }
   
 }
