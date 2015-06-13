@@ -156,6 +156,7 @@
 		8548E05919FF241D00390CCB /* CI2Go.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8548E05719FF241D00390CCB /* CI2Go.xcdatamodeld */; };
 		855C5FA81A0FF1D000473033 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */; };
 		855C5FAA1A103DC100473033 /* BuildStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855C5FA91A103DC100473033 /* BuildStepsViewController.swift */; };
+		857077901B2C96A000F7269E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8570778F1B2C96A000F7269E /* libPods.a */; };
 		8577FBB31A0FDD6B00B7FAB0 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0905B1A0FD9BC00F7C4DB /* BaseTableViewController.swift */; };
 		85B869E81A0DB1CD00D12E8A /* BuildActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */; };
 		85BB1BB119FC804F003A1FBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BB1BB019FC804F003A1FBE /* AppDelegate.swift */; };
@@ -389,6 +390,7 @@
 		8548E05819FF241D00390CCB /* CI2Go.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CI2Go.xcdatamodel; sourceTree = "<group>"; };
 		855C5FA71A0FF1D000473033 /* BuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewCell.swift; sourceTree = "<group>"; };
 		855C5FA91A103DC100473033 /* BuildStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewController.swift; sourceTree = "<group>"; };
+		8570778F1B2C96A000F7269E /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		85B869E71A0DB1CD00D12E8A /* BuildActionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildActionTests.swift; sourceTree = "<group>"; };
 		85BB1BAB19FC804F003A1FBE /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BB1BAF19FC804F003A1FBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857077901B2C96A000F7269E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,6 +843,7 @@
 		D4EF319A1F94E38DF6FDE2D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8570778F1B2C96A000F7269E /* libPods.a */,
 				85DBC76419FCB7F700546F40 /* QuartzCore.framework */,
 				BDF96A3B3C02DDBD1561F68F /* libPods.a */,
 			);
@@ -1447,6 +1451,7 @@
 		};
 		85CF5ADC1B2C711D004882EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52A1D27FE8ADE715DD7D44C9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1458,13 +1463,19 @@
 				INFOPLIST_FILE = "CI2Go WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		85CF5ADD1B2C711D004882EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
@@ -1473,13 +1484,19 @@
 				INFOPLIST_FILE = "CI2Go WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		85CF5ADE1B2C711D004882EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52A1D27FE8ADE715DD7D44C9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1500,6 +1517,7 @@
 		};
 		85CF5ADF1B2C711D004882EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COPY_PHASE_STRIP = NO;
@@ -1552,6 +1570,7 @@
 				85CF5ADF1B2C711D004882EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85CF5AE11B2C711D004882EB /* Build configuration list for PBXNativeTarget "CI2Go WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -1560,6 +1579,7 @@
 				85CF5ADD1B2C711D004882EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
