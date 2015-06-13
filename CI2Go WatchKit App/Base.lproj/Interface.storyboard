@@ -54,11 +54,6 @@
                             </items>
                         </table>
                     </items>
-                    <menu key="menu" id="vrE-lT-nTh">
-                        <items>
-                            <menuItem title="Menu Item" id="LTZ-mJ-nC0"/>
-                        </items>
-                    </menu>
                     <connections>
                         <outlet property="interfaceTable" destination="35G-6e-pGd" id="CVf-NJ-d0E"/>
                     </connections>
