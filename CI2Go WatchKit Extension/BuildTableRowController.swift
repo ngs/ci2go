@@ -21,7 +21,7 @@ public class BuildTableRowController: NSObject {
         _build = value
         let cs = ColorScheme()
         statusColorBar.setBackgroundColor(cs.badgeColor(status: value?.status))
-        repoLabel.setText(value?.project?.repositoryName)
+        repoLabel.setText(value?.project?.path)
         buildNumLabel.setText("#\(value!.number.intValue)")
         branchLabel.setText(value?.branch?.name)
       }

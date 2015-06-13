@@ -15,26 +15,24 @@
                                 <tableRow identifier="default" id="vWO-MJ-0XU" customClass="BuildTableRowController" customModule="CI2Go_WatchKit_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" spacing="4" id="J1b-0c-05J">
                                         <items>
-                                            <group width="5" height="1" alignment="left" radius="0.0" id="tSg-e7-vBV">
-                                                <color key="backgroundColor" red="0.45882352939999999" green="0.65098039220000004" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </group>
+                                            <group width="5" height="1" alignment="left" radius="0.0" id="tSg-e7-vBV"/>
                                             <group width="0.94999999999999996" alignment="left" layout="vertical" radius="0.0" id="7Rt-pR-YOe">
                                                 <items>
-                                                    <group width="1" alignment="left" spacing="2" id="EMw-Iy-XGX">
+                                                    <group alignment="left" spacing="2" id="EMw-Iy-XGX">
                                                         <items>
                                                             <imageView width="12" height="1" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="7b1-7k-7Fi"/>
-                                                            <label width="1" widthAdjustment="-13" alignment="left" text="master" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="qj2-UM-0sR">
+                                                            <label width="0.90000000000000002" alignment="left" text=" " textAlignment="left" minimumScaleFactor="0.10000000000000001" id="qj2-UM-0sR">
                                                                 <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                                                             </label>
                                                         </items>
                                                         <edgeInsets key="margins" left="0.0" right="0.0" top="3" bottom="0.0"/>
                                                     </group>
-                                                    <group width="1" widthAdjustment="-10" alignment="left" id="K6H-m1-ZJK">
+                                                    <group width="1" alignment="left" id="K6H-m1-ZJK">
                                                         <items>
-                                                            <label alignment="left" text="#123" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="AXE-Ub-74J">
+                                                            <label alignment="left" text=" " textAlignment="left" minimumScaleFactor="0.10000000000000001" id="AXE-Ub-74J">
                                                                 <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                             </label>
-                                                            <label alignment="left" text="ngs/ci2go" id="JZ0-5A-9Jf">
+                                                            <label alignment="left" text=" " textAlignment="left" minimumScaleFactor="0.10000000000000001" id="JZ0-5A-9Jf">
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             </label>
                                                         </items>
@@ -75,6 +73,7 @@
                                     <items>
                                         <label width="1" alignment="left" text="-" textAlignment="center" id="Tz4-3A-DPu">
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                         </label>
                                     </items>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

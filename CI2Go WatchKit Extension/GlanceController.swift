@@ -47,7 +47,7 @@ class GlanceController: WKInterfaceController {
             let color = cs.badgeColor(status: status)
             self.statusGroup.setBackgroundColor(color)
             self.statusLabel.setText(status.humanize)
-            self.repoLabel.setText(build.project?.repositoryName)
+            self.repoLabel.setText(build.project?.path)
             self.buildNumLabel.setText("#\(build.number.intValue)")
             self.branchLabel.setText(build.branch?.name)
           }
