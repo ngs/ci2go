@@ -48,11 +48,17 @@
                                         <outlet property="buildNumLabel" destination="AXE-Ub-74J" id="3SE-Pb-BoZ"/>
                                         <outlet property="repoLabel" destination="JZ0-5A-9Jf" id="dNk-hq-OCy"/>
                                         <outlet property="statusColorBar" destination="tSg-e7-vBV" id="j2u-Au-RIr"/>
+                                        <segue destination="uZg-6N-t1c" kind="push" identifier="showBuildSegue" id="sOB-M7-RGN"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <menu key="menu" id="vrE-lT-nTh">
+                        <items>
+                            <menuItem title="Menu Item" id="LTZ-mJ-nC0"/>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="interfaceTable" destination="35G-6e-pGd" id="CVf-NJ-d0E"/>
                     </connections>
@@ -60,13 +66,76 @@
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
+        <!--Single Build Interface Controller-->
+        <scene sceneID="DXP-qb-oFi">
+            <objects>
+                <controller id="uZg-6N-t1c" customClass="SingleBuildInterfaceController" customModule="CI2Go_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" hidden="YES" text="-" id="w0v-Ip-z26"/>
+                        <label alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="YOB-nt-xNp"/>
+                        <group alignment="left" layout="vertical" id="mIR-dC-H7a">
+                            <items>
+                                <group width="1" alignment="left" radius="5" id="On8-UD-gbC">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" textAlignment="center" id="jfs-iw-Ps5">
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="5"/>
+                                </group>
+                                <group width="1" alignment="left" id="UUe-g4-hVn">
+                                    <items>
+                                        <imageView width="12" height="29" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="nqx-aj-zlm"/>
+                                        <label width="1" widthAdjustment="-13" height="1" alignment="left" text="-" textAlignment="left" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="EPa-Oj-oox">
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" layout="vertical" id="7iA-aF-S0z">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="Zoz-Og-rGe">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label width="1" alignment="left" text="-" numberOfLines="2" minimumScaleFactor="0.10000000000000014" id="cL2-jE-TAy">
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="fSS-Gg-0AM">
+                        <items>
+                            <menuItem title="Refresh" icon="repeat" id="4qm-P9-xcE">
+                                <connections>
+                                    <action selector="handleRefreshMenuItem" destination="uZg-6N-t1c" id="Pwo-xF-mvO"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="authorLabel" destination="Zoz-Og-rGe" id="Xyq-EZ-4ZM"/>
+                        <outlet property="branchLabel" destination="EPa-Oj-oox" id="2of-8J-yxj"/>
+                        <outlet property="buildNumLabel" destination="w0v-Ip-z26" id="yFe-Hk-0Kx"/>
+                        <outlet property="commitMessageLabel" destination="cL2-jE-TAy" id="UkZ-wz-ENk"/>
+                        <outlet property="repoLabel" destination="YOB-nt-xNp" id="DD0-DA-VPM"/>
+                        <outlet property="statusGroup" destination="On8-UD-gbC" id="PZk-Wn-oGI"/>
+                        <outlet property="statusLabel" destination="jfs-iw-Ps5" id="DU0-zH-x5M"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="452" y="347"/>
+        </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
                 <glanceController spacing="0.0" topTemplateType="body1Medium" id="0uZ-2p-rRc" customClass="GlanceController" customModule="CI2Go_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" id="M4y-dh-SgG"/>
-                        <label alignment="left" minimumScaleFactor="0.10000000000000001" id="14E-3X-GZU"/>
+                        <label alignment="left" text="-" id="M4y-dh-SgG"/>
+                        <label alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="14E-3X-GZU"/>
                         <group alignment="left" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
                                 <group width="1" alignment="left" radius="5" id="Feq-f5-njg">
@@ -77,13 +146,24 @@
                                         </label>
                                     </items>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <edgeInsets key="margins" left="0.0" right="0.0" top="10" bottom="10"/>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="5"/>
                                 </group>
                                 <group width="1" alignment="left" id="xBo-sc-Hc5">
                                     <items>
                                         <imageView width="12" height="29" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="bQD-OZ-Zbb"/>
-                                        <label width="1" widthAdjustment="-13" height="1" alignment="left" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="Qgl-Gh-abW">
+                                        <label width="1" widthAdjustment="-13" height="1" alignment="left" text="-" textAlignment="left" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="Qgl-Gh-abW">
                                             <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" layout="vertical" id="szk-bz-UyA">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="Ige-Ca-MYZ">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label width="1" alignment="left" text="-" numberOfLines="2" minimumScaleFactor="0.10000000000000014" id="oQC-7g-ZtH">
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                         </label>
                                     </items>
                                 </group>
@@ -92,8 +172,10 @@
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
+                        <outlet property="authorLabel" destination="Ige-Ca-MYZ" id="jCl-ZR-W1y"/>
                         <outlet property="branchLabel" destination="Qgl-Gh-abW" id="N3c-IM-e5U"/>
                         <outlet property="buildNumLabel" destination="M4y-dh-SgG" id="q4O-tK-1zi"/>
+                        <outlet property="commitMessageLabel" destination="oQC-7g-ZtH" id="3KZ-bg-BjV"/>
                         <outlet property="repoLabel" destination="14E-3X-GZU" id="qHE-jU-vvT"/>
                         <outlet property="statusGroup" destination="Feq-f5-njg" id="j9m-q4-JQO"/>
                         <outlet property="statusLabel" destination="Tz4-3A-DPu" id="rn3-Ly-Hha"/>
