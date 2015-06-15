@@ -1735,7 +1735,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1799,6 +1799,7 @@
 		};
 		85CF5ADE1B2C711D004882EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52A1D27FE8ADE715DD7D44C9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1820,6 +1821,7 @@
 		};
 		85CF5ADF1B2C711D004882EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
