@@ -9,5 +9,5 @@ bundle exec ipa build \
   --configuration Release \
   --destination Distribution/AdHoc \
   --embed MobileProvisionings/${APPNAME}AdHoc.mobileprovision \
-  --identity "$DEVELOPER_NAME" \
+  --identity "$DEVELOPER_NAME"
 
