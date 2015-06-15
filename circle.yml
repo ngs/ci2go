@@ -14,6 +14,8 @@ general:
   artifacts:
     - Distribution
 dependencies:
+  pre:
+    - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
 test:

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Builds-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="builds" title="Builds" id="AgC-eL-Hgc" customClass="BuildsInterfaceController" customModule="CI2Go_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="bxu-6s-wMN">
+                            <items>
+                                <label width="1" alignment="left" textAlignment="center" numberOfLines="10" id="PHT-5Z-ICL">
+                                    <string key="text">API Token is not configured.
+
+Please launch the app on your iPhone.</string>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.20592645202020199" green="0.20592645202020199" blue="0.20592645202020199" alpha="1" colorSpace="calibratedRGB"/>
+                            <edgeInsets key="margins" left="10" right="10" top="10" bottom="10"/>
+                        </group>
+                        <table alignment="left" id="35G-6e-pGd">
+                            <items>
+                                <tableRow identifier="default" id="vWO-MJ-0XU" customClass="BuildTableRowController" customModule="CI2Go_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" spacing="4" id="J1b-0c-05J">
+                                        <items>
+                                            <group width="5" height="1" alignment="left" radius="0.0" id="tSg-e7-vBV"/>
+                                            <group width="0.94999999999999996" alignment="left" layout="vertical" radius="0.0" id="7Rt-pR-YOe">
+                                                <items>
+                                                    <group alignment="left" spacing="2" id="EMw-Iy-XGX">
+                                                        <items>
+                                                            <imageView width="12" height="1" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="7b1-7k-7Fi"/>
+                                                            <label width="0.90000000000000002" alignment="left" text=" " textAlignment="left" minimumScaleFactor="0.10000000000000001" id="qj2-UM-0sR">
+                                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                                            </label>
+                                                        </items>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="3" bottom="0.0"/>
+                                                    </group>
+                                                    <group width="1" alignment="left" id="K6H-m1-ZJK">
+                                                        <items>
+                                                            <label alignment="left" text=" " textAlignment="left" minimumScaleFactor="0.10000000000000001" id="AXE-Ub-74J">
+                                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                            </label>
+                                                            <label alignment="left" text=" " textAlignment="left" minimumScaleFactor="0.10000000000000001" id="JZ0-5A-9Jf">
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </label>
+                                                        </items>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="3"/>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="branchLabel" destination="qj2-UM-0sR" id="c1X-8n-p83"/>
+                                        <outlet property="buildNumLabel" destination="AXE-Ub-74J" id="3SE-Pb-BoZ"/>
+                                        <outlet property="repoLabel" destination="JZ0-5A-9Jf" id="dNk-hq-OCy"/>
+                                        <outlet property="statusColorBar" destination="tSg-e7-vBV" id="j2u-Au-RIr"/>
+                                        <segue destination="uZg-6N-t1c" kind="push" identifier="showBuildSegue" id="sOB-M7-RGN"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="interfaceTable" destination="35G-6e-pGd" id="CVf-NJ-d0E"/>
+                        <outlet property="placeholderGroup" destination="bxu-6s-wMN" id="rNs-Td-sj0"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="347"/>
+        </scene>
+        <!--Build Detail-->
+        <scene sceneID="DXP-qb-oFi">
+            <objects>
+                <controller identifier="Build Detail" id="uZg-6N-t1c" customClass="BuildInterfaceController" customModule="CI2Go_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" hidden="YES" text="-" id="w0v-Ip-z26"/>
+                        <label alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="YOB-nt-xNp"/>
+                        <group alignment="left" layout="vertical" id="mIR-dC-H7a">
+                            <items>
+                                <group width="1" alignment="left" radius="5" id="On8-UD-gbC">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" textAlignment="center" id="jfs-iw-Ps5">
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="5"/>
+                                </group>
+                                <group width="1" alignment="left" id="UUe-g4-hVn">
+                                    <items>
+                                        <imageView width="12" height="29" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="nqx-aj-zlm"/>
+                                        <label width="1" widthAdjustment="-13" height="1" alignment="left" text="-" textAlignment="left" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="EPa-Oj-oox">
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" layout="vertical" id="7iA-aF-S0z">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="Zoz-Og-rGe">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label width="1" alignment="left" text="-" numberOfLines="2" minimumScaleFactor="0.10000000000000014" id="cL2-jE-TAy">
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label width="1" alignment="left" text="-" numberOfLines="2" minimumScaleFactor="0.10000000000000014" id="BO2-Xk-ZVE">
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="fSS-Gg-0AM">
+                        <items>
+                            <menuItem title="Retry" icon="repeat" id="4qm-P9-xcE">
+                                <connections>
+                                    <action selector="handleRefreshMenuItem" destination="uZg-6N-t1c" id="Pwo-xF-mvO"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="authorLabel" destination="Zoz-Og-rGe" id="Xyq-EZ-4ZM"/>
+                        <outlet property="branchIcon" destination="nqx-aj-zlm" id="6Po-Zv-7eV"/>
+                        <outlet property="branchLabel" destination="EPa-Oj-oox" id="2of-8J-yxj"/>
+                        <outlet property="buildNumLabel" destination="w0v-Ip-z26" id="yFe-Hk-0Kx"/>
+                        <outlet property="commitMessageLabel" destination="cL2-jE-TAy" id="UkZ-wz-ENk"/>
+                        <outlet property="repoLabel" destination="YOB-nt-xNp" id="DD0-DA-VPM"/>
+                        <outlet property="statusGroup" destination="On8-UD-gbC" id="PZk-Wn-oGI"/>
+                        <outlet property="statusLabel" destination="jfs-iw-Ps5" id="DU0-zH-x5M"/>
+                        <outlet property="timeLabel" destination="BO2-Xk-ZVE" id="66u-QD-OcM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="452" y="347"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="BOz-TT-tkC">
+            <objects>
+                <glanceController spacing="0.0" topTemplateType="body1Medium" id="0uZ-2p-rRc" customClass="GlanceController" customModule="CI2Go_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="left" text="-" id="M4y-dh-SgG"/>
+                        <label alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="14E-3X-GZU"/>
+                        <group alignment="left" layout="vertical" id="uCw-4Q-Ouw">
+                            <items>
+                                <label width="1" alignment="left" textAlignment="center" numberOfLines="10" id="iED-on-AP3">
+                                    <string key="text">API Token is not configured.
+
+Please launch the app on your iPhone.</string>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                                <group width="1" alignment="left" radius="5" id="Feq-f5-njg">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" textAlignment="center" id="Tz4-3A-DPu">
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                        </label>
+                                    </items>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="5" bottom="5"/>
+                                </group>
+                                <group width="1" alignment="left" id="xBo-sc-Hc5">
+                                    <items>
+                                        <imageView width="12" height="29" alignment="left" image="1082-merge-toolbar-white" contentMode="scaleAspectFit" id="bQD-OZ-Zbb"/>
+                                        <label width="1" widthAdjustment="-13" height="1" alignment="left" text="-" textAlignment="left" numberOfLines="2" minimumScaleFactor="0.10000000000000001" id="Qgl-Gh-abW">
+                                            <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="left" layout="vertical" id="szk-bz-UyA">
+                                    <items>
+                                        <label width="1" alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="Ige-Ca-MYZ">
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                        <label width="1" alignment="left" text="-" numberOfLines="2" minimumScaleFactor="0.10000000000000014" id="oQC-7g-ZtH">
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                        </label>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="authorLabel" destination="Ige-Ca-MYZ" id="jCl-ZR-W1y"/>
+                        <outlet property="branchIcon" destination="bQD-OZ-Zbb" id="fJk-v0-Nsr"/>
+                        <outlet property="branchLabel" destination="Qgl-Gh-abW" id="N3c-IM-e5U"/>
+                        <outlet property="buildNumLabel" destination="M4y-dh-SgG" id="q4O-tK-1zi"/>
+                        <outlet property="commitMessageLabel" destination="oQC-7g-ZtH" id="3KZ-bg-BjV"/>
+                        <outlet property="placeholderLabel" destination="iED-on-AP3" id="4rv-FV-uk7"/>
+                        <outlet property="repoLabel" destination="14E-3X-GZU" id="qHE-jU-vvT"/>
+                        <outlet property="statusGroup" destination="Feq-f5-njg" id="j9m-q4-JQO"/>
+                        <outlet property="statusLabel" destination="Tz4-3A-DPu" id="rn3-Ly-Hha"/>
+                    </connections>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="235" y="672"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="XkS-y5-khE"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1001"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="CI2Go_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+    </scenes>
+</document>

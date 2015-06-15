@@ -38,6 +38,15 @@ class CI2GoUserDefaultsTests: XCTestCase {
     XCTAssertNil(d.circleCIAPIToken, "Default is nil")
   }
   
+  func testIsLoggedIn() {
+    let d = CI2GoUserDefaults.standardUserDefaults()
+    XCTAssertFalse(d.isLoggedIn, "Default is false")
+    d.circleCIAPIToken = "asdf1234asdf1234asdf1234asdf1234asdf1234asdf1234"
+    XCTAssertTrue(d.isLoggedIn, "Returns true if token is stored")
+    d.circleCIAPIToken = nil
+    XCTAssertFalse(d.isLoggedIn, "Default is false")
+  }
+  
   func testLogRefreshInterval() {
     let d = CI2GoUserDefaults.standardUserDefaults()
     XCTAssertEqual(d.logRefreshInterval, 1.0, "Default is 1.0")

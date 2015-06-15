@@ -10,6 +10,10 @@ http://ngs.io/
 Version history
 ---------------
 
+### 1.1.0
+
+Apple Watch Support
+
 ### 1.0.0
 
 Initial release.

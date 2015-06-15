@@ -81,6 +81,10 @@ public class CI2GoUserDefaults: NSObject {
       return userDefaults.stringForKey(kCI2GoCircleCIAPITokenDefaultsKey)
     }
   }
+  
+  public var isLoggedIn: Bool {
+    get { return circleCIAPIToken?.length > 0 }
+  }
 
   public var logRefreshInterval: Double {
     set(value) {
@@ -136,6 +140,16 @@ public class CI2GoUserDefaults: NSObject {
       return p.apiPath!
     }
     return "recent-builds"
+  }
+
+  public var buildsPredicate: NSPredicate? {
+    if (selectedBranch != nil) {
+      return NSPredicate(format: "branch = %@", selectedBranch!)
+    }
+    if (selectedProject != nil) {
+      return NSPredicate(format: "project = %@", selectedProject!)
+    }
+    return nil
   }
   
 }
