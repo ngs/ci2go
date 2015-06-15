@@ -10,6 +10,18 @@
             <objects>
                 <controller identifier="builds" title="Builds" id="AgC-eL-Hgc" customClass="BuildsInterfaceController" customModule="CI2Go_WatchKit_Extension">
                     <items>
+                        <group width="1" alignment="left" id="bxu-6s-wMN">
+                            <items>
+                                <label width="1" alignment="left" textAlignment="center" numberOfLines="10" id="PHT-5Z-ICL">
+                                    <string key="text">API Token is not configured.
+
+Please launch the app on your iPhone.</string>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.20592645202020199" green="0.20592645202020199" blue="0.20592645202020199" alpha="1" colorSpace="calibratedRGB"/>
+                            <edgeInsets key="margins" left="10" right="10" top="10" bottom="10"/>
+                        </group>
                         <table alignment="left" id="35G-6e-pGd">
                             <items>
                                 <tableRow identifier="default" id="vWO-MJ-0XU" customClass="BuildTableRowController" customModule="CI2Go_WatchKit_Extension">
@@ -56,15 +68,16 @@
                     </items>
                     <connections>
                         <outlet property="interfaceTable" destination="35G-6e-pGd" id="CVf-NJ-d0E"/>
+                        <outlet property="placeholderGroup" destination="bxu-6s-wMN" id="rNs-Td-sj0"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="235" y="347"/>
         </scene>
-        <!--build-->
+        <!--Build Detail-->
         <scene sceneID="DXP-qb-oFi">
             <objects>
-                <controller identifier="build" id="uZg-6N-t1c" customClass="BuildInterfaceController" customModule="CI2Go_WatchKit_Extension">
+                <controller identifier="Build Detail" id="uZg-6N-t1c" customClass="BuildInterfaceController" customModule="CI2Go_WatchKit_Extension">
                     <items>
                         <label alignment="left" hidden="YES" text="-" id="w0v-Ip-z26"/>
                         <label alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="YOB-nt-xNp"/>
@@ -117,6 +130,7 @@
                     </menu>
                     <connections>
                         <outlet property="authorLabel" destination="Zoz-Og-rGe" id="Xyq-EZ-4ZM"/>
+                        <outlet property="branchIcon" destination="nqx-aj-zlm" id="6Po-Zv-7eV"/>
                         <outlet property="branchLabel" destination="EPa-Oj-oox" id="2of-8J-yxj"/>
                         <outlet property="buildNumLabel" destination="w0v-Ip-z26" id="yFe-Hk-0Kx"/>
                         <outlet property="commitMessageLabel" destination="cL2-jE-TAy" id="UkZ-wz-ENk"/>
@@ -138,6 +152,12 @@
                         <label alignment="left" text="-" minimumScaleFactor="0.10000000000000001" id="14E-3X-GZU"/>
                         <group alignment="left" layout="vertical" id="uCw-4Q-Ouw">
                             <items>
+                                <label width="1" alignment="left" textAlignment="center" numberOfLines="10" id="iED-on-AP3">
+                                    <string key="text">API Token is not configured.
+
+Please launch the app on your iPhone.</string>
+                                    <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                </label>
                                 <group width="1" alignment="left" radius="5" id="Feq-f5-njg">
                                     <items>
                                         <label width="1" alignment="left" text="-" textAlignment="center" id="Tz4-3A-DPu">
@@ -173,9 +193,11 @@
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
                         <outlet property="authorLabel" destination="Ige-Ca-MYZ" id="jCl-ZR-W1y"/>
+                        <outlet property="branchIcon" destination="bQD-OZ-Zbb" id="fJk-v0-Nsr"/>
                         <outlet property="branchLabel" destination="Qgl-Gh-abW" id="N3c-IM-e5U"/>
                         <outlet property="buildNumLabel" destination="M4y-dh-SgG" id="q4O-tK-1zi"/>
                         <outlet property="commitMessageLabel" destination="oQC-7g-ZtH" id="3KZ-bg-BjV"/>
+                        <outlet property="placeholderLabel" destination="iED-on-AP3" id="4rv-FV-uk7"/>
                         <outlet property="repoLabel" destination="14E-3X-GZU" id="qHE-jU-vvT"/>
                         <outlet property="statusGroup" destination="Feq-f5-njg" id="j9m-q4-JQO"/>
                         <outlet property="statusLabel" destination="Tz4-3A-DPu" id="rn3-Ly-Hha"/>

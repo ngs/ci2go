@@ -17,6 +17,7 @@ class SingleBuildInterfaceController: WKInterfaceController {
   @IBOutlet weak var statusLabel: WKInterfaceLabel!
   @IBOutlet weak var commitMessageLabel: WKInterfaceLabel!
   @IBOutlet weak var authorLabel: WKInterfaceLabel!
+  @IBOutlet weak var branchIcon: WKInterfaceImage!
   private var _build: Build?
 
   override func awakeFromNib() {

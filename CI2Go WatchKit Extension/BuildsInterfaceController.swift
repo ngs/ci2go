@@ -12,12 +12,19 @@ import Foundation
 
 class BuildsInterfaceController: WKInterfaceController {
   @IBOutlet weak var interfaceTable: WKInterfaceTable!
+  @IBOutlet weak var placeholderGroup: WKInterfaceGroup!
+
   let MAX_BUILDS = Int(20)
   var builds: [Build]?
 
   override func willActivate() {
     super.willActivate()
-    self.refresh()
+    if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
+      self.refresh()
+      placeholderGroup.setHidden(true)
+    } else {
+      interfaceTable.setHidden(true)
+    }
   }
 
   override func didDeactivate() {

@@ -11,10 +11,22 @@ import Foundation
 
 
 class GlanceController: SingleBuildInterfaceController {
-
+  @IBOutlet weak var placeholderLabel: WKInterfaceLabel!
   override func willActivate() {
     super.willActivate()
-    refresh()
+    if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
+      refresh()
+      placeholderLabel.setHidden(true)
+    } else {
+      branchLabel.setHidden(true)
+      buildNumLabel.setHidden(true)
+      repoLabel.setHidden(true)
+      statusGroup.setHidden(true)
+      statusLabel.setHidden(true)
+      commitMessageLabel.setHidden(true)
+      authorLabel.setHidden(true)
+      branchIcon.setHidden(true)
+    }
   }
 
   func refresh() {
