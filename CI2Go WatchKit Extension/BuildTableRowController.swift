@@ -19,13 +19,16 @@ public class BuildTableRowController: NSObject {
     set(value) {
       if _build != value {
         _build = value
-        let cs = ColorScheme()
-        statusColorBar.setBackgroundColor(cs.badgeColor(status: value?.status))
-        repoLabel.setText(value?.project?.path)
-        buildNumLabel.setText("#\(value!.number.intValue)")
-        branchLabel.setText(value?.branch?.name)
+        updateViews()
       }
     }
     get { return _build }
+  }
+  func updateViews() {
+    let cs = ColorScheme()
+    statusColorBar.setBackgroundColor(cs.badgeColor(status: build?.status))
+    repoLabel.setText(build?.project?.path)
+    buildNumLabel.setText("#\(build!.number.intValue)")
+    branchLabel.setText(build?.branch?.name)
   }
 }

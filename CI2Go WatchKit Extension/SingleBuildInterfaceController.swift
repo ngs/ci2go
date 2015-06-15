@@ -25,32 +25,38 @@ class SingleBuildInterfaceController: WKInterfaceController {
   }
 
   internal var build: Build? {
-    get { return _build }
+    get {
+      return _build
+    }
     set(value) {
       if value != _build {
         _build = value
-        let cs = ColorScheme()
-        if value?.status != nil {
-          let status = value!.status!
-          self.statusGroup.setBackgroundColor(cs.badgeColor(status: status))
-          self.statusLabel.setText(status.humanize)
-          self.repoLabel.setText(value!.project?.path)
-          let numText = "#\(value!.number.intValue)"
-          self.buildNumLabel.setText(numText)
-          self.setTitle(numText)
-          self.branchLabel.setText(value!.branch?.name)
-          self.commitMessageLabel.setText(value!.triggeredCommit?.subject)
-          self.authorLabel.setText(value!.user?.name)
-        } else {
-          self.statusGroup.setBackgroundColor(cs.badgeColor(status: ""))
-          self.statusLabel.setText("")
-          self.repoLabel.setText("")
-          self.buildNumLabel.setText("")
-          self.branchLabel.setText("")
-          self.commitMessageLabel.setText("")
-          self.authorLabel.setText("")
-        }
+        updateViews()
       }
+    }
+  }
+
+  func updateViews() {
+    let cs = ColorScheme()
+    if build == nil {
+      self.statusGroup.setBackgroundColor(cs.badgeColor(status: ""))
+      self.statusLabel.setText("")
+      self.repoLabel.setText("")
+      self.buildNumLabel.setText("")
+      self.branchLabel.setText("")
+      self.commitMessageLabel.setText("")
+      self.authorLabel.setText("")
+    } else {
+      let status = build!.status!
+      self.statusGroup.setBackgroundColor(cs.badgeColor(status: status))
+      self.statusLabel.setText(status.humanize)
+      self.repoLabel.setText(build!.project?.path)
+      let numText = "#\(build!.number.intValue)"
+      self.buildNumLabel.setText(numText)
+      self.setTitle(numText)
+      self.branchLabel.setText(build!.branch?.name)
+      self.commitMessageLabel.setText(build!.triggeredCommit?.subject)
+      self.authorLabel.setText(build!.user?.name)
     }
   }
 
@@ -59,6 +65,8 @@ class SingleBuildInterfaceController: WKInterfaceController {
     self.initializeDB()
     if let buildID = context as? String {
       self.build = Build.MR_findFirstByAttribute("buildID", withValue: buildID)
+    } else {
+      self.build = Build.MR_findFirstWithPredicate(CI2GoUserDefaults.standardUserDefaults().buildsPredicate)
     }
   }
 
