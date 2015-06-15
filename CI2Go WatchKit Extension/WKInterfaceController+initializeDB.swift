@@ -11,6 +11,19 @@ import WatchKit
 var dbInitialized = false
 
 extension WKInterfaceController {
+  
+  // MARK: - Google Analytics
+  
+  func getDefaultGAITraker() -> GAITracker {
+    let gai = GAI.sharedInstance()
+    gai.trackUncaughtExceptions = true
+    gai.dispatchInterval = 20
+    if (NSProcessInfo().environment["VERBOSE"] as? String) == "1" {
+      gai.logger.logLevel = .Verbose
+    }
+    gai.trackerWithTrackingId(kCI2GoGATrackingId)
+    return gai!.defaultTracker
+  }
 
   // MARK: - Magical Record
 

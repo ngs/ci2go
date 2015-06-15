@@ -9,7 +9,7 @@
 import WatchKit
 
 class SingleBuildInterfaceController: WKInterfaceController {
-
+  
   @IBOutlet weak var branchLabel: WKInterfaceLabel!
   @IBOutlet weak var buildNumLabel: WKInterfaceLabel!
   @IBOutlet weak var repoLabel: WKInterfaceLabel!
@@ -19,12 +19,12 @@ class SingleBuildInterfaceController: WKInterfaceController {
   @IBOutlet weak var authorLabel: WKInterfaceLabel!
   @IBOutlet weak var branchIcon: WKInterfaceImage!
   private var _build: Build?
-
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     self.build = nil
   }
-
+  
   internal var build: Build? {
     get {
       return _build
@@ -36,7 +36,7 @@ class SingleBuildInterfaceController: WKInterfaceController {
       }
     }
   }
-
+  
   func updateViews() {
     let cs = ColorScheme()
     if build == nil {
@@ -60,17 +60,20 @@ class SingleBuildInterfaceController: WKInterfaceController {
       self.authorLabel.setText(build!.user?.name)
     }
   }
-
+  
   override func awakeWithContext(context: AnyObject?) {
     super.awakeWithContext(context)
     self.initializeDB()
+    let tracker = getDefaultGAITraker()
     if let buildID = context as? String {
       self.build = Build.MR_findFirstByAttribute("buildID", withValue: buildID)
     } else {
       self.build = Build.MR_findFirstWithPredicate(CI2GoUserDefaults.standardUserDefaults().buildsPredicate)
     }
+    let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: self.build?.apiPath, value: 1).build() as [NSObject : AnyObject]
+    tracker.send(dict)
   }
-
+  
   @IBAction func handleRefreshMenuItem() {
     CircleCIAPISessionManager().POST(self.build?.apiPath!.stringByAppendingPathComponent("retry"), parameters: [],
       success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in

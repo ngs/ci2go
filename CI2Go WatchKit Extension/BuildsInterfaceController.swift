@@ -19,12 +19,16 @@ class BuildsInterfaceController: WKInterfaceController {
 
   override func willActivate() {
     super.willActivate()
+    let tracker = getDefaultGAITraker()
     if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
       self.refresh()
       placeholderGroup.setHidden(true)
+      tracker.set(kGAIScreenName, value: "Builds")
     } else {
       interfaceTable.setHidden(true)
+      tracker.set(kGAIScreenName, value: "Builds Placeholer")
     }
+    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
 
   override func didDeactivate() {
