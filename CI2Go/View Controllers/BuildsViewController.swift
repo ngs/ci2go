@@ -24,7 +24,7 @@ public class BuildsViewController: BaseTableViewController {
     super.viewDidAppear(animated)
     let tracker = GAI.sharedInstance().defaultTracker
     let d = CI2GoUserDefaults.standardUserDefaults()
-    if !(d.circleCIAPIToken?.length > 0) {
+    if !d.isLoggedIn {
       tracker.set(kGAIScreenName, value: "Initial Launch")
       performSegueWithIdentifier("showSettings", sender: nil)
     } else {
