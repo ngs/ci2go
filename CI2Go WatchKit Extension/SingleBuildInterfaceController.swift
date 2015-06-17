@@ -68,7 +68,7 @@ class SingleBuildInterfaceController: WKInterfaceController {
     if let buildID = context as? String {
       self.build = Build.MR_findFirstByAttribute("buildID", withValue: buildID)
     } else {
-      self.build = Build.MR_findFirstWithPredicate(CI2GoUserDefaults.standardUserDefaults().buildsPredicate)
+      self.build = Build.MR_findFirstWithPredicate(CI2GoUserDefaults.standardUserDefaults().buildsPredicate, sortedBy: "queuedAt", ascending: false)
     }
     let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: self.build?.apiPath, value: 1).build() as [NSObject : AnyObject]
     tracker.send(dict)
