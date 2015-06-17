@@ -17,10 +17,14 @@ security import $DIR/dist.p12  -k $KEYCHAIN -T /usr/bin/codesign -P "$KEY_PASSWO
 
 security list-keychain -s $KEYCHAIN
 security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN
+echo "Removing ${DIR}"
 rm -rf $DIR
 
+echo "Downloading profiles"
 bundle exec ios profiles:download:all --type distribution -u "$ITUNES_CONNECT_ACCOUNT" -p "$ITUNES_CONNECT_PASSWORD" >/dev/null 2>&1
+echo "Done"
 mkdir MobileProvisionings
+echo "Moving mobileprovision"
 mv *.mobileprovision MobileProvisionings
 /bin/sh ./Scripts/install-mobileprovisioning.sh
 
