@@ -9,16 +9,16 @@
 import WatchKit
 
 class BuildInterfaceController: SingleBuildInterfaceController {
-  
+
   @IBOutlet weak var timeLabel: WKInterfaceLabel!
-  
+
   override func willActivate() {
     super.willActivate()
     let tracker = getDefaultGAITraker()
     tracker.set(kGAIScreenName, value: "Build Detail")
     tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
-  
+
   override func updateViews() {
     super.updateViews()
     if let timeAgo = build?.startedAt?.timeAgoSimple() {
@@ -27,5 +27,5 @@ class BuildInterfaceController: SingleBuildInterfaceController {
       timeLabel.setText("")
     }
   }
-  
+
 }

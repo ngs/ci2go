@@ -78,5 +78,5 @@ public class BranchesViewController: UITableViewController {
     let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: action!, label: label, value: 1).build() as [NSObject : AnyObject]
     tracker.send(dict)
   }
-  
+
 }

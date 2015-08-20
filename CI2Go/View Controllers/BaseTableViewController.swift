@@ -139,10 +139,6 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   public func scheduleNextRefresh() {
     invalidateRefreshTimer()
-    let interval = CI2GoUserDefaults.standardUserDefaults().apiRefreshInterval
-    if isViewLoaded() && view.window != nil && interval > 0 {
-      refreshTimer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self, selector: "refresh:", userInfo: nil, repeats: false)
-    }
   }
 
   public func invalidateRefreshTimer() {

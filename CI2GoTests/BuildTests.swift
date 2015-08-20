@@ -58,6 +58,7 @@ class BuildTests: XCTestCase {
     XCTAssertEqual(build.nodes!.count, 2)
     XCTAssertEqual(build.project!.repositoryName!, "myapp")
     XCTAssertEqual(build.project!.username!, "mycompany")
+    XCTAssertEqual(build.pusherChannel!, "mycompany@myapp@1348")
     XCTAssertEqual(build.retries!.count, 0)
     XCTAssertNil(build.retryOf)
     XCTAssertEqual(build.user!.name!, "John Doe")
@@ -102,6 +103,6 @@ class BuildTests: XCTestCase {
     XCTAssertEqual(b.retriesArray[1].number, 103)
     XCTAssertEqual(b.retryOf!.number, 102)
   }
-  
-  
+
+
 }

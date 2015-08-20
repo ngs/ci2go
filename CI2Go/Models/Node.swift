@@ -31,5 +31,5 @@ public class Node: CI2GoManagedObject {
     }
     return nil
   }
-  
+
 }

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 public class Commit: CI2GoManagedObject {
-  
+
   @NSManaged public var body: String?
   @NSManaged public var date: NSDate?
   @NSManaged public var sha1: String?
@@ -21,7 +21,7 @@ public class Commit: CI2GoManagedObject {
   @NSManaged public var committer: User?
   @NSManaged public var project: Project?
   @NSManaged public var triggeredBuilds: NSSet?
-  
+
   public func importAuthor(data: AnyObject!) -> Bool {
     if let json = data as? NSDictionary {
       let email = json["author_email"] as? String
@@ -35,7 +35,7 @@ public class Commit: CI2GoManagedObject {
     }
     return false
   }
-  
+
   public func importCommitter(data: AnyObject!) -> Bool {
     if let json = data as? NSDictionary {
       let email = json["committer_email"] as? String

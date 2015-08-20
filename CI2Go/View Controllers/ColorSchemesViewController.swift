@@ -9,7 +9,7 @@
 import UIKit
 
 public class ColorSchemesViewController: UITableViewController {
-  
+
   private var _sectionIndexes: [String]?
   private var _sections: [[String]] = []
   public var sectionIndexes: [String] {
@@ -18,14 +18,14 @@ public class ColorSchemesViewController: UITableViewController {
     }
     return _sectionIndexes!
   }
-  
+
   public var sections: [[String]] {
     if !(_sections.count > 0) {
       buildSections()
     }
     return _sections
   }
-  
+
   private func buildSections() {
     _sectionIndexes = [String]()
     _sections = [[String]]()
@@ -43,7 +43,7 @@ public class ColorSchemesViewController: UITableViewController {
     }
     _sections.append(section!)
   }
-  
+
   public override func viewWillAppear(animated: Bool) {
     let name = ColorScheme().name
     let fchar = name.substringToIndex(advance(name.startIndex, 1))
@@ -64,29 +64,29 @@ public class ColorSchemesViewController: UITableViewController {
     tracker.set(kGAIScreenName, value: "ColorScheme Screen")
     tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
-  
+
   public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return sectionIndexes.count
   }
-  
+
   public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return sections[section].count
   }
-  
+
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as! ColorSchemeTableViewCell
     cell.colorSchemeName = sections[indexPath.section][indexPath.row]
     return cell
   }
-  
+
   public override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
     return sectionIndexes
   }
-  
+
   public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return sectionIndexes[section]
   }
-  
+
   public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let item = sections[indexPath.section][indexPath.row]
     ColorScheme(name: item).apply()
@@ -95,5 +95,5 @@ public class ColorSchemesViewController: UITableViewController {
     tracker.send(dict)
     self.navigationController?.popToRootViewControllerAnimated(true)
   }
-  
+
 }

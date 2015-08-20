@@ -14,16 +14,16 @@ class ColorSchemeTests: XCTestCase {
   override func tearDown() {
     CI2GoUserDefaults.standardUserDefaults().colorSchemeName = nil
   }
-  
+
   func testNames() {
     XCTAssertEqual(ColorScheme.names().count, 116, "Has 116 color schemes")
   }
-  
+
   func testName() {
     let s = ColorScheme(name: "Tomorrow Night")
     XCTAssert(s.name == "Tomorrow Night", "name property is assigned")
   }
-  
+
   func testDictionary() {
     let s = ColorScheme(name: "Github")
     XCTAssertNotNil(s.dictionary, "Dictionary is not nil")
@@ -31,7 +31,7 @@ class ColorSchemeTests: XCTestCase {
     let dict = s.dictionary["Foreground Color"]
     XCTAssertEqual(dict!.keys.array, ["Green Component", "Red Component", "Blue Component"])
   }
-  
+
   func testColorByKey() {
     let s = ColorScheme(name: "Tomorrow Night")
     XCTAssertNotNil(s.color(key: "Foreground"), "Foreground color is not nil")

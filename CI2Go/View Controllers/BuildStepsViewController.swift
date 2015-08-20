@@ -10,6 +10,7 @@ import UIKit
 
 public class BuildStepsViewController: BaseTableViewController {
   public var isLoading = false
+  public var channel: PTPusherPrivateChannel?
   public var build: Build? = nil {
     didSet(value) {
       if build?.number != nil && build?.project?.repositoryName != nil {
@@ -29,6 +30,29 @@ public class BuildStepsViewController: BaseTableViewController {
     let tracker = GAI.sharedInstance().defaultTracker
     tracker.set(kGAIScreenName, value: "Build Steps Screen")
     tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+    let pusher = AppDelegate.current.pusher
+    channel = pusher?.subscribeToPrivateChannelNamed(build?.pusherChannel)
+    channel?.bindToEventNamed("newAction", handleWithBlock: { (e/* PTPusherEvent */) -> Void in
+      self.handleUpdateAction(e)
+    })
+    channel?.bindToEventNamed("updateAction", handleWithBlock: { (e/* PTPusherEvent */) -> Void in
+      self.handleUpdateAction(e)
+    })
+    channel?.bindToEventNamed("updateObservables", handleWithBlock: { (e/* PTPusherEvent */) -> Void in
+      self.handleUpdateObservables(e)
+    })
+  }
+
+  func handleUpdateAction(e: PTPusherEvent) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC))),
+      dispatch_get_main_queue(), {
+        self.tableView.reloadData()
+        self.load()
+    });
+  }
+
+  func handleUpdateObservables(e: PTPusherEvent) {
+    channel?.unsubscribe()
   }
 
   public override func viewWillAppear(animated: Bool) {
@@ -46,6 +70,8 @@ public class BuildStepsViewController: BaseTableViewController {
     super.viewWillDisappear(animated)
     invalidateRefreshTimer()
     NSNotificationCenter.defaultCenter().removeObserver(self)
+    channel?.unsubscribe()
+    channel = nil
   }
 
   public override func viewDidLoad() {
@@ -168,9 +194,9 @@ public class BuildStepsViewController: BaseTableViewController {
     let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction
     let actionCell = cell as? BuildActionTableViewCell
     actionCell?.buildAction = action
-    let hasOutput = action?.outputURL != nil
-    cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
-    cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
+//    let hasOutput = action?.outputURL != nil
+//    cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
+//    cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
   }
 
   public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -181,16 +207,16 @@ public class BuildStepsViewController: BaseTableViewController {
     return nil
   }
 
-  public override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-    if let cell = sender as? UITableViewCell {
-      if let indexPath = tableView.indexPathForCell(cell) {
-        if let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction {
-          return action.outputURL != nil
-        }
-      }
-    }
-    return false
-  }
+//  public override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+//    if let cell = sender as? UITableViewCell {
+//      if let indexPath = tableView.indexPathForCell(cell) {
+//        if let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction {
+//          return action.outputURL != nil
+//        }
+//      }
+//    }
+//    return false
+//  }
 
   public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let cell = sender as? BuildActionTableViewCell
@@ -230,5 +256,5 @@ public class BuildStepsViewController: BaseTableViewController {
       asheet.showInView(self.navigationController?.view)
     }
   }
-  
+
 }

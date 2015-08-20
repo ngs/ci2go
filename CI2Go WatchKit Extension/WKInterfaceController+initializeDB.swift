@@ -11,9 +11,9 @@ import WatchKit
 var dbInitialized = false
 
 extension WKInterfaceController {
-  
+
   // MARK: - Google Analytics
-  
+
   func getDefaultGAITraker() -> GAITracker {
     let gai = GAI.sharedInstance()
     gai.trackUncaughtExceptions = true

@@ -190,5 +190,16 @@ public class Build: CI2GoManagedObject {
       return "\(path!)/\(number)"
     }
   }
-  
+
+  public var pusherChannel: String? {
+    get {
+      let repositoryName = project?.repositoryName
+      let username = project?.username
+      if ((username != nil) && (repositoryName != nil)) {
+        return "\(username!)@\(repositoryName!)@\(number.stringValue)"
+      }
+      return nil
+    }
+  }
+
 }

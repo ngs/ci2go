@@ -9,10 +9,11 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, PTPusherDelegate {
 
   var window: UIWindow?
   var dbInitialized = false
+  var pusher: PTPusher?;
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -41,11 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
     splitViewController.delegate = self
 
+    pusher = PTPusher.pusherWithKey(kCI2GoPusherAPIKey, delegate: self, encrypted: true) as? PTPusher
+    if let token = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken as? String {
+      pusher?.authorizationURL = NSURL(string: kCI2GoPusherAuthorizationURL + token)
+      pusher?.connect()
+    }
     return true
   }
 
   func applicationWillTerminate(application: UIApplication) {
     NSManagedObjectContext.MR_defaultContext().saveToPersistentStoreAndWait()
+    pusher?.disconnect()
   }
 
   // MARK: - Split view
@@ -80,6 +87,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
       dbInitialized = true
     }
   }
-  
+
+  static var current: AppDelegate {
+    get {
+      return UIApplication.sharedApplication().delegate as! AppDelegate
+    }
+  }
+
+  func pusher(pusher: PTPusher!, connection: PTPusherConnection!, didDisconnectWithError error: NSError!, willAttemptReconnect: Bool) {
+    if !willAttemptReconnect {
+      handleDisconnectionWithError(error)
+    }
+
+  }
+
+  func pusher(pusher: PTPusher!, connection: PTPusherConnection!, failedWithError error: NSError!) {
+    handleDisconnectionWithError(error)
+  }
+
+  func handleDisconnectionWithError(error: NSError!) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC))),
+      dispatch_get_main_queue(), {
+        self.pusher?.connect()
+    });
+  }
+
 }
 
