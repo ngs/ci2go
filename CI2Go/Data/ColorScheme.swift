@@ -188,5 +188,5 @@ public class ColorScheme: NSObject {
       return _ansiHelper!
     }
   }
-  
+
 }

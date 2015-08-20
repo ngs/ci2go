@@ -39,7 +39,7 @@ class CommitTests: XCTestCase {
     Commit.MR_importFromObject(obj)
     XCTAssertEqual(Int(Commit.MR_countOfEntities()), 1, "1 record exists")
     XCTAssertEqual(Int(User.MR_countOfEntities()), 1, "1 record exists")
-    
+
   }
-  
+
 }

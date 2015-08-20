@@ -35,12 +35,12 @@ public class CI2GoManagedObject :NSManagedObject {
     let data2 = addPrimaryAttributeWithObjectData(data)
     return super.MR_importFromObject(data2, inContext: context) as! CI2GoManagedObject
   }
-  
+
   public override func MR_importValuesForKeysWithObject(data: AnyObject!) -> Bool {
     let data2 = self.dynamicType.addPrimaryAttributeWithObjectData(data)
     return super.MR_importValuesForKeysWithObject(data2)
   }
-  
+
 
   public class func MR_findOrCreateByAttribute(attribute: NSString, withValue searchValue: AnyObject!) -> CI2GoManagedObject! {
     var ret = MR_findFirstByAttribute(attribute as String, withValue: searchValue)
@@ -62,6 +62,6 @@ public class CI2GoManagedObject :NSManagedObject {
     return super.MR_findObjectForRelationship(relationshipInfo, withData: data2)
   }
 
-  
+
 
 }

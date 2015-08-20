@@ -12,6 +12,7 @@ private var _standardUserDefaults: AnyObject? = nil
 
 public let kCI2GoColorSchemeUserDefaultsKey = "CI2GoColorScheme"
 public let kCI2GoCircleCIAPITokenDefaultsKey = "CI2GoColorCircleCIAPIToken"
+public let kCI2GoCircleCIUsernameDefaultsKey = "CI2GoColorCircleCIAPIUsername"
 public let kCI2GoLogRefreshIntervalDefaultsKey = "CI2GoLogRefreshInterval"
 public let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
 public let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
@@ -74,6 +75,7 @@ public class CI2GoUserDefaults: NSObject {
         userDefaults.setValue(value, forKey: kCI2GoCircleCIAPITokenDefaultsKey)
       } else {
         userDefaults.removeObjectForKey(kCI2GoCircleCIAPITokenDefaultsKey)
+        self.circleCIUsername = nil
       }
       userDefaults.synchronize()
     }
@@ -81,9 +83,23 @@ public class CI2GoUserDefaults: NSObject {
       return userDefaults.stringForKey(kCI2GoCircleCIAPITokenDefaultsKey)
     }
   }
-  
+
+  public var circleCIUsername: NSString? {
+    set(value) {
+      if (value != nil) {
+        userDefaults.setValue(value, forKey: kCI2GoCircleCIUsernameDefaultsKey)
+      } else {
+        userDefaults.removeObjectForKey(kCI2GoCircleCIUsernameDefaultsKey)
+      }
+      userDefaults.synchronize()
+    }
+    get {
+      return userDefaults.stringForKey(kCI2GoCircleCIUsernameDefaultsKey)
+    }
+  }
+
   public var isLoggedIn: Bool {
-    get { return circleCIAPIToken?.length > 0 }
+    get { return circleCIAPIToken?.length > 0 && circleCIUsername?.length > 0 }
   }
 
   public var logRefreshInterval: Double {
@@ -151,5 +167,5 @@ public class CI2GoUserDefaults: NSObject {
     }
     return nil
   }
-  
+
 }

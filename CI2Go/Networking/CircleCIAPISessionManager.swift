@@ -9,28 +9,28 @@
 import Foundation
 
 public class CircleCIAPISessionManager: AFHTTPRequestOperationManager {
-  
+
   override init(baseURL url: NSURL!) {
     super.init(baseURL: url)
     self.requestSerializer = CircleCIRequestSerializer() as AFHTTPRequestSerializer
     self.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
     self.apiToken = nil
   }
-  
+
   public convenience init(apiToken: String?) {
     self.init()
     self.apiToken = apiToken
   }
-  
+
   convenience init() {
     self.init(baseURL: kCI2GoCircleCIAPIBaseURL)
     self.apiToken = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken as String?
   }
-  
+
   required public init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
-  
+
   public var apiToken: String? {
     set(value) {
       (self.requestSerializer as! CircleCIRequestSerializer).apiToken = value
@@ -39,5 +39,5 @@ public class CircleCIAPISessionManager: AFHTTPRequestOperationManager {
       return (self.requestSerializer as! CircleCIRequestSerializer).apiToken
     }
   }
-  
+
 }

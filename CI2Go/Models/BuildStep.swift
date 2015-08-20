@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 
 public class BuildStep: CI2GoManagedObject {
-  
+
   @NSManaged public var index: NSNumber
   @NSManaged public var name: String
   @NSManaged public var actions: NSSet?
   @NSManaged public var build: Build
   @NSManaged public var buildStepID: String
-  
+
   public override class func idFromObjectData(data: AnyObject!) -> String? {
     if let json = data as? NSDictionary {
       if let actions = json["actions"] as? [NSDictionary] {
@@ -29,11 +29,11 @@ public class BuildStep: CI2GoManagedObject {
     }
     return nil
   }
-  
+
   public override func shouldImport(data: AnyObject!) -> Bool {
     return BuildStep.idFromObjectData(data) != nil
   }
-  
+
   public var buildActions: [BuildAction] {
     get {
       if actions == nil {
@@ -42,7 +42,7 @@ public class BuildStep: CI2GoManagedObject {
       return actions?.sortedArrayUsingDescriptors([NSSortDescriptor(key: "nodeIndex", ascending: true)]) as! [BuildAction]
     }
   }
-  
+
   public func importActions(data: NSDictionary!) -> Bool {
     if let actions = data["actions"] as? [NSDictionary] {
       if actions.count > 0 {
@@ -58,5 +58,5 @@ public class BuildStep: CI2GoManagedObject {
     }
     return true
   }
-  
+
 }

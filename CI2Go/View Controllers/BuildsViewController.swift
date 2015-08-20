@@ -11,6 +11,7 @@ import UIKit
 public class BuildsViewController: BaseTableViewController {
 
   public var offset = 0, isLoading = false
+  public var channel: PTPusherPrivateChannel?
 
   public override func awakeFromNib() {
     super.awakeFromNib()
@@ -32,6 +33,20 @@ public class BuildsViewController: BaseTableViewController {
       load(false)
     }
     tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+    let pusher = AppDelegate.current.pusher
+    if let username = CI2GoUserDefaults.standardUserDefaults().circleCIUsername as? String {
+      channel = pusher?.subscribeToPrivateChannelNamed(username)
+      channel?.bindToEventNamed("call", handleWithBlock: { (e/* PTPusherEvent */) -> Void in
+        let data: AnyObject! = e.data
+        if data["fn"] as? String == "refreshBuildState" {
+          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC))),
+            dispatch_get_main_queue(), {
+              self.tableView.reloadData()
+              self.load(false)
+            });
+        }
+      })
+    }
   }
 
   public override func viewWillAppear(animated: Bool) {
@@ -55,6 +70,8 @@ public class BuildsViewController: BaseTableViewController {
     super.viewWillDisappear(animated)
     invalidateRefreshTimer()
     NSNotificationCenter.defaultCenter().removeObserver(self)
+    channel?.unsubscribe()
+    channel = nil
   }
 
   public override func createFetchedResultsController(context: NSManagedObjectContext) -> NSFetchedResultsController {
@@ -98,6 +115,7 @@ public class BuildsViewController: BaseTableViewController {
             self.isLoading = false
             self.scheduleNextRefresh()
             AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
+            self.tableView.reloadData()
             return
         })
       })
@@ -130,5 +148,5 @@ public class BuildsViewController: BaseTableViewController {
     tableView.reloadData()
     load(false)
   }
-  
+
 }

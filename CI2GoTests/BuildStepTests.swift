@@ -11,12 +11,12 @@ import XCTest
 import CI2Go
 
 class BuildStepTests: XCTestCase {
-  
+
   override func setUp() {
     BuildAction.MR_deleteAllMatchingPredicate(NSPredicate(format: "0 < 1"))
     BuildStep.MR_deleteAllMatchingPredicate(NSPredicate(format: "0 < 1"))
   }
-  
+
   func testImportObject() {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 0, "0 record exist")
@@ -34,7 +34,7 @@ class BuildStepTests: XCTestCase {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 2, "2 records exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 1, "1 record exists")
   }
-  
+
   func testImportObject2() {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 0, "0 record exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 0, "0 record exist")
@@ -52,5 +52,5 @@ class BuildStepTests: XCTestCase {
     XCTAssertEqual(Int(BuildAction.MR_countOfEntities()), 2, "2 records exist")
     XCTAssertEqual(Int(BuildStep.MR_countOfEntities()), 1, "1 record exists")
   }
-  
+
 }

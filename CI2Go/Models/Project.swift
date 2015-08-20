@@ -64,6 +64,6 @@ public class Project: CI2GoManagedObject {
       return "\(username!)/\(repositoryName!)"
     }
   }
-  
-  
+
+
 }

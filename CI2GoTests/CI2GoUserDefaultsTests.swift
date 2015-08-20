@@ -11,11 +11,11 @@ import XCTest
 import CI2Go
 
 class CI2GoUserDefaultsTests: XCTestCase {
-  
+
   override func setUp() {
     CI2GoUserDefaults.standardUserDefaults().reset()
   }
-  
+
   func testColorSchemeName() {
     let d = CI2GoUserDefaults.standardUserDefaults()
     XCTAssertEqual(d.colorSchemeName!, "Github", "Default name is Github")
@@ -28,7 +28,7 @@ class CI2GoUserDefaultsTests: XCTestCase {
     d.colorSchemeName = nil
     XCTAssertEqual(d.colorSchemeName!, "Github", "Reverted to Github by setting nil")
   }
-  
+
   func testCircleCIAPIToken() {
     let d = CI2GoUserDefaults.standardUserDefaults()
     XCTAssertNil(d.circleCIAPIToken, "Default is nil")
@@ -37,23 +37,24 @@ class CI2GoUserDefaultsTests: XCTestCase {
     d.circleCIAPIToken = nil
     XCTAssertNil(d.circleCIAPIToken, "Default is nil")
   }
-  
+
   func testIsLoggedIn() {
     let d = CI2GoUserDefaults.standardUserDefaults()
     XCTAssertFalse(d.isLoggedIn, "Default is false")
     d.circleCIAPIToken = "asdf1234asdf1234asdf1234asdf1234asdf1234asdf1234"
+    d.circleCIUsername = "ngs"
     XCTAssertTrue(d.isLoggedIn, "Returns true if token is stored")
     d.circleCIAPIToken = nil
     XCTAssertFalse(d.isLoggedIn, "Default is false")
   }
-  
+
   func testLogRefreshInterval() {
     let d = CI2GoUserDefaults.standardUserDefaults()
     XCTAssertEqual(d.logRefreshInterval, 1.0, "Default is 1.0")
     d.logRefreshInterval = 2.5
     XCTAssertEqual(d.logRefreshInterval, 2.5, "Updated to 2.5")
   }
-  
+
   func testAPIRefreshInterval() {
     let d = CI2GoUserDefaults.standardUserDefaults()
     XCTAssertEqual(d.apiRefreshInterval, 5.0, "Default is 5.0")

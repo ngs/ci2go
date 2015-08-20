@@ -38,15 +38,21 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.12):
     - GoogleAnalytics-iOS-SDK/Core (= 3.12)
   - GoogleAnalytics-iOS-SDK/Core (3.12)
+  - libPusher (1.6):
+    - libPusher/Core (= 1.6)
+  - libPusher/Core (1.6):
+    - SocketRocket (= 0.3.1-beta2)
   - MagicalRecord (2.3.0)
   - MBProgressHUD (0.9.1)
   - NSDate+TimeAgo (1.0.3)
+  - SocketRocket (0.3.1-beta2)
   - UIColor+Mix (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
   - GoogleAnalytics-iOS-SDK
+  - libPusher (~> 1.5)
   - MagicalRecord (= 2.3.0)
   - MBProgressHUD (~> 0.8)
   - NSDate+TimeAgo
@@ -55,10 +61,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
+  GoogleAnalytics-iOS-SDK: 13241762fa4aea845eb75bef6c0da3427a26e7b3
+  libPusher: f9367ede8f5141e74adc90ba20536cbc3c7b68e1
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
+  SocketRocket: 7284ab9370a06c99aba92b2fe3a32aedd0f9a6fa
   UIColor+Mix: fdb1c1620bc1d127f75665c7a6322028b3ebb9d5
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2

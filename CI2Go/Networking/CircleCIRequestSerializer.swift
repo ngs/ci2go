@@ -9,9 +9,9 @@
 import Foundation
 
 public class CircleCIRequestSerializer: AFHTTPRequestSerializer {
-  
+
   public var apiToken: String?
-  
+
   override public func requestWithMethod(method: String!,
     URLString: String!,
     parameters: AnyObject!, error: NSErrorPointer) -> NSMutableURLRequest! {
@@ -22,5 +22,5 @@ public class CircleCIRequestSerializer: AFHTTPRequestSerializer {
       }
       return super.requestWithMethod(method, URLString: URLWithToken, parameters: parameters, error: error)
   }
-  
+
 }
