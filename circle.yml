@@ -15,6 +15,8 @@ general:
 dependencies:
   pre:
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
+    - sudo pip install awscli
+    - sudo gem update bundler
   override:
     - export TGZ="$(cat Gemfile.lock | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true
     - export TGZ="$(cat Podfile.lock | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true

@@ -12,7 +12,7 @@ import MagicalRecord
 import MBProgressHUD
 
 public class SettingsViewController: UITableViewController, UITextFieldDelegate {
-  
+
   @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
   @IBOutlet weak var doneButtonItem: UIBarButtonItem!
   @IBOutlet weak var apiIntervalStepper: UIStepper!
@@ -26,7 +26,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     tracker.set(kGAIScreenName, value: "Settings Screen")
     tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
   }
-  
+
   @IBAction func doneButtonTapped(sender: AnyObject) {
     if CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken == apiTokenField.text {
       dismissViewControllerAnimated(true, completion: nil)
@@ -34,11 +34,11 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
       validateAPIToken(true)
     }
   }
-  
+
   @IBAction func cancelButtonTapped(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
   }
-  
+
   @IBAction func intervalValueChanged(sender: AnyObject) {
     let d = CI2GoUserDefaults.standardUserDefaults()
     let stepper = sender as? UIStepper
@@ -60,7 +60,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
       label?.text = "Manual"
     }
   }
-  
+
   private func validateAPIToken(dismissAfterSuccess: Bool = false) {
     let hud = MBProgressHUD(view: self.navigationController?.view)
     self.navigationController?.view.addSubview(hud)
@@ -90,9 +90,9 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     )
     apiTokenField.resignFirstResponder()
   }
-  
+
   // MARK: UITableViewController
-  
+
   public override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     if section == 0 {
       let wrapper = UIView()
@@ -103,26 +103,27 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
       button.titleLabel?.font = UIFont.systemFontOfSize(10)
       button.sizeToFit()
       button.frame = CGRectMake(15, 0, button.frame.size.width, button.frame.size.height + 20)
-      button.bk_addEventHandler({ (sender) -> Void in
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://circleci.com/account/api")!)
-        return
-        }, forControlEvents: UIControlEvents.TouchUpInside)
+      button.addTarget(self, action: "openAPIDoc:", forControlEvents: .TouchUpInside)
       wrapper.addSubview(button)
       return wrapper
     }
     return nil
   }
-  
+
+  public func openAPIDoc(sender: UIButton) {
+    UIApplication.sharedApplication().openURL(NSURL(string: "https://circleci.com/account/api")!)
+  }
+
   public override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     return section == 0 ? 40 : 0
   }
-  
+
   // MARK: UIViewController
-  
+
   public override func viewWillDisappear(animated: Bool) {
     apiTokenField.resignFirstResponder()
   }
-  
+
   public override func viewWillAppear(animated: Bool) {
     let d = CI2GoUserDefaults.standardUserDefaults()
     let scheme = ColorScheme()
@@ -136,9 +137,9 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     apiIntervalStepper.value = d.apiRefreshInterval
     super.viewWillAppear(animated)
   }
-  
+
   // MARK: UITextFieldDelegate
-  
+
   public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
     let s = textField.text! as NSString
     let after: NSString = s.stringByReplacingCharactersInRange(range, withString: string)
@@ -148,7 +149,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     let range = after.rangeOfCharacterFromSet(set)
     return range.location == NSNotFound
   }
-  
+
   public func textFieldShouldReturn(textField: UITextField) -> Bool {
     let b = textField.text?.utf8.count == 40
     if b {

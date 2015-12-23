@@ -58,10 +58,10 @@ public class Project: CI2GoManagedObject {
 
   public var path: String? {
     get {
-      if nil == username || nil == repositoryName {
+      guard let username = self.username, repositoryName = self.repositoryName else {
         return nil
       }
-      return "\(username!)/\(repositoryName!)"
+      return "\(username)/\(repositoryName)"
     }
   }
   

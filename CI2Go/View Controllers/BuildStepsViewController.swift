@@ -207,33 +207,31 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   @IBAction func openActionSheet(sender: AnyObject) {
-    let asheet = UIActionSheet()
-    let lifecycle = self.build?.lifecycle
-    asheet.cancelButtonIndex = 0
+    guard let lifecycle = self.build?.lifecycle else { return }
+    let av = UIAlertController()
+    av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
+      self.retryBuild()
+    }))
     if lifecycle != "not_run" {
-      asheet.bk_addButtonWithTitle("Rebuild", handler: {
+      av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
         self.retryBuild()
-      })
-      asheet.cancelButtonIndex++
+      }))
     }
     if lifecycle == "running" {
-      asheet.bk_addButtonWithTitle("Cancel Build", handler: {
+      av.addAction(UIAlertAction(title: "Canvel Build", style: .Default, handler: { _ in
         self.cancelBuild()
-      })
-      asheet.cancelButtonIndex++
+      }))
     }
-    if self.build?.compareURL != nil {
-      asheet.bk_addButtonWithTitle("Compare", handler: {
+    if let _ = self.build?.compareURL {
+      av.addAction(UIAlertAction(title: "Compare", style: .Default, handler: { _ in
         self.compareChanges()
-      })
-      asheet.cancelButtonIndex++
+      }))
     }
-    asheet.addButtonWithTitle("Cancel")
-    if let barButtonItem = sender as? UIBarButtonItem {
-      asheet.showFromBarButtonItem(barButtonItem, animated: true)
-    } else if let view = self.navigationController?.view {
-      asheet.showInView(view)
+    av.addAction(UIAlertAction(title: "Canvel", style: .Cancel, handler: nil))
+    if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
+      popover.barButtonItem = barButtonItem
     }
+    presentViewController(av, animated: true, completion: nil)
   }
   
 }

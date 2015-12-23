@@ -13,14 +13,9 @@ public class BuildActionTableViewCell: UITableViewCell {
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
 
-  private var _buildAction: BuildAction? = nil
   public var buildAction: BuildAction? {
-    set(value) {
-      _buildAction = value
+    didSet {
       setNeedsLayout()
-    }
-    get {
-      return _buildAction
     }
   }
 

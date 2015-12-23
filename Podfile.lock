@@ -20,21 +20,6 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
   - DateTools (1.7.0)
   - GoogleAnalytics (3.14.0)
   - MagicalRecord (2.3.0)
@@ -43,7 +28,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - BlocksKit
   - DateTools
   - GoogleAnalytics
   - MagicalRecord (= 2.3.0)
@@ -52,7 +36,6 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba

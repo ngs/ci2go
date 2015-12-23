@@ -69,9 +69,9 @@ public class BuildsViewController: BaseTableViewController {
   }
 
   override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-    let buildCell = cell as! BuildTableViewCell
+    let buildCell = cell as? BuildTableViewCell
     let build = fetchedResultsController.objectAtIndexPath(indexPath) as? Build
-    buildCell.build = build
+    buildCell?.build = build
   }
 
   public func load(more: Bool) {
