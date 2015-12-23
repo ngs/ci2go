@@ -1,0 +1,141 @@
+# vim: set ft=ruby:
+
+fastlane_version "1.48.0"
+
+default_platform :ios
+
+APP_NAME = 'CI2Go'
+
+def export_env
+  prefix = "#{APP_NAME.upcase}_"
+  code = ''
+  ENV.each{|k, v|
+    if k.start_with?(prefix)
+      code += %Q{let #{k.sub prefix, ''} = "#{v}"\n}
+    end
+  }
+  file = File.join __dir__, '..', APP_NAME, 'Environment.swift'
+  File.write file, code
+end
+
+def set_build_number
+  increment_build_number(build_number: ENV['CIRCLE_BUILD_NUM'])
+end
+
+def build_ipa(configuration = 'Release', scheme = 'CI2Go')
+  gym(
+    scheme: scheme,
+    codesigning_identity: ENV['DEVELOPER_NAME'],
+    use_legacy_build_api: true,
+    configuration: configuration,
+    clean: true,
+    output_directory: "Build/#{configuration}",
+    archive_path: "Build/#{configuration}/#{scheme}.xcarchive"
+  )
+end
+
+def import_certificate_from_base64(file_spec, b64str, password = nil)
+  require 'tempfile'
+  require 'base64'
+  f = Tempfile.open(file_spec)
+  f.write(Base64.decode64(b64str))
+  f.close
+  import_certificate(
+    certificate_path: f.path,
+    certificate_password: password
+  )
+end
+
+def slack_notification(message, channel = nil)
+  slack(
+    message: message,
+    success: true,
+    default_payloads: [:lane],
+    channel: channel
+  )
+end
+
+platform :ios do
+
+  desc 'Build AdHoc version ipa'
+  lane :build_adhoc do
+    build_ipa('AdHoc', 'Oneteam Staging')
+  end
+
+  desc 'Import certs'
+  lane :import_certs do
+    create_keychain(
+      default_keychain: true,
+      unlock: true
+    )
+    import_certificate_from_base64(
+      ['apple_developer_authority', '.cer'],
+      ENV['APPLE_AUTHORITY_BASE64'],
+    )
+    import_certificate_from_base64(
+      ['distribution-cert', '.cer'],
+      ENV['DISTRIBUTION_CERTIFICATE_BASE64'],
+    )
+    import_certificate_from_base64(
+      ['distribution-key', '.p12'],
+      ENV['DISTRIBUTION_KEY_BASE64'],
+      ENV['DISTRIBUTION_CERT_PASSWORD']
+    )
+    sh 'security list-keychains'
+    sh 'security find-identity'
+  end
+
+  desc 'Runs all the tests'
+  lane :test do
+    scan(
+      workspace: "./#{APP_NAME}.xcworkspace",
+      scheme: APP_NAME,
+      sdk: 'iphonesimulator',
+      destination: 'name=iPhone 6',
+      skip_slack: true
+    )
+    snapshot
+  end
+
+  desc 'Deploy a new version to S3'
+  lane :deploy_s3 do
+    set_build_number
+    build_ipa('AdHoc')
+    s3(
+      ipa: "Build/AdHoc/#{APP_NAME}.ipa",
+      dsym: "Build/AdHoc/#{APP_NAME}.app.dSYM.zip",
+      bucket: ENV['S3_BUCKET'],
+      html_file_name: "v#{get_version_number}_b#{get_build_number}/index.html",
+      html_template_path: './fastlane/templates/index.html.erb',
+      plist_template_path: './fastlane/templates/app.plist.erb'
+    )
+    url = lane_context[SharedValues::S3_HTML_OUTPUT_PATH]
+    branch = ENV['CIRCLE_BRANCH']
+    if branch
+      slack_notification(
+        "#{APP_NAME} version: #{get_version_number}(#{get_build_number}) from `#{branch}` is available! #{url}"
+      )
+    end
+  end
+
+  desc 'Submit a new Beta Build to Apple TestFlight'
+  lane :deploy_testflight do
+    set_build_number
+    build_ipa
+    testflight(skip_submission: true)
+    if ENV['CIRCLE_BRANCH']
+      slack_notification "#{APP_NAME}: #{get_build_number} is available on TestFlight"
+    end
+  end
+
+  desc 'Deploy a new version to the App Store'
+  lane :deploy_production do
+    set_build_number
+    build_ipa
+    deliver(skip_deploy: true, force: false)
+    slack_notification(
+      "Oneteam iOS version: #{get_build_number} is uploaded to iTunes Connect"
+    )
+  end
+end
+

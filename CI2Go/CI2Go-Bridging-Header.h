@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/UIKit+AFNetworking.h>

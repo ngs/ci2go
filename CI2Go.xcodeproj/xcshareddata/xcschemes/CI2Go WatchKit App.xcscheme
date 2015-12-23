@@ -56,6 +56,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "85B637F31C2AD7EB00AC6225"
+               BuildableName = "CI2GoUITests.xctest"
+               BlueprintName = "CI2GoUITests"
+               ReferencedContainer = "container:CI2Go.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

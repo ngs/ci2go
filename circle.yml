@@ -9,9 +9,15 @@ machine:
     BUILD_URL: "https://circleci.com/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM"
     ICON_URL: "https://github.com/ngs/ci2go/raw/master/CI2Go/Images.xcassets/AppIcon.appiconset/Icon-60@3x.png"
     RELEASE_NOTE: "Auto build from $BUILD_URL"
+
 general:
   artifacts:
-    - Distribution
+    - ./fastlane/test_output
+    - ~/Library/Logs/scan
+    - ~/Library/Logs/gym
+    - ~/Developer/Xcode/Archives
+    - Build
+
 dependencies:
   pre:
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
@@ -24,6 +30,8 @@ dependencies:
     - export TGZ="$(cat Podfile.lock | md5).tgz"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
+    - bundle exec fastlane import_certs
+    - bundle exec sigh download_all -o fastlane/profiles
 test:
   pre:
     - /bin/bash Scripts/import-circle-keychain.sh
