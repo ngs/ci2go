@@ -21,36 +21,36 @@ public class BuildTableViewCell: UITableViewCell {
   @IBOutlet weak var branchIconImageView: UIImageView!
   public var build: Build? {
     didSet {
-      guard let build = build else { return }
-      let status = build.status
-      if status != nil {
-        statusLabel.text = build.status?.humanize
-        statusLabel.hidden = false
-      } else {
-        statusLabel.hidden = true
-      }
-      if let branchName = build.branch?.name, shortHash = build.triggeredCommit?.shortHash {
-        branchNameLabel.text = "\(branchName) (\(shortHash))"
-      } else {
-        branchNameLabel.text = build.branch?.name ?? ""
-      }
-      buildNumLabel.text = "#\(build.number.intValue)"
-      projectNameLabel.text = build.project?.path ?? ""
-      subjectLabel.text = build.triggeredCommit?.subject
-      userLabel.text = build.user?.name
-      timeLabel.text = build.startedAt?.timeAgoSinceNow() ?? ""
       setNeedsLayout()
     }
   }
 
   public override func layoutSubviews() {
     super.layoutSubviews()
+    guard let build = self.build else { return }
+    let status = build.status
+    if status != nil {
+      statusLabel.text = build.status?.humanize
+      statusLabel.hidden = false
+    } else {
+      statusLabel.hidden = true
+    }
+    if let branchName = build.branch?.name, shortHash = build.triggeredCommit?.shortHash {
+      branchNameLabel.text = "\(branchName) (\(shortHash))"
+    } else {
+      branchNameLabel.text = build.branch?.name ?? ""
+    }
+    buildNumLabel.text = "#\(build.number.intValue)"
+    projectNameLabel.text = build.project?.path ?? ""
+    subjectLabel.text = build.triggeredCommit?.subject
+    userLabel.text = build.user?.name ?? build.user?.login ?? build.triggeredCommit?.author?.name ?? build.triggeredCommit?.author?.login
+    timeLabel.text = build.startedAt?.timeAgoSinceNow() ?? ""
     let scheme = ColorScheme()
     statusLabel.layer.cornerRadius = 3
     statusLabel.layer.masksToBounds = true
     statusLabel.textColor = scheme.backgroundColor()
     buildNumLabel.sizeToFit()
-    statusLabel.backgroundColor = scheme.badgeColor(status: build?.status)
+    statusLabel.backgroundColor = scheme.badgeColor(status: status)
     branchIconImageView.image = UIImage(named: "1081-branch-toolbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     branchIconImageView.tintColor = scheme.foregroundColor()
   }

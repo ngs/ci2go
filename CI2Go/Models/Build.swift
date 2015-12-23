@@ -74,9 +74,17 @@ public class Build: CI2GoManagedObject {
 
 
   public func importUser(json: NSDictionary!) -> Bool {
-    if let userJSON = json["user"] as? Dictionary<String, AnyObject> {
-      user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User
-      return true
+    if let userJSON = json["user"] as? Dictionary<String, AnyObject>
+      , _ = userJSON["name"]
+      , user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User {
+        self.user = user
+        return true
+    }
+    if let login = json["username"] as? String
+      , user = User.MR_importFromObject(["login": login], inContext: managedObjectContext!) as? User
+      where self.user?.login == nil {
+        self.user = user
+        return true
     }
     return false
   }
@@ -124,7 +132,7 @@ public class Build: CI2GoManagedObject {
       let data = [
         "name": decodedName,
         "branchID": "\(project!.urlString!)#\(decodedName)"
-      ] as NSDictionary
+        ] as NSDictionary
       branch = Branch.MR_importFromObject(data, inContext: managedObjectContext!) as? Branch
       if project != nil {
         branch?.project = project
