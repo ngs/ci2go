@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NSDate_TimeAgo
+import DateTools
 
 public class BuildTableViewCell: UITableViewCell {
 
@@ -45,7 +45,7 @@ public class BuildTableViewCell: UITableViewCell {
       }
       subjectLabel.text = value?.triggeredCommit?.subject
       userLabel.text = value?.user?.name
-      if let timeAgo = value?.startedAt?.timeAgoSimple() {
+      if let timeAgo = value?.startedAt?.timeAgoSinceNow() {
         timeLabel.text = timeAgo + " ago"
       } else {
         timeLabel.text = ""

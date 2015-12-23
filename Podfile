@@ -9,4 +9,4 @@ pod "GoogleAnalytics"
 pod "UIColor+Mix"
 pod 'MBProgressHUD', '~> 0.8'
 pod "MagicalRecord", '2.3.0'
-pod 'NSDate+TimeAgo'
+pod "DateTools"

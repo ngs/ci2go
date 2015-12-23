@@ -35,28 +35,28 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - DateTools (1.7.0)
   - GoogleAnalytics (3.14.0)
   - MagicalRecord (2.3.0)
   - MBProgressHUD (0.9.1)
-  - NSDate+TimeAgo (1.0.3)
   - UIColor+Mix (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
+  - DateTools
   - GoogleAnalytics
   - MagicalRecord (= 2.3.0)
   - MBProgressHUD (~> 0.8)
-  - NSDate+TimeAgo
   - UIColor+Mix
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
   UIColor+Mix: fdb1c1620bc1d127f75665c7a6322028b3ebb9d5
 
 COCOAPODS: 0.39.0

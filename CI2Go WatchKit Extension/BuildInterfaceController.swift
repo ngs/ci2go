@@ -7,7 +7,7 @@
 //
 
 import WatchKit
-import NSDate_TimeAgo
+import DateTools
 
 class BuildInterfaceController: SingleBuildInterfaceController {
   
@@ -22,7 +22,7 @@ class BuildInterfaceController: SingleBuildInterfaceController {
   
   override func updateViews() {
     super.updateViews()
-    if let timeAgo = build?.startedAt?.timeAgoSimple() {
+    if let timeAgo = build?.startedAt?.timeAgoSinceNow() {
       timeLabel.setText(timeAgo + " ago")
     } else {
       timeLabel.setText("")
