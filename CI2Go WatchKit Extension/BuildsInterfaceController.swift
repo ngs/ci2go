@@ -8,7 +8,8 @@
 
 import WatchKit
 import Foundation
-
+import AFNetworking
+import MagicalRecord
 
 class BuildsInterfaceController: WKInterfaceController {
   @IBOutlet weak var interfaceTable: WKInterfaceTable!
@@ -74,7 +75,7 @@ class BuildsInterfaceController: WKInterfaceController {
   override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
     let row = table.rowControllerAtIndex(rowIndex) as! BuildTableRowController
     let build = row.build
-    let b = build!.managedObjectContext?.existingObjectWithID(build!.objectID, error: nil)
+    _ = try? build!.managedObjectContext?.existingObjectWithID(build!.objectID)
     return build!.buildID
   }
 

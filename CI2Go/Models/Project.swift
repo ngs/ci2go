@@ -30,12 +30,12 @@ public class Project: CI2GoManagedObject {
     if let branchesData = json["branches"] as? Dictionary<String, AnyObject> {
       let mSet = NSMutableSet()
       if let repo = json["vcs_url"] as? String {
-        for branchName in branchesData.keys.array {
-          let decodedName = branchName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        for branchName in branchesData.keys {
+          let decodedName = branchName.stringByRemovingPercentEncoding!
           let dict = [
             "name": decodedName,
             "branchID": "\(repo)#\(decodedName)"
-          ]
+          ] as NSDictionary
           if let b = Branch.MR_importFromObject(dict, inContext: managedObjectContext!) as? Branch {
             b.project = self
             mSet.addObject(b)

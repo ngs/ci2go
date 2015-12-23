@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AFNetworking
+import MagicalRecord
+import MBProgressHUD
 
 public class SettingsViewController: UITableViewController, UITextFieldDelegate {
   
@@ -28,7 +31,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     if CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken == apiTokenField.text {
       dismissViewControllerAnimated(true, completion: nil)
     } else {
-      validateAPIToken(dismissAfterSuccess: true)
+      validateAPIToken(true)
     }
   }
   
@@ -124,16 +127,12 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
     let d = CI2GoUserDefaults.standardUserDefaults()
     let scheme = ColorScheme()
     self.colorSchemeCell.colorScheme = scheme
-    let placeholderAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: scheme.placeholderColor()!]
     self.apiTokenField.setValue(scheme.placeholderColor(), forKeyPath: "_placeholderLabel.textColor")
     setStepperValue(d.apiRefreshInterval, forStepper: apiIntervalStepper, withLabel: apiIntervalLabel)
-    if(d.circleCIAPIToken != nil) {
-      apiTokenField.text = d.circleCIAPIToken as! String
-    } else {
-      apiTokenField.text = ""
-    }
-    cancelButtonItem.enabled = d.circleCIAPIToken?.length == 40
-    doneButtonItem.enabled = d.circleCIAPIToken?.length == 40
+    apiTokenField.text = d.circleCIAPIToken ?? ""
+    let valid = d.circleCIAPIToken?.utf8.count == 40
+    cancelButtonItem.enabled = valid
+    doneButtonItem.enabled = valid
     apiIntervalStepper.value = d.apiRefreshInterval
     super.viewWillAppear(animated)
   }
@@ -141,7 +140,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   // MARK: UITextFieldDelegate
   
   public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-    let s: NSString = textField.text
+    let s = textField.text! as NSString
     let after: NSString = s.stringByReplacingCharactersInRange(range, withString: string)
     if after.length > 40 { return false }
     let set = NSCharacterSet(charactersInString: "abcdef1234567890").invertedSet
@@ -151,7 +150,7 @@ public class SettingsViewController: UITableViewController, UITextFieldDelegate 
   }
   
   public func textFieldShouldReturn(textField: UITextField) -> Bool {
-    let b = textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 40
+    let b = textField.text?.utf8.count == 40
     if b {
       validateAPIToken()
     }

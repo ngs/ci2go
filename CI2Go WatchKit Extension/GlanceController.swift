@@ -8,7 +8,9 @@
 
 import WatchKit
 import Foundation
-
+import Foundation
+import AFNetworking
+import MagicalRecord
 
 class GlanceController: SingleBuildInterfaceController {
   @IBOutlet weak var placeholderLabel: WKInterfaceLabel!

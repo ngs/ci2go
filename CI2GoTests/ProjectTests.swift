@@ -22,7 +22,7 @@ class ProjectTests: XCTestCase {
     XCTAssertEqual(Int(Project.MR_countOfEntities()), 0, "0 record exist")
     let array = fixtureData("projects") as! NSArray
     let projects = Project.MR_importFromArray(array as [AnyObject]) as! [Project]
-    let branches = projects[0].branches?.allObjects.sorted({ (a: AnyObject, b: AnyObject) -> Bool in
+    let branches = projects[0].branches?.allObjects.sort({ (a: AnyObject, b: AnyObject) -> Bool in
       return a.name == "master"
     }) as! [Branch]
     XCTAssertEqual(projects.count, 2)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NSDate_TimeAgo
 
 public class BuildTableViewCell: UITableViewCell {
 
@@ -62,7 +63,6 @@ public class BuildTableViewCell: UITableViewCell {
     statusLabel.layer.cornerRadius = 3
     statusLabel.layer.masksToBounds = true
     statusLabel.textColor = scheme.backgroundColor()
-    var color: UIColor?
     buildNumLabel.sizeToFit()
     statusLabel.backgroundColor = scheme.badgeColor(status: build?.status)
     branchIconImageView.image = UIImage(named: "1081-branch-toolbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)

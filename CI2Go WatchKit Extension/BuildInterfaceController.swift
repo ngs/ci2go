@@ -7,6 +7,7 @@
 //
 
 import WatchKit
+import NSDate_TimeAgo
 
 class BuildInterfaceController: SingleBuildInterfaceController {
   

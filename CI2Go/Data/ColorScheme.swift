@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 LittleApps Inc. All rights reserved.
 //
 
+import UIColor_Mix
+
 private var _names: [String]? = nil
 private var _cache = Dictionary<String, Dictionary<String, Dictionary<String, NSNumber>>>()
 
@@ -13,13 +15,13 @@ public class ColorScheme: NSObject {
   public class func names() -> [String] {
     if _names == nil {
       _names = [String]()
-      let files = NSBundle.mainBundle().URLsForResourcesWithExtension("itermcolors", subdirectory: nil) as! [NSURL]?
+      let files = NSBundle.mainBundle().URLsForResourcesWithExtension("itermcolors", subdirectory: nil) 
       if files != nil {
         for file in files! {
-          _names!.append(file.lastPathComponent!.stringByDeletingPathExtension)
+          _names!.append((file.lastPathComponent! as NSString).stringByDeletingPathExtension)
         }
       }
-      _names?.sort({ (a: String, b: String) -> Bool in
+      _names?.sortInPlace({ (a: String, b: String) -> Bool in
         return a < b
       })
     }
@@ -54,7 +56,7 @@ public class ColorScheme: NSObject {
     _name = name
   }
 
-  public func color(#code: Int) -> UIColor? {
+  public func color(code code: Int) -> UIColor? {
     return color(key: NSString(format: "Ansi %d", code) as String)
   }
 
@@ -106,7 +108,7 @@ public class ColorScheme: NSObject {
     return UIColor(betweenColor: backgroundColor(), andColor: boldColor(), percentage: 0.05)
   }
 
-  public func color(#key: String) -> UIColor? {
+  public func color(key key: String) -> UIColor? {
     if let cmps = dictionary[key + " Color"] {
       let red = CGFloat(cmps["Red Component"]!.floatValue)
       let green = CGFloat(cmps["Green Component"]!.floatValue)
@@ -116,7 +118,7 @@ public class ColorScheme: NSObject {
     return nil
   }
 
-  public func badgeColor(#status: String?) -> UIColor? {
+  public func badgeColor(status status: String?) -> UIColor? {
     if status != nil {
       switch status! {
       case "fixed", "success":
@@ -132,7 +134,7 @@ public class ColorScheme: NSObject {
     return UIColor.grayColor()
   }
 
-  public func actionColor(#status: String?) -> UIColor? {
+  public func actionColor(status status: String?) -> UIColor? {
     if status != nil {
       switch status! {
       case "success":
@@ -183,7 +185,7 @@ public class ColorScheme: NSObject {
           _ansiHelper?.ansiColors[50 + i] = color2
         }
         _ansiHelper?.defaultStringColor = foregroundColor()
-        _ansiHelper?.font = UIFont.sourceCodeProRegular(size: 12)
+        _ansiHelper?.font = UIFont.sourceCodeProRegular(12)
       }
       return _ansiHelper!
     }

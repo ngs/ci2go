@@ -337,7 +337,7 @@
 		85CF5AE41B2EE2EB004882EB /* BuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CF5AE31B2EE2EB004882EB /* BuildInterfaceController.swift */; };
 		85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85DBC76419FCB7F700546F40 /* QuartzCore.framework */; };
 		85FCC41B1A1176430054662E /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85FCC41A1A1176430054662E /* String+md5.swift */; };
-		AA0E3201B48C877E263E439D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF96A3B3C02DDBD1561F68F /* libPods.a */; };
+		953C3FF825BE5351E5E82320 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9E729F68D5A6E54DB9047 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,6 +380,7 @@
 
 /* Begin PBXFileReference section */
 		52A1D27FE8ADE715DD7D44C9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		59D9E729F68D5A6E54DB9047 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8507791F1A0FCE6A00206708 /* ProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
 		85128E7E1A05ADB800D5993A /* CommitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTests.swift; sourceTree = "<group>"; };
 		85128E801A06714400D5993A /* BuildTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTests.swift; sourceTree = "<group>"; };
@@ -585,7 +586,6 @@
 		85DBC76419FCB7F700546F40 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		85FCC41A1A1176430054662E /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		8D6DBC26275F96F64C757B48 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		BDF96A3B3C02DDBD1561F68F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -593,8 +593,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA0E3201B48C877E263E439D /* libPods.a in Frameworks */,
 				85DBC76519FCB7F700546F40 /* QuartzCore.framework in Frameworks */,
+				953C3FF825BE5351E5E82320 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1003,7 +1003,7 @@
 			children = (
 				8570778F1B2C96A000F7269E /* libPods.a */,
 				85DBC76419FCB7F700546F40 /* QuartzCore.framework */,
-				BDF96A3B3C02DDBD1561F68F /* libPods.a */,
+				59D9E729F68D5A6E54DB9047 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1021,6 +1021,7 @@
 				85BB1BA919FC804F003A1FBE /* Resources */,
 				8CCC60EB65088CC97665BC3F /* Copy Pods Resources */,
 				85CF5AE21B2C711D004882EB /* Embed App Extensions */,
+				0ED4EE16829BE950431CDA3C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1090,6 +1091,8 @@
 		85BB1BA319FC804F003A1FBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "LittleApps Inc.";
 				TargetAttributes = {
@@ -1421,6 +1424,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0ED4EE16829BE950431CDA3C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2EC89E1BF2328F26F19F8E23 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1731,10 +1749,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1755,10 +1769,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = CI2GoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1782,10 +1792,6 @@
 				INFOPLIST_FILE = "CI2Go WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1805,10 +1811,6 @@
 				INFOPLIST_FILE = "CI2Go WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

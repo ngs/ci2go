@@ -52,7 +52,7 @@ public class Commit: CI2GoManagedObject {
 
   public var shortHash: String? {
     get {
-      return sha1 == nil ? nil : sha1?.substringToIndex(advance(sha1!.startIndex, 7))
+      return sha1 == nil ? nil : sha1?.substringToIndex(sha1!.startIndex.advancedBy(7))
     }
   }
 }

@@ -7,6 +7,7 @@
 //
 
 import WatchKit
+import MagicalRecord
 
 var dbInitialized = false
 
@@ -18,7 +19,7 @@ extension WKInterfaceController {
     let gai = GAI.sharedInstance()
     gai.trackUncaughtExceptions = true
     gai.dispatchInterval = 20
-    if (NSProcessInfo().environment["VERBOSE"] as? String) == "1" {
+    if NSProcessInfo().environment["VERBOSE"] == "1" {
       gai.logger.logLevel = .Verbose
     }
     gai.trackerWithTrackingId(kCI2GoGATrackingId)
@@ -30,13 +31,10 @@ extension WKInterfaceController {
   func initializeDB() {
     if !dbInitialized {
       let env = NSProcessInfo().environment
-      var dbName = env["DB_NAME"] as? String
-      if dbName == nil {
-        dbName = "CI2Go"
-      }
+      let dbName = env["DB_NAME"] ?? "CI2Go"
       let dbURL = NSFileManager.defaultManager()
         .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
-        .URLByAppendingPathComponent(dbName! + ".sqlite")
+        .URLByAppendingPathComponent(dbName + ".sqlite")
       MagicalRecord.enableShorthandMethods()
       MagicalRecord.setupCoreDataStackWithStoreAtURL(dbURL)
       dbInitialized = true

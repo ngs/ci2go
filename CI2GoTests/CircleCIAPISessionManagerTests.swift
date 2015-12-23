@@ -38,22 +38,22 @@ class CircleCIAPISessionManagerTests: XCTestCase {
   func testAPITokenWithNilParameteres() {
     let m = CircleCIAPISessionManager()
     m.apiToken = "foo"
-    let req = m.requestSerializer.requestWithMethod("GET", URLString: "http://www.foo.com/bar", parameters: nil, error: nil)
-    XCTAssert(req.URL!.absoluteString == "http://www.foo.com/bar?circle-token=foo", "token is set")
+    let req = try? m.requestSerializer.requestWithMethod("GET", URLString: "http://www.foo.com/bar", parameters: nil, error: ())
+    XCTAssert(req!.URL!.absoluteString == "http://www.foo.com/bar?circle-token=foo", "token is set")
   }
   
   func testAPITokenWithGetParameteres() {
     let m = CircleCIAPISessionManager()
     m.apiToken = "foo"
-    let req = m.requestSerializer.requestWithMethod("GET", URLString: "http://www.foo.com/bar", parameters: (["foo": 123] as NSDictionary), error: nil)
-    XCTAssert(req.URL!.absoluteString == "http://www.foo.com/bar?circle-token=foo&foo=123", "token is set")
+    let req = try? m.requestSerializer.requestWithMethod("GET", URLString: "http://www.foo.com/bar", parameters: (["foo": 123] as NSDictionary), error: ())
+    XCTAssert(req!.URL!.absoluteString == "http://www.foo.com/bar?circle-token=foo&foo=123", "token is set")
   }
   
   func testAPITokenWithPostParameteres() {
     let m = CircleCIAPISessionManager()
     m.apiToken = "foo"
-    let req = m.requestSerializer.requestWithMethod("POST", URLString: "http://www.foo.com/bar", parameters: (["foo": 123] as NSDictionary), error: nil)
-    XCTAssert(req.URL!.absoluteString == "http://www.foo.com/bar?circle-token=foo", "token is set")
+    let req = try? m.requestSerializer.requestWithMethod("POST", URLString: "http://www.foo.com/bar", parameters: (["foo": 123] as NSDictionary), error: ())
+    XCTAssert(req!.URL!.absoluteString == "http://www.foo.com/bar?circle-token=foo", "token is set")
   }
   
 }

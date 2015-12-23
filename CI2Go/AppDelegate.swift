@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AFNetworking
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -20,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     let gai = GAI.sharedInstance()
     gai.trackUncaughtExceptions = true
     gai.dispatchInterval = 20
-    if (NSProcessInfo().environment["VERBOSE"] as? String) == "1" {
+    if NSProcessInfo().environment["VERBOSE"] == "1" {
       gai.logger.logLevel = .Verbose
     }
     gai.trackerWithTrackingId(kCI2GoGATrackingId)
@@ -38,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // Setup view controllers
     let splitViewController = self.window!.rootViewController as! UISplitViewController
     let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-    navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+    navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
     splitViewController.delegate = self
 
     return true
@@ -50,9 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
   // MARK: - Split view
 
-  func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController!, ontoPrimaryViewController primaryViewController:UIViewController!) -> Bool {
+  func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
     if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-      if let topAsDetailController = secondaryAsNavController.topViewController as? BuildLogViewController {
+      if secondaryAsNavController.topViewController is BuildLogViewController {
         return true
       }
     }
@@ -68,13 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
   func initializeDB() {
     if !dbInitialized {
       let env = NSProcessInfo().environment
-      var dbName = env["DB_NAME"] as? String
-      if dbName == nil {
-        dbName = "CI2Go"
-      }
+      let dbName = env["DB_NAME"] ?? "CI2Go"
       let dbURL = NSFileManager.defaultManager()
         .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
-        .URLByAppendingPathComponent(dbName! + ".sqlite")
+        .URLByAppendingPathComponent(dbName + ".sqlite")
       MagicalRecord.enableShorthandMethods()
       MagicalRecord.setupCoreDataStackWithStoreAtURL(dbURL)
       dbInitialized = true

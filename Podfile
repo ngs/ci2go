@@ -1,10 +1,11 @@
 # vim: set ft=rb
-source 'git://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
+use_frameworks!
+inhibit_all_warnings!
 
 pod "AFNetworking"
 pod "BlocksKit"
-pod "GoogleAnalytics-iOS-SDK"
+pod "GoogleAnalytics"
 pod "UIColor+Mix"
 pod 'MBProgressHUD', '~> 0.8'
 pod "MagicalRecord", '2.3.0'

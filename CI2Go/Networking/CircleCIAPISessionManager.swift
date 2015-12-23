@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import AFNetworking
 
 public class CircleCIAPISessionManager: AFHTTPRequestOperationManager {
   
   override init(baseURL url: NSURL!) {
     super.init(baseURL: url)
-    self.requestSerializer = CircleCIRequestSerializer() as AFHTTPRequestSerializer
+    self.requestSerializer = CircleCIRequestSerializer()
     self.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
     self.apiToken = nil
   }
@@ -27,7 +28,7 @@ public class CircleCIAPISessionManager: AFHTTPRequestOperationManager {
     self.apiToken = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken as String?
   }
   
-  required public init(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   

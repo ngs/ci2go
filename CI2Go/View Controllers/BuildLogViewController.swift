@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AFNetworking
+import MagicalRecord
+import MBProgressHUD
 
 public class BuildLogViewController: UIViewController {
   @IBOutlet weak var textView: BuildLogTextView!
