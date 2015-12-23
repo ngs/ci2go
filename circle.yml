@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "7.2"
+    version: "7.1"
   environment:
     APPNAME: CI2Go
     LANG: en_US.UTF-8
