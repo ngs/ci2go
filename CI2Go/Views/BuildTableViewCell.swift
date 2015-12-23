@@ -19,41 +19,31 @@ public class BuildTableViewCell: UITableViewCell {
   @IBOutlet weak var statusLabel: UILabel!
   @IBOutlet weak var branchNameLabel: UILabel!
   @IBOutlet weak var branchIconImageView: UIImageView!
-  private var _build: Build? = nil
-  public var build: Build? {
-    set(value) {
-      _build = value
-      if value == nil { return }
-      let status = value!.status
-      // textLabel.text = value?.number.description
+  public private(set) var build: Build? {
+    didSet {
+      guard let build = build else { return }
+      let status = build.status
       if status != nil {
-        statusLabel.text = value?.status?.humanize
+        statusLabel.text = build.status?.humanize
         statusLabel.hidden = false
       } else {
         statusLabel.hidden = true
       }
-      if value?.branch != nil && value?.triggeredCommit != nil {
-        branchNameLabel.text = "\(value!.branch!.name!) (\(value!.triggeredCommit!.shortHash!))"
+      if build.branch != nil && build.triggeredCommit != nil {
+        branchNameLabel.text = "\(build.branch!.name!) (\(build.triggeredCommit!.shortHash!))"
       } else {
-        branchNameLabel.text = value?.branch?.name
+        branchNameLabel.text = build.branch?.name ?? ""
       }
-      buildNumLabel.text = "#\(value!.number.intValue)"
-      if value?.project?.repositoryName != nil && value?.project?.username != nil {
-        projectNameLabel.text = value?.project?.path
+      buildNumLabel.text = "#\(build.number.intValue)"
+      if build.project?.repositoryName != nil && build.project?.username != nil {
+        projectNameLabel.text = build.project?.path
       } else {
         projectNameLabel.text = ""
       }
-      subjectLabel.text = value?.triggeredCommit?.subject
-      userLabel.text = value?.user?.name
-      if let timeAgo = value?.startedAt?.timeAgoSinceNow() {
-        timeLabel.text = timeAgo + " ago"
-      } else {
-        timeLabel.text = ""
-      }
+      subjectLabel.text = build.triggeredCommit?.subject
+      userLabel.text = build.user?.name
+      timeLabel.text = build.startedAt?.timeAgoSinceNow() ?? ""
       setNeedsLayout()
-    }
-    get {
-      return _build
     }
   }
 

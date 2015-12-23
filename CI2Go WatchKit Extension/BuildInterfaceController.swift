@@ -22,11 +22,7 @@ class BuildInterfaceController: SingleBuildInterfaceController {
   
   override func updateViews() {
     super.updateViews()
-    if let timeAgo = build?.startedAt?.timeAgoSinceNow() {
-      timeLabel.setText(timeAgo + " ago")
-    } else {
-      timeLabel.setText("")
-    }
+    timeLabel.setText(build?.startedAt?.timeAgoSinceNow() ?? "")
   }
   
 }
