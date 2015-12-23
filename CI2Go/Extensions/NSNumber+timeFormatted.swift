@@ -10,7 +10,7 @@ import Foundation
 
 extension NSNumber {
   public var timeFormatted: String {
-    var val = self.doubleValue / 1000
+    let val = self.doubleValue / 1000
     let hours = Int(floor(val / 3600))
     let minutes = Int(floor(val % 3600 / 60))
     let seconds = Int(floor(val % 60))

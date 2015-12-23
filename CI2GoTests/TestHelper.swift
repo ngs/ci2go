@@ -17,10 +17,14 @@ func fixturePath(name: String) -> String? {
 }
 
 func fixtureData(name: String) -> AnyObject {
-  var error: NSError?
-  var filePath = fixturePath(name)
+  let filePath = fixturePath(name)
   if filePath == nil { return NSDictionary() }
-  var data: NSData? = NSData(contentsOfFile: filePath!, options: NSDataReadingOptions.DataReadingMappedAlways, error: &error)
+  var data: NSData?
+  do {
+    data = try NSData(contentsOfFile: filePath!, options: NSDataReadingOptions.DataReadingMappedAlways)
+  } catch {
+    data = nil
+  }
   if data == nil { return NSDictionary() }
-  return NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments, error: &error)!
+  return try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
 }

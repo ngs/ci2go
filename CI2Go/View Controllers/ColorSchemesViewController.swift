@@ -31,8 +31,8 @@ public class ColorSchemesViewController: UITableViewController {
     _sections = [[String]]()
     var section: [String]?
     for name in ColorScheme.names() {
-      let fchar = name.substringToIndex(advance(name.startIndex, 1))
-      if find(_sectionIndexes!, fchar) == nil {
+      let fchar = name.substringToIndex(name.startIndex.advancedBy(1))
+      if (_sectionIndexes!).indexOf(fchar) == nil {
         _sectionIndexes?.append(fchar)
         if section != nil {
           _sections.append(section!)
@@ -46,10 +46,10 @@ public class ColorSchemesViewController: UITableViewController {
   
   public override func viewWillAppear(animated: Bool) {
     let name = ColorScheme().name
-    let fchar = name.substringToIndex(advance(name.startIndex, 1))
-    let section = find(sectionIndexes, fchar)
+    let fchar = name.substringToIndex(name.startIndex.advancedBy(1))
+    let section = sectionIndexes.indexOf(fchar)
     if section != nil {
-      let row = find(sections[section!], name)
+      let row = sections[section!].indexOf(name)
       if row != nil {
         let indexPath = NSIndexPath(forRow: row!, inSection: section!)
         tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
@@ -79,7 +79,7 @@ public class ColorSchemesViewController: UITableViewController {
     return cell
   }
   
-  public override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
+  public override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
     return sectionIndexes
   }
   

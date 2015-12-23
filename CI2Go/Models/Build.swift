@@ -49,7 +49,7 @@ public class Build: CI2GoManagedObject {
       for step in steps {
         var step2 = step
         , actions2 = [Dictionary<String, AnyObject>]()
-        if var actions = step["actions"] as? [Dictionary<String, AnyObject>] {
+        if let actions = step["actions"] as? [Dictionary<String, AnyObject>] {
           for action in actions {
             var action2 = action
             if let type = action["type"] as? String {
@@ -74,9 +74,17 @@ public class Build: CI2GoManagedObject {
 
 
   public func importUser(json: NSDictionary!) -> Bool {
-    if let userJSON = json["user"] as? Dictionary<String, AnyObject> {
-      user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User
-      return true
+    if let userJSON = json["user"] as? Dictionary<String, AnyObject>
+      , _ = userJSON["name"]
+      , user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User {
+        self.user = user
+        return true
+    }
+    if let login = json["username"] as? String
+      , user = User.MR_importFromObject(["login": login], inContext: managedObjectContext!) as? User
+      where self.user?.login == nil {
+        self.user = user
+        return true
     }
     return false
   }
@@ -120,11 +128,11 @@ public class Build: CI2GoManagedObject {
       importProject(json)
     }
     if let name = json["branch"] as? String {
-      let decodedName = name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+      let decodedName = name.stringByRemovingPercentEncoding!
       let data = [
         "name": decodedName,
         "branchID": "\(project!.urlString!)#\(decodedName)"
-      ]
+        ] as NSDictionary
       branch = Branch.MR_importFromObject(data, inContext: managedObjectContext!) as? Branch
       if project != nil {
         branch?.project = project
@@ -135,18 +143,24 @@ public class Build: CI2GoManagedObject {
 
   public var buildParameters: Dictionary<String, AnyObject>? {
     set(value) {
-      var error: NSError? = nil
       if let dict = value as NSDictionary? {
-        buildParametersData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.allZeros, error: &error)
+        do {
+          buildParametersData = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions())
+        } catch {
+          buildParametersData = nil
+        }
       } else {
         buildParametersData = NSData()
       }
     }
     get {
       if buildParametersData == nil { return nil }
-      var error: NSError? = nil
-      let json = NSJSONSerialization.JSONObjectWithData(buildParametersData!, options: NSJSONReadingOptions.AllowFragments, error: &error) as? Dictionary<String, AnyObject>
-      return json
+      do {
+        let json = try NSJSONSerialization.JSONObjectWithData(buildParametersData!, options: NSJSONReadingOptions.AllowFragments) as? Dictionary<String, AnyObject>
+        return json
+      } catch {
+        return [:]
+      }
     }
   }
 
@@ -175,7 +189,7 @@ public class Build: CI2GoManagedObject {
       if retries == nil {
         return [Build]()
       }
-      return retries!.allObjects.sorted { (a: AnyObject, b: AnyObject) -> Bool in
+      return retries!.allObjects.sort { (a: AnyObject, b: AnyObject) -> Bool in
         return (a as! Build).number.integerValue < (b as! Build).number.integerValue
         } as! [Build]
     }

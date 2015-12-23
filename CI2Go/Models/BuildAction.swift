@@ -53,7 +53,7 @@ public class BuildAction: CI2GoManagedObject {
       if let step = json["step"] as? Int {
         idcomps.append(step.description)
       }
-      return " ".join(idcomps)
+      return idcomps.joinWithSeparator(" ")
     }
     return nil
   }
@@ -68,7 +68,7 @@ public class BuildAction: CI2GoManagedObject {
     get {
       let fn = buildActionID.md5
       let si = fn.startIndex
-      let ei = advance(si, 2)
+      let ei = si.advancedBy(2)
       return fn.substringToIndex(ei) + "/" + fn.substringFromIndex(ei)
     }
   }
@@ -83,10 +83,16 @@ public class BuildAction: CI2GoManagedObject {
   public var logData: String? {
     get {
       var error: NSError? = nil
-      if !NSFileManager.defaultManager().fileExistsAtPath(logFile.absoluteString!) {
+      if !NSFileManager.defaultManager().fileExistsAtPath(logFile.absoluteString) {
         return nil
       }
-      let m = String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding, error: &error)
+      let m: String?
+      do {
+        m = try String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding)
+      } catch let error1 as NSError {
+        error = error1
+        m = nil
+      }
       if error != nil { NSLog("%@", error!.localizedDescription) }
       return m
     }
@@ -94,14 +100,22 @@ public class BuildAction: CI2GoManagedObject {
       var error: NSError? = nil
       let m = NSFileManager.defaultManager()
       let dir = logFile.URLByDeletingLastPathComponent!
-      if !m.fileExistsAtPath(dir.absoluteString!) {
-        m.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil, error: &error)
+      if !m.fileExistsAtPath(dir.absoluteString) {
+        do {
+          try m.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil)
+        } catch let error1 as NSError {
+          error = error1
+        }
         if error != nil {
           NSLog("%@", error!.localizedDescription)
           return
         }
       }
-      value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+      do {
+        try value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding)
+      } catch let error1 as NSError {
+        error = error1
+      }
       if error != nil {
         NSLog("%@", error!.localizedDescription)
       }

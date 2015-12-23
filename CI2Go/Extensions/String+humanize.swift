@@ -14,12 +14,12 @@ extension String {
       let words = componentsSeparatedByString("_")
       var ret = [String]()
       for word in words {
-        let firstChar = word.substringToIndex(advance(startIndex, 1)).uppercaseString
-        let remainingChars = word.substringFromIndex(advance(startIndex, 1))
+        let firstChar = word.substringToIndex(startIndex.advancedBy(1)).uppercaseString
+        let remainingChars = word.substringFromIndex(startIndex.advancedBy(1))
         let w = firstChar + remainingChars
         ret.append(w)
       }
-      return " ".join(ret)
+      return ret.joinWithSeparator(" ")
     }
   }
 }

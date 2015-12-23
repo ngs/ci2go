@@ -42,9 +42,9 @@ extension ColorScheme {
   }
 
   public func resetViews() {
-    let windows = UIApplication.sharedApplication().windows as! [UIWindow]
+    let windows = UIApplication.sharedApplication().windows 
     for window in windows {
-      let subviews = window.subviews as! [UIView]
+      let subviews = window.subviews 
       for v in subviews {
         v.removeFromSuperview()
         window.addSubview(v)

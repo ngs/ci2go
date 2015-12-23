@@ -14,7 +14,7 @@ public class BranchesViewController: UITableViewController {
       if project == nil {
         branches = [Branch]()
       } else {
-        branches = project!.branches!.allObjects.sorted({ (a: AnyObject, b: AnyObject) -> Bool in
+        branches = project!.branches!.allObjects.sort({ (a: AnyObject, b: AnyObject) -> Bool in
           return a.name < b.name
         }) as! [Branch]
       }
@@ -45,7 +45,7 @@ public class BranchesViewController: UITableViewController {
   }
 
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
     configureCell(cell, atIndexPath: indexPath)
     return cell
   }

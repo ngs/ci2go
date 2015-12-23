@@ -17,7 +17,7 @@ extension String  {
     let digestLen = Int(CC_MD5_DIGEST_LENGTH)
     let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
     CC_MD5(str!, strLen, result)
-    var hash = NSMutableString()
+    let hash = NSMutableString()
     for i in 0..<digestLen {
       hash.appendFormat("%02x", result[i])
     }

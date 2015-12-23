@@ -7,6 +7,7 @@
 //
 
 import WatchKit
+import DateTools
 
 class BuildInterfaceController: SingleBuildInterfaceController {
   
@@ -21,11 +22,7 @@ class BuildInterfaceController: SingleBuildInterfaceController {
   
   override func updateViews() {
     super.updateViews()
-    if let timeAgo = build?.startedAt?.timeAgoSimple() {
-      timeLabel.setText(timeAgo + " ago")
-    } else {
-      timeLabel.setText("")
-    }
+    timeLabel.setText(build?.startedAt?.timeAgoSinceNow() ?? "")
   }
   
 }

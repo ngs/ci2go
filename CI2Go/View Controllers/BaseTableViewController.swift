@@ -36,7 +36,10 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   public func updatePredicate() {
     self.fetchedResultsController.fetchRequest.predicate = predicate()
-    self.fetchedResultsController.performFetch(nil)
+    do {
+      try self.fetchedResultsController.performFetch()
+    } catch _ {
+    }
     self.tableView.reloadData()
   }
 
@@ -46,7 +49,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section < 0 { return 0 }
-    let sectionInfo = self.fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
+    let sectionInfo = self.fetchedResultsController.sections![section] 
     return sectionInfo.numberOfObjects
   }
 
@@ -57,7 +60,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cellIdentifier = self.tableView(tableView, cellIdentifierAtIndexPath: indexPath)
-    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) 
     self.configureCell(cell, atIndexPath: indexPath)
     return cell
   }
@@ -77,7 +80,7 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
 
   var fetchedResultsController: NSFetchedResultsController {
     if (_fetchedResultsController == nil) {
-      var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+      let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
       appDelegate.initializeDB()
       _fetchedResultsController = self.createFetchedResultsController(NSManagedObjectContext.MR_defaultContext())
     }
@@ -125,8 +128,6 @@ public class BaseTableViewController: UITableViewController, NSFetchedResultsCon
         tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.None)
       }
       break
-    default:
-      return
     }
   }
 

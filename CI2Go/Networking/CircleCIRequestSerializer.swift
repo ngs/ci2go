@@ -7,20 +7,21 @@
 //
 
 import Foundation
+import AFNetworking
 
 public class CircleCIRequestSerializer: AFHTTPRequestSerializer {
   
   public var apiToken: String?
-  
-  override public func requestWithMethod(method: String!,
+
+  public override func requestWithMethod(method: String!,
     URLString: String!,
-    parameters: AnyObject!, error: NSErrorPointer) -> NSMutableURLRequest! {
+    parameters: AnyObject!, error: ()) throws -> NSMutableURLRequest {
       setValue("application/json", forHTTPHeaderField: "Accept")
       var URLWithToken = URLString
       if apiToken != nil {
         URLWithToken = URLString! + "?circle-token=" + apiToken!
       }
-      return super.requestWithMethod(method, URLString: URLWithToken, parameters: parameters, error: error)
+      return try super.requestWithMethod(method, URLString: URLWithToken, parameters: parameters, error: error)
   }
   
 }

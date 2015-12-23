@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AFNetworking
+import MagicalRecord
+import MBProgressHUD
 
 public class BuildStepsViewController: BaseTableViewController {
   public var isLoading = false
@@ -35,7 +38,7 @@ public class BuildStepsViewController: BaseTableViewController {
     self.updatePredicate()
     super.viewWillAppear(animated)
     let c = NSNotificationCenter.defaultCenter()
-    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
       dispatch_async(dispatch_get_main_queue(), {
         self.load()
       })
@@ -51,7 +54,7 @@ public class BuildStepsViewController: BaseTableViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
     let c = NSNotificationCenter.defaultCenter()
-    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
       dispatch_async(dispatch_get_main_queue(), {
         self.load()
       })
@@ -85,20 +88,22 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   private func callAPI(path: String, progressMessage: String, successMessage: String, failureMessage: String) {
+    guard let apiPath = build?.apiPath else { return }
     let hud = MBProgressHUD(view: self.navigationController?.view)
     self.navigationController?.view.addSubview(hud)
     hud.animationType = MBProgressHUDAnimation.Fade
     hud.dimBackground = true
     hud.labelText = progressMessage
     hud.show(true)
-    CircleCIAPISessionManager().POST(build?.apiPath!.stringByAppendingPathComponent(path), parameters: [],
-      success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
+    CircleCIAPISessionManager().POST("\(apiPath)/\(path)",
+      parameters: [:],
+      success: { (op, res) in
         hud.labelText = successMessage
         hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
         hud.mode = MBProgressHUDMode.CustomView
         hud.hide(true, afterDelay: 1)
       })
-      { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
+      { (op, err) in
         hud.labelText = failureMessage
         hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
         hud.mode = MBProgressHUDMode.CustomView
@@ -174,14 +179,14 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    let sectionInfo = fetchedResultsController.sections![section] as! NSFetchedResultsSectionInfo
-    if let action = sectionInfo.objects[0] as? BuildAction {
+    let sectionInfo = fetchedResultsController.sections![section] 
+    if let action = sectionInfo.objects?[0] as? BuildAction {
       return action.type?.componentsSeparatedByString(": ").last?.humanize
     }
     return nil
   }
 
-  public override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+  public override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
     if let cell = sender as? UITableViewCell {
       if let indexPath = tableView.indexPathForCell(cell) {
         if let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction {
@@ -202,33 +207,31 @@ public class BuildStepsViewController: BaseTableViewController {
   }
 
   @IBAction func openActionSheet(sender: AnyObject) {
-    let asheet = UIActionSheet()
-    let lifecycle = self.build?.lifecycle
-    asheet.cancelButtonIndex = 0
+    guard let lifecycle = self.build?.lifecycle else { return }
+    let av = UIAlertController()
+    av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
+      self.retryBuild()
+    }))
     if lifecycle != "not_run" {
-      asheet.bk_addButtonWithTitle("Rebuild", handler: {
+      av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
         self.retryBuild()
-      })
-      asheet.cancelButtonIndex++
+      }))
     }
     if lifecycle == "running" {
-      asheet.bk_addButtonWithTitle("Cancel Build", handler: {
+      av.addAction(UIAlertAction(title: "Canvel Build", style: .Default, handler: { _ in
         self.cancelBuild()
-      })
-      asheet.cancelButtonIndex++
+      }))
     }
-    if self.build?.compareURL != nil {
-      asheet.bk_addButtonWithTitle("Compare", handler: {
+    if let _ = self.build?.compareURL {
+      av.addAction(UIAlertAction(title: "Compare", style: .Default, handler: { _ in
         self.compareChanges()
-      })
-      asheet.cancelButtonIndex++
+      }))
     }
-    asheet.addButtonWithTitle("Cancel")
-    if let barButtonItem = sender as? UIBarButtonItem {
-      asheet.showFromBarButtonItem(barButtonItem, animated: true)
-    } else {
-      asheet.showInView(self.navigationController?.view)
+    av.addAction(UIAlertAction(title: "Canvel", style: .Cancel, handler: nil))
+    if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
+      popover.barButtonItem = barButtonItem
     }
+    presentViewController(av, animated: true, completion: nil)
   }
   
 }

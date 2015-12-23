@@ -55,7 +55,7 @@ public class CI2GoUserDefaults: NSObject {
 
   public var colorSchemeName: NSString? {
     set(value) {
-      if (value != nil && find(ColorScheme.names(), value! as String) != nil) {
+      if (value != nil && ColorScheme.names().indexOf((value! as String)) != nil) {
         userDefaults.setValue(value, forKey: kCI2GoColorSchemeUserDefaultsKey)
       } else {
         userDefaults.removeObjectForKey(kCI2GoColorSchemeUserDefaultsKey)
@@ -68,7 +68,7 @@ public class CI2GoUserDefaults: NSObject {
     }
   }
 
-  public var circleCIAPIToken: NSString? {
+  public var circleCIAPIToken: String? {
     set(value) {
       if (value != nil) {
         userDefaults.setValue(value, forKey: kCI2GoCircleCIAPITokenDefaultsKey)
@@ -83,7 +83,7 @@ public class CI2GoUserDefaults: NSObject {
   }
   
   public var isLoggedIn: Bool {
-    get { return circleCIAPIToken?.length > 0 }
+    get { return circleCIAPIToken?.utf8.count > 0 }
   }
 
   public var logRefreshInterval: Double {

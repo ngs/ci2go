@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AFNetworking
+import MagicalRecord
+import MBProgressHUD
 
 public class ProjectsViewController: UITableViewController {
 
@@ -19,7 +22,7 @@ public class ProjectsViewController: UITableViewController {
   }
 
   public func refresh() {
-    projects = Project.MR_findAll().sorted({ (a: AnyObject, b: AnyObject) -> Bool in
+    projects = Project.MR_findAll().sort({ (a: AnyObject, b: AnyObject) -> Bool in
       let prjA = a as! Project, prjB = b as! Project
       return prjA.projectID < prjB.projectID
     }) as! [Project]
@@ -42,7 +45,7 @@ public class ProjectsViewController: UITableViewController {
   }
 
   public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)") as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)")!
     configureCell(cell, atIndexPath: indexPath)
     return cell
   }

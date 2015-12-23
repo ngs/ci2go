@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AFNetworking
+import MagicalRecord
 
 public class BuildsViewController: BaseTableViewController {
 
@@ -38,13 +40,13 @@ public class BuildsViewController: BaseTableViewController {
     self.updatePredicate()
     super.viewWillAppear(animated)
     let c = NSNotificationCenter.defaultCenter()
-    c.addObserverForName(kCI2GoBranchChangedNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+    c.addObserverForName(kCI2GoBranchChangedNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
       dispatch_async(dispatch_get_main_queue(), {
         self.updatePredicate()
         self.load(false)
       })
     }
-    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification!) -> Void in
+    c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
       dispatch_async(dispatch_get_main_queue(), {
         self.load(false)
       })
@@ -67,9 +69,9 @@ public class BuildsViewController: BaseTableViewController {
   }
 
   override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-    let buildCell = cell as! BuildTableViewCell
+    let buildCell = cell as? BuildTableViewCell
     let build = fetchedResultsController.objectAtIndexPath(indexPath) as? Build
-    buildCell.build = build
+    buildCell?.build = build
   }
 
   public func load(more: Bool) {

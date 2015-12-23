@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import MagicalRecord
 
 public class CI2GoManagedObject :NSManagedObject {
 
@@ -57,7 +58,7 @@ public class CI2GoManagedObject :NSManagedObject {
   }
 
   public override func MR_findObjectForRelationship(relationshipInfo: NSRelationshipDescription!, withData singleRelatedObjectData: AnyObject!) -> NSManagedObject! {
-    let klazz: AnyClass! = NSClassFromString(relationshipInfo.destinationEntity?.managedObjectClassName)
+    let klazz: AnyClass! = NSClassFromString(relationshipInfo.destinationEntity!.managedObjectClassName)
     let data2 = klazz.addPrimaryAttributeWithObjectData(singleRelatedObjectData)
     return super.MR_findObjectForRelationship(relationshipInfo, withData: data2)
   }
