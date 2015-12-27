@@ -28,4 +28,4 @@ Certificates/
 CI2Go/Environment.swift
 Distribution
 fastlane/profiles/*.mobileprovision
-*.swp
+`*.swp
