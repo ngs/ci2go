@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		213978327B83C850C0352C4C /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB292DC720AABFA8BE7BD636 /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
 		238EA3388D3AF29E6A6FCCB9 /* Pods_CI2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */; };
+		52A685F8A4132C2AAE52F48A /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6ED70E3C452E478F3BF22E /* Pods_CI2GoTests.framework */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		8567018F1C3015F500E76DCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018E1C3015F500E76DCF /* ViewController.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
@@ -25,8 +26,6 @@
 		856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856701D51C3016BA00E76DCF /* GlanceController.swift */; };
 		856701D81C3016BA00E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701D71C3016BA00E76DCF /* Assets.xcassets */; };
 		856701DC1C3016BA00E76DCF /* CI2Go WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 856701BC1C3016BA00E76DCF /* CI2Go WatchKit App.app */; };
-		856701E91C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 856701E71C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig */; };
-		856701EA1C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 856701E81C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig */; };
 		856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702001C30253100E76DCF /* ColorScheme+UIKit.swift */; };
 		856702881C30253100E76DCF /* NSManagedObject+entityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702011C30253100E76DCF /* NSManagedObject+entityName.swift */; };
 		856702891C30253100E76DCF /* NSNumber+timeFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */; };
@@ -159,7 +158,6 @@
 		856703081C30253100E76DCF /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702841C30253100E76DCF /* Wombat.itermcolors */; };
 		856703091C30253100E76DCF /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702851C30253100E76DCF /* Wryan.itermcolors */; };
 		8567030A1C30253100E76DCF /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702861C30253100E76DCF /* Zenburn.itermcolors */; };
-		8567030B1C30254300E76DCF /* ColorScheme+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702001C30253100E76DCF /* ColorScheme+UIKit.swift */; };
 		8567030C1C30254300E76DCF /* NSManagedObject+entityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702011C30253100E76DCF /* NSManagedObject+entityName.swift */; };
 		8567030D1C30254300E76DCF /* NSNumber+timeFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */; };
 		8567030E1C30254300E76DCF /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702031C30253100E76DCF /* String+humanize.swift */; };
@@ -291,6 +289,12 @@
 		8567038C1C30260500E76DCF /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702841C30253100E76DCF /* Wombat.itermcolors */; };
 		8567038D1C30260500E76DCF /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702851C30253100E76DCF /* Wryan.itermcolors */; };
 		8567038E1C30260500E76DCF /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702861C30253100E76DCF /* Zenburn.itermcolors */; };
+		856E04D51C313BC2003F43BC /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
+		856E04D71C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
+		856E04D81C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
+		85C067891C3127AA001062F2 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
+		85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
+		85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +355,8 @@
 
 /* Begin PBXFileReference section */
 		01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.release.xcconfig"; sourceTree = "<group>"; };
+		3E6ED70E3C452E478F3BF22E /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		649E92C9315060CDC29A18BF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -516,9 +522,13 @@
 		856702841C30253100E76DCF /* Wombat.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wombat.itermcolors; sourceTree = "<group>"; };
 		856702851C30253100E76DCF /* Wryan.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wryan.itermcolors; sourceTree = "<group>"; };
 		856702861C30253100E76DCF /* Zenburn.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Zenburn.itermcolors; sourceTree = "<group>"; };
-		A895AC37A7930CDBC56210BA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		B66AFF3CE555225E2FCE553A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		856E04D61C313BD9003F43BC /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		85C067881C3127AA001062F2 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
+		85C0678A1C31354F001062F2 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		85C0678C1C31363B001062F2 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
+		85C0678D1C3136E1001062F2 /* CI2Go WatchKit App Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go WatchKit App Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB292DC720AABFA8BE7BD636 /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go_WatchKit_App_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -535,6 +545,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A685F8A4132C2AAE52F48A /* Pods_CI2GoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,17 +596,19 @@
 		8567018B1C3015F500E76DCF /* CI2Go */ = {
 			isa = PBXGroup;
 			children = (
+				856701E61C3017AB00E76DCF /* CI2Go.entitlements */,
+				856701981C3015F500E76DCF /* Info.plist */,
+				8567018C1C3015F500E76DCF /* AppDelegate.swift */,
+				85C0678A1C31354F001062F2 /* AppGlobal.swift */,
+				85C0678C1C31363B001062F2 /* CI2Go-Bridging-Header.h */,
+				8567018E1C3015F500E76DCF /* ViewController.swift */,
+				856701931C3015F500E76DCF /* Assets.xcassets */,
 				856701FF1C30253100E76DCF /* Extensions */,
 				856702071C30253100E76DCF /* Fonts */,
 				8567020F1C30253100E76DCF /* Helpers */,
+				85C067871C312748001062F2 /* Models */,
 				856702121C30253100E76DCF /* Schemes */,
-				856701E61C3017AB00E76DCF /* CI2Go.entitlements */,
-				8567018C1C3015F500E76DCF /* AppDelegate.swift */,
-				8567018E1C3015F500E76DCF /* ViewController.swift */,
-				856701901C3015F500E76DCF /* Main.storyboard */,
-				856701931C3015F500E76DCF /* Assets.xcassets */,
-				856701951C3015F500E76DCF /* LaunchScreen.storyboard */,
-				856701981C3015F500E76DCF /* Info.plist */,
+				85C0678F1C313930001062F2 /* Storyboards */,
 			);
 			path = CI2Go;
 			sourceTree = "<group>";
@@ -632,6 +645,7 @@
 		856701CC1C3016BA00E76DCF /* CI2Go WatchKit App Extension */ = {
 			isa = PBXGroup;
 			children = (
+				85C0678D1C3136E1001062F2 /* CI2Go WatchKit App Extension-Bridging-Header.h */,
 				856701CF1C3016BA00E76DCF /* InterfaceController.swift */,
 				856701D11C3016BA00E76DCF /* ExtensionDelegate.swift */,
 				856701D31C3016BA00E76DCF /* NotificationController.swift */,
@@ -811,6 +825,24 @@
 			path = Schemes;
 			sourceTree = "<group>";
 		};
+		85C067871C312748001062F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				85C067881C3127AA001062F2 /* Branch.swift */,
+				856E04D61C313BD9003F43BC /* Project.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		85C0678F1C313930001062F2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				856701951C3015F500E76DCF /* LaunchScreen.storyboard */,
+				856701901C3015F500E76DCF /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		93BD740C5BBDFB0DC3FDFB80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,6 +851,7 @@
 				649E92C9315060CDC29A18BF /* Pods.framework */,
 				634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */,
 				EB292DC720AABFA8BE7BD636 /* Pods_CI2Go_WatchKit_App_Extension.framework */,
+				3E6ED70E3C452E478F3BF22E /* Pods_CI2GoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -828,10 +861,10 @@
 			children = (
 				856701E71C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig */,
 				856701E81C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig */,
-				A895AC37A7930CDBC56210BA /* Pods.debug.xcconfig */,
-				B66AFF3CE555225E2FCE553A /* Pods.release.xcconfig */,
 				C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */,
 				01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */,
+				5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */,
+				D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -865,9 +898,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 856701B41C3015F500E76DCF /* Build configuration list for PBXNativeTarget "CI2GoTests" */;
 			buildPhases = (
+				26A2CC86FB9A085421510FC0 /* Check Pods Manifest.lock */,
 				856701991C3015F500E76DCF /* Sources */,
 				8567019A1C3015F500E76DCF /* Frameworks */,
 				8567019B1C3015F500E76DCF /* Resources */,
+				62BC97BA3FF11E6A3D6862B6 /* Embed Pods Frameworks */,
+				8356350975F10B427A7F478A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -941,7 +977,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "LittleApps Inc.";
 				TargetAttributes = {
 					856701881C3015F500E76DCF = {
@@ -1013,7 +1049,6 @@
 				856702FC1C30253100E76DCF /* Tomorrow Night Bright.itermcolors in Resources */,
 				856702B31C30253100E76DCF /* Espresso Libre.itermcolors in Resources */,
 				856702EA1C30253100E76DCF /* Seti.itermcolors in Resources */,
-				856701E91C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig in Resources */,
 				8567029B1C30253100E76DCF /* AlienBlood.itermcolors in Resources */,
 				856702ED1C30253100E76DCF /* SoftServer.itermcolors in Resources */,
 				8567029A1C30253100E76DCF /* Afterglow.itermcolors in Resources */,
@@ -1084,7 +1119,6 @@
 				856702A51C30253100E76DCF /* C64.itermcolors in Resources */,
 				856702E61C30253100E76DCF /* Rippedcasts.itermcolors in Resources */,
 				856702C21C30253100E76DCF /* Hybrid.itermcolors in Resources */,
-				856701EA1C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig in Resources */,
 				856703071C30253100E76DCF /* Wez.itermcolors in Resources */,
 				856702F11C30253100E76DCF /* Solarized Light.itermcolors in Resources */,
 				856702D61C30253100E76DCF /* N0tch2k.itermcolors in Resources */,
@@ -1306,6 +1340,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		26A2CC86FB9A085421510FC0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		2B3FB150FDA5D5A5ABCBC3DD /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1351,6 +1400,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		62BC97BA3FF11E6A3D6862B6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8356350975F10B427A7F478A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9A369CCAB6FEFA89FEC3F701 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1389,10 +1468,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8567018F1C3015F500E76DCF /* ViewController.swift in Sources */,
+				85C067891C3127AA001062F2 /* Branch.swift in Sources */,
 				856702951C30253100E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				8567028B1C30253100E76DCF /* String+md5.swift in Sources */,
 				8567028C1C30253100E76DCF /* UIColor+Mix.swift in Sources */,
+				856E04D71C313BD9003F43BC /* Project.swift in Sources */,
 				8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */,
+				85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */,
 				856702881C30253100E76DCF /* NSManagedObject+entityName.swift in Sources */,
 				856702961C30253100E76DCF /* ColorScheme.swift in Sources */,
 				856702891C30253100E76DCF /* NSNumber+timeFormatted.swift in Sources */,
@@ -1427,14 +1509,16 @@
 				856703191C3025FB00E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				8567030D1C30254300E76DCF /* NSNumber+timeFormatted.swift in Sources */,
 				856703111C30254300E76DCF /* UIFont+appFonts.swift in Sources */,
-				8567030B1C30254300E76DCF /* ColorScheme+UIKit.swift in Sources */,
 				856701D41C3016BA00E76DCF /* NotificationController.swift in Sources */,
+				85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */,
 				8567030E1C30254300E76DCF /* String+humanize.swift in Sources */,
+				856E04D81C313BD9003F43BC /* Project.swift in Sources */,
 				8567030C1C30254300E76DCF /* NSManagedObject+entityName.swift in Sources */,
 				8567030F1C30254300E76DCF /* String+md5.swift in Sources */,
 				856701D21C3016BA00E76DCF /* ExtensionDelegate.swift in Sources */,
 				856701D01C3016BA00E76DCF /* InterfaceController.swift in Sources */,
 				856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */,
+				856E04D51C313BC2003F43BC /* Branch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1585,6 +1669,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -1599,11 +1684,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		856701B51C3015F500E76DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CI2GoTests/Info.plist;
@@ -1616,6 +1703,7 @@
 		};
 		856701B61C3015F500E76DCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CI2GoTests/Info.plist;
@@ -1665,6 +1753,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1685,6 +1774,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
