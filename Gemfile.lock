@@ -1,3 +1,34 @@
+GIT
+  remote: git@github.com:ngs/fastlane.git
+  revision: e4f7e7efb7744e2de7a6d82663c3b207983dacb1
+  branch: s3-watch-kit
+  specs:
+    fastlane (1.49.0)
+      addressable (~> 2.3.8)
+      cert (>= 1.2.7, < 2.0.0)
+      credentials_manager (>= 0.13.0, < 1.0.0)
+      deliver (>= 1.6.5, < 2.0.0)
+      fastlane_core (>= 0.31.0, < 1.0.0)
+      frameit (>= 2.4.1, < 3.0.0)
+      gym (>= 1.1.6, < 2.0.0)
+      krausefx-shenzhen (>= 0.14.7)
+      match (>= 0.2.2, < 1.0.0)
+      pem (>= 1.1.1, < 2.0.0)
+      pilot (>= 1.2.1, < 2.0.0)
+      plist (~> 3.1.0)
+      produce (>= 1.1.0, < 2.0.0)
+      scan (>= 0.3.3, < 1.0.0)
+      sigh (>= 1.2.1, < 2.0.0)
+      slack-notifier (~> 1.3)
+      snapshot (>= 1.4.2, < 2.0.0)
+      spaceship (>= 0.18.1, < 1.0.0)
+      supply (>= 0.2.2, < 1.0.0)
+      terminal-notifier (~> 1.6.2)
+      terminal-table (~> 1.4.5)
+      xcode-install (~> 1.0.1)
+      xcodeproj (>= 0.20, < 1.0.0)
+      xcpretty (>= 0.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -12,6 +43,11 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     babosa (1.0.2)
     cert (1.2.7)
       fastlane_core (>= 0.26.4, < 1.0.0)
@@ -32,6 +68,8 @@ GEM
       molinillo (~> 0.4.0)
       nap (~> 1.0)
       xcodeproj (~> 0.28.2)
+    cocoapods-check (0.1.0)
+      cocoapods (~> 0.39.0)
     cocoapods-core (0.39.0)
       activesupport (>= 4.0.2)
       fuzzy_match (~> 2.0.4)
@@ -74,32 +112,7 @@ GEM
       faraday (>= 0.7.4, < 0.10)
     fastimage (1.6.8)
       addressable (~> 2.3, >= 2.3.5)
-    fastlane (1.48.0)
-      addressable (~> 2.3.8)
-      cert (>= 1.2.7, < 2.0.0)
-      credentials_manager (>= 0.13.0, < 1.0.0)
-      deliver (>= 1.6.4, < 2.0.0)
-      fastlane_core (>= 0.29.1, < 1.0.0)
-      frameit (>= 2.4.1, < 3.0.0)
-      gym (>= 1.1.6, < 2.0.0)
-      krausefx-shenzhen (>= 0.14.6)
-      match (>= 0.1.2, < 1.0.0)
-      pem (>= 1.1.0, < 2.0.0)
-      pilot (>= 1.1.0, < 2.0.0)
-      plist (~> 3.1.0)
-      produce (>= 1.1.0, < 2.0.0)
-      scan (>= 0.3.2, < 1.0.0)
-      sigh (>= 1.2.1, < 2.0.0)
-      slack-notifier (~> 1.3)
-      snapshot (>= 1.4.2, < 2.0.0)
-      spaceship (>= 0.18.0, < 1.0.0)
-      supply (>= 0.2.2, < 1.0.0)
-      terminal-notifier (~> 1.6.2)
-      terminal-table (~> 1.4.5)
-      xcode-install (~> 1.0.1)
-      xcodeproj (>= 0.20, < 1.0.0)
-      xcpretty (>= 0.2.1)
-    fastlane_core (0.31.0)
+    fastlane_core (0.32.0)
       babosa
       colored
       commander (>= 4.3.5)
@@ -148,7 +161,7 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     jwt (1.5.2)
-    krausefx-shenzhen (0.14.6)
+    krausefx-shenzhen (0.14.7)
       commander (~> 4.3)
       dotenv (>= 0.7)
       faraday (~> 0.9)
@@ -176,6 +189,7 @@ GEM
     memoist (0.14.0)
     method_source (0.8.2)
     mini_magick (4.0.4)
+    mini_portile2 (2.0.0)
     minitest (5.8.3)
     molinillo (0.4.0)
     multi_json (1.11.2)
@@ -184,8 +198,10 @@ GEM
     nap (1.0.0)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (3.0.1)
+    net-ssh (3.0.2)
     netrc (0.7.8)
+    nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
     pem (1.1.1)
       fastlane_core (>= 0.30.0, < 1.0.0)
       spaceship (>= 0.18.1, < 1.0.0)
@@ -259,7 +275,7 @@ GEM
       activesupport (>= 3)
       claide (~> 0.9.1)
       colored (~> 1.2)
-    xcpretty (0.2.1)
+    xcpretty (0.2.2)
       rouge (~> 1.8)
     xcpretty-travis-formatter (0.0.4)
       xcpretty (~> 0.2, >= 0.0.7)
@@ -268,8 +284,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods
-  fastlane
+  aws-sdk (= 1.66.0)
+  cocoapods (= 0.39.0)
+  cocoapods-check
+  fastlane!
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

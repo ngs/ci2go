@@ -6,7 +6,6 @@
 //  Copyright © 2015 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 class Branch: Object {

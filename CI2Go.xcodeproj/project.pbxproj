@@ -3,19 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		213978327B83C850C0352C4C /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB292DC720AABFA8BE7BD636 /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
 		238EA3388D3AF29E6A6FCCB9 /* Pods_CI2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */; };
-		52A685F8A4132C2AAE52F48A /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6ED70E3C452E478F3BF22E /* Pods_CI2GoTests.framework */; };
+		8534A3EF1C33D84200CF0BA8 /* CI2GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534A3EE1C33D84200CF0BA8 /* CI2GoTests.swift */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		8567018F1C3015F500E76DCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018E1C3015F500E76DCF /* ViewController.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
 		856701971C3015F500E76DCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701951C3015F500E76DCF /* LaunchScreen.storyboard */; };
-		856701A21C3015F500E76DCF /* CI2GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856701A11C3015F500E76DCF /* CI2GoTests.swift */; };
 		856701AD1C3015F500E76DCF /* CI2GoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856701AC1C3015F500E76DCF /* CI2GoUITests.swift */; };
 		856701C01C3016BA00E76DCF /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701BE1C3016BA00E76DCF /* Interface.storyboard */; };
 		856701C21C3016BA00E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701C11C3016BA00E76DCF /* Assets.xcassets */; };
@@ -25,9 +23,7 @@
 		856701D41C3016BA00E76DCF /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856701D31C3016BA00E76DCF /* NotificationController.swift */; };
 		856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856701D51C3016BA00E76DCF /* GlanceController.swift */; };
 		856701D81C3016BA00E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701D71C3016BA00E76DCF /* Assets.xcassets */; };
-		856701DC1C3016BA00E76DCF /* CI2Go WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 856701BC1C3016BA00E76DCF /* CI2Go WatchKit App.app */; };
 		856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702001C30253100E76DCF /* ColorScheme+UIKit.swift */; };
-		856702881C30253100E76DCF /* NSManagedObject+entityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702011C30253100E76DCF /* NSManagedObject+entityName.swift */; };
 		856702891C30253100E76DCF /* NSNumber+timeFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */; };
 		8567028A1C30253100E76DCF /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702031C30253100E76DCF /* String+humanize.swift */; };
 		8567028B1C30253100E76DCF /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702041C30253100E76DCF /* String+md5.swift */; };
@@ -158,7 +154,6 @@
 		856703081C30253100E76DCF /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702841C30253100E76DCF /* Wombat.itermcolors */; };
 		856703091C30253100E76DCF /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702851C30253100E76DCF /* Wryan.itermcolors */; };
 		8567030A1C30253100E76DCF /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702861C30253100E76DCF /* Zenburn.itermcolors */; };
-		8567030C1C30254300E76DCF /* NSManagedObject+entityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702011C30253100E76DCF /* NSManagedObject+entityName.swift */; };
 		8567030D1C30254300E76DCF /* NSNumber+timeFormatted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */; };
 		8567030E1C30254300E76DCF /* String+humanize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702031C30253100E76DCF /* String+humanize.swift */; };
 		8567030F1C30254300E76DCF /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856702041C30253100E76DCF /* String+md5.swift */; };
@@ -289,16 +284,20 @@
 		8567038C1C30260500E76DCF /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702841C30253100E76DCF /* Wombat.itermcolors */; };
 		8567038D1C30260500E76DCF /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702851C30253100E76DCF /* Wryan.itermcolors */; };
 		8567038E1C30260500E76DCF /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702861C30253100E76DCF /* Zenburn.itermcolors */; };
+		856A4C201C334BA5000A8F4A /* CI2Go WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 856701BC1C3016BA00E76DCF /* CI2Go WatchKit App.app */; };
 		856E04D51C313BC2003F43BC /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
 		856E04D71C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
 		856E04D81C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
+		85AAB8A31C344A77007C5453 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */; };
 		85C067891C3127AA001062F2 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
 		85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
 		85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
+		85D0E3C51C31B1700007C569 /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D0E3C41C31B1700007C569 /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
+		CB6101F0BDDE3A0B62B93EA7 /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6ED70E3C452E478F3BF22E /* Pods_CI2GoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8567019E1C3015F500E76DCF /* PBXContainerItemProxy */ = {
+		8534A3F11C33D84200CF0BA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 856701811C3015F500E76DCF /* Project object */;
 			proxyType = 1;
@@ -319,7 +318,7 @@
 			remoteGlobalIDString = 856701C71C3016BA00E76DCF;
 			remoteInfo = "CI2Go WatchKit App Extension";
 		};
-		856701DA1C3016BA00E76DCF /* PBXContainerItemProxy */ = {
+		856A4C1E1C334B93000A8F4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 856701811C3015F500E76DCF /* Project object */;
 			proxyType = 1;
@@ -346,7 +345,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				856701DC1C3016BA00E76DCF /* CI2Go WatchKit App.app in Embed Watch Content */,
+				856A4C201C334BA5000A8F4A /* CI2Go WatchKit App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +358,9 @@
 		5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		649E92C9315060CDC29A18BF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8534A3EE1C33D84200CF0BA8 /* CI2GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoTests.swift; sourceTree = "<group>"; };
+		8534A3F01C33D84200CF0BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8567018E1C3015F500E76DCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -366,7 +368,6 @@
 		856701931C3015F500E76DCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		856701961C3015F500E76DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		856701981C3015F500E76DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8567019D1C3015F500E76DCF /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701A11C3015F500E76DCF /* CI2GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoTests.swift; sourceTree = "<group>"; };
 		856701A31C3015F500E76DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856701A81C3015F500E76DCF /* CI2GoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,7 +392,6 @@
 		856701EB1C301DAB00E76DCF /* Pods_CI2Go.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go.framework; path = "Pods/../build/Debug-iphoneos/Pods_CI2Go.framework"; sourceTree = "<group>"; };
 		856701EC1C301DAB00E76DCF /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
 		856702001C30253100E76DCF /* ColorScheme+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorScheme+UIKit.swift"; sourceTree = "<group>"; };
-		856702011C30253100E76DCF /* NSManagedObject+entityName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+entityName.swift"; sourceTree = "<group>"; };
 		856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSNumber+timeFormatted.swift"; sourceTree = "<group>"; };
 		856702031C30253100E76DCF /* String+humanize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+humanize.swift"; sourceTree = "<group>"; };
 		856702041C30253100E76DCF /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
@@ -523,29 +523,36 @@
 		856702851C30253100E76DCF /* Wryan.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wryan.itermcolors; sourceTree = "<group>"; };
 		856702861C30253100E76DCF /* Zenburn.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Zenburn.itermcolors; sourceTree = "<group>"; };
 		856E04D61C313BD9003F43BC /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85C067881C3127AA001062F2 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85C0678A1C31354F001062F2 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		85C0678C1C31363B001062F2 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85C0678D1C3136E1001062F2 /* CI2Go WatchKit App Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go WatchKit App Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		85D0E3C41C31B1700007C569 /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go_WatchKit_App_Extension.framework; path = "Pods/../build/Debug-watchos/Pods_CI2Go_WatchKit_App_Extension.framework"; sourceTree = "<group>"; };
+		85D0E3CA1C31B9D90007C569 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-watchos/Pods-CI2Go WatchKit App Extension/RealmSwift.framework"; sourceTree = "<group>"; };
+		85D0E3CC1C31B9F50007C569 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-watchos/Pods-CI2Go WatchKit App Extension/RealmSwift.framework"; sourceTree = "<group>"; };
+		85D0E3CE1C31F3F40007C569 /* CI2Go WatchKit App Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CI2Go WatchKit App Extension.entitlements"; sourceTree = "<group>"; };
+		85D0E3CF1C320B6B0007C569 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-watchos/Pods-CI2Go WatchKit App Extension/RealmSwift.framework"; sourceTree = "<group>"; };
+		85D0E3D11C320B8E0007C569 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-watchos/Pods-CI2Go WatchKit App Extension/Realm.framework"; sourceTree = "<group>"; };
 		C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB292DC720AABFA8BE7BD636 /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go_WatchKit_App_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8534A3E91C33D84100CF0BA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB6101F0BDDE3A0B62B93EA7 /* Pods_CI2GoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		856701861C3015F500E76DCF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				238EA3388D3AF29E6A6FCCB9 /* Pods_CI2Go.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8567019A1C3015F500E76DCF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				52A685F8A4132C2AAE52F48A /* Pods_CI2GoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,13 +567,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213978327B83C850C0352C4C /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */,
+				85D0E3C51C31B1700007C569 /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8534A3ED1C33D84200CF0BA8 /* CI2GoTests */ = {
+			isa = PBXGroup;
+			children = (
+				8534A3EE1C33D84200CF0BA8 /* CI2GoTests.swift */,
+				8534A3F01C33D84200CF0BA8 /* Info.plist */,
+			);
+			path = CI2GoTests;
+			sourceTree = "<group>";
+		};
 		856701801C3015F500E76DCF = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +591,7 @@
 				856701AB1C3015F500E76DCF /* CI2GoUITests */,
 				856701BD1C3016BA00E76DCF /* CI2Go WatchKit App */,
 				856701CC1C3016BA00E76DCF /* CI2Go WatchKit App Extension */,
+				8534A3ED1C33D84200CF0BA8 /* CI2GoTests */,
 				8567018A1C3015F500E76DCF /* Products */,
 				EA3C231E19C7767FD30A757D /* Pods */,
 				93BD740C5BBDFB0DC3FDFB80 /* Frameworks */,
@@ -585,10 +602,10 @@
 			isa = PBXGroup;
 			children = (
 				856701891C3015F500E76DCF /* CI2Go.app */,
-				8567019D1C3015F500E76DCF /* CI2GoTests.xctest */,
 				856701A81C3015F500E76DCF /* CI2GoUITests.xctest */,
 				856701BC1C3016BA00E76DCF /* CI2Go WatchKit App.app */,
 				856701C81C3016BA00E76DCF /* CI2Go WatchKit App Extension.appex */,
+				8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -625,6 +642,7 @@
 		856701AB1C3015F500E76DCF /* CI2GoUITests */ = {
 			isa = PBXGroup;
 			children = (
+				85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */,
 				856701AC1C3015F500E76DCF /* CI2GoUITests.swift */,
 				856701AE1C3015F500E76DCF /* Info.plist */,
 			);
@@ -645,6 +663,7 @@
 		856701CC1C3016BA00E76DCF /* CI2Go WatchKit App Extension */ = {
 			isa = PBXGroup;
 			children = (
+				85D0E3CE1C31F3F40007C569 /* CI2Go WatchKit App Extension.entitlements */,
 				85C0678D1C3136E1001062F2 /* CI2Go WatchKit App Extension-Bridging-Header.h */,
 				856701CF1C3016BA00E76DCF /* InterfaceController.swift */,
 				856701D11C3016BA00E76DCF /* ExtensionDelegate.swift */,
@@ -669,7 +688,6 @@
 			isa = PBXGroup;
 			children = (
 				856702001C30253100E76DCF /* ColorScheme+UIKit.swift */,
-				856702011C30253100E76DCF /* NSManagedObject+entityName.swift */,
 				856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */,
 				856702031C30253100E76DCF /* String+humanize.swift */,
 				856702041C30253100E76DCF /* String+md5.swift */,
@@ -846,6 +864,11 @@
 		93BD740C5BBDFB0DC3FDFB80 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85D0E3D11C320B8E0007C569 /* Realm.framework */,
+				85D0E3CF1C320B6B0007C569 /* RealmSwift.framework */,
+				85D0E3CC1C31B9F50007C569 /* RealmSwift.framework */,
+				85D0E3CA1C31B9D90007C569 /* RealmSwift.framework */,
+				85D0E3C41C31B1700007C569 /* Pods_CI2Go_WatchKit_App_Extension.framework */,
 				856701EB1C301DAB00E76DCF /* Pods_CI2Go.framework */,
 				856701EC1C301DAB00E76DCF /* Pods.framework */,
 				649E92C9315060CDC29A18BF /* Pods.framework */,
@@ -872,6 +895,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8534A3EB1C33D84100CF0BA8 /* CI2GoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8534A3F31C33D84200CF0BA8 /* Build configuration list for PBXNativeTarget "CI2GoTests" */;
+			buildPhases = (
+				7E2E53657C47A1BFEBB015D5 /* Check Pods Manifest.lock */,
+				8534A3E81C33D84100CF0BA8 /* Sources */,
+				8534A3E91C33D84100CF0BA8 /* Frameworks */,
+				8534A3EA1C33D84100CF0BA8 /* Resources */,
+				6D89F473D52AFF6FB6A3CBEA /* Embed Pods Frameworks */,
+				3F52B243D12233BF092B4880 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8534A3F21C33D84200CF0BA8 /* PBXTargetDependency */,
+			);
+			name = CI2GoTests;
+			productName = CI2GoTests;
+			productReference = 8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		856701881C3015F500E76DCF /* CI2Go */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 856701B11C3015F500E76DCF /* Build configuration list for PBXNativeTarget "CI2Go" */;
@@ -887,33 +931,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				856701DB1C3016BA00E76DCF /* PBXTargetDependency */,
+				856A4C1F1C334B93000A8F4A /* PBXTargetDependency */,
 			);
 			name = CI2Go;
 			productName = CI2Go;
 			productReference = 856701891C3015F500E76DCF /* CI2Go.app */;
 			productType = "com.apple.product-type.application";
-		};
-		8567019C1C3015F500E76DCF /* CI2GoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 856701B41C3015F500E76DCF /* Build configuration list for PBXNativeTarget "CI2GoTests" */;
-			buildPhases = (
-				26A2CC86FB9A085421510FC0 /* Check Pods Manifest.lock */,
-				856701991C3015F500E76DCF /* Sources */,
-				8567019A1C3015F500E76DCF /* Frameworks */,
-				8567019B1C3015F500E76DCF /* Resources */,
-				62BC97BA3FF11E6A3D6862B6 /* Embed Pods Frameworks */,
-				8356350975F10B427A7F478A /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8567019F1C3015F500E76DCF /* PBXTargetDependency */,
-			);
-			name = CI2GoTests;
-			productName = CI2GoTests;
-			productReference = 8567019D1C3015F500E76DCF /* CI2GoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		856701A71C3015F500E76DCF /* CI2GoUITests */ = {
 			isa = PBXNativeTarget;
@@ -976,10 +999,14 @@
 		856701811C3015F500E76DCF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "LittleApps Inc.";
 				TargetAttributes = {
+					8534A3EB1C33D84100CF0BA8 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 856701881C3015F500E76DCF;
+					};
 					856701881C3015F500E76DCF = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 3Y8APYUG2G;
@@ -988,10 +1015,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					8567019C1C3015F500E76DCF = {
-						CreatedOnToolsVersion = 7.1.1;
-						TestTargetID = 856701881C3015F500E76DCF;
 					};
 					856701A71C3015F500E76DCF = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -1009,11 +1032,16 @@
 					856701C71C3016BA00E76DCF = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 3Y8APYUG2G;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
 			buildConfigurationList = 856701841C3015F500E76DCF /* Build configuration list for PBXProject "CI2Go" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1026,15 +1054,22 @@
 			projectRoot = "";
 			targets = (
 				856701881C3015F500E76DCF /* CI2Go */,
-				8567019C1C3015F500E76DCF /* CI2GoTests */,
-				856701A71C3015F500E76DCF /* CI2GoUITests */,
 				856701BB1C3016BA00E76DCF /* CI2Go WatchKit App */,
 				856701C71C3016BA00E76DCF /* CI2Go WatchKit App Extension */,
+				8534A3EB1C33D84100CF0BA8 /* CI2GoTests */,
+				856701A71C3015F500E76DCF /* CI2GoUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8534A3EA1C33D84100CF0BA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		856701871C3015F500E76DCF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1165,13 +1200,6 @@
 				8567029C1C30253100E76DCF /* Argonaut.itermcolors in Resources */,
 				856702E71C30253100E76DCF /* Royal.itermcolors in Resources */,
 				856701921C3015F500E76DCF /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8567019B1C3015F500E76DCF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1340,21 +1368,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		26A2CC86FB9A085421510FC0 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		2B3FB150FDA5D5A5ABCBC3DD /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1400,7 +1413,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		62BC97BA3FF11E6A3D6862B6 /* Embed Pods Frameworks */ = {
+		3F52B243D12233BF092B4880 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D89F473D52AFF6FB6A3CBEA /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1415,19 +1443,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8356350975F10B427A7F478A /* Copy Pods Resources */ = {
+		7E2E53657C47A1BFEBB015D5 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9A369CCAB6FEFA89FEC3F701 /* Copy Pods Resources */ = {
@@ -1463,6 +1491,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8534A3E81C33D84100CF0BA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8534A3EF1C33D84200CF0BA8 /* CI2GoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		856701851C3015F500E76DCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1475,7 +1511,6 @@
 				856E04D71C313BD9003F43BC /* Project.swift in Sources */,
 				8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */,
 				85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */,
-				856702881C30253100E76DCF /* NSManagedObject+entityName.swift in Sources */,
 				856702961C30253100E76DCF /* ColorScheme.swift in Sources */,
 				856702891C30253100E76DCF /* NSNumber+timeFormatted.swift in Sources */,
 				856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */,
@@ -1484,19 +1519,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		856701991C3015F500E76DCF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				856701A21C3015F500E76DCF /* CI2GoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		856701A41C3015F500E76DCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				856701AD1C3015F500E76DCF /* CI2GoUITests.swift in Sources */,
+				85AAB8A31C344A77007C5453 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1513,7 +1541,6 @@
 				85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */,
 				8567030E1C30254300E76DCF /* String+humanize.swift in Sources */,
 				856E04D81C313BD9003F43BC /* Project.swift in Sources */,
-				8567030C1C30254300E76DCF /* NSManagedObject+entityName.swift in Sources */,
 				8567030F1C30254300E76DCF /* String+md5.swift in Sources */,
 				856701D21C3016BA00E76DCF /* ExtensionDelegate.swift in Sources */,
 				856701D01C3016BA00E76DCF /* InterfaceController.swift in Sources */,
@@ -1525,10 +1552,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8567019F1C3015F500E76DCF /* PBXTargetDependency */ = {
+		8534A3F21C33D84200CF0BA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 856701881C3015F500E76DCF /* CI2Go */;
-			targetProxy = 8567019E1C3015F500E76DCF /* PBXContainerItemProxy */;
+			targetProxy = 8534A3F11C33D84200CF0BA8 /* PBXContainerItemProxy */;
 		};
 		856701AA1C3015F500E76DCF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1540,10 +1567,10 @@
 			target = 856701C71C3016BA00E76DCF /* CI2Go WatchKit App Extension */;
 			targetProxy = 856701CA1C3016BA00E76DCF /* PBXContainerItemProxy */;
 		};
-		856701DB1C3016BA00E76DCF /* PBXTargetDependency */ = {
+		856A4C1F1C334B93000A8F4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 856701BB1C3016BA00E76DCF /* CI2Go WatchKit App */;
-			targetProxy = 856701DA1C3016BA00E76DCF /* PBXContainerItemProxy */;
+			targetProxy = 856A4C1E1C334B93000A8F4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1575,6 +1602,35 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8534A3F41C33D84200CF0BA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CI2GoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
+			};
+			name = Debug;
+		};
+		8534A3F51C33D84200CF0BA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CI2GoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
+			};
+			name = Release;
+		};
 		856701AF1C3015F500E76DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1637,7 +1693,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1666,7 +1722,6 @@
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CI2Go/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
@@ -1679,38 +1734,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				INFOPLIST_FILE = CI2Go/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		856701B51C3015F500E76DCF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CI2GoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
-			};
-			name = Debug;
-		};
-		856701B61C3015F500E76DCF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CI2GoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
 			};
 			name = Release;
 		};
@@ -1718,6 +1746,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = CI2GoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1730,6 +1759,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = CI2GoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1742,15 +1772,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "CI2Go WatchKit App Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
@@ -1763,15 +1792,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				INFOPLIST_FILE = "CI2Go WatchKit App Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PRODUCT_NAME)/$(PRODUCT_NAME)-Bridging-Header.h";
@@ -1805,8 +1833,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App/CI2Go WatchKit App.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = CI2Go_WatchKit_App_Extension;
 				INFOPLIST_FILE = "CI2Go WatchKit App/Info.plist";
@@ -1823,6 +1851,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8534A3F31C33D84200CF0BA8 /* Build configuration list for PBXNativeTarget "CI2GoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8534A3F41C33D84200CF0BA8 /* Debug */,
+				8534A3F51C33D84200CF0BA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		856701841C3015F500E76DCF /* Build configuration list for PBXProject "CI2Go" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1837,15 +1874,6 @@
 			buildConfigurations = (
 				856701B21C3015F500E76DCF /* Debug */,
 				856701B31C3015F500E76DCF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		856701B41C3015F500E76DCF /* Build configuration list for PBXNativeTarget "CI2GoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				856701B51C3015F500E76DCF /* Debug */,
-				856701B61C3015F500E76DCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

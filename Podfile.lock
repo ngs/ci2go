@@ -3,7 +3,6 @@ PODS:
   - AlamofireObjectMapper (2.1.0):
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
-  - ANSIKit (0.0.1)
   - CryptoSwift (0.1.1)
   - GoogleAnalytics (3.14.0)
   - MBProgressHUD (0.9.2)
@@ -43,7 +42,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.1)
   - AlamofireObjectMapper (~> 2.1)
-  - ANSIKit (from `git@github.com:ngs/ANSIKit.git`, branch `cocoapods`)
   - GoogleAnalytics
   - MBProgressHUD (~> 0.8)
   - Nimble (~> 3.0)
@@ -51,25 +49,14 @@ DEPENDENCIES:
   - OHHTTPStubs (~> 4.7)
   - PusherSwift (~> 0.1)
   - Quick (~> 0.8)
-  - RealmSwift (~> 0.97)
+  - RealmSwift (= 0.97.0)
   - RxBlocking (~> 2.0.0-beta)
   - RxCocoa (~> 2.0.0-beta)
   - RxSwift (~> 2.0.0-beta)
 
-EXTERNAL SOURCES:
-  ANSIKit:
-    :branch: cocoapods
-    :git: git@github.com:ngs/ANSIKit.git
-
-CHECKOUT OPTIONS:
-  ANSIKit:
-    :commit: 06d8c480723083c82c605d25414124434f65a743
-    :git: git@github.com:ngs/ANSIKit.git
-
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
-  ANSIKit: 8b3a6bccfee5072f007c8752709f572e33d09eaa
   CryptoSwift: c11640d3d66107efc8333e4131a5173f072b1d61
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

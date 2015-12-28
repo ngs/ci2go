@@ -28,4 +28,7 @@ Certificates/
 CI2Go/Environment.swift
 Distribution
 fastlane/profiles/*.mobileprovision
+fastlane/report.xml
 `*.swp
+.bundle
+vendor
