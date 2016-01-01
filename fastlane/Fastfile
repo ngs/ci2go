@@ -6,24 +6,6 @@ default_platform :ios
 
 APP_NAME = 'CI2Go'
 
-def set_build_number
-  increment_build_number(build_number: ENV['CIRCLE_BUILD_NUM'])
-end
-
-def build_ipa(export_method = 'app-store', scheme = 'CI2Go')
-  unlock_keychain
-  gym(
-    scheme: scheme,
-    # export_method: export_method,
-    codesigning_identity: ENV['DEVELOPER_NAME'],
-    use_legacy_build_api: true,
-    configuration: 'Release',
-    clean: false,
-    output_directory: "Build/#{export_method}",
-    archive_path: "Build/#{export_method}/#{scheme}.xcarchive"
-  )
-end
-
 def import_certificate_from_base64(file_spec, b64str, password = nil)
   require 'tempfile'
   require 'base64'
@@ -39,15 +21,18 @@ end
 platform :ios do
 
   desc 'Build AdHoc version ipa'
-  lane :build_adhoc do
-    set_build_number
-    build_ipa('ad-hoc')
-  end
-
-  desc 'Build Distribution version ipa'
-  lane :build_distribution do
-    set_build_number
-    build_ipa
+  lane :build do
+    increment_build_number build_number: ENV['CIRCLE_BUILD_NUM']
+    unlock_keychain
+    gym(
+      scheme: APP_NAME,
+      codesigning_identity: ENV['DEVELOPER_NAME'],
+      use_legacy_build_api: true,
+      configuration: 'Release',
+      clean: false,
+      output_directory: "Build",
+      archive_path: "Build/#{APP_NAME}.xcarchive"
+    )
   end
 
   desc 'Import certs'
@@ -89,10 +74,20 @@ platform :ios do
 
   desc 'Deploy a new version to S3'
   lane :deploy_s3 do
+    ipa = "Build/#{APP_NAME}.ipa"
+    resign(
+      ipa: ipa,
+      signing_identity: ENV['DEVELOPER_NAME'],
+      provisioning_profile: {
+        'com.ci2go.ios.Circle' => './fastlane/profiles/AdHoc_com.ci2go.ios.Circle.mobileprovision',
+        'com.ci2go.ios.Circle.watchkitapp' => './fastlane/profiles/AdHoc_com.ci2go.ios.Circle.watchkitapp.mobileprovision',
+        'com.ci2go.ios.Circle.watchkitapp.ext' => './fastlane/profiles/AdHoc_com.ci2go.ios.Circle.watchkitapp.ext.mobileprovision'
+      }
+    )
     path = "#{ENV['CIRCLE_PROJECT_USERNAME']}/#{ENV['CIRCLE_PROJECT_REPONAME']}/#{ENV['CIRCLE_BUILD_NUM']}/"
     s3(
-      ipa: "Build/ad-hoc/#{APP_NAME}.ipa",
-      dsym: "Build/ad-hoc/#{APP_NAME}.app.dSYM.zip",
+      ipa: ipa,
+      dsym: "Build/#{APP_NAME}.app.dSYM.zip",
       bucket: ENV['S3_BUCKET'],
       path: path,
       html_file_name: "#{path}index.html",
@@ -112,6 +107,16 @@ platform :ios do
 
   desc 'Submit a new Beta Build to Apple TestFlight'
   lane :deploy_testflight do
+    ipa = "Build/#{APP_NAME}.ipa"
+    resign(
+      ipa: ipa,
+      signing_identity: ENV['DEVELOPER_NAME'],
+      provisioning_profile: {
+        'com.ci2go.ios.Circle' => './fastlane/profiles/AppStore_com.ci2go.ios.Circle.mobileprovision',
+        'com.ci2go.ios.Circle.watchkitapp' => './fastlane/profiles/AppStore_com.ci2go.ios.Circle.watchkitapp.mobileprovision',
+        'com.ci2go.ios.Circle.watchkitapp.ext' => './fastlane/profiles/AppStore_com.ci2go.ios.Circle.watchkitapp.ext.mobileprovision'
+      }
+    )
     testflight(skip_submission: true)
   end
 end

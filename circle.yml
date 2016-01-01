@@ -45,7 +45,7 @@ deployment:
   master:
     branch: /master|publish\-.+/
     commands:
-      - bundle exec fastlane build_distribution
+      - bundle exec fastlane build
       - bundle exec fastlane deploy_testflight
       - bundle exec deliver run --skip_screenshots
       - bundle exec snapshot --workspace CI2Go.xcworkspace --scheme CI2Go
@@ -53,5 +53,5 @@ deployment:
   preview:
     branch: /.*/
     commands:
-      - bundle exec fastlane build_adhoc
+      - bundle exec fastlane build
       - bundle exec fastlane deploy_s3 > /dev/null 2>&1
