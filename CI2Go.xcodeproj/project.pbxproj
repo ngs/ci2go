@@ -8,7 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		238EA3388D3AF29E6A6FCCB9 /* Pods_CI2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */; };
-		8534A3EF1C33D84200CF0BA8 /* CI2GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8534A3EE1C33D84200CF0BA8 /* CI2GoTests.swift */; };
+		850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
+		850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
+		850B4E881C36E78700C1EC70 /* build.json in Resources */ = {isa = PBXBuildFile; fileRef = 850B4E871C36E78700C1EC70 /* build.json */; };
+		850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E891C36EA6B00C1EC70 /* Node.swift */; };
+		850B4E8B1C36EC4C00C1EC70 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E891C36EA6B00C1EC70 /* Node.swift */; };
+		85168A831C36812B00392145 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A821C36812B00392145 /* Build.swift */; };
+		85168A851C36813300392145 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A841C36813300392145 /* BuildAction.swift */; };
+		85168A871C36813A00392145 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A861C36813A00392145 /* BuildStep.swift */; };
+		85168A891C36814200392145 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A881C36814200392145 /* Commit.swift */; };
+		85168A8D1C36815D00392145 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A8C1C36815D00392145 /* User.swift */; };
+		85168A8E1C3681F600392145 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A821C36812B00392145 /* Build.swift */; };
+		85168A8F1C3681F600392145 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A841C36813300392145 /* BuildAction.swift */; };
+		85168A901C3681F600392145 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A861C36813A00392145 /* BuildStep.swift */; };
+		85168A911C3681F600392145 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A881C36814200392145 /* Commit.swift */; };
+		85168A931C3681F600392145 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A8C1C36815D00392145 /* User.swift */; };
+		85168A951C3691A300392145 /* BranchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A941C3691A300392145 /* BranchSpec.swift */; };
+		85168A981C36A25100392145 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85168A971C36A25100392145 /* projects.json */; };
+		85168A9A1C36A44C00392145 /* SpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A991C36A44C00392145 /* SpecHelper.swift */; };
+		85168A9C1C36A9A500392145 /* ProjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A9B1C36A9A500392145 /* ProjectSpec.swift */; };
+		85168A9E1C36B71E00392145 /* builds.json in Resources */ = {isa = PBXBuildFile; fileRef = 85168A9D1C36B71E00392145 /* builds.json */; };
+		85168AA01C36BA6200392145 /* BuildSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A9F1C36BA6200392145 /* BuildSpec.swift */; };
+		85168AA21C36CBCC00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
+		85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		8567018F1C3015F500E76DCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018E1C3015F500E76DCF /* ViewController.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
@@ -358,9 +380,22 @@
 		5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		634D42A84F5F2CE51153E499 /* Pods_CI2Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		649E92C9315060CDC29A18BF /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUniqueExtension.swift; sourceTree = "<group>"; };
+		850B4E871C36E78700C1EC70 /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
+		850B4E891C36EA6B00C1EC70 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		85168A821C36812B00392145 /* Build.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Build.swift; sourceTree = "<group>"; };
+		85168A841C36813300392145 /* BuildAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildAction.swift; sourceTree = "<group>"; };
+		85168A861C36813A00392145 /* BuildStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStep.swift; sourceTree = "<group>"; };
+		85168A881C36814200392145 /* Commit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		85168A8C1C36815D00392145 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		85168A941C3691A300392145 /* BranchSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchSpec.swift; sourceTree = "<group>"; };
+		85168A971C36A25100392145 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
+		85168A991C36A44C00392145 /* SpecHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecHelper.swift; sourceTree = "<group>"; };
+		85168A9B1C36A9A500392145 /* ProjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectSpec.swift; sourceTree = "<group>"; };
+		85168A9D1C36B71E00392145 /* builds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = builds.json; sourceTree = "<group>"; };
+		85168A9F1C36BA6200392145 /* BuildSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSpec.swift; sourceTree = "<group>"; };
+		85168AA11C36CBCC00392145 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8534A3EE1C33D84200CF0BA8 /* CI2GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoTests.swift; sourceTree = "<group>"; };
-		8534A3F01C33D84200CF0BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8567018E1C3015F500E76DCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -368,7 +403,6 @@
 		856701931C3015F500E76DCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		856701961C3015F500E76DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		856701981C3015F500E76DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		856701A11C3015F500E76DCF /* CI2GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoTests.swift; sourceTree = "<group>"; };
 		856701A31C3015F500E76DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856701A81C3015F500E76DCF /* CI2GoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701AC1C3015F500E76DCF /* CI2GoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoUITests.swift; sourceTree = "<group>"; };
@@ -574,13 +608,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8534A3ED1C33D84200CF0BA8 /* CI2GoTests */ = {
+		85168A961C36A25100392145 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				8534A3EE1C33D84200CF0BA8 /* CI2GoTests.swift */,
-				8534A3F01C33D84200CF0BA8 /* Info.plist */,
+				850B4E871C36E78700C1EC70 /* build.json */,
+				85168A9D1C36B71E00392145 /* builds.json */,
+				85168A971C36A25100392145 /* projects.json */,
 			);
-			path = CI2GoTests;
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		856701801C3015F500E76DCF = {
@@ -591,7 +626,6 @@
 				856701AB1C3015F500E76DCF /* CI2GoUITests */,
 				856701BD1C3016BA00E76DCF /* CI2Go WatchKit App */,
 				856701CC1C3016BA00E76DCF /* CI2Go WatchKit App Extension */,
-				8534A3ED1C33D84200CF0BA8 /* CI2GoTests */,
 				8567018A1C3015F500E76DCF /* Products */,
 				EA3C231E19C7767FD30A757D /* Pods */,
 				93BD740C5BBDFB0DC3FDFB80 /* Frameworks */,
@@ -633,8 +667,12 @@
 		856701A01C3015F500E76DCF /* CI2GoTests */ = {
 			isa = PBXGroup;
 			children = (
-				856701A11C3015F500E76DCF /* CI2GoTests.swift */,
 				856701A31C3015F500E76DCF /* Info.plist */,
+				85168A941C3691A300392145 /* BranchSpec.swift */,
+				85168A9F1C36BA6200392145 /* BuildSpec.swift */,
+				85168A9B1C36A9A500392145 /* ProjectSpec.swift */,
+				85168A991C36A44C00392145 /* SpecHelper.swift */,
+				85168A961C36A25100392145 /* Fixtures */,
 			);
 			path = CI2GoTests;
 			sourceTree = "<group>";
@@ -687,12 +725,14 @@
 		856701FF1C30253100E76DCF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */,
 				856702001C30253100E76DCF /* ColorScheme+UIKit.swift */,
 				856702021C30253100E76DCF /* NSNumber+timeFormatted.swift */,
 				856702031C30253100E76DCF /* String+humanize.swift */,
 				856702041C30253100E76DCF /* String+md5.swift */,
 				856702051C30253100E76DCF /* UIColor+Mix.swift */,
 				856702061C30253100E76DCF /* UIFont+appFonts.swift */,
+				85168AA11C36CBCC00392145 /* NSDateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -846,8 +886,14 @@
 		85C067871C312748001062F2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				850B4E891C36EA6B00C1EC70 /* Node.swift */,
 				85C067881C3127AA001062F2 /* Branch.swift */,
+				85168A821C36812B00392145 /* Build.swift */,
+				85168A841C36813300392145 /* BuildAction.swift */,
+				85168A861C36813A00392145 /* BuildStep.swift */,
+				85168A881C36814200392145 /* Commit.swift */,
 				856E04D61C313BD9003F43BC /* Project.swift */,
+				85168A8C1C36815D00392145 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1067,6 +1113,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85168A9E1C36B71E00392145 /* builds.json in Resources */,
+				850B4E881C36E78700C1EC70 /* build.json in Resources */,
+				85168A981C36A25100392145 /* projects.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1495,7 +1544,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8534A3EF1C33D84200CF0BA8 /* CI2GoTests.swift in Sources */,
+				85168A9A1C36A44C00392145 /* SpecHelper.swift in Sources */,
+				85168AA01C36BA6200392145 /* BuildSpec.swift in Sources */,
+				85168A951C3691A300392145 /* BranchSpec.swift in Sources */,
+				85168A9C1C36A9A500392145 /* ProjectSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,18 +1556,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				8567018F1C3015F500E76DCF /* ViewController.swift in Sources */,
+				85168AA21C36CBCC00392145 /* NSDateExtension.swift in Sources */,
 				85C067891C3127AA001062F2 /* Branch.swift in Sources */,
+				85168A891C36814200392145 /* Commit.swift in Sources */,
 				856702951C30253100E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				8567028B1C30253100E76DCF /* String+md5.swift in Sources */,
+				850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */,
 				8567028C1C30253100E76DCF /* UIColor+Mix.swift in Sources */,
 				856E04D71C313BD9003F43BC /* Project.swift in Sources */,
+				850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */,
+				85168A871C36813A00392145 /* BuildStep.swift in Sources */,
 				8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */,
 				85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */,
+				85168A851C36813300392145 /* BuildAction.swift in Sources */,
 				856702961C30253100E76DCF /* ColorScheme.swift in Sources */,
 				856702891C30253100E76DCF /* NSNumber+timeFormatted.swift in Sources */,
 				856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */,
 				8567028D1C30253100E76DCF /* UIFont+appFonts.swift in Sources */,
+				85168A831C36812B00392145 /* Build.swift in Sources */,
 				8567028A1C30253100E76DCF /* String+humanize.swift in Sources */,
+				85168A8D1C36815D00392145 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1532,17 +1592,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85168A911C3681F600392145 /* Commit.swift in Sources */,
 				856703101C30254300E76DCF /* UIColor+Mix.swift in Sources */,
 				8567031A1C3025FB00E76DCF /* ColorScheme.swift in Sources */,
+				850B4E8B1C36EC4C00C1EC70 /* Node.swift in Sources */,
+				85168A901C3681F600392145 /* BuildStep.swift in Sources */,
+				85168A8E1C3681F600392145 /* Build.swift in Sources */,
 				856703191C3025FB00E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				8567030D1C30254300E76DCF /* NSNumber+timeFormatted.swift in Sources */,
+				85168A931C3681F600392145 /* User.swift in Sources */,
 				856703111C30254300E76DCF /* UIFont+appFonts.swift in Sources */,
 				856701D41C3016BA00E76DCF /* NotificationController.swift in Sources */,
 				85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */,
 				8567030E1C30254300E76DCF /* String+humanize.swift in Sources */,
+				850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */,
 				856E04D81C313BD9003F43BC /* Project.swift in Sources */,
+				85168A8F1C3681F600392145 /* BuildAction.swift in Sources */,
 				8567030F1C30254300E76DCF /* String+md5.swift in Sources */,
 				856701D21C3016BA00E76DCF /* ExtensionDelegate.swift in Sources */,
+				85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */,
 				856701D01C3016BA00E76DCF /* InterfaceController.swift in Sources */,
 				856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */,
 				856E04D51C313BC2003F43BC /* Branch.swift in Sources */,

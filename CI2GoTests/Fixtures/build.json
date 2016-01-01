@@ -1,0 +1,1133 @@
+{
+  "compare": "https://github.com/ngs/ci2go/compare/ef1e276c2831...722f7dbc7b56",
+  "previous_successful_build": {
+    "build_num": 116,
+    "status": "success",
+    "build_time_millis": 785837
+  },
+  "build_parameters": null,
+  "oss": true,
+  "committer_date": "2016-01-01T10:16:55+09:00",
+  "steps": [
+    {
+      "name": "Starting the build",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Starting the build",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:49.555Z",
+          "type": "infrastructure",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/c4ff75dcf12d7cdc9b3d5865-ngs-ci2go-0-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=%2F%2BEyWGnHhgFzMvZtQrOkFdJm4Ss%3D",
+          "start_time": "2016-01-01T01:17:45.083Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 0,
+          "run_time_millis": 4472,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Start container",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Start container",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:50.919Z",
+          "source": "config",
+          "type": "infrastructure",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/e4ff75dcf12d7cdcdb3d5865-ngs-ci2go-1-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=Bw8c%2BlUz4eUeCcnIIpAKunvsD6c%3D",
+          "start_time": "2016-01-01T01:17:49.563Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 1,
+          "run_time_millis": 1356,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Enable SSH",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Enable SSH",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:51.594Z",
+          "type": "infrastructure",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/f4ff75dcf12d7cdceb3d5865-ngs-ci2go-2-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=omcykPpmup7JyL0Wuhcb9dLDLcw%3D",
+          "start_time": "2016-01-01T01:17:50.925Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 2,
+          "run_time_millis": 669,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Restore source cache",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Restore source cache",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:52.608Z",
+          "source": "cache",
+          "type": "checkout",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/05ff75dcf12d7cdcfb3d5865-ngs-ci2go-3-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=Ay88A1BDbbqtT%2F6HwPyOVlDHTvQ%3D",
+          "start_time": "2016-01-01T01:17:51.602Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 3,
+          "run_time_millis": 1006,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Checkout using deploy key: 32:17:da:da:42:6a:54:65:bf:ec:4c:90:5b:74:67:0c",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Checkout using deploy key: 32:17:da:da:42:6a:54:65:bf:ec:4c:90:5b:74:67:0c",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:54.105Z",
+          "source": "config",
+          "type": "checkout",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/15ff75dcf12d7cdc0c3d5865-ngs-ci2go-4-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=EvbWlUbIx3VOnKtYwSq0PKnHc%2Fw%3D",
+          "start_time": "2016-01-01T01:17:52.617Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 4,
+          "run_time_millis": 1488,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Configure the build",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Configure the build",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:55.738Z",
+          "source": "cache",
+          "type": "machine",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/25ff75dcf12d7cdc2c3d5865-ngs-ci2go-5-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=Y2HlPIX9g17abUml6nPCgibRZ7g%3D",
+          "start_time": "2016-01-01T01:17:54.114Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 5,
+          "run_time_millis": 1624,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Exporting env vars from circle.yml",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Exporting env vars from circle.yml",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:55.941Z",
+          "source": "config",
+          "type": "machine",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/35ff75dcf12d7cdc3c3d5865-ngs-ci2go-6-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=M33tvX41dQ7w9z6JeSS%2F52ukeMM%3D",
+          "start_time": "2016-01-01T01:17:55.745Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 6,
+          "run_time_millis": 196,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Exporting env vars from project settings",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Exporting env vars from project settings",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:56.146Z",
+          "source": "db",
+          "type": "machine",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/45ff75dcf12d7cdc3c3d5865-ngs-ci2go-7-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=AOHDVKGoAxB3nZ7jOmfHTD1fClc%3D",
+          "start_time": "2016-01-01T01:17:55.949Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 7,
+          "run_time_millis": 197,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Select Xcode Version",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Select Xcode Version",
+          "bash_command": "sudo xcode-select --switch /Applications/Xcode-7.1.app",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:56.450Z",
+          "source": "inference",
+          "type": "machine",
+          "start_time": "2016-01-01T01:17:56.154Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 8,
+          "run_time_millis": 296,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "Restore cache",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Restore cache",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:58.445Z",
+          "source": "cache",
+          "type": "machine",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/65ff75dcf12d7cdc4c3d5865-ngs-ci2go-9-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=C3tVMVcYE%2Fn5CVOLNv%2Fq8Cy2B%2FY%3D",
+          "start_time": "2016-01-01T01:17:56.456Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 9,
+          "run_time_millis": 1989,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys",
+          "bash_command": "curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:17:58.954Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/75ff75dcf12d7cdc6c3d5865-ngs-ci2go-10-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=nbT%2FmcZBAX0LMKHezAJiAAHKt8M%3D",
+          "start_time": "2016-01-01T01:17:58.454Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 10,
+          "run_time_millis": 500,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "sudo pip install awscli",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "sudo pip install awscli",
+          "bash_command": "sudo pip install awscli",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:18:06.776Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/85ff75dcf12d7cdc6c3d5865-ngs-ci2go-11-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=6IP8brcZq5h07q2wvI1vbnLApio%3D",
+          "start_time": "2016-01-01T01:17:58.959Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 11,
+          "run_time_millis": 7817,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "sudo gem update bundler",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "sudo gem update bundler",
+          "bash_command": "sudo gem update bundler",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:18:11.791Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/e5ff75dcf12d7cdcec3d5865-ngs-ci2go-12-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=v4ljzFyUGsmRgs2vTN8l8zwr9rY%3D",
+          "start_time": "2016-01-01T01:18:06.785Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 12,
+          "run_time_millis": 5006,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "export TGZ=\"$(cat Gemfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "export TGZ=\"$(cat Gemfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true",
+          "bash_command": "export TGZ=\"$(cat Gemfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:18:13.199Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/f5ff75dcf12d7cdc3d3d5865-ngs-ci2go-13-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=sMArAUuY34XHdjvSmHcE34P1yBc%3D",
+          "start_time": "2016-01-01T01:18:11.799Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 13,
+          "run_time_millis": 1400,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "export TGZ=\"$(cat Podfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "export TGZ=\"$(cat Podfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true",
+          "bash_command": "export TGZ=\"$(cat Podfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:18:15.810Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/06ff75dcf12d7cdc5d3d5865-ngs-ci2go-14-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=XyZKAvjyW%2BV9ix%2B82%2Fk%2BEc5viz8%3D",
+          "start_time": "2016-01-01T01:18:13.205Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 14,
+          "run_time_millis": 2605,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "export TGZ=\"$(cat Gemfile | md5).tgz\"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "export TGZ=\"$(cat Gemfile | md5).tgz\"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)",
+          "bash_command": "export TGZ=\"$(cat Gemfile | md5).tgz\"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:21.106Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/16ff75dcf12d7cdc7d3d5865-ngs-ci2go-15-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=07S3h2pb0Z78MtEMGwFYesccL5Q%3D",
+          "start_time": "2016-01-01T01:18:15.819Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 15,
+          "run_time_millis": 125287,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "export TGZ=\"$(cat Podfile | md5).tgz\"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "export TGZ=\"$(cat Podfile | md5).tgz\"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)",
+          "bash_command": "export TGZ=\"$(cat Podfile | md5).tgz\"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:21.414Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:21.117Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 16,
+          "run_time_millis": 297,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "bash_command": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:21.716Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:21.419Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 17,
+          "run_time_millis": 297,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "bash_command": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:22.017Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:21.721Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 18,
+          "run_time_millis": 296,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "bash_command": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:22.319Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:22.023Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 19,
+          "run_time_millis": 296,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "bash_command": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:22.621Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:22.325Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 20,
+          "run_time_millis": 296,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "bash_command": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:22.922Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:22.627Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 21,
+          "run_time_millis": 295,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "bash_command": "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:23.224Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:22.928Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 22,
+          "run_time_millis": 296,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc",
+          "bash_command": "echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:23.426Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:23.230Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 23,
+          "run_time_millis": 196,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "echo \"export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')\" >> ~/.bashrc",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "echo \"export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')\" >> ~/.bashrc",
+          "bash_command": "echo \"export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')\" >> ~/.bashrc",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:23.727Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:23.432Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 24,
+          "run_time_millis": 295,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "echo \"export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD\" >> ~/.bashrc",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "echo \"export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD\" >> ~/.bashrc",
+          "bash_command": "echo \"export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD\" >> ~/.bashrc",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:23.929Z",
+          "source": "config",
+          "type": "dependencies",
+          "start_time": "2016-01-01T01:20:23.733Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 25,
+          "run_time_millis": 196,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "bundle exec fastlane import_certs",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "bundle exec fastlane import_certs",
+          "bash_command": "bundle exec fastlane import_certs",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:28.541Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/67ff75dcf12d7cdc754d5865-ngs-ci2go-26-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=iwemBXBzMwtjJAXp2DrPUM63Av0%3D",
+          "start_time": "2016-01-01T01:20:23.935Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 26,
+          "run_time_millis": 4606,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "bundle exec sigh download_all -o fastlane/profiles",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "bundle exec sigh download_all -o fastlane/profiles",
+          "bash_command": "bundle exec sigh download_all -o fastlane/profiles",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:38.777Z",
+          "source": "config",
+          "type": "dependencies",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/87ff75dcf12d7cdcc54d5865-ngs-ci2go-27-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=jao8ksLNz69ufnKNkMKW1tpZ9iI%3D",
+          "start_time": "2016-01-01T01:20:28.548Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 27,
+          "run_time_millis": 10229,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Save cache",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Save cache",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:20:47.086Z",
+          "source": "cache",
+          "type": "database",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/b7ff75dcf12d7cdc664d5865-ngs-ci2go-28-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=7tLjvszHpSw4cc6%2BQHBzMKVqs5Y%3D",
+          "start_time": "2016-01-01T01:20:38.801Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 28,
+          "run_time_millis": 8285,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'",
+          "bash_command": "bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:26:06.247Z",
+          "source": "config",
+          "type": "test",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/c7ff75dcf12d7cdcf64d5865-ngs-ci2go-29-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=nS9sKizUCzz4ODPi0XqFK8ehld0%3D",
+          "start_time": "2016-01-01T01:20:47.097Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 29,
+          "run_time_millis": 319150,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "mkdir -p $CIRCLE_TEST_REPORTS/junit && cat fastlane/test_output/report.junit > $CIRCLE_TEST_REPORTS/junit/report.xml",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "mkdir -p $CIRCLE_TEST_REPORTS/junit && cat fastlane/test_output/report.junit > $CIRCLE_TEST_REPORTS/junit/report.xml",
+          "bash_command": "mkdir -p $CIRCLE_TEST_REPORTS/junit && cat fastlane/test_output/report.junit > $CIRCLE_TEST_REPORTS/junit/report.xml",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:26:06.573Z",
+          "source": "config",
+          "type": "test",
+          "start_time": "2016-01-01T01:26:06.266Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 30,
+          "run_time_millis": 307,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "Checking deployment",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Checking deployment",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:26:06.580Z",
+          "source": "config",
+          "type": "deployment",
+          "start_time": "2016-01-01T01:26:06.579Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 31,
+          "run_time_millis": 1,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "Checking deployment",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Checking deployment",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:26:06.588Z",
+          "source": "config",
+          "type": "deployment",
+          "start_time": "2016-01-01T01:26:06.586Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 34,
+          "run_time_millis": 2,
+          "has_output": false
+        }
+      ]
+    },
+    {
+      "name": "bundle exec fastlane build_adhoc",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "bundle exec fastlane build_adhoc",
+          "bash_command": "bundle exec fastlane build_adhoc",
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:34:26.311Z",
+          "source": "config",
+          "type": "deployment",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/99ff75dcf12d7cdcea5d5865-ngs-ci2go-35-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=KWcD0tK16b5jCsr6jbXLNOeOAOY%3D",
+          "start_time": "2016-01-01T01:26:06.593Z",
+          "exit_code": 0,
+          "canceled": null,
+          "step": 35,
+          "run_time_millis": 499718,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "bundle exec fastlane deploy_s3 > /dev/null 2>&1",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": true,
+          "infrastructure_fail": null,
+          "name": "bundle exec fastlane deploy_s3 > /dev/null 2>&1",
+          "bash_command": "bundle exec fastlane deploy_s3 > /dev/null 2>&1",
+          "status": "failed",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:34:49.566Z",
+          "source": "config",
+          "type": "deployment",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/7bff75dcf12d7cdc2a7d5865-ngs-ci2go-36-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=5yS8PxiZkvRJHGVbvymWAXrvC8s%3D",
+          "start_time": "2016-01-01T01:34:26.326Z",
+          "exit_code": 1,
+          "canceled": null,
+          "step": 36,
+          "run_time_millis": 23240,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Collect test metadata",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Collect test metadata",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:34:50.743Z",
+          "type": "teardown",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/8bff75dcf12d7cdc9b7d5865-ngs-ci2go-37-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=UQr%2Fb5pEEGvwK76PK2Tr68iCogk%3D",
+          "start_time": "2016-01-01T01:34:49.636Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 37,
+          "run_time_millis": 1107,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Collect artifacts",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Collect artifacts",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:37:37.600Z",
+          "type": "teardown",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/9bff75dcf12d7cdcab7d5865-ngs-ci2go-38-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=MlEfuHowDHtpHqQ2LTHyhgnVbUQ%3D",
+          "start_time": "2016-01-01T01:34:50.750Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 38,
+          "run_time_millis": 166850,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Ensure caches are uploaded",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": false,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Ensure caches are uploaded",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:37:37.626Z",
+          "source": "cache",
+          "type": "teardown",
+          "output_url": "https://circle-production-action-output.s3.amazonaws.com/dbff75dcf12d7cdc168d5865-ngs-ci2go-39-0?AWSAccessKeyId=AKIAIQ65EYQDTMSJK2DQ&Expires=1609520098&Signature=GudYk%2FezMMmuXCTkHH%2BsikyVOCE%3D",
+          "start_time": "2016-01-01T01:37:37.624Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 39,
+          "run_time_millis": 2,
+          "has_output": true
+        }
+      ]
+    },
+    {
+      "name": "Disable SSH",
+      "actions": [
+        {
+          "truncated": false,
+          "index": 0,
+          "parallel": true,
+          "failed": null,
+          "infrastructure_fail": null,
+          "name": "Disable SSH",
+          "bash_command": null,
+          "status": "success",
+          "timedout": null,
+          "continue": null,
+          "end_time": "2016-01-01T01:37:37.715Z",
+          "type": "teardown",
+          "start_time": "2016-01-01T01:37:37.634Z",
+          "exit_code": null,
+          "canceled": null,
+          "step": 41,
+          "run_time_millis": 81,
+          "has_output": false
+        }
+      ]
+    }
+  ],
+  "body": "",
+  "usage_queued_at": "2016-01-01T01:17:14.659Z",
+  "retry_of": null,
+  "reponame": "ci2go",
+  "ssh_users": [],
+  "build_url": "https://circleci.com/gh/ngs/ci2go/204",
+  "parallel": 1,
+  "failed": true,
+  "branch": "refactor",
+  "username": "ngs",
+  "author_date": "2016-01-01T10:16:55+09:00",
+  "why": "github",
+  "user": {
+    "is_user": true,
+    "login": "ngs",
+    "name": "Atsushi NAGASE",
+    "email": "atsn.ngs@gmail.com",
+    "avatar_url": "https://avatars.githubusercontent.com/u/18631?v=3"
+  },
+  "vcs_revision": "722f7dbc7b567b94cc59e0dca53a7873a1bbec86",
+  "owners": [
+    "ngs"
+  ],
+  "vcs_tag": null,
+  "build_num": 204,
+  "infrastructure_fail": false,
+  "ssh_enabled": false,
+  "committer_email": "a@ngs.io",
+  "has_artifacts": true,
+  "previous": {
+    "build_num": 203,
+    "status": "canceled",
+    "build_time_millis": 173261
+  },
+  "status": "failed",
+  "committer_name": "Atsushi Nagase",
+  "pull_request_urls": [
+    "https://github.com/ngs/ci2go/pull/15"
+  ],
+  "retries": null,
+  "subject": "Add missing gems",
+  "timedout": false,
+  "dont_build": null,
+  "lifecycle": "finished",
+  "no_dependency_cache": null,
+  "stop_time": "2016-01-01T01:37:37.986Z",
+  "build_time_millis": 1193845,
+  "circle_yml": {
+    "string": "machine:\n  xcode:\n    version: 7.1\n  environment:\n    KEYCHAIN_NAME: default\n    FL_UNLOCK_KEYCHAIN_PATH: ~/Library/Keychains/default\n\ngeneral:\n  artifacts:\n    - ./fastlane/test_output\n    - ./fastlane/screenshots\n    - ~/Library/Logs/scan\n    - ~/Library/Logs/gym\n    - ~/Developer/Xcode/Archives\n    - Build\n\ndependencies:\n  pre:\n    - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys\n    - sudo pip install awscli\n    - sudo gem update bundler\n  override:\n    - export TGZ=\"$(cat Gemfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true\n    - export TGZ=\"$(cat Podfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true\n    - export TGZ=\"$(cat Gemfile | md5).tgz\"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)\n    - export TGZ=\"$(cat Podfile | md5).tgz\"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)\n    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'\n    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'\n    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'\n    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'\n    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'\n    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'\n  post:\n    - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc\n    - echo \"export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')\" >> ~/.bashrc\n    - echo \"export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD\" >> ~/.bashrc\n    - bundle exec fastlane import_certs\n    - bundle exec sigh download_all -o fastlane/profiles\ntest:\n  override:\n    - bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'\n  post:\n    - mkdir -p $CIRCLE_TEST_REPORTS/junit && cat fastlane/test_output/report.junit > $CIRCLE_TEST_REPORTS/junit/report.xml\ndeployment:\n  master:\n    branch: /master|publish\\-.+/\n    commands:\n      - bundle exec fastlane build_distribution\n      - bundle exec fastlane deploy_testflight\n      - bundle exec deliver run --skip_screenshots\n      - bundle exec snapshot --workspace CI2Go.xcworkspace --scheme CI2Go\n      - bundle exec deliver run --skip_metadata\n  preview:\n    branch: /.*/\n    commands:\n      - bundle exec fastlane build_adhoc\n      - bundle exec fastlane deploy_s3 > /dev/null 2>&1\n"
+  },
+  "messages": [],
+  "is_first_green_build": false,
+  "job_name": null,
+  "start_time": "2016-01-01T01:17:44.141Z",
+  "canceler": null,
+  "all_commit_details": [
+    {
+      "committer_date": "2016-01-01T10:16:55+09:00",
+      "body": "",
+      "branch": "refactor",
+      "author_date": "2016-01-01T10:16:55+09:00",
+      "committer_email": "a@ngs.io",
+      "commit": "722f7dbc7b567b94cc59e0dca53a7873a1bbec86",
+      "committer_login": "ngs",
+      "committer_name": "Atsushi Nagase",
+      "subject": "Add missing gems",
+      "commit_url": "https://github.com/ngs/ci2go/commit/722f7dbc7b567b94cc59e0dca53a7873a1bbec86",
+      "author_login": "ngs",
+      "author_name": "Atsushi Nagase",
+      "author_email": "a@ngs.io"
+    }
+  ],
+  "outcome": "failed",
+  "vcs_url": "https://github.com/ngs/ci2go",
+  "author_name": "Atsushi Nagase",
+  "node": [
+    {
+      "public_ip_addr": "162.217.87.91",
+      "port": 55009,
+      "username": "distiller",
+      "image_id": "circletar-1394-da49f-20151211T171036Z",
+      "ssh_enabled": true
+    }
+  ],
+  "queued_at": "2016-01-01T01:17:44.110Z",
+  "canceled": false,
+  "author_email": "a@ngs.io"
+}
