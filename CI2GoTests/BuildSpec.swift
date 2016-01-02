@@ -18,6 +18,45 @@ import ObjectMapper
 class BuildSpec: QuickSpec {
     override func spec() {
         let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "TestInMemoryRealm"))
+        sharedExamples("Mapped Build") {
+            let build = realm.objects(Build).first!
+            let project = realm.objects(Project).first!
+            let branch = realm.objects(Branch).first!
+            let commit = realm.objects(Commit).first!
+
+            expect(build.compareURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go/compare/ef1e276c2831...722f7dbc7b56")!))
+            expect(build.number).to(equal(204))
+            expect(build.sshEnabled).to(beFalse())
+            expect(build.lifecycle).to(equal(Build.Lifecycle.Finished))
+            expect(build.status).to(equal(Build.Status.Failed))
+            expect(build.outcome).to(equal(Build.Outcome.Failed))
+            expect(build.circleYAML).to(beginWith("machine:\n"))
+            expect(build.stoppedAt).notTo(beNil())
+            expect(build.startedAt).notTo(beNil())
+            expect(build.queuedAt).notTo(beNil())
+            expect(build.timeMillis).to(equal(1193845))
+            expect(build.commits.count).to(equal(1))
+            expect(build.commits.first!).to(equal(commit))
+            expect(build.triggeredCommit).to(equal(commit))
+            expect(build.previsousBuild?.number).to(equal(203))
+            expect(build.why).to(equal("github"))
+
+            expect(commit.sha1).to(equal("722f7dbc7b567b94cc59e0dca53a7873a1bbec86"))
+            expect(commit.authedAt).notTo(beNil())
+            expect(commit.commitedAt).notTo(beNil())
+            expect(commit.author).notTo(beNil())
+            expect(commit.committer).notTo(beNil())
+
+            expect(project.parallelCount).to(equal(1))
+            expect(project.repositoryName).to(equal("ci2go"))
+            expect(project.username).to(equal("ngs"))
+            expect(project.vcsURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go")!))
+            expect(project.id).to(equal("ngs/ci2go"))
+            expect(project.isOpenSource).to(beTrue())
+            expect(branch.name).to(equal("refactor"))
+            expect(branch.project).to(equal(project))
+            expect(branch.id).to(equal("project/ngs/ci2go:refactor"))
+        }
         afterEach {
             try! realm.write { realm.deleteAll() }
         }
@@ -36,44 +75,7 @@ class BuildSpec: QuickSpec {
                 expect(realm.objects(BuildStep).count).to(equal(0))
                 expect(realm.objects(Build)[0].number).to(equal(204))
                 expect(realm.objects(Build)[1].number).to(equal(203))
-
-                let build = realm.objects(Build).first!
-                let project = realm.objects(Project).first!
-                let branch = realm.objects(Branch).first!
-                let commit = realm.objects(Commit).first!
-
-                expect(build.compareURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go/compare/ef1e276c2831...722f7dbc7b56")!))
-                expect(build.number).to(equal(204))
-                expect(build.sshEnabled).to(beFalse())
-                expect(build.lifecycle).to(equal(Build.Lifecycle.Finished))
-                expect(build.status).to(equal(Build.Status.Failed))
-                expect(build.outcome).to(equal(Build.Outcome.Failed))
-                expect(build.circleYAML).to(beginWith("machine:\n"))
-                expect(build.stoppedAt).notTo(beNil())
-                expect(build.startedAt).notTo(beNil())
-                expect(build.queuedAt).notTo(beNil())
-                expect(build.timeMillis).to(equal(1193845))
-                expect(build.commits.count).to(equal(1))
-                expect(build.commits.first!).to(equal(commit))
-                expect(build.triggeredCommit).to(equal(commit))
-                expect(build.previsousBuild?.number).to(equal(203))
-                expect(build.why).to(equal("github"))
-
-                expect(commit.sha1).to(equal("722f7dbc7b567b94cc59e0dca53a7873a1bbec86"))
-                expect(commit.authedAt).notTo(beNil())
-                expect(commit.commitedAt).notTo(beNil())
-                expect(commit.author).notTo(beNil())
-                expect(commit.committer).notTo(beNil())
-
-                expect(project.parallelCount).to(equal(1))
-                expect(project.repositoryName).to(equal("ci2go"))
-                expect(project.username).to(equal("ngs"))
-                expect(project.vcsURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go")!))
-                expect(project.id).to(equal("ngs/ci2go"))
-                expect(project.isOpenSource).to(beTrue())
-                expect(branch.name).to(equal("refactor"))
-                expect(branch.project).to(equal(project))
-                expect(branch.id).to(equal("project/ngs/ci2go:refactor"))
+                itBehavesLike("Mapped Build")
             }
             it("maps detailed JSON") {
                 let json = fixtureJSON("build.json", self.dynamicType)
@@ -92,27 +94,10 @@ class BuildSpec: QuickSpec {
                 expect(realm.objects(Build)[1].number).to(equal(203))
                 expect(realm.objects(Build)[2].number).to(equal(116))
 
-                let build = realm.objects(Build).first!
-                let project = realm.objects(Project).first!
-                let branch = realm.objects(Branch).first!
-                let commit = realm.objects(Commit).first!
+                itBehavesLike("Mapped Build")
 
-                expect(build.compareURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go/compare/ef1e276c2831...722f7dbc7b56")!))
-                expect(build.number).to(equal(204))
-                expect(build.sshEnabled).to(beFalse())
-                expect(build.lifecycle).to(equal(Build.Lifecycle.Finished))
-                expect(build.status).to(equal(Build.Status.Failed))
-                expect(build.outcome).to(equal(Build.Outcome.Failed))
-                expect(build.circleYAML).to(beginWith("machine:\n"))
-                expect(build.stoppedAt).notTo(beNil())
-                expect(build.startedAt).notTo(beNil())
-                expect(build.queuedAt).notTo(beNil())
-                expect(build.timeMillis).to(equal(1193845))
-                expect(build.commits.count).to(equal(1))
-                expect(build.commits.first!).to(equal(commit))
-                expect(build.triggeredCommit).to(equal(commit))
-                expect(build.previsousBuild?.number).to(equal(203))
-                expect(build.why).to(equal("github"))
+                let build = realm.objects(Build).first!
+
                 let names = [
                     "Starting the build",
                     "Start container",
@@ -158,22 +143,6 @@ class BuildSpec: QuickSpec {
                 expect(build.steps.map({ $0.index })).to(equal([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]))
                 expect(build.steps.map({ $0.actions.count })).to(equal([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
                 expect(build.steps.map({ $0.actions.first!.name })).to(equal(names))
-
-                expect(commit.sha1).to(equal("722f7dbc7b567b94cc59e0dca53a7873a1bbec86"))
-                expect(commit.authedAt).notTo(beNil())
-                expect(commit.commitedAt).notTo(beNil())
-                expect(commit.author).notTo(beNil())
-                expect(commit.committer).notTo(beNil())
-
-                expect(project.parallelCount).to(equal(1))
-                expect(project.repositoryName).to(equal("ci2go"))
-                expect(project.username).to(equal("ngs"))
-                expect(project.vcsURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go")!))
-                expect(project.id).to(equal("ngs/ci2go"))
-                expect(project.isOpenSource).to(beTrue())
-                expect(branch.name).to(equal("refactor"))
-                expect(branch.project).to(equal(project))
-                expect(branch.id).to(equal("project/ngs/ci2go:refactor"))
                 
             }
         }
