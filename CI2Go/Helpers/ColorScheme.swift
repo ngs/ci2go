@@ -126,14 +126,14 @@ class ColorScheme {
         }
     }
 
-    func actionColor(status status: Build.Status?) -> UIColor? {
+    func actionColor(status status: BuildAction.Status?) -> UIColor? {
         guard let status = status else { return UIColor.grayColor() }
         switch status {
-        case .Success, .Fixed:
+        case .Success:
             return greenColor()
         case .Running:
             return yellowColor()
-        case .Failed, .Timedout, .InfrastructureFail, .NoTests:
+        case .Failed, .Timedout:
             return redColor()
         default:
             return UIColor.grayColor()

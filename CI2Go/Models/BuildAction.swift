@@ -10,6 +10,13 @@ import RealmSwift
 import ObjectMapper
 
 class BuildAction: Object, Mappable, Equatable, Comparable {
+    enum Status: String {
+        case Success = "success"
+        case Failed = "failed"
+        case Canceled = "canceled"
+        case Timedout = "timedout"
+        case Running = "running"
+    }
     dynamic var bashCommand = ""
     dynamic var buildStep: BuildStep? {
         didSet { updateId() }
@@ -35,13 +42,25 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     dynamic var runTimeMillis: Int = 0
     dynamic var source = ""
     dynamic var startedAt: NSDate?
-    dynamic var status = ""
+    dynamic var rawStatus: String?
     dynamic var type = ""
     dynamic var output = ""
 
     required convenience init?(_ map: Map) {
         self.init()
         mapping(map)
+    }
+
+    var status: Status? {
+        get {
+            if let rawStatus = rawStatus {
+                return Status(rawValue: rawStatus)
+            }
+            return nil
+        }
+        set(value) {
+            rawStatus = value?.rawValue
+        }
     }
 
     func mapping(map: Map) {
@@ -52,7 +71,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         isInfrastructureFail <- map["infrastructure_fail"]
         name <- map["name"]
         bashCommand <- map["bash_command"]
-        status <- map["status"]
+        rawStatus <- map["status"]
         isTimedout <- map["timedout"]
         isContinue <- map["continue"]
         type <- map["type"]
