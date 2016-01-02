@@ -17,11 +17,11 @@ import ObjectMapper
 
 class ProjectSpec: QuickSpec {
     override func spec() {
-        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "TestInMemoryRealm"))
+        let realm = setupRealm()
         afterEach {
             try! realm.write { realm.deleteAll() }
         }
-        describe("Map from JSON") {
+        describe("Map Project from JSON") {
             it("maps standard") {
                 let json = fixtureJSON("projects.json", self.dynamicType)[0]!
                 try! realm.write {

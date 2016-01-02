@@ -38,6 +38,10 @@ class Branch: Object, Mappable, Equatable, Comparable {
     override class func primaryKey() -> String {
         return "id"
     }
+
+    override static func ignoredProperties() -> [String] {
+        return []
+    }
 }
 
 func ==(lhs: Branch, rhs: Branch) -> Bool {

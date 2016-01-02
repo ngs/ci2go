@@ -70,6 +70,10 @@ class Project: Object, Mappable, Equatable, Comparable {
     override class func primaryKey() -> String {
         return "id"
     }
+
+    override static func ignoredProperties() -> [String] {
+        return ["path", "apiPath", "vcsURL"]
+    }
 }
 
 func ==(lhs: Project, rhs: Project) -> Bool {

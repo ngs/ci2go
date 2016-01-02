@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 private var _standardUserDefaults: AnyObject? = nil
 
@@ -32,6 +33,10 @@ class CI2GoUserDefaults: NSObject {
         }
     }
 
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+
 
     class func standardUserDefaults() -> CI2GoUserDefaults {
         if nil == _standardUserDefaults {
@@ -53,7 +58,7 @@ class CI2GoUserDefaults: NSObject {
         return _userDefaults!
     }
 
-    var colorSchemeName: NSString? {
+    var colorSchemeName: String? {
         set(value) {
             if (value != nil && ColorScheme.names.indexOf((value! as String)) != nil) {
                 userDefaults.setValue(value, forKey: kCI2GoColorSchemeUserDefaultsKey)
@@ -113,7 +118,9 @@ class CI2GoUserDefaults: NSObject {
             userDefaults.synchronize()
         }
         get {
-            // TODO
+            if let id = userDefaults.stringForKey(kCI2GoSelectedBranchDefaultsKey) {
+                return realm.objects(Branch).filter(NSPredicate(format: "id == %@", id)).first
+            }
             return nil
         }
     }
@@ -125,8 +132,9 @@ class CI2GoUserDefaults: NSObject {
             userDefaults.synchronize()
         }
         get {
-            let projectID = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey)
-            // TODO
+            if let id = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey) {
+                return realm.objects(Project).filter(NSPredicate(format: "id == %@", id)).first
+            }
             return nil
         }
     }

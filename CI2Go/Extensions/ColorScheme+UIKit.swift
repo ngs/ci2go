@@ -11,7 +11,7 @@ import UIKit
 
 extension ColorScheme {
 
-    public func apply() {
+    func apply() {
         let bg = backgroundColor()
         let fg = foregroundColor()
         let bd = boldColor()
@@ -22,7 +22,7 @@ extension ColorScheme {
         UITableView.appearance().separatorColor = UIColor(white: 0.5, alpha: 0.5)
         UITableView.appearance().backgroundColor = bg
         UITableView.appearance().sectionIndexBackgroundColor = bg
-//        SettingsTableView.appearance().backgroundColor = bg2
+        SettingsTableView.appearance().backgroundColor = bg2
         UITableViewCell.appearance().backgroundColor = bg
         UITextField.appearance().textColor = fg
         UILabel.appearance().highlightedTextColor = selectedTextColor()
@@ -34,21 +34,21 @@ extension ColorScheme {
         UITableViewCell.appearance().selectedBackgroundView = cellSelectedView
         let navbarAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: fg!]
         UINavigationBar.appearance().titleTextAttributes = navbarAttr
-//        BuildLogTextView.appearance().backgroundColor = bg
-//        BuildLogTextView.appearance().textColor = fg
+        BuildLogTextView.appearance().backgroundColor = bg
+        BuildLogTextView.appearance().textColor = fg
         UIApplication.sharedApplication().setStatusBarStyle(statusBarStyle(), animated: true)
         resetViews()
         setAsCurrent()
     }
-    public func statusBarStyle() -> UIStatusBarStyle {
+    func statusBarStyle() -> UIStatusBarStyle {
         return isLight() ? UIStatusBarStyle.Default : UIStatusBarStyle.LightContent
     }
 
-    public func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {
+    func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {
         return isLight() ? UIScrollViewIndicatorStyle.Black : UIScrollViewIndicatorStyle.White
     }
 
-    public func resetViews() {
+    func resetViews() {
         let windows = UIApplication.sharedApplication().windows
         for window in windows {
             let subviews = window.subviews

@@ -9,14 +9,21 @@
 import UIKit
 import MBProgressHUD
 import RealmSwift
+import RealmResultsController
 
-class ProjectsViewController: UITableViewController {
-
-    lazy var realm: Realm = {
-        return try! Realm()
-    }()
+class ProjectsViewController: UITableViewController, RealmResultsControllerDelegate {
 
     var projects: [Project] = [Project]()
+
+    lazy var rrc: RealmResultsController<Project, Project> = {
+        let predicate = NSPredicate(format: "id.length > 0")
+        let realm = AppDelegate.current.realm
+        let sd = SortDescriptor(property: "name")
+        let req = RealmRequest<Project>(predicate: predicate, realm: realm, sortDescriptors: [sd])
+        let rrc = try! RealmResultsController<Project, Project>(request: req, sectionKeyPath: nil)
+        rrc.delegate = self
+        return rrc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +32,7 @@ class ProjectsViewController: UITableViewController {
     }
 
     func refresh() {
-        projects = realm.objects(Project).sort()
+        projects = AppDelegate.current.realm.objects(Project).sort()
         tableView.reloadData()
     }
 
@@ -36,8 +43,7 @@ class ProjectsViewController: UITableViewController {
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
             cell.textLabel?.text = "All projects"
-        } else {
-            let project = projects[indexPath.row]
+        } else if let project = rrc.sections[0].objects?[indexPath.row] {
             cell.textLabel?.text = project.repositoryName
             cell.detailTextLabel?.text = project.username
             cell.detailTextLabel?.alpha = 0.5
@@ -79,7 +85,7 @@ class ProjectsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : projects.count
+        return section == 0 ? 1 : rrc.sections[0].objects?.count ?? 0
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -103,6 +109,24 @@ class ProjectsViewController: UITableViewController {
             let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build() as [NSObject : AnyObject]
             tracker.send(dict)
         }
+    }
+
+    // MARK: - RealmResultsControllerDelegate
+
+    func willChangeResults(controller: AnyObject) {
+        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+    }
+
+    func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
+        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+    }
+
+    func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
+        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+    }
+
+    func didChangeResults(controller: AnyObject) {
+        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
     }
     
 }

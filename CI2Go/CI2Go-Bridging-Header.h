@@ -9,8 +9,5 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <CommonCrypto/CommonCrypto.h>
-#import <GoogleAnalytics/GAI.h>
-#import <GoogleAnalytics/GAIFields.h>
-#import <GoogleAnalytics/GAILogger.h>
-#import <GoogleAnalytics/GAIDictionaryBuilder.h>
+#import <Google/Analytics.h>
 #import "AMR_ANSIEscapeHelper.h"

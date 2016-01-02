@@ -150,6 +150,10 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
             }
         }
     }
+
+    override static func ignoredProperties() -> [String] {
+        return ["status", "outputURL", "logFile", "logFileName", "logData"]
+    }
 }
 
 func ==(lhs: BuildAction, rhs: BuildAction) -> Bool {

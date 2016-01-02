@@ -17,7 +17,8 @@ end
 target 'CI2Go' do
   pod 'PusherSwift', '~> 0.1'
   pod 'MBProgressHUD', '~> 0.8'
-  pod 'GoogleAnalytics'
+  pod 'Google/Analytics', '~> 1.0.0'
+  pod 'RealmResultsController', '~> 0.3.1'
   shared_pods
 end
 
@@ -28,6 +29,7 @@ end
 
 target 'CI2GoTests' do
   pod 'RealmSwift', '0.97.0'
+  pod 'Google/Analytics', '~> 1.0.0'
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
   pod 'OHHTTPStubs', '~> 4.7'

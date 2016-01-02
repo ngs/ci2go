@@ -31,6 +31,7 @@
 		850B4EB01C3808F700C1EC70 /* IntTimeFormattedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4EAF1C3808F700C1EC70 /* IntTimeFormattedExtension.swift */; };
 		850B4EB11C3809BC00C1EC70 /* IntTimeFormattedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4EAF1C3808F700C1EC70 /* IntTimeFormattedExtension.swift */; };
 		850B4EB41C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4EB31C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift */; };
+		850B4EB61C3861A700C1EC70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 850B4EB51C3861A700C1EC70 /* GoogleService-Info.plist */; };
 		85168A831C36812B00392145 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A821C36812B00392145 /* Build.swift */; };
 		85168A851C36813300392145 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A841C36813300392145 /* BuildAction.swift */; };
 		85168A871C36813A00392145 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A861C36813A00392145 /* BuildStep.swift */; };
@@ -416,6 +417,7 @@
 		850B4EAD1C3805EF00C1EC70 /* AMR_ANSIEscapeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMR_ANSIEscapeHelper.m; sourceTree = "<group>"; };
 		850B4EAF1C3808F700C1EC70 /* IntTimeFormattedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTimeFormattedExtension.swift; sourceTree = "<group>"; };
 		850B4EB31C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildActionNetworkingExtension.swift; sourceTree = "<group>"; };
+		850B4EB51C3861A700C1EC70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85168A821C36812B00392145 /* Build.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Build.swift; sourceTree = "<group>"; };
 		85168A841C36813300392145 /* BuildAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildAction.swift; sourceTree = "<group>"; };
 		85168A861C36813A00392145 /* BuildStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStep.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				856701E61C3017AB00E76DCF /* CI2Go.entitlements */,
 				85C0678C1C31363B001062F2 /* CI2Go-Bridging-Header.h */,
 				856701981C3015F500E76DCF /* Info.plist */,
+				850B4EB51C3861A700C1EC70 /* GoogleService-Info.plist */,
 				8567018C1C3015F500E76DCF /* AppDelegate.swift */,
 				85C0678A1C31354F001062F2 /* AppGlobal.swift */,
 				856701931C3015F500E76DCF /* Assets.xcassets */,
@@ -1250,6 +1253,7 @@
 				856702D21C30253100E76DCF /* Misterioso.itermcolors in Resources */,
 				856702921C30253100E76DCF /* SourceCodePro-Medium.ttf in Resources */,
 				856702D01C30253100E76DCF /* Mathias.itermcolors in Resources */,
+				850B4EB61C3861A700C1EC70 /* GoogleService-Info.plist in Resources */,
 				856703011C30253100E76DCF /* Treehouse.itermcolors in Resources */,
 				856702EE1C30253100E76DCF /* Solarized Darcula.itermcolors in Resources */,
 				856702CF1C30253100E76DCF /* Man Page.itermcolors in Resources */,

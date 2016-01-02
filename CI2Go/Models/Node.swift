@@ -28,6 +28,10 @@ class Node: Object, Mappable, Equatable, Comparable {
         return "id"
     }
 
+    override static func ignoredProperties() -> [String] {
+        return ["sshAddress"]
+    }
+
     required convenience init?(_ map: Map) {
         self.init()
         mapping(map)

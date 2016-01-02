@@ -213,6 +213,10 @@ class Build: Object, Mappable, Equatable, Comparable {
     override class func primaryKey() -> String {
         return "id"
     }
+
+    override static func ignoredProperties() -> [String] {
+        return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath"]
+    }
 }
 
 func ==(lhs: Build, rhs: Build) -> Bool {

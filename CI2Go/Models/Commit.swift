@@ -77,6 +77,10 @@ class Commit: Object, Mappable, Equatable, Comparable {
     override class func primaryKey() -> String {
         return "id"
     }
+
+    override static func ignoredProperties() -> [String] {
+        return ["shortHash"]
+    }
 }
 
 func ==(lhs: Commit, rhs: Commit) -> Bool {

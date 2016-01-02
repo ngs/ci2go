@@ -8,9 +8,17 @@
 
 import Foundation
 import OHHTTPStubs
+import RealmSwift
 
 func fixtureJSON(fileName: String, _ inBundleForClass: AnyClass) -> AnyObject {
     let file = OHPathForFile(fileName, inBundleForClass)!
     let data = NSData(contentsOfFile: file)!
     return try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
+}
+
+func setupRealm() -> Realm {
+    var config = Realm.Configuration()
+    config.inMemoryIdentifier = "TestInMemoryRealm"
+    Realm.Configuration.defaultConfiguration = config
+    return try! Realm()
 }

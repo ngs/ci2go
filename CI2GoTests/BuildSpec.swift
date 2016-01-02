@@ -17,7 +17,7 @@ import ObjectMapper
 
 class BuildSpec: QuickSpec {
     override func spec() {
-        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "TestInMemoryRealm"))
+        let realm = setupRealm()
         sharedExamples("Mapped Build") {
             let build = realm.objects(Build).first!
             let project = realm.objects(Project).first!
@@ -60,7 +60,7 @@ class BuildSpec: QuickSpec {
         afterEach {
             try! realm.write { realm.deleteAll() }
         }
-        describe("Map from JSON") {
+        describe("Map Build from JSON") {
             it("maps standard") {
                 let json = fixtureJSON("builds.json", self.dynamicType)[0]!
                 try! realm.write {
