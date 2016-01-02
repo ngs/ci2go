@@ -21,7 +21,7 @@ class Build: Object, Mappable, Equatable, Comparable {
     enum Status: String {
         case Retried = "retried"
         case Canceled = "canceled"
-        case Infrastructure_fail = "infrastructure_fail"
+        case InfrastructureFail = "infrastructure_fail"
         case Timedout = "timedout"
         case NotRun = "not_run"
         case Running = "running"
