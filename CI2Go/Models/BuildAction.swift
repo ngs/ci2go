@@ -94,6 +94,62 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     override class func primaryKey() -> String {
         return "id"
     }
+
+    var outputURL: NSURL? {
+        get {
+            if let outputURLString = outputURLString {
+                return NSURL(string: outputURLString)
+            }
+            return nil
+        }
+        set(value) {
+            outputURLString = value?.absoluteString
+        }
+    }
+
+    var logFileName: String {
+        let fn = id.md5
+        let si = fn.startIndex
+        let ei = si.advancedBy(2)
+        return "\(fn.substringToIndex(ei))/\(fn.substringFromIndex(ei))"
+    }
+
+    var logFile: NSURL {
+        return NSFileManager.defaultManager()
+            .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!
+            .URLByAppendingPathComponent("BuildLog", isDirectory: true)
+            .URLByAppendingPathComponent(logFileName)
+    }
+
+    var logData: String? {
+        get {
+            guard NSFileManager.defaultManager().fileExistsAtPath(logFile.absoluteString) else {
+                return nil
+            }
+            do {
+                return try String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding)
+            } catch {
+                return nil
+            }
+        }
+        set(value) {
+            let m = NSFileManager.defaultManager()
+            guard let dir = logFile.URLByDeletingLastPathComponent else {
+                return
+            }
+            if !m.fileExistsAtPath(dir.absoluteString) {
+                do {
+                    try m.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil)
+                } catch {
+                    return
+                }
+            }
+            do {
+                try value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding)
+            } catch {
+            }
+        }
+    }
 }
 
 func ==(lhs: BuildAction, rhs: BuildAction) -> Bool {

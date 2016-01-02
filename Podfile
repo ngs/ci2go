@@ -11,6 +11,7 @@ def shared_pods
   pod 'RxBlocking', '~> 2.0.0-beta'
   pod 'RxCocoa', '~> 2.0.0-beta'
   pod 'RxSwift', '~> 2.0.0-beta'
+  pod 'DateTools', '~> 1.7'
 end
 
 target 'CI2Go' do

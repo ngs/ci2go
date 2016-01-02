@@ -16,7 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-122" translatesAutoresizingMaskIntoConstraints="NO" id="6GR-6n-mCa">
+                                <rect key="frame" x="239" y="239" width="122" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="LHB-3i-shw"/>
+                                    <constraint firstAttribute="width" constant="122" id="Tli-FG-cYd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6GR-6n-mCa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Uqx-T1-u45"/>
+                            <constraint firstItem="6GR-6n-mCa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uAP-6V-shs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo-122" width="122" height="122"/>
+    </resources>
 </document>

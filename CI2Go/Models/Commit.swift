@@ -31,6 +31,10 @@ class Commit: Object, Mappable, Equatable, Comparable {
         }
     }
 
+    var shortHash: String {
+        return sha1.substringToIndex(sha1.startIndex.advancedBy(6))
+    }
+
     required convenience init?(_ map: Map) {
         self.init()
         mapping(map)

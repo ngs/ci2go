@@ -9,17 +9,15 @@
 import Foundation
 
 extension String {
-  public var humanize: String {
-    get {
-      let words = componentsSeparatedByString("_")
-      var ret = [String]()
-      for word in words {
-        let firstChar = word.substringToIndex(startIndex.advancedBy(1)).uppercaseString
-        let remainingChars = word.substringFromIndex(startIndex.advancedBy(1))
-        let w = firstChar + remainingChars
-        ret.append(w)
-      }
-      return ret.joinWithSeparator(" ")
+    public var humanize: String {
+        let words = componentsSeparatedByString("_")
+        var ret = [String]()
+        for word in words {
+            let firstChar = word.substringToIndex(startIndex.advancedBy(1)).uppercaseString
+            let remainingChars = word.substringFromIndex(startIndex.advancedBy(1))
+            let w = firstChar + remainingChars
+            ret.append(w)
+        }
+        return ret.joinWithSeparator(" ")
     }
-  }
 }

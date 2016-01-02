@@ -32,6 +32,9 @@ class Build: Object, Mappable, Equatable, Comparable {
         case NoTests = "no_tests"
         case Fixed = "fixed"
         case Success = "success"
+        var humanize: String {
+            return rawValue.humanize
+        }
     }
     enum Outcome: String {
         case Canceled = "canceled"
