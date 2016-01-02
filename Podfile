@@ -30,5 +30,6 @@ target 'CI2GoTests' do
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
   pod 'OHHTTPStubs', '~> 4.7'
+  pod 'ObjectMapper', '~> 1.0'
 end
 

@@ -55,7 +55,7 @@ class CI2GoUserDefaults: NSObject {
 
     var colorSchemeName: NSString? {
         set(value) {
-            if (value != nil && ColorScheme.names().indexOf((value! as String)) != nil) {
+            if (value != nil && ColorScheme.names.indexOf((value! as String)) != nil) {
                 userDefaults.setValue(value, forKey: kCI2GoColorSchemeUserDefaultsKey)
             } else {
                 userDefaults.removeObjectForKey(kCI2GoColorSchemeUserDefaultsKey)
