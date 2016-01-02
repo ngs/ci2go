@@ -112,20 +112,18 @@ class ColorScheme {
         return nil
     }
 
-    func badgeColor(status status: String?) -> UIColor? {
-        if status != nil {
-            switch status! {
-            case "fixed", "success":
-                return greenColor()
-            case "running":
-                return blueColor()
-            case "failed", "timedout":
-                return redColor()
-            default:
-                return UIColor.grayColor()
-            }
+    func badgeColor(status status: Build.Status?) -> UIColor? {
+        guard let status = status else { return UIColor.grayColor() }
+        switch status {
+        case .Success, .Fixed:
+            return greenColor()
+        case .Running:
+            return blueColor()
+        case .Failed, .Timedout, .InfrastructureFail, .NoTests:
+            return redColor()
+        default:
+            return UIColor.grayColor()
         }
-        return UIColor.grayColor()
     }
 
     func actionColor(status status: Build.Status?) -> UIColor? {
