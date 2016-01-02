@@ -25,6 +25,10 @@ class BuildStepsViewController: BaseTableViewController {
         }
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return ColorScheme().statusBarStyle()
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tracker = GAI.sharedInstance().defaultTracker

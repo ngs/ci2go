@@ -1,15 +1,19 @@
 //
-//  String+humanize.swift
+//  StringFirstStringExtension.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/10/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 1/3/16.
+//  Copyright © 2016 LittleApps Inc. All rights reserved.
 //
 
 import Foundation
 
 extension String {
-    public var humanize: String {
+    var firstString: String {
+        guard let fchar = characters.first else { return "" }
+        return String(fchar)
+    }
+    var humanize: String {
         let words = componentsSeparatedByString("_")
         var ret = [String]()
         for word in words {

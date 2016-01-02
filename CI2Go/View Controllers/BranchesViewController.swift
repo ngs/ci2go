@@ -17,6 +17,10 @@ class BranchesViewController: UITableViewController {
     }
     var branches = [Branch]()
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return ColorScheme().statusBarStyle()
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tracker = GAI.sharedInstance().defaultTracker

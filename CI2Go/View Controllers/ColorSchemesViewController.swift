@@ -8,18 +8,22 @@
 
 import UIKit
 
-public class ColorSchemesViewController: UITableViewController {
+class ColorSchemesViewController: UITableViewController {
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return ColorScheme().statusBarStyle()
+    }
 
     private var _sectionIndexes: [String]?
     private var _sections: [[String]] = []
-    public var sectionIndexes: [String] {
+    var sectionIndexes: [String] {
         if !(_sectionIndexes?.count > 0) {
             buildSections()
         }
         return _sectionIndexes!
     }
 
-    public var sections: [[String]] {
+    var sections: [[String]] {
         if !(_sections.count > 0) {
             buildSections()
         }
@@ -44,10 +48,13 @@ public class ColorSchemesViewController: UITableViewController {
         _sections.append(section!)
     }
 
-    public override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         let name = ColorScheme().name
-        let fchar = name.substringToIndex(name.startIndex.advancedBy(1))
-        let section = sectionIndexes.indexOf(fchar)
+        guard let fchar = name.characters.first else {
+            return
+        }
+        let str = String(fchar)
+        let section = sectionIndexes.indexOf(str)
         if section != nil {
             let row = sections[section!].indexOf(name)
             if row != nil {
@@ -58,36 +65,36 @@ public class ColorSchemesViewController: UITableViewController {
         }
     }
 
-    public override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "ColorScheme Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
 
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sectionIndexes.count
     }
 
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].count
     }
 
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as! ColorSchemeTableViewCell
         cell.colorSchemeName = sections[indexPath.section][indexPath.row]
         return cell
     }
 
-    public override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return sectionIndexes
     }
 
-    public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionIndexes[section]
     }
 
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = sections[indexPath.section][indexPath.row]
         ColorScheme(item)?.apply()
         let tracker = GAI.sharedInstance().defaultTracker

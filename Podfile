@@ -14,12 +14,16 @@ def shared_pods
   pod 'DateTools', '~> 1.7'
 end
 
-target 'CI2Go' do
-  pod 'PusherSwift', '~> 0.1'
+def ios_pods
+  shared_pods
   pod 'MBProgressHUD', '~> 0.8'
   pod 'Google/Analytics', '~> 1.0.0'
   pod 'RealmResultsController', '~> 0.3.1'
-  shared_pods
+  pod 'PusherSwift', git: 'https://github.com/pusher-community/pusher-websocket-swift.git', commit: '888319d2d2aa9951c3a2b421ac20736139360f4e'
+end
+
+target 'CI2Go' do
+  ios_pods
 end
 
 target 'CI2Go WatchKit App Extension' do
@@ -28,11 +32,11 @@ target 'CI2Go WatchKit App Extension' do
 end
 
 target 'CI2GoTests' do
-  pod 'RealmSwift', '0.97.0'
-  pod 'Google/Analytics', '~> 1.0.0'
+  ios_pods
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
   pod 'OHHTTPStubs', '~> 4.7'
-  pod 'ObjectMapper', '~> 1.0'
 end
 
+target 'CI2GoUITests' do
+end

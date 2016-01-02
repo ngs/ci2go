@@ -8,6 +8,7 @@
 
 import RealmSwift
 import ObjectMapper
+import CryptoSwift
 
 class BuildAction: Object, Mappable, Equatable, Comparable {
     enum Status: String {
@@ -108,7 +109,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     }
 
     var logFileName: String {
-        let fn = id.md5
+        let fn = id.md5()
         let si = fn.startIndex
         let ei = si.advancedBy(2)
         return "\(fn.substringToIndex(ei))/\(fn.substringFromIndex(ei))"

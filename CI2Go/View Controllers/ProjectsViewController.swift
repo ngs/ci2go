@@ -25,6 +25,11 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
         return rrc
     }()
 
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return ColorScheme().statusBarStyle()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ColorScheme().backgroundColor()

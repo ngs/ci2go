@@ -25,8 +25,9 @@ extension ColorScheme {
         SettingsTableView.appearance().backgroundColor = bg2
         UITableViewCell.appearance().backgroundColor = bg
         UITextField.appearance().textColor = fg
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).textColor = fg
         UILabel.appearance().highlightedTextColor = selectedTextColor()
-        UILabel.appearance().textColor = fg
+//        UILabel.appearance().textColor = fg
         UIButton.appearance().setTitleColor(bd, forState: UIControlState.Normal)
         UIButton.appearance().setTitleColor(fg, forState: UIControlState.Selected)
         let cellSelectedView = UIView()
@@ -36,7 +37,6 @@ extension ColorScheme {
         UINavigationBar.appearance().titleTextAttributes = navbarAttr
         BuildLogTextView.appearance().backgroundColor = bg
         BuildLogTextView.appearance().textColor = fg
-        UIApplication.sharedApplication().setStatusBarStyle(statusBarStyle(), animated: true)
         resetViews()
         setAsCurrent()
     }
