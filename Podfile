@@ -6,6 +6,7 @@ inhibit_all_warnings!
 def shared_pods
   pod 'Alamofire', '~> 3.1'
   pod 'AlamofireObjectMapper', '~> 2.1'
+  pod 'Carlos', '~> 0.5'
   pod 'ObjectMapper', '~> 1.0'
   pod 'RealmSwift', '0.97.0'
   pod 'RxBlocking', '~> 2.0.0-beta'

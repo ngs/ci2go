@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (2.1.0):
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
+  - Carlos (0.5)
   - CryptoSwift (0.2.2)
   - DateTools (1.7.0)
   - Google/Analytics (1.0.7):
@@ -57,6 +58,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.1)
   - AlamofireObjectMapper (~> 2.1)
+  - Carlos (~> 0.5)
   - DateTools (~> 1.7)
   - Google/Analytics (~> 1.0.0)
   - MBProgressHUD (~> 0.8)
@@ -85,6 +87,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
+  Carlos: 2519b03da9bf900b5aa698659a519ef5a8f6afc0
   CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Google: 875f5a8ade86dd02e36586e4a54814843938c7f6

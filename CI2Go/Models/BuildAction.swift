@@ -7,8 +7,9 @@
 //
 
 import RealmSwift
+import RxSwift
 import ObjectMapper
-import CryptoSwift
+import Carlos
 
 class BuildAction: Object, Mappable, Equatable, Comparable {
     enum Status: String {
@@ -46,6 +47,8 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     dynamic var rawStatus: String?
     dynamic var type = ""
     dynamic var output = ""
+
+    private let cache = MemoryCacheLevel<NSURL, NSString>() >>> DiskCacheLevel()
 
     required convenience init?(_ map: Map) {
         self.init()
@@ -108,52 +111,26 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         }
     }
 
-    var logFileName: String {
-        let fn = id.md5()
-        let si = fn.startIndex
-        let ei = si.advancedBy(2)
-        return "\(fn.substringToIndex(ei))/\(fn.substringFromIndex(ei))"
-    }
+    private var logSource = Variable<String>("")
 
-    var logFile: NSURL {
-        return NSFileManager.defaultManager()
-            .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!
-            .URLByAppendingPathComponent("BuildLog", isDirectory: true)
-            .URLByAppendingPathComponent(logFileName)
-    }
-
-    var logData: String? {
-        get {
-            guard NSFileManager.defaultManager().fileExistsAtPath(logFile.absoluteString) else {
-                return nil
-            }
-            do {
-                return try String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding)
-            } catch {
-                return nil
-            }
+    var log: Observable<String> {
+        let src = self.logSource, cache = self.cache
+        guard let outputURL = outputURL else {
+            return never()
         }
-        set(value) {
-            let m = NSFileManager.defaultManager()
-            guard let dir = logFile.URLByDeletingLastPathComponent else {
-                return
-            }
-            if !m.fileExistsAtPath(dir.absoluteString) {
-                do {
-                    try m.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil)
-                } catch {
-                    return
-                }
-            }
-            do {
-                try value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding)
-            } catch {
-            }
+        cache.get(outputURL).onSuccess { log in
+            src.value = log as String
         }
+        return combineLatest(downloadLog(), src) { ($0, $1) }
+            .flatMap { downloadedLog, log -> Observable<String> in
+                src.value = downloadedLog
+                cache.set(downloadedLog, forKey: outputURL)
+                return src.asObservable()
+            }
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["status", "outputURL", "logFile", "logFileName", "logData"]
+        return ["status", "outputURL", "logSource", "log"]
     }
 }
 

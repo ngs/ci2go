@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 import MBProgressHUD
 
 class BuildLogViewController: UIViewController {
     @IBOutlet weak var textView: BuildLogTextView!
+    let disposeBag = DisposeBag()
     var buildAction: BuildAction? = nil {
         didSet {
             title = buildAction?.name
@@ -33,30 +35,8 @@ class BuildLogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        load()
-    }
-
-    func load() {
-        if buildAction?.outputURL != nil {
-            if let cache = buildAction?.logData {
-                self.textView.logText = cache
-                return
-            }
-//            AFHTTPSessionManager().GET(buildAction!.outputURLString!, parameters: [],
-//                success: { (task: NSURLSessionDataTask!, res: AnyObject!) -> Void in
-//                    if let ar = res as? NSArray {
-//                        if let dict = ar.firstObject as? NSDictionary {
-//                            if let msg = dict["message"] as? String {
-//                                self.textView.logText = msg
-//                                self.buildAction?.logData = msg
-//                            }
-//                        }
-//                    }
-//                },
-//                failure: { (task: NSURLSessionDataTask!, error: NSError!) -> Void in
-//                }
-//            )
-        }
-    }
-    
+        buildAction?.log.subscribeNext { log in
+            self.textView.logText = log
+            }.addDisposableTo(disposeBag)
+    }    
 }
