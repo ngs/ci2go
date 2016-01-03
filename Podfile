@@ -10,15 +10,15 @@ def shared_pods
   pod 'ObjectMapper', '~> 1.0'
   pod 'RealmSwift', '0.97.0'
   pod 'RxBlocking', '~> 2.0.0-beta'
-  pod 'RxCocoa', '~> 2.0.0-beta'
-  pod 'RxSwift', '~> 2.0.0-beta'
+  pod 'RxCocoa', '~> 2.0.0'
+  pod 'RxSwift', '~> 2.0.0'
   pod 'DateTools', '~> 1.7'
 end
 
 def ios_pods
   shared_pods
   pod 'MBProgressHUD', '~> 0.8'
-  pod 'Google/Analytics', '~> 1.3.2'
+  pod 'GoogleAnalytics', '~> 3.14'
   pod 'RealmResultsController', '~> 0.3.1'
   pod 'PusherSwift', git: 'https://github.com/pusher-community/pusher-websocket-swift.git', commit: '888319d2d2aa9951c3a2b421ac20736139360f4e'
 end

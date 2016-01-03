@@ -6,5 +6,8 @@
 //  Copyright (c) 2014 LittleApps Inc. All rights reserved.
 //
 
-#import <Google/Analytics.h>
+#import <GoogleAnalytics/GAI.h>
+#import <GoogleAnalytics/GAIFields.h>
+#import <GoogleAnalytics/GAILogger.h>
+#import <GoogleAnalytics/GAIDictionaryBuilder.h>
 #import "AMR_ANSIEscapeHelper.h"

@@ -8,6 +8,8 @@
 
 import RealmSwift
 import RxSwift
+import RxCocoa
+import RxBlocking
 import ObjectMapper
 import Carlos
 
@@ -116,17 +118,17 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     var log: Observable<String> {
         let src = self.logSource, cache = self.cache
         guard let outputURL = outputURL else {
-            return never()
+            return Observable.never()
         }
         cache.get(outputURL).onSuccess { log in
             src.value = log as String
         }
-        return combineLatest(downloadLog(), src) { ($0, $1) }
+        return Observable.combineLatest(self.downloadLog(), src.asObservable()) { ($0, $1) }
             .flatMap { downloadedLog, log -> Observable<String> in
                 src.value = downloadedLog
                 cache.set(downloadedLog, forKey: outputURL)
                 return src.asObservable()
-            }
+        }
     }
 
     override static func ignoredProperties() -> [String] {

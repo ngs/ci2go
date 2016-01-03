@@ -23,10 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Configure tracker from GoogleService-Info.plist.
-        var configureError:NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         // Google Analytics
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true
@@ -34,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if NSProcessInfo().environment["VERBOSE"] == "1" {
             gai.logger.logLevel = .Verbose
         }
+        gai.trackerWithTrackingId(kCI2GoGATrackingId)
 
         // Appearance
         ColorScheme().apply()

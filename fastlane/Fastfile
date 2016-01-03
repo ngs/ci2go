@@ -19,10 +19,13 @@ def import_certificate_from_base64(file_spec, b64str, password = nil)
 end
 
 platform :ios do
+  desc 'Set build number to CIRCLE_BUILD_NUM'
+  lane :set_build_num do
+    increment_build_number build_number: ENV['CIRCLE_BUILD_NUM']
+  end
 
   desc 'Build AdHoc version ipa'
   lane :build do
-    increment_build_number build_number: ENV['CIRCLE_BUILD_NUM']
     unlock_keychain
     gym(
       scheme: APP_NAME,

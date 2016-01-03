@@ -6,22 +6,7 @@ PODS:
   - Carlos (0.5)
   - CryptoSwift (0.2.2)
   - DateTools (1.7.0)
-  - Google/Analytics (1.3.2):
-    - Google/Core
-    - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.3.2):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
   - GoogleAnalytics (3.14.0)
-  - GoogleInterchangeUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.0.0):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.0.3)
-  - GoogleUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0.0)
   - MBProgressHUD (0.9.2)
   - Nimble (3.0.0)
   - ObjectMapper (1.0.1)
@@ -53,11 +38,11 @@ PODS:
     - RealmSwift
   - RealmSwift (0.97.0):
     - Realm (= 0.97.0)
-  - RxBlocking (2.0.0-beta.4):
-    - RxSwift (~> 2.0.0-beta)
-  - RxCocoa (2.0.0-beta.4):
-    - RxSwift (~> 2.0.0-beta)
-  - RxSwift (2.0.0-beta.4)
+  - RxBlocking (2.0.0):
+    - RxSwift (~> 2.0)
+  - RxCocoa (2.0.0):
+    - RxSwift (~> 2.0)
+  - RxSwift (2.0.0)
   - Starscream (1.0.2)
 
 DEPENDENCIES:
@@ -65,7 +50,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper (~> 2.1)
   - Carlos (~> 0.5)
   - DateTools (~> 1.7)
-  - Google/Analytics (~> 1.3.2)
+  - GoogleAnalytics (~> 3.14)
   - MBProgressHUD (~> 0.8)
   - Nimble (~> 3.0)
   - ObjectMapper (~> 1.0)
@@ -77,8 +62,8 @@ DEPENDENCIES:
   - RealmResultsController (~> 0.3.1)
   - RealmSwift (= 0.97.0)
   - RxBlocking (~> 2.0.0-beta)
-  - RxCocoa (~> 2.0.0-beta)
-  - RxSwift (~> 2.0.0-beta)
+  - RxCocoa (~> 2.0.0)
+  - RxSwift (~> 2.0.0)
 
 EXTERNAL SOURCES:
   PusherSwift:
@@ -96,12 +81,7 @@ SPEC CHECKSUMS:
   Carlos: 2519b03da9bf900b5aa698659a519ef5a8f6afc0
   CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
-  GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
-  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
-  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
-  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
@@ -112,9 +92,9 @@ SPEC CHECKSUMS:
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
   RealmResultsController: ec769e0a755395a44bcc21ab1bdc703927a4f776
   RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
-  RxBlocking: 234b0c161315ff3ade25c11e48d74e9ca83158b5
-  RxCocoa: 4a3e433e6dfe116362ff54423c841cc0f209e009
-  RxSwift: 191c6b06da783a8671433cf35a54d2ad2fd2d9de
+  RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
+  RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
+  RxSwift: d83246efa6f16c50c143bec134649d045498f601
   Starscream: 40e2c4c1c770d811f24116b8b7dbeb4542c56767
 
 COCOAPODS: 0.39.0

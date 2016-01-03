@@ -12,7 +12,7 @@ import RxSwift
 
 extension BuildAction {
     func downloadLog() -> Observable<String> {
-        return create({ observer in
+        return Observable.create({ observer in
             guard let URL = self.outputURL else {
                 return AnonymousDisposable {}
             }
