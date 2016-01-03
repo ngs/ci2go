@@ -17,7 +17,7 @@ import ObjectMapper
 
 class BuildSpec: QuickSpec {
     override func spec() {
-        let realm = setupRealm()
+        let realm = try! Realm()
         sharedExamples("Mapped Build") {
             let build = realm.objects(Build).first!
             let project = realm.objects(Project).first!
@@ -51,7 +51,7 @@ class BuildSpec: QuickSpec {
             expect(project.repositoryName).to(equal("ci2go"))
             expect(project.username).to(equal("ngs"))
             expect(project.vcsURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go")!))
-            expect(project.id).to(equal("ngs/ci2go"))
+            expect(project.id).to(equal("project/ngs/ci2go"))
             expect(project.isOpenSource).to(beTrue())
             expect(branch.name).to(equal("refactor"))
             expect(branch.project).to(equal(project))
@@ -92,7 +92,6 @@ class BuildSpec: QuickSpec {
                 expect(realm.objects(BuildAction).count).to(equal(39))
                 expect(realm.objects(Build)[0].number).to(equal(204))
                 expect(realm.objects(Build)[1].number).to(equal(203))
-                expect(realm.objects(Build)[2].number).to(equal(116))
 
                 itBehavesLike("Mapped Build")
 
@@ -143,7 +142,57 @@ class BuildSpec: QuickSpec {
                 expect(build.steps.map({ $0.index })).to(equal([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]))
                 expect(build.steps.map({ $0.actions.count })).to(equal([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
                 expect(build.steps.map({ $0.actions.first!.name })).to(equal(names))
-                
+
+            }
+        }
+        describe("getRecent") {
+            stub(isHost("circleci.com")) { _ in
+                let stubPath = OHPathForFile("builds.json", self.dynamicType)
+                return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+            }
+            it("resposes recent builds") {
+                waitUntil { done in
+                    _ = Build.getRecent().subscribe(
+                        onNext: { builds in
+                            expect(builds.count).to(equal(20))
+                            expect(realm.objects(Build).count).to(equal(27))
+                            let ar = realm.objects(Build).map { $0.id }
+                            expect(ar).to(equal([
+                                "project/ngs/ci2go/204",
+                                "project/ngs/ci2go/203",
+                                "project/ngs/ci2go/200",
+                                "project/ngs/ci2go/199",
+                                "project/ngs/ci2go/198",
+                                "project/ngs/ci2go/197",
+                                "project/ngs/ci2go/196",
+                                "project/ngs/ci2go/195",
+                                "project/ngs/ci2go/194",
+                                "project/ngs/ci2go/193",
+                                "project/ngs/ci2go/192",
+                                "project/ngs/ci2go/191",
+                                "project/ngs/ci2go/189",
+                                "project/ngs/ci2go/190",
+                                "project/ngs/ci2go/187",
+                                "project/ngs/ci2go/186",
+                                "project/ngs/ci2go/185",
+                                "project/ngs/ci2go/180",
+                                "project/ngs/ci2go/184",
+                                "project/ngs/ci2go/181",
+                                "project/ngs/ci2go/183",
+                                "project/ngs/ci2go/24",
+                                "project/ngs/ci2go/182",
+                                "project/ngs/ci2go/179",
+                                "project/ngs/ci2go/178",
+                                "project/ngs/ci2go/175",
+                                "project/ngs/ci2go/174"]))
+                            done()
+                        },
+                        onError: { _ in
+                            fail("failed")
+                            done()
+                        }
+                    )
+                }
             }
         }
     }

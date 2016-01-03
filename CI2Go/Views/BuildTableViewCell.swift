@@ -49,7 +49,6 @@ class BuildTableViewCell: UITableViewCell {
     statusLabel.layer.cornerRadius = 3
     statusLabel.layer.masksToBounds = true
     statusLabel.textColor = scheme.backgroundColor()
-    buildNumLabel.sizeToFit()
     statusLabel.backgroundColor = scheme.badgeColor(status: status)
     branchIconImageView.image = UIImage(named: "1081-branch-toolbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
     branchIconImageView.tintColor = scheme.foregroundColor()

@@ -12,36 +12,52 @@ import UIKit
 extension ColorScheme {
 
     func apply() {
-        let bg = backgroundColor()
-        let fg = foregroundColor()
-        let bd = boldColor()
-        let bg2 = groupTableViewBackgroundColor()
+        guard let bg = backgroundColor()
+            , fg = foregroundColor()
+            , bd = boldColor()
+            , bg2 = groupTableViewBackgroundColor() else {
+            return
+        }
+        UIApplication.sharedApplication().statusBarStyle = statusBarStyle()
         UIScrollView.appearance().indicatorStyle = scrollViewIndicatorStyle()
         UIView.appearance().tintColor = bd
         UINavigationBar.appearance().barTintColor = bg
         UITableView.appearance().separatorColor = UIColor(white: 0.5, alpha: 0.5)
-        UITableView.appearance().backgroundColor = bg
+        UIScrollView.appearance().backgroundColor = bg
+        SettingsTableView.appearance().backgroundColor = bg
         UITableView.appearance().sectionIndexBackgroundColor = bg
-        SettingsTableView.appearance().backgroundColor = bg2
+        UIScrollView.appearanceWhenContainedInInstancesOfClasses([SettingsTableView.self]).backgroundColor = bg2
+        UITableView.appearanceWhenContainedInInstancesOfClasses([SettingsTableView.self]).backgroundColor = bg2
+        UITableView.appearance().backgroundColor = bg
         UITableViewCell.appearance().backgroundColor = bg
         UITextField.appearance().textColor = fg
-        UILabel.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).textColor = fg
-        UILabel.appearance().highlightedTextColor = selectedTextColor()
-//        UILabel.appearance().textColor = fg
-        UIButton.appearance().setTitleColor(bd, forState: UIControlState.Normal)
-        UIButton.appearance().setTitleColor(fg, forState: UIControlState.Selected)
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).textColor = fg
+        UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).highlightedTextColor = selectedTextColor()
+        UIButton.appearanceWhenContainedInInstancesOfClasses([UITableView.self]).setTitleColor(bd, forState: .Normal)
+        UIButton.appearanceWhenContainedInInstancesOfClasses([UITableView.self]).setTitleColor(fg, forState: .Highlighted)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: bd], forState: .Normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: fg], forState: .Highlighted)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: fg.colorWithAlphaComponent(0.4)], forState: .Disabled)
+        let cellBackgroundView = UIView()
+        cellBackgroundView.backgroundColor = bg
+        UITableViewCell.appearance().backgroundView = cellBackgroundView
         let cellSelectedView = UIView()
-        cellSelectedView.backgroundColor = UIColor(betweenColor: bg!, andColor: bd!, percentage: 0.5)
+        cellSelectedView.backgroundColor = UIColor(betweenColor: bg, andColor: bd, percentage: 0.5)
         UITableViewCell.appearance().selectedBackgroundView = cellSelectedView
-        let navbarAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: fg!]
+        let navbarAttr: Dictionary<String, UIColor> = [NSForegroundColorAttributeName: fg]
         UINavigationBar.appearance().titleTextAttributes = navbarAttr
+        UINavigationBar.appearance().barStyle = barStyle()
         BuildLogTextView.appearance().backgroundColor = bg
         BuildLogTextView.appearance().textColor = fg
-        resetViews()
         setAsCurrent()
+        resetViews()
     }
     func statusBarStyle() -> UIStatusBarStyle {
-        return isLight() ? UIStatusBarStyle.Default : UIStatusBarStyle.LightContent
+        return isLight() ? .Default : .LightContent
+    }
+
+    func barStyle() -> UIBarStyle {
+        return isLight() ? .Default : .Black
     }
 
     func scrollViewIndicatorStyle() -> UIScrollViewIndicatorStyle {

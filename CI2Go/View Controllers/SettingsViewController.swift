@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import RxSwift
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
@@ -18,9 +19,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var apiTokenField: UITextField!
     @IBOutlet weak var colorSchemeCell: ColorSchemeTableViewCell!
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return ColorScheme().statusBarStyle()
-    }
+    let disposeBag = DisposeBag()
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -71,25 +70,24 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         hud.labelText = "Authenticating"
         hud.show(true)
         let token = apiTokenField.text
-        //    let m = CircleCIAPISessionManager(apiToken: token)
-        //    m.GET("me", parameters: nil,
-        //      success: { (op: AFHTTPRequestOperation!, res: AnyObject!) -> Void in
-        //        CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken = token
-        //        hud.labelText = "Authenticated"
-        //        hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
-        //        hud.mode = MBProgressHUDMode.CustomView
-        //        hud.hide(true, afterDelay: 1)
-        //        if dismissAfterSuccess {
-        //          self.dismissViewControllerAnimated(true, completion: nil)
-        //        }
-        //      },
-        //      failure: { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
-        //        hud.labelText = "Failed to authenticate"
-        //        hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
-        //        hud.mode = MBProgressHUDMode.CustomView
-        //        hud.hide(true, afterDelay: 1)
-        //      }
-        //    )
+        User.me(token).subscribe(
+            onNext: { (user: User) in
+                CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken = token
+                hud.labelText = "Authenticated"
+                hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
+                hud.mode = MBProgressHUDMode.CustomView
+                hud.hide(true, afterDelay: 1)
+                if dismissAfterSuccess {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            },
+            onError: { e in
+                hud.labelText = "Failed to authenticate"
+                hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
+                hud.mode = MBProgressHUDMode.CustomView
+                hud.hide(true, afterDelay: 1)
+            }
+            ).addDisposableTo(disposeBag)
         apiTokenField.resignFirstResponder()
     }
 
@@ -151,7 +149,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         let range = after.rangeOfCharacterFromSet(set)
         return range.location == NSNotFound
     }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let b = textField.text?.utf8.count == 40
         if b {

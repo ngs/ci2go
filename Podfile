@@ -19,7 +19,7 @@ def ios_pods
   shared_pods
   pod 'MBProgressHUD', '~> 0.8'
   pod 'GoogleAnalytics', '~> 3.14'
-  pod 'RealmResultsController', '~> 0.3.1'
+  pod 'RealmResultsController', git: 'https://github.com/ngs/RealmResultsController.git', commit: 'cafc0af3071eb8202c0a0559b33c09b6741ebdf2'
   pod 'PusherSwift', git: 'https://github.com/pusher-community/pusher-websocket-swift.git', commit: '888319d2d2aa9951c3a2b421ac20736139360f4e'
 end
 

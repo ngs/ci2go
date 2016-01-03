@@ -37,7 +37,9 @@ class ColorScheme {
         return [String: [String: CGFloat]]()
     }()
 
-    init() {}
+    init() {
+        self.name = CI2GoUserDefaults.standardUserDefaults().colorSchemeName!
+    }
 
     convenience init?(_ name: String) {
         if !ColorScheme.names.contains(name) {
@@ -119,7 +121,7 @@ class ColorScheme {
             return greenColor()
         case .Running:
             return blueColor()
-        case .Failed, .Timedout, .InfrastructureFail, .NoTests:
+        case .Failed, .Timedout, .InfrastructureFail:
             return redColor()
         default:
             return UIColor.grayColor()

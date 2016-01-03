@@ -44,12 +44,13 @@ class Project: Object, Mappable, Equatable, Comparable {
 
     func updateId() {
         if username.utf8.count > 0 && repositoryName.utf8.count > 0 {
-            id = path
+            id = apiPath
         }
     }
 
     func mapping(map: Map) {
         var defaultBranchName: String?
+        var branches: [Branch]?
         isOpenSource <- map["oss"]
         repositoryName <- map["reponame"]
         parallelCount <- map["parallel"]
@@ -57,13 +58,22 @@ class Project: Object, Mappable, Equatable, Comparable {
         username <- map["username"]
         vcsURLString <- map["vcs_url"]
         defaultBranchName <- map["default_branch"]
+        branches <- (map["branches"], ProjectBranchesTransform())
+        branches = branches ?? []
         if let defaultBranchName = defaultBranchName {
             let branch = Branch()
-            branch.project = self
             branch.name = defaultBranchName
-            if !branches.contains(branch) {
-                branches.append(branch)
+            branches?.append(branch)
+        }
+        if let branches = branches {
+            branches.forEach { b in
+                b.project = self
+                if let name = b.name.stringByRemovingPercentEncoding {
+                    b.name = name
+                }
             }
+            self.branches.removeAll()
+            self.branches.appendContentsOf(branches)
         }
     }
 
@@ -73,6 +83,18 @@ class Project: Object, Mappable, Equatable, Comparable {
 
     override static func ignoredProperties() -> [String] {
         return ["path", "apiPath", "vcsURL"]
+    }
+
+    func dup() -> Project {
+        let dup = Project()
+        dup.parallelCount = parallelCount
+        dup.repositoryName = repositoryName
+        dup.username = username
+        dup.vcsURLString = vcsURLString
+        dup.id = id
+        dup.isOpenSource = isOpenSource
+        dup.isFollowed = isFollowed
+        return dup
     }
 }
 
@@ -94,4 +116,20 @@ func >=(lhs: Project, rhs: Project) -> Bool {
 
 func <=(lhs: Project, rhs: Project) -> Bool {
     return lhs.id <= rhs.id
+}
+
+func ProjectBranchesTransform() -> TransformOf<[Branch], [String: AnyObject]> {
+    return TransformOf<[Branch], [String: AnyObject]>(
+        fromJSON: { (value: [String : AnyObject]?) -> [Branch]? in
+            guard let keys = value?.keys else { return [] }
+            return keys.map { name in
+                let b = Branch()
+                b.name = name
+                return b
+            }
+        },
+        toJSON: { (branches: [Branch]?) -> [String : AnyObject]? in
+            return nil // FIXME
+        }
+    )
 }

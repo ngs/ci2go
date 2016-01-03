@@ -56,12 +56,7 @@ class Build: Object, Mappable, Equatable, Comparable {
         didSet { updateId() }
     }
     dynamic var parallelCount: Int = 0
-    dynamic var project: Project? {
-        didSet {
-            branch?.project = project
-            updateId()
-        }
-    }
+    dynamic var project: Project?
     dynamic var rawLifecycle: String?
     dynamic var rawStatus: String?
     dynamic var rawOutcome: String?
@@ -174,7 +169,9 @@ class Build: Object, Mappable, Equatable, Comparable {
         steps <- map["steps"]
         node <- map["node"]
         previsousBuild?.project = project
+        previsousBuild?.updateId()
         previsousSuccessfulBuild?.project = project
+        previsousSuccessfulBuild?.updateId()
 
         if let branchName = branchName where !branchName.isEmpty {
             let branch = Branch()
@@ -202,6 +199,7 @@ class Build: Object, Mappable, Equatable, Comparable {
                 self.steps.append(c)
             }
         }
+        updateId()
     }
 
     func updateId() {
@@ -216,6 +214,37 @@ class Build: Object, Mappable, Equatable, Comparable {
 
     override static func ignoredProperties() -> [String] {
         return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath"]
+    }
+
+    func dup() -> Build {
+        let dup = Build()
+        dup.branch = branch?.dup()
+        dup.buildParametersData = buildParametersData
+        dup.circleYAML = circleYAML
+        dup.compareURLString = compareURLString
+        dup.dontBuild = dontBuild
+        dup.id  = id
+        dup.sshEnabled  = sshEnabled
+        dup.hasArtifacts  = hasArtifacts
+        dup.number = number
+        dup.parallelCount = parallelCount
+        dup.project = project?.dup()
+        dup.rawLifecycle = rawLifecycle
+        dup.rawStatus = rawStatus
+        dup.rawOutcome = rawOutcome
+        dup.retryOf = retryOf
+        dup.previsousBuild = previsousBuild
+        dup.previsousSuccessfulBuild = previsousSuccessfulBuild
+        dup.timeMillis = timeMillis
+        dup.triggeredCommit = triggeredCommit
+        dup.urlString = urlString
+        dup.user = user?.dup()
+        dup.why = why
+        dup.queuedAt = queuedAt
+        dup.startedAt = startedAt
+        dup.stoppedAt = stoppedAt
+        dup.node = node?.dup()
+        return dup
     }
 }
 

@@ -13,7 +13,6 @@
 		850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E891C36EA6B00C1EC70 /* Node.swift */; };
 		850B4E8B1C36EC4C00C1EC70 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E891C36EA6B00C1EC70 /* Node.swift */; };
 		850B4E8D1C373E9400C1EC70 /* ColorSchemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E8C1C373E9400C1EC70 /* ColorSchemeSpec.swift */; };
-		850B4E9D1C37DB7200C1EC70 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E8F1C37DB7200C1EC70 /* BaseTableViewController.swift */; };
 		850B4E9E1C37DB7200C1EC70 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E901C37DB7200C1EC70 /* BranchesViewController.swift */; };
 		850B4E9F1C37DB7200C1EC70 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E911C37DB7200C1EC70 /* BuildLogViewController.swift */; };
 		850B4EA01C37DB7200C1EC70 /* BuildStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E921C37DB7200C1EC70 /* BuildStepsViewController.swift */; };
@@ -331,6 +330,17 @@
 		85C723F21C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
 		85C723F41C387D6100582B4D /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */; };
 		85C724341C38C75000582B4D /* BuildActionNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4EB31C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift */; };
+		85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724351C3919B400582B4D /* CircleAPIClient.swift */; };
+		85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724371C391A9800582B4D /* DictionaryExtension.swift */; };
+		85C7243A1C39216500582B4D /* CircleAPIClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724391C39216500582B4D /* CircleAPIClientSpec.swift */; };
+		85C7243B1C3921B200582B4D /* CircleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724351C3919B400582B4D /* CircleAPIClient.swift */; };
+		85C7243D1C392AB600582B4D /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = 85C7243C1C392AB600582B4D /* me.json */; };
+		85C7243F1C392B3100582B4D /* UserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7243E1C392B3100582B4D /* UserSpec.swift */; };
+		85C724411C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */; };
+		85C724421C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */; };
+		85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724431C396A1900582B4D /* ProjectNetworkingExtension.swift */; };
+		85C724471C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */; };
+		85C724481C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */; };
 		C04F2A3320EB76C305DAC26D /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -398,7 +408,6 @@
 		850B4E871C36E78700C1EC70 /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
 		850B4E891C36EA6B00C1EC70 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		850B4E8C1C373E9400C1EC70 /* ColorSchemeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeSpec.swift; sourceTree = "<group>"; };
-		850B4E8F1C37DB7200C1EC70 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		850B4E901C37DB7200C1EC70 /* BranchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		850B4E911C37DB7200C1EC70 /* BuildLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		850B4E921C37DB7200C1EC70 /* BuildStepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewController.swift; sourceTree = "<group>"; };
@@ -593,6 +602,14 @@
 		85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go.framework; path = "build/Debug-iphoneos/Pods_CI2Go.framework"; sourceTree = "<group>"; };
 		85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go_WatchKit_App_Extension.framework; path = "build/Debug-watchos/Pods_CI2Go_WatchKit_App_Extension.framework"; sourceTree = "<group>"; };
 		85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2GoTests.framework; path = "build/Debug-iphoneos/Pods_CI2GoTests.framework"; sourceTree = "<group>"; };
+		85C724351C3919B400582B4D /* CircleAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleAPIClient.swift; sourceTree = "<group>"; };
+		85C724371C391A9800582B4D /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		85C724391C39216500582B4D /* CircleAPIClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleAPIClientSpec.swift; sourceTree = "<group>"; };
+		85C7243C1C392AB600582B4D /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
+		85C7243E1C392B3100582B4D /* UserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSpec.swift; sourceTree = "<group>"; };
+		85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkingExtension.swift; sourceTree = "<group>"; };
+		85C724431C396A1900582B4D /* ProjectNetworkingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectNetworkingExtension.swift; sourceTree = "<group>"; };
+		85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildNetworkingExtension.swift; sourceTree = "<group>"; };
 		85D0E3CE1C31F3F40007C569 /* CI2Go WatchKit App Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CI2Go WatchKit App Extension.entitlements"; sourceTree = "<group>"; };
 		C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -631,7 +648,6 @@
 		850B4E8E1C37DB7200C1EC70 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				850B4E8F1C37DB7200C1EC70 /* BaseTableViewController.swift */,
 				850B4E901C37DB7200C1EC70 /* BranchesViewController.swift */,
 				850B4E911C37DB7200C1EC70 /* BuildLogViewController.swift */,
 				850B4E921C37DB7200C1EC70 /* BuildStepsViewController.swift */,
@@ -676,6 +692,10 @@
 			isa = PBXGroup;
 			children = (
 				850B4EB31C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift */,
+				85C724351C3919B400582B4D /* CircleAPIClient.swift */,
+				85C724431C396A1900582B4D /* ProjectNetworkingExtension.swift */,
+				85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */,
+				85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -683,6 +703,7 @@
 		85168A961C36A25100392145 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				85C7243C1C392AB600582B4D /* me.json */,
 				850B4E871C36E78700C1EC70 /* build.json */,
 				85168A9D1C36B71E00392145 /* builds.json */,
 				85168A971C36A25100392145 /* projects.json */,
@@ -743,10 +764,12 @@
 				856701A31C3015F500E76DCF /* Info.plist */,
 				85168A941C3691A300392145 /* BranchSpec.swift */,
 				85168A9F1C36BA6200392145 /* BuildSpec.swift */,
-				850B4EBE1C3873B800C1EC70 /* StringExtensionSpec.swift */,
+				85C724391C39216500582B4D /* CircleAPIClientSpec.swift */,
 				850B4E8C1C373E9400C1EC70 /* ColorSchemeSpec.swift */,
 				85168A9B1C36A9A500392145 /* ProjectSpec.swift */,
 				85168A991C36A44C00392145 /* SpecHelper.swift */,
+				850B4EBE1C3873B800C1EC70 /* StringExtensionSpec.swift */,
+				85C7243E1C392B3100582B4D /* UserSpec.swift */,
 				85168A961C36A25100392145 /* Fixtures */,
 			);
 			path = CI2GoTests;
@@ -807,6 +830,7 @@
 				85168AA11C36CBCC00392145 /* NSDateExtension.swift */,
 				850B4EAF1C3808F700C1EC70 /* IntTimeFormattedExtension.swift */,
 				850B4EBB1C38737100C1EC70 /* StringExtension.swift */,
+				85C724371C391A9800582B4D /* DictionaryExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1191,6 +1215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85168A9E1C36B71E00392145 /* builds.json in Resources */,
+				85C7243D1C392AB600582B4D /* me.json in Resources */,
 				850B4E881C36E78700C1EC70 /* build.json in Resources */,
 				85168A981C36A25100392145 /* projects.json in Resources */,
 			);
@@ -1623,6 +1648,8 @@
 			files = (
 				85168A9A1C36A44C00392145 /* SpecHelper.swift in Sources */,
 				85168AA01C36BA6200392145 /* BuildSpec.swift in Sources */,
+				85C7243A1C39216500582B4D /* CircleAPIClientSpec.swift in Sources */,
+				85C7243F1C392B3100582B4D /* UserSpec.swift in Sources */,
 				85168A951C3691A300392145 /* BranchSpec.swift in Sources */,
 				850B4EC11C38743F00C1EC70 /* StringExtensionSpec.swift in Sources */,
 				850B4E8D1C373E9400C1EC70 /* ColorSchemeSpec.swift in Sources */,
@@ -1639,12 +1666,15 @@
 				85C067891C3127AA001062F2 /* Branch.swift in Sources */,
 				85168A891C36814200392145 /* Commit.swift in Sources */,
 				856702951C30253100E76DCF /* CI2GoUserDefaults.swift in Sources */,
+				85C724411C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
+				85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */,
 				850B4EA71C37DB7200C1EC70 /* BuildTableViewCell.swift in Sources */,
 				850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */,
 				8567028C1C30253100E76DCF /* UIColor+Mix.swift in Sources */,
 				850B4E9F1C37DB7200C1EC70 /* BuildLogViewController.swift in Sources */,
 				856E04D71C313BD9003F43BC /* Project.swift in Sources */,
 				850B4EA61C37DB7200C1EC70 /* BuildLogTextView.swift in Sources */,
+				85C724471C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */,
 				850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */,
 				850B4EA91C37DB7200C1EC70 /* SettingsTableView.swift in Sources */,
 				850B4EA81C37DB7200C1EC70 /* ColorSchemeTableViewCell.swift in Sources */,
@@ -1657,15 +1687,16 @@
 				85168A851C36813300392145 /* BuildAction.swift in Sources */,
 				856702961C30253100E76DCF /* ColorScheme.swift in Sources */,
 				850B4EB41C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift in Sources */,
+				85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */,
 				856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */,
 				850B4EA11C37DB7200C1EC70 /* BuildsViewController.swift in Sources */,
 				850B4EA31C37DB7200C1EC70 /* ProjectsViewController.swift in Sources */,
+				85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */,
 				8567028D1C30253100E76DCF /* UIFont+appFonts.swift in Sources */,
 				850B4EA01C37DB7200C1EC70 /* BuildStepsViewController.swift in Sources */,
 				850B4EA41C37DB7200C1EC70 /* SettingsViewController.swift in Sources */,
 				85168A831C36812B00392145 /* Build.swift in Sources */,
 				850B4EAE1C3805EF00C1EC70 /* AMR_ANSIEscapeHelper.m in Sources */,
-				850B4E9D1C37DB7200C1EC70 /* BaseTableViewController.swift in Sources */,
 				850B4EA21C37DB7200C1EC70 /* ColorSchemesViewController.swift in Sources */,
 				85168A8D1C36815D00392145 /* User.swift in Sources */,
 			);
@@ -1696,6 +1727,7 @@
 				856701D41C3016BA00E76DCF /* NotificationController.swift in Sources */,
 				85C724341C38C75000582B4D /* BuildActionNetworkingExtension.swift in Sources */,
 				85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */,
+				85C7243B1C3921B200582B4D /* CircleAPIClient.swift in Sources */,
 				850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */,
 				856E04D81C313BD9003F43BC /* Project.swift in Sources */,
 				85168A8F1C3681F600392145 /* BuildAction.swift in Sources */,
@@ -1703,7 +1735,9 @@
 				850B4EB11C3809BC00C1EC70 /* IntTimeFormattedExtension.swift in Sources */,
 				850B4EBD1C38737400C1EC70 /* StringExtension.swift in Sources */,
 				85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */,
+				85C724421C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
 				856701D01C3016BA00E76DCF /* InterfaceController.swift in Sources */,
+				85C724481C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */,
 				856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */,
 				856E04D51C313BC2003F43BC /* Branch.swift in Sources */,
 			);

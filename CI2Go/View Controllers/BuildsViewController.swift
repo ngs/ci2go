@@ -7,24 +7,79 @@
 //
 
 import UIKit
+import RxSwift
+import RealmSwift
+import RealmResultsController
+import RxSwift
 
-class BuildsViewController: BaseTableViewController {
+class BuildsViewController: UITableViewController, RealmResultsControllerDelegate {
+
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+
+    var rrc: RealmResultsController<Build, Build>?
+
+    func buildRRC() -> RealmResultsController<Build, Build> {
+        let predicate: NSPredicate
+        let def = CI2GoUserDefaults.standardUserDefaults()
+        if let branch = def.selectedBranch {
+            predicate = NSPredicate(format: "branch.id == %@", branch.id)
+        } else if let project = def.selectedProject {
+            predicate = NSPredicate(format: "project.id == %@", project.id)
+        } else {
+            predicate = NSPredicate(value: true)
+        }
+        let sd = SortDescriptor(property: "queuedAt", ascending: false)
+        let req = RealmRequest<Build>(predicate: predicate, realm: self.realm, sortDescriptors: [sd])
+        let rrc = try! RealmResultsController<Build, Build>(request: req, sectionKeyPath: nil)
+        rrc.delegate = self
+        return rrc
+    }
+
+    func updateRRC(sender: AnyObject? = nil) {
+        let def = CI2GoUserDefaults.standardUserDefaults()
+        if let branch = def.selectedBranch, project = branch.project {
+            self.navigationItem.prompt = "\(project.path) (\(branch.name))"
+        } else if let project = def.selectedProject {
+            self.navigationItem.prompt = project.path
+        } else {
+            self.navigationItem.prompt = nil
+        }
+        self.rrc?.delegate = nil
+        self.rrc = self.buildRRC()
+        self.rrc?.performFetch()
+        self.refresh(sender)
+    }
+
+    private var refreshTimer: NSTimer? = nil
+
+    let disposeBag = DisposeBag()
 
     var offset = 0, isLoading = false
+    let limit = 30
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - UIViewController
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.rx_controlEvent(.ValueChanged).subscribeNext {
+            self.refresh(self.refreshControl)
+            }.addDisposableTo(disposeBag)
         tableView.addSubview(refreshControl!)
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return ColorScheme().statusBarStyle()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.view.backgroundColor = ColorScheme().backgroundColor()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        if let _ = NSProcessInfo().environment["TEST"] {
+            return
+        }
         let tracker = GAI.sharedInstance().defaultTracker
         let d = CI2GoUserDefaults.standardUserDefaults()
         if !d.isLoggedIn {
@@ -32,97 +87,140 @@ class BuildsViewController: BaseTableViewController {
             performSegueWithIdentifier("showSettings", sender: nil)
         } else {
             tracker.set(kGAIScreenName, value: "Builds Screen")
-            load(false)
+            self.updateRRC()
         }
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.updatePredicate()
         super.viewWillAppear(animated)
         let c = NSNotificationCenter.defaultCenter()
         c.addObserverForName(kCI2GoBranchChangedNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                self.updatePredicate()
-                self.load(false)
+                self.updateRRC(n)
             })
         }
         c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                self.load(false)
+                self.refresh(n)
             })
         }
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        invalidateRefreshTimer()
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        //    let buildCell = cell as? BuildTableViewCell
-        //    let build = fetchedResultsController.objectAtIndexPath(indexPath) as? Build
-        //    buildCell?.build = build
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let vc = segue.destinationViewController as? BuildStepsViewController else { return }
+        switch sender {
+        case let cell as BuildTableViewCell:
+            vc.build = cell.build
+            break
+        case let build as Build:
+            vc.build = build
+            break
+        default:
+            break
+        }
+    }
+
+    // MARK: - UITableViewController
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return rrc?.numberOfSections ?? 0
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rrc?.numberOfObjectsAt(section) ?? 0
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "Cell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        self.configureCell(cell, atIndexPath: indexPath)
+        return cell
+    }
+
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row >= offset && !isLoading {
+            load(true)
+        }
+    }
+
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let buildCell = cell as? BuildTableViewCell
+        let build = rrc?.objectAt(indexPath)
+        buildCell?.build = build
     }
 
     func load(more: Bool) {
-        //    if isLoading {
-        //      refreshControl?.endRefreshing()
-        //      return
-        //    }
-        //    if more {
-        //      offset += 50
-        //    } else {
-        //      offset = 0
-        //    }
-        //    isLoading = true
-        //    invalidateRefreshTimer()
-        //    CircleCIAPISessionManager().GET(CI2GoUserDefaults.standardUserDefaults().buildsAPIPath, parameters: ["limit": 100, "offset": offset],
-        //      success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
-        //        self.refreshControl?.endRefreshing()
-        //        AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
-        //        MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
-        //          if let ar = data as? NSArray {
-        //            Build.MR_importFromArray(ar as [AnyObject], inContext: context)
-        //          }
-        //          AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-        //          return
-        //          }, completion: { (success: Bool, error: NSError!) -> Void in
-        //            self.isLoading = false
-        //            self.scheduleNextRefresh()
-        //            AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-        //            return
-        //        })
-        //      })
-        //      { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
-        //        self.isLoading = false
-        //        self.scheduleNextRefresh()
-        //    }
+        guard !isLoading else {
+            refreshControl?.endRefreshing()
+            return
+        }
+        if more {
+            offset += limit
+        } else {
+            offset = 0
+        }
+        isLoading = true
+        Build.getList(offset: offset, limit: limit).subscribe(
+            onNext: { _ in
+                self.refreshControl?.endRefreshing()
+                self.isLoading = false
+            },
+            onError: { _ in
+                self.refreshControl?.endRefreshing()
+                self.isLoading = false
+            }
+            ).addDisposableTo(disposeBag)
     }
 
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        //    let contentHeight = scrollView.contentSize.height
-        //    let height = scrollView.frame.size.height
-        //    let top = scrollView.frame.origin.y
-        //    let scrollTop = scrollView.contentOffset.y
-        //    let diff = contentHeight - scrollTop - top
-        //    if diff < height && self.fetchedResultsController.sections?.count > 0 {
-        //      load(true)
-        //    }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as? BuildStepsViewController
-        let cell = sender as? BuildTableViewCell
-        var build = sender as? Build
-        if build == nil { build = cell?.build }
-        vc?.build = build
-    }
-    
-    override func refresh(sender :AnyObject?) {
-        tableView.reloadData()
+    func refresh(sender :AnyObject?) {
         load(false)
+        tableView.reloadData()
+    }
+
+    // MARK: - RealmResultsControllerDelegate
+
+    func willChangeResults(controller: AnyObject) {
+        tableView.beginUpdates()
+    }
+
+    func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
+        switch changeType {
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Move:
+            tableView.moveRowAtIndexPath(oldIndexPath, toIndexPath: newIndexPath)
+            break
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
+            break
+        }
+    }
+
+    func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
+        switch changeType {
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            break
+        default:
+            break
+        }
+    }
+    
+    func didChangeResults(controller: AnyObject) {
+        tableView.endUpdates()
     }
     
 }

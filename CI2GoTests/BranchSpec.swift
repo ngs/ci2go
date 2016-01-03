@@ -17,7 +17,7 @@ import ObjectMapper
 
 class BranchSpec: QuickSpec {
     override func spec() {
-        let realm = setupRealm()
+        let realm = try! Realm()
         afterEach {
             try! realm.write { realm.deleteAll() }
         }

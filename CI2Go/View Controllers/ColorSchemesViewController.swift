@@ -14,39 +14,15 @@ class ColorSchemesViewController: UITableViewController {
         return ColorScheme().statusBarStyle()
     }
 
-    private var _sectionIndexes: [String]?
-    private var _sections: [[String]] = []
-    var sectionIndexes: [String] {
-        if !(_sectionIndexes?.count > 0) {
-            buildSections()
-        }
-        return _sectionIndexes!
-    }
+    lazy var sectionIndexes: [String] = {
+        return ColorScheme.names.map({ $0.firstString }).unique
+    }()
 
-    var sections: [[String]] {
-        if !(_sections.count > 0) {
-            buildSections()
+    lazy var sections: [[String]] = {
+        return self.sectionIndexes.map { section in
+            ColorScheme.names.filter{ $0.firstString == section }
         }
-        return _sections
-    }
-
-    private func buildSections() {
-        _sectionIndexes = [String]()
-        _sections = [[String]]()
-        var section: [String]?
-        for name in ColorScheme.names {
-            let fchar = name.substringToIndex(name.startIndex.advancedBy(1))
-            if (_sectionIndexes!).indexOf(fchar) == nil {
-                _sectionIndexes?.append(fchar)
-                if section != nil {
-                    _sections.append(section!)
-                }
-                section = [String]()
-            }
-            section!.append(name)
-        }
-        _sections.append(section!)
-    }
+    }()
 
     override func viewWillAppear(animated: Bool) {
         let name = ColorScheme().name

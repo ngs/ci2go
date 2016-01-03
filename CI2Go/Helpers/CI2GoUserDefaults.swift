@@ -88,7 +88,7 @@ class CI2GoUserDefaults: NSObject {
     }
 
     var isLoggedIn: Bool {
-        get { return circleCIAPIToken?.utf8.count > 0 }
+        return circleCIAPIToken?.isEmpty == false
     }
 
     var logRefreshInterval: Double {

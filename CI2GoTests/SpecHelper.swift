@@ -15,10 +15,3 @@ func fixtureJSON(fileName: String, _ inBundleForClass: AnyClass) -> AnyObject {
     let data = NSData(contentsOfFile: file)!
     return try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions())
 }
-
-func setupRealm() -> Realm {
-    var config = Realm.Configuration()
-    config.inMemoryIdentifier = "TestInMemoryRealm"
-    Realm.Configuration.defaultConfiguration = config
-    return try! Realm()
-}

@@ -23,11 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let env = NSProcessInfo().environment
+
+        var config = Realm.Configuration(schemaVersion: kCI2GoSchemaVersion)
+        if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
+            config.inMemoryIdentifier = identifier
+        }
+        Realm.Configuration.defaultConfiguration = config
+        do {
+            _ = try Realm()
+        } catch {
+            if let path = Realm.Configuration.defaultConfiguration.path {
+                try! NSFileManager.defaultManager().removeItemAtPath(path)
+            }
+        }
+
         // Google Analytics
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true
         gai.dispatchInterval = 20
-        if NSProcessInfo().environment["VERBOSE"] == "1" {
+        if env["VERBOSE"] == "1" {
             gai.logger.logLevel = .Verbose
         }
         gai.trackerWithTrackingId(kCI2GoGATrackingId)

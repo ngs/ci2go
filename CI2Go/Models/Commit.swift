@@ -27,6 +27,7 @@ class Commit: Object, Mappable, Equatable, Comparable {
     dynamic var project: Project? {
         didSet {
             self.branch?.project = project
+            self.branch?.updateId()
             updateId()
         }
     }
@@ -65,6 +66,7 @@ class Commit: Object, Mappable, Equatable, Comparable {
             branch = branch ?? Branch()
             branch?.name = branchName
             branch?.project = project
+            branch?.updateId()
         }
     }
 

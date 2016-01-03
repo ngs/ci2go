@@ -10,35 +10,31 @@ import UIKit
 import MBProgressHUD
 import RealmSwift
 import RealmResultsController
+import RxSwift
 
 class ProjectsViewController: UITableViewController, RealmResultsControllerDelegate {
 
-    var projects: [Project] = [Project]()
+    let disposeBag = DisposeBag()
+
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
 
     lazy var rrc: RealmResultsController<Project, Project> = {
-        let predicate = NSPredicate(format: "id.length > 0")
-        let realm = AppDelegate.current.realm
-        let sd = SortDescriptor(property: "name")
-        let req = RealmRequest<Project>(predicate: predicate, realm: realm, sortDescriptors: [sd])
+        let predicate = NSPredicate(value: true)
+        let sd = SortDescriptor(property: "id")
+        let req = RealmRequest<Project>(predicate: predicate, realm: self.realm, sortDescriptors: [sd])
         let rrc = try! RealmResultsController<Project, Project>(request: req, sectionKeyPath: nil)
         rrc.delegate = self
         return rrc
     }()
 
-
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return ColorScheme().statusBarStyle()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ColorScheme().backgroundColor()
-        refresh()
-    }
-
-    func refresh() {
-        projects = AppDelegate.current.realm.objects(Project).sort()
-        tableView.reloadData()
+        self.rrc.performFetch()
+        self.tableView.reloadData()
+        Project.getAll().subscribe().addDisposableTo(disposeBag)
     }
 
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -48,10 +44,13 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
             cell.textLabel?.text = "All projects"
-        } else if let project = rrc.sections[0].objects?[indexPath.row] {
+            cell.accessoryType = .None
+        } else {
+            let project = rrc.objectAt(NSIndexPath(forRow: indexPath.row, inSection: 0))
             cell.textLabel?.text = project.repositoryName
             cell.detailTextLabel?.text = project.username
             cell.detailTextLabel?.alpha = 0.5
+            cell.accessoryType = .DisclosureIndicator
         }
     }
 
@@ -66,23 +65,6 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Projects Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-//        CircleCIAPISessionManager().GET("projects", parameters: [],
-//            success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
-//                AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
-//                MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
-//                    if let ar = data as? NSArray {
-//                        Project.MR_importFromArray(ar as [AnyObject], inContext: context)
-//                    }
-//                    AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-//                    }, completion: { (success: Bool, error: NSError!) -> Void in
-//                        AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            self.refresh()
-//                        })
-//                })
-//            })
-//            { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
-//        }
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -90,7 +72,7 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : rrc.sections[0].objects?.count ?? 0
+        return section == 0 ? 1 : rrc.numberOfObjectsAt(0)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -98,7 +80,7 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
         let cell = sender as? UITableViewCell
         if vc != nil && cell != nil {
             if let indexPath = tableView.indexPathForCell(cell!) {
-                vc?.project = projects[indexPath.row]
+                vc?.project = rrc.objectAt(NSIndexPath(forRow: indexPath.row, inSection: 0))
             }
         }
     }
@@ -119,19 +101,43 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
     // MARK: - RealmResultsControllerDelegate
 
     func willChangeResults(controller: AnyObject) {
-        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+        tableView.beginUpdates()
     }
 
-    func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
-        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+    func didChangeObject<U>(controller: AnyObject, object: U, var oldIndexPath: NSIndexPath, var newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
+        oldIndexPath = NSIndexPath(forRow: oldIndexPath.row, inSection: 1)
+        newIndexPath = NSIndexPath(forRow: newIndexPath.row, inSection: 1)
+        switch changeType {
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Move:
+            tableView.moveRowAtIndexPath(oldIndexPath, toIndexPath: newIndexPath)
+            break
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        }
     }
 
     func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
-        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+        switch changeType {
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            break
+        default:
+            break
+        }
     }
 
     func didChangeResults(controller: AnyObject) {
-        guard let _ = controller as? RealmResultsController<Project, Project> else { return }
+        tableView.endUpdates()
     }
     
 }

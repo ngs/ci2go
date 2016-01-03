@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class BuildStepsViewController: BaseTableViewController {
+class BuildStepsViewController: UITableViewController {
     var isLoading = false
     var build: Build? = nil {
         didSet(value) {
@@ -25,10 +25,6 @@ class BuildStepsViewController: BaseTableViewController {
         }
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return ColorScheme().statusBarStyle()
-    }
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tracker = GAI.sharedInstance().defaultTracker
@@ -37,7 +33,6 @@ class BuildStepsViewController: BaseTableViewController {
     }
 
     override func viewWillAppear(animated: Bool) {
-        self.updatePredicate()
         super.viewWillAppear(animated)
         let c = NSNotificationCenter.defaultCenter()
         c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
@@ -49,7 +44,6 @@ class BuildStepsViewController: BaseTableViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        invalidateRefreshTimer()
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
@@ -70,7 +64,7 @@ class BuildStepsViewController: BaseTableViewController {
         tableView.addSubview(refreshControl!)
     }
 
-    override func refresh(sender :AnyObject?) {
+    func refresh(sender :AnyObject?) {
         tableView.reloadData()
         load()
     }
@@ -118,7 +112,6 @@ class BuildStepsViewController: BaseTableViewController {
             refreshControl?.endRefreshing()
             return
         }
-        invalidateRefreshTimer()
 //        CircleCIAPISessionManager().GET(build?.apiPath!, parameters: [],
 //            success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
 //                self.refreshControl?.endRefreshing()
@@ -163,7 +156,7 @@ class BuildStepsViewController: BaseTableViewController {
         return v
     }
 
-    override func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
 //        let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction
 //        let actionCell = cell as? BuildActionTableViewCell
 //        actionCell?.buildAction = action
