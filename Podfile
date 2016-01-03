@@ -18,7 +18,7 @@ end
 def ios_pods
   shared_pods
   pod 'MBProgressHUD', '~> 0.8'
-  pod 'Google/Analytics', '~> 1.0.0'
+  pod 'Google/Analytics', '~> 1.3.2'
   pod 'RealmResultsController', '~> 0.3.1'
   pod 'PusherSwift', git: 'https://github.com/pusher-community/pusher-websocket-swift.git', commit: '888319d2d2aa9951c3a2b421ac20736139360f4e'
 end
@@ -37,6 +37,7 @@ target 'CI2GoTests' do
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
   pod 'OHHTTPStubs', '~> 4.7'
+  pod 'OHHTTPStubs/Swift', '~> 4.7'
 end
 
 target 'CI2GoUITests' do
