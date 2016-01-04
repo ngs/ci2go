@@ -21,7 +21,18 @@ class CircleAPIClient {
     }
 
     func apiURLForPath(path: String) -> NSURL {
-        return NSURL(string: path, relativeToURL: self.baseURL)!
+        let URL = NSURL(string: path, relativeToURL: self.baseURL)!
+        let urlComps = NSURLComponents(URL: URL, resolvingAgainstBaseURL: true)!
+        urlComps.queryItems = urlComps.queryItems ?? []
+        if let token = token {
+            let q = NSURLQueryItem(name: "circle-token", value: token)
+            urlComps.queryItems?.append(q)
+        }
+        return urlComps.URL!
+    }
+
+    func post<T where T: Mappable, T: Object>(path: String, parameters: [String: AnyObject]? = nil) -> Observable<T> {
+        return self.request(.GET, path, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
 
     func get<T where T: Mappable, T: Object>(path: String, parameters: [String: AnyObject]? = nil) -> Observable<T> {
@@ -72,12 +83,8 @@ class CircleAPIClient {
     }
 
     func createRequest(method: Alamofire.Method, _ path: String,
-        var parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = .URL,
+        parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = .URL,
         var headers: [String: String]? = nil) -> Alamofire.Request {
-            parameters = parameters ?? [:]
-            if let token = token {
-                parameters?["circle-token"] = token
-            }
             headers = headers ?? [:]
             headers?["Accept"] = "application/json"
             let req = Alamofire.request(method, self.apiURLForPath(path).absoluteString, parameters: parameters, headers: headers)

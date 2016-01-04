@@ -94,6 +94,7 @@ class Project: Object, Mappable, Equatable, Comparable {
         dup.id = id
         dup.isOpenSource = isOpenSource
         dup.isFollowed = isFollowed
+        dup.updateId()
         return dup
     }
 }

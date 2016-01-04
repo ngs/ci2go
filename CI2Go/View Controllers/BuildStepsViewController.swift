@@ -8,38 +8,58 @@
 
 import UIKit
 import MBProgressHUD
+import RxSwift
+import RealmSwift
+import RealmResultsController
+import RxSwift
 
-class BuildStepsViewController: UITableViewController {
-    var isLoading = false
-    var build: Build? = nil {
-        didSet(value) {
-            if let buildNum = build?.number, repoName = build?.project?.repositoryName {
-                title = "\(repoName) #\(buildNum)"
-                let tracker = GAI.sharedInstance().defaultTracker
-                let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: build?.apiPath, value: 1).build() as [NSObject : AnyObject]
-                tracker.send(dict)
-                load()
-            } else {
-                title = ""
-            }
+class BuildStepsViewController: UITableViewController, RealmResultsControllerDelegate {
+
+    var build: Build?
+    let disposeBag = DisposeBag()
+
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+
+    lazy var rrc: RealmResultsController<BuildAction, BuildAction> = {
+        let predicate: NSPredicate
+        if let buildId = self.build?.id {
+            predicate = NSPredicate(format: "id BEGINSWITH %@", buildId)
+        } else {
+            predicate = NSPredicate(value: false)
         }
-    }
+        let sd = [
+            SortDescriptor(property: "sectionIndex", ascending: false),
+            SortDescriptor(property: "nodeIndex", ascending: false)
+        ]
+        let req = RealmRequest<BuildAction>(predicate: predicate, realm: self.realm, sortDescriptors: sd)
+        let rrc = try! RealmResultsController<BuildAction, BuildAction>(request: req, sectionKeyPath: "sectionIndex")
+        rrc.delegate = self
+        return rrc
+    }()
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Build Steps Screen")
-        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-    }
+    var isLoading = false
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if let buildNum = build?.number, repoName = build?.project?.repositoryName {
+            title = "\(repoName) #\(buildNum)"
+            let tracker = GAI.sharedInstance().defaultTracker
+            let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: build?.apiPath, value: 1).build() as [NSObject : AnyObject]
+            tracker.send(dict)
+            load()
+        } else {
+            title = ""
+        }
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Build Steps Screen")
+        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
         let c = NSNotificationCenter.defaultCenter()
         c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                self.load()
-            })
+            self.refresh(n)
         }
+        self.refresh(nil)
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -49,22 +69,14 @@ class BuildStepsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let c = NSNotificationCenter.defaultCenter()
-        c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                self.load()
-            })
-        }
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
         refreshControl = UIRefreshControl()
-        refreshControl!.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        tableView.addSubview(refreshControl!)
+        guard let refreshControl = refreshControl else { return }
+        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
     }
 
     func refresh(sender :AnyObject?) {
+        rrc.performFetch()
         tableView.reloadData()
         load()
     }
@@ -84,27 +96,31 @@ class BuildStepsViewController: UITableViewController {
     }
 
     private func callAPI(path: String, progressMessage: String, successMessage: String, failureMessage: String) {
-        guard let apiPath = build?.apiPath else { return }
+        guard let build = build else { return }
         let hud = MBProgressHUD(view: self.navigationController?.view)
         self.navigationController?.view.addSubview(hud)
         hud.animationType = MBProgressHUDAnimation.Fade
         hud.dimBackground = true
         hud.labelText = progressMessage
         hud.show(true)
-//        CircleCIAPISessionManager().POST("\(apiPath)/\(path)",
-//            parameters: [:],
-//            success: { (op, res) in
-//                hud.labelText = successMessage
-//                hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
-//                hud.mode = MBProgressHUDMode.CustomView
-//                hud.hide(true, afterDelay: 1)
-//            })
-//            { (op, err) in
-//                hud.labelText = failureMessage
-//                hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
-//                hud.mode = MBProgressHUDMode.CustomView
-//                hud.hide(true, afterDelay: 1)
-//        }
+        build.post(path).subscribe(
+            onNext: { build in
+                hud.labelText = successMessage
+                hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
+                hud.mode = MBProgressHUDMode.CustomView
+                hud.hide(true, afterDelay: 1)
+                if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("BuildStepsViewController") as? BuildStepsViewController where build != self.build {
+                    vc.build = build
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            },
+            onError:  { _ in
+                hud.labelText = failureMessage
+                hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
+                hud.mode = MBProgressHUDMode.CustomView
+                hud.hide(true, afterDelay: 1)
+            }
+            ).addDisposableTo(disposeBag)
     }
 
     func load() {
@@ -112,34 +128,35 @@ class BuildStepsViewController: UITableViewController {
             refreshControl?.endRefreshing()
             return
         }
-//        CircleCIAPISessionManager().GET(build?.apiPath!, parameters: [],
-//            success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
-//                self.refreshControl?.endRefreshing()
-//                AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
-//                MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
-//                    Build.MR_importFromObject(data, inContext: context)
-//                    AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-//                    return
-//                    },
-//                    completion: { (success: Bool, error: NSError!) -> Void in
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            self.isLoading = false
-//                            self.tableView.reloadData()
-//                            if self.build?.lifecycle == "running" {
-//                                self.scheduleNextRefresh()
-//                            }
-//                            AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-//                        })
-//                        return
-//                })
-//            })
-//            { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
-//                self.isLoading = false
-//        }
+        self.isLoading = true
+        self.build?.get().subscribe(
+            onNext: { _ in
+                self.isLoading = false
+                self.tableView.reloadData()
+            },
+            onError: { _ in
+                self.isLoading = false
+            }
+            ).addDisposableTo(disposeBag)
+    }
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return rrc.numberOfSections
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return rrc.numberOfObjectsAt(section)
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "Cell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        self.configureCell(cell, atIndexPath: indexPath)
+        return cell
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -157,30 +174,26 @@ class BuildStepsViewController: UITableViewController {
     }
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-//        let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction
-//        let actionCell = cell as? BuildActionTableViewCell
-//        actionCell?.buildAction = action
-//        let hasOutput = action?.outputURL != nil
-//        cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
-//        cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
+        let action = rrc.objectAt(indexPath)
+        let actionCell = cell as? BuildActionTableViewCell
+        actionCell?.buildAction = action
+        let hasOutput = action.hasOutput
+        cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
+        cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let sectionInfo = fetchedResultsController.sections![section]
-//        if let action = sectionInfo.objects?[0] as? BuildAction {
-//            return action.type?.componentsSeparatedByString(": ").last?.humanize
-//        }
+        if rrc.numberOfObjectsAt(section) > 0 {
+            let action = rrc.objectAt(NSIndexPath(forRow: 0, inSection: section))
+            return action.type.componentsSeparatedByString(": ").last?.humanize
+        }
         return nil
     }
 
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        if let cell = sender as? UITableViewCell {
-//            if let indexPath = tableView.indexPathForCell(cell) {
-//                if let action = fetchedResultsController.objectAtIndexPath(indexPath) as? BuildAction {
-//                    return action.outputURL != nil
-//                }
-//            }
-//        }
+        if let cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) {
+            return rrc.objectAt(indexPath).hasOutput
+        }
         return false
     }
 
@@ -205,7 +218,7 @@ class BuildStepsViewController: UITableViewController {
             }))
         }
         if lifecycle == .Running {
-            av.addAction(UIAlertAction(title: "Canvel Build", style: .Default, handler: { _ in
+            av.addAction(UIAlertAction(title: "Cancel Build", style: .Default, handler: { _ in
                 self.cancelBuild()
             }))
         }
@@ -214,11 +227,52 @@ class BuildStepsViewController: UITableViewController {
                 self.compareChanges()
             }))
         }
-        av.addAction(UIAlertAction(title: "Canvel", style: .Cancel, handler: nil))
+        av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
             popover.barButtonItem = barButtonItem
         }
         presentViewController(av, animated: true, completion: nil)
     }
-    
+
+
+    // MARK: - RealmResultsControllerDelegate
+
+    func willChangeResults(controller: AnyObject) {
+        tableView.beginUpdates()
+    }
+
+    func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
+        print("🎁 didChangeObject '\((object as! BuildAction).id)' from: [\(oldIndexPath.section):\(oldIndexPath.row)] to: [\(newIndexPath.section):\(newIndexPath.row)] --> \(changeType)")
+        switch changeType {
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Move:
+            tableView.moveRowAtIndexPath(oldIndexPath, toIndexPath: newIndexPath)
+            break
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
+            break
+        }
+    }
+
+    func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
+        switch changeType {
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            break
+        default:
+            break
+        }
+    }
+
+    func didChangeResults(controller: AnyObject) {
+        tableView.endUpdates()
+    }
 }

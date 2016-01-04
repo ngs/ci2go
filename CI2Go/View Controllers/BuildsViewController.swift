@@ -23,12 +23,13 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     func buildRRC() -> RealmResultsController<Build, Build> {
         let predicate: NSPredicate
         let def = CI2GoUserDefaults.standardUserDefaults()
+        let baseQuery = "id != %@ AND branch != nil AND project != nil"
         if let branch = def.selectedBranch {
-            predicate = NSPredicate(format: "branch.id == %@", branch.id)
+            predicate = NSPredicate(format: "branch.id == %@ AND \(baseQuery)", branch.id, "")
         } else if let project = def.selectedProject {
-            predicate = NSPredicate(format: "project.id == %@", project.id)
+            predicate = NSPredicate(format: "project.id == %@ AND \(baseQuery)", project.id, "")
         } else {
-            predicate = NSPredicate(value: true)
+            predicate = NSPredicate(format: baseQuery, "")
         }
         let sd = SortDescriptor(property: "queuedAt", ascending: false)
         let req = RealmRequest<Build>(predicate: predicate, realm: self.realm, sortDescriptors: [sd])
@@ -48,7 +49,6 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
         }
         self.rrc?.delegate = nil
         self.rrc = self.buildRRC()
-        self.rrc?.performFetch()
         self.refresh(sender)
     }
 
@@ -129,11 +129,13 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     // MARK: - UITableViewController
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return rrc?.numberOfSections ?? 0
+        return self.rrc?.numberOfSections ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rrc?.numberOfObjectsAt(section) ?? 0
+        let n = rrc?.numberOfObjectsAt(section) ?? 0
+        print("table --------------------- \(n)")
+        return n
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -145,6 +147,17 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row >= offset && !isLoading {
+            self.load(true)
+        }
+    }
+
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        let top = scrollView.frame.origin.y
+        let scrollTop = scrollView.contentOffset.y
+        let diff = contentHeight - scrollTop - top
+        if diff < height && rrc?.numberOfObjectsAt(0) > 0 {
             load(true)
         }
     }
@@ -179,8 +192,9 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     }
 
     func refresh(sender :AnyObject?) {
-        load(false)
-        tableView.reloadData()
+        self.rrc?.performFetch()
+        self.tableView.reloadData()
+        self.load(false)
     }
 
     // MARK: - RealmResultsControllerDelegate
@@ -192,13 +206,14 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
         switch changeType {
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             break
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
             break
         case .Move:
-            tableView.moveRowAtIndexPath(oldIndexPath, toIndexPath: newIndexPath)
+            tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .None)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
             break
         case .Update:
             tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)

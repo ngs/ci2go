@@ -13,6 +13,8 @@ import RxBlocking
 import ObjectMapper
 import Carlos
 
+let cache = MemoryCacheLevel<NSURL, NSString>() >>> DiskCacheLevel()
+
 class BuildAction: Object, Mappable, Equatable, Comparable {
     enum Status: String {
         case Success = "success"
@@ -25,6 +27,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     dynamic var buildStep: BuildStep? {
         didSet { updateId() }
     }
+    dynamic var sectionIndex: Int = 0
     dynamic var stepNumber: Int = 0
     dynamic var command = ""
     dynamic var endedAt: NSDate?
@@ -49,8 +52,6 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     dynamic var rawStatus: String?
     dynamic var type = ""
     dynamic var output = ""
-
-    private let cache = MemoryCacheLevel<NSURL, NSString>() >>> DiskCacheLevel()
 
     required convenience init?(_ map: Map) {
         self.init()
@@ -113,10 +114,12 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         }
     }
 
-    private var logSource = Variable<String>("")
+    private lazy var logSource: Variable<String> = {
+        return Variable<String>("")
+    }()
 
     var log: Observable<String> {
-        let src = self.logSource, cache = self.cache
+        let src = self.logSource
         guard let outputURL = outputURL else {
             return Observable.never()
         }
@@ -132,7 +135,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["status", "outputURL", "logSource", "log"]
+        return ["status", "outputURL", "logSource", "log", "cache"]
     }
 }
 

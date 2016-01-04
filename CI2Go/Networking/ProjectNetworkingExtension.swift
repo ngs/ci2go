@@ -19,9 +19,7 @@ extension Project {
         return client.getList("projects").doOn(onNext: { (projects: [Project]) -> Void in
             autoreleasepool {
                 try! realm.write {
-                    projects.forEach {
-                        realm.addNotified($0, update: true)
-                    }
+                    realm.addNotified(projects, update: true)
                     currentProjects.forEach { prj in
                         if !projects.contains(prj) {
                             realm.deleteNotified(prj)

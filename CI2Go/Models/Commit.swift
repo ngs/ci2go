@@ -24,13 +24,7 @@ class Commit: Object, Mappable, Equatable, Comparable {
     }
     dynamic var author: User?
     dynamic var committer: User?
-    dynamic var project: Project? {
-        didSet {
-            self.branch?.project = project
-            self.branch?.updateId()
-            updateId()
-        }
-    }
+    dynamic var project: Project?
 
     var shortHash: String {
         return sha1.substringToIndex(sha1.startIndex.advancedBy(6))
@@ -68,6 +62,7 @@ class Commit: Object, Mappable, Equatable, Comparable {
             branch?.project = project
             branch?.updateId()
         }
+        updateId()
     }
 
     func updateId() {

@@ -15,12 +15,15 @@ let kCI2GoColorSchemeUserDefaultsKey = "CI2GoColorScheme"
 let kCI2GoCircleCIAPITokenDefaultsKey = "CI2GoColorCircleCIAPIToken"
 let kCI2GoLogRefreshIntervalDefaultsKey = "CI2GoLogRefreshInterval"
 let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
+let kCI2GoSchemaVersionDefaultsKey = "CI2GoSchemaVersion"
 let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
 let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
 let kCI2GoBranchChangedNotification = "CI2GoBranchChanged"
 let kCI2GoColorSchemeChangedNotification = "CI2GoColorSchemeChanged"
 
 class CI2GoUserDefaults: NSObject {
+
+    private var testUserDefaults: NSUserDefaults?
 
     func reset() {
         for k in [
@@ -45,18 +48,21 @@ class CI2GoUserDefaults: NSObject {
         return _standardUserDefaults! as! CI2GoUserDefaults
     }
 
-    private var _userDefaults: NSUserDefaults? = nil
-    private var userDefaults: NSUserDefaults {
-        if nil == _userDefaults {
-            _userDefaults = NSUserDefaults(suiteName: kCI2GoAppGroupIdentifier)
-            _userDefaults?.registerDefaults([
-                kCI2GoColorSchemeUserDefaultsKey: "Github",
-                kCI2GoLogRefreshIntervalDefaultsKey: 1.0,
-                kCI2GoAPIRefreshIntervalDefaultsKey: 5.0
-                ])
+    private lazy var userDefaults: NSUserDefaults = {
+        let ud: NSUserDefaults
+        if let _ = NSProcessInfo.processInfo().environment["TEST"] {
+            self.testUserDefaults = NSUserDefaults.standardUserDefaults()
+            ud = self.testUserDefaults!
+        } else {
+            ud = NSUserDefaults(suiteName: kCI2GoAppGroupIdentifier)!
         }
-        return _userDefaults!
-    }
+        ud.registerDefaults([
+            kCI2GoColorSchemeUserDefaultsKey: "Github",
+            kCI2GoLogRefreshIntervalDefaultsKey: 1.0,
+            kCI2GoAPIRefreshIntervalDefaultsKey: 5.0
+            ])
+        return ud
+    }()
 
     var colorSchemeName: String? {
         set(value) {
@@ -84,6 +90,16 @@ class CI2GoUserDefaults: NSObject {
         }
         get {
             return userDefaults.stringForKey(kCI2GoCircleCIAPITokenDefaultsKey)
+        }
+    }
+
+    var storedSchemaVersion: UInt64 {
+        set(value) {
+            userDefaults.setInteger(Int(value), forKey: kCI2GoSchemaVersionDefaultsKey)
+            userDefaults.synchronize()
+        }
+        get {
+            return UInt64(userDefaults.integerForKey(kCI2GoSchemaVersionDefaultsKey))
         }
     }
 
@@ -138,7 +154,7 @@ class CI2GoUserDefaults: NSObject {
             return nil
         }
     }
-    
+
     var buildsAPIPath: String {
         if let p = selectedProject {
             return p.apiPath

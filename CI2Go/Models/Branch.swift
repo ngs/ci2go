@@ -45,6 +45,7 @@ class Branch: Object, Mappable, Equatable, Comparable {
         dup.id = id
         dup.name = name
         dup.project = project?.dup()
+        dup.updateId()
         return dup
     }
 }

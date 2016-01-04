@@ -144,6 +144,8 @@ class Build: Object, Mappable, Equatable, Comparable {
         , steps = [BuildStep]()
         , branchName: String?
         , vcsRevision: String?
+        , previsousBuild: Build?
+        , previsousSuccessfulBuild: Build?
         if let project = Project(map) where !project.id.isEmpty {
             self.project = project
         }
@@ -172,7 +174,12 @@ class Build: Object, Mappable, Equatable, Comparable {
         previsousBuild?.updateId()
         previsousSuccessfulBuild?.project = project
         previsousSuccessfulBuild?.updateId()
-
+        if previsousSuccessfulBuild?.id.isEmpty == false && previsousSuccessfulBuild != nil {
+            self.previsousSuccessfulBuild = previsousSuccessfulBuild
+        }
+        if previsousBuild?.id.isEmpty == false && previsousBuild?.branch != nil {
+            self.previsousBuild = previsousBuild
+        }
         if let branchName = branchName where !branchName.isEmpty {
             let branch = Branch()
             branch.name = branchName
@@ -192,12 +199,23 @@ class Build: Object, Mappable, Equatable, Comparable {
             }
         }
         var index = 0
+        var sectionIndex = 0
+        var currentSectionType: String?
         steps.forEach { c in
             c.build = self
             c.index = index++
+            c.actions.forEach { a in
+                a.sectionIndex = sectionIndex
+                a.updateId()
+            }
+            if currentSectionType != nil && currentSectionType != c.actions.first?.type {
+                sectionIndex++
+            }
+            currentSectionType = c.actions.first?.type
             if !self.steps.contains(c) {
                 self.steps.append(c)
             }
+            c.updateId()
         }
         updateId()
     }
@@ -216,8 +234,8 @@ class Build: Object, Mappable, Equatable, Comparable {
         return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath"]
     }
 
-    func dup() -> Build {
-        let dup = Build()
+    func dup(target: Build? = nil) -> Build {
+        let dup = target ?? Build()
         dup.branch = branch?.dup()
         dup.buildParametersData = buildParametersData
         dup.circleYAML = circleYAML
@@ -244,6 +262,7 @@ class Build: Object, Mappable, Equatable, Comparable {
         dup.startedAt = startedAt
         dup.stoppedAt = stoppedAt
         dup.node = node?.dup()
+        dup.updateId()
         return dup
     }
 }

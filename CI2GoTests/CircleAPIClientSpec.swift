@@ -18,7 +18,7 @@ class CircleAPIClientSpec: QuickSpec {
     override func spec() {
         describe("CircleAPIClient#apiURLForPath") {
             it("returns URL from path") {
-                expect(CircleAPIClient().apiURLForPath("foo").absoluteString).to(equal("https://circleci.com/api/v1/foo"))
+                expect(CircleAPIClient(token: "test").apiURLForPath("foo")).to(equal(NSURL(string: "https://circleci.com/api/v1/foo?circle-token=test")!))
             }
         }
     }

@@ -29,14 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
             config.inMemoryIdentifier = identifier
         }
-        Realm.Configuration.defaultConfiguration = config
-        do {
-            _ = try Realm()
-        } catch {
+        let def = CI2GoUserDefaults.standardUserDefaults()
+        if def.storedSchemaVersion != kCI2GoSchemaVersion {
             if let path = Realm.Configuration.defaultConfiguration.path {
-                try! NSFileManager.defaultManager().removeItemAtPath(path)
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(path)
+                } catch {}
             }
+            _ = try! Realm()
+            def.storedSchemaVersion = kCI2GoSchemaVersion
         }
+        Realm.Configuration.defaultConfiguration = config
 
         // Google Analytics
         let gai = GAI.sharedInstance()

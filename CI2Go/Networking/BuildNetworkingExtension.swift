@@ -14,6 +14,48 @@ import RealmSwift
 #endif
 
 extension Build {
+    func post(path: String) -> Observable<Build> {
+        guard let apiPath = self.apiPath else { return Observable.never() }
+        let client = CircleAPIClient()
+        return client.post(apiPath).doOn(onNext: { build in
+            autoreleasepool {
+                let realm = try! Realm()
+                try! realm.write {
+                    build.dup(self)
+                    #if os(iOS)
+                        realm.addNotified(build.steps, update: true)
+                    #else
+                        realm.add(build.steps, update: true)
+                    #endif
+                }
+            }
+        })
+    }
+
+
+    func get() -> Observable<Build> {
+        guard let apiPath = self.apiPath else { return Observable.never() }
+        let client = CircleAPIClient()
+        return client.get(apiPath).doOn(onNext: { build in
+            autoreleasepool {
+                let realm = try! Realm()
+                try! realm.write {
+                    build.dup(self)
+                    let actions = build.steps.flatMap { $0.actions }
+                    #if os(iOS)
+                        self.notifyChange()
+                        realm.addNotified(build.steps, update: true)
+                        realm.addNotified(actions, update: true)
+                    #else
+                        realm.add(build.steps, update: true)
+                        realm.add(actions, update: true)
+                    #endif
+                }
+
+            }
+        })
+    }
+
     class func getRecent(offset: Int = 0, limit: Int = 30) -> Observable<[Build]> {
         return getList(path: "recent-builds", offset: offset, limit: limit)
     }
@@ -45,16 +87,13 @@ extension Build {
             .doOn(onNext: { (builds: [Build]) -> Void in
                 autoreleasepool {
                     let realm = try! Realm()
+                    let newBuilds = builds.filter{ !$0.id.isEmpty }
                     try! realm.write {
-                        builds.forEach { b in
-                            if b.id != "" {
-                                #if os(iOS)
-                                    realm.addNotified(b, update: true)
-                                #else
-                                    realm.add(b, update: true)
-                                #endif
-                            }
-                        }
+                        #if os(iOS)
+                            realm.addNotified(newBuilds, update: true)
+                        #else
+                            realm.add(newBuilds, update: true)
+                        #endif
                     }
                 }
             })
