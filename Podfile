@@ -9,7 +9,7 @@ def shared_pods
   pod 'Carlos', '~> 0.5'
   pod 'ObjectMapper', '~> 1.0'
   pod 'RealmSwift', '0.97.0'
-  pod 'RxBlocking', '~> 2.0.0-beta'
+  pod 'RxBlocking', '~> 2.0.0'
   pod 'RxCocoa', '~> 2.0.0'
   pod 'RxSwift', '~> 2.0.0'
   pod 'DateTools', '~> 1.7'

@@ -62,7 +62,7 @@ DEPENDENCIES:
   - RealmResultsController (from `https://github.com/redbooth/RealmResultsController.git`,
     commit `c40a935721bd3a822e1e5fa72643f90ad8835e49`)
   - RealmSwift (= 0.97.0)
-  - RxBlocking (~> 2.0.0-beta)
+  - RxBlocking (~> 2.0.0)
   - RxCocoa (~> 2.0.0)
   - RxSwift (~> 2.0.0)
 

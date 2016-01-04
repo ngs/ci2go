@@ -174,17 +174,25 @@ class Build: Object, Mappable, Equatable, Comparable {
         previsousBuild?.updateId()
         previsousSuccessfulBuild?.project = project
         previsousSuccessfulBuild?.updateId()
-        if previsousSuccessfulBuild?.id.isEmpty == false && previsousSuccessfulBuild != nil {
+        if previsousSuccessfulBuild?.id.isEmpty == false && previsousSuccessfulBuild?.branch != nil {
+            previsousSuccessfulBuild?.branch?.project = self.project
             self.previsousSuccessfulBuild = previsousSuccessfulBuild
         }
-        if previsousBuild?.id.isEmpty == false && previsousBuild?.branch != nil {
-            self.previsousBuild = previsousBuild
+        if previsousBuild?.id.isEmpty == false &&
+            previsousBuild?.branch != nil {
+                previsousBuild?.branch?.project = self.project
+                if previsousBuild?.id.isEmpty == false {
+                    self.previsousBuild = previsousBuild
+                }
         }
         if let branchName = branchName where !branchName.isEmpty {
             let branch = Branch()
             branch.name = branchName
             branch.project = self.project
-            self.branch = branch
+            branch.updateId()
+            if !branch.id.isEmpty {
+                self.branch = branch
+            }
         }
 
         if let _ = vcsRevision, triggeredCommit = Commit(map) {
@@ -194,6 +202,8 @@ class Build: Object, Mappable, Equatable, Comparable {
 
         commits.forEach { c in
             c.project = self.project
+            c.branch?.project = self.project
+            c.branch?.updateId()
             if !self.commits.contains(c) {
                 self.commits.append(c)
             }

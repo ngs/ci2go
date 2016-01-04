@@ -38,7 +38,6 @@ class BuildSpec: QuickSpec {
             expect(build.commits.count).to(equal(1))
             expect(build.commits.first!).to(equal(commit))
             expect(build.triggeredCommit).to(equal(commit))
-            expect(build.previsousBuild?.number).to(equal(203))
             expect(build.why).to(equal("github"))
 
             expect(commit.sha1).to(equal("722f7dbc7b567b94cc59e0dca53a7873a1bbec86"))
@@ -68,13 +67,13 @@ class BuildSpec: QuickSpec {
                     realm.add(Mapper<Build>().map(json)!, update: true)
                 }
                 expect(realm.objects(Commit).count).to(equal(1))
-                expect(realm.objects(Build).count).to(equal(2))
+                expect(realm.objects(Build).count).to(equal(1))
                 expect(realm.objects(Project).count).to(equal(1))
                 expect(realm.objects(Branch).count).to(equal(1))
+                expect(realm.objects(Branch)[0].id).to(equal("project/ngs/ci2go:refactor"))
                 expect(realm.objects(User).count).to(equal(1))
                 expect(realm.objects(BuildStep).count).to(equal(0))
                 expect(realm.objects(Build)[0].number).to(equal(204))
-                expect(realm.objects(Build)[1].number).to(equal(203))
                 itBehavesLike("Mapped Build")
             }
             it("maps detailed JSON") {
@@ -84,14 +83,13 @@ class BuildSpec: QuickSpec {
                     realm.add(Mapper<Build>().map(json)!, update: true)
                 }
                 expect(realm.objects(Commit).count).to(equal(1))
-                expect(realm.objects(Build).count).to(equal(3))
+                expect(realm.objects(Build).count).to(equal(1))
                 expect(realm.objects(Project).count).to(equal(1))
                 expect(realm.objects(User).count).to(equal(1))
                 expect(realm.objects(Branch).count).to(equal(1))
                 expect(realm.objects(BuildStep).count).to(equal(39))
                 expect(realm.objects(BuildAction).count).to(equal(39))
                 expect(realm.objects(Build)[0].number).to(equal(204))
-                expect(realm.objects(Build)[1].number).to(equal(203))
 
                 itBehavesLike("Mapped Build")
 
@@ -155,36 +153,29 @@ class BuildSpec: QuickSpec {
                     _ = Build.getRecent().subscribe(
                         onNext: { builds in
                             expect(builds.count).to(equal(20))
-                            expect(realm.objects(Build).count).to(equal(27))
+                            expect(realm.objects(Build).count).to(equal(20))
                             let ar = realm.objects(Build).map { $0.id }
                             expect(ar).to(equal([
                                 "project/ngs/ci2go/204",
-                                "project/ngs/ci2go/203",
                                 "project/ngs/ci2go/200",
                                 "project/ngs/ci2go/199",
                                 "project/ngs/ci2go/198",
                                 "project/ngs/ci2go/197",
                                 "project/ngs/ci2go/196",
                                 "project/ngs/ci2go/195",
-                                "project/ngs/ci2go/194",
                                 "project/ngs/ci2go/193",
                                 "project/ngs/ci2go/192",
                                 "project/ngs/ci2go/191",
-                                "project/ngs/ci2go/189",
                                 "project/ngs/ci2go/190",
                                 "project/ngs/ci2go/187",
                                 "project/ngs/ci2go/186",
                                 "project/ngs/ci2go/185",
-                                "project/ngs/ci2go/180",
                                 "project/ngs/ci2go/184",
-                                "project/ngs/ci2go/181",
                                 "project/ngs/ci2go/183",
-                                "project/ngs/ci2go/24",
                                 "project/ngs/ci2go/182",
+                                "project/ngs/ci2go/180",
                                 "project/ngs/ci2go/179",
-                                "project/ngs/ci2go/178",
-                                "project/ngs/ci2go/175",
-                                "project/ngs/ci2go/174"]))
+                                "project/ngs/ci2go/175"]))
                             done()
                         },
                         onError: { _ in
