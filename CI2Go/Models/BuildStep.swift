@@ -31,6 +31,7 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
         actions <- map["actions"]
         actions.forEach { a in
             a.buildStep = self
+            a.sectionIndex = index
             if !self.actions.contains(a) {
                 self.actions.append(a)
             }
@@ -46,6 +47,10 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
 
     override class func primaryKey() -> String {
         return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return []
     }
 }
 

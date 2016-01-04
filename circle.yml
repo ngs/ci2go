@@ -24,18 +24,13 @@ dependencies:
     - export TGZ="$(cat Podfile | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true
     - export TGZ="$(cat Gemfile | md5).tgz"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)
     - export TGZ="$(cat Podfile | md5).tgz"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)
-    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'
-    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'
-    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'
-    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'
-    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'
-    - /usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
     - echo "export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')" >> ~/.bashrc
     - echo "export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD" >> ~/.bashrc
     - bundle exec fastlane import_certs
     - bundle exec sigh download_all -o fastlane/profiles
+    - bundle exec fastlane set_build_num
 test:
   override:
     - bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'

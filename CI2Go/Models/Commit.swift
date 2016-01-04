@@ -24,11 +24,10 @@ class Commit: Object, Mappable, Equatable, Comparable {
     }
     dynamic var author: User?
     dynamic var committer: User?
-    dynamic var project: Project? {
-        didSet {
-            self.branch?.project = project
-            updateId()
-        }
+    dynamic var project: Project?
+
+    var shortHash: String {
+        return sha1.substringToIndex(sha1.startIndex.advancedBy(6))
     }
 
     required convenience init?(_ map: Map) {
@@ -61,7 +60,9 @@ class Commit: Object, Mappable, Equatable, Comparable {
             branch = branch ?? Branch()
             branch?.name = branchName
             branch?.project = project
+            branch?.updateId()
         }
+        updateId()
     }
 
     func updateId() {
@@ -72,6 +73,10 @@ class Commit: Object, Mappable, Equatable, Comparable {
 
     override class func primaryKey() -> String {
         return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["shortHash"]
     }
 }
 

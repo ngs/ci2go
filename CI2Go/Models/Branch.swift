@@ -18,9 +18,6 @@ class Branch: Object, Mappable, Equatable, Comparable {
         didSet { updateId() }
     }
 
-    let builds = List<Build>()
-    let pusher = List<User>()
-
     required convenience init?(_ map: Map) {
         self.init()
         mapping(map)
@@ -37,6 +34,19 @@ class Branch: Object, Mappable, Equatable, Comparable {
 
     override class func primaryKey() -> String {
         return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return []
+    }
+
+    func dup() -> Branch {
+        let dup = Branch()
+        dup.id = id
+        dup.name = name
+        dup.project = project?.dup()
+        dup.updateId()
+        return dup
     }
 }
 

@@ -7,7 +7,13 @@
 //
 
 import RealmSwift
+import RxSwift
+import RxCocoa
+import RxBlocking
 import ObjectMapper
+import Carlos
+
+let cache = MemoryCacheLevel<NSURL, NSString>() >>> DiskCacheLevel()
 
 class BuildAction: Object, Mappable, Equatable, Comparable {
     enum Status: String {
@@ -21,6 +27,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     dynamic var buildStep: BuildStep? {
         didSet { updateId() }
     }
+    dynamic var sectionIndex: Int = 0
     dynamic var stepNumber: Int = 0
     dynamic var command = ""
     dynamic var endedAt: NSDate?
@@ -93,6 +100,42 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
 
     override class func primaryKey() -> String {
         return "id"
+    }
+
+    var outputURL: NSURL? {
+        get {
+            if let outputURLString = outputURLString {
+                return NSURL(string: outputURLString)
+            }
+            return nil
+        }
+        set(value) {
+            outputURLString = value?.absoluteString
+        }
+    }
+
+    private lazy var logSource: Variable<String> = {
+        return Variable<String>("")
+    }()
+
+    var log: Observable<String> {
+        let src = self.logSource
+        guard let outputURL = outputURL else {
+            return Observable.never()
+        }
+        cache.get(outputURL).onSuccess { log in
+            src.value = log as String
+        }
+        return Observable.combineLatest(self.downloadLog(), src.asObservable()) { ($0, $1) }
+            .flatMap { downloadedLog, log -> Observable<String> in
+                src.value = downloadedLog
+                cache.set(downloadedLog, forKey: outputURL)
+                return src.asObservable()
+        }
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["status", "outputURL", "logSource", "log", "cache"]
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 private var _standardUserDefaults: AnyObject? = nil
 
@@ -14,12 +15,15 @@ let kCI2GoColorSchemeUserDefaultsKey = "CI2GoColorScheme"
 let kCI2GoCircleCIAPITokenDefaultsKey = "CI2GoColorCircleCIAPIToken"
 let kCI2GoLogRefreshIntervalDefaultsKey = "CI2GoLogRefreshInterval"
 let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
+let kCI2GoSchemaVersionDefaultsKey = "CI2GoSchemaVersion"
 let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
 let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
 let kCI2GoBranchChangedNotification = "CI2GoBranchChanged"
 let kCI2GoColorSchemeChangedNotification = "CI2GoColorSchemeChanged"
 
 class CI2GoUserDefaults: NSObject {
+
+    private var testUserDefaults: NSUserDefaults?
 
     func reset() {
         for k in [
@@ -32,6 +36,10 @@ class CI2GoUserDefaults: NSObject {
         }
     }
 
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+
 
     class func standardUserDefaults() -> CI2GoUserDefaults {
         if nil == _standardUserDefaults {
@@ -40,20 +48,23 @@ class CI2GoUserDefaults: NSObject {
         return _standardUserDefaults! as! CI2GoUserDefaults
     }
 
-    private var _userDefaults: NSUserDefaults? = nil
-    private var userDefaults: NSUserDefaults {
-        if nil == _userDefaults {
-            _userDefaults = NSUserDefaults(suiteName: kCI2GoAppGroupIdentifier)
-            _userDefaults?.registerDefaults([
-                kCI2GoColorSchemeUserDefaultsKey: "Github",
-                kCI2GoLogRefreshIntervalDefaultsKey: 1.0,
-                kCI2GoAPIRefreshIntervalDefaultsKey: 5.0
-                ])
+    private lazy var userDefaults: NSUserDefaults = {
+        let ud: NSUserDefaults
+        if let _ = NSProcessInfo.processInfo().environment["TEST"] {
+            self.testUserDefaults = NSUserDefaults.standardUserDefaults()
+            ud = self.testUserDefaults!
+        } else {
+            ud = NSUserDefaults(suiteName: kCI2GoAppGroupIdentifier)!
         }
-        return _userDefaults!
-    }
+        ud.registerDefaults([
+            kCI2GoColorSchemeUserDefaultsKey: "Github",
+            kCI2GoLogRefreshIntervalDefaultsKey: 1.0,
+            kCI2GoAPIRefreshIntervalDefaultsKey: 5.0
+            ])
+        return ud
+    }()
 
-    var colorSchemeName: NSString? {
+    var colorSchemeName: String? {
         set(value) {
             if (value != nil && ColorScheme.names.indexOf((value! as String)) != nil) {
                 userDefaults.setValue(value, forKey: kCI2GoColorSchemeUserDefaultsKey)
@@ -82,8 +93,18 @@ class CI2GoUserDefaults: NSObject {
         }
     }
 
+    var storedSchemaVersion: UInt64 {
+        set(value) {
+            userDefaults.setInteger(Int(value), forKey: kCI2GoSchemaVersionDefaultsKey)
+            userDefaults.synchronize()
+        }
+        get {
+            return UInt64(userDefaults.integerForKey(kCI2GoSchemaVersionDefaultsKey))
+        }
+    }
+
     var isLoggedIn: Bool {
-        get { return circleCIAPIToken?.utf8.count > 0 }
+        return circleCIAPIToken?.isEmpty == false
     }
 
     var logRefreshInterval: Double {
@@ -113,7 +134,9 @@ class CI2GoUserDefaults: NSObject {
             userDefaults.synchronize()
         }
         get {
-            // TODO
+            if let id = userDefaults.stringForKey(kCI2GoSelectedBranchDefaultsKey) {
+                return realm.objects(Branch).filter(NSPredicate(format: "id == %@", id)).first
+            }
             return nil
         }
     }
@@ -125,12 +148,13 @@ class CI2GoUserDefaults: NSObject {
             userDefaults.synchronize()
         }
         get {
-            let projectID = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey)
-            // TODO
+            if let id = userDefaults.stringForKey(kCI2GoSelectedProjectDefaultsKey) {
+                return realm.objects(Project).filter(NSPredicate(format: "id == %@", id)).first
+            }
             return nil
         }
     }
-    
+
     var buildsAPIPath: String {
         if let p = selectedProject {
             return p.apiPath

@@ -13,6 +13,7 @@ class User: Object, Mappable, Equatable, Comparable {
     dynamic var email: String = ""
     dynamic var login: String = ""
     dynamic var name: String = ""
+    var emails: [String]?
 
     required convenience init?(_ map: Map) {
         self.init()
@@ -20,10 +21,29 @@ class User: Object, Mappable, Equatable, Comparable {
     }
 
     func mapping(map: Map) {
+        var selectedEmail: String?, email: String?
+        login <- map["login"]
+        name <- map["name"]
+        selectedEmail <- map["selected_email"]
+        email <- map["email"]
+        emails <- map["all_emails"]
+        self.email = email ?? selectedEmail ?? self.email
     }
 
     override class func primaryKey() -> String {
         return "email"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["emails"]
+    }
+
+    func dup() -> User {
+        let dup = User()
+        dup.email = email
+        dup.login = login
+        dup.name = name
+        return dup
     }
 }
 

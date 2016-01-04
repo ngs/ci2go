@@ -32,6 +32,9 @@ class Build: Object, Mappable, Equatable, Comparable {
         case NoTests = "no_tests"
         case Fixed = "fixed"
         case Success = "success"
+        var humanize: String {
+            return rawValue.humanize
+        }
     }
     enum Outcome: String {
         case Canceled = "canceled"
@@ -53,12 +56,7 @@ class Build: Object, Mappable, Equatable, Comparable {
         didSet { updateId() }
     }
     dynamic var parallelCount: Int = 0
-    dynamic var project: Project? {
-        didSet {
-            branch?.project = project
-            updateId()
-        }
-    }
+    dynamic var project: Project?
     dynamic var rawLifecycle: String?
     dynamic var rawStatus: String?
     dynamic var rawOutcome: String?
@@ -146,6 +144,8 @@ class Build: Object, Mappable, Equatable, Comparable {
         , steps = [BuildStep]()
         , branchName: String?
         , vcsRevision: String?
+        , previsousBuild: Build?
+        , previsousSuccessfulBuild: Build?
         if let project = Project(map) where !project.id.isEmpty {
             self.project = project
         }
@@ -171,13 +171,28 @@ class Build: Object, Mappable, Equatable, Comparable {
         steps <- map["steps"]
         node <- map["node"]
         previsousBuild?.project = project
+        previsousBuild?.updateId()
         previsousSuccessfulBuild?.project = project
-
+        previsousSuccessfulBuild?.updateId()
+        if previsousSuccessfulBuild?.id.isEmpty == false && previsousSuccessfulBuild?.branch != nil {
+            previsousSuccessfulBuild?.branch?.project = self.project
+            self.previsousSuccessfulBuild = previsousSuccessfulBuild
+        }
+        if previsousBuild?.id.isEmpty == false &&
+            previsousBuild?.branch != nil {
+                previsousBuild?.branch?.project = self.project
+                if previsousBuild?.id.isEmpty == false {
+                    self.previsousBuild = previsousBuild
+                }
+        }
         if let branchName = branchName where !branchName.isEmpty {
             let branch = Branch()
             branch.name = branchName
             branch.project = self.project
-            self.branch = branch
+            branch.updateId()
+            if !branch.id.isEmpty {
+                self.branch = branch
+            }
         }
 
         if let _ = vcsRevision, triggeredCommit = Commit(map) {
@@ -187,18 +202,32 @@ class Build: Object, Mappable, Equatable, Comparable {
 
         commits.forEach { c in
             c.project = self.project
+            c.branch?.project = self.project
+            c.branch?.updateId()
             if !self.commits.contains(c) {
                 self.commits.append(c)
             }
         }
         var index = 0
+        var sectionIndex = 0
+        var currentSectionType: String?
         steps.forEach { c in
             c.build = self
             c.index = index++
+            c.actions.forEach { a in
+                a.sectionIndex = sectionIndex
+                a.updateId()
+            }
+            if currentSectionType != nil && currentSectionType != c.actions.first?.type {
+                sectionIndex++
+            }
+            currentSectionType = c.actions.first?.type
             if !self.steps.contains(c) {
                 self.steps.append(c)
             }
+            c.updateId()
         }
+        updateId()
     }
 
     func updateId() {
@@ -209,6 +238,42 @@ class Build: Object, Mappable, Equatable, Comparable {
 
     override class func primaryKey() -> String {
         return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath"]
+    }
+
+    func dup(target: Build? = nil) -> Build {
+        let dup = target ?? Build()
+        dup.branch = branch?.dup()
+        dup.buildParametersData = buildParametersData
+        dup.circleYAML = circleYAML
+        dup.compareURLString = compareURLString
+        dup.dontBuild = dontBuild
+        dup.id  = id
+        dup.sshEnabled  = sshEnabled
+        dup.hasArtifacts  = hasArtifacts
+        dup.number = number
+        dup.parallelCount = parallelCount
+        dup.project = project?.dup()
+        dup.rawLifecycle = rawLifecycle
+        dup.rawStatus = rawStatus
+        dup.rawOutcome = rawOutcome
+        dup.retryOf = retryOf
+        dup.previsousBuild = previsousBuild
+        dup.previsousSuccessfulBuild = previsousSuccessfulBuild
+        dup.timeMillis = timeMillis
+        dup.triggeredCommit = triggeredCommit
+        dup.urlString = urlString
+        dup.user = user?.dup()
+        dup.why = why
+        dup.queuedAt = queuedAt
+        dup.startedAt = startedAt
+        dup.stoppedAt = stoppedAt
+        dup.node = node?.dup()
+        dup.updateId()
+        return dup
     }
 }
 

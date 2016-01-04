@@ -8,6 +8,7 @@
 
 import Foundation
 import OHHTTPStubs
+import RealmSwift
 
 func fixtureJSON(fileName: String, _ inBundleForClass: AnyClass) -> AnyObject {
     let file = OHPathForFile(fileName, inBundleForClass)!

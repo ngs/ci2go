@@ -37,7 +37,9 @@ class ColorScheme {
         return [String: [String: CGFloat]]()
     }()
 
-    init() {}
+    init() {
+        self.name = CI2GoUserDefaults.standardUserDefaults().colorSchemeName!
+    }
 
     convenience init?(_ name: String) {
         if !ColorScheme.names.contains(name) {
@@ -119,7 +121,7 @@ class ColorScheme {
             return greenColor()
         case .Running:
             return blueColor()
-        case .Failed, .Timedout, .InfrastructureFail, .NoTests:
+        case .Failed, .Timedout, .InfrastructureFail:
             return redColor()
         default:
             return UIColor.grayColor()
@@ -148,9 +150,25 @@ class ColorScheme {
         }
         return false
     }
-    
+
     func setAsCurrent() {
         CI2GoUserDefaults.standardUserDefaults().colorSchemeName = name
     }
 
+    #if os(iOS)
+    lazy var ansiHelper: AMR_ANSIEscapeHelper = {
+        let h = AMR_ANSIEscapeHelper()
+        for var i: Int = 0; i < 8; i++ {
+            let color1 = self.color(code: i)
+            let color2 = self.color(code: i + 8)
+            h.ansiColors[30 + i] = color1
+            h.ansiColors[40 + i] = color1
+            h.ansiColors[50 + i] = color2
+        }
+        h.defaultStringColor = self.foregroundColor() ?? UIColor.blueColor()
+        h.font = UIFont.sourceCodeProRegular(12)
+        return h
+    }()
+    #endif
+    
 }

@@ -28,6 +28,10 @@ class Node: Object, Mappable, Equatable, Comparable {
         return "id"
     }
 
+    override static func ignoredProperties() -> [String] {
+        return ["sshAddress"]
+    }
+
     required convenience init?(_ map: Map) {
         self.init()
         mapping(map)
@@ -47,6 +51,16 @@ class Node: Object, Mappable, Equatable, Comparable {
 
     func updateId() {
         id = sshAddress
+    }
+
+    func dup() -> Node {
+        let dup = Node()
+        dup.publicIPAddress = publicIPAddress
+        dup.port = port
+        dup.username = username
+        dup.imageId = imageId
+        dup.sshEnabled = sshEnabled
+        return dup
     }
 }
 
