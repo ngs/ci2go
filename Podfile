@@ -1,7 +1,6 @@
 # vim: set ft=ruby
 
 use_frameworks!
-inhibit_all_warnings!
 
 def shared_pods
   pod 'Alamofire', '~> 3.1'
@@ -24,15 +23,18 @@ def ios_pods
 end
 
 target 'CI2Go' do
+  inhibit_all_warnings!
   ios_pods
 end
 
 target 'CI2Go WatchKit App Extension' do
+  inhibit_all_warnings!
   platform :watchos, '2.0'
   shared_pods
 end
 
 target 'CI2GoTests' do
+  inhibit_all_warnings!
   ios_pods
   pod 'Quick', '~> 0.8'
   pod 'Nimble', '~> 3.0'
@@ -41,4 +43,5 @@ target 'CI2GoTests' do
 end
 
 target 'CI2GoUITests' do
+  inhibit_all_warnings!
 end
