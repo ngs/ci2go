@@ -14,10 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
 
-    lazy var realm: Realm = {
-        return try! Realm()
-    }()
-
     class var current: AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
