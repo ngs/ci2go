@@ -194,16 +194,20 @@ class Build: Object, Mappable, Equatable, Comparable {
                 self.branch = branch
             }
         }
-
-        if let _ = vcsRevision, triggeredCommit = Commit(map) {
+        if let triggeredCommit = Commit(map) {
+            triggeredCommit.branch = branch
+            triggeredCommit.project = project
+            triggeredCommit.updateId()
             commits.append(triggeredCommit)
             self.triggeredCommit = triggeredCommit
         }
 
+        self.commits.removeAll()
         commits.forEach { c in
             c.project = self.project
             c.branch?.project = self.project
             c.branch?.updateId()
+            c.updateId()
             if !self.commits.contains(c) {
                 self.commits.append(c)
             }
@@ -212,20 +216,21 @@ class Build: Object, Mappable, Equatable, Comparable {
         var sectionIndex = 0
         var currentSectionType: String?
         steps.forEach { c in
+            guard let actionType = c.actions.first?.actionType else { return }
+            currentSectionType = currentSectionType ?? actionType
             c.build = self
             c.index = index++
             c.actions.forEach { a in
-                a.sectionIndex = sectionIndex
-                a.updateId()
+                a.buildStep = c
             }
-            if currentSectionType != nil && currentSectionType != c.actions.first?.type {
+            c.updateId()
+            if currentSectionType != actionType {
                 sectionIndex++
+                currentSectionType = actionType
             }
-            currentSectionType = c.actions.first?.type
             if !self.steps.contains(c) {
                 self.steps.append(c)
             }
-            c.updateId()
         }
         updateId()
     }
@@ -246,7 +251,7 @@ class Build: Object, Mappable, Equatable, Comparable {
 
     func dup(target: Build? = nil) -> Build {
         let dup = target ?? Build()
-        dup.branch = branch?.dup()
+        dup.branch = branch
         dup.buildParametersData = buildParametersData
         dup.circleYAML = circleYAML
         dup.compareURLString = compareURLString
@@ -256,7 +261,7 @@ class Build: Object, Mappable, Equatable, Comparable {
         dup.hasArtifacts  = hasArtifacts
         dup.number = number
         dup.parallelCount = parallelCount
-        dup.project = project?.dup()
+        dup.project = project
         dup.rawLifecycle = rawLifecycle
         dup.rawStatus = rawStatus
         dup.rawOutcome = rawOutcome
@@ -266,12 +271,14 @@ class Build: Object, Mappable, Equatable, Comparable {
         dup.timeMillis = timeMillis
         dup.triggeredCommit = triggeredCommit
         dup.urlString = urlString
-        dup.user = user?.dup()
+        dup.user = user
         dup.why = why
         dup.queuedAt = queuedAt
         dup.startedAt = startedAt
         dup.stoppedAt = stoppedAt
-        dup.node = node?.dup()
+        dup.node = node
+        dup.steps.removeAll()
+        dup.steps.appendContentsOf(steps)
         dup.updateId()
         return dup
     }

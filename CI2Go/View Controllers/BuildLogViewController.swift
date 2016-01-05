@@ -17,22 +17,19 @@ class BuildLogViewController: UIViewController {
         didSet {
             title = buildAction?.name
             let tracker = GAI.sharedInstance().defaultTracker
-            let dict = GAIDictionaryBuilder.createEventWithCategory("build-log", action: "set", label: buildAction?.type, value: 1).build() as [NSObject : AnyObject]
+            let dict = GAIDictionaryBuilder.createEventWithCategory("build-log", action: "set", label: buildAction?.actionType, value: 1).build() as [NSObject : AnyObject]
             tracker.send(dict)
         }
     }
-
+    var logSubscription: Disposable?
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Build Log Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        buildAction?.log.subscribeNext { log in
+        logSubscription = logSubscription ?? buildAction?.log.subscribeNext { log in
             self.textView.logText = log
-            }.addDisposableTo(disposeBag)
-    }    
+            self.view.setNeedsLayout()
+        }
+    }
 }

@@ -981,21 +981,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TRK-rV-Tuw" firstAttribute="leading" secondItem="Ij9-d7-WRv" secondAttribute="leading" id="2pc-Wm-ZKO"/>
                             <constraint firstAttribute="centerX" secondItem="TRK-rV-Tuw" secondAttribute="centerX" id="CkX-35-yIU"/>
                             <constraint firstAttribute="centerY" secondItem="TRK-rV-Tuw" secondAttribute="centerY" id="DvL-Ju-nu1"/>
                             <constraint firstItem="TRK-rV-Tuw" firstAttribute="height" secondItem="Ij9-d7-WRv" secondAttribute="height" id="GzM-ww-MrE"/>
+                            <constraint firstAttribute="trailing" secondItem="TRK-rV-Tuw" secondAttribute="trailing" id="HyY-Wm-G4I"/>
                             <constraint firstAttribute="centerY" secondItem="TRK-rV-Tuw" secondAttribute="centerY" id="Yts-xz-XjO"/>
                             <constraint firstItem="TRK-rV-Tuw" firstAttribute="top" secondItem="yWw-Oh-g5j" secondAttribute="bottom" id="ZfH-G5-W5K"/>
                             <constraint firstAttribute="centerX" secondItem="TRK-rV-Tuw" secondAttribute="centerX" id="bxb-Vi-hAD"/>
+                            <constraint firstAttribute="bottom" secondItem="TRK-rV-Tuw" secondAttribute="bottom" id="kKN-Xe-UJc"/>
                             <constraint firstItem="TRK-rV-Tuw" firstAttribute="width" secondItem="Ij9-d7-WRv" secondAttribute="width" id="ld9-dN-n2S"/>
                             <constraint firstItem="TRK-rV-Tuw" firstAttribute="height" secondItem="Ij9-d7-WRv" secondAttribute="height" id="mGy-uT-Cwr"/>
+                            <constraint firstItem="TRK-rV-Tuw" firstAttribute="top" secondItem="Ij9-d7-WRv" secondAttribute="top" id="qQx-jW-gTE"/>
                             <constraint firstAttribute="bottomMargin" secondItem="TRK-rV-Tuw" secondAttribute="bottom" id="xMN-cK-3Rq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="CkX-35-yIU"/>
                                 <exclude reference="DvL-Ju-nu1"/>
+                                <exclude reference="GzM-ww-MrE"/>
+                                <exclude reference="Yts-xz-XjO"/>
                                 <exclude reference="ZfH-G5-W5K"/>
+                                <exclude reference="bxb-Vi-hAD"/>
+                                <exclude reference="ld9-dN-n2S"/>
                                 <exclude reference="mGy-uT-Cwr"/>
                                 <exclude reference="xMN-cK-3Rq"/>
                             </mask>

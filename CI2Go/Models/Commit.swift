@@ -14,14 +14,10 @@ class Commit: Object, Mappable, Equatable, Comparable {
     dynamic var commitedAt: NSDate?
     dynamic var authedAt: NSDate?
     dynamic var id = ""
-    dynamic var sha1 = "" {
-        didSet { updateId() }
-    }
+    dynamic var sha1 = ""
     dynamic var subject = ""
     dynamic var urlString: String?
-    dynamic var branch: Branch? {
-        didSet { updateId() }
-    }
+    dynamic var branch: Branch?
     dynamic var author: User?
     dynamic var committer: User?
     dynamic var project: Project?
@@ -66,7 +62,7 @@ class Commit: Object, Mappable, Equatable, Comparable {
     }
 
     func updateId() {
-        if let branchId = branch?.id {
+        if let branchId = branch?.id where !branchId.isEmpty {
             id = "\(branchId):\(sha1)"
         }
     }

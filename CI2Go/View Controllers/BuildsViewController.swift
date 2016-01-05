@@ -163,9 +163,9 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     }
 
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let buildCell = cell as? BuildTableViewCell
-        let build = rrc?.objectAt(indexPath)
-        buildCell?.build = build
+        guard let cell = cell as? BuildTableViewCell
+            , build = rrc?.objectAt(indexPath) else { return }
+        cell.build = build
     }
 
     func load(more: Bool) {

@@ -11,18 +11,22 @@ import UIKit
 public class BuildLogTextView: UITextView {
 
 
-  public var logText: String? = nil {
-    didSet {
-      let s = ColorScheme()
-      if logText != nil {
-        attributedText = s.ansiHelper.attributedStringWithANSIEscapedString(logText!)
-      } else {
-        attributedText = nil
-      }
-      setContentOffset(contentOffset, animated: false)
-      scrollRangeToVisible(NSMakeRange(attributedText.length, 0))
+    public var logText: String? = nil {
+        didSet {
+            let s = ColorScheme()
+            if logText != nil {
+                attributedText = s.ansiHelper.attributedStringWithANSIEscapedString(logText!)
+            } else {
+                attributedText = nil
+            }
+            self.scrollToBottom()
+        }
     }
-  }
 
-
+    public func scrollToBottom() {
+        if contentSize.height > bounds.height {
+            scrollRangeToVisible(NSMakeRange(attributedText.length - 1, 1))
+        }
+    }
+    
 }

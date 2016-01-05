@@ -39,7 +39,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "856701A71C3015F500E76DCF"
@@ -65,13 +65,13 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "REALM_MEMORY_IDENTIFIER"
-            value = "TestInMemoryRealm"
+            key = "VERBOSE"
+            value = "1"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "VERBOSE"
-            value = "1"
+            key = "REALM_MEMORY_IDENTIFIER"
+            value = "TestInMemoryRealm"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

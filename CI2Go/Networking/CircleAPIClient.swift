@@ -32,15 +32,15 @@ class CircleAPIClient {
     }
 
     func post<T where T: Mappable, T: Object>(path: String, parameters: [String: AnyObject]? = nil) -> Observable<T> {
-        return self.request(.GET, path, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
+        return self.request(.POST, path, parameters: parameters, encoding: ParameterEncoding.JSON)
     }
 
     func get<T where T: Mappable, T: Object>(path: String, parameters: [String: AnyObject]? = nil) -> Observable<T> {
         return self.request(.GET, path, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
 
-    func getList<T where T: Mappable, T: Object>(path: String, parameters: [String: AnyObject]? = nil) -> Observable<[T]> {
-        return self.requestList(.GET, path, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
+    func getList<T where T: Mappable, T: Object>(path: String, keyPath: String? = nil, parameters: [String: AnyObject]? = nil) -> Observable<[T]> {
+        return self.requestList(.GET, path, keyPath: keyPath, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
 
     func request<T where T: Mappable, T: Object>(method: Alamofire.Method, _ path: String,
@@ -65,11 +65,12 @@ class CircleAPIClient {
     }
 
     func requestList<T where T: Mappable, T: Object>(method: Alamofire.Method, _ path: String,
+        keyPath: String? = nil,
         parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = .URL,
         headers: [String: String]? = nil) -> Observable<[T]> {
             return Observable.create({ observer in
                 let req = self.createRequest(method, path, parameters: parameters, encoding: encoding, headers: headers)
-                req.responseArray { (res: Response<[T], NSError>) -> Void in
+                let completionHandler = { (res: Response<[T], NSError>) -> Void in
                     if let error = res.result.error {
                         observer.onError(error)
                     }
@@ -77,6 +78,11 @@ class CircleAPIClient {
                         observer.onNext(obj)
                     }
                     observer.onCompleted()
+                }
+                if let keyPath = keyPath {
+                    req.responseArray(keyPath, completionHandler: completionHandler)
+                } else {
+                    req.responseArray(completionHandler)
                 }
                 return AnonymousDisposable { req.cancel() }
             })
