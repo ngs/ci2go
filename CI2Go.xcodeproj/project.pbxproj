@@ -323,6 +323,7 @@
 		856E04D71C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
 		856E04D81C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
 		85AAB8A31C344A77007C5453 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */; };
+		85B00CD81C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */; };
 		85C067891C3127AA001062F2 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
 		85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
 		85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
@@ -595,6 +596,7 @@
 		856702861C30253100E76DCF /* Zenburn.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Zenburn.itermcolors; sourceTree = "<group>"; };
 		856E04D61C313BD9003F43BC /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewControllerSpec.swift; sourceTree = "<group>"; };
 		85C067881C3127AA001062F2 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85C0678A1C31354F001062F2 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		85C0678C1C31363B001062F2 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 			children = (
 				856701A31C3015F500E76DCF /* Info.plist */,
 				85168A941C3691A300392145 /* BranchSpec.swift */,
+				85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */,
 				85168A9F1C36BA6200392145 /* BuildSpec.swift */,
 				85C724391C39216500582B4D /* CircleAPIClientSpec.swift */,
 				850B4E8C1C373E9400C1EC70 /* ColorSchemeSpec.swift */,
@@ -1647,6 +1650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85168A9A1C36A44C00392145 /* SpecHelper.swift in Sources */,
+				85B00CD81C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift in Sources */,
 				85168AA01C36BA6200392145 /* BuildSpec.swift in Sources */,
 				85C7243A1C39216500582B4D /* CircleAPIClientSpec.swift in Sources */,
 				85C7243F1C392B3100582B4D /* UserSpec.swift in Sources */,

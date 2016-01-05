@@ -8,17 +8,17 @@
 
 import RealmSwift
 import ObjectMapper
+#if os(iOS)
+    import CryptoSwift
+#endif
 
 class BuildStep: Object, Mappable, Equatable, Comparable {
     dynamic var id = ""
     dynamic var name = ""
-    dynamic var index: Int = 0 {
-        didSet { updateId() }
-    }
-    dynamic var build: Build? {
-        didSet { updateId() }
-    }
+    dynamic var index: Int = 0
+    dynamic var build: Build?
     let actions = List<BuildAction>()
+    var tempActions = [BuildAction]()
 
     required convenience init?(_ map: Map) {
         self.init()
@@ -26,23 +26,32 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
     }
 
     func mapping(map: Map) {
-        var actions = [BuildAction]()
         name <- map["name"]
-        actions <- map["actions"]
-        actions.forEach { a in
-            a.buildStep = self
-            a.sectionIndex = index
-            if !self.actions.contains(a) {
-                self.actions.append(a)
-            }
-        }
+        tempActions <- map["actions"]
+        updateId()
     }
 
     func updateId() {
-        if let buildId = build?.id {
-            id = "\(buildId):\(index)"
-        }
+        #if os(iOS)
+            if let buildId = build?.id {
+                id = "\(buildId):\(name.md5())"
+            }
+        #endif
         actions.forEach { $0.updateId() }
+    }
+
+    func dup() -> BuildStep {
+        let dup = BuildStep()
+        dup.id = id
+        dup.name = name
+        dup.index = index
+        dup.build = build?.dup()
+        dup.actions.appendContentsOf(actions.map{
+            let a = $0.dup()
+            a.buildStep = dup
+            return a
+            })
+        return dup
     }
 
     override class func primaryKey() -> String {
@@ -50,7 +59,7 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
     }
 
     override static func ignoredProperties() -> [String] {
-        return []
+        return ["tempActions"]
     }
 }
 

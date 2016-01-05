@@ -11,11 +11,12 @@ import RxSwift
 import RxCocoa
 import RxBlocking
 import ObjectMapper
-import Carlos
-
-let cache = MemoryCacheLevel<NSURL, NSString>() >>> DiskCacheLevel()
+#if os(iOS)
+import CryptoSwift
+#endif
 
 class BuildAction: Object, Mappable, Equatable, Comparable {
+    lazy var disposeBag: DisposeBag = { DisposeBag() }()
     enum Status: String {
         case Success = "success"
         case Failed = "failed"
@@ -24,10 +25,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         case Running = "running"
     }
     dynamic var bashCommand = ""
-    dynamic var buildStep: BuildStep? {
-        didSet { updateId() }
-    }
-    dynamic var sectionIndex: Int = 0
+    dynamic var buildStep: BuildStep?
     dynamic var stepNumber: Int = 0
     dynamic var command = ""
     dynamic var endedAt: NSDate?
@@ -42,20 +40,22 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     dynamic var isTimedout = false
     dynamic var isTruncated = false
     dynamic var name = ""
-    dynamic var nodeIndex: Int = 0 {
-        didSet { updateId() }
-    }
+    dynamic var nodeIndex: Int = 0
     dynamic var outputURLString: String?
     dynamic var runTimeMillis: Int = 0
     dynamic var source = ""
     dynamic var startedAt: NSDate?
     dynamic var rawStatus: String?
-    dynamic var type = ""
+    dynamic var actionType = ""
     dynamic var output = ""
 
     required convenience init?(_ map: Map) {
         self.init()
         mapping(map)
+    }
+
+    var actionName: String {
+        return (actionType.componentsSeparatedByString(":").last ?? actionType).humanize
     }
 
     var status: Status? {
@@ -81,7 +81,7 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         rawStatus <- map["status"]
         isTimedout <- map["timedout"]
         isContinue <- map["continue"]
-        type <- map["type"]
+        actionType <- map["type"]
         outputURLString <- map["output_url"]
         exitCode <- map["exit_code"]
         isCanceled <- map["canceled"]
@@ -93,9 +93,11 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     }
 
     func updateId() {
-        if let stepId = self.buildStep?.id where stepId.utf8.count > 0 {
-            id = "\(stepId)@\(nodeIndex)"
+        #if os(iOS)
+        if let stepId = self.buildStep?.id where !stepId.isEmpty && id.isEmpty {
+            id = "\(stepId)@\(actionType):\(name.md5()):\(nodeIndex)"
         }
+        #endif
     }
 
     override class func primaryKey() -> String {
@@ -120,22 +122,43 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
 
     var log: Observable<String> {
         let src = self.logSource
-        guard let outputURL = outputURL else {
-            return Observable.never()
-        }
-        cache.get(outputURL).onSuccess { log in
-            src.value = log as String
-        }
-        return Observable.combineLatest(self.downloadLog(), src.asObservable()) { ($0, $1) }
-            .flatMap { downloadedLog, log -> Observable<String> in
-                src.value = downloadedLog
-                cache.set(downloadedLog, forKey: outputURL)
-                return src.asObservable()
-        }
+        self.downloadLog().subscribeNext { log in
+            src.value = log
+        }.addDisposableTo(disposeBag)
+        return src.asObservable()
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["status", "outputURL", "logSource", "log", "cache"]
+        return ["status", "outputURL", "logSource", "log", "cache", "disposeBag"]
+    }
+
+    func dup() -> BuildAction {
+        let dup = BuildAction()
+        dup.bashCommand = bashCommand
+        dup.buildStep = buildStep
+        dup.stepNumber = stepNumber
+        dup.command = command
+        dup.endedAt = endedAt
+        dup.exitCode = exitCode
+        dup.hasOutput = hasOutput
+        dup.id = id
+        dup.isCanceled = isCanceled
+        dup.isContinue = isContinue
+        dup.isFailed = isFailed
+        dup.isInfrastructureFail = isInfrastructureFail
+        dup.isParallel = isParallel
+        dup.isTimedout = isTimedout
+        dup.isTruncated = isTruncated
+        dup.name = name
+        dup.nodeIndex = nodeIndex
+        dup.outputURLString = outputURLString
+        dup.runTimeMillis = runTimeMillis
+        dup.source = source
+        dup.startedAt = startedAt
+        dup.rawStatus = rawStatus
+        dup.actionType = actionType
+        dup.output = output
+        return dup
     }
 }
 

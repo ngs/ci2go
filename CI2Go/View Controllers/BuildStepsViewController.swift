@@ -12,6 +12,7 @@ import RxSwift
 import RealmSwift
 import RealmResultsController
 import RxSwift
+import SafariServices
 
 class BuildStepsViewController: UITableViewController, RealmResultsControllerDelegate {
 
@@ -25,16 +26,16 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     lazy var rrc: RealmResultsController<BuildAction, BuildAction> = {
         let predicate: NSPredicate
         if let buildId = self.build?.id {
-            predicate = NSPredicate(format: "id BEGINSWITH %@", buildId)
+            predicate = NSPredicate(format: "id BEGINSWITH %@", "\(buildId):")
         } else {
             predicate = NSPredicate(value: false)
         }
         let sd = [
-            SortDescriptor(property: "sectionIndex", ascending: false),
-            SortDescriptor(property: "nodeIndex", ascending: false)
+            SortDescriptor(property: "actionType"),
+            SortDescriptor(property: "stepNumber")
         ]
         let req = RealmRequest<BuildAction>(predicate: predicate, realm: self.realm, sortDescriptors: sd)
-        let rrc = try! RealmResultsController<BuildAction, BuildAction>(request: req, sectionKeyPath: "sectionIndex")
+        let rrc = try! RealmResultsController<BuildAction, BuildAction>(request: req, sectionKeyPath: "actionType")
         rrc.delegate = self
         return rrc
     }()
@@ -48,7 +49,6 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
             let tracker = GAI.sharedInstance().defaultTracker
             let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: build?.apiPath, value: 1).build() as [NSObject : AnyObject]
             tracker.send(dict)
-            load()
         } else {
             title = ""
         }
@@ -59,7 +59,11 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
             self.refresh(n)
         }
-        self.refresh(nil)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        refresh(nil)
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -89,10 +93,10 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         callAPI("cancel", progressMessage: "Canceling Build", successMessage: "Canceled", failureMessage: "Failed")
     }
 
-    private func compareChanges() {
-        if let url = self.build?.compareURL {
-            UIApplication.sharedApplication().openURL(url)
-        }
+    private func openSafari(URL: NSURL) {
+        let vc = SFSafariViewController(URL: URL, entersReaderIfAvailable: true)
+        self.presentViewController(vc, animated: true, completion: nil)
+        vc.navigationController?.navigationBar.barTintColor = ColorScheme().backgroundColor()
     }
 
     private func callAPI(path: String, progressMessage: String, successMessage: String, failureMessage: String) {
@@ -109,6 +113,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
                 hud.mode = MBProgressHUDMode.CustomView
                 hud.hide(true, afterDelay: 1)
+                self.refresh(nil)
                 if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("BuildStepsViewController") as? BuildStepsViewController where build != self.build {
                     vc.build = build
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -129,13 +134,14 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
             return
         }
         self.isLoading = true
-        self.build?.get().subscribe(
+        self.build?.getSteps().subscribe(
             onNext: { _ in
                 self.isLoading = false
-                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             },
             onError: { _ in
                 self.isLoading = false
+                self.refreshControl?.endRefreshing()
             }
             ).addDisposableTo(disposeBag)
     }
@@ -185,7 +191,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if rrc.numberOfObjectsAt(section) > 0 {
             let action = rrc.objectAt(NSIndexPath(forRow: 0, inSection: section))
-            return action.type.componentsSeparatedByString(": ").last?.humanize
+            return action.actionName
         }
         return nil
     }
@@ -209,9 +215,6 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     @IBAction func openActionSheet(sender: AnyObject) {
         guard let lifecycle = self.build?.lifecycle else { return }
         let av = UIAlertController()
-        av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
-            self.retryBuild()
-        }))
         if lifecycle != .NotRun {
             av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
                 self.retryBuild()
@@ -222,9 +225,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 self.cancelBuild()
             }))
         }
-        if let _ = self.build?.compareURL {
+        if let URL = self.build?.compareURL {
             av.addAction(UIAlertAction(title: "Compare", style: .Default, handler: { _ in
-                self.compareChanges()
+                self.openSafari(URL)
             }))
         }
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
@@ -238,20 +241,22 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     // MARK: - RealmResultsControllerDelegate
 
     func willChangeResults(controller: AnyObject) {
+        print("😇 willChangeResults")
         tableView.beginUpdates()
     }
 
     func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
-        print("🎁 didChangeObject '\((object as! BuildAction).id)' from: [\(oldIndexPath.section):\(oldIndexPath.row)] to: [\(newIndexPath.section):\(newIndexPath.row)] --> \(changeType)")
+        print("🎁 didChangeObject '\((object as! BuildAction).id)' from: [\(oldIndexPath.section):\(oldIndexPath.row)] to: [\(newIndexPath.section):\(newIndexPath.row)] --> \(changeType) \(rrc.numberOfObjectsAt(newIndexPath.section)) \(rrc.numberOfSections))")
         switch changeType {
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
             break
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
             break
         case .Move:
-            tableView.moveRowAtIndexPath(oldIndexPath, toIndexPath: newIndexPath)
+            tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .None)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
             break
         case .Update:
             tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
@@ -260,12 +265,13 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     }
 
     func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
+        print("💈 didChangeSection \(index)/\(rrc.numberOfSections) --> \(changeType)")
         switch changeType {
         case .Delete:
-            tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .None)
             break
         case .Insert:
-            tableView.insertSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
+            tableView.insertSections(NSIndexSet(index: index), withRowAnimation: .None)
             break
         default:
             break
@@ -273,6 +279,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     }
 
     func didChangeResults(controller: AnyObject) {
-        tableView.endUpdates()
+        print("🙃 didChangeResults")
+        self.tableView.endUpdates()
     }
 }

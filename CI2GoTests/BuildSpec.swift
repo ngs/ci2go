@@ -23,7 +23,7 @@ class BuildSpec: QuickSpec {
             let project = realm.objects(Project).first!
             let branch = realm.objects(Branch).first!
             let commit = realm.objects(Commit).first!
-
+            expect(realm.objects(Commit).count).to(equal(1))
             expect(build.compareURL).to(equal(NSURL(string: "https://github.com/ngs/ci2go/compare/ef1e276c2831...722f7dbc7b56")!))
             expect(build.number).to(equal(204))
             expect(build.sshEnabled).to(beFalse())
@@ -87,60 +87,9 @@ class BuildSpec: QuickSpec {
                 expect(realm.objects(Project).count).to(equal(1))
                 expect(realm.objects(User).count).to(equal(1))
                 expect(realm.objects(Branch).count).to(equal(1))
-                expect(realm.objects(BuildStep).count).to(equal(39))
-                expect(realm.objects(BuildAction).count).to(equal(39))
                 expect(realm.objects(Build)[0].number).to(equal(204))
 
                 itBehavesLike("Mapped Build")
-
-                let build = realm.objects(Build).first!
-
-                let names = [
-                    "Starting the build",
-                    "Start container",
-                    "Enable SSH",
-                    "Restore source cache",
-                    "Checkout using deploy key: 32:17:da:da:42:6a:54:65:bf:ec:4c:90:5b:74:67:0c",
-                    "Configure the build",
-                    "Exporting env vars from circle.yml",
-                    "Exporting env vars from project settings",
-                    "Select Xcode Version",
-                    "Restore cache",
-                    "curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys",
-                    "sudo pip install awscli",
-                    "sudo gem update bundler",
-                    "export TGZ=\"$(cat Gemfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true",
-                    "export TGZ=\"$(cat Podfile | md5).tgz\"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true",
-                    "export TGZ=\"$(cat Gemfile | md5).tgz\"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)",
-                    "export TGZ=\"$(cat Podfile | md5).tgz\"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)",
-                    "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
-                    "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
-                    "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go WatchKit App Extension-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
-                    "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxSwift/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
-                    "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxCocoa/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
-                    "/usr/libexec/PlistBuddy 'Pods/Target Support Files/Pods-CI2Go-RxBlocking/Info.plist' -c 'Set :CFBundleShortVersionString 2.0.0'",
-                    "echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc",
-                    "echo \"export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')\" >> ~/.bashrc",
-                    "echo \"export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD\" >> ~/.bashrc",
-                    "bundle exec fastlane import_certs",
-                    "bundle exec sigh download_all -o fastlane/profiles",
-                    "Save cache",
-                    "bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'",
-                    "mkdir -p $CIRCLE_TEST_REPORTS/junit && cat fastlane/test_output/report.junit > $CIRCLE_TEST_REPORTS/junit/report.xml",
-                    "Checking deployment",
-                    "Checking deployment",
-                    "bundle exec fastlane build_adhoc",
-                    "bundle exec fastlane deploy_s3 > /dev/null 2>&1",
-                    "Collect test metadata",
-                    "Collect artifacts",
-                    "Ensure caches are uploaded",
-                    "Disable SSH"
-                ]
-                expect(build.steps.map({ $0.name })).to(equal(names))
-                expect(build.steps.map({ $0.index })).to(equal([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38]))
-                expect(build.steps.map({ $0.actions.count })).to(equal([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
-                expect(build.steps.map({ $0.actions.first!.name })).to(equal(names))
-
             }
         }
         describe("getRecent") {

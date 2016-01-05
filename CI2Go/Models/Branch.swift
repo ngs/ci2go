@@ -27,7 +27,7 @@ class Branch: Object, Mappable, Equatable, Comparable {
     }
 
     func updateId() {
-        if let projectPath = project?.apiPath where name.utf8.count > 0 {
+        if let projectPath = project?.apiPath where !name.isEmpty && id.isEmpty {
             self.id = "\(projectPath):\(name)"
         }
     }
