@@ -11,6 +11,7 @@ import RxSwift
 import RealmSwift
 import RealmResultsController
 import RxSwift
+import RxCocoa
 
 class BuildsViewController: UITableViewController, RealmResultsControllerDelegate {
 
@@ -230,9 +231,9 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
             break
         }
     }
-    
+
     func didChangeResults(controller: AnyObject) {
         tableView.endUpdates()
     }
-    
+
 }

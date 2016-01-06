@@ -8,8 +8,6 @@
 
 import RealmSwift
 import RxSwift
-import RxCocoa
-import RxBlocking
 import ObjectMapper
 import Carlos
 #if os(iOS)

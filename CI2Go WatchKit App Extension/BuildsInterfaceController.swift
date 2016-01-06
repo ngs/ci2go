@@ -24,18 +24,28 @@ class BuildsInterfaceController: WKInterfaceController {
         self.updateList()
         self.placeholderGroup.setHidden(true)
         self.interfaceTable.setHidden(false)
-        NSNotificationCenter.defaultCenter().rx_notification("hoge").subscribeNext { _ in
-            //let tracker = getDefaultGAITraker()
-            if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
-                self.refresh()
-                self.placeholderGroup.setHidden(true)
-                //tracker.set(kGAIScreenName, value: "Builds")
-            } else {
-                self.interfaceTable.setHidden(true)
-                //tracker.set(kGAIScreenName, value: "Builds Placeholer")
-            }
-            //tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-        }.addDisposableTo(disposeBag)
+        NSNotificationCenter.defaultCenter()
+            .addObserver(self, selector: "handleApiTokenUpdate:",
+                name: kCI2GoAPITokenReceivedNotification, object: nil)
+    }
+
+    override func didDeactivate() {
+        super.didDeactivate()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    func handleApiTokenUpdate(sender: AnyObject? = nil) {
+        self.updateList()
+        //let tracker = getDefaultGAITraker()
+        if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
+            self.refresh()
+            self.placeholderGroup.setHidden(true)
+            //tracker.set(kGAIScreenName, value: "Builds")
+        } else {
+            self.interfaceTable.setHidden(true)
+            //tracker.set(kGAIScreenName, value: "Builds Placeholer")
+        }
+        //tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
 
     func refresh() {

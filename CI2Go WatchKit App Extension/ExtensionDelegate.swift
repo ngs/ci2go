@@ -9,6 +9,8 @@
 import WatchKit
 import WatchConnectivity
 
+let kCI2GoAPITokenReceivedNotification = "CI2GoAPITokenReceived"
+
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
@@ -27,7 +29,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                     let def = CI2GoUserDefaults.standardUserDefaults()
                     def.circleCIAPIToken = apiToken
                     def.colorSchemeName = colorSchemeName
-                    NSNotificationCenter.defaultCenter().postNotificationName("hoge", object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoAPITokenReceivedNotification, object: nil)
             }
             }, errorHandler: nil)
     }

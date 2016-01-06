@@ -8,14 +8,14 @@ def shared_pods
   pod 'Carlos', '~> 0.5'
   pod 'ObjectMapper', '~> 1.0'
   pod 'RealmSwift', '0.97.0'
-  pod 'RxBlocking', '~> 2.0.0'
-  pod 'RxCocoa', '~> 2.0.0'
   pod 'RxSwift', '~> 2.0.0'
   pod 'DateTools', '~> 1.7'
 end
 
 def ios_pods
   shared_pods
+  pod 'RxBlocking', '~> 2.0.0'
+  pod 'RxCocoa', '~> 2.0.0'
   pod 'MBProgressHUD', '~> 0.8'
   pod 'GoogleAnalytics', '~> 3.14'
   # pod 'RealmResultsController', git: 'https://github.com/ngs/RealmResultsController.git', branch: 'feature/realm0.97.0'
