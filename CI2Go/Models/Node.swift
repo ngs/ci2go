@@ -2,34 +2,84 @@
 //  Node.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/1/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 1/1/16.
+//  Copyright © 2016 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
+import ObjectMapper
 
-public class Node: CI2GoManagedObject {
-
-  @NSManaged public var imageID: String
-  @NSManaged public var port: NSNumber
-  @NSManaged public var publicIPAddress: String
-  @NSManaged public var sshEnabled: NSNumber
-  @NSManaged public var username: String
-  @NSManaged public var nodeID: String
-  @NSManaged public var builds: NSSet
-
-  public override class func idFromObjectData(data: AnyObject!) -> String? {
-    if let json = data as? NSDictionary {
-      let username = json["username"] as? NSString
-      let ipAddress = json["public_ip_addr"] as? NSString
-      let port = json["port"] as? NSNumber
-      let imageID = json["image_id"] as? NSString
-      if username != nil && ipAddress != nil && port != nil && imageID != nil {
-        return "\(username!)@\(ipAddress!):\(port!)/\(imageID!)"
-      }
+class Node: Object, Mappable, Equatable, Comparable {
+    dynamic var id = ""
+    dynamic var publicIPAddress: String = "" {
+        didSet { updateId() }
     }
-    return nil
-  }
-  
+    dynamic var port: Int = 0 {
+        didSet { updateId() }
+    }
+    dynamic var username = "" {
+        didSet { updateId() }
+    }
+    dynamic var imageId = ""
+    dynamic var sshEnabled = false
+
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["sshAddress"]
+    }
+
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
+    }
+
+    func mapping(map: Map) {
+        publicIPAddress <- map["public_ip_addr"]
+        port <- map["port"]
+        username <- map["username"]
+        imageId <- map["image_id"]
+        sshEnabled <- map["ssh_enabled"]
+    }
+
+    var sshAddress: String {
+        return "\(username)@\(publicIPAddress):\(port)"
+    }
+
+    func updateId() {
+        id = sshAddress
+    }
+
+    func dup() -> Node {
+        let dup = Node()
+        dup.publicIPAddress = publicIPAddress
+        dup.port = port
+        dup.username = username
+        dup.imageId = imageId
+        dup.sshEnabled = sshEnabled
+        return dup
+    }
+}
+
+func ==(lhs: Node, rhs: Node) -> Bool {
+    return lhs.id == rhs.id
+}
+
+func >(lhs: Node, rhs: Node) -> Bool {
+    return lhs.id > rhs.id
+}
+
+func <(lhs: Node, rhs: Node) -> Bool {
+    return lhs.id < rhs.id
+}
+
+func >=(lhs: Node, rhs: Node) -> Bool {
+    return lhs.id >= rhs.id
+}
+
+func <=(lhs: Node, rhs: Node) -> Bool {
+    return lhs.id <= rhs.id
 }

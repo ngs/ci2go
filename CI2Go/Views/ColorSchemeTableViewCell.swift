@@ -29,10 +29,10 @@ class ColorSchemeTableViewCell: UITableViewCell {
     }
     set(value) {
       if colorScheme?.name != value {
-        if value == nil {
-          colorScheme = nil
+        if let value = value {
+            colorScheme = ColorScheme(value)
         } else {
-          colorScheme = ColorScheme(name: value!)
+            colorScheme = nil
         }
       }
     }
@@ -41,7 +41,7 @@ class ColorSchemeTableViewCell: UITableViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
     nameLabel.text = colorScheme?.name
-    yellowColorView.backgroundColor = colorScheme?.yelloColor()
+    yellowColorView.backgroundColor = colorScheme?.yellowColor()
     blueColorView.backgroundColor = colorScheme?.blueColor()
     redColorView.backgroundColor = colorScheme?.redColor()
     greenColorView.backgroundColor = colorScheme?.greenColor()

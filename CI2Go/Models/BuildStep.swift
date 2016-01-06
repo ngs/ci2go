@@ -2,61 +2,93 @@
 //  BuildStep.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/1/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 1/1/16.
+//  Copyright © 2016 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
+import ObjectMapper
+#if os(iOS)
+    import CryptoSwift
+#endif
 
-public class BuildStep: CI2GoManagedObject {
-  
-  @NSManaged public var index: NSNumber
-  @NSManaged public var name: String
-  @NSManaged public var actions: NSSet?
-  @NSManaged public var build: Build
-  @NSManaged public var buildStepID: String
-  
-  public override class func idFromObjectData(data: AnyObject!) -> String? {
-    if let json = data as? NSDictionary {
-      if let actions = json["actions"] as? [NSDictionary] {
-        if actions.count > 0 {
-          let name = json["name"] as! String!
-          let startTime = actions[0]["start_time"] as! NSString!
-          return "[\(startTime)] \(name)"
+class BuildStep: Object, Mappable, Equatable, Comparable {
+    dynamic var id = ""
+    dynamic var name = ""
+    dynamic var index: Int = 0
+    dynamic var build: Build?
+    let actions = List<BuildAction>()
+    var tempActions = [BuildAction]()
+
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
+    }
+
+    func mapping(map: Map) {
+        var logAction: BuildAction?
+        var logMessage: String?
+        name <- map["name"]
+        tempActions <- map["actions"]
+        logAction <- map["log"]
+        logMessage <- map["message"]
+        if let logAction = logAction {
+            name = logAction.name
+            logAction.buildStep = self
+            tempActions.append(logAction)
         }
-      }
+        updateId()
     }
-    return nil
-  }
-  
-  public override func shouldImport(data: AnyObject!) -> Bool {
-    return BuildStep.idFromObjectData(data) != nil
-  }
-  
-  public var buildActions: [BuildAction] {
-    get {
-      if actions == nil {
-        return [BuildAction]()
-      }
-      return actions?.sortedArrayUsingDescriptors([NSSortDescriptor(key: "nodeIndex", ascending: true)]) as! [BuildAction]
+
+    func updateId() {
+        #if os(iOS)
+            if let buildId = build?.id {
+                id = "\(buildId):\(name.md5())"
+            }
+        #endif
+        tempActions.forEach { $0.updateId() }
+        actions.forEach { $0.updateId() }
     }
-  }
-  
-  public func importActions(data: NSDictionary!) -> Bool {
-    if let actions = data["actions"] as? [NSDictionary] {
-      if actions.count > 0 {
-        let idx = actions[0]["step"] as! Int
-        index = idx
-      }
-      let mSet = NSMutableSet()
-      for actionData in actions {
-        let action = BuildAction.MR_importFromObject(actionData, inContext: managedObjectContext!) as! BuildAction
-        mSet.addObject(action)
-      }
-      self.actions = mSet.copy() as? NSSet
+
+    func dup() -> BuildStep {
+        let dup = BuildStep()
+        dup.id = id
+        dup.name = name
+        dup.index = index
+        dup.build = build?.dup()
+        dup.actions.appendContentsOf(actions.map{
+            let a = $0.dup()
+            a.buildStep = dup
+            return a
+            })
+        return dup
     }
-    return true
-  }
-  
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["tempActions"]
+    }
+}
+
+func ==(lhs: BuildStep, rhs: BuildStep) -> Bool {
+    return lhs.id == rhs.id
+}
+
+func >(lhs: BuildStep, rhs: BuildStep) -> Bool {
+    return lhs.id > rhs.id
+}
+
+func <(lhs: BuildStep, rhs: BuildStep) -> Bool {
+    return lhs.id < rhs.id
+}
+
+func >=(lhs: BuildStep, rhs: BuildStep) -> Bool {
+    return lhs.id >= rhs.id
+}
+
+func <=(lhs: BuildStep, rhs: BuildStep) -> Bool {
+    return lhs.id <= rhs.id
 }

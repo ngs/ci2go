@@ -1,0 +1,28 @@
+[
+  {
+    "step": 10,
+    "index": 0,
+    "log": {
+      "truncated": false,
+      "index": 0,
+      "parallel": true,
+      "failed": null,
+      "infrastructure_fail": null,
+      "name": "curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys",
+      "bash_command": "curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys",
+      "status": "running",
+      "timedout": null,
+      "continue": null,
+      "end_time": null,
+      "source": "config",
+      "type": "dependencies",
+      "start_time": "2016-01-06T02:16:19.839Z",
+      "exit_code": null,
+      "canceled": null,
+      "step": 10,
+      "run_time_millis": null,
+      "has_output": false
+    },
+    "messages": null
+  }
+]

@@ -1,35 +1,53 @@
 machine:
   xcode:
-    version: "6.3.1"
-    # version: "6.2"
+    version: 7.1
   environment:
-    APPNAME: CI2Go
-    LANG: en_US.UTF-8
-    XCODE_SCHEME: CI2GoTests
-    XCODE_WORKSPACE: CI2Go.xcworkspace
-    BUILD_URL: "https://circleci.com/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_BUILD_NUM"
-    ICON_URL: "https://github.com/ngs/ci2go/raw/master/CI2Go/Images.xcassets/AppIcon.appiconset/Icon-60@3x.png"
-    RELEASE_NOTE: "Auto build from $BUILD_URL"
+    KEYCHAIN_NAME: default
+    FL_UNLOCK_KEYCHAIN_PATH: ~/Library/Keychains/default
+
 general:
   artifacts:
-    - Distribution
+    - ./fastlane/test_output
+    - ./fastlane/screenshots
+    - ~/Library/Logs/scan
+    - ~/Library/Logs/gym
+    - ~/Developer/Xcode/Archives
+    - Build/CI2Go.app.dSYM.zip
+    - Build/CI2Go.ipa
+
 dependencies:
   pre:
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
+    - sudo pip install awscli
+    - sudo gem update bundler
+  override:
+    - export TGZ="$(cat Gemfile | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true
+    - export TGZ="$(cat Podfile | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true
+    - export TGZ="$(cat Gemfile | md5).tgz"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)
+    - export TGZ="$(cat Podfile | md5).tgz"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
+    - echo "export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')" >> ~/.bashrc
+    - echo "export FL_UNLOCK_KEYCHAIN_PASSWORD=$KEYCHAIN_PASSWORD" >> ~/.bashrc
+    - bundle exec fastlane import_certs
+    - bundle exec sigh download_all -o fastlane/profiles
+    - bundle exec fastlane set_build_num
 test:
-  pre:
-    - /bin/bash Scripts/import-circle-keychain.sh
-    - /bin/bash Scripts/update-bundle-version.sh
-    - bundle exec rake env:export
+  override:
+    - bundle exec scan --workspace CI2Go.xcworkspace --scheme CI2Go --device 'iPhone 6s'
   post:
-    - /bin/bash Scripts/build-adhoc.sh
-    - /bin/bash Scripts/distribute-deploygate.sh
-    - /bin/bash Scripts/distribute-s3.sh
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit && cat fastlane/test_output/report.junit > $CIRCLE_TEST_REPORTS/junit/report.xml
 deployment:
   master:
     branch: /master|publish\-.+/
     commands:
-      - /bin/bash Scripts/build-release.sh
-      - /bin/bash Scripts/distribute-itunesconnect.sh
+      - bundle exec fastlane build
+      - bundle exec fastlane deploy_testflight
+      - bundle exec deliver run --skip_screenshots
+      - bundle exec snapshot --workspace CI2Go.xcworkspace --scheme CI2Go
+      - bundle exec deliver run --skip_metadata
+  preview:
+    branch: /.*/
+    commands:
+      - bundle exec fastlane build
+      - bundle exec fastlane deploy_s3 > /dev/null 2>&1

@@ -2,68 +2,135 @@
 //  Project.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/1/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 12/28/15.
+//  Copyright © 2015 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
+import ObjectMapper
 
-public class Project: CI2GoManagedObject {
-
-  @NSManaged public var parallelCount: NSNumber?
-  @NSManaged public var repositoryName: String?
-  @NSManaged public var username: String?
-  @NSManaged public var urlString: String?
-  @NSManaged public var branches: NSSet?
-  @NSManaged public var builds: NSSet?
-  @NSManaged public var commits: NSSet?
-  @NSManaged public var projectID: String?
-
-  public var URL: NSURL? {
-    get {
-      return urlString == nil ? nil : NSURL(string: urlString!)
+class Project: Object, Mappable, Equatable, Comparable {
+    dynamic var parallelCount: Int = 0
+    dynamic var repositoryName = "" {
+        didSet { updateId() }
     }
-  }
-
-  public func importBranches(json: NSDictionary!) -> Bool {
-    if let branchesData = json["branches"] as? Dictionary<String, AnyObject> {
-      let mSet = NSMutableSet()
-      if let repo = json["vcs_url"] as? String {
-        for branchName in branchesData.keys.array {
-          let decodedName = branchName.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-          let dict = [
-            "name": decodedName,
-            "branchID": "\(repo)#\(decodedName)"
-          ]
-          if let b = Branch.MR_importFromObject(dict, inContext: managedObjectContext!) as? Branch {
-            b.project = self
-            mSet.addObject(b)
-          }
+    dynamic var username = "" {
+        didSet { updateId() }
+    }
+    dynamic var vcsURLString: String?
+    dynamic var id = ""
+    dynamic var isOpenSource = false
+    dynamic var isFollowed = false
+    let branches = List<Branch>()
+    let builds = List<Build>()
+    let commits = List<Commit>()
+    var path: String {
+        return "\(username)/\(repositoryName)"
+    }
+    var apiPath: String {
+        return "project/\(path)"
+    }
+    var vcsURL: NSURL? {
+        if let vcsURLString = vcsURLString {
+            return NSURL(string: vcsURLString)
         }
-      }
-      branches = mSet.copy() as? NSSet
-    }
-    return true
-  }
-
-  public var apiPath: String? {
-    get {
-      if nil == path {
         return nil
-      }
-      return "project/\(path!)"
     }
-  }
 
-  public var path: String? {
-    get {
-      if nil == username || nil == repositoryName {
-        return nil
-      }
-      return "\(username!)/\(repositoryName!)"
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
     }
-  }
-  
-  
+
+    func updateId() {
+        if username.utf8.count > 0 && repositoryName.utf8.count > 0 {
+            id = apiPath
+        }
+    }
+
+    func mapping(map: Map) {
+        var defaultBranchName: String?
+        var branches: [Branch]?
+        isOpenSource <- map["oss"]
+        repositoryName <- map["reponame"]
+        parallelCount <- map["parallel"]
+        isFollowed <- map["followed"]
+        username <- map["username"]
+        vcsURLString <- map["vcs_url"]
+        defaultBranchName <- map["default_branch"]
+        branches <- (map["branches"], ProjectBranchesTransform())
+        branches = branches ?? []
+        if let defaultBranchName = defaultBranchName {
+            let branch = Branch()
+            branch.name = defaultBranchName
+            branches?.append(branch)
+        }
+        if let branches = branches {
+            branches.forEach { b in
+                b.project = self
+                if let name = b.name.stringByRemovingPercentEncoding {
+                    b.name = name
+                }
+            }
+            self.branches.removeAll()
+            self.branches.appendContentsOf(branches)
+        }
+    }
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["path", "apiPath", "vcsURL"]
+    }
+
+    func dup() -> Project {
+        let dup = Project()
+        dup.parallelCount = parallelCount
+        dup.repositoryName = repositoryName
+        dup.username = username
+        dup.vcsURLString = vcsURLString
+        dup.id = id
+        dup.isOpenSource = isOpenSource
+        dup.isFollowed = isFollowed
+        dup.updateId()
+        return dup
+    }
+}
+
+func ==(lhs: Project, rhs: Project) -> Bool {
+    return lhs.id == rhs.id
+}
+
+func >(lhs: Project, rhs: Project) -> Bool {
+    return lhs.id > rhs.id
+}
+
+func <(lhs: Project, rhs: Project) -> Bool {
+    return lhs.id < rhs.id
+}
+
+func >=(lhs: Project, rhs: Project) -> Bool {
+    return lhs.id >= rhs.id
+}
+
+func <=(lhs: Project, rhs: Project) -> Bool {
+    return lhs.id <= rhs.id
+}
+
+func ProjectBranchesTransform() -> TransformOf<[Branch], [String: AnyObject]> {
+    return TransformOf<[Branch], [String: AnyObject]>(
+        fromJSON: { (value: [String : AnyObject]?) -> [Branch]? in
+            guard let keys = value?.keys else { return [] }
+            return keys.map { name in
+                let b = Branch()
+                b.name = name
+                return b
+            }
+        },
+        toJSON: { (branches: [Branch]?) -> [String : AnyObject]? in
+            return nil // FIXME
+        }
+    )
 }

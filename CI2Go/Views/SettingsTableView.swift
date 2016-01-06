@@ -9,12 +9,17 @@
 import UIKit
 
 class SettingsTableView: UITableView {
-  @IBOutlet weak var apiTokenField: UITextField!
-  
-  override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-    if apiTokenField.isFirstResponder() {
-      apiTokenField.resignFirstResponder()
+    @IBOutlet weak var apiTokenField: UITextField!
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = ColorScheme().backgroundColor()
     }
-    super.touchesBegan(touches as Set<NSObject>, withEvent: event)
-  }
+
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if apiTokenField.isFirstResponder() {
+            apiTokenField.resignFirstResponder()
+        }
+        super.touchesBegan(touches, withEvent: event)
+    }
 }

@@ -7,99 +7,137 @@
 //
 
 import UIKit
+import MBProgressHUD
+import RealmSwift
+import RealmResultsController
+import RxSwift
 
-public class ProjectsViewController: UITableViewController {
+class ProjectsViewController: UITableViewController, RealmResultsControllerDelegate {
 
-  public var projects: [Project] = [Project]()
+    let disposeBag = DisposeBag()
 
-  public override func viewDidLoad() {
-    super.viewDidLoad()
-    self.view.backgroundColor = ColorScheme().backgroundColor()
-    refresh()
-  }
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
 
-  public func refresh() {
-    projects = Project.MR_findAll().sorted({ (a: AnyObject, b: AnyObject) -> Bool in
-      let prjA = a as! Project, prjB = b as! Project
-      return prjA.projectID < prjB.projectID
-    }) as! [Project]
-    tableView.reloadData()
-  }
+    lazy var rrc: RealmResultsController<Project, Project> = {
+        let predicate = NSPredicate(value: true)
+        let sd = SortDescriptor(property: "id")
+        let req = RealmRequest<Project>(predicate: predicate, realm: self.realm, sortDescriptors: [sd])
+        let rrc = try! RealmResultsController<Project, Project>(request: req, sectionKeyPath: nil)
+        rrc.delegate = self
+        return rrc
+    }()
 
-  @IBAction func cancelButtonTapped(sender: AnyObject) {
-    dismissViewControllerAnimated(true, completion: nil)
-  }
-
-  func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-    if indexPath.section == 0 {
-      cell.textLabel?.text = "All projects"
-    } else {
-      let project = projects[indexPath.row]
-      cell.textLabel?.text = project.repositoryName
-      cell.detailTextLabel?.text = project.username
-      cell.detailTextLabel?.alpha = 0.5
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = ColorScheme().backgroundColor()
+        self.rrc.performFetch()
+        self.tableView.reloadData()
+        Project.getAll().subscribe().addDisposableTo(disposeBag)
     }
-  }
 
-  public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)") as! UITableViewCell
-    configureCell(cell, atIndexPath: indexPath)
-    return cell
-  }
-
-  public override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    let tracker = GAI.sharedInstance().defaultTracker
-    tracker.set(kGAIScreenName, value: "Projects Screen")
-    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-    CircleCIAPISessionManager().GET("projects", parameters: [],
-      success: { (op: AFHTTPRequestOperation!, data: AnyObject!) -> Void in
-        AFNetworkActivityIndicatorManager.sharedManager().incrementActivityCount()
-        MagicalRecord.saveWithBlock({ (context: NSManagedObjectContext!) -> Void in
-          if let ar = data as? NSArray {
-            Project.MR_importFromArray(ar as [AnyObject], inContext: context)
-          }
-          AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-          }, completion: { (success: Bool, error: NSError!) -> Void in
-            AFNetworkActivityIndicatorManager.sharedManager().decrementActivityCount()
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-              self.refresh()
-            })
-        })
-      })
-      { (op: AFHTTPRequestOperation!, err: NSError!) -> Void in
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
-  }
 
-  public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 2
-  }
-
-  public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return section == 0 ? 1 : projects.count
-  }
-
-  public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    let vc = segue.destinationViewController as? BranchesViewController
-    let cell = sender as? UITableViewCell
-    if vc != nil && cell != nil {
-      if let indexPath = tableView.indexPathForCell(cell!) {
-        vc?.project = projects[indexPath.row]
-      }
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "All projects"
+            cell.accessoryType = .None
+        } else {
+            let project = rrc.objectAt(NSIndexPath(forRow: indexPath.row, inSection: 0))
+            cell.textLabel?.text = project.repositoryName
+            cell.detailTextLabel?.text = project.username
+            cell.detailTextLabel?.alpha = 0.5
+            cell.accessoryType = .DisclosureIndicator
+        }
     }
-  }
 
-  public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    if indexPath.section == 0 {
-      let d = CI2GoUserDefaults.standardUserDefaults()
-      d.selectedProject = nil
-      d.selectedBranch = nil
-      NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
-      self.dismissViewControllerAnimated(true, completion: nil)
-      let tracker = GAI.sharedInstance().defaultTracker
-      let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build() as [NSObject : AnyObject]
-      tracker.send(dict)
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell\(indexPath.section)")!
+        configureCell(cell, atIndexPath: indexPath)
+        return cell
     }
-  }
-  
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Projects Screen")
+        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+    }
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 0 ? 1 : rrc.numberOfObjectsAt(0)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as? BranchesViewController
+        let cell = sender as? UITableViewCell
+        if vc != nil && cell != nil {
+            if let indexPath = tableView.indexPathForCell(cell!) {
+                vc?.project = rrc.objectAt(NSIndexPath(forRow: indexPath.row, inSection: 0))
+            }
+        }
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            let d = CI2GoUserDefaults.standardUserDefaults()
+            d.selectedProject = nil
+            d.selectedBranch = nil
+            NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoBranchChangedNotification, object: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            let tracker = GAI.sharedInstance().defaultTracker
+            let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build() as [NSObject : AnyObject]
+            tracker.send(dict)
+        }
+    }
+
+    // MARK: - RealmResultsControllerDelegate
+
+    func willChangeResults(controller: AnyObject) {
+        tableView.beginUpdates()
+    }
+
+    func didChangeObject<U>(controller: AnyObject, object: U, var oldIndexPath: NSIndexPath, var newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
+        oldIndexPath = NSIndexPath(forRow: oldIndexPath.row, inSection: 1)
+        newIndexPath = NSIndexPath(forRow: newIndexPath.row, inSection: 1)
+        switch changeType {
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        case .Move:
+            tableView.moveRowAtIndexPath(oldIndexPath, toIndexPath: newIndexPath)
+            break
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+            break
+        }
+    }
+
+    func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
+        switch changeType {
+        case .Delete:
+            tableView.deleteSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            break
+        case .Insert:
+            tableView.insertSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
+            break
+        default:
+            break
+        }
+    }
+
+    func didChangeResults(controller: AnyObject) {
+        tableView.endUpdates()
+    }
+    
 }

@@ -2,193 +2,312 @@
 //  Build.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/1/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 1/1/16.
+//  Copyright © 2016 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
+import ObjectMapper
 
-public class Build: CI2GoManagedObject {
+class Build: Object, Mappable, Equatable, Comparable {
+    enum Lifecycle: String {
+        case Queued = "queued"
+        case Scheduled = "scheduled"
+        case NotRun = "not_run"
+        case NotRunning = "not_running"
+        case Running = "running"
+        case Finished = "finished"
+    }
+    enum Status: String {
+        case Retried = "retried"
+        case Canceled = "canceled"
+        case InfrastructureFail = "infrastructure_fail"
+        case Timedout = "timedout"
+        case NotRun = "not_run"
+        case Running = "running"
+        case Failed = "failed"
+        case Queued = "queued"
+        case Scheduled = "scheduled"
+        case NotRunning = "not_running"
+        case NoTests = "no_tests"
+        case Fixed = "fixed"
+        case Success = "success"
+        var humanize: String {
+            return rawValue.humanize
+        }
+    }
+    enum Outcome: String {
+        case Canceled = "canceled"
+        case InfrastructureFail = "infrastructure_fail"
+        case Timedout = "timedout"
+        case Failed = "failed"
+        case NoTests = "no_tests"
+        case Success = "success"
+    }
+    dynamic var branch: Branch?
+    dynamic var buildParametersData: NSData?
+    dynamic var circleYAML: String = ""
+    dynamic var compareURLString: String?
+    dynamic var dontBuild: String?
+    dynamic var id = ""
+    dynamic var sshEnabled = false
+    dynamic var hasArtifacts = false
+    dynamic var number: Int = 0 {
+        didSet { updateId() }
+    }
+    dynamic var parallelCount: Int = 0
+    dynamic var project: Project?
+    dynamic var rawLifecycle: String?
+    dynamic var rawStatus: String?
+    dynamic var rawOutcome: String?
+    dynamic var retryOf: Build?
+    dynamic var previsousBuild: Build?
+    dynamic var previsousSuccessfulBuild: Build?
+    dynamic var timeMillis: Int = 0
+    dynamic var triggeredCommit: Commit?
+    dynamic var urlString: String?
+    dynamic var user: User?
+    dynamic var why: String = ""
+    dynamic var queuedAt: NSDate?
+    dynamic var startedAt: NSDate?
+    dynamic var stoppedAt: NSDate?
+    dynamic var node: Node?
 
-  @NSManaged public var authorDate: NSDate
-  @NSManaged public var buildParametersData: NSData?
-  @NSManaged public var compareURLString: String?
-  @NSManaged public var buildID: String?
-  @NSManaged public var urlString: String?
-  @NSManaged public var dontBuild: String?
-  @NSManaged public var isCanceled: NSNumber
-  @NSManaged public var isInfrastructureFail: NSNumber
-  @NSManaged public var isOpenSource: NSNumber
-  @NSManaged public var isTimedout: NSNumber
-  @NSManaged public var lifecycle: String?
-  @NSManaged public var number: NSNumber
-  @NSManaged public var parallelCount: NSNumber
-  @NSManaged public var queuedAt: NSDate?
-  @NSManaged public var startedAt: NSDate?
-  @NSManaged public var status: String?
-  @NSManaged public var stoppedAt: NSDate?
-  @NSManaged public var timeMillis: NSNumber?
-  @NSManaged public var why: String?
-  @NSManaged public var branch: Branch?
-  @NSManaged public var commits: NSSet?
-  @NSManaged public var nodes: NSSet?
-  @NSManaged public var project: Project?
-  @NSManaged public var retries: NSSet?
-  @NSManaged public var retryOf: Build?
-  @NSManaged public var steps: NSSet?
-  @NSManaged public var triggeredCommit: Commit?
-  @NSManaged public var user: User?
+    let commits = List<Commit>()
+    let retries = List<Build>()
+    let steps = List<BuildStep>()
 
-  public override class func addPrimaryAttributeWithObjectData(data: AnyObject!) -> NSDictionary? {
-    var dic = super.addPrimaryAttributeWithObjectData(data) as! Dictionary<String, AnyObject>?
-    if let steps = dic?["steps"] as? [Dictionary<String, AnyObject>] {
-      var sec: String? = nil
-      , secIndex = 0
-      , steps2 = [Dictionary<String, AnyObject>]()
-      for step in steps {
-        var step2 = step
-        , actions2 = [Dictionary<String, AnyObject>]()
-        if var actions = step["actions"] as? [Dictionary<String, AnyObject>] {
-          for action in actions {
-            var action2 = action
-            if let type = action["type"] as? String {
-              if sec != type {
-                secIndex++
-                sec = type
-              }
-              if (type.rangeOfString("^\\d+:", options: NSStringCompareOptions.RegularExpressionSearch) == nil) {
-                action2["type"] = "\(secIndex): \(type)"
-              }
+    var pusherChannelName: String? {
+        guard let repoUser = project?.username, repoName = project?.repositoryName where number > 0
+            else {
+            return nil
+        }
+        return "private-\(repoUser)@\(repoName)@\(number)"
+    }
+
+    var lifecycle: Lifecycle? {
+        get {
+            if let rawLifecycle = rawLifecycle {
+                return Lifecycle(rawValue: rawLifecycle)
             }
-            actions2.append(action2)
-          }
+            return nil
         }
-        step2["actions"] = actions2
-        steps2.append(step2)
-      }
-      dic?["steps"] = steps2
-    }
-    return dic
-  }
-
-
-  public func importUser(json: NSDictionary!) -> Bool {
-    if let userJSON = json["user"] as? Dictionary<String, AnyObject> {
-      user = User.MR_importFromObject(userJSON, inContext: managedObjectContext!) as? User
-      return true
-    }
-    return false
-  }
-
-  public func importTriggeredCommit(json: NSDictionary!) -> Bool {
-    return true
-  }
-
-  public func importRetryOf(json: NSDictionary!) -> Bool {
-    if let num = json["retry_of"] as? Int {
-      retryOf = Build.MR_findFirstByAttribute("number", withValue: num, inContext: managedObjectContext)
-    }
-    return true
-  }
-
-  public func importRetries(json: NSDictionary!) -> Bool {
-    if let nums = json["retries"] as? [Int] {
-      let mSet = NSMutableSet()
-      for num in nums {
-        if let b = Build.MR_findFirstByAttribute("number", withValue: num, inContext: managedObjectContext) {
-          mSet.addObject(b)
+        set(value) {
+            rawLifecycle = value?.rawValue
         }
-      }
-      retries = mSet.copy() as? NSSet
     }
-    return true
-  }
 
-  public func importProject(json: NSDictionary!) -> Bool {
-    project = Project.MR_importFromObject(json, inContext: managedObjectContext!) as? Project
-    return true
-  }
-
-  public func importBuildParametersData(json: NSDictionary!) -> Bool {
-    buildParameters = json as? Dictionary<String, AnyObject>
-    return true
-  }
-
-  public func importBranch(json: NSDictionary!) -> Bool {
-    if project == nil {
-      importProject(json)
+    var status: Status? {
+        get {
+            if let rawStatus = rawStatus {
+                return Status(rawValue: rawStatus)
+            }
+            return nil
+        }
+        set(value) {
+            rawStatus = value?.rawValue
+        }
     }
-    if let name = json["branch"] as? String {
-      let decodedName = name.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-      let data = [
-        "name": decodedName,
-        "branchID": "\(project!.urlString!)#\(decodedName)"
-      ]
-      branch = Branch.MR_importFromObject(data, inContext: managedObjectContext!) as? Branch
-      if project != nil {
-        branch?.project = project
-      }
-    }
-    return true
-  }
 
-  public var buildParameters: Dictionary<String, AnyObject>? {
-    set(value) {
-      var error: NSError? = nil
-      if let dict = value as NSDictionary? {
-        buildParametersData = NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.allZeros, error: &error)
-      } else {
-        buildParametersData = NSData()
-      }
+    var outcome: Outcome? {
+        get {
+            if let rawOutcome = rawOutcome {
+                return Outcome(rawValue: rawOutcome)
+            }
+            return nil
+        }
+        set(value) {
+            rawOutcome = value?.rawValue
+        }
     }
-    get {
-      if buildParametersData == nil { return nil }
-      var error: NSError? = nil
-      let json = NSJSONSerialization.JSONObjectWithData(buildParametersData!, options: NSJSONReadingOptions.AllowFragments, error: &error) as? Dictionary<String, AnyObject>
-      return json
-    }
-  }
 
-  public var compareURL: NSURL? {
-    get {
-      return compareURLString == nil ? nil : NSURL(string: compareURLString!)
-    }
-  }
-
-  public var URL: NSURL? {
-    get {
-      return urlString == nil ? nil : NSURL(string: urlString!)
-    }
-  }
-
-  public override func didImport(data: AnyObject!) {
-    if let json = data as? NSDictionary {
-      if let rev = json["vcs_revision"] as? String {
-        triggeredCommit = Commit.MR_findFirstByAttribute("sha1", withValue: rev, inContext: managedObjectContext)
-      }
-    }
-  }
-
-  public var retriesArray: [Build] {
-    get {
-      if retries == nil {
-        return [Build]()
-      }
-      return retries!.allObjects.sorted { (a: AnyObject, b: AnyObject) -> Bool in
-        return (a as! Build).number.integerValue < (b as! Build).number.integerValue
-        } as! [Build]
-    }
-  }
-
-  public var apiPath: String? {
-    get {
-      let path = project?.apiPath
-      if(path == nil) {
+    var URL: NSURL? {
+        if let urlString = urlString {
+            return NSURL(string: urlString)
+        }
         return nil
-      }
-      return "\(path!)/\(number)"
     }
-  }
-  
+
+    var compareURL: NSURL? {
+        if let compareURLString = compareURLString {
+            return NSURL(string: compareURLString)
+        }
+        return nil
+    }
+
+    var apiPath: String? {
+        if let prjPath = project?.apiPath {
+            return "\(prjPath)/\(number)"
+        }
+        return nil
+    }
+
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
+    }
+
+    func mapping(map: Map) {
+        var commits = [Commit]()
+        , steps = [BuildStep]()
+        , branchName: String?
+        , vcsRevision: String?
+        , previsousBuild: Build?
+        , previsousSuccessfulBuild: Build?
+        if let project = Project(map) where !project.id.isEmpty {
+            self.project = project
+        }
+        compareURLString <- map["compare"]
+        number <- map["build_num"]
+        sshEnabled <- map["ssh_enabled"]
+        hasArtifacts <- map["has_artifacts"]
+        rawStatus <- map["status"]
+        rawLifecycle <- map["lifecycle"]
+        rawOutcome <- map["outcome"]
+        dontBuild <- map["dont_build"]
+        timeMillis <- map["build_time_millis"]
+        why <- map["why"]
+        circleYAML <- map["circle_yml.string"]
+        stoppedAt <- (map["stop_time"], JSONDateTransform())
+        startedAt <- (map["start_time"], JSONDateTransform())
+        queuedAt <- (map["queued_at"], JSONDateTransform())
+        commits <- map["all_commit_details"]
+        branchName <- map["branch"]
+        previsousBuild <- map["previous"]
+        previsousSuccessfulBuild <- map["previous_successful_build"]
+        vcsRevision <- map["vcs_revision"]
+        steps <- map["steps"]
+        node <- map["node"]
+        previsousBuild?.project = project
+        previsousBuild?.updateId()
+        previsousSuccessfulBuild?.project = project
+        previsousSuccessfulBuild?.updateId()
+        if previsousSuccessfulBuild?.id.isEmpty == false && previsousSuccessfulBuild?.branch != nil {
+            previsousSuccessfulBuild?.branch?.project = self.project
+            self.previsousSuccessfulBuild = previsousSuccessfulBuild
+        }
+        if previsousBuild?.id.isEmpty == false &&
+            previsousBuild?.branch != nil {
+                previsousBuild?.branch?.project = self.project
+                if previsousBuild?.id.isEmpty == false {
+                    self.previsousBuild = previsousBuild
+                }
+        }
+        if let branchName = branchName where !branchName.isEmpty {
+            let branch = Branch()
+            branch.name = branchName
+            branch.project = self.project
+            branch.updateId()
+            if !branch.id.isEmpty {
+                self.branch = branch
+            }
+        }
+        if let triggeredCommit = Commit(map) {
+            triggeredCommit.branch = branch
+            triggeredCommit.project = project
+            triggeredCommit.updateId()
+            commits.append(triggeredCommit)
+            self.triggeredCommit = triggeredCommit
+        }
+
+        self.commits.removeAll()
+        commits.forEach { c in
+            c.project = self.project
+            c.branch?.project = self.project
+            c.branch?.updateId()
+            c.updateId()
+            if !self.commits.contains(c) {
+                self.commits.append(c)
+            }
+        }
+        var index = 0
+        var sectionIndex = 0
+        var currentSectionType: String?
+        steps.forEach { c in
+            guard let actionType = c.actions.first?.actionType else { return }
+            currentSectionType = currentSectionType ?? actionType
+            c.build = self
+            c.index = index++
+            c.actions.forEach { a in
+                a.buildStep = c
+            }
+            c.updateId()
+            if currentSectionType != actionType {
+                sectionIndex++
+                currentSectionType = actionType
+            }
+            if !self.steps.contains(c) {
+                self.steps.append(c)
+            }
+        }
+        updateId()
+    }
+
+    func updateId() {
+        if let apiPath = apiPath {
+            id = apiPath
+        }
+    }
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath", "pusherChannelName"]
+    }
+
+    func dup(target: Build? = nil) -> Build {
+        let dup = target ?? Build()
+        dup.branch = branch
+        dup.buildParametersData = buildParametersData
+        dup.circleYAML = circleYAML
+        dup.compareURLString = compareURLString
+        dup.dontBuild = dontBuild
+        dup.id  = id
+        dup.sshEnabled  = sshEnabled
+        dup.hasArtifacts  = hasArtifacts
+        dup.number = number
+        dup.parallelCount = parallelCount
+        dup.project = project
+        dup.rawLifecycle = rawLifecycle
+        dup.rawStatus = rawStatus
+        dup.rawOutcome = rawOutcome
+        dup.retryOf = retryOf
+        dup.previsousBuild = previsousBuild
+        dup.previsousSuccessfulBuild = previsousSuccessfulBuild
+        dup.timeMillis = timeMillis
+        dup.triggeredCommit = triggeredCommit
+        dup.urlString = urlString
+        dup.user = user
+        dup.why = why
+        dup.queuedAt = queuedAt
+        dup.startedAt = startedAt
+        dup.stoppedAt = stoppedAt
+        dup.node = node
+        dup.steps.removeAll()
+        dup.steps.appendContentsOf(steps)
+        dup.updateId()
+        return dup
+    }
+}
+
+func ==(lhs: Build, rhs: Build) -> Bool {
+    return lhs.id == rhs.id
+}
+
+func >(lhs: Build, rhs: Build) -> Bool {
+    return lhs.id > rhs.id
+}
+
+func <(lhs: Build, rhs: Build) -> Bool {
+    return lhs.id < rhs.id
+}
+
+func >=(lhs: Build, rhs: Build) -> Bool {
+    return lhs.id >= rhs.id
+}
+
+func <=(lhs: Build, rhs: Build) -> Bool {
+    return lhs.id <= rhs.id
 }

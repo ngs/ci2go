@@ -2,110 +2,188 @@
 //  BuildAction.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/1/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 1/1/16.
+//  Copyright © 2016 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
+import RxSwift
+import RxCocoa
+import RxBlocking
+import ObjectMapper
+import Carlos
+#if os(iOS)
+import CryptoSwift
+#endif
 
-public class BuildAction: CI2GoManagedObject {
-
-  @NSManaged public var bashCommand: String?
-  @NSManaged public var command: String?
-  @NSManaged public var endedAt: NSDate?
-  @NSManaged public var startedAt: NSDate?
-  @NSManaged public var exitCode: NSNumber
-  @NSManaged public var hasOutput: NSNumber
-  @NSManaged public var index: NSNumber
-  @NSManaged public var isCanceled: NSNumber
-  @NSManaged public var isFailed: NSNumber
-  @NSManaged public var isInfrastructureFail: NSNumber
-  @NSManaged public var isParallel: NSNumber
-  @NSManaged public var isTimedout: NSNumber
-  @NSManaged public var isContinue: NSNumber
-  @NSManaged public var isTruncated: NSNumber
-  @NSManaged public var name: String?
-  @NSManaged public var nodeIndex: NSNumber
-  @NSManaged public var outputURLString: String?
-  @NSManaged public var runTimeMillis: NSNumber
-  @NSManaged public var source: String?
-  @NSManaged public var status: String?
-  @NSManaged public var type: String?
-  @NSManaged public var buildStep: BuildStep
-  @NSManaged public var buildActionID: String
-
-  public override class func idFromObjectData(data: AnyObject!) -> String? {
-    if let json = data as? NSDictionary {
-      var idcomps = [String]()
-      if let startTime = json["start_time"] as? String {
-        idcomps.append(startTime)
-      }
-      if let type = json["type"] as? String {
-        idcomps.append(type)
-      }
-      if let name = json["name"] as? String {
-        idcomps.append(name)
-      }
-      if let index = json["index"] as? Int {
-        idcomps.append(index.description)
-      }
-      if let step = json["step"] as? Int {
-        idcomps.append(step.description)
-      }
-      return " ".join(idcomps)
+class BuildAction: Object, Mappable, Equatable, Comparable {
+    static let cache = MemoryCacheLevel<String, NSString>() >>> DiskCacheLevel()
+    lazy var disposeBag: DisposeBag = { DisposeBag() }()
+    enum Status: String {
+        case Success = "success"
+        case Failed = "failed"
+        case Canceled = "canceled"
+        case Timedout = "timedout"
+        case Running = "running"
     }
-    return nil
-  }
+    dynamic var bashCommand = ""
+    dynamic var buildStep: BuildStep?
+    dynamic var stepNumber: Int = 0
+    dynamic var command = ""
+    dynamic var endedAt: NSDate?
+    dynamic var exitCode: Int = 0
+    dynamic var hasOutput = false
+    dynamic var id = ""
+    dynamic var isCanceled = false
+    dynamic var isContinue = false
+    dynamic var isFailed = false
+    dynamic var isInfrastructureFail = false
+    dynamic var isParallel = false
+    dynamic var isTimedout = false
+    dynamic var isTruncated = false
+    dynamic var name = ""
+    dynamic var nodeIndex: Int = 0
+    dynamic var outputURLString: String?
+    dynamic var runTimeMillis: Int = 0
+    dynamic var source = ""
+    dynamic var startedAt: NSDate?
+    dynamic var rawStatus: String?
+    dynamic var actionType = ""
+    dynamic var output = ""
 
-  public var outputURL: NSURL? {
-    get {
-      return outputURLString == nil ? nil : NSURL(string: outputURLString!)
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
     }
-  }
 
-  public var logFileName: String {
-    get {
-      let fn = buildActionID.md5
-      let si = fn.startIndex
-      let ei = advance(si, 2)
-      return fn.substringToIndex(ei) + "/" + fn.substringFromIndex(ei)
+    var actionName: String {
+        return (actionType.componentsSeparatedByString(":").last ?? actionType).humanize
     }
-  }
 
-  public var logFile: NSURL {
-    return NSFileManager.defaultManager()
-      .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!
-      .URLByAppendingPathComponent("BuildLog", isDirectory: true)
-      .URLByAppendingPathComponent(logFileName)
-  }
-
-  public var logData: String? {
-    get {
-      var error: NSError? = nil
-      if !NSFileManager.defaultManager().fileExistsAtPath(logFile.absoluteString!) {
-        return nil
-      }
-      let m = String(contentsOfURL: logFile, encoding: NSUTF8StringEncoding, error: &error)
-      if error != nil { NSLog("%@", error!.localizedDescription) }
-      return m
-    }
-    set(value) {
-      var error: NSError? = nil
-      let m = NSFileManager.defaultManager()
-      let dir = logFile.URLByDeletingLastPathComponent!
-      if !m.fileExistsAtPath(dir.absoluteString!) {
-        m.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil, error: &error)
-        if error != nil {
-          NSLog("%@", error!.localizedDescription)
-          return
+    var status: Status? {
+        get {
+            if let rawStatus = rawStatus {
+                return Status(rawValue: rawStatus)
+            }
+            return nil
         }
-      }
-      value?.writeToURL(logFile, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
-      if error != nil {
-        NSLog("%@", error!.localizedDescription)
-      }
+        set(value) {
+            rawStatus = value?.rawValue
+        }
     }
-  }
 
+    func mapping(map: Map) {
+        isTruncated <- map["truncated"]
+        nodeIndex <- map["index"]
+        isParallel <- map["parallel"]
+        isFailed <- map["failed"]
+        isInfrastructureFail <- map["infrastructure_fail"]
+        name <- map["name"]
+        bashCommand <- map["bash_command"]
+        rawStatus <- map["status"]
+        isTimedout <- map["timedout"]
+        isContinue <- map["continue"]
+        actionType <- map["type"]
+        outputURLString <- map["output_url"]
+        exitCode <- map["exit_code"]
+        isCanceled <- map["canceled"]
+        stepNumber <- map["step"]
+        runTimeMillis <- map["run_time_millis"]
+        hasOutput <- map["has_output"]
+        endedAt <- (map["end_time"], JSONDateTransform())
+        startedAt <- (map["start_time"], JSONDateTransform())
+    }
+
+    func updateId() {
+        #if os(iOS)
+        if let stepId = self.buildStep?.id where !stepId.isEmpty && id.isEmpty {
+            id = "\(stepId)@\(actionType):\(name.md5()):\(nodeIndex)"
+        }
+        #endif
+    }
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    var outputURL: NSURL? {
+        get {
+            if let outputURLString = outputURLString {
+                return NSURL(string: outputURLString)
+            }
+            return nil
+        }
+        set(value) {
+            outputURLString = value?.absoluteString
+        }
+    }
+
+    private lazy var logSource: Variable<String> = {
+        return Variable<String>("")
+    }()
+
+    var log: Observable<String> {
+        let src = self.logSource
+        self.downloadLog().subscribeNext { log in
+            src.value = log
+        }.addDisposableTo(disposeBag)
+        return src.asObservable()
+    }
+
+    func appendLog(str: String) {
+        self.logSource.value.appendContentsOf(str)
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["status", "outputURL", "logSource", "log", "cache", "disposeBag"]
+    }
+
+    func dup() -> BuildAction {
+        let dup = BuildAction()
+        dup.bashCommand = bashCommand
+        dup.buildStep = buildStep
+        dup.stepNumber = stepNumber
+        dup.command = command
+        dup.endedAt = endedAt
+        dup.exitCode = exitCode
+        dup.hasOutput = hasOutput
+        dup.id = id
+        dup.isCanceled = isCanceled
+        dup.isContinue = isContinue
+        dup.isFailed = isFailed
+        dup.isInfrastructureFail = isInfrastructureFail
+        dup.isParallel = isParallel
+        dup.isTimedout = isTimedout
+        dup.isTruncated = isTruncated
+        dup.name = name
+        dup.nodeIndex = nodeIndex
+        dup.outputURLString = outputURLString
+        dup.runTimeMillis = runTimeMillis
+        dup.source = source
+        dup.startedAt = startedAt
+        dup.rawStatus = rawStatus
+        dup.actionType = actionType
+        dup.output = output
+        return dup
+    }
+}
+
+func ==(lhs: BuildAction, rhs: BuildAction) -> Bool {
+    return lhs.id == rhs.id
+}
+
+func >(lhs: BuildAction, rhs: BuildAction) -> Bool {
+    return lhs.id > rhs.id
+}
+
+func <(lhs: BuildAction, rhs: BuildAction) -> Bool {
+    return lhs.id < rhs.id
+}
+
+func >=(lhs: BuildAction, rhs: BuildAction) -> Bool {
+    return lhs.id >= rhs.id
+}
+
+func <=(lhs: BuildAction, rhs: BuildAction) -> Bool {
+    return lhs.id <= rhs.id
 }

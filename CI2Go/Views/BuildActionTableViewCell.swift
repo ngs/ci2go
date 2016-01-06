@@ -8,40 +8,43 @@
 
 import UIKit
 
-public class BuildActionTableViewCell: UITableViewCell {
-  @IBOutlet weak var buildStatusBar: UIView!
-  @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var timeLabel: UILabel!
+class BuildActionTableViewCell: UITableViewCell {
+    @IBOutlet weak var buildStatusBar: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 
-  private var _buildAction: BuildAction? = nil
-  public var buildAction: BuildAction? {
-    set(value) {
-      _buildAction = value
-      setNeedsLayout()
+    var buildAction: BuildAction? {
+        didSet {
+            setNeedsLayout()
+        }
     }
-    get {
-      return _buildAction
-    }
-  }
 
-  public override func layoutSubviews() {
-    let s = ColorScheme()
-    buildStatusBar.backgroundColor = s.actionColor(status: buildAction?.status)
-    var timeMillis: NSNumber = 0
-    if buildAction?.status == "running" && buildAction?.startedAt != nil {
-      timeMillis = NSNumber(double: -(buildAction!.startedAt!.timeIntervalSinceNow * 1000))
-    } else {
-      timeMillis = buildAction!.runTimeMillis
-    }
-    if buildAction?.source != nil {
-      timeLabel.text = "\(buildAction!.source!)\n\(timeMillis.timeFormatted)"
-    } else {
-      timeLabel.text = timeMillis.timeFormatted
-    }
-    let pcnt = buildAction?.isParallel.boolValue == true ? " (\(buildAction!.nodeIndex))" : ""
-    let cmdprefix = buildAction?.bashCommand != nil ? "$ " : ""
-    nameLabel.text = cmdprefix + buildAction!.name! + pcnt
-    super.layoutSubviews()
-  }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let buildAction = buildAction else {
+            self.contentView.hidden = true
+            return
+        }
+        let s = ColorScheme()
+        buildStatusBar.backgroundColor = s.actionColor(status: buildAction.status)
+        let timeMillis: Int
+        if let startedAt = buildAction.startedAt where buildAction.status == .Running {
+            timeMillis = -Int(startedAt.timeIntervalSinceNow * 1000.0)
+        } else {
+            timeMillis = buildAction.runTimeMillis
+        }
+        if buildAction.source.utf8.count > 0 {
+            timeLabel.text = "\(buildAction.source)\n\(timeMillis.timeFormatted)"
+        } else {
+            timeLabel.text = timeMillis.timeFormatted
+        }
+        if buildAction.isParallel {
 
+        }
+        let pcnt = buildAction.isParallel ? " (\(buildAction.nodeIndex))" : ""
+        let cmdprefix = buildAction.bashCommand.isEmpty ? "" : "$ "
+        nameLabel.text = cmdprefix + buildAction.name + pcnt
+        self.contentView.hidden = false
+    }
+    
 }

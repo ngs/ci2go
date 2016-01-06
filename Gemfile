@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'cocoapods'
-gem 'command-builder'
-gem 'dotenv', '0.11.1'
-gem 'rake'
-gem 'cupertino', '1.3.4'
-gem 'shenzhen', '0.14.2'
+gem 'cocoapods', '0.39.0'
+gem 'cocoapods-check'
+gem 'aws-sdk', '1.66.0'
+
+#
+# https://github.com/fastlane/fastlane/pull/1046
+#
+gem 'fastlane', git: 'git@github.com:ngs/fastlane.git', branch: 's3-watch-kit'

@@ -8,92 +8,75 @@
 
 import UIKit
 
-public class ColorSchemesViewController: UITableViewController {
-  
-  private var _sectionIndexes: [String]?
-  private var _sections: [[String]] = []
-  public var sectionIndexes: [String] {
-    if !(_sectionIndexes?.count > 0) {
-      buildSections()
-    }
-    return _sectionIndexes!
-  }
-  
-  public var sections: [[String]] {
-    if !(_sections.count > 0) {
-      buildSections()
-    }
-    return _sections
-  }
-  
-  private func buildSections() {
-    _sectionIndexes = [String]()
-    _sections = [[String]]()
-    var section: [String]?
-    for name in ColorScheme.names() {
-      let fchar = name.substringToIndex(advance(name.startIndex, 1))
-      if find(_sectionIndexes!, fchar) == nil {
-        _sectionIndexes?.append(fchar)
-        if section != nil {
-          _sections.append(section!)
-        }
-        section = [String]()
-      }
-      section!.append(name)
-    }
-    _sections.append(section!)
-  }
-  
-  public override func viewWillAppear(animated: Bool) {
-    let name = ColorScheme().name
-    let fchar = name.substringToIndex(advance(name.startIndex, 1))
-    let section = find(sectionIndexes, fchar)
-    if section != nil {
-      let row = find(sections[section!], name)
-      if row != nil {
-        let indexPath = NSIndexPath(forRow: row!, inSection: section!)
-        tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-      }
-    }
-  }
+class ColorSchemesViewController: UITableViewController {
 
-  public override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    let tracker = GAI.sharedInstance().defaultTracker
-    tracker.set(kGAIScreenName, value: "ColorScheme Screen")
-    tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-  }
-  
-  public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return sectionIndexes.count
-  }
-  
-  public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sections[section].count
-  }
-  
-  public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as! ColorSchemeTableViewCell
-    cell.colorSchemeName = sections[indexPath.section][indexPath.row]
-    return cell
-  }
-  
-  public override func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]! {
-    return sectionIndexes
-  }
-  
-  public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return sectionIndexes[section]
-  }
-  
-  public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let item = sections[indexPath.section][indexPath.row]
-    ColorScheme(name: item).apply()
-    let tracker = GAI.sharedInstance().defaultTracker
-    let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "color-scheme-change", label: item, value: 1).build() as [NSObject : AnyObject]
-    tracker.send(dict)
-    self.navigationController?.popToRootViewControllerAnimated(true)
-  }
-  
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return ColorScheme().statusBarStyle()
+    }
+
+    lazy var sectionIndexes: [String] = {
+        return ColorScheme.names.map({ $0.firstString }).unique
+    }()
+
+    lazy var sections: [[String]] = {
+        return self.sectionIndexes.map { section in
+            ColorScheme.names.filter{ $0.firstString == section }
+        }
+    }()
+
+    override func viewWillAppear(animated: Bool) {
+        let name = ColorScheme().name
+        guard let fchar = name.characters.first else {
+            return
+        }
+        let str = String(fchar)
+        let section = sectionIndexes.indexOf(str)
+        if section != nil {
+            let row = sections[section!].indexOf(name)
+            if row != nil {
+                let indexPath = NSIndexPath(forRow: row!, inSection: section!)
+                tableView.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+                tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+        }
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "ColorScheme Screen")
+        tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+    }
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return sectionIndexes.count
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections[section].count
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as! ColorSchemeTableViewCell
+        cell.colorSchemeName = sections[indexPath.section][indexPath.row]
+        return cell
+    }
+
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return sectionIndexes
+    }
+
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionIndexes[section]
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let item = sections[indexPath.section][indexPath.row]
+        ColorScheme(item)?.apply()
+        let tracker = GAI.sharedInstance().defaultTracker
+        let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "color-scheme-change", label: item, value: 1).build() as [NSObject : AnyObject]
+        tracker.send(dict)
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
 }

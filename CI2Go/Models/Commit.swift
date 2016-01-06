@@ -2,57 +2,96 @@
 //  Commit.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 11/1/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 1/1/16.
+//  Copyright © 2016 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
-import CoreData
+import RealmSwift
+import ObjectMapper
 
-public class Commit: CI2GoManagedObject {
-  
-  @NSManaged public var body: String?
-  @NSManaged public var date: NSDate?
-  @NSManaged public var sha1: String?
-  @NSManaged public var subject: String?
-  @NSManaged public var urlString: String?
-  @NSManaged public var author: User?
-  @NSManaged public var builds: NSSet?
-  @NSManaged public var committer: User?
-  @NSManaged public var project: Project?
-  @NSManaged public var triggeredBuilds: NSSet?
-  
-  public func importAuthor(data: AnyObject!) -> Bool {
-    if let json = data as? NSDictionary {
-      let email = json["author_email"] as? String
-      let login = json["author_login"] as? String
-      let name = json["author_name"] as? String
-      if email != nil && login != nil && name != nil {
-        let dict = ["email": email!, "login": login!, "name": name!] as NSDictionary
-        author = User.MR_importFromObject(dict, inContext: managedObjectContext!) as? User
-        return true
-      }
-    }
-    return false
-  }
-  
-  public func importCommitter(data: AnyObject!) -> Bool {
-    if let json = data as? NSDictionary {
-      let email = json["committer_email"] as? String
-      let login = json["committer_login"] as? String
-      let name = json["committer_name"] as? String
-      if email != nil && login != nil && name != nil {
-        let dict = ["email": email!, "login": login!, "name": name!] as NSDictionary
-        committer = User.MR_importFromObject(dict, inContext: managedObjectContext!) as? User
-        return true
-      }
-    }
-    return false
-  }
+class Commit: Object, Mappable, Equatable, Comparable {
+    dynamic var body = ""
+    dynamic var commitedAt: NSDate?
+    dynamic var authedAt: NSDate?
+    dynamic var id = ""
+    dynamic var sha1 = ""
+    dynamic var subject = ""
+    dynamic var urlString: String?
+    dynamic var branch: Branch?
+    dynamic var author: User?
+    dynamic var committer: User?
+    dynamic var project: Project?
 
-  public var shortHash: String? {
-    get {
-      return sha1 == nil ? nil : sha1?.substringToIndex(advance(sha1!.startIndex, 7))
+    var shortHash: String {
+        return sha1.substringToIndex(sha1.startIndex.advancedBy(6))
     }
-  }
+
+    required convenience init?(_ map: Map) {
+        self.init()
+        mapping(map)
+    }
+
+    func mapping(map: Map) {
+        let author = self.author ?? User()
+        let committer = self.committer ?? User()
+        self.author = author
+        self.committer = committer
+        var commit: String?, vcsRevision: String?, branchName: String?
+        commit <- map["commit"]
+        vcsRevision <- map["vcs_revision"]
+        commitedAt <- (map["committer_date"], JSONDateTransform())
+        authedAt <- (map["author_date"], JSONDateTransform())
+        body <- map["body"]
+        urlString <- map["commit_url"]
+        branchName <- map["branch"]
+        author.name <- map["author_name"]
+        author.login <- map["author_login"]
+        author.email <- map["author_email"]
+        committer.name <- map["committer_name"]
+        committer.login <- map["committer_login"]
+        committer.email <- map["committer_email"]
+        subject <- map["subject"]
+        sha1 = commit ?? vcsRevision ?? ""
+        if let branchName = branchName where !branchName.isEmpty {
+            branch = branch ?? Branch()
+            branch?.name = branchName
+            branch?.project = project
+            branch?.updateId()
+        }
+        updateId()
+    }
+
+    func updateId() {
+        if let branchId = branch?.id where !branchId.isEmpty {
+            id = "\(branchId):\(sha1)"
+        }
+    }
+
+    override class func primaryKey() -> String {
+        return "id"
+    }
+
+    override static func ignoredProperties() -> [String] {
+        return ["shortHash"]
+    }
+}
+
+func ==(lhs: Commit, rhs: Commit) -> Bool {
+    return lhs.id == rhs.id
+}
+
+func >(lhs: Commit, rhs: Commit) -> Bool {
+    return lhs.id > rhs.id
+}
+
+func <(lhs: Commit, rhs: Commit) -> Bool {
+    return lhs.id < rhs.id
+}
+
+func >=(lhs: Commit, rhs: Commit) -> Bool {
+    return lhs.id >= rhs.id
+}
+
+func <=(lhs: Commit, rhs: Commit) -> Bool {
+    return lhs.id <= rhs.id
 }

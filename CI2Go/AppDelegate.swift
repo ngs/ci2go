@@ -2,84 +2,91 @@
 //  AppDelegate.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 10/26/14.
-//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 12/27/15.
+//  Copyright © 2015 LittleApps Inc. All rights reserved.
 //
 
 import UIKit
+import RealmSwift
+import WatchConnectivity
+import BigBrother
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, WCSessionDelegate {
 
-  var window: UIWindow?
-  var dbInitialized = false
+    var window: UIWindow?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    lazy var pusherClient: CirclePusherClient = {
+        return CirclePusherClient()
+    }()
 
-    // Google Analytics
-    let gai = GAI.sharedInstance()
-    gai.trackUncaughtExceptions = true
-    gai.dispatchInterval = 20
-    if (NSProcessInfo().environment["VERBOSE"] as? String) == "1" {
-      gai.logger.logLevel = .Verbose
+    class var current: AppDelegate {
+        return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-    gai.trackerWithTrackingId(kCI2GoGATrackingId)
 
-    //
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let env = NSProcessInfo().environment
 
-    initializeDB()
+        BigBrother.addToSharedSession()
+        setupRealm()
 
-    // AFNetworking
-    AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
 
-    // Appearance
-    ColorScheme().apply()
+        // Google Analytics
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true
+        gai.dispatchInterval = 20
+        if env["VERBOSE"] == "1" {
+            gai.logger.logLevel = .Verbose
+        }
+        gai.trackerWithTrackingId(kCI2GoGATrackingId)
 
-    // Setup view controllers
-    let splitViewController = self.window!.rootViewController as! UISplitViewController
-    let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-    navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-    splitViewController.delegate = self
+        // Appearance
+        ColorScheme().apply()
 
-    return true
-  }
+        // Setup view controllers
+        let splitViewController = self.window!.rootViewController as! UISplitViewController
+        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
+        navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
+        splitViewController.delegate = self
 
-  func applicationWillTerminate(application: UIApplication) {
-    NSManagedObjectContext.MR_defaultContext().saveToPersistentStoreAndWait()
-  }
-
-  // MARK: - Split view
-
-  func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController!, ontoPrimaryViewController primaryViewController:UIViewController!) -> Bool {
-    if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-      if let topAsDetailController = secondaryAsNavController.topViewController as? BuildLogViewController {
         return true
-      }
     }
-    return false
-  }
 
-  func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
-    return false
-  }
+    // MARK: - Split view
 
-  // MARK: - Magical Record
-
-  func initializeDB() {
-    if !dbInitialized {
-      let env = NSProcessInfo().environment
-      var dbName = env["DB_NAME"] as? String
-      if dbName == nil {
-        dbName = "CI2Go"
-      }
-      let dbURL = NSFileManager.defaultManager()
-        .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
-        .URLByAppendingPathComponent(dbName! + ".sqlite")
-      MagicalRecord.enableShorthandMethods()
-      MagicalRecord.setupCoreDataStackWithStoreAtURL(dbURL)
-      dbInitialized = true
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
+        if let secondaryAsNavController = secondaryViewController as? UINavigationController {
+            return secondaryAsNavController.topViewController is BuildLogViewController
+        }
+        return false
     }
-  }
-  
+
+    func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
+        return false
+    }
+
+
+    // MARK: - WatchConnectivity
+
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        if let fn = message["fn"] as? String where fn == "app-launch" {
+            let def = CI2GoUserDefaults.standardUserDefaults()
+            if let apiToken = def.circleCIAPIToken
+                , colorSchemeName = def.colorSchemeName {
+                    session.transferFile(NSURL(fileURLWithPath: realmPath), metadata: [:])
+                    replyHandler(
+                        [
+                            "apiToken": apiToken,
+                            "colorSchemeName": colorSchemeName
+                        ]
+                    )
+            }
+        }
+    }
 }
 

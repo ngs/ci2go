@@ -10,19 +10,35 @@ import UIKit
 
 public class BuildLogTextView: UITextView {
 
+    public var snapBottom = true
 
-  public var logText: String? = nil {
-    didSet {
-      let s = ColorScheme()
-      if logText != nil {
-        attributedText = s.ansiHelper.attributedStringWithANSIEscapedString(logText!)
-      } else {
-        attributedText = nil
-      }
-      setContentOffset(contentOffset, animated: false)
-      scrollRangeToVisible(NSMakeRange(attributedText.length, 0))
+    public var logText: String? = nil {
+        didSet {
+            let s = ColorScheme()
+            if logText != nil {
+                attributedText = s.ansiHelper.attributedStringWithANSIEscapedString(logText!)
+            } else {
+                attributedText = nil
+            }
+            if snapBottom {
+                scrollToBottom()
+            }
+        }
     }
-  }
 
+    public func shouldScrollToBottom() -> Bool {
+        layoutIfNeeded()
+        let h = layoutManager.usedRectForTextContainer(textContainer).height
+        return h > frame.size.height
+    }
 
+    public func scrollToBottom() {
+        if shouldScrollToBottom() {
+            UIView.setAnimationsEnabled(false)
+            scrollRangeToVisible(NSMakeRange(attributedText.length - 1, 0))
+            UIView.setAnimationsEnabled(true)
+            scrollEnabled = false
+            scrollEnabled = true
+        }
+    }
 }

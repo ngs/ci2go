@@ -1,64 +1,110 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-  - BlocksKit (2.2.5):
-    - BlocksKit/All (= 2.2.5)
-  - BlocksKit/All (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-    - BlocksKit/MessageUI
-    - BlocksKit/UIKit
-  - BlocksKit/Core (2.2.5)
-  - BlocksKit/DynamicDelegate (2.2.5)
-  - BlocksKit/MessageUI (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - BlocksKit/UIKit (2.2.5):
-    - BlocksKit/Core
-    - BlocksKit/DynamicDelegate
-  - GoogleAnalytics-iOS-SDK (3.12):
-    - GoogleAnalytics-iOS-SDK/Core (= 3.12)
-  - GoogleAnalytics-iOS-SDK/Core (3.12)
-  - MagicalRecord (2.3.0)
-  - MBProgressHUD (0.9.1)
-  - NSDate+TimeAgo (1.0.3)
-  - UIColor+Mix (1.0.0)
+  - Alamofire (3.1.4)
+  - AlamofireObjectMapper (2.1.0):
+    - Alamofire (~> 3.1.0)
+    - ObjectMapper (~> 1.0)
+  - BigBrother (0.3.0)
+  - Carlos (0.5)
+  - CryptoSwift (0.2.2)
+  - DateTools (1.7.0)
+  - GoogleAnalytics (3.14.0)
+  - MBProgressHUD (0.9.2)
+  - Nimble (3.0.0)
+  - ObjectMapper (1.0.1)
+  - OHHTTPStubs (4.7.0):
+    - OHHTTPStubs/Default (= 4.7.0)
+  - OHHTTPStubs/Core (4.7.0)
+  - OHHTTPStubs/Default (4.7.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (4.7.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (4.7.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (4.7.0)
+  - OHHTTPStubs/Swift (4.7.0):
+    - OHHTTPStubs/Core
+  - PusherSwift (0.1.6):
+    - CryptoSwift (~> 0.2.2)
+    - ReachabilitySwift (~> 2.3)
+    - Starscream (~> 1.0.2)
+  - Quick (0.8.0)
+  - ReachabilitySwift (2.3.3)
+  - Realm (0.97.0):
+    - Realm/Headers (= 0.97.0)
+  - Realm/Headers (0.97.0)
+  - RealmResultsController (0.3.1):
+    - RealmSwift
+  - RealmSwift (0.97.0):
+    - Realm (= 0.97.0)
+  - RxBlocking (2.0.0):
+    - RxSwift (~> 2.0)
+  - RxCocoa (2.0.0):
+    - RxSwift (~> 2.0)
+  - RxSwift (2.0.0)
+  - Starscream (1.0.2)
 
 DEPENDENCIES:
-  - AFNetworking
-  - BlocksKit
-  - GoogleAnalytics-iOS-SDK
-  - MagicalRecord (= 2.3.0)
+  - Alamofire (~> 3.1)
+  - AlamofireObjectMapper (~> 2.1)
+  - BigBrother (~> 0.3.0)
+  - Carlos (~> 0.5)
+  - DateTools (~> 1.7)
+  - GoogleAnalytics (~> 3.14)
   - MBProgressHUD (~> 0.8)
-  - NSDate+TimeAgo
-  - UIColor+Mix
+  - Nimble (~> 3.0)
+  - ObjectMapper (~> 1.0)
+  - OHHTTPStubs (~> 4.7)
+  - OHHTTPStubs/Swift (~> 4.7)
+  - PusherSwift (from `https://github.com/pusher-community/pusher-websocket-swift.git`,
+    commit `888319d2d2aa9951c3a2b421ac20736139360f4e`)
+  - Quick (~> 0.8)
+  - RealmResultsController (from `https://github.com/redbooth/RealmResultsController.git`,
+    branch `feature/realm0.97.0`)
+  - RealmSwift (= 0.97.0)
+  - RxBlocking (~> 2.0.0)
+  - RxCocoa (~> 2.0.0)
+  - RxSwift (~> 2.0.0)
+
+EXTERNAL SOURCES:
+  PusherSwift:
+    :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
+    :git: https://github.com/pusher-community/pusher-websocket-swift.git
+  RealmResultsController:
+    :branch: feature/realm0.97.0
+    :git: https://github.com/redbooth/RealmResultsController.git
+
+CHECKOUT OPTIONS:
+  PusherSwift:
+    :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
+    :git: https://github.com/pusher-community/pusher-websocket-swift.git
+  RealmResultsController:
+    :commit: 34defa9eb1d8335cac79beb215b3b1a8353277d2
+    :git: https://github.com/redbooth/RealmResultsController.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  GoogleAnalytics-iOS-SDK: 0a3327a993b8ed2b8fe1c6c4a8dcf5b76d2237a8
-  MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
-  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
-  NSDate+TimeAgo: 416f55d2696d3744c313091c5a9280d47f8238fe
-  UIColor+Mix: fdb1c1620bc1d127f75665c7a6322028b3ebb9d5
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
+  BigBrother: e3cdf5f22636c7b7e92ec4e3615e58cb58681125
+  Carlos: 2519b03da9bf900b5aa698659a519ef5a8f6afc0
+  CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
+  DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
+  OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
+  PusherSwift: f2288da1552a218abba34a188fed23475790c24a
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
+  Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
+  RealmResultsController: ec769e0a755395a44bcc21ab1bdc703927a4f776
+  RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
+  RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
+  RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
+  RxSwift: d83246efa6f16c50c143bec134649d045498f601
+  Starscream: 40e2c4c1c770d811f24116b8b7dbeb4542c56767
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.39.0

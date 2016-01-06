@@ -1,0 +1,74 @@
+{
+  "enrolled_betas" : [ ],
+  "in_beta_program" : true,
+  "selected_email" : "atsn.ngs@gmail.com",
+  "avatar_url" : "https://avatars.githubusercontent.com/u/18631?v=3",
+  "trial_end" : "2013-02-26T06:21:02.688Z",
+  "admin" : false,
+  "basic_email_prefs" : "none",
+  "sign_in_count" : 217,
+  "github_oauth_scopes" : [ "user:email", "repo" ],
+  "name" : "Atsushi NAGASE",
+  "gravatar_id" : null,
+  "days_left_in_trial" : -1041,
+  "parallelism" : 1,
+  "github_id" : 18631,
+  "last_viewed_changelog" : "2015-12-29T10:39:14.831Z",
+  "dev_admin" : false,
+  "all_emails" : [ "atsushi.nagase@littleapps.co.jp", "a@ngs.io", "nagase@ngsdev.org", "ngs@oneteam.co.jp", "atsn.ngs@gmail.com" ],
+  "created_at" : "2013-02-12T06:21:02.688Z",
+  "plan" : null,
+  "heroku_api_key" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx1f7b",
+  "projects" : {
+    "https://github.com/ngs/ci2go" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/i18n-manage-api" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/ngsbot-cron" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/onairlog-ios" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/native-watchOS-example" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/ngsbot" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/hubpix" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/blink1-formatter" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/dom-change-recorder-chrome" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/brewproj/homebrew-proj" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/docker-serverspec-circleci-example" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    },
+    "https://github.com/ngs/docker-rails-example" : {
+      "on_dashboard" : true,
+      "emails" : "default"
+    }
+  },
+  "login" : "ngs",
+  "containers" : 1
+}

@@ -27,5 +27,8 @@ Pods/
 Certificates/
 CI2Go/Environment.swift
 Distribution
-MobileProvisionings
-*.swp
+fastlane/profiles/*.mobileprovision
+fastlane/report.xml
+`*.swp
+.bundle
+vendor

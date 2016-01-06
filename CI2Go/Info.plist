@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ci2go.ios.Circle</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.0</string>
+	<string>1.2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -24,12 +24,12 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SourceCodePro-Regular.ttf</string>
-		<string>SourceCodePro-Bold.ttf</string>
 		<string>SourceCodePro-Black.ttf</string>
+		<string>SourceCodePro-Bold.ttf</string>
 		<string>SourceCodePro-ExtraLight.ttf</string>
 		<string>SourceCodePro-Light.ttf</string>
 		<string>SourceCodePro-Medium.ttf</string>
+		<string>SourceCodePro-Regular.ttf</string>
 		<string>SourceCodePro-Semibold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
@@ -40,10 +40,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>UIStatusBarHidden</key>
-	<false/>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleBlackOpaque</string>
+	<string>UIStatusBarStyleBlackTranslucent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
