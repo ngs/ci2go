@@ -12,7 +12,8 @@ general:
     - ~/Library/Logs/scan
     - ~/Library/Logs/gym
     - ~/Developer/Xcode/Archives
-    - Build
+    - Build/CI2Go.app.dSYM.zip
+    - Build/CI2Go.ipa
 
 dependencies:
   pre:
