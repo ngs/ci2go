@@ -14,8 +14,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var doneButtonItem: UIBarButtonItem!
-    @IBOutlet weak var apiIntervalStepper: UIStepper!
-    @IBOutlet weak var apiIntervalLabel: UILabel!
     @IBOutlet weak var apiTokenField: UITextField!
     @IBOutlet weak var colorSchemeCell: ColorSchemeTableViewCell!
 
@@ -38,19 +36,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    @IBAction func intervalValueChanged(sender: AnyObject) {
-        let d = CI2GoUserDefaults.standardUserDefaults()
-        let stepper = sender as? UIStepper
-        let value = stepper?.value
-        if stepper == apiIntervalStepper {
-            setStepperValue(value!, forStepper: nil, withLabel: apiIntervalLabel)
-            d.apiRefreshInterval = value!
-        }
-        let tracker = GAI.sharedInstance().defaultTracker
-        let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "api-interval-change", label: value!.description, value: value!).build() as [NSObject : AnyObject]
-        tracker.send(dict)
     }
 
     private func setStepperValue(value: Double, forStepper stepper: UIStepper?, withLabel label: UILabel?) {
@@ -129,12 +114,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         let scheme = ColorScheme()
         self.colorSchemeCell.colorScheme = scheme
         self.apiTokenField.setValue(scheme.placeholderColor(), forKeyPath: "_placeholderLabel.textColor")
-        setStepperValue(d.apiRefreshInterval, forStepper: apiIntervalStepper, withLabel: apiIntervalLabel)
         apiTokenField.text = d.circleCIAPIToken ?? ""
         let valid = d.circleCIAPIToken?.utf8.count == 40
         cancelButtonItem.enabled = valid
         doneButtonItem.enabled = valid
-        apiIntervalStepper.value = d.apiRefreshInterval
         super.viewWillAppear(animated)
     }
 

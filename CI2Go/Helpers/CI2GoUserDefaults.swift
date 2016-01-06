@@ -13,8 +13,6 @@ private var _standardUserDefaults: AnyObject? = nil
 
 let kCI2GoColorSchemeUserDefaultsKey = "CI2GoColorScheme"
 let kCI2GoCircleCIAPITokenDefaultsKey = "CI2GoColorCircleCIAPIToken"
-let kCI2GoLogRefreshIntervalDefaultsKey = "CI2GoLogRefreshInterval"
-let kCI2GoAPIRefreshIntervalDefaultsKey = "CI2GoAPIRefreshInterval"
 let kCI2GoSchemaVersionDefaultsKey = "CI2GoSchemaVersion"
 let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
 let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
@@ -28,9 +26,7 @@ class CI2GoUserDefaults: NSObject {
     func reset() {
         for k in [
             kCI2GoColorSchemeUserDefaultsKey,
-            kCI2GoCircleCIAPITokenDefaultsKey,
-            kCI2GoLogRefreshIntervalDefaultsKey,
-            kCI2GoAPIRefreshIntervalDefaultsKey
+            kCI2GoCircleCIAPITokenDefaultsKey
             ] {
                 userDefaults.removeObjectForKey(k)
         }
@@ -56,11 +52,7 @@ class CI2GoUserDefaults: NSObject {
         } else {
             ud = NSUserDefaults(suiteName: kCI2GoAppGroupIdentifier)!
         }
-        ud.registerDefaults([
-            kCI2GoColorSchemeUserDefaultsKey: "Github",
-            kCI2GoLogRefreshIntervalDefaultsKey: 1.0,
-            kCI2GoAPIRefreshIntervalDefaultsKey: 5.0
-            ])
+        ud.registerDefaults([kCI2GoColorSchemeUserDefaultsKey: "Github"])
         return ud
     }()
 
@@ -105,26 +97,6 @@ class CI2GoUserDefaults: NSObject {
 
     var isLoggedIn: Bool {
         return circleCIAPIToken?.isEmpty == false
-    }
-
-    var logRefreshInterval: Double {
-        set(value) {
-            userDefaults.setDouble(value, forKey: kCI2GoLogRefreshIntervalDefaultsKey)
-            userDefaults.synchronize()
-        }
-        get {
-            return userDefaults.doubleForKey(kCI2GoLogRefreshIntervalDefaultsKey)
-        }
-    }
-
-    var apiRefreshInterval: Double {
-        set(value) {
-            userDefaults.setDouble(value, forKey: kCI2GoAPIRefreshIntervalDefaultsKey)
-            userDefaults.synchronize()
-        }
-        get {
-            return userDefaults.doubleForKey(kCI2GoAPIRefreshIntervalDefaultsKey)
-        }
     }
 
     var selectedBranch: Branch? {
