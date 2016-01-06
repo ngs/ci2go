@@ -1,9 +1,9 @@
 //
 //  NotificationController.swift
-//  CI2Go WatchKit App Extension
+//  CI2Go WatchKit Extension
 //
-//  Created by Atsushi Nagase on 12/27/15.
-//  Copyright © 2015 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 6/13/15.
+//  Copyright (c) 2015 LittleApps Inc. All rights reserved.
 //
 
 import WatchKit

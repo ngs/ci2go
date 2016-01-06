@@ -8,9 +8,10 @@
 
 import UIKit
 import RealmSwift
+import WatchConnectivity
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, WCSessionDelegate {
 
     var window: UIWindow?
 
@@ -25,21 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let env = NSProcessInfo().environment
 
-        var config = Realm.Configuration(schemaVersion: kCI2GoSchemaVersion)
-        if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
-            config.inMemoryIdentifier = identifier
+        setupRealm()
+
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
         }
-        let def = CI2GoUserDefaults.standardUserDefaults()
-        if def.storedSchemaVersion != kCI2GoSchemaVersion {
-            if let path = Realm.Configuration.defaultConfiguration.path {
-                do {
-                    try NSFileManager.defaultManager().removeItemAtPath(path)
-                } catch {}
-            }
-            _ = try! Realm()
-            def.storedSchemaVersion = kCI2GoSchemaVersion
-        }
-        Realm.Configuration.defaultConfiguration = config
 
         // Google Analytics
         let gai = GAI.sharedInstance()
@@ -75,5 +68,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
 
+
+    // MARK: - WatchConnectivity
+
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        if let fn = message["fn"] as? String where fn == "app-launch" {
+            let def = CI2GoUserDefaults.standardUserDefaults()
+            if let apiToken = def.circleCIAPIToken
+                , colorSchemeName = def.colorSchemeName {
+                    session.transferFile(NSURL(fileURLWithPath: realmPath), metadata: [:])
+                    replyHandler(
+                        [
+                            "apiToken": apiToken,
+                            "colorSchemeName": colorSchemeName
+                        ]
+                    )
+            }
+        }
+    }
 }
 

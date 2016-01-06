@@ -21,18 +21,9 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     var rrc: RealmResultsController<Build, Build>?
 
     func buildRRC() -> RealmResultsController<Build, Build> {
-        let predicate: NSPredicate
         let def = CI2GoUserDefaults.standardUserDefaults()
-        let baseQuery = "id != %@ AND branch != nil AND project != nil"
-        if let branch = def.selectedBranch {
-            predicate = NSPredicate(format: "branch.id == %@ AND \(baseQuery)", branch.id, "")
-        } else if let project = def.selectedProject {
-            predicate = NSPredicate(format: "project.id == %@ AND \(baseQuery)", project.id, "")
-        } else {
-            predicate = NSPredicate(format: baseQuery, "")
-        }
         let sd = SortDescriptor(property: "queuedAt", ascending: false)
-        let req = RealmRequest<Build>(predicate: predicate, realm: self.realm, sortDescriptors: [sd])
+        let req = RealmRequest<Build>(predicate: def.buildsPredicate, realm: self.realm, sortDescriptors: [sd])
         let rrc = try! RealmResultsController<Build, Build>(request: req, sectionKeyPath: nil)
         rrc.delegate = self
         return rrc

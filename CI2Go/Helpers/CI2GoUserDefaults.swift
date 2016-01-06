@@ -133,5 +133,15 @@ class CI2GoUserDefaults: NSObject {
         }
         return "recent-builds"
     }
-    
+
+    var buildsPredicate: NSPredicate {
+        let baseQuery = "id != %@ AND branch != nil AND project != nil"
+        if let branch = selectedBranch {
+            return NSPredicate(format: "branch.id == %@ AND \(baseQuery)", branch.id, "")
+        }
+        if let project = selectedProject {
+            return NSPredicate(format: "project.id == %@ AND \(baseQuery)", project.id, "")
+        }
+        return NSPredicate(format: baseQuery, "")
+    }
 }

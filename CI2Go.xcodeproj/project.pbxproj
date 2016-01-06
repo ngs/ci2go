@@ -55,6 +55,11 @@
 		851AA6951C3D318300A50744 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6941C3D318300A50744 /* UIViewExtension.swift */; };
 		851AA6971C3D324B00A50744 /* UIViewExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6961C3D324B00A50744 /* UIViewExtensionSpec.swift */; };
 		851AA6991C3D328100A50744 /* SubviewsForClassSampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851AA6981C3D328100A50744 /* SubviewsForClassSampleView.xib */; };
+		851AA6A11C3D3BDD00A50744 /* BuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69C1C3D3BDD00A50744 /* BuildInterfaceController.swift */; };
+		851AA6A21C3D3BDD00A50744 /* BuildsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69D1C3D3BDD00A50744 /* BuildsInterfaceController.swift */; };
+		851AA6A31C3D3BDD00A50744 /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69E1C3D3BDD00A50744 /* BuildTableRowController.swift */; };
+		851AA6A41C3D3BDD00A50744 /* SingleBuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69F1C3D3BDD00A50744 /* SingleBuildInterfaceController.swift */; };
+		851AA6A71C3D4D3000A50744 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
@@ -449,6 +454,11 @@
 		851AA6941C3D318300A50744 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		851AA6961C3D324B00A50744 /* UIViewExtensionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionSpec.swift; sourceTree = "<group>"; };
 		851AA6981C3D328100A50744 /* SubviewsForClassSampleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubviewsForClassSampleView.xib; sourceTree = "<group>"; };
+		851AA69C1C3D3BDD00A50744 /* BuildInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildInterfaceController.swift; sourceTree = "<group>"; };
+		851AA69D1C3D3BDD00A50744 /* BuildsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildsInterfaceController.swift; sourceTree = "<group>"; };
+		851AA69E1C3D3BDD00A50744 /* BuildTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
+		851AA69F1C3D3BDD00A50744 /* SingleBuildInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleBuildInterfaceController.swift; sourceTree = "<group>"; };
+		851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -651,6 +661,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				851AA6A71C3D4D3000A50744 /* WatchConnectivity.framework in Frameworks */,
 				85C723F21C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -816,10 +827,14 @@
 		856701CC1C3016BA00E76DCF /* CI2Go WatchKit App Extension */ = {
 			isa = PBXGroup;
 			children = (
-				856701CF1C3016BA00E76DCF /* InterfaceController.swift */,
+				851AA69C1C3D3BDD00A50744 /* BuildInterfaceController.swift */,
+				851AA69D1C3D3BDD00A50744 /* BuildsInterfaceController.swift */,
+				851AA69E1C3D3BDD00A50744 /* BuildTableRowController.swift */,
 				856701D11C3016BA00E76DCF /* ExtensionDelegate.swift */,
-				856701D31C3016BA00E76DCF /* NotificationController.swift */,
 				856701D51C3016BA00E76DCF /* GlanceController.swift */,
+				856701CF1C3016BA00E76DCF /* InterfaceController.swift */,
+				856701D31C3016BA00E76DCF /* NotificationController.swift */,
+				851AA69F1C3D3BDD00A50744 /* SingleBuildInterfaceController.swift */,
 				856701D71C3016BA00E76DCF /* Assets.xcassets */,
 				856701CD1C3016BA00E76DCF /* Supporting Files */,
 			);
@@ -1036,6 +1051,7 @@
 		85C723F51C387DA700582B4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */,
 				851AA6921C3CC28200A50744 /* iAd.framework */,
 				85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */,
 				85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */,
@@ -1741,14 +1757,17 @@
 			files = (
 				85168A911C3681F600392145 /* Commit.swift in Sources */,
 				856703101C30254300E76DCF /* UIColor+Mix.swift in Sources */,
+				851AA6A41C3D3BDD00A50744 /* SingleBuildInterfaceController.swift in Sources */,
 				8567031A1C3025FB00E76DCF /* ColorScheme.swift in Sources */,
 				850B4E8B1C36EC4C00C1EC70 /* Node.swift in Sources */,
 				85168A901C3681F600392145 /* BuildStep.swift in Sources */,
 				85168A8E1C3681F600392145 /* Build.swift in Sources */,
 				856703191C3025FB00E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				85168A931C3681F600392145 /* User.swift in Sources */,
+				851AA6A31C3D3BDD00A50744 /* BuildTableRowController.swift in Sources */,
 				856703111C30254300E76DCF /* UIFont+appFonts.swift in Sources */,
 				856701D41C3016BA00E76DCF /* NotificationController.swift in Sources */,
+				851AA6A11C3D3BDD00A50744 /* BuildInterfaceController.swift in Sources */,
 				85C724341C38C75000582B4D /* BuildActionNetworkingExtension.swift in Sources */,
 				85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */,
 				85C7243B1C3921B200582B4D /* CircleAPIClient.swift in Sources */,
@@ -1761,6 +1780,7 @@
 				85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */,
 				85C724421C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
 				856701D01C3016BA00E76DCF /* InterfaceController.swift in Sources */,
+				851AA6A21C3D3BDD00A50744 /* BuildsInterfaceController.swift in Sources */,
 				85C724481C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */,
 				856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */,
 				856E04D51C313BC2003F43BC /* Branch.swift in Sources */,
