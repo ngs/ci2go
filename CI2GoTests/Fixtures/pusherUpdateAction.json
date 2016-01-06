@@ -1,0 +1,28 @@
+[
+  {
+    "step": 11,
+    "index": 0,
+    "log": {
+      "truncated": false,
+      "index": 0,
+      "parallel": true,
+      "failed": null,
+      "infrastructure_fail": null,
+      "name": "sudo pip install awscli",
+      "bash_command": "sudo pip install awscli",
+      "status": "success",
+      "timedout": null,
+      "continue": null,
+      "end_time": "2016-01-06T02:16:27.966Z",
+      "source": "config",
+      "type": "dependencies",
+      "start_time": "2016-01-06T02:16:20.352Z",
+      "exit_code": 0,
+      "canceled": null,
+      "step": 11,
+      "run_time_millis": 7614,
+      "has_output": true
+    },
+    "messages": null
+  }
+]

@@ -60,7 +60,7 @@ DEPENDENCIES:
     commit `888319d2d2aa9951c3a2b421ac20736139360f4e`)
   - Quick (~> 0.8)
   - RealmResultsController (from `https://github.com/ngs/RealmResultsController.git`,
-    commit `5d4434a813f29244aead8d2bcb23ced8891cd878`)
+    branch `feature/realm0.97.0`)
   - RealmSwift (= 0.97.0)
   - RxBlocking (~> 2.0.0)
   - RxCocoa (~> 2.0.0)
@@ -71,7 +71,7 @@ EXTERNAL SOURCES:
     :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
     :git: https://github.com/pusher-community/pusher-websocket-swift.git
   RealmResultsController:
-    :commit: 5d4434a813f29244aead8d2bcb23ced8891cd878
+    :branch: feature/realm0.97.0
     :git: https://github.com/ngs/RealmResultsController.git
 
 CHECKOUT OPTIONS:
@@ -79,7 +79,7 @@ CHECKOUT OPTIONS:
     :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
     :git: https://github.com/pusher-community/pusher-websocket-swift.git
   RealmResultsController:
-    :commit: 5d4434a813f29244aead8d2bcb23ced8891cd878
+    :commit: 321295081f7a1036412e51d1423993db2ba82300
     :git: https://github.com/ngs/RealmResultsController.git
 
 SPEC CHECKSUMS:

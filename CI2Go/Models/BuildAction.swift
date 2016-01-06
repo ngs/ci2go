@@ -11,11 +11,13 @@ import RxSwift
 import RxCocoa
 import RxBlocking
 import ObjectMapper
+import Carlos
 #if os(iOS)
 import CryptoSwift
 #endif
 
 class BuildAction: Object, Mappable, Equatable, Comparable {
+    static let cache = MemoryCacheLevel<String, NSString>() >>> DiskCacheLevel()
     lazy var disposeBag: DisposeBag = { DisposeBag() }()
     enum Status: String {
         case Success = "success"
@@ -126,6 +128,10 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
             src.value = log
         }.addDisposableTo(disposeBag)
         return src.asObservable()
+    }
+
+    func appendLog(str: String) {
+        self.logSource.value.appendContentsOf(str)
     }
 
     override static func ignoredProperties() -> [String] {

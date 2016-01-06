@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
 
+    lazy var pusherClient: CirclePusherClient = {
+        return CirclePusherClient()
+    }()
+
     class var current: AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }

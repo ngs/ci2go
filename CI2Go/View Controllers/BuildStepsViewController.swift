@@ -61,14 +61,22 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         }
     }
 
+    var pusherSubscription: Disposable?
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        guard let build = build else { return }
         refresh(nil)
+        pusherSubscription = AppDelegate.current.pusherClient.subscribeBuild(build).subscribeNext {
+            self.refresh(nil)
+        }
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        pusherSubscription?.dispose()
+        pusherSubscription = nil
     }
 
     override func viewDidLoad() {
@@ -212,6 +220,14 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         vc?.navigationItem.leftItemsSupplementBackButton = true
     }
 
+    func scrollToBottom(animated: Bool = false) {
+        let section = rrc.numberOfSections - 1
+        let row = rrc.numberOfObjectsAt(section) - 1
+        if section >= 0 && row >= 0 {
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section), atScrollPosition: .Bottom, animated: animated)
+        }
+    }
+
     @IBAction func openActionSheet(sender: AnyObject) {
         guard let lifecycle = self.build?.lifecycle else { return }
         let av = UIAlertController()
@@ -249,10 +265,10 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         print("🎁 didChangeObject '\((object as! BuildAction).id)' from: [\(oldIndexPath.section):\(oldIndexPath.row)] to: [\(newIndexPath.section):\(newIndexPath.row)] --> \(changeType) \(rrc.numberOfObjectsAt(newIndexPath.section)) \(rrc.numberOfSections))")
         switch changeType {
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
             break
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
             break
         case .Move:
             tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .None)
@@ -281,5 +297,6 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     func didChangeResults(controller: AnyObject) {
         print("🙃 didChangeResults")
         self.tableView.endUpdates()
+        scrollToBottom(true)
     }
 }

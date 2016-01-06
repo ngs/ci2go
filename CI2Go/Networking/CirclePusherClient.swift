@@ -9,39 +9,75 @@
 import Foundation
 import PusherSwift
 import RxSwift
+import RealmSwift
+import RealmResultsController
+import ObjectMapper
 
 class CirclePusherClient {
-    let appendActionSubject = PublishSubject<String>()
-    let updateActionSubject = PublishSubject<String>()
-    let newActionSubject = PublishSubject<String>()
-    let refreshBuildStateSubject = PublishSubject<Void>()
     let disposeBag = DisposeBag()
-    lazy var pusherClient: Pusher = {
+    var circleToken: String? = nil
+    private var _pusherClient: Pusher?
+    var pusherClient: Pusher {
+        let token = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken
+        if let c = _pusherClient where circleToken == token {
+            return c
+        }
+        circleToken = token
         let p = Pusher(key: kCI2GoPusherAPIKey, options: [
             "attemptToReturnJSONObject": true,
             "autoReconnect": true,
             "authEndpoint": kCI2GoPusherAuthorizationURL,
             "authRequestCustomizer": { (req: NSMutableURLRequest) -> NSMutableURLRequest in
                 req.HTTPBody = req.URL?.query?.componentsSeparatedByString("?").last?.dataUsingEncoding(NSUTF8StringEncoding)
-                if let token = CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken
-                    , URL = NSURL(string: kCI2GoPusherAuthorizationURL + token) { req.URL = URL }
+                if let token = token, URL = NSURL(string: kCI2GoPusherAuthorizationURL + token) { req.URL = URL }
                 return req
             }])
         p.connect()
         return p
-    }()
+    }
     deinit {
         self.pusherClient.disconnect()
     }
-    init() {
+    func subscribeBuild(build: Build) -> Observable<Void> {
+        guard let channelName = build.pusherChannelName else { return Observable.never() }
+        return Observable.create { observer in
+            let channel = self.pusherClient.subscribe(channelName)
+            channel.bind("newAction", callback: { _ in observer.onNext() })
+            channel.bind("updateAction", callback: { _ in observer.onNext() })
+            return AnonymousDisposable {
+                self.pusherClient.unsubscribe(channelName)
+            }
+        }
     }
-    init(build: Build) {
-        //        if let channelName = build.pusherChannelName {
-        //            pusherChannel = pusherClient.subscribe(channelName)
-        //        }
+    func subscribeBuildLog(buildAction: BuildAction) -> Observable<Void> {
+        let build = buildAction.buildStep?.build
+        guard let channelName = build?.pusherChannelName else { return Observable.never() }
+        return Observable.create { observer in
+            let channel = self.pusherClient.subscribe(channelName)
+            channel.bind("appendAction", callback: { res in
+                guard let res = res as? [[String: AnyObject]] else { return }
+                autoreleasepool {
+                    let realm = try! Realm()
+                    try! realm.write {
+                        res.forEach { json in
+                            guard let stepNumber = json["step"] as? Int
+                                , nodeIndex = json["index"] as? Int
+                                , out = json["out"] as? [String: AnyObject]
+                                , message = out["message"] as? String
+                                where buildAction.stepNumber == stepNumber && buildAction.nodeIndex == nodeIndex
+                                else { return }
+                            buildAction.appendLog(message)
+                        }
+                    }
+                }
+            })
+            return AnonymousDisposable {
+                self.pusherClient.unsubscribe(channelName)
+            }
+        }
     }
     func subscribeRefresh() -> Observable<Void> {
-        return Observable.create({ observer in
+        return Observable.create { observer in
             var disposables = [Disposable]()
             var channel: PusherChannel?
             disposables.append(User.me().subscribe(
@@ -52,15 +88,6 @@ class CirclePusherClient {
                             , fn = res["fn"] as? String where fn == "refreshBuildState" {
                                 observer.onNext()
                         }
-                    })
-                    self.pusherClient.bind { res in
-                        print(res)
-                    }
-                    channel?.bind("pusher:subscription_succeeded", callback: { res in
-                        print(res)
-                    })
-                    channel?.bind("pusher:subscription_error", callback: { res in
-                        print(res)
                     })
                 },
                 onError: { e in
@@ -73,6 +100,6 @@ class CirclePusherClient {
                     self.pusherClient.unsubscribe(channelName)
                 }
             }
-        })
+        }
     }
 }
