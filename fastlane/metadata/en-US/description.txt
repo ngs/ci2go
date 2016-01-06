@@ -10,6 +10,11 @@ http://ngs.io/
 Version history
 ---------------
 
+### 1.2.0
+
+- Realtime update!!
+- Improve performance and user interface.
+
 ### 1.1.0
 
 Apple Watch Support

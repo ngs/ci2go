@@ -32,3 +32,4 @@ fastlane/report.xml
 `*.swp
 .bundle
 vendor
+Preview.html
