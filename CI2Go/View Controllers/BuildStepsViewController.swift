@@ -251,7 +251,16 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
             popover.barButtonItem = barButtonItem
         }
-        presentViewController(av, animated: true, completion: nil)
+
+        presentViewController(av, animated: true, completion: {})
+        let c = UIColor.darkTextColor()
+        av.view.tintColor = c
+        av.view.subviewsForClass(UILabel.self).forEach { l in
+            guard let l = l as? UILabel else { return }
+            l.textColor = c
+            l.tintColor = c
+        }
+        av.view.setNeedsDisplay()
     }
 
 

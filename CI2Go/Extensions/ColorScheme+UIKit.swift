@@ -19,9 +19,12 @@ extension ColorScheme {
             , bg2 = groupTableViewBackgroundColor() else {
             return
         }
-        UIApplication.sharedApplication().statusBarStyle = statusBarStyle()
+        let app = UIApplication.sharedApplication()
+        app.statusBarStyle = statusBarStyle()
+        app.windows.forEach { $0.tintColor = bd }
         UIScrollView.appearance().indicatorStyle = scrollViewIndicatorStyle()
-        UIView.appearance().tintColor = bd
+        UIView.appearanceWhenContainedInInstancesOfClasses([UIAlertController.self]).tintColor = UIColor.darkTextColor()
+        UIView.appearanceWhenContainedInInstancesOfClasses([SFSafariViewController.self]).tintColor = UIColor.darkTextColor()
         UINavigationBar.appearance().barTintColor = bg
         UITableView.appearance().separatorColor = UIColor(white: 0.5, alpha: 0.5)
         UIScrollView.appearance().backgroundColor = bg
@@ -36,9 +39,6 @@ extension ColorScheme {
         UILabel.appearanceWhenContainedInInstancesOfClasses([UITableViewCell.self]).highlightedTextColor = selectedTextColor()
         UIButton.appearanceWhenContainedInInstancesOfClasses([UITableView.self]).setTitleColor(bd, forState: .Normal)
         UIButton.appearanceWhenContainedInInstancesOfClasses([UITableView.self]).setTitleColor(fg, forState: .Highlighted)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: bd], forState: .Normal)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: fg], forState: .Highlighted)
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: fg.colorWithAlphaComponent(0.4)], forState: .Disabled)
         let cellBackgroundView = UIView()
         cellBackgroundView.backgroundColor = bg
         UITableViewCell.appearance().backgroundView = cellBackgroundView

@@ -52,6 +52,9 @@
 		85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
 		851AA6911C3CACA300A50744 /* CirclePusherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6901C3CACA300A50744 /* CirclePusherClient.swift */; };
 		851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851AA6921C3CC28200A50744 /* iAd.framework */; };
+		851AA6951C3D318300A50744 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6941C3D318300A50744 /* UIViewExtension.swift */; };
+		851AA6971C3D324B00A50744 /* UIViewExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6961C3D324B00A50744 /* UIViewExtensionSpec.swift */; };
+		851AA6991C3D328100A50744 /* SubviewsForClassSampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 851AA6981C3D328100A50744 /* SubviewsForClassSampleView.xib */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
@@ -443,6 +446,9 @@
 		85168AA11C36CBCC00392145 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		851AA6901C3CACA300A50744 /* CirclePusherClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclePusherClient.swift; sourceTree = "<group>"; };
 		851AA6921C3CC28200A50744 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		851AA6941C3D318300A50744 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		851AA6961C3D324B00A50744 /* UIViewExtensionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensionSpec.swift; sourceTree = "<group>"; };
+		851AA6981C3D328100A50744 /* SubviewsForClassSampleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubviewsForClassSampleView.xib; sourceTree = "<group>"; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -715,6 +721,7 @@
 				850B4E871C36E78700C1EC70 /* build.json */,
 				85168A9D1C36B71E00392145 /* builds.json */,
 				85168A971C36A25100392145 /* projects.json */,
+				851AA6981C3D328100A50744 /* SubviewsForClassSampleView.xib */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -778,6 +785,7 @@
 				85168A9B1C36A9A500392145 /* ProjectSpec.swift */,
 				85168A991C36A44C00392145 /* SpecHelper.swift */,
 				850B4EBE1C3873B800C1EC70 /* StringExtensionSpec.swift */,
+				851AA6961C3D324B00A50744 /* UIViewExtensionSpec.swift */,
 				85C7243E1C392B3100582B4D /* UserSpec.swift */,
 				85168A961C36A25100392145 /* Fixtures */,
 			);
@@ -840,6 +848,7 @@
 				850B4EAF1C3808F700C1EC70 /* IntTimeFormattedExtension.swift */,
 				850B4EBB1C38737100C1EC70 /* StringExtension.swift */,
 				85C724371C391A9800582B4D /* DictionaryExtension.swift */,
+				851AA6941C3D318300A50744 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1224,6 +1233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				851AA6991C3D328100A50744 /* SubviewsForClassSampleView.xib in Resources */,
 				85168A9E1C36B71E00392145 /* builds.json in Resources */,
 				85C7243D1C392AB600582B4D /* me.json in Resources */,
 				850B4E881C36E78700C1EC70 /* build.json in Resources */,
@@ -1665,6 +1675,7 @@
 				850B4EC11C38743F00C1EC70 /* StringExtensionSpec.swift in Sources */,
 				850B4E8D1C373E9400C1EC70 /* ColorSchemeSpec.swift in Sources */,
 				85168A9C1C36A9A500392145 /* ProjectSpec.swift in Sources */,
+				851AA6971C3D324B00A50744 /* UIViewExtensionSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1702,6 +1713,7 @@
 				85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */,
 				856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */,
 				850B4EA11C37DB7200C1EC70 /* BuildsViewController.swift in Sources */,
+				851AA6951C3D318300A50744 /* UIViewExtension.swift in Sources */,
 				850B4EA31C37DB7200C1EC70 /* ProjectsViewController.swift in Sources */,
 				85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */,
 				8567028D1C30253100E76DCF /* UIFont+appFonts.swift in Sources */,
