@@ -40,18 +40,16 @@ class BuildLogViewController: UIViewController, UITextViewDelegate {
 
     var touching = false
 
-    @IBAction func handlePan(sender: UIPanGestureRecognizer) {
-        if sender.state == .Began {
-            touching = true
-        }
-    }
-
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         logSubscription?.dispose()
         logSubscription = nil
         pusherSubscription?.dispose()
         pusherSubscription = nil
+    }
+
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        touching = true
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -61,7 +59,7 @@ class BuildLogViewController: UIViewController, UITextViewDelegate {
         let top = scrollView.frame.origin.y
         let scrollTop = scrollView.contentOffset.y
         let diff = contentHeight - scrollTop - top
-        textView.snapBottom = diff < height - 50
+        textView.snapBottom = diff < height + 50
         touching = false
     }
 }

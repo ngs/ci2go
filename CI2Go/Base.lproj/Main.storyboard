@@ -957,9 +957,6 @@
                                 <exclude reference="xMN-cK-3Rq"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="ugC-5h-k5F" appends="YES" id="Y5y-PV-ZiX"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ILl-8V-UbW"/>
                     <connections>
@@ -967,11 +964,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCk-E4-l1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" minimumNumberOfTouches="1" id="ugC-5h-k5F">
-                    <connections>
-                        <action selector="handlePan:" destination="cfZ-lg-upH" id="Kc3-jY-7N6"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="815" y="1525"/>
         </scene>
