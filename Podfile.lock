@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (2.1.0):
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
+  - BigBrother (0.3.0)
   - Carlos (0.5)
   - CryptoSwift (0.2.2)
   - DateTools (1.7.0)
@@ -48,6 +49,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.1)
   - AlamofireObjectMapper (~> 2.1)
+  - BigBrother (~> 0.3.0)
   - Carlos (~> 0.5)
   - DateTools (~> 1.7)
   - GoogleAnalytics (~> 3.14)
@@ -59,7 +61,7 @@ DEPENDENCIES:
   - PusherSwift (from `https://github.com/pusher-community/pusher-websocket-swift.git`,
     commit `888319d2d2aa9951c3a2b421ac20736139360f4e`)
   - Quick (~> 0.8)
-  - RealmResultsController (from `https://github.com/ngs/RealmResultsController.git`,
+  - RealmResultsController (from `https://github.com/redbooth/RealmResultsController.git`,
     branch `feature/realm0.97.0`)
   - RealmSwift (= 0.97.0)
   - RxBlocking (~> 2.0.0)
@@ -72,19 +74,20 @@ EXTERNAL SOURCES:
     :git: https://github.com/pusher-community/pusher-websocket-swift.git
   RealmResultsController:
     :branch: feature/realm0.97.0
-    :git: https://github.com/ngs/RealmResultsController.git
+    :git: https://github.com/redbooth/RealmResultsController.git
 
 CHECKOUT OPTIONS:
   PusherSwift:
     :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
     :git: https://github.com/pusher-community/pusher-websocket-swift.git
   RealmResultsController:
-    :commit: 321295081f7a1036412e51d1423993db2ba82300
-    :git: https://github.com/ngs/RealmResultsController.git
+    :commit: 34defa9eb1d8335cac79beb215b3b1a8353277d2
+    :git: https://github.com/redbooth/RealmResultsController.git
 
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
+  BigBrother: e3cdf5f22636c7b7e92ec4e3615e58cb58681125
   Carlos: 2519b03da9bf900b5aa698659a519ef5a8f6afc0
   CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60

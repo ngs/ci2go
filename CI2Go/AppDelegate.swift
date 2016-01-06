@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import WatchConnectivity
+import BigBrother
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, WCSessionDelegate {
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let env = NSProcessInfo().environment
 
+        BigBrother.addToSharedSession()
         setupRealm()
 
         if (WCSession.isSupported()) {
