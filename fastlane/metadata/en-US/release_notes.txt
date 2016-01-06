@@ -1,1 +1,2 @@
-Apple Watch Support
+- Realtime update!!
+- Improve performance and user interface.
