@@ -18,6 +18,8 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
         return try! Realm()
     }()
 
+    let pusherClient = CirclePusherClient()
+
     var rrc: RealmResultsController<Build, Build>?
 
     func buildRRC() -> RealmResultsController<Build, Build> {
@@ -88,6 +90,9 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
         } else {
             tracker.set(kGAIScreenName, value: "Builds Screen")
             self.updateRRC()
+            pusherClient.subscribeRefresh().subscribeNext {
+                self.refresh(self.pusherClient)
+            }.addDisposableTo(disposeBag)
         }
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }

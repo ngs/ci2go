@@ -11,7 +11,7 @@ import RxSwift
 import RealmSwift
 
 extension User {
-    class func me(token: String?) -> Observable<User> {
+    class func me(token: String? = nil) -> Observable<User> {
         let realm = try! Realm()
         let client = CircleAPIClient(token: token)
         return client.get("me").doOn(onNext: { user in

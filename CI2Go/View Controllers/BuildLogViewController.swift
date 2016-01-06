@@ -22,6 +22,7 @@ class BuildLogViewController: UIViewController {
         }
     }
     var logSubscription: Disposable?
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tracker = GAI.sharedInstance().defaultTracker
@@ -31,5 +32,11 @@ class BuildLogViewController: UIViewController {
             self.textView.logText = log
             self.view.setNeedsLayout()
         }
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        logSubscription?.dispose()
+        logSubscription = nil
     }
 }

@@ -77,6 +77,14 @@ class Build: Object, Mappable, Equatable, Comparable {
     let retries = List<Build>()
     let steps = List<BuildStep>()
 
+    var pusherChannelName: String? {
+        guard let repoUser = project?.username, repoName = project?.repositoryName where number > 0
+            else {
+            return nil
+        }
+        return "private-\(repoUser)@\(repoName)@\(number)"
+    }
+
     var lifecycle: Lifecycle? {
         get {
             if let rawLifecycle = rawLifecycle {
@@ -246,7 +254,7 @@ class Build: Object, Mappable, Equatable, Comparable {
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath"]
+        return ["lifecycle", "status", "outcome", "URL", "compareURL", "apiPath", "pusherChannelName"]
     }
 
     func dup(target: Build? = nil) -> Build {
