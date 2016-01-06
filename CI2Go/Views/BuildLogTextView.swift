@@ -10,6 +10,7 @@ import UIKit
 
 public class BuildLogTextView: UITextView {
 
+    public var snapBottom = true
 
     public var logText: String? = nil {
         didSet {
@@ -19,14 +20,25 @@ public class BuildLogTextView: UITextView {
             } else {
                 attributedText = nil
             }
-            self.scrollToBottom()
+            if snapBottom {
+                scrollToBottom()
+            }
         }
     }
 
+    public func shouldScrollToBottom() -> Bool {
+        layoutIfNeeded()
+        let h = layoutManager.usedRectForTextContainer(textContainer).height
+        return h > frame.size.height
+    }
+
     public func scrollToBottom() {
-        if contentSize.height > bounds.height {
-            scrollRangeToVisible(NSMakeRange(attributedText.length - 1, 1))
+        if shouldScrollToBottom() {
+            UIView.setAnimationsEnabled(false)
+            scrollRangeToVisible(NSMakeRange(attributedText.length - 1, 0))
+            UIView.setAnimationsEnabled(true)
+            scrollEnabled = false
+            scrollEnabled = true
         }
     }
-    
 }

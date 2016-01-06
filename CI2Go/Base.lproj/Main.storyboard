@@ -975,8 +975,12 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customClass="BuildLogTextView" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cfZ-lg-upH" id="nwt-Fn-hlq"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1008,6 +1012,9 @@
                                 <exclude reference="xMN-cK-3Rq"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ugC-5h-k5F" appends="YES" id="Y5y-PV-ZiX"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="ILl-8V-UbW"/>
                     <connections>
@@ -1015,6 +1022,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCk-E4-l1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" minimumNumberOfTouches="1" id="ugC-5h-k5F">
+                    <connections>
+                        <action selector="handlePan:" destination="cfZ-lg-upH" id="Kc3-jY-7N6"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="815" y="1525"/>
         </scene>

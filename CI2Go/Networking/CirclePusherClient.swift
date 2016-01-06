@@ -56,19 +56,14 @@ class CirclePusherClient {
             let channel = self.pusherClient.subscribe(channelName)
             channel.bind("appendAction", callback: { res in
                 guard let res = res as? [[String: AnyObject]] else { return }
-                autoreleasepool {
-                    let realm = try! Realm()
-                    try! realm.write {
-                        res.forEach { json in
-                            guard let stepNumber = json["step"] as? Int
-                                , nodeIndex = json["index"] as? Int
-                                , out = json["out"] as? [String: AnyObject]
-                                , message = out["message"] as? String
-                                where buildAction.stepNumber == stepNumber && buildAction.nodeIndex == nodeIndex
-                                else { return }
-                            buildAction.appendLog(message)
-                        }
-                    }
+                    res.forEach { json in
+                    guard let stepNumber = json["step"] as? Int
+                        , nodeIndex = json["index"] as? Int
+                        , out = json["out"] as? [String: AnyObject]
+                        , message = out["message"] as? String
+                        where buildAction.stepNumber == stepNumber && buildAction.nodeIndex == nodeIndex
+                        else { return }
+                    buildAction.appendLog(message)
                 }
             })
             return AnonymousDisposable {

@@ -191,7 +191,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         let action = rrc.objectAt(indexPath)
         let actionCell = cell as? BuildActionTableViewCell
         actionCell?.buildAction = action
-        let hasOutput = action.hasOutput
+        let hasOutput = action.hasOutput || action.status == .Running
         cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
         cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
     }
@@ -206,7 +206,8 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if let cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) {
-            return rrc.objectAt(indexPath).hasOutput
+            let a = rrc.objectAt(indexPath)
+            return a.hasOutput || a.status == .Running
         }
         return false
     }
@@ -258,6 +259,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     func willChangeResults(controller: AnyObject) {
         print("😇 willChangeResults")
+        UIView.setAnimationsEnabled(false)
         tableView.beginUpdates()
     }
 
@@ -297,6 +299,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     func didChangeResults(controller: AnyObject) {
         print("🙃 didChangeResults")
         self.tableView.endUpdates()
-        scrollToBottom(true)
+        if build?.status == .Running {
+            scrollToBottom(false)
+        }
+        UIView.setAnimationsEnabled(true)
     }
 }
