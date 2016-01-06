@@ -26,8 +26,17 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
     }
 
     func mapping(map: Map) {
+        var logAction: BuildAction?
+        var logMessage: String?
         name <- map["name"]
         tempActions <- map["actions"]
+        logAction <- map["log"]
+        logMessage <- map["message"]
+        if let logAction = logAction {
+            name = logAction.name
+            logAction.buildStep = self
+            tempActions.append(logAction)
+        }
         updateId()
     }
 
@@ -37,6 +46,7 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
                 id = "\(buildId):\(name.md5())"
             }
         #endif
+        tempActions.forEach { $0.updateId() }
         actions.forEach { $0.updateId() }
     }
 

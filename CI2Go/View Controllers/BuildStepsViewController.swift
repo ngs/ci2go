@@ -61,14 +61,22 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         }
     }
 
+    var pusherSubscription: Disposable?
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        guard let build = build else { return }
         refresh(nil)
+        pusherSubscription = AppDelegate.current.pusherClient.subscribeBuild(build).subscribeNext {
+            self.refresh(nil)
+        }
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        pusherSubscription?.dispose()
+        pusherSubscription = nil
     }
 
     override func viewDidLoad() {
@@ -183,7 +191,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         let action = rrc.objectAt(indexPath)
         let actionCell = cell as? BuildActionTableViewCell
         actionCell?.buildAction = action
-        let hasOutput = action.hasOutput
+        let hasOutput = action.hasOutput || action.status == .Running
         cell.accessoryType = hasOutput ? UITableViewCellAccessoryType.DisclosureIndicator : UITableViewCellAccessoryType.None
         cell.selectionStyle = hasOutput ? UITableViewCellSelectionStyle.Default : UITableViewCellSelectionStyle.None
     }
@@ -198,7 +206,8 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if let cell = sender as? UITableViewCell, indexPath = tableView.indexPathForCell(cell) {
-            return rrc.objectAt(indexPath).hasOutput
+            let a = rrc.objectAt(indexPath)
+            return a.hasOutput || a.status == .Running
         }
         return false
     }
@@ -210,6 +219,14 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         vc?.buildAction = cell?.buildAction
         vc?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
         vc?.navigationItem.leftItemsSupplementBackButton = true
+    }
+
+    func scrollToBottom(animated: Bool = false) {
+        let section = rrc.numberOfSections - 1
+        let row = rrc.numberOfObjectsAt(section) - 1
+        if section >= 0 && row >= 0 {
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section), atScrollPosition: .Bottom, animated: animated)
+        }
     }
 
     @IBAction func openActionSheet(sender: AnyObject) {
@@ -242,6 +259,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     func willChangeResults(controller: AnyObject) {
         print("😇 willChangeResults")
+        UIView.setAnimationsEnabled(false)
         tableView.beginUpdates()
     }
 
@@ -249,10 +267,10 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         print("🎁 didChangeObject '\((object as! BuildAction).id)' from: [\(oldIndexPath.section):\(oldIndexPath.row)] to: [\(newIndexPath.section):\(newIndexPath.row)] --> \(changeType) \(rrc.numberOfObjectsAt(newIndexPath.section)) \(rrc.numberOfSections))")
         switch changeType {
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
+            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
             break
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
             break
         case .Move:
             tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .None)
@@ -281,5 +299,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     func didChangeResults(controller: AnyObject) {
         print("🙃 didChangeResults")
         self.tableView.endUpdates()
+        if build?.status == .Running {
+            scrollToBottom(false)
+        }
+        UIView.setAnimationsEnabled(true)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import MBProgressHUD
 
-class BuildLogViewController: UIViewController {
+class BuildLogViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textView: BuildLogTextView!
     let disposeBag = DisposeBag()
     var buildAction: BuildAction? = nil {
@@ -21,15 +21,47 @@ class BuildLogViewController: UIViewController {
             tracker.send(dict)
         }
     }
-    var logSubscription: Disposable?
+    var logSubscription: Disposable?, pusherSubscription: Disposable?
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        guard let buildAction = buildAction else { return }
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Build Log Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
-        logSubscription = logSubscription ?? buildAction?.log.subscribeNext { log in
+        logSubscription = buildAction.log.subscribeNext { log in
             self.textView.logText = log
             self.view.setNeedsLayout()
         }
+        if buildAction.status == .Running {
+            pusherSubscription = AppDelegate.current.pusherClient.subscribeBuildLog(buildAction).subscribe()
+        }
+    }
+
+    var touching = false
+
+    @IBAction func handlePan(sender: UIPanGestureRecognizer) {
+        if sender.state == .Began {
+            touching = true
+        }
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        logSubscription?.dispose()
+        logSubscription = nil
+        pusherSubscription?.dispose()
+        pusherSubscription = nil
+    }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        guard textView.shouldScrollToBottom() && touching else { return }
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        let top = scrollView.frame.origin.y
+        let scrollTop = scrollView.contentOffset.y
+        let diff = contentHeight - scrollTop - top
+        textView.snapBottom = diff < height - 50
+        touching = false
     }
 }

@@ -75,6 +75,8 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
         self.view.backgroundColor = ColorScheme().backgroundColor()
     }
 
+    var pusherSubscription: Disposable?
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if let _ = NSProcessInfo().environment["TEST"] {
@@ -88,6 +90,9 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
         } else {
             tracker.set(kGAIScreenName, value: "Builds Screen")
             self.updateRRC()
+            pusherSubscription = AppDelegate.current.pusherClient.subscribeRefresh().subscribeNext {
+                self.refresh(nil)
+            }
         }
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
@@ -110,6 +115,7 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        pusherSubscription?.dispose()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

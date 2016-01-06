@@ -50,6 +50,8 @@
 		85168AA01C36BA6200392145 /* BuildSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A9F1C36BA6200392145 /* BuildSpec.swift */; };
 		85168AA21C36CBCC00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
 		85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
+		851AA6911C3CACA300A50744 /* CirclePusherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6901C3CACA300A50744 /* CirclePusherClient.swift */; };
+		851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851AA6921C3CC28200A50744 /* iAd.framework */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
@@ -439,6 +441,8 @@
 		85168A9D1C36B71E00392145 /* builds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = builds.json; sourceTree = "<group>"; };
 		85168A9F1C36BA6200392145 /* BuildSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSpec.swift; sourceTree = "<group>"; };
 		85168AA11C36CBCC00392145 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		851AA6901C3CACA300A50744 /* CirclePusherClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclePusherClient.swift; sourceTree = "<group>"; };
+		851AA6921C3CC28200A50744 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -631,6 +635,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */,
 				85C723F01C387D3C00582B4D /* Pods_CI2Go.framework in Frameworks */,
 				C04F2A3320EB76C305DAC26D /* Pods_CI2GoTests.framework in Frameworks */,
 			);
@@ -695,6 +700,7 @@
 			children = (
 				850B4EB31C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift */,
 				85C724351C3919B400582B4D /* CircleAPIClient.swift */,
+				851AA6901C3CACA300A50744 /* CirclePusherClient.swift */,
 				85C724431C396A1900582B4D /* ProjectNetworkingExtension.swift */,
 				85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */,
 				85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */,
@@ -1021,6 +1027,7 @@
 		85C723F51C387DA700582B4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				851AA6921C3CC28200A50744 /* iAd.framework */,
 				85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */,
 				85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */,
 				85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */,
@@ -1686,6 +1693,7 @@
 				850B4EBC1C38737100C1EC70 /* StringExtension.swift in Sources */,
 				850B4E9E1C37DB7200C1EC70 /* BranchesViewController.swift in Sources */,
 				85168A871C36813A00392145 /* BuildStep.swift in Sources */,
+				851AA6911C3CACA300A50744 /* CirclePusherClient.swift in Sources */,
 				8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */,
 				85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */,
 				85168A851C36813300392145 /* BuildAction.swift in Sources */,
