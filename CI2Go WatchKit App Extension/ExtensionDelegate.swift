@@ -7,15 +7,29 @@
 //
 
 import WatchKit
+import WatchConnectivity
 
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
+        if (WCSession.isSupported()) {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
     }
 
     func applicationDidBecomeActive() {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        let session = WCSession.defaultSession()
+        session.sendMessage(["fn":"app-launch"], replyHandler: { res in
+            if let apiToken = res["apiToken"] as? String
+                , colorSchemeName = res["colorSchemeName"] as? String {
+                    let def = CI2GoUserDefaults.standardUserDefaults()
+                    def.circleCIAPIToken = apiToken
+                    def.colorSchemeName = colorSchemeName
+                    NSNotificationCenter.defaultCenter().postNotificationName("hoge", object: nil)
+            }
+            }, errorHandler: nil)
     }
 
     func applicationWillResignActive() {
@@ -23,4 +37,16 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Use this method to pause ongoing tasks, disable timers, etc.
     }
 
+    // MARK: - WCSessionDelegate
+
+    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
+        let m = NSFileManager.defaultManager()
+        guard let path1 = file.fileURL.path else { return }
+        let dest = realmPath
+        if m.fileExistsAtPath(dest) {
+            try! m.removeItemAtPath(dest)
+        }
+        try! m.moveItemAtPath(path1, toPath: dest)
+        setupRealm()
+    }
 }
