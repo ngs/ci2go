@@ -8,34 +8,38 @@
 
 import UIKit
 import RealmSwift
-import WatchConnectivity
 import BigBrother
+import RxSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate, WCSessionDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
+    
     var window: UIWindow?
-
+    let disposeBag = DisposeBag()
+    let watchMessageHandler = WatchMessageHandler()
+    
     lazy var pusherClient: CirclePusherClient = {
         return CirclePusherClient()
     }()
 
+    var realmPath: String {
+        let fileURL = NSFileManager.defaultManager()
+            .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
+            .URLByAppendingPathComponent("ci2go.realm")
+        return fileURL!.path!
+    }
+
     class var current: AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let env = NSProcessInfo().environment
-
+        
         BigBrother.addToSharedSession()
         setupRealm()
-
-        if (WCSession.isSupported()) {
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-        }
-
+        watchMessageHandler.activate()
+        
         // Google Analytics
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true
@@ -44,21 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             gai.logger.logLevel = .Verbose
         }
         gai.trackerWithTrackingId(kCI2GoGATrackingId)
-
+        
         // Appearance
         ColorScheme().apply()
-
+        
         // Setup view controllers
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
         splitViewController.delegate = self
-
+        
         return true
     }
-
+    
     // MARK: - Split view
-
+    
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         if let secondaryAsNavController = secondaryViewController as? UINavigationController {
             return secondaryAsNavController.topViewController is BuildLogViewController
@@ -66,27 +70,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
 
+    func setupRealm() {
+        let env = NSProcessInfo().environment
+
+        var config = Realm.Configuration(schemaVersion: kCI2GoSchemaVersion)
+        if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
+            config.inMemoryIdentifier = identifier
+        } else {
+            config.path = realmPath
+        }
+        let def = CI2GoUserDefaults.standardUserDefaults()
+        if def.storedSchemaVersion != kCI2GoSchemaVersion {
+            if let path = Realm.Configuration.defaultConfiguration.path {
+                do {
+                    try NSFileManager.defaultManager().removeItemAtPath(path)
+                } catch {}
+            }
+            _ = try! Realm()
+            def.storedSchemaVersion = kCI2GoSchemaVersion
+        }
+        Realm.Configuration.defaultConfiguration = config
+    }
+    
     func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {
         return false
-    }
-
-
-    // MARK: - WatchConnectivity
-
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        if let fn = message["fn"] as? String where fn == "app-launch" {
-            let def = CI2GoUserDefaults.standardUserDefaults()
-            if let apiToken = def.circleCIAPIToken
-                , colorSchemeName = def.colorSchemeName {
-                    session.transferFile(NSURL(fileURLWithPath: realmPath), metadata: [:])
-                    replyHandler(
-                        [
-                            "apiToken": apiToken,
-                            "colorSchemeName": colorSchemeName
-                        ]
-                    )
-            }
-        }
     }
 }
 

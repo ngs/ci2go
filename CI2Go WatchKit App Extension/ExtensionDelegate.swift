@@ -23,32 +23,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidBecomeActive() {
         let session = WCSession.defaultSession()
-        session.sendMessage(["fn":"app-launch"], replyHandler: { res in
-            if let apiToken = res["apiToken"] as? String
-                , colorSchemeName = res["colorSchemeName"] as? String {
+        session.sendMessage(function: .AppLaunch, replyHandler: { res in
+            if let apiToken = res[kCI2GoWatchConnectivityApiTokenKey] as? String
+                , colorSchemeName = res[kCI2GoWatchConnectivityColorSchemeNameKey] as? String {
                     let def = CI2GoUserDefaults.standardUserDefaults()
                     def.circleCIAPIToken = apiToken
                     def.colorSchemeName = colorSchemeName
-                    NSNotificationCenter.defaultCenter().postNotificationName(kCI2GoAPITokenReceivedNotification, object: nil)
+                    NSNotificationCenter.defaultCenter()
+                        .postNotificationName(kCI2GoAPITokenReceivedNotification, object: nil)
             }
-            }, errorHandler: nil)
+        })
     }
 
     func applicationWillResignActive() {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
-    }
-
-    // MARK: - WCSessionDelegate
-
-    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
-        let m = NSFileManager.defaultManager()
-        guard let path1 = file.fileURL.path else { return }
-        let dest = realmPath
-        if m.fileExistsAtPath(dest) {
-            try! m.removeItemAtPath(dest)
-        }
-        try! m.moveItemAtPath(path1, toPath: dest)
-        setupRealm()
     }
 }

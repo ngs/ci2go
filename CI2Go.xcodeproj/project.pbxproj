@@ -11,7 +11,6 @@
 		850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
 		850B4E881C36E78700C1EC70 /* build.json in Resources */ = {isa = PBXBuildFile; fileRef = 850B4E871C36E78700C1EC70 /* build.json */; };
 		850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E891C36EA6B00C1EC70 /* Node.swift */; };
-		850B4E8B1C36EC4C00C1EC70 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E891C36EA6B00C1EC70 /* Node.swift */; };
 		850B4E8D1C373E9400C1EC70 /* ColorSchemeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E8C1C373E9400C1EC70 /* ColorSchemeSpec.swift */; };
 		850B4E9E1C37DB7200C1EC70 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E901C37DB7200C1EC70 /* BranchesViewController.swift */; };
 		850B4E9F1C37DB7200C1EC70 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E911C37DB7200C1EC70 /* BuildLogViewController.swift */; };
@@ -37,11 +36,6 @@
 		85168A871C36813A00392145 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A861C36813A00392145 /* BuildStep.swift */; };
 		85168A891C36814200392145 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A881C36814200392145 /* Commit.swift */; };
 		85168A8D1C36815D00392145 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A8C1C36815D00392145 /* User.swift */; };
-		85168A8E1C3681F600392145 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A821C36812B00392145 /* Build.swift */; };
-		85168A8F1C3681F600392145 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A841C36813300392145 /* BuildAction.swift */; };
-		85168A901C3681F600392145 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A861C36813A00392145 /* BuildStep.swift */; };
-		85168A911C3681F600392145 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A881C36814200392145 /* Commit.swift */; };
-		85168A931C3681F600392145 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A8C1C36815D00392145 /* User.swift */; };
 		85168A951C3691A300392145 /* BranchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A941C3691A300392145 /* BranchSpec.swift */; };
 		85168A981C36A25100392145 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85168A971C36A25100392145 /* projects.json */; };
 		85168A9A1C36A44C00392145 /* SpecHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A991C36A44C00392145 /* SpecHelper.swift */; };
@@ -329,30 +323,31 @@
 		8567038D1C30260500E76DCF /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702851C30253100E76DCF /* Wryan.itermcolors */; };
 		8567038E1C30260500E76DCF /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 856702861C30253100E76DCF /* Zenburn.itermcolors */; };
 		856A4C201C334BA5000A8F4A /* CI2Go WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 856701BC1C3016BA00E76DCF /* CI2Go WatchKit App.app */; };
-		856E04D51C313BC2003F43BC /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
 		856E04D71C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
-		856E04D81C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
+		858D6A4B1C3E62D700C197D5 /* WatchMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D6A4A1C3E62D700C197D5 /* WatchMessageHandler.swift */; };
+		858D6B131C3F2A7C00C197D5 /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858D6B121C3F2A7C00C197D5 /* Pods_CI2GoTests.framework */; };
 		85AAB8A31C344A77007C5453 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */; };
 		85B00CD81C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */; };
 		85C067891C3127AA001062F2 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
 		85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
 		85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C0678A1C31354F001062F2 /* AppGlobal.swift */; };
+		85C35D8D1C3E004E00AD2926 /* BuildEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */; };
+		85C35D8E1C3E004E00AD2926 /* BuildEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */; };
+		85C35D941C3E157C00AD2926 /* BuildCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D931C3E157C00AD2926 /* BuildCompact.swift */; };
+		85C35D951C3E158600AD2926 /* BuildCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D931C3E157C00AD2926 /* BuildCompact.swift */; };
+		85C35D971C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */; };
+		85C35D981C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */; };
 		85C723F01C387D3C00582B4D /* Pods_CI2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */; };
 		85C723F21C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
 		85C723F41C387D6100582B4D /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */; };
-		85C724341C38C75000582B4D /* BuildActionNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4EB31C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift */; };
 		85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724351C3919B400582B4D /* CircleAPIClient.swift */; };
 		85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724371C391A9800582B4D /* DictionaryExtension.swift */; };
 		85C7243A1C39216500582B4D /* CircleAPIClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724391C39216500582B4D /* CircleAPIClientSpec.swift */; };
-		85C7243B1C3921B200582B4D /* CircleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724351C3919B400582B4D /* CircleAPIClient.swift */; };
 		85C7243D1C392AB600582B4D /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = 85C7243C1C392AB600582B4D /* me.json */; };
 		85C7243F1C392B3100582B4D /* UserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7243E1C392B3100582B4D /* UserSpec.swift */; };
 		85C724411C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */; };
-		85C724421C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */; };
 		85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724431C396A1900582B4D /* ProjectNetworkingExtension.swift */; };
 		85C724471C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */; };
-		85C724481C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */; };
-		C04F2A3320EB76C305DAC26D /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +410,8 @@
 		01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.release.xcconfig"; sourceTree = "<group>"; };
 		4B9D78B3D52C03C76D2F7198 /* Pods_CI2GoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F60248324E88D802191C58E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE8645B1DBCA9BFA4AFBE83 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUniqueExtension.swift; sourceTree = "<group>"; };
 		850B4E871C36E78700C1EC70 /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
 		850B4E891C36EA6B00C1EC70 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -615,12 +612,17 @@
 		856702851C30253100E76DCF /* Wryan.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Wryan.itermcolors; sourceTree = "<group>"; };
 		856702861C30253100E76DCF /* Zenburn.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Zenburn.itermcolors; sourceTree = "<group>"; };
 		856E04D61C313BD9003F43BC /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		858D6A4A1C3E62D700C197D5 /* WatchMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMessageHandler.swift; sourceTree = "<group>"; };
+		858D6B121C3F2A7C00C197D5 /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2GoTests.framework; path = "Pods/../build/Debug-iphoneos/Pods_CI2GoTests.framework"; sourceTree = "<group>"; };
 		85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewControllerSpec.swift; sourceTree = "<group>"; };
 		85C067881C3127AA001062F2 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85C0678A1C31354F001062F2 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		85C0678C1C31363B001062F2 /* CI2Go-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		85C0678D1C3136E1001062F2 /* CI2Go WatchKit App Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CI2Go WatchKit App Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildEnums.swift; sourceTree = "<group>"; };
+		85C35D931C3E157C00AD2926 /* BuildCompact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildCompact.swift; sourceTree = "<group>"; };
+		85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CI2GoWatchConnectivity.swift; sourceTree = "<group>"; };
 		85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go.framework; path = "build/Debug-iphoneos/Pods_CI2Go.framework"; sourceTree = "<group>"; };
 		85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go_WatchKit_App_Extension.framework; path = "build/Debug-watchos/Pods_CI2Go_WatchKit_App_Extension.framework"; sourceTree = "<group>"; };
 		85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2GoTests.framework; path = "build/Debug-iphoneos/Pods_CI2GoTests.framework"; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 		C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.release.xcconfig"; sourceTree = "<group>"; };
+		F0BE7760293DEE768563F379 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,7 +656,7 @@
 			files = (
 				851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */,
 				85C723F01C387D3C00582B4D /* Pods_CI2Go.framework in Frameworks */,
-				C04F2A3320EB76C305DAC26D /* Pods_CI2GoTests.framework in Frameworks */,
+				858D6B131C3F2A7C00C197D5 /* Pods_CI2GoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -887,6 +890,8 @@
 			children = (
 				856702101C30253100E76DCF /* CI2GoUserDefaults.swift */,
 				856702111C30253100E76DCF /* ColorScheme.swift */,
+				85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */,
+				858D6A4A1C3E62D700C197D5 /* WatchMessageHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1017,12 +1022,14 @@
 		85C067871C312748001062F2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				850B4E891C36EA6B00C1EC70 /* Node.swift */,
 				85C067881C3127AA001062F2 /* Branch.swift */,
 				85168A821C36812B00392145 /* Build.swift */,
 				85168A841C36813300392145 /* BuildAction.swift */,
+				85C35D931C3E157C00AD2926 /* BuildCompact.swift */,
+				85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */,
 				85168A861C36813A00392145 /* BuildStep.swift */,
 				85168A881C36814200392145 /* Commit.swift */,
+				850B4E891C36EA6B00C1EC70 /* Node.swift */,
 				856E04D61C313BD9003F43BC /* Project.swift */,
 				85168A8C1C36815D00392145 /* User.swift */,
 			);
@@ -1051,6 +1058,7 @@
 		85C723F51C387DA700582B4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				858D6B121C3F2A7C00C197D5 /* Pods_CI2GoTests.framework */,
 				851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */,
 				851AA6921C3CC28200A50744 /* iAd.framework */,
 				85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */,
@@ -1058,6 +1066,7 @@
 				85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */,
 				CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */,
 				4B9D78B3D52C03C76D2F7198 /* Pods_CI2GoUITests.framework */,
+				5F60248324E88D802191C58E /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1071,6 +1080,8 @@
 				01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */,
 				5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */,
 				D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */,
+				5FE8645B1DBCA9BFA4AFBE83 /* Pods.debug.xcconfig */,
+				F0BE7760293DEE768563F379 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1597,7 +1608,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3F52B243D12233BF092B4880 /* Copy Pods Resources */ = {
@@ -1706,12 +1717,14 @@
 				856702951C30253100E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				85C724411C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
 				85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */,
+				85C35D971C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */,
 				850B4EA71C37DB7200C1EC70 /* BuildTableViewCell.swift in Sources */,
 				850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */,
 				8567028C1C30253100E76DCF /* UIColor+Mix.swift in Sources */,
 				850B4E9F1C37DB7200C1EC70 /* BuildLogViewController.swift in Sources */,
 				856E04D71C313BD9003F43BC /* Project.swift in Sources */,
 				850B4EA61C37DB7200C1EC70 /* BuildLogTextView.swift in Sources */,
+				858D6A4B1C3E62D700C197D5 /* WatchMessageHandler.swift in Sources */,
 				85C724471C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */,
 				850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */,
 				850B4EA91C37DB7200C1EC70 /* SettingsTableView.swift in Sources */,
@@ -1729,7 +1742,9 @@
 				85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */,
 				856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */,
 				850B4EA11C37DB7200C1EC70 /* BuildsViewController.swift in Sources */,
+				85C35D8D1C3E004E00AD2926 /* BuildEnums.swift in Sources */,
 				851AA6951C3D318300A50744 /* UIViewExtension.swift in Sources */,
+				85C35D941C3E157C00AD2926 /* BuildCompact.swift in Sources */,
 				850B4EA31C37DB7200C1EC70 /* ProjectsViewController.swift in Sources */,
 				85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */,
 				8567028D1C30253100E76DCF /* UIFont+appFonts.swift in Sources */,
@@ -1755,35 +1770,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85168A911C3681F600392145 /* Commit.swift in Sources */,
+				85C35D8E1C3E004E00AD2926 /* BuildEnums.swift in Sources */,
 				856703101C30254300E76DCF /* UIColor+Mix.swift in Sources */,
 				851AA6A41C3D3BDD00A50744 /* SingleBuildInterfaceController.swift in Sources */,
 				8567031A1C3025FB00E76DCF /* ColorScheme.swift in Sources */,
-				850B4E8B1C36EC4C00C1EC70 /* Node.swift in Sources */,
-				85168A901C3681F600392145 /* BuildStep.swift in Sources */,
-				85168A8E1C3681F600392145 /* Build.swift in Sources */,
 				856703191C3025FB00E76DCF /* CI2GoUserDefaults.swift in Sources */,
-				85168A931C3681F600392145 /* User.swift in Sources */,
+				85C35D981C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */,
 				851AA6A31C3D3BDD00A50744 /* BuildTableRowController.swift in Sources */,
 				856703111C30254300E76DCF /* UIFont+appFonts.swift in Sources */,
 				856701D41C3016BA00E76DCF /* NotificationController.swift in Sources */,
 				851AA6A11C3D3BDD00A50744 /* BuildInterfaceController.swift in Sources */,
-				85C724341C38C75000582B4D /* BuildActionNetworkingExtension.swift in Sources */,
 				85C0678E1C31374F001062F2 /* AppGlobal.swift in Sources */,
-				85C7243B1C3921B200582B4D /* CircleAPIClient.swift in Sources */,
 				850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */,
-				856E04D81C313BD9003F43BC /* Project.swift in Sources */,
-				85168A8F1C3681F600392145 /* BuildAction.swift in Sources */,
 				856701D21C3016BA00E76DCF /* ExtensionDelegate.swift in Sources */,
 				850B4EB11C3809BC00C1EC70 /* IntTimeFormattedExtension.swift in Sources */,
 				850B4EBD1C38737400C1EC70 /* StringExtension.swift in Sources */,
 				85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */,
-				85C724421C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
 				856701D01C3016BA00E76DCF /* InterfaceController.swift in Sources */,
+				85C35D951C3E158600AD2926 /* BuildCompact.swift in Sources */,
 				851AA6A21C3D3BDD00A50744 /* BuildsInterfaceController.swift in Sources */,
-				85C724481C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */,
 				856701D61C3016BA00E76DCF /* GlanceController.swift in Sources */,
-				856E04D51C313BC2003F43BC /* Branch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1845,13 +1851,8 @@
 			baseConfigurationReference = 5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = CI2GoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
@@ -1864,13 +1865,8 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
 				INFOPLIST_FILE = CI2GoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
@@ -2001,7 +1997,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = CI2GoUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = CI2Go;
@@ -2014,7 +2009,6 @@
 			buildSettings = {
 				INFOPLIST_FILE = CI2GoUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = CI2Go;
@@ -2029,12 +2023,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-watchos",
-				);
 				INFOPLIST_FILE = "CI2Go WatchKit App Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
@@ -2053,12 +2042,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-watchos",
-				);
 				INFOPLIST_FILE = "CI2Go WatchKit App Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";

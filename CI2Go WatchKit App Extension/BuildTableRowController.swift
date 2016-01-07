@@ -23,8 +23,8 @@ class BuildTableRowController: NSObject {
     guard let build = build else { return }
     let cs = ColorScheme()
     statusColorBar.setBackgroundColor(cs.badgeColor(status: build.status))
-    repoLabel.setText(build.project?.path)
+    repoLabel.setText(build.projectPath)
     buildNumLabel.setText("#\(build.number)")
-    branchLabel.setText(build.branch?.name)
+    branchLabel.setText(build.branchName)
   }
 }

@@ -7,7 +7,7 @@
 //
 
 import WatchKit
-import DateTools
+import WatchConnectivity
 
 class BuildInterfaceController: SingleBuildInterfaceController {
 
@@ -15,14 +15,12 @@ class BuildInterfaceController: SingleBuildInterfaceController {
 
     override func willActivate() {
         super.willActivate()
-        //let tracker = getDefaultGAITraker()
-        //tracker.set(kGAIScreenName, value: "Build Detail")
-        //tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        WCSession.defaultSession().trackScreen("Build Detail")
     }
 
     override func updateViews() {
         super.updateViews()
-        timeLabel.setText(build?.startedAt?.timeAgoSinceNow() ?? "")
+        timeLabel.setText(build?.startedAt)
     }
 
 }

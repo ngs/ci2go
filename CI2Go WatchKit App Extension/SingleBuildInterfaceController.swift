@@ -7,16 +7,9 @@
 //
 
 import WatchKit
-import RealmSwift
-import RxSwift
+import WatchConnectivity
 
 class SingleBuildInterfaceController: WKInterfaceController {
-
-    lazy var realm: Realm = {
-        return try! Realm()
-    }()
-
-    let disposeBag = DisposeBag()
 
     @IBOutlet weak var branchLabel: WKInterfaceLabel!
     @IBOutlet weak var buildNumLabel: WKInterfaceLabel!
@@ -36,13 +29,13 @@ class SingleBuildInterfaceController: WKInterfaceController {
         if let build = build, status = build.status {
             self.statusGroup.setBackgroundColor(cs.badgeColor(status: status))
             self.statusLabel.setText(status.humanize)
-            self.repoLabel.setText(build.project?.path)
+            self.repoLabel.setText(build.projectPath)
             let numText = "#\(build.number)"
             self.buildNumLabel.setText(numText)
             self.setTitle(numText)
-            self.branchLabel.setText(build.branch?.name)
-            self.commitMessageLabel.setText(build.triggeredCommit?.subject)
-            self.authorLabel.setText(build.user?.name)
+            self.branchLabel.setText(build.branchName)
+            self.commitMessageLabel.setText(build.commitSubject)
+            self.authorLabel.setText(build.userName)
         } else {
             self.statusGroup.setBackgroundColor(cs.badgeColor(status: nil))
             self.statusLabel.setText("")
@@ -56,21 +49,37 @@ class SingleBuildInterfaceController: WKInterfaceController {
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        // let tracker = getDefaultGAITraker()
         if let buildID = context as? String {
-            self.build = realm.objectForPrimaryKey(Build.self, key: buildID)
+            Build.fromCache(buildID) { build in
+                self.build = build
+            }
         } else {
-            self.build = realm.objects(Build.self)
-                .filter(CI2GoUserDefaults.standardUserDefaults().buildsPredicate)
-                .sorted("queuedAt").first
+            Build.fromCache { builds in
+                self.build = builds.first
+            }
         }
-        //let dict = GAIDictionaryBuilder.createEventWithCategory("build", action: "set", label: self.build?.apiPath, value: 1).build() as [NSObject : AnyObject]
-        //tracker.send(dict)
+        if let buildId = self.build?.id {
+            WCSession.defaultSession().trackEvent(
+                category: "build",
+                action: "set",
+                label: buildId,
+                value: 1
+            )
+        }
     }
 
+    let name = "Build Detail"
+
     @IBAction func handleRefreshMenuItem() {
-        self.build?.post("retry").subscribeNext { build in
-            self.pushControllerWithName("Build Detail", context: build.id)
-        }.addDisposableTo(disposeBag)
+        let session = WCSession.defaultSession()
+        guard let buildId = self.build?.id else { return }
+        session.sendMessage(
+            function: .RetryBuild,
+            params: [kCI2GoWatchConnectivityBuildIdKey: buildId],
+            replyHandler: { res in
+                if let buildId = res[kCI2GoWatchConnectivityBuildIdKey] as? String {
+                    self.pushControllerWithName(self.name, context: buildId)
+                }
+        })
     }
 }
