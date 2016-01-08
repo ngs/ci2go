@@ -7,21 +7,16 @@
 //
 
 import WatchKit
-import Foundation
-import RealmSwift
-import RxSwift
+import WatchConnectivity
 
 class BuildsInterfaceController: WKInterfaceController {
     @IBOutlet weak var interfaceTable: WKInterfaceTable!
     @IBOutlet weak var placeholderGroup: WKInterfaceGroup!
-
-    let disposeBag = DisposeBag()
     let maxBuilds = 20
 
     override func willActivate() {
         super.willActivate()
-        setupRealm()
-        self.updateList()
+        self.refresh()
         self.placeholderGroup.setHidden(true)
         self.interfaceTable.setHidden(false)
         NSNotificationCenter.defaultCenter()
@@ -35,41 +30,28 @@ class BuildsInterfaceController: WKInterfaceController {
     }
 
     func handleApiTokenUpdate(sender: AnyObject? = nil) {
-        self.updateList()
-        //let tracker = getDefaultGAITraker()
+        self.refresh()
+        let session = WCSession.defaultSession()
         if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
-            self.refresh()
             self.placeholderGroup.setHidden(true)
-            //tracker.set(kGAIScreenName, value: "Builds")
+            session.trackScreen("Builds")
         } else {
             self.interfaceTable.setHidden(true)
-            //tracker.set(kGAIScreenName, value: "Builds Placeholer")
+            session.trackScreen("Builds Placeholder")
         }
-        //tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
 
     func refresh() {
-        Build.getRecent(0, limit: maxBuilds).subscribeNext { builds in
-            autoreleasepool {
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(builds, update: true)
-                }
-                self.updateList()
-            }
-        }.addDisposableTo(disposeBag)
+        Build.requestList { self.updateList($0) }
     }
 
-    func updateList() {
-        let realm = try! Realm()
-        let builds = realm.objects(Build)
-        let cnt = builds.count
+    func updateList(builds: [Build]) {
+        var cnt = builds.count
         if(cnt > maxBuilds) {
-            self.interfaceTable.setNumberOfRows(maxBuilds, withRowType: "default")
-        } else {
-            self.interfaceTable.setNumberOfRows(cnt, withRowType: "default")
+            cnt = maxBuilds
         }
-        for var i = 0; i < cnt && i < maxBuilds; i++ {
+        self.interfaceTable.setNumberOfRows(cnt, withRowType: "default")
+        for var i = 0; i < cnt; i++ {
             if let row = self.interfaceTable.rowControllerAtIndex(i) as? BuildTableRowController {
                 row.build = builds[i]
             }

@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: 7.1
+    version: 7.2
   environment:
     KEYCHAIN_NAME: default
     FL_UNLOCK_KEYCHAIN_PATH: ~/Library/Keychains/default
@@ -20,11 +20,6 @@ dependencies:
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
     - sudo pip install awscli
     - sudo gem update bundler
-  override:
-    - export TGZ="$(cat Gemfile | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/rubygems/$TGZ $TGZ && tar xvfz $TGZ) || true
-    - export TGZ="$(cat Podfile | md5).tgz"; (aws s3 cp s3://$S3_BUCKET/deps/cocoapods/$TGZ $TGZ && tar xvfz $TGZ) || true
-    - export TGZ="$(cat Gemfile | md5).tgz"; bundle check --path=vendor/bundle || (bundle install -j4 --path=vendor/bundle && tar cvfz $TGZ vendor/bundle && aws s3 cp $TGZ s3://$S3_BUCKET/deps/rubygems/$TGZ)
-    - export TGZ="$(cat Podfile | md5).tgz"; [ -f $TGZ ] || bundle exec pod check || (bundle exec pod install && tar cvfz $TGZ Pods && aws s3 cp $TGZ s3://$S3_BUCKET/deps/cocoapods/$TGZ)
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
     - echo "export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')" >> ~/.bashrc

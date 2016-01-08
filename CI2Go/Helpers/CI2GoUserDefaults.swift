@@ -7,7 +7,9 @@
 //
 
 import Foundation
-import RealmSwift
+#if os(iOS)
+    import RealmSwift
+#endif
 
 private var _standardUserDefaults: AnyObject? = nil
 
@@ -20,9 +22,9 @@ let kCI2GoBranchChangedNotification = "CI2GoBranchChanged"
 let kCI2GoColorSchemeChangedNotification = "CI2GoColorSchemeChanged"
 
 class CI2GoUserDefaults: NSObject {
-
+    
     private var testUserDefaults: NSUserDefaults?
-
+    
     func reset() {
         for k in [
             kCI2GoColorSchemeUserDefaultsKey,
@@ -31,19 +33,14 @@ class CI2GoUserDefaults: NSObject {
                 userDefaults.removeObjectForKey(k)
         }
     }
-
-    lazy var realm: Realm = {
-        return try! Realm()
-    }()
-
-
+    
     class func standardUserDefaults() -> CI2GoUserDefaults {
         if nil == _standardUserDefaults {
             _standardUserDefaults = CI2GoUserDefaults()
         }
         return _standardUserDefaults! as! CI2GoUserDefaults
     }
-
+    
     private lazy var userDefaults: NSUserDefaults = {
         let ud: NSUserDefaults
         if let _ = NSProcessInfo.processInfo().environment["TEST"] {
@@ -52,10 +49,10 @@ class CI2GoUserDefaults: NSObject {
         } else {
             ud = NSUserDefaults(suiteName: kCI2GoAppGroupIdentifier)!
         }
-        ud.registerDefaults([kCI2GoColorSchemeUserDefaultsKey: "Github"])
+        ud.registerDefaults([kCI2GoColorSchemeUserDefaultsKey: ColorScheme.defaultSchemeName])
         return ud
     }()
-
+    
     var colorSchemeName: String? {
         set(value) {
             if (value != nil && ColorScheme.names.indexOf((value! as String)) != nil) {
@@ -70,7 +67,7 @@ class CI2GoUserDefaults: NSObject {
             return userDefaults.stringForKey(kCI2GoColorSchemeUserDefaultsKey)
         }
     }
-
+    
     var circleCIAPIToken: String? {
         set(value) {
             if (value != nil) {
@@ -84,7 +81,7 @@ class CI2GoUserDefaults: NSObject {
             return userDefaults.stringForKey(kCI2GoCircleCIAPITokenDefaultsKey)
         }
     }
-
+    
     var storedSchemaVersion: UInt64 {
         set(value) {
             userDefaults.setInteger(Int(value), forKey: kCI2GoSchemaVersionDefaultsKey)
@@ -94,11 +91,17 @@ class CI2GoUserDefaults: NSObject {
             return UInt64(userDefaults.integerForKey(kCI2GoSchemaVersionDefaultsKey))
         }
     }
-
+    
     var isLoggedIn: Bool {
         return circleCIAPIToken?.isEmpty == false
     }
-
+    
+    #if os(iOS)
+    
+    lazy var realm: Realm = {
+        return try! Realm()
+    }()
+    
     var selectedBranch: Branch? {
         set(value) {
             let branchID = value?.id
@@ -112,7 +115,7 @@ class CI2GoUserDefaults: NSObject {
             return nil
         }
     }
-
+    
     var selectedProject: Project? {
         set(value) {
             let projectID = value?.id
@@ -126,14 +129,14 @@ class CI2GoUserDefaults: NSObject {
             return nil
         }
     }
-
+    
     var buildsAPIPath: String {
         if let p = selectedProject {
             return p.apiPath
         }
         return "recent-builds"
     }
-
+    
     var buildsPredicate: NSPredicate {
         let baseQuery = "id != %@ AND branch != nil AND project != nil"
         if let branch = selectedBranch {
@@ -144,4 +147,6 @@ class CI2GoUserDefaults: NSObject {
         }
         return NSPredicate(format: baseQuery, "")
     }
+    
+    #endif
 }

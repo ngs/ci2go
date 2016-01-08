@@ -12,6 +12,9 @@ private var _names: [String] = []
 private var _cache = [String: [String: [String: CGFloat]]]()
 
 class ColorScheme {
+
+    static let defaultSchemeName = "Github"
+
     class var names: [String] {
         if _names.count == 0 {
             if let files = NSBundle.mainBundle().URLsForResourcesWithExtension("itermcolors", subdirectory: nil) {
@@ -128,20 +131,6 @@ class ColorScheme {
         }
     }
 
-    func actionColor(status status: BuildAction.Status?) -> UIColor? {
-        guard let status = status else { return UIColor.grayColor() }
-        switch status {
-        case .Success:
-            return greenColor()
-        case .Running:
-            return yellowColor()
-        case .Failed, .Timedout:
-            return redColor()
-        default:
-            return UIColor.grayColor()
-        }
-    }
-
     func isLight() -> Bool {
         if let bg = backgroundColor() {
             var brightness: CGFloat = 0.0;
@@ -156,6 +145,21 @@ class ColorScheme {
     }
 
     #if os(iOS)
+    
+    func actionColor(status status: BuildAction.Status?) -> UIColor? {
+        guard let status = status else { return UIColor.grayColor() }
+        switch status {
+        case .Success:
+            return greenColor()
+        case .Running:
+            return yellowColor()
+        case .Failed, .Timedout:
+            return redColor()
+        default:
+            return UIColor.grayColor()
+        }
+    }
+
     lazy var ansiHelper: AMR_ANSIEscapeHelper = {
         let h = AMR_ANSIEscapeHelper()
         for var i: Int = 0; i < 8; i++ {
