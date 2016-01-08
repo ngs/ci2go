@@ -1,9 +1,8 @@
 # vim: set ft=ruby
 
-use_frameworks!
-inhibit_all_warnings!
-
 target 'CI2Go' do
+  use_frameworks!
+  inhibit_all_warnings!
   platform :ios, '9.0'
   pod 'AlamofireObjectMapper', '~> 2.1'
   pod 'BigBrother', '~> 0.3.0'
@@ -20,12 +19,16 @@ target 'CI2Go' do
 end
 
 target 'CI2Go WatchKit App Extension' do
+  use_frameworks!
+  inhibit_all_warnings!
   platform :watchos, '2.0'
   pod 'AlamofireObjectMapper', '~> 2.1'
   pod 'Carlos', '~> 0.5'
 end
 
 target 'CI2GoTests' do
+  use_frameworks!
+  inhibit_all_warnings!
   platform :ios, '9.0'
   pod 'AlamofireObjectMapper', '~> 2.1'
   pod 'GoogleAnalytics', '~> 3.14'

@@ -268,7 +268,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     func willChangeResults(controller: AnyObject) {
         print("😇 willChangeResults")
-        UIView.setAnimationsEnabled(false)
+//        UIView.setAnimationsEnabled(false)
         tableView.beginUpdates()
     }
 
@@ -306,11 +306,11 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     }
 
     func didChangeResults(controller: AnyObject) {
-        print("🙃 didChangeResults")
+        print("🙃 didChangeResults \(self.numberOfSectionsInTableView(tableView))")
         self.tableView.endUpdates()
         if build?.status == .Running {
             scrollToBottom(false)
         }
-        UIView.setAnimationsEnabled(true)
+//        UIView.setAnimationsEnabled(true)
     }
 }
