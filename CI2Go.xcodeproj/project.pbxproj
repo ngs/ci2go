@@ -325,7 +325,6 @@
 		856A4C201C334BA5000A8F4A /* CI2Go WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 856701BC1C3016BA00E76DCF /* CI2Go WatchKit App.app */; };
 		856E04D71C313BD9003F43BC /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856E04D61C313BD9003F43BC /* Project.swift */; };
 		858D6A4B1C3E62D700C197D5 /* WatchMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858D6A4A1C3E62D700C197D5 /* WatchMessageHandler.swift */; };
-		858D6B131C3F2A7C00C197D5 /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858D6B121C3F2A7C00C197D5 /* Pods_CI2GoTests.framework */; };
 		85AAB8A31C344A77007C5453 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */; };
 		85B00CD81C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */; };
 		85C067891C3127AA001062F2 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C067881C3127AA001062F2 /* Branch.swift */; };
@@ -411,7 +410,6 @@
 		4B9D78B3D52C03C76D2F7198 /* Pods_CI2GoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F60248324E88D802191C58E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FE8645B1DBCA9BFA4AFBE83 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUniqueExtension.swift; sourceTree = "<group>"; };
 		850B4E871C36E78700C1EC70 /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
 		850B4E891C36EA6B00C1EC70 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -638,7 +636,6 @@
 		C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.release.xcconfig"; sourceTree = "<group>"; };
-		F0BE7760293DEE768563F379 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -656,7 +653,6 @@
 			files = (
 				851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */,
 				85C723F01C387D3C00582B4D /* Pods_CI2Go.framework in Frameworks */,
-				858D6B131C3F2A7C00C197D5 /* Pods_CI2GoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,8 +1076,6 @@
 				01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */,
 				5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */,
 				D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */,
-				5FE8645B1DBCA9BFA4AFBE83 /* Pods.debug.xcconfig */,
-				F0BE7760293DEE768563F379 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";

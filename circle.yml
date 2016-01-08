@@ -38,9 +38,9 @@ deployment:
     commands:
       - bundle exec fastlane build
       - bundle exec fastlane deploy_testflight
-      - bundle exec deliver run --skip_screenshots
+      - bundle exec deliver run --skip_screenshots --force
       - bundle exec snapshot --workspace CI2Go.xcworkspace --scheme CI2Go
-      - bundle exec deliver run --skip_metadata
+      - bundle exec deliver run --skip_metadata --force
   preview:
     branch: /.*/
     commands:
