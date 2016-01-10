@@ -2037,7 +2037,7 @@
 		856701E21C3016BA00E76DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App/CI2Go WatchKit App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
@@ -2057,7 +2057,7 @@
 		856701E31C3016BA00E76DCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App/CI2Go WatchKit App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
