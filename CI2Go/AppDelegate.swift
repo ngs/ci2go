@@ -23,10 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }()
 
     var realmPath: String {
-        let fileURL = NSFileManager.defaultManager()
-            .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)?
-            .URLByAppendingPathComponent("ci2go.realm")
-        return fileURL!.path!
+        let env = NSProcessInfo.processInfo().environment
+        let dbName = env["REALM_DB_NAME"]
+        let m = NSFileManager.defaultManager()
+        let fileURL = m
+            .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!
+            .URLByAppendingPathComponent(dbName ?? "ci2go.realm")
+        if env["CLEAR_REALM_DB"] == "1" {
+            try! m.removeItemAtURL(fileURL)
+        }
+        return fileURL.path!
     }
 
     class var current: AppDelegate {

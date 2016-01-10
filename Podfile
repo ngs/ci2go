@@ -40,6 +40,3 @@ target 'CI2GoTests' do
   pod 'RxSwift', '~> 2.0.0'
 end
 
-target 'CI2GoUITests' do
-  platform :ios, '9.0'
-end
