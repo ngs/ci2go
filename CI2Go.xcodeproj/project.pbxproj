@@ -1989,6 +1989,7 @@
 		856701B81C3015F500E76DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = CI2GoUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoUITests;
@@ -2001,6 +2002,7 @@
 		856701B91C3015F500E76DCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = CI2GoUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.CI2GoUITests;

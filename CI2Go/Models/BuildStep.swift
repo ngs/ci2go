@@ -42,8 +42,8 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
 
     func updateId() {
         #if os(iOS)
-            if let buildId = build?.id {
-                id = "\(buildId):\(name.md5())"
+            if let buildId = build?.id, firstAction = tempActions.first ?? actions.first {
+                id = "\(buildId):\(index):\(firstAction.stepNumber):\(name.md5())"
             }
         #endif
         tempActions.forEach { $0.updateId() }

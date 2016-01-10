@@ -135,5 +135,29 @@ class BuildSpec: QuickSpec {
                 }
             }
         }
+        describe("getSteps") {
+            var build: Build!
+            beforeEach {
+                let json = fixtureJSON("builds.json", self.dynamicType)[0]!
+                try! realm.write {
+                    build = Mapper<Build>().map(json)!
+                    realm.add(build, update: true)
+                }
+                stub(isHost("circleci.com")) { _ in
+                    let stubPath = OHPathForFile("build.json", self.dynamicType)
+                    return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+                }
+            }
+            it("imports build steps and actions") {
+                waitUntil { done in
+                    _ = build.getSteps().subscribeNext { steps in
+                        expect(steps.count).to(equal(39))
+                        expect(realm.objects(BuildStep).count).to(equal(39))
+                        expect(realm.objects(BuildAction).count).to(equal(39))
+                        done()
+                    }
+                }
+            }
+        }
     }
 }
