@@ -14,13 +14,13 @@ class CI2GoUITests: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         let app = XCUIApplication()
+        setupSnapshot(app)
         app.launchEnvironment = [
             "REALM_DB_NAME": "ci2go-uitest.realm",
             "CLEAR_REALM_DB": "1",
             "VERBOSE": "1",
             "TEST": "1"
         ]
-        setupSnapshot(app)
         app.launch()
     }
     
