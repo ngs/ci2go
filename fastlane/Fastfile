@@ -120,6 +120,9 @@ platform :ios do
         'com.ci2go.ios.Circle.watchkitapp.ext' => './fastlane/profiles/AppStore_com.ci2go.ios.Circle.watchkitapp.ext.mobileprovision'
       }
     )
-    testflight(skip_submission: true)
+    testflight(
+      ipa: ipa,
+      skip_submission: true
+    )
   end
 end

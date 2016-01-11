@@ -27,7 +27,9 @@ class User: Object, Mappable, Equatable, Comparable {
         selectedEmail <- map["selected_email"]
         email <- map["email"]
         emails <- map["all_emails"]
-        self.email = email ?? selectedEmail ?? self.email
+        if let email = email ?? selectedEmail {
+            self.email = email
+        }
     }
 
     override class func primaryKey() -> String {

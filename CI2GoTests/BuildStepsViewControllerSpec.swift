@@ -54,17 +54,17 @@ class BuildStepsViewControllerSpec: QuickSpec {
                 vc.refresh(nil)
                 expect(vc.isLoading).to(beTruthy())
                 waitUntil(timeout: 10000) { done in
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2) * Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1) * Int64(NSEC_PER_SEC)), dispatch_get_main_queue(), {
                         expect(vc.isLoading).to(beFalsy())
-                        expect(realm.objects(BuildAction).count).to(equal(38))
                         expect(vc.numberOfSectionsInTableView(vc.tableView)).to(equal(8))
+                        expect(realm.objects(BuildAction).count).to(equal(39))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 0)).to(equal(3))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 1)).to(equal(2))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 2)).to(equal(5))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 3)).to(equal(18))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 4)).to(equal(1))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 5)).to(equal(2))
-                        expect(vc.tableView(vc.tableView, numberOfRowsInSection: 6)).to(equal(3))
+                        expect(vc.tableView(vc.tableView, numberOfRowsInSection: 6)).to(equal(4))
                         expect(vc.tableView(vc.tableView, numberOfRowsInSection: 7)).to(equal(4))
                         done()
                     })

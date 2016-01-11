@@ -7,20 +7,20 @@
 //
 
 import WatchKit
+import WatchConnectivity
 import Foundation
-import RxSwift
 
 class GlanceController: SingleBuildInterfaceController {
     @IBOutlet weak var placeholderLabel: WKInterfaceLabel!
     override func willActivate() {
         super.willActivate()
-        //let tracker = getDefaultGAITraker()
+        let session = WCSession.defaultSession()
         if CI2GoUserDefaults.standardUserDefaults().isLoggedIn {
             refresh()
-            //tracker.set(kGAIScreenName, value: "Glance")
+            session.trackScreen("Glance")
             placeholderLabel.setHidden(true)
         } else {
-            //tracker.set(kGAIScreenName, value: "Glance Placehoker")
+            session.trackScreen("Glance Placeholder")
             branchLabel.setHidden(true)
             buildNumLabel.setHidden(true)
             repoLabel.setHidden(true)
@@ -30,13 +30,11 @@ class GlanceController: SingleBuildInterfaceController {
             authorLabel.setHidden(true)
             branchIcon.setHidden(true)
         }
-        //tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
     }
 
     func refresh() {
-        Build.getRecent(0, limit: 1).subscribeNext { builds in
+        Build.requestList { builds in
             self.build = builds.first
-        }.addDisposableTo(disposeBag)
+        }
     }
-    
 }

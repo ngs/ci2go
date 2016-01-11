@@ -10,40 +10,6 @@ import RealmSwift
 import ObjectMapper
 
 class Build: Object, Mappable, Equatable, Comparable {
-    enum Lifecycle: String {
-        case Queued = "queued"
-        case Scheduled = "scheduled"
-        case NotRun = "not_run"
-        case NotRunning = "not_running"
-        case Running = "running"
-        case Finished = "finished"
-    }
-    enum Status: String {
-        case Retried = "retried"
-        case Canceled = "canceled"
-        case InfrastructureFail = "infrastructure_fail"
-        case Timedout = "timedout"
-        case NotRun = "not_run"
-        case Running = "running"
-        case Failed = "failed"
-        case Queued = "queued"
-        case Scheduled = "scheduled"
-        case NotRunning = "not_running"
-        case NoTests = "no_tests"
-        case Fixed = "fixed"
-        case Success = "success"
-        var humanize: String {
-            return rawValue.humanize
-        }
-    }
-    enum Outcome: String {
-        case Canceled = "canceled"
-        case InfrastructureFail = "infrastructure_fail"
-        case Timedout = "timedout"
-        case Failed = "failed"
-        case NoTests = "no_tests"
-        case Success = "success"
-    }
     dynamic var branch: Branch?
     dynamic var buildParametersData: NSData?
     dynamic var circleYAML: String = ""

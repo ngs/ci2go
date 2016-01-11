@@ -39,10 +39,10 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "856701A71C3015F500E76DCF"
+               BlueprintIdentifier = "85D0725B1C4305F40079C572"
                BuildableName = "CI2GoUITests.xctest"
                BlueprintName = "CI2GoUITests"
                ReferencedContainer = "container:CI2Go.xcodeproj">
