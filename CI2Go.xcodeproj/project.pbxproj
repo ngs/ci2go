@@ -2156,6 +2156,7 @@
 				85D072651C4305F40079C572 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
