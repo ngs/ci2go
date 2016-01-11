@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let fileURL = m
             .containerURLForSecurityApplicationGroupIdentifier(kCI2GoAppGroupIdentifier)!
             .URLByAppendingPathComponent(dbName ?? "ci2go.realm")
-        if env["CLEAR_REALM_DB"] == "1" {
+        if env["CLEAR_REALM_DB"] == "1" && m.fileExistsAtPath(fileURL.path!) {
             try! m.removeItemAtURL(fileURL)
         }
         return fileURL.path!
