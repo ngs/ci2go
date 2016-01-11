@@ -71,7 +71,7 @@ class WatchMessageHandler: NSObject, WCSessionDelegate {
 
     func handleRequestBuilds(replyHandler: ([String : AnyObject]) -> Void) {
         Build.getRecent(0, limit: 20).subscribeNext { builds in
-            let json = Mapper<Build>().toJSONArray(builds)
+            let json = Mapper<BuildCompact>().toJSONArray(builds.map{ BuildCompact(build: $0) })
             replyHandler([kCI2GoWatchConnectivityBuildsKey: json])
             }.addDisposableTo(disposeBag)
     }

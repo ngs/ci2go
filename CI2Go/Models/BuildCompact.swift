@@ -13,6 +13,8 @@ import WatchConnectivity
 
 #if os(watchOS)
     typealias Build = BuildCompact
+#else
+    import DateTools
 #endif
 
 class BuildCompact: Mappable {
@@ -58,7 +60,15 @@ class BuildCompact: Mappable {
         }
     }
 
-    class func requestList(callback: ([BuildCompact]) -> Void) {
+    class func get(id: String, callback: (BuildCompact) -> Void) {
+        self.getList { builds in
+            if let build = builds.filter({ $0.id == id }).first {
+                callback(build)
+            }
+        }
+    }
+
+    class func getList(callback: ([BuildCompact]) -> Void) {
         fromCache { builds in
             callback(builds)
         }
@@ -73,6 +83,18 @@ class BuildCompact: Mappable {
                 }
             }, errorHandler: nil)
     }
+
+    #if !os(watchOS)
+    init(build: Build) {
+        id = build.id
+        rawStatus = build.rawStatus
+        projectPath = build.project?.path ?? projectPath
+        number = build.number.description
+        branchName = build.branch?.name ?? branchName
+        commitSubject = build.triggeredCommit?.subject ?? commitSubject
+        startedAt = build.startedAt?.timeAgoSinceNow() ?? startedAt
+    }
+    #endif
 
     required init?(_ map: Map) {}
     func mapping(map: Map) {

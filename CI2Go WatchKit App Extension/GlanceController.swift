@@ -33,7 +33,7 @@ class GlanceController: SingleBuildInterfaceController {
     }
 
     func refresh() {
-        Build.requestList { builds in
+        Build.getList { builds in
             self.build = builds.first
         }
     }

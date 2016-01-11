@@ -50,11 +50,11 @@ class SingleBuildInterfaceController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         if let buildID = context as? String {
-            Build.fromCache(buildID) { build in
+            Build.get(buildID) { build in
                 self.build = build
             }
         } else {
-            Build.fromCache { builds in
+            Build.getList { builds in
                 self.build = builds.first
             }
         }
