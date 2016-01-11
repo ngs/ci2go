@@ -122,7 +122,7 @@ platform :ios do
     )
     testflight(
       ipa: ipa,
-      skip_submission: true
+      skip_submission: false
     )
   end
 end
