@@ -31,6 +31,7 @@ class ProjectSpec: QuickSpec {
                 expect(realm.objects(Project).count).to(equal(1))
                 expect(realm.objects(Branch).count).to(equal(2))
                 let project = realm.objects(Project).first!
+                let branches = realm.objects(Branch).sorted("id")
                 expect(project.parallelCount).to(equal(1))
                 expect(project.repositoryName).to(equal("sources.ngs.io"))
                 expect(project.username).to(equal("ngs"))
@@ -39,12 +40,12 @@ class ProjectSpec: QuickSpec {
                 expect(project.isOpenSource).to(beTrue())
                 expect(project.isFollowed).to(beTrue())
                 expect(project.branches.count).to(equal(3))
-                expect(realm.objects(Branch)[0].name).to(equal("2015-09-26-circleci-docker-serverspec"))
-                expect(realm.objects(Branch)[0].project).to(equal(project))
-                expect(realm.objects(Branch)[0].id).to(equal("project/ngs/sources.ngs.io:2015-09-26-circleci-docker-serverspec"))
-                expect(realm.objects(Branch)[1].name).to(equal("master"))
-                expect(realm.objects(Branch)[1].project).to(equal(project))
-                expect(realm.objects(Branch)[1].id).to(equal("project/ngs/sources.ngs.io:master"))
+                expect(branches[0].name).to(equal("2015-09-26-circleci-docker-serverspec"))
+                expect(branches[0].project).to(equal(project))
+                expect(branches[0].id).to(equal("project/ngs/sources.ngs.io:2015-09-26-circleci-docker-serverspec"))
+                expect(branches[1].name).to(equal("master"))
+                expect(branches[1].project).to(equal(project))
+                expect(branches[1].id).to(equal("project/ngs/sources.ngs.io:master"))
                 try! realm.write { realm.deleteAll() }
             }
         }
