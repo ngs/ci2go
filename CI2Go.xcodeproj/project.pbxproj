@@ -2001,7 +2001,6 @@
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "CI2Go WatchKit App Extension/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -2021,7 +2020,6 @@
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = "CI2Go WatchKit App Extension/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
