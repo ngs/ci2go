@@ -1,15 +1,15 @@
 PODS:
-  - Alamofire (3.1.4)
+  - Alamofire (3.1.5)
   - AlamofireObjectMapper (2.1.0):
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
   - BigBrother (0.3.0)
-  - Carlos (0.5)
+  - Carlos (0.6)
   - CryptoSwift (0.2.2)
   - DateTools (1.7.0)
   - GoogleAnalytics (3.14.0)
   - MBProgressHUD (0.9.2)
-  - Nimble (3.0.0)
+  - Nimble (3.1.0)
   - ObjectMapper (1.1.1)
   - OHHTTPStubs (4.7.0):
     - OHHTTPStubs/Default (= 4.7.0)
@@ -83,15 +83,15 @@ CHECKOUT OPTIONS:
     :git: https://github.com/redbooth/RealmResultsController.git
 
 SPEC CHECKSUMS:
-  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
   BigBrother: e3cdf5f22636c7b7e92ec4e3615e58cb58681125
-  Carlos: 2519b03da9bf900b5aa698659a519ef5a8f6afc0
+  Carlos: e047302297d76c181baf41e65c770967b0e2c484
   CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
   ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
   OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
   PusherSwift: f2288da1552a218abba34a188fed23475790c24a

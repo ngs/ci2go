@@ -197,42 +197,66 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
 
     // MARK: - RealmResultsControllerDelegate
 
+    var pendingChanges = [RRCPendingChange]()
+
     func willChangeResults(controller: AnyObject) {
-        tableView.beginUpdates()
+        guard controller === self.rrc else { return }
+        print("😇 willChangeResults")
+        pendingChanges.removeAll()
     }
 
     func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
-        switch changeType {
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-            break
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
-            break
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .None)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
-            break
-        case .Update:
-            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
-            break
-        }
+        guard controller === self.rrc else { return }
+        pendingChanges.append(RRCPendingChange(
+            sectionIndex: nil, oldIndexPath: oldIndexPath,
+            newIndexPath: newIndexPath, changeType: changeType))
     }
 
     func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
-        switch changeType {
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
-            break
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: index), withRowAnimation: .Automatic)
-            break
-        default:
-            break
-        }
+        guard controller === self.rrc else { return }
+        pendingChanges.append(RRCPendingChange(
+            sectionIndex: index, oldIndexPath: nil,
+            newIndexPath: nil, changeType: changeType))
     }
 
     func didChangeResults(controller: AnyObject) {
+        guard controller === self.rrc else { return }
+        tableView.beginUpdates()
+        pendingChanges.forEach { update in
+            if let newIndexPath = update.newIndexPath, oldIndexPath = update.oldIndexPath {
+                switch update.changeType {
+                case .Delete:
+                    tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                case .Insert:
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                case .Move:
+                    tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .Automatic)
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                case .Update:
+                    tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                }
+            } else if let sectionIndex = update.sectionIndex {
+                let indexSet = NSIndexSet(index: sectionIndex)
+                switch update.changeType {
+                case .Delete:
+                    tableView.deleteSections(indexSet, withRowAnimation: .Automatic)
+                    break
+                case .Insert:
+                    tableView.insertSections(indexSet, withRowAnimation: .Automatic)
+                    break
+                case .Update:
+                    tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
+                    break
+                default:
+                    break
+                }
+            }
+        }
+        pendingChanges.removeAll()
         tableView.endUpdates()
     }
 
