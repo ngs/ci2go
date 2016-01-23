@@ -35,7 +35,7 @@ PODS:
   - Realm (0.97.0):
     - Realm/Headers (= 0.97.0)
   - Realm/Headers (0.97.0)
-  - RealmResultsController (0.3.1):
+  - RealmResultsController (0.4.0):
     - RealmSwift
   - RealmSwift (0.97.0):
     - Realm (= 0.97.0)
@@ -79,7 +79,7 @@ CHECKOUT OPTIONS:
     :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
     :git: https://github.com/pusher-community/pusher-websocket-swift.git
   RealmResultsController:
-    :commit: 73adfa2f945df65db5f5f629452eb1ad9c030074
+    :commit: 7ab2698460c3cd1390028ab568c8986b0d8a924d
     :git: https://github.com/redbooth/RealmResultsController.git
 
 SPEC CHECKSUMS:
@@ -98,7 +98,7 @@ SPEC CHECKSUMS:
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
   Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
-  RealmResultsController: ec769e0a755395a44bcc21ab1bdc703927a4f776
+  RealmResultsController: fa239f5274a5fe3984bf857b1ec253be5a245c3a
   RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
   RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
   RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f

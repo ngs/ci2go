@@ -7,5 +7,5 @@ gem 'aws-sdk', '1.66.0'
 #
 # https://github.com/fastlane/fastlane/pull/1046
 #
-gem 'gym', git: 'git@github.com:fastlane/gym.git', branch: 'master'
-gem 'fastlane', git: 'git@github.com:fastlane/fastlane.git', branch: 'master'
+gem 'gym', '1.4.0'
+gem 'fastlane', '1.51.0'

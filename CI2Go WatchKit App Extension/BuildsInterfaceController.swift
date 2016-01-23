@@ -42,7 +42,7 @@ class BuildsInterfaceController: WKInterfaceController {
     }
 
     func refresh() {
-        Build.requestList { self.updateList($0) }
+        Build.getList { self.updateList($0) }
     }
 
     func updateList(builds: [Build]) {
