@@ -93,9 +93,11 @@ class BuildSpec: QuickSpec {
             }
         }
         describe("getRecent") {
-            stub(isHost("circleci.com")) { _ in
-                let stubPath = OHPathForFile("builds.json", self.dynamicType)
-                return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+            beforeEach {
+                stub(isHost("circleci.com")) { _ in
+                    let stubPath = OHPathForFile("builds.json", self.dynamicType)
+                    return fixture(stubPath!, headers: ["Content-Type":"application/json"])
+                }
             }
             it("resposes recent builds") {
                 waitUntil { done in
@@ -127,8 +129,8 @@ class BuildSpec: QuickSpec {
                                 "project/ngs/ci2go/175"]))
                             done()
                         },
-                        onError: { _ in
-                            fail("failed")
+                        onError: { e in
+                            fail("failed \(e)")
                             done()
                         }
                     )

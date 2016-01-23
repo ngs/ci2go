@@ -42,9 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let env = NSProcessInfo().environment
-        
-        BigBrother.addToSharedSession()
-        BigBrother.addToSessionConfiguration(Alamofire.Manager.sharedInstance.session.configuration)
+
+        if env["TEST"] != "1" {
+            BigBrother.addToSharedSession()
+            BigBrother.addToSessionConfiguration(Alamofire.Manager.sharedInstance.session.configuration)
+        }
         setupRealm()
         watchMessageHandler.activate()
         
