@@ -47,17 +47,8 @@ class SingleBuildInterfaceController: WKInterfaceController {
         }
     }
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
-        if let buildID = context as? String {
-            Build.get(buildID) { build in
-                self.build = build
-            }
-        } else {
-            Build.getList { builds in
-                self.build = builds.first
-            }
-        }
+    override func willActivate() {
+        super.willActivate()
         if let buildId = self.build?.id {
             WCSession.defaultSession().trackEvent(
                 category: "build",

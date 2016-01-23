@@ -23,4 +23,17 @@ class BuildInterfaceController: SingleBuildInterfaceController {
         timeLabel.setText(build?.startedAt)
     }
 
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        if let buildID = context as? String {
+            Build.get(buildID) { build in
+                self.build = build
+            }
+        } else {
+            Build.getList { builds in
+                self.build = builds.first
+            }
+        }
+    }
+
 }
