@@ -266,51 +266,72 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     // MARK: - RealmResultsControllerDelegate
 
+    var pendingChanges = [RRCPendingChange]()
+
     func willChangeResults(controller: AnyObject) {
+        guard controller === self.rrc else { return }
         print("😇 willChangeResults")
-//        UIView.setAnimationsEnabled(false)
-        tableView.beginUpdates()
+        pendingChanges.removeAll()
     }
 
     func didChangeObject<U>(controller: AnyObject, object: U, oldIndexPath: NSIndexPath, newIndexPath: NSIndexPath, changeType: RealmResultsChangeType) {
+        guard controller === self.rrc else { return }
         print("🎁 didChangeObject '\((object as! BuildAction).id)' from: [\(oldIndexPath.section):\(oldIndexPath.row)] to: [\(newIndexPath.section):\(newIndexPath.row)] --> \(changeType) \(rrc.numberOfObjectsAt(newIndexPath.section)) \(rrc.numberOfSections))")
-        switch changeType {
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
-            break
-        case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
-            break
-        case .Move:
-            tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .None)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
-            break
-        case .Update:
-            tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
-            break
-        }
+        pendingChanges.append(RRCPendingChange(
+            sectionIndex: nil, oldIndexPath: oldIndexPath,
+            newIndexPath: newIndexPath, changeType: changeType))
     }
 
     func didChangeSection<U>(controller: AnyObject, section: RealmSection<U>, index: Int, changeType: RealmResultsChangeType) {
+        guard controller === self.rrc else { return }
         print("💈 didChangeSection \(index)/\(rrc.numberOfSections) --> \(changeType)")
-        switch changeType {
-        case .Delete:
-            tableView.deleteSections(NSIndexSet(index: index), withRowAnimation: .None)
-            break
-        case .Insert:
-            tableView.insertSections(NSIndexSet(index: index), withRowAnimation: .None)
-            break
-        default:
-            break
-        }
+        pendingChanges.append(RRCPendingChange(
+            sectionIndex: index, oldIndexPath: nil,
+            newIndexPath: nil, changeType: changeType))
     }
 
     func didChangeResults(controller: AnyObject) {
+        guard controller === self.rrc else { return }
         print("🙃 didChangeResults \(self.numberOfSectionsInTableView(tableView))")
-        self.tableView.endUpdates()
+        tableView.beginUpdates()
+        pendingChanges.forEach { update in
+            if let newIndexPath = update.newIndexPath, oldIndexPath = update.oldIndexPath {
+                switch update.changeType {
+                case .Delete:
+                    tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                case .Insert:
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                case .Move:
+                    tableView.deleteRowsAtIndexPaths([oldIndexPath], withRowAnimation: .Automatic)
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                case .Update:
+                    tableView.reloadRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
+                    break
+                }
+            } else if let sectionIndex = update.sectionIndex {
+                let indexSet = NSIndexSet(index: sectionIndex)
+                switch update.changeType {
+                case .Delete:
+                    tableView.deleteSections(indexSet, withRowAnimation: .Automatic)
+                    break
+                case .Insert:
+                    tableView.insertSections(indexSet, withRowAnimation: .Automatic)
+                    break
+                case .Update:
+                    tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
+                    break
+                default:
+                    break
+                }
+            }
+        }
+        pendingChanges.removeAll()
+        tableView.endUpdates()
         if build?.status == .Running {
             scrollToBottom(false)
         }
-//        UIView.setAnimationsEnabled(true)
     }
 }
