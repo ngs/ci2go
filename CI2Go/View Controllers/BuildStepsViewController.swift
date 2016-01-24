@@ -232,12 +232,12 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     @IBAction func openActionSheet(sender: AnyObject) {
         guard let lifecycle = self.build?.lifecycle else { return }
         let av = UIAlertController()
-        if lifecycle != .NotRun {
+        if lifecycle != .NotRun && lifecycle != .NotRunning {
             av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
                 self.retryBuild()
             }))
         }
-        if lifecycle == .Running {
+        if lifecycle == .Running || lifecycle == .NotRunning {
             av.addAction(UIAlertAction(title: "Cancel Build", style: .Default, handler: { _ in
                 self.cancelBuild()
             }))
