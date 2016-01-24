@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import RxSwift
+import SafariServices
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
@@ -96,7 +97,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
 
     func openAPIDoc(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://circleci.com/account/api")!)
+        let URL = NSURL(string: "https://circleci.com/account/api")!
+        let vc = SFSafariViewController(URL: URL, entersReaderIfAvailable: true)
+        self.presentViewController(vc, animated: true, completion: nil)
+        vc.navigationController?.navigationBar.barTintColor = ColorScheme().backgroundColor()
     }
 
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

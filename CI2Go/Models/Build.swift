@@ -120,6 +120,8 @@ class Build: Object, Mappable, Equatable, Comparable {
         , vcsRevision: String?
         , previsousBuild: Build?
         , previsousSuccessfulBuild: Build?
+        , queuedAt: NSDate?
+        , usageQueuedAt: NSDate?
         if let project = Project(map) where !project.id.isEmpty {
             self.project = project
         }
@@ -137,6 +139,7 @@ class Build: Object, Mappable, Equatable, Comparable {
         stoppedAt <- (map["stop_time"], JSONDateTransform())
         startedAt <- (map["start_time"], JSONDateTransform())
         queuedAt <- (map["queued_at"], JSONDateTransform())
+        usageQueuedAt <- (map["usage_queued_at"], JSONDateTransform())
         commits <- map["all_commit_details"]
         branchName <- map["branch"]
         previsousBuild <- map["previous"]
@@ -175,7 +178,7 @@ class Build: Object, Mappable, Equatable, Comparable {
             commits.append(triggeredCommit)
             self.triggeredCommit = triggeredCommit
         }
-
+        self.queuedAt = queuedAt ?? usageQueuedAt
         self.commits.removeAll()
         commits.forEach { c in
             c.project = self.project
