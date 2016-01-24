@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import BigBrother
 import RxSwift
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -41,8 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let env = NSProcessInfo().environment
-        
-        BigBrother.addToSharedSession()
+
+        if env["TEST"] != "1" {
+            BigBrother.addToSharedSession()
+            BigBrother.addToSessionConfiguration(Alamofire.Manager.sharedInstance.session.configuration)
+        }
         setupRealm()
         watchMessageHandler.activate()
         
