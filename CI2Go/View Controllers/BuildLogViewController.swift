@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import MBProgressHUD
+import Crashlytics
 
 class BuildLogViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textView: BuildLogTextView!
@@ -29,6 +30,7 @@ class BuildLogViewController: UIViewController, UITextViewDelegate {
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Build Log Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Build Log", contentType: "Build Action", contentId: buildAction.id, customAttributes: nil)
         logSubscription = buildAction.log.subscribeNext { log in
             self.textView.logText = log
             self.view.setNeedsLayout()

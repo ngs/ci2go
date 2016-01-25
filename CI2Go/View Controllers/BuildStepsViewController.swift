@@ -13,6 +13,7 @@ import RealmSwift
 import RealmResultsController
 import RxSwift
 import SafariServices
+import Crashlytics
 
 class BuildStepsViewController: UITableViewController, RealmResultsControllerDelegate {
 
@@ -55,6 +56,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Build Steps Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Build Steps", contentType: "Build", contentId: build?.id, customAttributes: [:])
         let c = NSNotificationCenter.defaultCenter()
         c.addObserverForName(UIApplicationDidBecomeActiveNotification, object: nil, queue: nil) { (n: NSNotification) -> Void in
             self.refresh(n)

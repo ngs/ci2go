@@ -11,6 +11,8 @@ import RealmSwift
 import BigBrother
 import RxSwift
 import Alamofire
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -41,8 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics.self, Answers.self])
         let env = NSProcessInfo().environment
-
         if env["TEST"] != "1" {
             BigBrother.addToSharedSession()
             BigBrother.addToSessionConfiguration(Alamofire.Manager.sharedInstance.session.configuration)

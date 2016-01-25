@@ -10,6 +10,7 @@ import UIKit
 import MBProgressHUD
 import RxSwift
 import SafariServices
+import Crashlytics
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
@@ -25,6 +26,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Settings Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Settings", contentType: nil, contentId: nil, customAttributes: nil)
     }
 
     @IBAction func doneButtonTapped(sender: AnyObject) {
@@ -39,15 +41,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    private func setStepperValue(value: Double, forStepper stepper: UIStepper?, withLabel label: UILabel?) {
-        let unit = value == 1.0 ? "second" : "seconds"
-        if(value > 0) {
-            label?.text = NSString(format: "%.01f %@", Double(value), unit) as String
-        } else {
-            label?.text = "Manual"
-        }
-    }
-
     private func validateAPIToken(dismissAfterSuccess: Bool = false) {
         let hud = MBProgressHUD(view: self.navigationController?.view)
         self.navigationController?.view.addSubview(hud)
@@ -58,6 +51,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         let token = apiTokenField.text
         User.me(token).subscribe(
             onNext: { (user: User) in
+                Answers.logSignUpWithMethod("API Token", success: NSNumber(bool: true),
+                    customAttributes: ["login": user.login, "name": user.name])
                 CI2GoUserDefaults.standardUserDefaults().circleCIAPIToken = token
                 hud.labelText = "Authenticated"
                 hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
@@ -68,6 +63,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                 }
             },
             onError: { e in
+                Answers.logSignUpWithMethod("API Token", success: NSNumber(bool: false), customAttributes: ["error": "\(e)"])
                 hud.labelText = "Failed to authenticate"
                 hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
                 hud.mode = MBProgressHUDMode.CustomView
