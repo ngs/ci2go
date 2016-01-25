@@ -41,7 +41,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         return rrc
     }()
 
-    var isLoading = false
+    var isLoading = false, scrollAfterRefresh = false
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -70,6 +70,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         guard let build = build else { return }
         refresh(nil)
         pusherSubscription = AppDelegate.current.pusherClient.subscribeBuild(build).subscribeNext {
+            self.scrollAfterRefresh = true
             self.refresh(nil)
         }
     }
@@ -226,7 +227,8 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     func scrollToBottom(animated: Bool = false) {
         let section = rrc.numberOfSections - 1
         let row = rrc.numberOfObjectsAt(section) - 1
-        if section >= 0 && row >= 0 {
+        let diff = tableView.bounds.height + tableView.contentOffset.y - tableView.contentSize.height
+        if section >= 0 && row >= 0 && diff < tableView.rowHeight {
             self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section), atScrollPosition: .Bottom, animated: animated)
         }
     }
@@ -332,8 +334,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         }
         pendingChanges.removeAll()
         tableView.endUpdates()
-        if build?.status == .Running {
+        if scrollAfterRefresh {
             scrollToBottom(false)
         }
+        scrollAfterRefresh = false
     }
 }

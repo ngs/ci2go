@@ -12,17 +12,9 @@ public class BuildLogTextView: UITextView {
 
     public var snapBottom = true
 
-    public var logText: String? = nil {
-        didSet {
-            let s = ColorScheme()
-            if logText != nil {
-                attributedText = s.ansiHelper.attributedStringWithANSIEscapedString(logText!)
-            } else {
-                attributedText = nil
-            }
-            if snapBottom {
-                scrollToBottom()
-            }
+    public func scrollIfNeeded() {
+        if snapBottom {
+            scrollToBottom()
         }
     }
 

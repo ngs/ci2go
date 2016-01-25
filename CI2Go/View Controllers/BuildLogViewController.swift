@@ -32,7 +32,8 @@ class BuildLogViewController: UIViewController, UITextViewDelegate {
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
         Answers.logContentViewWithName("Build Log", contentType: "Build Action", contentId: buildAction.id, customAttributes: nil)
         logSubscription = buildAction.log.subscribeNext { log in
-            self.textView.logText = log
+            self.textView.attributedText = log
+            self.textView.scrollIfNeeded()
             self.view.setNeedsLayout()
         }
         if buildAction.status == .Running {
