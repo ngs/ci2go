@@ -116,24 +116,39 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         }
     }
 
-    private lazy var logSource: Variable<String> = {
-        return Variable<String>("")
+    private lazy var logSource: Variable<NSAttributedString> = {
+        return Variable<NSAttributedString>(NSAttributedString(string: ""))
     }()
 
-    var log: Observable<String> {
+    var log: Observable<NSAttributedString> {
         let src = self.logSource
         self.downloadLog().subscribeNext { log in
-            src.value = log
+            dispatch_async(dispatch_queue_create("attributed-text", nil), {
+                let s = ColorScheme()
+                let astr = s.ansiHelper.attributedStringWithANSIEscapedString(log)
+                dispatch_async(dispatch_get_main_queue(), {
+                    src.value = astr
+                })
+            })
         }.addDisposableTo(disposeBag)
         return src.asObservable()
     }
 
     func appendLog(str: String) {
-        self.logSource.value.appendContentsOf(str)
+        dispatch_async(dispatch_queue_create("attributed-text", nil), {
+            let src = NSMutableAttributedString(attributedString: self.logSource.value)
+            let s = ColorScheme()
+            let astr = s.ansiHelper.attributedStringWithANSIEscapedString(str)
+            src.appendAttributedString(astr)
+            let res = src.copy() as! NSAttributedString
+            dispatch_async(dispatch_get_main_queue(), {
+                self.logSource.value = res
+            })
+        })
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["status", "outputURL", "logSource", "log", "cache", "disposeBag"]
+        return ["status", "outputURL", "logSource", "log", "cache", "disposeBag", "log"]
     }
 
     func dup() -> BuildAction {
