@@ -123,18 +123,28 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
     var log: Observable<NSAttributedString> {
         let src = self.logSource
         self.downloadLog().subscribeNext { log in
-            let s = ColorScheme()
-            src.value = s.ansiHelper.attributedStringWithANSIEscapedString(log)
+            dispatch_async(dispatch_queue_create("attributed-text", nil), {
+                let s = ColorScheme()
+                let astr = s.ansiHelper.attributedStringWithANSIEscapedString(log)
+                dispatch_async(dispatch_get_main_queue(), {
+                    src.value = astr
+                })
+            })
         }.addDisposableTo(disposeBag)
         return src.asObservable()
     }
 
     func appendLog(str: String) {
-        let src = NSMutableAttributedString(attributedString: self.logSource.value)
-        let s = ColorScheme()
-        let astr = s.ansiHelper.attributedStringWithANSIEscapedString(str)
-        src.appendAttributedString(astr)
-        self.logSource.value = src.copy() as! NSAttributedString
+        dispatch_async(dispatch_queue_create("attributed-text", nil), {
+            let src = NSMutableAttributedString(attributedString: self.logSource.value)
+            let s = ColorScheme()
+            let astr = s.ansiHelper.attributedStringWithANSIEscapedString(str)
+            src.appendAttributedString(astr)
+            let res = src.copy() as! NSAttributedString
+            dispatch_async(dispatch_get_main_queue(), {
+                self.logSource.value = res
+            })
+        })
     }
 
     override static func ignoredProperties() -> [String] {
