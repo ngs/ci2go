@@ -11,6 +11,7 @@ import MBProgressHUD
 import RealmSwift
 import RealmResultsController
 import RxSwift
+import Crashlytics
 
 class ProjectsViewController: UITableViewController, RealmResultsControllerDelegate {
 
@@ -65,6 +66,7 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Projects Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Projects", contentType: nil, contentId: nil, customAttributes: nil)
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -95,6 +97,7 @@ class ProjectsViewController: UITableViewController, RealmResultsControllerDeleg
             let tracker = GAI.sharedInstance().defaultTracker
             let dict = GAIDictionaryBuilder.createEventWithCategory("filter", action: "select-project", label: "<none>" , value: 0).build() as [NSObject : AnyObject]
             tracker.send(dict)
+            Answers.logCustomEventWithName("Deselect Project", customAttributes: [:])
         }
     }
 

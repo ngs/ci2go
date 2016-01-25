@@ -12,6 +12,7 @@ import RxSwift
 import RealmSwift
 import RealmResultsController
 import ObjectMapper
+import Crashlytics
 
 class CirclePusherClient {
     let disposeBag = DisposeBag()
@@ -77,6 +78,11 @@ class CirclePusherClient {
             var channel: PusherChannel?
             disposables.append(User.me().subscribe(
                 onNext: { user in
+                    Crashlytics.sharedInstance().setUserEmail(user.email)
+                    Crashlytics.sharedInstance().setUserIdentifier(user.login)
+                    Crashlytics.sharedInstance().setUserName(user.name)
+                    Answers.logLoginWithMethod("API Token", success: NSNumber(bool: true),
+                        customAttributes: ["login": user.login, "name": user.name])
                     channel = self.pusherClient.subscribe("private-\(user.login)")
                     channel?.bind("call", callback: { res in
                         if let res = res as? [String: AnyObject]
@@ -86,6 +92,8 @@ class CirclePusherClient {
                     })
                 },
                 onError: { e in
+                    Answers.logLoginWithMethod("API Token", success: NSNumber(bool: false),
+                        customAttributes: ["error": "\(e)"])
                     observer.onError(e)
                 }
                 ))

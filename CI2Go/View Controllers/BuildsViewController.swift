@@ -12,6 +12,7 @@ import RealmSwift
 import RealmResultsController
 import RxSwift
 import RxCocoa
+import Crashlytics
 
 class BuildsViewController: UITableViewController, RealmResultsControllerDelegate {
 
@@ -87,6 +88,7 @@ class BuildsViewController: UITableViewController, RealmResultsControllerDelegat
             }
         }
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Builds", contentType: nil, contentId: nil, customAttributes: [:])
     }
 
     override func viewWillAppear(animated: Bool) {

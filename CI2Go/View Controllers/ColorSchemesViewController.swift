@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ColorSchemesViewController: UITableViewController {
 
@@ -46,6 +47,7 @@ class ColorSchemesViewController: UITableViewController {
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "ColorScheme Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Color Scheme", contentType: nil, contentId: nil, customAttributes: [:])
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -72,10 +74,12 @@ class ColorSchemesViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item = sections[indexPath.section][indexPath.row]
-        ColorScheme(item)?.apply()
+        guard let colorScheme = ColorScheme(item) else { return }
+        colorScheme.apply()
         let tracker = GAI.sharedInstance().defaultTracker
         let dict = GAIDictionaryBuilder.createEventWithCategory("settings", action: "color-scheme-change", label: item, value: 1).build() as [NSObject : AnyObject]
         tracker.send(dict)
+        Answers.logCustomEventWithName("Color Scheme Change", customAttributes: ["name": colorScheme.name])
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     

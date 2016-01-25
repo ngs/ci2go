@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 import RealmResultsController
 import RxSwift
+import Crashlytics
 
 class BranchesViewController: UITableViewController, RealmResultsControllerDelegate {
     let disposeBag = DisposeBag()
@@ -42,6 +43,7 @@ class BranchesViewController: UITableViewController, RealmResultsControllerDeleg
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: "Branches Screen")
         tracker.send(GAIDictionaryBuilder.createScreenView().build() as [NSObject : AnyObject])
+        Answers.logContentViewWithName("Branches", contentType: "Project", contentId: project?.id, customAttributes: [:])
     }
 
     override func viewDidLoad() {
@@ -84,10 +86,12 @@ class BranchesViewController: UITableViewController, RealmResultsControllerDeleg
             d.selectedBranch = branch
             action = "select-branch"
             label = branch.id
+            Answers.logCustomEventWithName("Select Branch", customAttributes: ["branch": branch.id])
         } else if let projectId = project?.id {
             d.selectedBranch = nil
             action = "select-project"
             label = projectId
+            Answers.logCustomEventWithName("Select Project", customAttributes: ["project": projectId])
         } else {
             return
         }
