@@ -251,6 +251,11 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 self.openSafari(URL)
             }))
         }
+        if let yaml = self.build?.circleYAML where !yaml.isEmpty {
+            av.addAction(UIAlertAction(title: "View circle.yml", style: .Default, handler: { _ in
+                self.openCircleYAML(yaml)
+            }))
+        }
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
             popover.barButtonItem = barButtonItem
@@ -267,6 +272,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         av.view.setNeedsDisplay()
     }
 
+    func openCircleYAML(yaml: String) {
+        print(yaml)
+    }
 
     // MARK: - RealmResultsControllerDelegate
 
