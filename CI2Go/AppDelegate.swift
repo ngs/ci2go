@@ -85,21 +85,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func setupRealm() {
         let env = NSProcessInfo().environment
 
-        var config = Realm.Configuration(schemaVersion: kCI2GoSchemaVersion)
+        var config = Realm.Configuration(
+            schemaVersion: kCI2GoSchemaVersion,
+            migrationBlock: { _, _ in }
+        )
         if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
             config.inMemoryIdentifier = identifier
         } else {
             config.path = realmPath
-        }
-        let def = CI2GoUserDefaults.standardUserDefaults()
-        if def.storedSchemaVersion != kCI2GoSchemaVersion {
-            if let path = Realm.Configuration.defaultConfiguration.path {
-                do {
-                    try NSFileManager.defaultManager().removeItemAtPath(path)
-                } catch {}
-            }
-            _ = try! Realm()
-            def.storedSchemaVersion = kCI2GoSchemaVersion
         }
         Realm.Configuration.defaultConfiguration = config
     }
