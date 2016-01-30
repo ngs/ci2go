@@ -15,7 +15,6 @@ private var _standardUserDefaults: AnyObject? = nil
 
 let kCI2GoColorSchemeUserDefaultsKey = "CI2GoColorScheme"
 let kCI2GoCircleCIAPITokenDefaultsKey = "CI2GoColorCircleCIAPIToken"
-let kCI2GoSchemaVersionDefaultsKey = "CI2GoSchemaVersion"
 let kCI2GoSelectedProjectDefaultsKey = "CI2GoSelectedProject"
 let kCI2GoSelectedBranchDefaultsKey = "CI2GoSelectedBranch"
 let kCI2GoBranchChangedNotification = "CI2GoBranchChanged"
@@ -79,16 +78,6 @@ class CI2GoUserDefaults: NSObject {
         }
         get {
             return userDefaults.stringForKey(kCI2GoCircleCIAPITokenDefaultsKey)
-        }
-    }
-    
-    var storedSchemaVersion: UInt64 {
-        set(value) {
-            userDefaults.setInteger(Int(value), forKey: kCI2GoSchemaVersionDefaultsKey)
-            userDefaults.synchronize()
-        }
-        get {
-            return UInt64(userDefaults.integerForKey(kCI2GoSchemaVersionDefaultsKey))
         }
     }
     
