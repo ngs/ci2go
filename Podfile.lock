@@ -7,7 +7,7 @@ PODS:
   - Carlos (0.6)
   - Crashlytics (3.6.0):
     - Fabric (~> 1.6.3)
-  - CryptoSwift (0.2.2)
+  - CryptoSwift (0.2.3)
   - DateTools (1.7.0)
   - Fabric (1.6.4)
   - GoogleAnalytics (3.14.0)
@@ -29,25 +29,25 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (4.7.0)
   - OHHTTPStubs/Swift (4.7.0):
     - OHHTTPStubs/Core
-  - PusherSwift (0.1.6):
+  - PusherSwift (0.2.3):
     - CryptoSwift (~> 0.2.2)
-    - ReachabilitySwift (~> 2.3)
-    - Starscream (~> 1.0.2)
+    - ReachabilitySwift (~> 2.3.3)
+    - Starscream (~> 1.1.1)
   - Quick (0.8.0)
   - ReachabilitySwift (2.3.3)
-  - Realm (0.97.0):
-    - Realm/Headers (= 0.97.0)
-  - Realm/Headers (0.97.0)
+  - Realm (0.98.0):
+    - Realm/Headers (= 0.98.0)
+  - Realm/Headers (0.98.0)
   - RealmResultsController (0.4.0):
     - RealmSwift
-  - RealmSwift (0.97.0):
-    - Realm (= 0.97.0)
+  - RealmSwift (0.98.0):
+    - Realm (= 0.98.0)
   - RxBlocking (2.0.0):
     - RxSwift (~> 2.0)
   - RxCocoa (2.0.0):
     - RxSwift (~> 2.0)
   - RxSwift (2.0.0)
-  - Starscream (1.0.2)
+  - Starscream (1.1.2)
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 2.1)
@@ -61,31 +61,13 @@ DEPENDENCIES:
   - Nimble (~> 3.0)
   - OHHTTPStubs (~> 4.7)
   - OHHTTPStubs/Swift (~> 4.7)
-  - PusherSwift (from `https://github.com/pusher-community/pusher-websocket-swift.git`,
-    commit `888319d2d2aa9951c3a2b421ac20736139360f4e`)
+  - PusherSwift (= 0.2.3)
   - Quick (~> 0.8)
-  - RealmResultsController (from `https://github.com/redbooth/RealmResultsController.git`,
-    branch `master`)
-  - RealmSwift (= 0.97.0)
+  - RealmResultsController (= 0.4.0)
+  - RealmSwift (= 0.98.0)
   - RxBlocking (~> 2.0.0)
   - RxCocoa (~> 2.0.0)
   - RxSwift (~> 2.0.0)
-
-EXTERNAL SOURCES:
-  PusherSwift:
-    :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
-    :git: https://github.com/pusher-community/pusher-websocket-swift.git
-  RealmResultsController:
-    :branch: master
-    :git: https://github.com/redbooth/RealmResultsController.git
-
-CHECKOUT OPTIONS:
-  PusherSwift:
-    :commit: 888319d2d2aa9951c3a2b421ac20736139360f4e
-    :git: https://github.com/pusher-community/pusher-websocket-swift.git
-  RealmResultsController:
-    :commit: 7ab2698460c3cd1390028ab568c8986b0d8a924d
-    :git: https://github.com/redbooth/RealmResultsController.git
 
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
@@ -93,7 +75,7 @@ SPEC CHECKSUMS:
   BigBrother: e3cdf5f22636c7b7e92ec4e3615e58cb58681125
   Carlos: e047302297d76c181baf41e65c770967b0e2c484
   Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
-  CryptoSwift: d382228d6301c09474132417878a741c2a2e68cd
+  CryptoSwift: b2bf37b8e7cc6d682ef3365cb966bc5ae5174aa5
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
@@ -101,15 +83,15 @@ SPEC CHECKSUMS:
   Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
   ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
   OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
-  PusherSwift: f2288da1552a218abba34a188fed23475790c24a
+  PusherSwift: 088a8bde5f9fa8c24efe710915d49f2b67c9edc4
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  Realm: b498a6fb9d288b171ff98d0e2d4384c295be8990
+  Realm: 28efc598b8b1b378d27a222d9fc037a29ae68642
   RealmResultsController: fa239f5274a5fe3984bf857b1ec253be5a245c3a
-  RealmSwift: d014810dec75c9a3f1a33926d2dabfed855c582c
+  RealmSwift: 7ef4b9ee449d711cd5a7d69a3af1cc5cd0efb619
   RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
   RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
   RxSwift: d83246efa6f16c50c143bec134649d045498f601
-  Starscream: 40e2c4c1c770d811f24116b8b7dbeb4542c56767
+  Starscream: 58a12fd35a3cb6aaa105716c2d42765f7c1c732f
 
 COCOAPODS: 0.39.0

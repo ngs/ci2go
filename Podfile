@@ -12,9 +12,9 @@ target 'CI2Go' do
   pod 'Fabric'
   pod 'GoogleAnalytics', '~> 3.14'
   pod 'MBProgressHUD', '~> 0.8'
-  pod 'PusherSwift', git: 'https://github.com/pusher-community/pusher-websocket-swift.git', commit: '888319d2d2aa9951c3a2b421ac20736139360f4e'
-  pod 'RealmResultsController', git: 'https://github.com/redbooth/RealmResultsController.git', branch: 'master'
-  pod 'RealmSwift', '0.97.0'
+  pod 'PusherSwift', '0.2.3'
+  pod 'RealmResultsController', '0.4.0'
+  pod 'RealmSwift', '0.98.0'
   pod 'RxBlocking', '~> 2.0.0'
   pod 'RxCocoa', '~> 2.0.0'
   pod 'RxSwift', '~> 2.0.0'
@@ -38,7 +38,7 @@ target 'CI2GoTests' do
   pod 'OHHTTPStubs', '~> 4.7'
   pod 'OHHTTPStubs/Swift', '~> 4.7'
   pod 'Quick', '~> 0.8'
-  pod 'RealmSwift', '0.97.0'
+  pod 'RealmSwift', '0.98.0'
   pod 'RxSwift', '~> 2.0.0'
 end
 
