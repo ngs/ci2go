@@ -18,7 +18,7 @@ general:
 dependencies:
   pre:
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
-    - sudo pip install awscli
+    - sudo pip install awscli --ignore-installed six # http://docs.aws.amazon.com/cli/latest/userguide/installing.html#d0e837
     - sudo gem update bundler
     - sudo gem install cocoapods --pre
   post:
