@@ -38,6 +38,7 @@ class Build: Object, Mappable, Equatable, Comparable {
     dynamic var startedAt: NSDate?
     dynamic var stoppedAt: NSDate?
     dynamic var node: Node?
+    dynamic var vcsType: String = "github"
 
     let commits = List<Commit>()
     let retries = List<Build>()
@@ -48,7 +49,7 @@ class Build: Object, Mappable, Equatable, Comparable {
             else {
             return nil
         }
-        return "private-\(repoUser)@\(repoName)@\(number)"
+        return "private-\(repoUser)@\(repoName)@\(number)@vcs-\(vcsType)"
     }
 
     var lifecycle: Lifecycle? {
@@ -138,6 +139,7 @@ class Build: Object, Mappable, Equatable, Comparable {
         circleYAML <- map["circle_yml.string"]
         stoppedAt <- (map["stop_time"], JSONDateTransform())
         startedAt <- (map["start_time"], JSONDateTransform())
+        vcsType <- map["vcs_type"]
         queuedAt <- (map["queued_at"], JSONDateTransform())
         usageQueuedAt <- (map["usage_queued_at"], JSONDateTransform())
         commits <- map["all_commit_details"]
