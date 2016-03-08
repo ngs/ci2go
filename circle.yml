@@ -17,6 +17,7 @@ general:
 
 dependencies:
   pre:
+    - git config --global http.postBuffer 524288000
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
     - sudo pip install awscli --ignore-installed six # http://docs.aws.amazon.com/cli/latest/userguide/installing.html#d0e837
     - sudo gem update bundler
