@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'cocoapods', '1.0.0.beta.5'
+gem 'cocoapods', '0.39.0'
 gem 'aws-sdk', '2.2.24'
 
 #

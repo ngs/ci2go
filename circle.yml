@@ -21,7 +21,6 @@ dependencies:
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
     - sudo pip install awscli --ignore-installed six # http://docs.aws.amazon.com/cli/latest/userguide/installing.html#d0e837
     - sudo gem update bundler
-    - sudo gem install cocoapods --pre
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc
     - echo "export KEYCHAIN_PASSWORD=$(ruby -rsecurerandom -e 'print SecureRandom.hex')" >> ~/.bashrc
