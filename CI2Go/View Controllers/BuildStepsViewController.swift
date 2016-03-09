@@ -216,12 +216,20 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as? BuildActionTableViewCell
-        let nvc = segue.destinationViewController as? UINavigationController
-        let vc = nvc?.topViewController as? BuildLogViewController
-        vc?.buildAction = cell?.buildAction
-        vc?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-        vc?.navigationItem.leftItemsSupplementBackButton = true
+        guard let nvc = segue.destinationViewController as? UINavigationController else { return }
+        switch nvc.topViewController {
+        case let vc as BuildLogViewController:
+            let cell = sender as? BuildActionTableViewCell
+            vc.buildAction = cell?.buildAction
+            vc.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+            vc.navigationItem.leftItemsSupplementBackButton = true
+            break
+        case let vc as TextViewController:
+            vc.text = sender as? String
+            break
+        default:
+            break
+        }
     }
 
     func scrollToBottom(animated: Bool = false) {
@@ -251,6 +259,11 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 self.openSafari(URL)
             }))
         }
+        if let yaml = self.build?.circleYAML where !yaml.isEmpty {
+            av.addAction(UIAlertAction(title: "View circle.yml", style: .Default, handler: { _ in
+                self.openCircleYAML(yaml)
+            }))
+        }
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
             popover.barButtonItem = barButtonItem
@@ -267,6 +280,10 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         av.view.setNeedsDisplay()
     }
 
+    func openCircleYAML(yaml: String) {
+        print(yaml)
+        self.performSegueWithIdentifier("showYamlSegue", sender: yaml)
+    }
 
     // MARK: - RealmResultsControllerDelegate
 

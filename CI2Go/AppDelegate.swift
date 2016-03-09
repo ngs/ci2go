@@ -38,6 +38,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return fileURL.path!
     }
 
+    func setupRealm() {
+        let env = NSProcessInfo().environment
+
+        var config = Realm.Configuration(
+            schemaVersion: kCI2GoSchemaVersion,
+            migrationBlock: { _, _ in }
+        )
+        if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
+            config.inMemoryIdentifier = identifier
+        } else {
+            config.path = realmPath
+        }
+        Realm.Configuration.defaultConfiguration = config
+    }
+
     class var current: AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
@@ -65,36 +80,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         ColorScheme().apply()
         
         // Setup view controllers
-        let splitViewController = self.window!.rootViewController as! UISplitViewController
-        let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem()
-        splitViewController.delegate = self
-        
+        splitViewController?.delegate = self
+        let navigationController = splitViewController?.viewControllers.last as? UINavigationController
+        navigationController?.topViewController?.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+
         return true
+    }
+
+    var splitViewController: UISplitViewController? {
+        return self.window?.rootViewController as? UISplitViewController
     }
     
     // MARK: - Split view
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController, ontoPrimaryViewController primaryViewController:UIViewController) -> Bool {
         if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-            return secondaryAsNavController.topViewController is BuildLogViewController
+            let vc = secondaryAsNavController.topViewController
+            return vc is BuildLogViewController || vc is TextViewController
         }
         return false
-    }
-
-    func setupRealm() {
-        let env = NSProcessInfo().environment
-
-        var config = Realm.Configuration(
-            schemaVersion: kCI2GoSchemaVersion,
-            migrationBlock: { _, _ in }
-        )
-        if let identifier = env["REALM_MEMORY_IDENTIFIER"] {
-            config.inMemoryIdentifier = identifier
-        } else {
-            config.path = realmPath
-        }
-        Realm.Configuration.defaultConfiguration = config
     }
     
     func splitViewController(svc: UISplitViewController, shouldHideViewController vc: UIViewController, inOrientation orientation: UIInterfaceOrientation) -> Bool {

@@ -55,6 +55,7 @@
 		851AA6A31C3D3BDD00A50744 /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69E1C3D3BDD00A50744 /* BuildTableRowController.swift */; };
 		851AA6A41C3D3BDD00A50744 /* SingleBuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69F1C3D3BDD00A50744 /* SingleBuildInterfaceController.swift */; };
 		851AA6A71C3D4D3000A50744 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */; };
+		85225C271C90C25B00023C0B /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85225C261C90C25B00023C0B /* TextViewController.swift */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
@@ -456,6 +457,7 @@
 		851AA69E1C3D3BDD00A50744 /* BuildTableRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
 		851AA69F1C3D3BDD00A50744 /* SingleBuildInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleBuildInterfaceController.swift; sourceTree = "<group>"; };
 		851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		85225C261C90C25B00023C0B /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 				850B4E941C37DB7200C1EC70 /* ColorSchemesViewController.swift */,
 				850B4E951C37DB7200C1EC70 /* ProjectsViewController.swift */,
 				850B4E961C37DB7200C1EC70 /* SettingsViewController.swift */,
+				85225C261C90C25B00023C0B /* TextViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1738,6 +1741,7 @@
 				856702951C30253100E76DCF /* CI2GoUserDefaults.swift in Sources */,
 				85C724411C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
 				85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */,
+				85225C271C90C25B00023C0B /* TextViewController.swift in Sources */,
 				85C35D971C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */,
 				8516E6CF1C542F0A0060DE82 /* RRCPendingChange.swift in Sources */,
 				850B4EA71C37DB7200C1EC70 /* BuildTableViewCell.swift in Sources */,
