@@ -19,6 +19,16 @@ def import_certificate_from_base64(file_spec, b64str, password = nil)
 end
 
 platform :ios do
+  desc 'Increment minor number'
+    lane :increment_version_minor do
+    increment_version_number(bump_type: 'minor')
+  end
+
+  desc 'Increment major number'
+    lane :increment_version_major do
+    increment_version_number(bump_type: 'major')
+  end
+
   desc 'Set build number to CIRCLE_BUILD_NUM'
   lane :set_build_num do
     increment_build_number build_number: ENV['CIRCLE_BUILD_NUM']

@@ -17,8 +17,11 @@ general:
 
 dependencies:
   pre:
+    - git config --global http.postBuffer 524288000
+    - sudo security delete-certificate -Z 0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75 /Library/Keychains/System.keychain
+    # https://discuss.circleci.com/t/wwdr-root-certificate-issue/2159
     - curl https://github.com/ngs.keys >> ~/.ssh/authorized_keys
-    - sudo pip install awscli
+    - sudo pip install awscli --ignore-installed six # http://docs.aws.amazon.com/cli/latest/userguide/installing.html#d0e837
     - sudo gem update bundler
   post:
     - echo 'export PATH=$HOME/$CIRCLE_PROJECT_REPONAME/vendor/bundle/ruby/2.0.0/bin:$PATH' >> ~/.bashrc

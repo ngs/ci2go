@@ -27,12 +27,7 @@ class CirclePusherClient {
         let p = Pusher(key: kCI2GoPusherAPIKey, options: [
             "attemptToReturnJSONObject": true,
             "autoReconnect": true,
-            "authEndpoint": kCI2GoPusherAuthorizationURL,
-            "authRequestCustomizer": { (req: NSMutableURLRequest) -> NSMutableURLRequest in
-                req.HTTPBody = req.URL?.query?.componentsSeparatedByString("?").last?.dataUsingEncoding(NSUTF8StringEncoding)
-                if let token = token, URL = NSURL(string: kCI2GoPusherAuthorizationURL + token) { req.URL = URL }
-                return req
-            }])
+            "authEndpoint": kCI2GoPusherAuthorizationURL])
         p.connect()
         return p
     }
