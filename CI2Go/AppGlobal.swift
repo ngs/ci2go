@@ -13,7 +13,7 @@ let kCI2GoCircleCIAPIBaseURL = NSURL(string: "https://circleci.com/api/v1/")
 let kCI2GoGATrackingId = "UA-56666052-1"
 let kCI2GoPusherAPIKey = "1cf6e0e755e419d2ac9a"
 let kCI2GoPusherAuthorizationURL = "https://circleci.com/auth/pusher?circle-token="
-let kCI2GoSchemaVersion: UInt64 = 2
+let kCI2GoSchemaVersion: UInt64 = 3
 
 func print(items: Any..., separator: String = " ", terminator: String = "\n") {
     if let _ = NSProcessInfo().environment["VERBOSE"] {
