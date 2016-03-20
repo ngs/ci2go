@@ -58,6 +58,11 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         return (actionType.componentsSeparatedByString(":").last ?? actionType).humanize
     }
 
+    var pusherChannelName: String? {
+        guard let bc = buildStep?.build?.pusherChannelName else { return nil }
+        return "\(bc)@\(nodeIndex)"
+    }
+
     var status: Status? {
         get {
             if let rawStatus = rawStatus {
