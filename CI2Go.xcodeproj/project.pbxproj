@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8507F39E1C9EFD3E009260BB /* BuildArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */; };
 		850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
 		850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
 		850B4E881C36E78700C1EC70 /* build.json in Resources */ = {isa = PBXBuildFile; fileRef = 850B4E871C36E78700C1EC70 /* build.json */; };
@@ -56,6 +57,27 @@
 		851AA6A41C3D3BDD00A50744 /* SingleBuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA69F1C3D3BDD00A50744 /* SingleBuildInterfaceController.swift */; };
 		851AA6A71C3D4D3000A50744 /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */; };
 		85225C271C90C25B00023C0B /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85225C261C90C25B00023C0B /* TextViewController.swift */; };
+		853728A71C9F22CA00F764A7 /* FBFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728921C9F22CA00F764A7 /* FBFile.swift */; };
+		853728A81C9F22CA00F764A7 /* FileBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728931C9F22CA00F764A7 /* FileBrowser.swift */; };
+		853728A91C9F22CA00F764A7 /* FileListPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728941C9F22CA00F764A7 /* FileListPreview.swift */; };
+		853728AA1C9F22CA00F764A7 /* FileListSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728951C9F22CA00F764A7 /* FileListSearch.swift */; };
+		853728AB1C9F22CA00F764A7 /* FileListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728961C9F22CA00F764A7 /* FileListTableView.swift */; };
+		853728AC1C9F22CA00F764A7 /* FileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728971C9F22CA00F764A7 /* FileListViewController.swift */; };
+		853728AD1C9F22CA00F764A7 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728981C9F22CA00F764A7 /* FileParser.swift */; };
+		853728AE1C9F22CA00F764A7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 853728991C9F22CA00F764A7 /* Info.plist */; };
+		853728AF1C9F22CA00F764A7 /* PreviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8537289A1C9F22CA00F764A7 /* PreviewManager.swift */; };
+		853728B01C9F22CA00F764A7 /* PreviewTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8537289B1C9F22CA00F764A7 /* PreviewTransitionViewController.swift */; };
+		853728B11C9F22CA00F764A7 /* documents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8537289D1C9F22CA00F764A7 /* documents@2x.png */; };
+		853728B21C9F22CA00F764A7 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8537289E1C9F22CA00F764A7 /* file@2x.png */; };
+		853728B31C9F22CA00F764A7 /* FileBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8537289F1C9F22CA00F764A7 /* FileBrowser.xib */; };
+		853728B41C9F22CA00F764A7 /* folder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853728A01C9F22CA00F764A7 /* folder@2x.png */; };
+		853728B51C9F22CA00F764A7 /* image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853728A11C9F22CA00F764A7 /* image@2x.png */; };
+		853728B61C9F22CA00F764A7 /* pdf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853728A21C9F22CA00F764A7 /* pdf@2x.png */; };
+		853728B71C9F22CA00F764A7 /* PreviewTransitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853728A31C9F22CA00F764A7 /* PreviewTransitionViewController.xib */; };
+		853728B81C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853728A41C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib */; };
+		853728B91C9F22CA00F764A7 /* zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853728A51C9F22CA00F764A7 /* zip@2x.png */; };
+		853728BA1C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728A61C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift */; };
+		853728BC1C9F2C0900F764A7 /* PathWeblocExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728BB1C9F2C0900F764A7 /* PathWeblocExtension.swift */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
@@ -459,6 +481,28 @@
 		851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		85225C261C90C25B00023C0B /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		853728921C9F22CA00F764A7 /* FBFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFile.swift; sourceTree = "<group>"; };
+		853728931C9F22CA00F764A7 /* FileBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowser.swift; sourceTree = "<group>"; };
+		853728941C9F22CA00F764A7 /* FileListPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListPreview.swift; sourceTree = "<group>"; };
+		853728951C9F22CA00F764A7 /* FileListSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListSearch.swift; sourceTree = "<group>"; };
+		853728961C9F22CA00F764A7 /* FileListTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListTableView.swift; sourceTree = "<group>"; };
+		853728971C9F22CA00F764A7 /* FileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListViewController.swift; sourceTree = "<group>"; };
+		853728981C9F22CA00F764A7 /* FileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
+		853728991C9F22CA00F764A7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8537289A1C9F22CA00F764A7 /* PreviewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewManager.swift; sourceTree = "<group>"; };
+		8537289B1C9F22CA00F764A7 /* PreviewTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewTransitionViewController.swift; sourceTree = "<group>"; };
+		8537289D1C9F22CA00F764A7 /* documents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "documents@2x.png"; sourceTree = "<group>"; };
+		8537289E1C9F22CA00F764A7 /* file@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file@2x.png"; sourceTree = "<group>"; };
+		8537289F1C9F22CA00F764A7 /* FileBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileBrowser.xib; sourceTree = "<group>"; };
+		853728A01C9F22CA00F764A7 /* folder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "folder@2x.png"; sourceTree = "<group>"; };
+		853728A11C9F22CA00F764A7 /* image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image@2x.png"; sourceTree = "<group>"; };
+		853728A21C9F22CA00F764A7 /* pdf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@2x.png"; sourceTree = "<group>"; };
+		853728A31C9F22CA00F764A7 /* PreviewTransitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewTransitionViewController.xib; sourceTree = "<group>"; };
+		853728A41C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebviewPreviewViewContoller.xib; sourceTree = "<group>"; };
+		853728A51C9F22CA00F764A7 /* zip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zip@2x.png"; sourceTree = "<group>"; };
+		853728A61C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebviewPreviewViewContoller.swift; sourceTree = "<group>"; };
+		853728BB1C9F2C0900F764A7 /* PathWeblocExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathWeblocExtension.swift; sourceTree = "<group>"; };
+		8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildArtifact.swift; sourceTree = "<group>"; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		856701911C3015F500E76DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -709,6 +753,7 @@
 		850B4EAA1C3805EF00C1EC70 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				853728911C9F22CA00F764A7 /* FileBrowser */,
 				850B4EAB1C3805EF00C1EC70 /* ANSIEscapeHelper */,
 			);
 			path = Vendor;
@@ -747,6 +792,41 @@
 				851AA6981C3D328100A50744 /* SubviewsForClassSampleView.xib */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		853728911C9F22CA00F764A7 /* FileBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				853728921C9F22CA00F764A7 /* FBFile.swift */,
+				853728931C9F22CA00F764A7 /* FileBrowser.swift */,
+				853728941C9F22CA00F764A7 /* FileListPreview.swift */,
+				853728951C9F22CA00F764A7 /* FileListSearch.swift */,
+				853728961C9F22CA00F764A7 /* FileListTableView.swift */,
+				853728971C9F22CA00F764A7 /* FileListViewController.swift */,
+				853728981C9F22CA00F764A7 /* FileParser.swift */,
+				853728991C9F22CA00F764A7 /* Info.plist */,
+				8537289A1C9F22CA00F764A7 /* PreviewManager.swift */,
+				8537289B1C9F22CA00F764A7 /* PreviewTransitionViewController.swift */,
+				8537289C1C9F22CA00F764A7 /* Resources */,
+				853728A61C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift */,
+			);
+			path = FileBrowser;
+			sourceTree = "<group>";
+		};
+		8537289C1C9F22CA00F764A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8537289D1C9F22CA00F764A7 /* documents@2x.png */,
+				8537289E1C9F22CA00F764A7 /* file@2x.png */,
+				8537289F1C9F22CA00F764A7 /* FileBrowser.xib */,
+				853728A01C9F22CA00F764A7 /* folder@2x.png */,
+				853728A11C9F22CA00F764A7 /* image@2x.png */,
+				853728A21C9F22CA00F764A7 /* pdf@2x.png */,
+				853728A31C9F22CA00F764A7 /* PreviewTransitionViewController.xib */,
+				853728A41C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib */,
+				853728A51C9F22CA00F764A7 /* zip@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		856701801C3015F500E76DCF = {
@@ -866,6 +946,7 @@
 				850B4EBB1C38737100C1EC70 /* StringExtension.swift */,
 				85C724371C391A9800582B4D /* DictionaryExtension.swift */,
 				851AA6941C3D318300A50744 /* UIViewExtension.swift */,
+				853728BB1C9F2C0900F764A7 /* PathWeblocExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1024,6 +1105,7 @@
 				85C067881C3127AA001062F2 /* Branch.swift */,
 				85168A821C36812B00392145 /* Build.swift */,
 				85168A841C36813300392145 /* BuildAction.swift */,
+				8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */,
 				85C35D931C3E157C00AD2926 /* BuildCompact.swift */,
 				85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */,
 				85168A861C36813A00392145 /* BuildStep.swift */,
@@ -1293,6 +1375,7 @@
 				856702EA1C30253100E76DCF /* Seti.itermcolors in Resources */,
 				8567029B1C30253100E76DCF /* AlienBlood.itermcolors in Resources */,
 				856702ED1C30253100E76DCF /* SoftServer.itermcolors in Resources */,
+				853728B81C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib in Resources */,
 				8567029A1C30253100E76DCF /* Afterglow.itermcolors in Resources */,
 				856702CD1C30253100E76DCF /* LiquidCarbonTransparent.itermcolors in Resources */,
 				856702911C30253100E76DCF /* SourceCodePro-Light.ttf in Resources */,
@@ -1306,6 +1389,7 @@
 				856702B01C30253100E76DCF /* Dracula.itermcolors in Resources */,
 				856702AB1C30253100E76DCF /* CrayonPonyFish.itermcolors in Resources */,
 				856701971C3015F500E76DCF /* LaunchScreen.storyboard in Resources */,
+				853728B21C9F22CA00F764A7 /* file@2x.png in Resources */,
 				856702E01C30253100E76DCF /* PencilDark.itermcolors in Resources */,
 				856702CB1C30253100E76DCF /* Lavandula.itermcolors in Resources */,
 				856702941C30253100E76DCF /* SourceCodePro-Semibold.ttf in Resources */,
@@ -1337,17 +1421,22 @@
 				856702C41C30253100E76DCF /* IC_Orange_PPL.itermcolors in Resources */,
 				856702D71C30253100E76DCF /* Neopolitan.itermcolors in Resources */,
 				856702F41C30253100E76DCF /* Spring.itermcolors in Resources */,
+				853728B91C9F22CA00F764A7 /* zip@2x.png in Resources */,
 				856702F01C30253100E76DCF /* Solarized Dark.itermcolors in Resources */,
 				856702C91C30253100E76DCF /* Jellybeans.itermcolors in Resources */,
 				856702FB1C30253100E76DCF /* Tomorrow Night Blue.itermcolors in Resources */,
+				853728B51C9F22CA00F764A7 /* image@2x.png in Resources */,
 				856702B61C30253100E76DCF /* Flat.itermcolors in Resources */,
+				853728AE1C9F22CA00F764A7 /* Info.plist in Resources */,
 				856703021C30253100E76DCF /* Twilight.itermcolors in Resources */,
 				856702A61C30253100E76DCF /* Chalk.itermcolors in Resources */,
+				853728B11C9F22CA00F764A7 /* documents@2x.png in Resources */,
 				856702F71C30253100E76DCF /* Symfonic.itermcolors in Resources */,
 				8567028F1C30253100E76DCF /* SourceCodePro-Bold.ttf in Resources */,
 				856702FA1C30253100E76DCF /* Thayer Bright.itermcolors in Resources */,
 				856702981C30253100E76DCF /* 3024 Night.itermcolors in Resources */,
 				856702A21C30253100E76DCF /* Blazer.itermcolors in Resources */,
+				853728B31C9F22CA00F764A7 /* FileBrowser.xib in Resources */,
 				856702E51C30253100E76DCF /* Red Sands.itermcolors in Resources */,
 				856702AC1C30253100E76DCF /* Dark Pastel.itermcolors in Resources */,
 				856702C31C30253100E76DCF /* IC_Green_PPL.itermcolors in Resources */,
@@ -1361,11 +1450,13 @@
 				856702A51C30253100E76DCF /* C64.itermcolors in Resources */,
 				856702E61C30253100E76DCF /* Rippedcasts.itermcolors in Resources */,
 				856702C21C30253100E76DCF /* Hybrid.itermcolors in Resources */,
+				853728B61C9F22CA00F764A7 /* pdf@2x.png in Resources */,
 				856703071C30253100E76DCF /* Wez.itermcolors in Resources */,
 				856702F11C30253100E76DCF /* Solarized Light.itermcolors in Resources */,
 				856702D61C30253100E76DCF /* N0tch2k.itermcolors in Resources */,
 				856701941C3015F500E76DCF /* Assets.xcassets in Resources */,
 				856702FD1C30253100E76DCF /* Tomorrow Night Eighties.itermcolors in Resources */,
+				853728B41C9F22CA00F764A7 /* folder@2x.png in Resources */,
 				856702F51C30253100E76DCF /* Square.itermcolors in Resources */,
 				8567030A1C30253100E76DCF /* Zenburn.itermcolors in Resources */,
 				856703031C30253100E76DCF /* Urple.itermcolors in Resources */,
@@ -1386,6 +1477,7 @@
 				856702AE1C30253100E76DCF /* Desert.itermcolors in Resources */,
 				856702931C30253100E76DCF /* SourceCodePro-Regular.ttf in Resources */,
 				856702F21C30253100E76DCF /* Spacedust.itermcolors in Resources */,
+				853728B71C9F22CA00F764A7 /* PreviewTransitionViewController.xib in Resources */,
 				856702D81C30253100E76DCF /* NightLion v1.itermcolors in Resources */,
 				856702B81C30253100E76DCF /* FunForrest.itermcolors in Resources */,
 				856702BC1C30253100E76DCF /* Hardcore.itermcolors in Resources */,
@@ -1739,43 +1831,55 @@
 				85C067891C3127AA001062F2 /* Branch.swift in Sources */,
 				85168A891C36814200392145 /* Commit.swift in Sources */,
 				856702951C30253100E76DCF /* CI2GoUserDefaults.swift in Sources */,
+				853728AB1C9F22CA00F764A7 /* FileListTableView.swift in Sources */,
 				85C724411C394E5A00582B4D /* UserNetworkingExtension.swift in Sources */,
+				853728A91C9F22CA00F764A7 /* FileListPreview.swift in Sources */,
 				85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */,
 				85225C271C90C25B00023C0B /* TextViewController.swift in Sources */,
 				85C35D971C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */,
 				8516E6CF1C542F0A0060DE82 /* RRCPendingChange.swift in Sources */,
+				853728B01C9F22CA00F764A7 /* PreviewTransitionViewController.swift in Sources */,
 				850B4EA71C37DB7200C1EC70 /* BuildTableViewCell.swift in Sources */,
 				850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */,
 				8567028C1C30253100E76DCF /* UIColor+Mix.swift in Sources */,
 				850B4E9F1C37DB7200C1EC70 /* BuildLogViewController.swift in Sources */,
+				853728AC1C9F22CA00F764A7 /* FileListViewController.swift in Sources */,
 				856E04D71C313BD9003F43BC /* Project.swift in Sources */,
 				850B4EA61C37DB7200C1EC70 /* BuildLogTextView.swift in Sources */,
 				858D6A4B1C3E62D700C197D5 /* WatchMessageHandler.swift in Sources */,
 				85C724471C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */,
 				850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */,
+				853728AA1C9F22CA00F764A7 /* FileListSearch.swift in Sources */,
 				850B4EA91C37DB7200C1EC70 /* SettingsTableView.swift in Sources */,
 				850B4EA81C37DB7200C1EC70 /* ColorSchemeTableViewCell.swift in Sources */,
 				850B4EB01C3808F700C1EC70 /* IntTimeFormattedExtension.swift in Sources */,
+				8507F39E1C9EFD3E009260BB /* BuildArtifact.swift in Sources */,
 				850B4EBC1C38737100C1EC70 /* StringExtension.swift in Sources */,
 				850B4E9E1C37DB7200C1EC70 /* BranchesViewController.swift in Sources */,
 				85168A871C36813A00392145 /* BuildStep.swift in Sources */,
 				851AA6911C3CACA300A50744 /* CirclePusherClient.swift in Sources */,
 				8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */,
+				853728A81C9F22CA00F764A7 /* FileBrowser.swift in Sources */,
 				85C0678B1C31354F001062F2 /* AppGlobal.swift in Sources */,
 				85168A851C36813300392145 /* BuildAction.swift in Sources */,
 				856702961C30253100E76DCF /* ColorScheme.swift in Sources */,
+				853728A71C9F22CA00F764A7 /* FBFile.swift in Sources */,
 				850B4EB41C380C9F00C1EC70 /* BuildActionNetworkingExtension.swift in Sources */,
 				85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */,
 				856702871C30253100E76DCF /* ColorScheme+UIKit.swift in Sources */,
+				853728AD1C9F22CA00F764A7 /* FileParser.swift in Sources */,
 				850B4EA11C37DB7200C1EC70 /* BuildsViewController.swift in Sources */,
 				85C35D8D1C3E004E00AD2926 /* BuildEnums.swift in Sources */,
 				851AA6951C3D318300A50744 /* UIViewExtension.swift in Sources */,
 				85C35D941C3E157C00AD2926 /* BuildCompact.swift in Sources */,
+				853728AF1C9F22CA00F764A7 /* PreviewManager.swift in Sources */,
 				850B4EA31C37DB7200C1EC70 /* ProjectsViewController.swift in Sources */,
 				85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */,
 				8567028D1C30253100E76DCF /* UIFont+appFonts.swift in Sources */,
+				853728BC1C9F2C0900F764A7 /* PathWeblocExtension.swift in Sources */,
 				850B4EA01C37DB7200C1EC70 /* BuildStepsViewController.swift in Sources */,
 				850B4EA41C37DB7200C1EC70 /* SettingsViewController.swift in Sources */,
+				853728BA1C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift in Sources */,
 				85168A831C36812B00392145 /* Build.swift in Sources */,
 				850B4EAE1C3805EF00C1EC70 /* AMR_ANSIEscapeHelper.m in Sources */,
 				850B4EA21C37DB7200C1EC70 /* ColorSchemesViewController.swift in Sources */,

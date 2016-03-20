@@ -43,6 +43,7 @@ class Build: Object, Mappable, Equatable, Comparable {
     let commits = List<Commit>()
     let retries = List<Build>()
     let steps = List<BuildStep>()
+    // let artifacts = List<BuildArtifact>()
 
     var pusherChannelName: String? {
         guard let repoUser = project?.username, repoName = project?.repositoryName where number > 0

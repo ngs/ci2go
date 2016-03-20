@@ -10,6 +10,7 @@ target 'CI2Go' do
   pod 'Crashlytics'
   pod 'DateTools', '~> 1.7'
   pod 'Fabric'
+  pod 'FileKit'
   pod 'GoogleAnalytics', '~> 3.14'
   pod 'MBProgressHUD', '~> 0.8'
   pod 'PusherSwift', '0.2.3'
