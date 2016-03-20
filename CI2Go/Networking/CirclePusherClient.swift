@@ -27,7 +27,7 @@ class CirclePusherClient {
         let p = Pusher(key: kCI2GoPusherAPIKey, options: [
             "attemptToReturnJSONObject": true,
             "autoReconnect": true,
-            "authEndpoint": kCI2GoPusherAuthorizationURL])
+            "authEndpoint": kCI2GoPusherAuthorizationURL + (circleToken ?? "")])
         p.connect()
         return p
     }
@@ -35,19 +35,28 @@ class CirclePusherClient {
         self.pusherClient.disconnect()
     }
     func subscribeBuild(build: Build) -> Observable<Void> {
-        guard let channelName = build.pusherChannelName else { return Observable.never() }
         return Observable.create { observer in
-            let channel = self.pusherClient.subscribe(channelName)
-            channel.bind("newAction", callback: { _ in observer.onNext() })
-            channel.bind("updateAction", callback: { _ in observer.onNext() })
+            if let n = build.pusherAllChannelName {
+                let channel = self.pusherClient.subscribe(n)
+                channel.bind("updateObservables", callback: { _ in observer.onNext() })
+                channel.bind("maybeAddMessages", callback: { _ in observer.onNext() })
+                channel.bind("fetchTestResults", callback: { _ in observer.onNext() })
+            }
+            build.pusherContainerChannelNames.forEach { n in
+                let channel = self.pusherClient.subscribe(n)
+                channel.bind("newAction", callback: { _ in observer.onNext() })
+                channel.bind("updateAction", callback: { _ in observer.onNext() })
+            }
             return AnonymousDisposable {
-                self.pusherClient.unsubscribe(channelName)
+                build.pusherChannelNames.forEach {n in
+                    self.pusherClient.unsubscribe(n)
+                }
+
             }
         }
     }
     func subscribeBuildLog(buildAction: BuildAction) -> Observable<Void> {
-        let build = buildAction.buildStep?.build
-        guard let channelName = build?.pusherChannelName else { return Observable.never() }
+        guard let channelName = buildAction.pusherChannelName else { return Observable.never() }
         return Observable.create { observer in
             let channel = self.pusherClient.subscribe(channelName)
             channel.bind("appendAction", callback: { res in

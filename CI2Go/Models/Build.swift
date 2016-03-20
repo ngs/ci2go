@@ -52,6 +52,24 @@ class Build: Object, Mappable, Equatable, Comparable {
         return "private-\(repoUser)@\(repoName)@\(number)@vcs-\(vcsType)"
     }
 
+    var pusherContainerChannelNames: [String] {
+        guard let baseName = pusherChannelName else { return [] }
+        return (0...parallelCount).map { n in "\(baseName)@\(n)" }
+    }
+
+    var pusherAllChannelName: String? {
+        guard let baseName = pusherChannelName else { return nil }
+        return baseName + "@all"
+    }
+
+    var pusherChannelNames: [String] {
+        var ar = pusherContainerChannelNames
+        if let n = pusherAllChannelName {
+            ar.append(n)
+        }
+        return ar
+    }
+
     var lifecycle: Lifecycle? {
         get {
             if let rawLifecycle = rawLifecycle {
