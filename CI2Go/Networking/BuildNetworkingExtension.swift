@@ -9,6 +9,9 @@
 import Foundation
 import RxSwift
 import RealmSwift
+import FileKit
+import Crashlytics
+
 #if os(iOS)
     import RealmResultsController
 #endif
@@ -82,9 +85,48 @@ extension Build {
 
     }
 
+    func getArtifacts() -> Observable<[BuildArtifact]> {
+        guard let apiPath = apiPath else { return Observable.never() }
+        let client = CircleAPIClient()
+        return client.getList("\(apiPath)/artifacts").doOn(onNext: { artifacts in
+            let realm = try! Realm()
+            try! realm.write {
+                let build = self.dup()
+                let newArtifacts: [BuildArtifact] = artifacts.map { a in
+                    let artifact: BuildArtifact = a.dup()
+                    artifact.build = build
+                    do {
+                        try artifact.localPath.parent.createDirectory(withIntermediateDirectories: true)
+                        if !artifact.localPath.exists {
+                            try artifact.urlString |> TextFile(path: artifact.localPath, encoding: NSUTF8StringEncoding)
+                        }
+                    } catch let error {
+                        print(error)
+                        if let error = error as? FileKitError {
+                            Crashlytics.sharedInstance().recordError(NSError(
+                                domain: "com.ci2go.fileKitError",
+                                code: error._code,
+                                userInfo: [
+                                    "description": error.description,
+                                    "message": error.message]),
+                                withAdditionalUserInfo: [:])
+                        }
+                    }
+                    return artifact
+                }
+                #if os(iOS)
+                    realm.addNotified(newArtifacts, update: true)
+                #else
+                    realm.add(newArtifacts, update: true)
+                #endif
+            }
+        })
+    }
+
     class func getRecent(offset: Int = 0, limit: Int = 30) -> Observable<[Build]> {
         return getList(path: "recent-builds", offset: offset, limit: limit)
     }
+    
     class func getList(project project: Project, offset: Int = 0, limit: Int = 30) -> Observable<[Build]> {
         return getList(path: project.apiPath, offset: offset, limit: limit)
     }

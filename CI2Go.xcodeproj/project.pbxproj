@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8507F39E1C9EFD3E009260BB /* BuildArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */; };
 		850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
 		850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
 		850B4E881C36E78700C1EC70 /* build.json in Resources */ = {isa = PBXBuildFile; fileRef = 850B4E871C36E78700C1EC70 /* build.json */; };
@@ -459,6 +460,7 @@
 		851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/WatchConnectivity.framework; sourceTree = DEVELOPER_DIR; };
 		85225C261C90C25B00023C0B /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		8534A3EC1C33D84100CF0BA8 /* CI2GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildArtifact.swift; sourceTree = "<group>"; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		856701911C3015F500E76DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1024,6 +1026,7 @@
 				85C067881C3127AA001062F2 /* Branch.swift */,
 				85168A821C36812B00392145 /* Build.swift */,
 				85168A841C36813300392145 /* BuildAction.swift */,
+				8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */,
 				85C35D931C3E157C00AD2926 /* BuildCompact.swift */,
 				85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */,
 				85168A861C36813A00392145 /* BuildStep.swift */,
@@ -1756,6 +1759,7 @@
 				850B4EA91C37DB7200C1EC70 /* SettingsTableView.swift in Sources */,
 				850B4EA81C37DB7200C1EC70 /* ColorSchemeTableViewCell.swift in Sources */,
 				850B4EB01C3808F700C1EC70 /* IntTimeFormattedExtension.swift in Sources */,
+				8507F39E1C9EFD3E009260BB /* BuildArtifact.swift in Sources */,
 				850B4EBC1C38737100C1EC70 /* StringExtension.swift in Sources */,
 				850B4E9E1C37DB7200C1EC70 /* BranchesViewController.swift in Sources */,
 				85168A871C36813A00392145 /* BuildStep.swift in Sources */,

@@ -96,6 +96,28 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         load()
     }
 
+    private func browseArtifacts() {
+        guard let build = build else { return }
+        let hud = MBProgressHUD(view: self.navigationController?.view)
+        self.navigationController?.view.addSubview(hud)
+        hud.animationType = MBProgressHUDAnimation.Fade
+        hud.dimBackground = true
+        hud.labelText = "Downloading File List"
+        hud.show(true)
+        build.getArtifacts().subscribe(
+            onNext: { artifacts in
+                hud.hide(true)
+                print(artifacts.first?.browseEntryPointPath)
+            },
+            onError:  { _ in
+                hud.labelText = "Failed to Download File List"
+                hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
+                hud.mode = MBProgressHUDMode.CustomView
+                hud.hide(true, afterDelay: 1)
+            }
+        ).addDisposableTo(disposeBag)
+    }
+
     private func retryBuild() {
         callAPI(.Retry, progressMessage: "Queuing Retry", successMessage: "Queued", failureMessage: "Failed")
     }
@@ -269,6 +291,11 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         if let yaml = self.build?.circleYAML where !yaml.isEmpty {
             av.addAction(UIAlertAction(title: "View circle.yml", style: .Default, handler: { _ in
                 self.openCircleYAML(yaml)
+            }))
+        }
+        if build?.hasArtifacts == true {
+            av.addAction(UIAlertAction(title: "Browse Artifacts", style: .Default, handler: { _ in
+                self.browseArtifacts()
             }))
         }
         av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
