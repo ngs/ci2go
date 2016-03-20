@@ -14,10 +14,20 @@ import RealmSwift
 #endif
 
 extension Build {
-    func post(path: String) -> Observable<Build> {
+
+    enum APIAction: String {
+        case Retry = "retry"
+        case Cancel = "cancel"
+    }
+
+    func post(path: APIAction, clearCache: Bool = false) -> Observable<Build> {
         guard let apiPath = self.apiPath else { return Observable.never() }
         let client = CircleAPIClient()
-        return client.post("\(apiPath)/\(path)").doOn(onNext: { build in
+        var apiAction: Observable<Build> = client.post("\(apiPath)/\(path.rawValue)")
+        if let projectPath = project?.apiPath where clearCache {
+            apiAction = Observable.combineLatest(client.del(projectPath + "/build-cache"), apiAction) { ($1) }
+        }
+        return apiAction.doOn(onNext: { build in
             autoreleasepool {
                 let realm = try! Realm()
                 try! realm.write {

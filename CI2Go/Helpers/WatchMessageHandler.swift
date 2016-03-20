@@ -64,7 +64,7 @@ class WatchMessageHandler: NSObject, WCSessionDelegate {
         guard let buildId = message[kCI2GoWatchConnectivityBuildIdKey] as? String else { return }
         let realm = try! Realm()
         let build = realm.objectForPrimaryKey(Build.self, key: buildId)
-        build?.post("retry").subscribeNext { build in
+        build?.post(.Retry).subscribeNext { build in
             replyHandler([kCI2GoWatchConnectivityBuildIdKey: build.id])
             }.addDisposableTo(disposeBag)
     }
