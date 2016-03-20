@@ -43,6 +43,21 @@ class CircleAPIClient {
         return self.requestList(.GET, path, keyPath: keyPath, parameters: parameters, encoding: ParameterEncoding.URLEncodedInURL)
     }
 
+    func del(path: String, parameters: [String: AnyObject]? = nil) -> Observable<Void> {
+        return Observable.create({ observer in
+            let req = self.createRequest(.DELETE, path, parameters: parameters, encoding: .URLEncodedInURL, headers: nil)
+            req.responseString(completionHandler: { res in
+                if let error = res.result.error {
+                    observer.onError(error)
+                } else {
+                    observer.onNext()
+                    observer.onCompleted()
+                }
+            })
+            return AnonymousDisposable { req.cancel() }
+        })
+    }
+
     func request<T where T: Mappable, T: Object>(method: Alamofire.Method, _ path: String,
         parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = .URL,
         headers: [String: String]? = nil) -> Observable<T> {
@@ -57,7 +72,7 @@ class CircleAPIClient {
                         observer.onNext(obj)
                         observer.onCompleted()
                     } else {
-                        observer.onError(NSError(domain: "foo", code: 1, userInfo: nil))
+                        observer.onError(NSError(domain: "com.ci2go.error", code: 1, userInfo: nil))
                     }
                 }
                 return AnonymousDisposable { req.cancel() }

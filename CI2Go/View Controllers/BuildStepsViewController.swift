@@ -97,11 +97,15 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     }
 
     private func retryBuild() {
-        callAPI("retry", progressMessage: "Queuing Retry", successMessage: "Queued", failureMessage: "Failed")
+        callAPI(.Retry, progressMessage: "Queuing Retry", successMessage: "Queued", failureMessage: "Failed")
+    }
+
+    private func clearCacheAndRetryBuild() {
+        callAPI(.Retry, clearCache: true, progressMessage: "Queuing Retry", successMessage: "Queued", failureMessage: "Failed")
     }
 
     private func cancelBuild() {
-        callAPI("cancel", progressMessage: "Canceling Build", successMessage: "Canceled", failureMessage: "Failed")
+        callAPI(.Retry, progressMessage: "Canceling Build", successMessage: "Canceled", failureMessage: "Failed")
     }
 
     private func openSafari(URL: NSURL) {
@@ -110,7 +114,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         vc.navigationController?.navigationBar.barTintColor = ColorScheme().backgroundColor()
     }
 
-    private func callAPI(path: String, progressMessage: String, successMessage: String, failureMessage: String) {
+    private func callAPI(path: Build.APIAction, clearCache: Bool = false, progressMessage: String, successMessage: String, failureMessage: String) {
         guard let build = build else { return }
         let hud = MBProgressHUD(view: self.navigationController?.view)
         self.navigationController?.view.addSubview(hud)
@@ -118,7 +122,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         hud.dimBackground = true
         hud.labelText = progressMessage
         hud.show(true)
-        build.post(path).subscribe(
+        build.post(path, clearCache: clearCache).subscribe(
             onNext: { build in
                 hud.labelText = successMessage
                 hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
@@ -247,6 +251,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         if lifecycle != .NotRun && lifecycle != .NotRunning {
             av.addAction(UIAlertAction(title: "Rebuild", style: .Default, handler: { _ in
                 self.retryBuild()
+            }))
+            av.addAction(UIAlertAction(title: "Rebuild without Cache", style: .Default, handler: { _ in
+                self.clearCacheAndRetryBuild()
             }))
         }
         if lifecycle == .Running || lifecycle == .NotRunning {

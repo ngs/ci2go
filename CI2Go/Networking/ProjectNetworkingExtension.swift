@@ -29,4 +29,9 @@ extension Project {
             }
         })
     }
+
+    func clearCache() -> Observable<Void> {
+        let client = CircleAPIClient()
+        return client.del("build-cache")
+    }
 }
