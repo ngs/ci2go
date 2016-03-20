@@ -12,6 +12,7 @@ import ObjectMapper
 class User: Object, Mappable, Equatable, Comparable {
     dynamic var email: String = ""
     dynamic var login: String = ""
+    dynamic var pusherId: String = ""
     dynamic var name: String = ""
     var emails: [String]?
 
@@ -20,10 +21,20 @@ class User: Object, Mappable, Equatable, Comparable {
         mapping(map)
     }
 
+    var pusherChannelNames: [String] {
+        var ar = ["private-\(login)"]
+        // https://github.com/circleci/frontend/commit/bad3911a885cd3f1849b5cd57edc19bf23832df4
+        if !pusherId.isEmpty {
+            ar.append("private-\(pusherId)")
+        }
+        return ar
+    }
+
     func mapping(map: Map) {
         var selectedEmail: String?, email: String?
         login <- map["login"]
         name <- map["name"]
+        pusherId <- map["pusher_id"]
         selectedEmail <- map["selected_email"]
         email <- map["email"]
         emails <- map["all_emails"]
@@ -37,7 +48,7 @@ class User: Object, Mappable, Equatable, Comparable {
     }
 
     override static func ignoredProperties() -> [String] {
-        return ["emails"]
+        return ["emails", "pusherChannelNames"]
     }
 
     func dup() -> User {

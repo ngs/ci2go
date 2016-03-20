@@ -79,7 +79,7 @@ class CirclePusherClient {
     func subscribeRefresh() -> Observable<Void> {
         return Observable.create { observer in
             var disposables = [Disposable]()
-            var channel: PusherChannel?
+            var channels = [PusherChannel]()
             disposables.append(User.me().subscribe(
                 onNext: { user in
                     Crashlytics.sharedInstance().setUserEmail(user.email)
@@ -87,13 +87,16 @@ class CirclePusherClient {
                     Crashlytics.sharedInstance().setUserName(user.name)
                     Answers.logLoginWithMethod("API Token", success: NSNumber(bool: true),
                         customAttributes: ["login": user.login, "name": user.name])
-                    channel = self.pusherClient.subscribe("private-\(user.login)")
-                    channel?.bind("call", callback: { res in
-                        if let res = res as? [String: AnyObject]
-                            , fn = res["fn"] as? String where fn == "refreshBuildState" {
-                                observer.onNext()
-                        }
-                    })
+                    channels = user.pusherChannelNames.map {
+                        let c = self.pusherClient.subscribe($0)
+                        c.bind("call", callback: { res in
+                            if let res = res as? [String: AnyObject]
+                                , fn = res["fn"] as? String where fn == "refreshBuildState" {
+                                    observer.onNext()
+                            }
+                        })
+                        return c
+                    }
                 },
                 onError: { e in
                     Answers.logLoginWithMethod("API Token", success: NSNumber(bool: false),
@@ -103,8 +106,8 @@ class CirclePusherClient {
                 ))
             return AnonymousDisposable {
                 disposables.forEach { $0.dispose() }
-                if let channelName = channel?.name {
-                    self.pusherClient.unsubscribe(channelName)
+                channels.forEach { c in
+                    self.pusherClient.unsubscribe(c.name)
                 }
             }
         }
