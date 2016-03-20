@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import FileKit
 import RxSwift
 import RealmSwift
 import RealmResultsController
@@ -96,8 +97,13 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         load()
     }
 
-    private func browseArtifacts() {
+    private func browseArtifacts(sender: AnyObject? = nil) {
         guard let build = build else { return }
+        let realm = try! Realm()
+        if let artifactsPath = realm.objects(BuildArtifact.self).filter("build == %@", build).first?.browseEntryPointPath {
+            openFileBrowser(artifactsPath)
+            return
+        }
         let hud = MBProgressHUD(view: self.navigationController?.view)
         self.navigationController?.view.addSubview(hud)
         hud.animationType = MBProgressHUDAnimation.Fade
@@ -107,7 +113,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         build.getArtifacts().subscribe(
             onNext: { artifacts in
                 hud.hide(true)
-                print(artifacts.first?.browseEntryPointPath)
+                if let artifactsPath = artifacts.first?.browseEntryPointPath {
+                    self.openFileBrowser(artifactsPath, sender: sender)
+                }
             },
             onError:  { _ in
                 hud.labelText = "Failed to Download File List"
@@ -116,6 +124,40 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 hud.hide(true, afterDelay: 1)
             }
         ).addDisposableTo(disposeBag)
+    }
+
+    private func openFileBrowser(path: Path, sender: AnyObject? = nil) {
+        let children = path.children()
+        if children.count == 1 {
+            let fb = FileBrowser(initialPath: path.URL)
+            self.presentViewController(fb, animated: true, completion: nil)
+        } else {
+            let av = UIAlertController(title: "Select Node", message: nil, preferredStyle: .ActionSheet)
+            children.forEach { child in
+                av.addAction(UIAlertAction(title: "Node \(child.fileName)",
+                    style: .Default, handler: { _ in
+                        let fb = FileBrowser(initialPath: child.URL)
+                        self.presentViewController(fb, animated: true, completion: nil)
+                }))
+            }
+            presentAlertController(av, sender: sender)
+        }
+    }
+
+    private func presentAlertController(av: UIAlertController, sender: AnyObject?) {
+        av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
+            popover.barButtonItem = barButtonItem
+        }
+        presentViewController(av, animated: true, completion: {})
+        let c = UIColor.darkTextColor()
+        av.view.tintColor = c
+        av.view.subviewsForClass(UILabel.self).forEach { l in
+            guard let l = l as? UILabel else { return }
+            l.textColor = c
+            l.tintColor = c
+        }
+        av.view.setNeedsDisplay()
     }
 
     private func retryBuild() {
@@ -298,20 +340,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 self.browseArtifacts()
             }))
         }
-        av.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        if let barButtonItem = sender as? UIBarButtonItem, popover = av.popoverPresentationController {
-            popover.barButtonItem = barButtonItem
-        }
-
-        presentViewController(av, animated: true, completion: {})
-        let c = UIColor.darkTextColor()
-        av.view.tintColor = c
-        av.view.subviewsForClass(UILabel.self).forEach { l in
-            guard let l = l as? UILabel else { return }
-            l.textColor = c
-            l.tintColor = c
-        }
-        av.view.setNeedsDisplay()
+        presentAlertController(av, sender: sender)
     }
 
     func openCircleYAML(yaml: String) {
