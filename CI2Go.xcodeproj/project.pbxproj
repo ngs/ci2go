@@ -77,6 +77,7 @@
 		853728B81C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853728A41C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib */; };
 		853728B91C9F22CA00F764A7 /* zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 853728A51C9F22CA00F764A7 /* zip@2x.png */; };
 		853728BA1C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728A61C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift */; };
+		853728BC1C9F2C0900F764A7 /* PathWeblocExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853728BB1C9F2C0900F764A7 /* PathWeblocExtension.swift */; };
 		8567018D1C3015F500E76DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8567018C1C3015F500E76DCF /* AppDelegate.swift */; };
 		856701921C3015F500E76DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856701901C3015F500E76DCF /* Main.storyboard */; };
 		856701941C3015F500E76DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 856701931C3015F500E76DCF /* Assets.xcassets */; };
@@ -500,6 +501,7 @@
 		853728A41C9F22CA00F764A7 /* WebviewPreviewViewContoller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebviewPreviewViewContoller.xib; sourceTree = "<group>"; };
 		853728A51C9F22CA00F764A7 /* zip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zip@2x.png"; sourceTree = "<group>"; };
 		853728A61C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebviewPreviewViewContoller.swift; sourceTree = "<group>"; };
+		853728BB1C9F2C0900F764A7 /* PathWeblocExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathWeblocExtension.swift; sourceTree = "<group>"; };
 		8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildArtifact.swift; sourceTree = "<group>"; };
 		856701891C3015F500E76DCF /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8567018C1C3015F500E76DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 				850B4EBB1C38737100C1EC70 /* StringExtension.swift */,
 				85C724371C391A9800582B4D /* DictionaryExtension.swift */,
 				851AA6941C3D318300A50744 /* UIViewExtension.swift */,
+				853728BB1C9F2C0900F764A7 /* PathWeblocExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1873,6 +1876,7 @@
 				850B4EA31C37DB7200C1EC70 /* ProjectsViewController.swift in Sources */,
 				85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */,
 				8567028D1C30253100E76DCF /* UIFont+appFonts.swift in Sources */,
+				853728BC1C9F2C0900F764A7 /* PathWeblocExtension.swift in Sources */,
 				850B4EA01C37DB7200C1EC70 /* BuildStepsViewController.swift in Sources */,
 				850B4EA41C37DB7200C1EC70 /* SettingsViewController.swift in Sources */,
 				853728BA1C9F22CA00F764A7 /* WebviewPreviewViewContoller.swift in Sources */,

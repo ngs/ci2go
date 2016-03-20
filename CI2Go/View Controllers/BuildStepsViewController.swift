@@ -100,7 +100,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
     private func browseArtifacts(sender: AnyObject? = nil) {
         guard let build = build else { return }
         let realm = try! Realm()
-        if let artifactsPath = realm.objects(BuildArtifact.self).filter("build == %@", build).first?.browseEntryPointPath {
+        if let artifactsPath = realm.objects(BuildArtifact.self).filter("build == %@", build).first?.browseEntryPointPath where artifactsPath.exists {
             openFileBrowser(artifactsPath)
             return
         }
@@ -128,8 +128,10 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
 
     private func openFileBrowser(path: Path, sender: AnyObject? = nil) {
         let children = path.children()
+        let excludesFileExtensions = [kCI2GoWeblocExtension, kCI2GoDownloadExtension]
         if children.count == 1 {
             let fb = FileBrowser(initialPath: path.URL)
+            fb.excludesFileExtensions = excludesFileExtensions
             self.presentViewController(fb, animated: true, completion: nil)
         } else {
             let av = UIAlertController(title: "Select Node", message: nil, preferredStyle: .ActionSheet)
@@ -137,6 +139,7 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
                 av.addAction(UIAlertAction(title: "Node \(child.fileName)",
                     style: .Default, handler: { _ in
                         let fb = FileBrowser(initialPath: child.URL)
+                        fb.excludesFileExtensions = excludesFileExtensions
                         self.presentViewController(fb, animated: true, completion: nil)
                 }))
             }

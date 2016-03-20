@@ -12,6 +12,7 @@ import RealmSwift
 import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
+import FileKit
 
 class CircleAPIClient {
     let baseURL = NSURL(string: "https://circleci.com/api/v1/")!
@@ -21,7 +22,10 @@ class CircleAPIClient {
     }
 
     func apiURLForPath(path: String) -> NSURL {
-        let URL = NSURL(string: path, relativeToURL: self.baseURL)!
+        return apiURL(NSURL(string: path, relativeToURL: self.baseURL)!)
+    }
+
+    func apiURL(URL: NSURL) -> NSURL {
         let urlComps = NSURLComponents(URL: URL, resolvingAgainstBaseURL: true)!
         urlComps.queryItems = urlComps.queryItems ?? []
         if let token = token {
@@ -111,5 +115,54 @@ class CircleAPIClient {
             let req = Alamofire.request(method, self.apiURLForPath(path).absoluteString, parameters: parameters, headers: headers)
             print(req.debugDescription)
             return req
+    }
+
+    struct DownloadProgress {
+        let bytesRead: Int64
+        let totalBytesRead: Int64
+        let totalBytesExpectedToRead: Int64
+        let completed: Bool
+
+        var percentage: Float {
+            return Float(bytesRead) / Float(totalBytesRead)
+        }
+
+        func completedProgress() -> DownloadProgress {
+            return DownloadProgress(bytesRead: bytesRead, totalBytesRead: totalBytesRead, totalBytesExpectedToRead: totalBytesExpectedToRead, completed: true)
+        }
+    }
+
+    func downloadFile(remoteFileURL: NSURL, localFilePath: Path) -> Observable<DownloadProgress> {
+        var currentProgress = DownloadProgress(bytesRead: 0, totalBytesRead: 0, totalBytesExpectedToRead: 0, completed: false)
+        return Observable.create { observer in
+            let req = Alamofire
+                .download(.GET,
+                    self.apiURL(remoteFileURL).absoluteString,
+                    destination: { _ in
+                        do {
+                            try Path(localFilePath.URL.path!).deleteFile()
+                        } catch {}
+                        return localFilePath.URL })
+                .progress({ (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+                    currentProgress = DownloadProgress(
+                        bytesRead: bytesRead,
+                        totalBytesRead: totalBytesRead,
+                        totalBytesExpectedToRead: totalBytesExpectedToRead,
+                        completed: false)
+                    observer.onNext(currentProgress)
+                })
+                .response { req, res, data, error in
+                    if let error = error {
+                        observer.onError(error)
+                    } else {
+                        observer.onNext(currentProgress.completedProgress())
+                        observer.onCompleted()
+                        do {
+                            try localFilePath.webLocationFile.deleteFile()
+                        } catch {}
+                    }
+                }
+            return AnonymousDisposable { req.cancel() }
+        }
     }
 }

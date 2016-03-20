@@ -8,6 +8,9 @@
 
 import UIKit
 import WebKit
+import FileKit
+import RxSwift
+import MBProgressHUD
 
 /// Webview for rendering items QuickLook will struggle with.
 class WebviewPreviewViewContoller: UIViewController {
@@ -49,13 +52,46 @@ class WebviewPreviewViewContoller: UIViewController {
     }
 
     //MARK: Processing
+
+    let disposeBag = DisposeBag()
     
     func processForDisplay() {
-        guard let file = file, let data = NSData(contentsOfURL: file.filePath) else {
-            return
+        guard let filePathString = file?.filePath.path else { return }
+        let path = Path(filePathString)
+        if let webloc = path.webLocation {
+            let v = AppDelegate.current.window!
+            let hud = MBProgressHUD(view: v)
+            v.addSubview(hud)
+            hud.animationType = MBProgressHUDAnimation.Fade
+            hud.dimBackground = true
+            hud.labelText = "Downloading File"
+            hud.show(true)
+            CircleAPIClient().downloadFile(webloc, localFilePath: path).subscribe(
+                onNext: { p in
+                    print(p.percentage)
+                },
+                onError: { e in
+                    hud.labelText = "Failed to Download File"
+                    hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
+                    hud.mode = MBProgressHUDMode.CustomView
+                    hud.hide(true, afterDelay: 1)
+                    print(e)
+                },
+                onCompleted: {
+                    hud.hide(true)
+                    self.processForDisplay()
+                }
+            ).addDisposableTo(disposeBag)
+        } else {
+            processRawFileForDisplay()
         }
+    }
+
+    func processRawFileForDisplay() {
+        guard let file = file, data = NSData(contentsOfURL: file.filePath) else { return }
+
         var rawString: String?
-        
+
         // Prepare plist for display
         if file.type == .PLIST {
             do {
@@ -64,8 +100,8 @@ class WebviewPreviewViewContoller: UIViewController {
                 }
             } catch {}
         }
-        
-        // Prepare json file for display
+
+            // Prepare json file for display
         else if file.type == .JSON {
             do {
                 let jsonObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
@@ -78,18 +114,17 @@ class WebviewPreviewViewContoller: UIViewController {
                 }
             } catch {}
         }
-        
+
         // Default prepare for display
         if rawString == nil {
             rawString = String(data: data, encoding: NSUTF8StringEncoding)
         }
-        
+
         // Convert and display string
         if let convertedString = convertSpecialCharacters(rawString) {
             let htmlString = "<html><head><meta name='viewport' content='initial-scale=1.0, user-scalable=no'></head><body><pre>\(convertedString)</pre></body></html>"
             webView.loadHTMLString(htmlString, baseURL: nil)
         }
-        
     }
     
 

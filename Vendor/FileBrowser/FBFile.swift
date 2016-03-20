@@ -31,7 +31,7 @@ public class FBFile: NSObject {
      - returns: FBFile object.
      */
     init(filePath: NSURL) {
-        var displayName = filePath.lastPathComponent
+        let displayName = filePath.lastPathComponent
         self.filePath = filePath
         let isDirectory = checkDirectory(filePath)
         self.isDirectory = isDirectory
@@ -45,7 +45,7 @@ public class FBFile: NSObject {
             self.fileExtension = self.filePath.pathExtension
             if let fileExtension = fileExtension {
                 self.type = FBFileType(rawValue: fileExtension) ?? .Default
-                displayName = displayName?.stringByReplacingOccurrencesOfString(".\(fileExtension)", withString: "")
+                // displayName = displayName?.stringByReplacingOccurrencesOfString(".\(fileExtension)", withString: "")
             }
             else {
                 self.type = .Default

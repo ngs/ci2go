@@ -16,6 +16,7 @@ class BuildArtifact: Object, Mappable {
     dynamic var prettyPath = ""
     dynamic var nodeIndex = 0
     dynamic var urlString = ""
+    dynamic var localPathString = ""
 
     required convenience init?(_ map: Map) {
         self.init()
@@ -27,6 +28,10 @@ class BuildArtifact: Object, Mappable {
         prettyPath <- map["pretty_path"]
         nodeIndex <- map["node_index"]
         urlString <- map["url"]
+        let fileManager = NSFileManager.defaultManager()
+        let documentsUrl = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+        let filePath = url.path!
+        localPathString = (Path(documentsUrl.path!) + ".\(filePath)").resolved.URL.path!
     }
 
     func dup(target: BuildArtifact? = nil) -> BuildArtifact {
@@ -35,6 +40,7 @@ class BuildArtifact: Object, Mappable {
         dup.prettyPath = prettyPath
         dup.nodeIndex = nodeIndex
         dup.urlString = urlString
+        dup.localPathString = localPathString
         return dup
     }
 
@@ -51,10 +57,12 @@ class BuildArtifact: Object, Mappable {
     }
 
     var localPath: Path {
-        let fileManager = NSFileManager.defaultManager()
-        let documentsUrl = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
-        let filePath = url.path!
-        return (Path(documentsUrl.path!) + ".\(filePath)").resolved
+        return Path(localPathString)
+    }
+
+    var webLocationFilePath: Path {
+        let l = localPath
+        return l.parent + ".\(l.fileName).\(kCI2GoWeblocExtension)"
     }
 
     var browseEntryPointPath: Path {

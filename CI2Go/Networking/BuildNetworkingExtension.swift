@@ -98,7 +98,8 @@ extension Build {
                     do {
                         try artifact.localPath.parent.createDirectory(withIntermediateDirectories: true)
                         if !artifact.localPath.exists {
-                            try artifact.urlString |> TextFile(path: artifact.localPath, encoding: NSUTF8StringEncoding)
+                            try artifact.localPath.createFile()
+                            try artifact.localPath.setWebLocation(artifact.url)
                         }
                     } catch let error {
                         print(error)
