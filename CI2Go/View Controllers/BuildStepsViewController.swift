@@ -292,8 +292,6 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         case let vc as BuildLogViewController:
             let cell = sender as? BuildActionTableViewCell
             vc.buildAction = cell?.buildAction
-            vc.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-            vc.navigationItem.leftItemsSupplementBackButton = true
             break
         case let vc as TextViewController:
             vc.text = sender as? String
@@ -301,6 +299,9 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         default:
             break
         }
+        let ni = nvc.topViewController?.navigationItem
+        ni?.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+        ni?.leftItemsSupplementBackButton = true
     }
 
     func scrollToBottom(animated: Bool = false) {
