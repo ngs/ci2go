@@ -71,7 +71,6 @@ class FileListViewController: UIViewController {
     //MARK: UIViewController
     
     override func viewDidLoad() {
-        
         // Prepare data
         if let initialPath = initialPath {
             files = parser.filesForDirectory(initialPath)
@@ -83,6 +82,10 @@ class FileListViewController: UIViewController {
         
         // Register for 3D touch
         self.registerFor3DTouch()
+
+        let bg = ColorScheme().backgroundColor()
+        view.backgroundColor = bg
+        tableView.backgroundColor = bg
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -25,6 +25,25 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return sections[section].count
     }
+
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return sections[section].count == 0 ? 0 : 30
+    }
+
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if sections[section].count == 0 { return nil }
+        let v = UIView(), s = ColorScheme()
+        let label = UILabel(frame: CGRectMake(0, 0, 0, 30))
+        label.backgroundColor = UIColor.clearColor()
+        label.textColor = s.foregroundColor()
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)
+        label.font = UIFont(name: "Helvetica Neue Bold Italic", size: 14)
+        label.sizeToFit()
+        label.frame = CGRect(origin: CGPointMake(10, 7), size: label.frame.size)
+        v.addSubview(label)
+        v.backgroundColor = s.foregroundColor()?.colorWithAlphaComponent(0.1)
+        return v
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "FileCell"
