@@ -23,7 +23,6 @@ class TextViewController: UIViewController {
         textView?.textColor = s.foregroundColor()
         textView?.backgroundColor = s.backgroundColor()
         textView?.text = text
-        navigationItem.leftBarButtonItem = AppDelegate.current.splitViewController?.displayModeButtonItem()
     }
 
     override func viewWillAppear(animated: Bool) {
