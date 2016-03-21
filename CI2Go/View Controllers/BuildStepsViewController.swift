@@ -130,13 +130,13 @@ class BuildStepsViewController: UITableViewController, RealmResultsControllerDel
         let children = path.children()
         let excludesFileExtensions = [kCI2GoWeblocExtension, kCI2GoDownloadExtension]
         if children.count == 1 {
-            let fb = FileBrowser(initialPath: path.URL)
+            let fb = FileBrowser(initialPath: children.first!.URL)
             fb.excludesFileExtensions = excludesFileExtensions
             self.presentViewController(fb, animated: true, completion: nil)
         } else {
             let av = UIAlertController(title: "Select Node", message: nil, preferredStyle: .ActionSheet)
             children.forEach { child in
-                av.addAction(UIAlertAction(title: "Node \(child.fileName)",
+                av.addAction(UIAlertAction(title: "Container \(child.fileName)",
                     style: .Default, handler: { _ in
                         let fb = FileBrowser(initialPath: child.URL)
                         fb.excludesFileExtensions = excludesFileExtensions
