@@ -18,12 +18,13 @@ extension User {
             autoreleasepool {
                 try! realm.write {
                     realm.add(user, update: true)
-                    let name = user.name, login = user.login
+                    let name = user.name, login = user.login, pusherId = user.pusherId
                     user.emails?.forEach { email in
                         let user = User()
                         user.name = name
                         user.email = email
                         user.login = login
+                        user.pusherId = pusherId
                         realm.add(user, update: true)
                     }
                 }
