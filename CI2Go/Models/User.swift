@@ -25,7 +25,7 @@ class User: Object, Mappable, Equatable, Comparable {
         var ar = ["private-\(login)"]
         // https://github.com/circleci/frontend/commit/bad3911a885cd3f1849b5cd57edc19bf23832df4
         if !pusherId.isEmpty {
-            ar.append("private-\(pusherId)")
+            ar.appendContentsOf(["private-\(pusherId)", "private-\(pusherId)@all"])
         }
         return ar
     }
