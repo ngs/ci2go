@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60392BADE6DA8A5125224305 /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838A2076E3868DA0D007A11D /* Pods_CI2GoTests.framework */; };
+		6668BF0E7A9DB5FD765D5D86 /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D657A10868C76E625AA7F6EB /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
 		8507F39E1C9EFD3E009260BB /* BuildArtifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8565E7A41C9EF9E20033BFB7 /* BuildArtifact.swift */; };
 		850B4E851C36DF7F00C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
 		850B4E861C36E02000C1EC70 /* ArrayUniqueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */; };
@@ -358,9 +360,6 @@
 		85C35D951C3E158600AD2926 /* BuildCompact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D931C3E157C00AD2926 /* BuildCompact.swift */; };
 		85C35D971C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */; };
 		85C35D981C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */; };
-		85C723F01C387D3C00582B4D /* Pods_CI2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */; };
-		85C723F21C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */; };
-		85C723F41C387D6100582B4D /* Pods_CI2GoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */; };
 		85C724361C3919B400582B4D /* CircleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724351C3919B400582B4D /* CircleAPIClient.swift */; };
 		85C724381C391A9900582B4D /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724371C391A9800582B4D /* DictionaryExtension.swift */; };
 		85C7243A1C39216500582B4D /* CircleAPIClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724391C39216500582B4D /* CircleAPIClientSpec.swift */; };
@@ -371,6 +370,7 @@
 		85C724471C39798B00582B4D /* BuildNetworkingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */; };
 		85D0725F1C4305F40079C572 /* CI2GoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D0725E1C4305F40079C572 /* CI2GoUITests.swift */; };
 		85D072661C43062A0079C572 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */; };
+		8DD05D82A9837E7C027D9616 /* Pods_CI2Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072F6CFCB0C14CAF2A86546B /* Pods_CI2Go.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -430,10 +430,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.release.xcconfig"; sourceTree = "<group>"; };
-		4B9D78B3D52C03C76D2F7198 /* Pods_CI2GoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		072F6CFCB0C14CAF2A86546B /* Pods_CI2Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DE68C59B938423491CBBD49 /* Pods-CI2Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go.release.xcconfig"; sourceTree = "<group>"; };
+		4FD5039A16828E1BA4F9C586 /* Pods-CI2GoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F60248324E88D802191C58E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		838A2076E3868DA0D007A11D /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		850B4E841C36DF7F00C1EC70 /* ArrayUniqueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUniqueExtension.swift; sourceTree = "<group>"; };
 		850B4E871C36E78700C1EC70 /* build.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = build.json; sourceTree = "<group>"; };
 		850B4E891C36EA6B00C1EC70 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -524,8 +525,6 @@
 		856701D91C3016BA00E76DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		856701E51C30175700E76DCF /* CI2Go WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CI2Go WatchKit App.entitlements"; sourceTree = "<group>"; };
 		856701E61C3017AB00E76DCF /* CI2Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CI2Go.entitlements; sourceTree = "<group>"; };
-		856701E71C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go.debug.xcconfig"; sourceTree = "<group>"; };
-		856701E81C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go.release.xcconfig"; sourceTree = "<group>"; };
 		856702001C30253100E76DCF /* ColorScheme+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColorScheme+UIKit.swift"; sourceTree = "<group>"; };
 		856702051C30253100E76DCF /* UIColor+Mix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Mix.swift"; sourceTree = "<group>"; };
 		856702061C30253100E76DCF /* UIFont+appFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+appFonts.swift"; sourceTree = "<group>"; };
@@ -656,7 +655,6 @@
 		856702861C30253100E76DCF /* Zenburn.itermcolors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Zenburn.itermcolors; sourceTree = "<group>"; };
 		856E04D61C313BD9003F43BC /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		858D6A4A1C3E62D700C197D5 /* WatchMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchMessageHandler.swift; sourceTree = "<group>"; };
-		858D6B121C3F2A7C00C197D5 /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2GoTests.framework; path = "Pods/../build/Debug-iphoneos/Pods_CI2GoTests.framework"; sourceTree = "<group>"; };
 		85AAB8A21C344A77007C5453 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85B00CD71C3B287E00B040D5 /* BuildStepsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildStepsViewControllerSpec.swift; sourceTree = "<group>"; };
 		85C067881C3127AA001062F2 /* Branch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -666,9 +664,6 @@
 		85C35D8C1C3E004E00AD2926 /* BuildEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildEnums.swift; sourceTree = "<group>"; };
 		85C35D931C3E157C00AD2926 /* BuildCompact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildCompact.swift; sourceTree = "<group>"; };
 		85C35D961C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CI2GoWatchConnectivity.swift; sourceTree = "<group>"; };
-		85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go.framework; path = "build/Debug-iphoneos/Pods_CI2Go.framework"; sourceTree = "<group>"; };
-		85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2Go_WatchKit_App_Extension.framework; path = "build/Debug-watchos/Pods_CI2Go_WatchKit_App_Extension.framework"; sourceTree = "<group>"; };
-		85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_CI2GoTests.framework; path = "build/Debug-iphoneos/Pods_CI2GoTests.framework"; sourceTree = "<group>"; };
 		85C724351C3919B400582B4D /* CircleAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleAPIClient.swift; sourceTree = "<group>"; };
 		85C724371C391A9800582B4D /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		85C724391C39216500582B4D /* CircleAPIClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleAPIClientSpec.swift; sourceTree = "<group>"; };
@@ -681,9 +676,11 @@
 		85D0725E1C4305F40079C572 /* CI2GoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoUITests.swift; sourceTree = "<group>"; };
 		85D072601C4305F40079C572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85D0E3CE1C31F3F40007C569 /* CI2Go WatchKit App Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CI2Go WatchKit App Extension.entitlements"; sourceTree = "<group>"; };
-		C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2GoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.release.xcconfig"; sourceTree = "<group>"; };
+		861463679BAA6B735AE26A8E /* Pods-CI2GoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2GoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests.release.xcconfig"; sourceTree = "<group>"; };
+		D4405008A1DB3C702C574F06 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.release.xcconfig"; sourceTree = "<group>"; };
+		D657A10868C76E625AA7F6EB /* Pods_CI2Go_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CI2Go_WatchKit_App_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E25D005AE0876A6B23108261 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		E29578B2822CD6BCE50AD786 /* Pods-CI2Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CI2Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -691,7 +688,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85C723F41C387D6100582B4D /* Pods_CI2GoTests.framework in Frameworks */,
+				60392BADE6DA8A5125224305 /* Pods_CI2GoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +697,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */,
-				85C723F01C387D3C00582B4D /* Pods_CI2Go.framework in Frameworks */,
+				8DD05D82A9837E7C027D9616 /* Pods_CI2Go.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,7 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				851AA6A71C3D4D3000A50744 /* WatchConnectivity.framework in Frameworks */,
-				85C723F21C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */,
+				6668BF0E7A9DB5FD765D5D86 /* Pods_CI2Go_WatchKit_App_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -720,9 +717,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE39F23588F839F784FC3467 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8479F4F9075D3AE469905265 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E29578B2822CD6BCE50AD786 /* Pods-CI2Go.debug.xcconfig */,
+				4DE68C59B938423491CBBD49 /* Pods-CI2Go.release.xcconfig */,
+				E25D005AE0876A6B23108261 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */,
+				D4405008A1DB3C702C574F06 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */,
+				4FD5039A16828E1BA4F9C586 /* Pods-CI2GoTests.debug.xcconfig */,
+				861463679BAA6B735AE26A8E /* Pods-CI2GoTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		850B4E8E1C37DB7200C1EC70 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -838,9 +855,9 @@
 				856701A01C3015F500E76DCF /* CI2GoTests */,
 				85D0725D1C4305F40079C572 /* CI2GoUITests */,
 				85C723F51C387DA700582B4D /* Frameworks */,
-				EA3C231E19C7767FD30A757D /* Pods */,
 				8567018A1C3015F500E76DCF /* Products */,
 				850B4EAA1C3805EF00C1EC70 /* Vendor */,
+				8479F4F9075D3AE469905265 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1139,15 +1156,12 @@
 		85C723F51C387DA700582B4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				858D6B121C3F2A7C00C197D5 /* Pods_CI2GoTests.framework */,
 				851AA6A61C3D4D3000A50744 /* WatchConnectivity.framework */,
 				851AA6921C3CC28200A50744 /* iAd.framework */,
-				85C723F31C387D6100582B4D /* Pods_CI2GoTests.framework */,
-				85C723F11C387D4F00582B4D /* Pods_CI2Go_WatchKit_App_Extension.framework */,
-				85C723EF1C387D3C00582B4D /* Pods_CI2Go.framework */,
-				CCDB48B16968C03F089304D2 /* Pods_CI2GoTests.framework */,
-				4B9D78B3D52C03C76D2F7198 /* Pods_CI2GoUITests.framework */,
 				5F60248324E88D802191C58E /* Pods.framework */,
+				072F6CFCB0C14CAF2A86546B /* Pods_CI2Go.framework */,
+				D657A10868C76E625AA7F6EB /* Pods_CI2Go_WatchKit_App_Extension.framework */,
+				838A2076E3868DA0D007A11D /* Pods_CI2GoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1162,19 +1176,6 @@
 			path = CI2GoUITests;
 			sourceTree = "<group>";
 		};
-		EA3C231E19C7767FD30A757D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				856701E71C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig */,
-				856701E81C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig */,
-				C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */,
-				01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */,
-				5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */,
-				D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1182,12 +1183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8534A3F31C33D84200CF0BA8 /* Build configuration list for PBXNativeTarget "CI2GoTests" */;
 			buildPhases = (
-				7E2E53657C47A1BFEBB015D5 /* Check Pods Manifest.lock */,
+				96D7EAD2802048F3292D0C3E /* [CP] Check Pods Manifest.lock */,
 				8534A3E81C33D84100CF0BA8 /* Sources */,
 				8534A3E91C33D84100CF0BA8 /* Frameworks */,
 				8534A3EA1C33D84100CF0BA8 /* Resources */,
-				6D89F473D52AFF6FB6A3CBEA /* Embed Pods Frameworks */,
-				3F52B243D12233BF092B4880 /* Copy Pods Resources */,
+				36CCC234477ECADB82611970 /* [CP] Embed Pods Frameworks */,
+				B18CB127CAE230628A2D38C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1203,14 +1204,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 856701B11C3015F500E76DCF /* Build configuration list for PBXNativeTarget "CI2Go" */;
 			buildPhases = (
-				05584E062C5863FAAD1E87F9 /* Check Pods Manifest.lock */,
+				72E0CF2641ACD9EF6BD9FC8F /* [CP] Check Pods Manifest.lock */,
 				856701851C3015F500E76DCF /* Sources */,
 				856701861C3015F500E76DCF /* Frameworks */,
 				856701871C3015F500E76DCF /* Resources */,
 				856701E41C3016BA00E76DCF /* Embed Watch Content */,
-				329BED68CCFD4771DD2BB18A /* Embed Pods Frameworks */,
-				9A369CCAB6FEFA89FEC3F701 /* Copy Pods Resources */,
 				856433BF1C55EC160080F010 /* Run Fabric */,
+				576104C3242E9B544B5746D2 /* [CP] Embed Pods Frameworks */,
+				81E048C35FFEA9949FCE6964 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1228,6 +1229,7 @@
 			buildPhases = (
 				856701BA1C3016BA00E76DCF /* Resources */,
 				856701E01C3016BA00E76DCF /* Embed App Extensions */,
+				FE39F23588F839F784FC3467 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1243,12 +1245,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 856701DD1C3016BA00E76DCF /* Build configuration list for PBXNativeTarget "CI2Go WatchKit App Extension" */;
 			buildPhases = (
-				DD5FD31433E3C90EBCD5E726 /* Check Pods Manifest.lock */,
+				92AEBFAB0ED9351AD4B745C8 /* [CP] Check Pods Manifest.lock */,
 				856701C41C3016BA00E76DCF /* Sources */,
 				856701C51C3016BA00E76DCF /* Frameworks */,
 				856701C61C3016BA00E76DCF /* Resources */,
-				2B3FB150FDA5D5A5ABCBC3DD /* Embed Pods Frameworks */,
-				32936DD8F1E1423050F2468C /* Copy Pods Resources */,
+				81C44754D3B5BBBB2B3E7BBA /* [CP] Embed Pods Frameworks */,
+				A7E472EFFCC545D4BE8AA1CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1652,89 +1654,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05584E062C5863FAAD1E87F9 /* Check Pods Manifest.lock */ = {
+		36CCC234477ECADB82611970 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2B3FB150FDA5D5A5ABCBC3DD /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		32936DD8F1E1423050F2468C /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		329BED68CCFD4771DD2BB18A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F52B243D12233BF092B4880 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D89F473D52AFF6FB6A3CBEA /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1742,19 +1669,64 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7E2E53657C47A1BFEBB015D5 /* Check Pods Manifest.lock */ = {
+		576104C3242E9B544B5746D2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72E0CF2641ACD9EF6BD9FC8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		81C44754D3B5BBBB2B3E7BBA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81E048C35FFEA9949FCE6964 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		856433BF1C55EC160080F010 /* Run Fabric */ = {
@@ -1772,34 +1744,64 @@
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4f9578d15d7c0f51fa422575e9b409e496ebe259 9d36c7dae80016ef4a63bd0179c3162c14b65968925093a51a386517e54b868f";
 			showEnvVarsInLog = 0;
 		};
-		9A369CCAB6FEFA89FEC3F701 /* Copy Pods Resources */ = {
+		92AEBFAB0ED9351AD4B745C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go/Pods-CI2Go-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD5FD31433E3C90EBCD5E726 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		96D7EAD2802048F3292D0C3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A7E472EFFCC545D4BE8AA1CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2Go WatchKit App Extension/Pods-CI2Go WatchKit App Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B18CB127CAE230628A2D38C2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CI2GoTests/Pods-CI2GoTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1978,7 +1980,7 @@
 /* Begin XCBuildConfiguration section */
 		8534A3F41C33D84200CF0BA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5257A456DB0771B96E001645 /* Pods-CI2GoTests.debug.xcconfig */;
+			baseConfigurationReference = 4FD5039A16828E1BA4F9C586 /* Pods-CI2GoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CI2GoTests/Info.plist;
@@ -1991,7 +1993,7 @@
 		};
 		8534A3F51C33D84200CF0BA8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D00AC2D715FF02DCA7C0AEEB /* Pods-CI2GoTests.release.xcconfig */;
+			baseConfigurationReference = 861463679BAA6B735AE26A8E /* Pods-CI2GoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2088,7 +2090,7 @@
 		};
 		856701B21C3015F500E76DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 856701E71C301C8F00E76DCF /* Pods-CI2Go.debug.xcconfig */;
+			baseConfigurationReference = E29578B2822CD6BCE50AD786 /* Pods-CI2Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
@@ -2107,7 +2109,7 @@
 		};
 		856701B31C3015F500E76DCF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 856701E81C301C8F00E76DCF /* Pods-CI2Go.release.xcconfig */;
+			baseConfigurationReference = 4DE68C59B938423491CBBD49 /* Pods-CI2Go.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
@@ -2125,7 +2127,7 @@
 		};
 		856701DE1C3016BA00E76DCF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C43E0987F849F68E1E3EB5A4 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */;
+			baseConfigurationReference = E25D005AE0876A6B23108261 /* Pods-CI2Go WatchKit App Extension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2144,7 +2146,7 @@
 		};
 		856701DF1C3016BA00E76DCF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01D0A26462A7C29A97B7CB31 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */;
+			baseConfigurationReference = D4405008A1DB3C702C574F06 /* Pods-CI2Go WatchKit App Extension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "CI2Go WatchKit App Extension/CI2Go WatchKit App Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: LittleApps Inc. (3Y8APYUG2G)";
