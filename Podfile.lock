@@ -36,13 +36,11 @@ PODS:
     - Starscream (~> 1.1.1)
   - Quick (0.8.0)
   - ReachabilitySwift (2.3.3)
-  - Realm (0.98.0):
-    - Realm/Headers (= 0.98.0)
-  - Realm/Headers (0.98.0)
-  - RealmResultsController (0.4.0):
-    - RealmSwift
-  - RealmSwift (0.98.0):
-    - Realm (= 0.98.0)
+  - Realm (1.0.0):
+    - Realm/Headers (= 1.0.0)
+  - Realm/Headers (1.0.0)
+  - RealmSwift (1.0.0):
+    - Realm (= 1.0.0)
   - RxBlocking (2.0.0):
     - RxSwift (~> 2.0)
   - RxCocoa (2.0.0):
@@ -65,8 +63,7 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift (~> 4.7)
   - PusherSwift (= 0.2.3)
   - Quick (~> 0.8)
-  - RealmResultsController (= 0.4.0)
-  - RealmSwift (= 0.98.0)
+  - RealmSwift (= 1.0.0)
   - RxBlocking (~> 2.0.0)
   - RxCocoa (~> 2.0.0)
   - RxSwift (~> 2.0.0)
@@ -89,14 +86,13 @@ SPEC CHECKSUMS:
   PusherSwift: 088a8bde5f9fa8c24efe710915d49f2b67c9edc4
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
   ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
-  Realm: 28efc598b8b1b378d27a222d9fc037a29ae68642
-  RealmResultsController: fa239f5274a5fe3984bf857b1ec253be5a245c3a
-  RealmSwift: 7ef4b9ee449d711cd5a7d69a3af1cc5cd0efb619
+  Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
+  RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
   RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
   RxSwift: d83246efa6f16c50c143bec134649d045498f601
   Starscream: 58a12fd35a3cb6aaa105716c2d42765f7c1c732f
 
-PODFILE CHECKSUM: 532ae6ce5b29403e4e45145753e8aba59f16ce96
+PODFILE CHECKSUM: 7f304536bdc81ff5791b2723862bcde05e088441
 
 COCOAPODS: 1.0.1

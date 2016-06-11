@@ -11,12 +11,11 @@ import MBProgressHUD
 import FileKit
 import RxSwift
 import RealmSwift
-import RealmResultsController
 import RxSwift
 import SafariServices
 import Crashlytics
 
-class BuildStepsViewController: UITableViewController, RealmResultsControllerDelegate {
+class BuildStepsViewController: UITableViewController {
 
     var build: Build?
     let disposeBag = DisposeBag()

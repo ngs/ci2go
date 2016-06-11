@@ -9,12 +9,11 @@
 import UIKit
 import RxSwift
 import RealmSwift
-import RealmResultsController
 import RxSwift
 import RxCocoa
 import Crashlytics
 
-class BuildsViewController: UITableViewController, RealmResultsControllerDelegate {
+class BuildsViewController: UITableViewController {
 
     lazy var realm: Realm = {
         return try! Realm()

@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 import RealmSwift
-import RealmResultsController
 
 extension Project {
     class func getAll() -> Observable<[Project]> {

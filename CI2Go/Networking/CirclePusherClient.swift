@@ -10,7 +10,6 @@ import Foundation
 import PusherSwift
 import RxSwift
 import RealmSwift
-import RealmResultsController
 import ObjectMapper
 import Crashlytics
 

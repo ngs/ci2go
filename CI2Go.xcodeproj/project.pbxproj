@@ -47,7 +47,6 @@
 		85168AA01C36BA6200392145 /* BuildSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168A9F1C36BA6200392145 /* BuildSpec.swift */; };
 		85168AA21C36CBCC00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
 		85168AA31C36CC1A00392145 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85168AA11C36CBCC00392145 /* NSDateExtension.swift */; };
-		8516E6CF1C542F0A0060DE82 /* RRCPendingChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8516E6CE1C542F0A0060DE82 /* RRCPendingChange.swift */; };
 		851AA6911C3CACA300A50744 /* CirclePusherClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6901C3CACA300A50744 /* CirclePusherClient.swift */; };
 		851AA6931C3CC28200A50744 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851AA6921C3CC28200A50744 /* iAd.framework */; };
 		851AA6951C3D318300A50744 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851AA6941C3D318300A50744 /* UIViewExtension.swift */; };
@@ -469,7 +468,6 @@
 		85168A9D1C36B71E00392145 /* builds.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = builds.json; sourceTree = "<group>"; };
 		85168A9F1C36BA6200392145 /* BuildSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSpec.swift; sourceTree = "<group>"; };
 		85168AA11C36CBCC00392145 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
-		8516E6CE1C542F0A0060DE82 /* RRCPendingChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRCPendingChange.swift; sourceTree = "<group>"; };
 		851AA6901C3CACA300A50744 /* CirclePusherClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirclePusherClient.swift; sourceTree = "<group>"; };
 		851AA6921C3CC28200A50744 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		851AA6941C3D318300A50744 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -794,7 +792,6 @@
 				85C724431C396A1900582B4D /* ProjectNetworkingExtension.swift */,
 				85C724401C394E5A00582B4D /* UserNetworkingExtension.swift */,
 				85C724461C39798B00582B4D /* BuildNetworkingExtension.swift */,
-				8516E6CE1C542F0A0060DE82 /* RRCPendingChange.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1839,7 +1836,6 @@
 				85C724441C396A1900582B4D /* ProjectNetworkingExtension.swift in Sources */,
 				85225C271C90C25B00023C0B /* TextViewController.swift in Sources */,
 				85C35D971C3E3AF800AD2926 /* CI2GoWatchConnectivity.swift in Sources */,
-				8516E6CF1C542F0A0060DE82 /* RRCPendingChange.swift in Sources */,
 				853728B01C9F22CA00F764A7 /* PreviewTransitionViewController.swift in Sources */,
 				850B4EA71C37DB7200C1EC70 /* BuildTableViewCell.swift in Sources */,
 				850B4E8A1C36EA6B00C1EC70 /* Node.swift in Sources */,
