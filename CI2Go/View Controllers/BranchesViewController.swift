@@ -8,11 +8,10 @@
 
 import UIKit
 import RealmSwift
-import RealmResultsController
 import RxSwift
 import Crashlytics
 
-class BranchesViewController: UITableViewController, RealmResultsControllerDelegate {
+class BranchesViewController: UITableViewController {
     let disposeBag = DisposeBag()
     var project: Project? {
         didSet {

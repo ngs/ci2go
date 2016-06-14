@@ -14,8 +14,7 @@ target 'CI2Go' do
   pod 'GoogleAnalytics', '~> 3.14'
   pod 'MBProgressHUD', '~> 0.8'
   pod 'PusherSwift', '0.2.3'
-  pod 'RealmResultsController', '0.4.0'
-  pod 'RealmSwift', '0.98.0'
+  pod 'RealmSwift', '1.0.0'
   pod 'RxBlocking', '~> 2.0.0'
   pod 'RxCocoa', '~> 2.0.0'
   pod 'RxSwift', '~> 2.0.0'
@@ -39,7 +38,7 @@ target 'CI2GoTests' do
   pod 'OHHTTPStubs', '~> 4.7'
   pod 'OHHTTPStubs/Swift', '~> 4.7'
   pod 'Quick', '~> 0.8'
-  pod 'RealmSwift', '0.98.0'
+  pod 'RealmSwift', '1.0.0'
   pod 'RxSwift', '~> 2.0.0'
 end
 

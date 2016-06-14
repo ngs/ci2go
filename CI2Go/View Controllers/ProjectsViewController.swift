@@ -9,11 +9,10 @@
 import UIKit
 import MBProgressHUD
 import RealmSwift
-import RealmResultsController
 import RxSwift
 import Crashlytics
 
-class ProjectsViewController: UITableViewController, RealmResultsControllerDelegate {
+class ProjectsViewController: UITableViewController {
 
     let disposeBag = DisposeBag()
 

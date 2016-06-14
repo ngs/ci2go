@@ -12,10 +12,6 @@ import RealmSwift
 import FileKit
 import Crashlytics
 
-#if os(iOS)
-    import RealmResultsController
-#endif
-
 extension Build {
 
     enum APIAction: String {
