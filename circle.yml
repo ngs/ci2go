@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: 7.2
+    version: 7.3.1
   environment:
     KEYCHAIN_NAME: default
     FL_UNLOCK_KEYCHAIN_PATH: ~/Library/Keychains/default
