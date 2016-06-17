@@ -9,7 +9,7 @@
 import RealmSwift
 import ObjectMapper
 
-class Node: Object, Mappable, Equatable, Comparable {
+class Node: Object, Mappable, Comparable {
     dynamic var id = ""
     dynamic var publicIPAddress: String = "" {
         didSet { updateId() }
@@ -62,10 +62,10 @@ class Node: Object, Mappable, Equatable, Comparable {
         dup.sshEnabled = sshEnabled
         return dup
     }
-}
 
-func ==(lhs: Node, rhs: Node) -> Bool {
-    return lhs.id == rhs.id
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? Node)?.id
+    }
 }
 
 func >(lhs: Node, rhs: Node) -> Bool {

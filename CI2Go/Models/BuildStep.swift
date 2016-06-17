@@ -12,7 +12,7 @@ import ObjectMapper
     import CryptoSwift
 #endif
 
-class BuildStep: Object, Mappable, Equatable, Comparable {
+class BuildStep: Object, Mappable, Comparable {
     dynamic var id = ""
     dynamic var name = ""
     dynamic var index: Int = 0
@@ -70,6 +70,10 @@ class BuildStep: Object, Mappable, Equatable, Comparable {
 
     override static func ignoredProperties() -> [String] {
         return ["tempActions"]
+    }
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? BuildStep)?.id
     }
 }
 

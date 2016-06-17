@@ -9,7 +9,7 @@
 import RealmSwift
 import ObjectMapper
 
-class Branch: Object, Mappable, Equatable, Comparable {
+class Branch: Object, Mappable, Comparable {
     dynamic var id = ""
     dynamic var name = "" {
         didSet { updateId() }
@@ -47,6 +47,10 @@ class Branch: Object, Mappable, Equatable, Comparable {
         dup.project = project?.dup()
         dup.updateId()
         return dup
+    }
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? Branch)?.id
     }
 }
 

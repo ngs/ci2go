@@ -9,7 +9,7 @@
 import RealmSwift
 import ObjectMapper
 
-class Commit: Object, Mappable, Equatable, Comparable {
+class Commit: Object, Mappable, Comparable {
     dynamic var body = ""
     dynamic var commitedAt: NSDate?
     dynamic var authedAt: NSDate?
@@ -74,10 +74,10 @@ class Commit: Object, Mappable, Equatable, Comparable {
     override static func ignoredProperties() -> [String] {
         return ["shortHash"]
     }
-}
 
-func ==(lhs: Commit, rhs: Commit) -> Bool {
-    return lhs.id == rhs.id
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? Commit)?.id
+    }
 }
 
 func >(lhs: Commit, rhs: Commit) -> Bool {
