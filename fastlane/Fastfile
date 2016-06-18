@@ -132,7 +132,8 @@ platform :ios do
     )
     testflight(
       ipa: ipa,
-      skip_submission: true
+      skip_submission: true,
+      skip_waiting_for_build_processing: true
     )
   end
 end
