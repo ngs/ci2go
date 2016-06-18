@@ -9,7 +9,7 @@
 import RealmSwift
 import ObjectMapper
 
-class User: Object, Mappable, Equatable, Comparable {
+class User: Object, Mappable, Comparable {
     dynamic var email: String = ""
     dynamic var login: String = ""
     dynamic var pusherId: String = ""
@@ -57,6 +57,10 @@ class User: Object, Mappable, Equatable, Comparable {
         dup.login = login
         dup.name = name
         return dup
+    }
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.email == (object as? User)?.email
     }
 }
 

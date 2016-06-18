@@ -9,7 +9,7 @@
 import RealmSwift
 import ObjectMapper
 
-class Build: Object, Mappable, Equatable, Comparable {
+class Build: Object, Mappable, Comparable {
     dynamic var branch: Branch?
     dynamic var buildParametersData: NSData?
     dynamic var circleYAML: String = ""
@@ -279,6 +279,10 @@ class Build: Object, Mappable, Equatable, Comparable {
         dup.steps.appendContentsOf(steps)
         dup.updateId()
         return dup
+    }
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? Build)?.id
     }
 }
 

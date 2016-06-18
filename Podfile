@@ -35,10 +35,10 @@ target 'CI2GoTests' do
   platform :ios, '9.0'
   pod 'AlamofireObjectMapper', '~> 2.1'
   pod 'GoogleAnalytics', '~> 3.14'
-  pod 'Nimble', '~> 3.0'
+  pod 'Nimble', '~> 4.0'
   pod 'OHHTTPStubs', '~> 4.7'
   pod 'OHHTTPStubs/Swift', '~> 4.7'
-  pod 'Quick', '~> 0.8'
+  pod 'Quick', '~> 0.9'
   pod 'RealmSwift', '0.98.0'
   pod 'RxSwift', '~> 2.0.0'
 end

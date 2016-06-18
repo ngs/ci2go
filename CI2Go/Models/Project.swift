@@ -9,7 +9,7 @@
 import RealmSwift
 import ObjectMapper
 
-class Project: Object, Mappable, Equatable, Comparable {
+class Project: Object, Mappable, Comparable {
     dynamic var parallelCount: Int = 0
     dynamic var repositoryName = "" {
         didSet { updateId() }
@@ -96,6 +96,10 @@ class Project: Object, Mappable, Equatable, Comparable {
         dup.isFollowed = isFollowed
         dup.updateId()
         return dup
+    }
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? Project)?.id
     }
 }
 

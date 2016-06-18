@@ -14,7 +14,7 @@ import Carlos
 import CryptoSwift
 #endif
 
-class BuildAction: Object, Mappable, Equatable, Comparable {
+class BuildAction: Object, Mappable, Comparable {
     static let cache = MemoryCacheLevel<String, NSString>() >>> DiskCacheLevel()
     lazy var disposeBag: DisposeBag = { DisposeBag() }()
     enum Status: String {
@@ -183,6 +183,10 @@ class BuildAction: Object, Mappable, Equatable, Comparable {
         dup.actionType = actionType
         dup.output = output
         return dup
+    }
+
+    override func isEqual(object: AnyObject?) -> Bool {
+        return self.id == (object as? BuildAction)?.id
     }
 }
 
