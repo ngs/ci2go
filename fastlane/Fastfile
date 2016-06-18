@@ -40,7 +40,7 @@ platform :ios do
     gym(
       scheme: APP_NAME,
       codesigning_identity: ENV['DEVELOPER_NAME'],
-      use_legacy_build_api: true,
+      use_legacy_build_api: false,
       configuration: 'Release',
       clean: false,
       output_directory: "Build",
@@ -132,7 +132,8 @@ platform :ios do
     )
     testflight(
       ipa: ipa,
-      skip_submission: true
+      skip_submission: true,
+      skip_waiting_for_build_processing: true
     )
   end
 end
