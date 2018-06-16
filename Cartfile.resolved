@@ -1,0 +1,7 @@
+github "ashleymills/Reachability.swift" "v4.1.0"
+github "daltoniam/Starscream" "3.0.5"
+github "icanzilb/TaskQueue" "1.1.1"
+github "jdg/MBProgressHUD" "1.1.0"
+github "krzyzanowskim/CryptoSwift" "0.10.0"
+github "ngs/pusher-websocket-swift" "41d16860bfe27997d9079280e18fb38c88979e14"
+github "nvzqz/FileKit" "v5.1.0"

@@ -1,0 +1,24 @@
+CI2Go is a CircleCI client for iOS.
+
+You can watch builds and finished build logs.
+
+----
+
+Developer: Atsushi NAGASE
+http://ngs.io/
+
+Version history
+---------------
+
+### 1.2.0
+
+- Realtime update!!
+- Improve performance and user interface.
+
+### 1.1.0
+
+Apple Watch Support
+
+### 1.0.0
+
+Initial release.

@@ -1,0 +1,99 @@
+version: 2
+
+references:
+  base: &base
+    macos:
+      xcode: "9.4.0"
+    environment:
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      XCODE_PATH: /Applications/Xcode-9.4.app
+
+  steps:
+    restore_cache: &restore_cache
+      restore_cache:
+        key: 1-charthage-{{ checksum "Cartfile.resolved" }}
+    save_cache: &save_cache
+      save_cache:
+        key: 1-charthage-{{ checksum "Cartfile.resolved" }}
+        paths:
+          - Carthage
+    move_artifacts: &move_artifacts
+      run:
+        name: Move artifacts
+        command: |
+          mkdir -p /tmp/artifacts
+          mv CI2Go.app.dSYM.zip /tmp/artifacts
+          mv CI2Go.ipa /tmp/artifacts
+    store_build_artifacts: &store_build_artifacts
+      store_artifacts:
+        path: /tmp/artifacts
+        destination: build
+    store_gym_logs: &store_gym_logs
+      store_artifacts:
+        path: ~/Library/Logs/gym
+        destination: logs/gym
+    store_scan_logs: &store_scan_logs
+      store_artifacts:
+        path: ~/Library/Logs/scan
+        destination: logs/scan
+
+jobs:
+  tests:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - run: .circleci/bootstrap-carthage.sh
+      - <<: *save_cache
+      - run: sudo gem install fastlane
+      - run: fastlane set_build_number
+      - run: fastlane tests
+      - <<: *store_scan_logs
+
+  beta:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - run: .circleci/bootstrap-carthage.sh
+      - <<: *save_cache
+      - run: sudo gem install fastlane
+      - run: fastlane set_build_number
+      - run: fastlane beta
+      - <<: *move_artifacts
+      - <<: *store_build_artifacts
+      - <<: *store_gym_logs
+
+  release:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - run: .circleci/bootstrap-carthage.sh
+      - <<: *save_cache
+      - run: sudo gem install fastlane
+      - run: fastlane set_build_number
+      - run: fastlane release
+      - <<: *move_artifacts
+      - <<: *store_build_artifacts
+      - <<: *store_gym_logs
+
+workflows:
+  version: 2
+  app:
+    jobs:
+      - tests
+      - beta:
+          requires:
+            - tests
+          filters:
+            branches:
+              only: [ci, master]
+      - release:
+          requires:
+            - tests
+          filters:
+            branches:
+              only: release
+

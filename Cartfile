@@ -1,0 +1,3 @@
+github "jdg/MBProgressHUD" ~> 1.1.0
+github "ngs/pusher-websocket-swift" "xcode-9.4"
+github "nvzqz/FileKit"

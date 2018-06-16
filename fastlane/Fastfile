@@ -1,0 +1,60 @@
+# vim: set ft=ruby
+
+default_platform :ios
+
+platform :ios do
+  desc 'Set Build Number to CIRCLE_BUILD_NUM'
+  lane :set_build_number do
+    increment_build_number(
+      build_number: ENV.fetch('CIRCLE_BUILD_NUM'),
+      xcodeproj: 'CI2Go.xcodeproj'
+    )
+  end
+
+  lane :tests do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    run_tests(
+      project: 'CI2Go.xcodeproj',
+      scheme: 'CI2GoTests',
+      devices: ['iPhone 6s']
+    )
+  end
+
+  lane :beta do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    setup_circle_ci
+    match type: 'adhoc'
+    build_app(
+      project: 'CI2Go.xcodeproj',
+      scheme: 'CI2Go',
+      export_method: 'ad-hoc'
+    )
+    crashlytics(
+      crashlytics_path: 'Vendor/Crashlytics.framework',
+      api_token: '4f9578d15d7c0f51fa422575e9b409e496ebe259',
+      notifications: true,
+      notes: `git log -1 --pretty=%B`
+    )
+  end
+
+  lane :release do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    setup_circle_ci
+    match type: 'appstore'
+    disable_automatic_code_signing profile_name: 'match AppStore com.ci2go.ios.Circle'
+    build_app(
+      project: 'CI2Go.xcodeproj',
+      scheme: 'CI2Go',
+      export_method: 'app-store'
+    )
+    pilot(
+      skip_waiting_for_build_processing: true,
+      changelog: `git log -1 --pretty=%B`,
+      testers_file_path: './fastlane/testers.csv'
+    )
+    deliver(
+      skip_binary_upload: true,
+      force: true
+    )
+  end
+end
