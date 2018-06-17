@@ -1,0 +1,15 @@
+{
+"committer_date" : "2018-06-17T08:43:48+09:00",
+"body" : "test",
+"branch" : "develop-2",
+"author_date" : "2018-06-17T08:43:49+09:00",
+"committer_email" : "a@ngs.io",
+"commit" : "40d6291e9b38e02d3c6a36d922ee9906525496da",
+"committer_login" : "ngs",
+"committer_name" : "Atsushi Nagase",
+"subject" : "Initial import",
+"commit_url" : "https://github.com/ngs/ci2go/commit/40d6291e9b38e02d3c6a36d922ee9906525496da",
+"author_login" : "ngs2",
+"author_name" : "Atsushi Nagase 2",
+"author_email" : "a2@ngs.io"
+}

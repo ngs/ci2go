@@ -20,12 +20,27 @@
                ReferencedContainer = "container:CI2Go.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "85B4CD9D20D23E30005A6DA9"
+               BuildableName = "CI2GoUITests.xctest"
+               BlueprintName = "CI2GoUITests"
+               ReferencedContainer = "container:CI2Go.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -35,16 +50,6 @@
                BlueprintIdentifier = "85B4CD9220D23E30005A6DA9"
                BuildableName = "CI2GoTests.xctest"
                BlueprintName = "CI2GoTests"
-               ReferencedContainer = "container:CI2Go.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "85B4CD9D20D23E30005A6DA9"
-               BuildableName = "CI2GoUITests.xctest"
-               BlueprintName = "CI2GoUITests"
                ReferencedContainer = "container:CI2Go.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -85,6 +90,11 @@
          <EnvironmentVariable
             key = "VERBOSE"
             value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
