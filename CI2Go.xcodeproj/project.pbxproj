@@ -13,6 +13,7 @@
 		853D1A5520D63DE800C7F4FC /* user2.json in Resources */ = {isa = PBXBuildFile; fileRef = 853D1A5420D63DE800C7F4FC /* user2.json */; };
 		853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */; };
 		853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */; };
+		853D1A5B20D65E1000C7F4FC /* CompensationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -207,6 +208,7 @@
 		853D1A5420D63DE800C7F4FC /* user2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user2.json; sourceTree = "<group>"; };
 		853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConvertable.swift; sourceTree = "<group>"; };
+		853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompensationTests.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				85CAE24D20D5F15C002CD128 /* DecodingTests.swift */,
 				85CAE24F20D5F1CE002CD128 /* TestHelper.swift */,
 				853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */,
+				853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */,
 			);
 			path = CI2GoTests;
 			sourceTree = "<group>";
@@ -686,11 +689,11 @@
 				85CAE23020D5DBEB002CD128 /* ColorScheme.swift */,
 				85CAE26320D619B9002CD128 /* ColorScheme+ANSI.swift */,
 				85CAE25120D5F5C5002CD128 /* Commit.swift */,
+				853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */,
 				85CAE26C20D62876002CD128 /* Project.swift */,
 				85CAE24720D5EFBE002CD128 /* User.swift */,
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
-				853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1062,6 +1065,7 @@
 				85CAE24E20D5F15C002CD128 /* DecodingTests.swift in Sources */,
 				85CAE25020D5F1CE002CD128 /* TestHelper.swift in Sources */,
 				85CAE24020D5ED43002CD128 /* BuildTests.swift in Sources */,
+				853D1A5B20D65E1000C7F4FC /* CompensationTests.swift in Sources */,
 				853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */,
 				85CAE23B20D5EAEF002CD128 /* StringExtensionTests.swift in Sources */,
 			);

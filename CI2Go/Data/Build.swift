@@ -23,6 +23,7 @@ struct Build: Decodable, EndpointConvertable {
     let status: Status
     let lifecycle: Lifecycle
     let project: Project
+    let queuedAt: Date?
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -36,6 +37,7 @@ struct Build: Decodable, EndpointConvertable {
         case status
         case outcome
         case lifecycle
+        case queuedAt = "queued_at"
     }
     
     public init(from decoder: Decoder) throws {
@@ -45,6 +47,7 @@ struct Build: Decodable, EndpointConvertable {
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
         status = try values.decode(Status.self, forKey: .status)
+        queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
         let compareURLStr = (try values.decode(String.self, forKey: .compareURL))
             .replacingOccurrences(of: "^", with: "")
         compareURL = URL(string: compareURLStr)
@@ -73,6 +76,7 @@ struct Build: Decodable, EndpointConvertable {
         body = ""
         jobName = nil
         workflow = nil
+        queuedAt = nil
         outcome = .invalid
         status = .notRun
         lifecycle = .notRun
@@ -80,6 +84,31 @@ struct Build: Decodable, EndpointConvertable {
 
     var apiPath: String {
         return "\(project.apiPath)/\(number)"
+    }
+}
+
+extension Build: Equatable {
+    static func == (lhs: Build, rhs: Build) -> Bool {
+        return lhs.apiPath == rhs.apiPath
+    }
+}
+
+extension Build: Comparable {
+    static func < (lhs: Build, rhs: Build) -> Bool {
+        if
+            let lq = lhs.queuedAt,
+            let rq = rhs.queuedAt {
+            return lq < rq
+        }
+        if lhs.project == rhs.project {
+            return lhs.number < rhs.number
+        }
+        if
+            let lq = lhs.commits.first?.authorDate,
+            let rq = rhs.commits.first?.authorDate {
+            return lq < rq
+        }
+        return false
     }
 }
 
