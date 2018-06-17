@@ -6,5 +6,9 @@
 	<array>
 		<string>group.com.ci2go.ios.Circle</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.ci2go.shared</string>
+	</array>
 </dict>
 </plist>

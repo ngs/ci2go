@@ -14,7 +14,7 @@ struct Project: Decodable, EndpointConvertable {
     let name: String
     let isFollowing: Bool
     let isOSS: Bool
-    let branches: [Branch]
+    var branches: [Branch]
     let vcs: VCS
 
     enum CodingKeys: String, CodingKey {
@@ -36,7 +36,10 @@ struct Project: Decodable, EndpointConvertable {
         vcs = try values.decode(VCS.self, forKey: .vcs)
         isOSS = (try? values.decode(Bool.self, forKey: .isOSS)) ?? false
         let branches = (try? values.nestedUnkeyedContainer(forKey: .branches)) as? [String: Any]
-        self.branches = branches?.keys.map { Branch(name: $0) } ?? []
+        self.branches = []
+        if let branches = branches {
+            self.branches = branches.keys.map { Branch(self, $0) }
+        }
     }
 
     init(vcs: VCS, username: String, name: String) {

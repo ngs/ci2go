@@ -67,5 +67,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>SharedAccessGroup</key>
+	<string>$(AppIdentifierPrefix)com.ci2go.shared</string>
 </dict>
 </plist>

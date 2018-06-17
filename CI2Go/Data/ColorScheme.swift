@@ -22,6 +22,10 @@ struct ColorScheme {
             .sorted{$0.compare($1, options: .caseInsensitive) == .orderedAscending }
     }()
 
+    static var `default`: ColorScheme {
+        return ColorScheme(defaultName)!
+    }
+
     var configuration: Configuration {
         if let config = ColorScheme.configurationCache[name] {
             return config

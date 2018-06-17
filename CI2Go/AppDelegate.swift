@@ -9,6 +9,7 @@
 import UIKit
 import Crashlytics
 import Fabric
+import KeychainAccess
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         return true
     }
-
-
 }
 
