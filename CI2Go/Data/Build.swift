@@ -8,13 +8,12 @@
 
 import Foundation
 
-struct Build: Decodable {
+struct Build: Decodable, EndpointConvertable {
     typealias BuildParameters = [String: String]
     
     let number: Int
     let compareURL: URL?
     let buildParameters: BuildParameters
-    let isOSS: Bool
     let steps: [BuildStep]
     let commits: [Commit]
     let body: String
@@ -23,12 +22,12 @@ struct Build: Decodable {
     let outcome: Outcome
     let status: Status
     let lifecycle: Lifecycle
+    let project: Project
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
         case compareURL = "compare"
         case buildParameters = "build_parameters"
-        case isOSS = "oss"
         case steps
         case commits = "all_commit_details"
         case body
@@ -41,6 +40,7 @@ struct Build: Decodable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        project = try Project(from: decoder)
         number = try values.decode(Int.self, forKey: .number)
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
@@ -50,7 +50,6 @@ struct Build: Decodable {
         compareURL = URL(string: compareURLStr)
         buildParameters = (try? values.decode(BuildParameters.self, forKey: .compareURL)) ??
             BuildParameters()
-        isOSS = (try? values.decode(Bool.self, forKey: .isOSS)) ?? false
         steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
         let commits = (try? values.decode([Commit].self, forKey: .commits)) ?? []
         var body = (try? values.decode(String.self, forKey: .body)) ?? ""
@@ -62,6 +61,25 @@ struct Build: Decodable {
         self.body = body
         self.commits = commits
         self.workflow = workflow
+    }
+
+    init(project: Project, number: Int) {
+        self.project = project
+        self.number = number
+        compareURL = nil
+        buildParameters = [:]
+        steps = []
+        commits = []
+        body = ""
+        jobName = nil
+        workflow = nil
+        outcome = .invalid
+        status = .notRun
+        lifecycle = .notRun
+    }
+
+    var apiPath: String {
+        return "\(project.apiPath)/\(number)"
     }
 }
 

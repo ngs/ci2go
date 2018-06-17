@@ -11,4 +11,13 @@ import Foundation
 enum VCS: String, Codable {
     case github = "github"
     case bitbucket = "bitbucket"
+
+    var host: String {
+        switch self {
+        case .github:
+            return "github.com"
+        case .bitbucket:
+            return "bitbucket.org"
+        }
+    }
 }

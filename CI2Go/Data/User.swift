@@ -13,7 +13,7 @@ struct User: Decodable {
     let avatarURL: URL?
     let name: String
     let vcs: VCS?
-    let id: Int
+    let id: Int?
     
     enum CodingKeys: String, CodingKey {
         case login

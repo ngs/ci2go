@@ -10,7 +10,7 @@ import XCTest
 @testable import CI2Go
 
 class DecodingTests: XCTestCase {
-    
+
     func testDecodingUser1() {
         let data = try! Data(json: "user1")
         let decoder = JSONDecoder()
@@ -21,7 +21,18 @@ class DecodingTests: XCTestCase {
         XCTAssertEqual(VCS.github, user.vcs!)
         XCTAssertEqual(18631, user.id)
     }
-    
+
+    func testDecodingUser2() {
+        let data = try! Data(json: "user2")
+        let decoder = JSONDecoder()
+        let user = try! decoder.decode(User.self, from: data)
+        XCTAssertEqual("ci2go", user.login)
+        XCTAssertEqual(URL(string: "https://avatars1.githubusercontent.com/u/40327043?v=4")!, user.avatarURL)
+        XCTAssertEqual("CI2Go", user.name)
+        XCTAssertNil(user.vcs)
+        XCTAssertNil(user.id)
+    }
+
     func testDecodingCommit1() {
         let data = try! Data(json: "commit1")
         let decoder = JSONDecoder()
@@ -41,7 +52,7 @@ class DecodingTests: XCTestCase {
         XCTAssertEqual("a2@ngs.io", commit.authorEmail)
         XCTAssertEqual(Date(timeIntervalSince1970: 1529192629), commit.authorDate)
     }
-    
+
     func testDecodingBuildDetail() {
         let data = try! Data(json: "build-detail")
         let decoder = JSONDecoder()
@@ -62,7 +73,7 @@ class DecodingTests: XCTestCase {
             "Uploading artifacts"
             ], build.steps.map { $0.name })
     }
-    
+
     func testDecodingRecentBuilds() {
         let data = try! Data(json: "recent-builds")
         let decoder = JSONDecoder()
@@ -203,7 +214,20 @@ class DecodingTests: XCTestCase {
             "<no-job-name>",
             "<no-job-name>"
             ], builds.map { $0.jobName ?? "<no-job-name>" })
-        
+    }
+
+    func testDecodingProjects() {
+        let data = try! Data(json: "projects")
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let projects = try! decoder.decode([Project].self, from: data)
+        XCTAssertEqual(["sources.ngs.io", "ci2go", "ci2go.com", "ci2go.com"], projects.map { $0.name })
+        XCTAssertEqual([
+            "https://github.com/ngs/sources.ngs.io",
+            "https://github.com/ngs/ci2go",
+            "https://github.com/ngs/ci2go.com",
+            "https://bitbucket.org/ngs/ci2go.com"
+            ], projects.map { $0.vcsURL!.absoluteString })
     }
     
 }

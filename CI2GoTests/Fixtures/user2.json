@@ -1,0 +1,59 @@
+{
+    "enrolled_betas" : [ ],
+    "in_beta_program" : false,
+    "selected_email" : "a+ci2go@ngs.io",
+    "avatar_url" : "https://avatars1.githubusercontent.com/u/40327043?v=4",
+    "trial_end" : "2018-06-30T23:51:41.594Z",
+    "admin" : null,
+    "basic_email_prefs" : "smart",
+    "sign_in_count" : 1,
+    "github_oauth_scopes" : [ "user:email", "repo" ],
+    "analytics_id" : "5cc0d2a5-886a-492f-8c27-5be5a8b574f8",
+    "name" : "CI2Go",
+    "gravatar_id" : null,
+    "first_vcs_authorized_client_id" : "1529193091418",
+    "days_left_in_trial" : 13,
+    "parallelism" : 1,
+    "student" : false,
+    "bitbucket_authorized" : false,
+    "github_id" : 40327043,
+    "bitbucket" : null,
+    "dev_admin" : false,
+    "all_emails" : [ "a+ci2go@ngs.io" ],
+    "created_at" : "2018-06-16T23:51:41.594Z",
+    "plan" : null,
+    "heroku_api_key" : null,
+    "identities" : {
+        "github" : {
+            "avatar_url" : "https://avatars1.githubusercontent.com/u/40327043?v=4",
+            "external_id" : 40327043,
+            "id" : 40327043,
+            "name" : "CI2Go",
+            "user?" : true,
+            "domain" : "github.com",
+            "type" : "github",
+            "authorized?" : true,
+            "provider_id" : "bcc68be8-ef10-4dd6-9b76-34f19e0db930",
+            "login" : "ci2go"
+        }
+    },
+    "projects" : {
+        "https://github.com/ngs/ci2go" : {
+            "on_dashboard" : true,
+            "emails" : "default"
+        },
+        "https://github.com/ngs/sources.ngs.io" : {
+            "on_dashboard" : true,
+            "emails" : "default"
+        },
+        "https://github.com/ngs/ci2go.com" : {
+            "on_dashboard" : true,
+            "emails" : "default"
+        }
+    },
+    "login" : "ci2go",
+    "organization_prefs" : { },
+    "containers" : 1,
+    "pusher_id" : "02a752d4ac2db6dd92456cbc72c73bca9bbddccc",
+    "num_projects_followed" : 3
+}
