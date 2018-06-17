@@ -51,10 +51,15 @@ class DecodingTests: XCTestCase {
             1, 1, 1, 1, 1, 1, 1, 1, 1
             ], build.steps.map { $0.actions.count })
         XCTAssertEqual([
-            "Spin up Environment", "Checkout code", "Restoring Cache",
-            ".circleci/bootstrap-carthage.sh", "Saving Cache",
-            "sudo gem install fastlane", "fastlane set_build_number",
-            "fastlane tests", "Uploading artifacts"
+            "Spin up Environment",
+            "Checkout code",
+            "Restoring Cache",
+            ".circleci/bootstrap-carthage.sh",
+            "Saving Cache",
+            "sudo gem install fastlane",
+            "fastlane set_build_number",
+            "fastlane tests",
+            "Uploading artifacts"
             ], build.steps.map { $0.name })
     }
     
@@ -63,9 +68,141 @@ class DecodingTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let builds = try! decoder.decode([Build].self, from: data)
-        builds.forEach { build in
-            XCTAssertNotNil(build.compareURL)
-        }
+        XCTAssertEqual([
+            "https://github.com/ngs/ci2go/compare/f6db837b6166...40d6291e9b38",
+            "https://github.com/ngs/ci2go/compare/837a9ccda223...f6db837b6166",
+            "https://github.com/ngs/ci2go/compare/e952572ea5ee...837a9ccda223",
+            "https://github.com/ngs/ci2go/compare/b9f5e29d0e87...4b64b0309af2",
+            "https://github.com/ngs/ci2go/compare/b9f5e29d0e87...4b64b0309af2",
+            "https://github.com/ngs/ci2go/compare/caaafe1949cb...b9f5e29d0e87",
+            "https://github.com/ngs/ci2go/compare/caaafe1949cb...b9f5e29d0e87",
+            "https://github.com/ngs/ci2go/compare/801c13c699cd...caaafe1949cb",
+            "https://github.com/ngs/ci2go/compare/801c13c699cd...caaafe1949cb",
+            "https://github.com/ngs/ci2go/compare/801c13c699cd...caaafe1949cb",
+            "https://github.com/ngs/ci2go/compare/2b01af821bca...801c13c699cd",
+            "https://github.com/ngs/ci2go/compare/2b01af821bca...801c13c699cd",
+            "https://github.com/ngs/ci2go/compare/987c40f4f543...2b01af821bca",
+            "https://github.com/ngs/ci2go/compare/987c40f4f543...2b01af821bca",
+            "https://github.com/ngs/ci2go/commit/987c40f4f543",
+            "https://github.com/ngs/ci2go/commit/987c40f4f543",
+            "https://github.com/ngs/ci2go/commit/987c40f4f543",
+            "https://github.com/ngs/ci2go/commit/987c40f4f543",
+            "https://github.com/ngs/ci2go/commit/987c40f4f543",
+            "https://github.com/ngs/ci2go/compare/7c21d356b02a...a5bf608c4ffe",
+            "https://github.com/ngs/ci2go/compare/7c21d356b02a...a5bf608c4ffe",
+            "https://github.com/ngs/ci2go/compare/7c21d356b02a...a5bf608c4ffe",
+            "https://github.com/ngs/ci2go/compare/3d2a55c2303e...10ca28e975be",
+            "https://github.com/ngs/ci2go/compare/3d2a55c2303e...10ca28e975be",
+            "https://github.com/ngs/ci2go/compare/7c21d356b02a...a5bf608c4ffe",
+            "https://github.com/ngs/ci2go/compare/4b59fd585ca0...bfab94908b6f",
+            "https://github.com/ngs/ci2go/commit/4b59fd585ca0",
+            "https://github.com/ngs/ci2go/commit/4b59fd585ca0",
+            "https://github.com/ngs/ci2go/commit/4b59fd585ca0",
+            "https://github.com/ngs/ci2go/commit/3d2a55c2303e"
+            ], builds.map { $0.compareURL!.absoluteString })
+        XCTAssertEqual([
+            "Initial import",
+            "Initial import",
+            "Initial Commit",
+            "Create test scheme",
+            "Create test scheme",
+            "Store CocoaPods Cache",
+            "Store CocoaPods Cache",
+            "Store CocoaPods Cache",
+            "Store CocoaPods Cache",
+            "Store CocoaPods Cache",
+            "Use Xcode 9.1.0",
+            "Use Xcode 9.1.0",
+            "Use Xcode 9.1.0",
+            "Use Xcode 9.1.0",
+            "Start refactoring using modern tools",
+            "Start refactoring using modern tools",
+            "Start refactoring using modern tools",
+            "Start refactoring using modern tools",
+            "Start refactoring using modern tools",
+            "Stop using legacy API from gym",
+            "Stop using legacy API from gym",
+            "Stop using legacy API from gym",
+            "https://bugsee.com/",
+            "https://bugsee.com/",
+            "Stop using legacy API from gym",
+            "Set skip_waiting_for_build_processing to true",
+            "Stop using legacy API from gym",
+            "Stop using legacy API from gym",
+            "Stop using legacy API from gym",
+            "https://bugsee.com/"
+            ], builds.map { $0.body })
+        XCTAssertEqual([
+            479, 478, 477, 476, 475, 474,
+            473, 472, 471, 470, 469, 468,
+            467, 466, 465, 464, 463, 462,
+            461, 460, 459, 458, 457, 456,
+            455, 454, 453, 452, 451, 450
+            ], builds.map { $0.number })
+        XCTAssertEqual([
+            "app",
+            "app",
+            "app",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "<no-workflows>",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "<no-workflows>",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>",
+            "<no-workflows>"
+            ], builds.map { $0.workflow?.name ?? "<no-workflows>" })
+        XCTAssertEqual([
+            "tests",
+            "tests",
+            "tests",
+            "build-and-test",
+            "swiftlint",
+            "build-and-test",
+            "swiftlint",
+            "<no-job-name>",
+            "swiftlint",
+            "build-and-test",
+            "swiftlint",
+            "build-and-test",
+            "build-and-test",
+            "swiftlint",
+            "<no-job-name>",
+            "build-and-test",
+            "build-and-test",
+            "build-and-test",
+            "swiftlint",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>",
+            "<no-job-name>"
+            ], builds.map { $0.jobName ?? "<no-job-name>" })
         
     }
     

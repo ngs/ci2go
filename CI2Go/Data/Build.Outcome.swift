@@ -16,6 +16,7 @@ extension Build {
         case failed = "failed"
         case noTests = "no_tests"
         case success = "success"
+        case invalid
         var humanize: String {
             return rawValue.humanize
         }

@@ -41,6 +41,7 @@ class ColorSchemeTests: XCTestCase {
             let color = ColorScheme(name)
             XCTAssertNotNil(color)
             XCTAssertNotNil(color?.configuration)
+            XCTAssertNotNil(color?.createANSIEscapeHelper())
             XCTAssertEqual([
                 "Ansi 0 Color", "Ansi 1 Color", "Ansi 10 Color", "Ansi 11 Color",
                 "Ansi 12 Color", "Ansi 13 Color", "Ansi 14 Color", "Ansi 15 Color",

@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct BuildAction: Decodable {
+struct BuildAction: Codable {
     let index: Int
     let name: String
-    let status: Build.Status
+    let status: Status
     let outputURL: URL?
     let bashCommand: String?
     let hasOutput: Bool

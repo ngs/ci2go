@@ -9,5 +9,9 @@
 #ifndef CI2Go_Bridging_Header_h
 #define CI2Go_Bridging_Header_h
 
+#ifndef ANSIEscapeHelper_h
+#define ANSIEscapeHelper_h
+#import "AMR_ANSIEscapeHelper.h"
+#endif
 
 #endif /* CI2Go_Bridging_Header_h */
