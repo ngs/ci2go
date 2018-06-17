@@ -15,6 +15,7 @@ struct ColorScheme {
     static let defaultName = "Github"
     static let fileExtension = "itermcolors"
     fileprivate static var configurationCache = [String: Configuration]()
+    fileprivate static var colorCache: [String: [String: UIColor]] = [:]
 
     static var names: [String] = {
         let files: [URL] = Bundle.main.urls(forResourcesWithExtension: fileExtension, subdirectory: nil) ?? []
@@ -24,6 +25,14 @@ struct ColorScheme {
 
     static var `default`: ColorScheme {
         return ColorScheme(defaultName)!
+    }
+
+    static var current: ColorScheme {
+        return UserDefaults.shared.colorScheme
+    }
+
+    func setAsCurrent() {
+        UserDefaults.shared.colorScheme = self
     }
 
     var configuration: Configuration {
@@ -47,17 +56,23 @@ struct ColorScheme {
     }
 
     func color(key: String) -> UIColor? {
+        if let color = ColorScheme.colorCache[name]?[key] {
+            return color
+        }
         if
             let cmps = configuration[key + " Color"],
             let r = cmps["Red Component"],
             let g = cmps["Green Component"],
             let b = cmps["Blue Component"] {
-            return UIColor(
+            let color = UIColor(
                 red: CGFloat(r),
                 green: CGFloat(g),
                 blue: CGFloat(b),
                 alpha: 1.0
             )
+            ColorScheme.colorCache[name] = ColorScheme.colorCache[name] ?? [:]
+            ColorScheme.colorCache[name]?[key] = color
+            return color
         }
         return nil
     }
@@ -112,6 +127,14 @@ struct ColorScheme {
 
     var groupTableViewBackground: UIColor {
         return background.interpolate(to: bold, with: 0.05)
+    }
+
+    var tableViewSeperator: UIColor {
+        return UIColor(white: 0.5, alpha: 0.5)
+    }
+
+    var tableViewCellSelectedBackground: UIColor {
+        return background.interpolate(to: bold, with: 0.5)
     }
 
     func badge(status: Build.Status) -> UIColor {

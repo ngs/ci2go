@@ -17,7 +17,7 @@ extension UserDefaults {
         case branch = "CI2GoSelectedBranch2"
     }
 
-    var shared: UserDefaults {
+    static var shared: UserDefaults {
         if let shared = _shared {
             return shared
         }
