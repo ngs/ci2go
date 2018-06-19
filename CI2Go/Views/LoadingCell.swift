@@ -9,10 +9,12 @@
 import UIKit
 
 class LoadingCell: UITableViewCell {
+    static let identifier = "LoadingCell"
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        activityIndicatorView.activityIndicatorViewStyle = ColorScheme.current.activityIndicatorViewStyle
         activityIndicatorView.startAnimating()
     }
 }

@@ -645,26 +645,6 @@
                                     <segue destination="w1T-PU-rde" kind="show" id="I8Q-DR-2Th"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="LoadingCell" id="HUc-FF-b4q" customClass="LoadingCell" customModule="CI2Go" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="97" width="375" height="75"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HUc-FF-b4q" id="zVt-sj-yXT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="uL1-3F-aWP">
-                                            <rect key="frame" x="177" y="27" width="20" height="20"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="uL1-3F-aWP" firstAttribute="centerX" secondItem="zVt-sj-yXT" secondAttribute="centerX" id="6p2-qY-53v"/>
-                                        <constraint firstItem="uL1-3F-aWP" firstAttribute="centerY" secondItem="zVt-sj-yXT" secondAttribute="centerY" id="JhT-b4-i5n"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="activityIndicatorView" destination="uL1-3F-aWP" id="1jQ-Rb-e94"/>
-                                </connections>
-                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="3M0-Ym-eTF" id="qC0-Eg-3SB"/>

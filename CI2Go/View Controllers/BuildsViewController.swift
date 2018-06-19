@@ -83,6 +83,7 @@ class BuildsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         builds = []
     }
@@ -170,8 +171,7 @@ class BuildsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell")!
-            return cell
+            return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! BuildTableViewCell
         cell.build = diffCalculator?.value(atIndexPath: indexPath)

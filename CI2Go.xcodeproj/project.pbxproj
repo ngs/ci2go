@@ -43,6 +43,7 @@
 		856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; };
 		856609AF20D8D58700557249 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609AE20D8D58700557249 /* DateExtension.swift */; };
 		856609B320D8F5D200557249 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609B220D8F5D200557249 /* LoadingCell.swift */; };
+		856609B520D8F84D00557249 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B420D8F84D00557249 /* LoadingCell.xib */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -267,6 +268,7 @@
 		856609AB20D8C3AE00557249 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
 		856609AE20D8D58700557249 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		856609B220D8F5D200557249 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		856609B420D8F84D00557249 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */,
 				856609B220D8F5D200557249 /* LoadingCell.swift */,
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
+				856609B420D8F84D00557249 /* LoadingCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1004,6 +1007,7 @@
 				8566098120D82C9800557249 /* APITokenCaptionView.xib in Resources */,
 				85CAE1CF20D5BAE2002CD128 /* Shaman.itermcolors in Resources */,
 				85CAE1DD20D5BAE2002CD128 /* Belafonte Day.itermcolors in Resources */,
+				856609B520D8F84D00557249 /* LoadingCell.xib in Resources */,
 				85CAE22020D5BAE2002CD128 /* SourceCodePro-Black.ttf in Resources */,
 				85CAE21220D5BAE2002CD128 /* Symfonic.itermcolors in Resources */,
 				85CAE1D420D5BAE2002CD128 /* Lavandula.itermcolors in Resources */,
