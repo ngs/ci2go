@@ -49,7 +49,7 @@ class BuildsViewController: UITableViewController {
         return Build(project: project, number: -1)
     }()
 
-    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {}
+    // MARK: - UIViewController
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,9 +84,24 @@ class BuildsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
+        tableView.register(UINib(nibName: BuildTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         builds = []
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.destination, sender) {
+        case let (vc as BuildStepsViewController, cell as BuildTableViewCell):
+            vc.build = cell.build
+            break
+        default:
+            break
+        }
+    }
+
+    // MARK: -
+
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {}
 
     func refreshData() {
         isMutating = true
@@ -125,7 +140,7 @@ class BuildsViewController: UITableViewController {
     }
 
     func showSettings() {
-        self.performSegue(withIdentifier: "showSettings", sender: nil)
+        performSegue(withIdentifier: .showSettings, sender: nil)
     }
 
     func loadBuilds(more: Bool = false) {
@@ -161,6 +176,11 @@ class BuildsViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let build = diffCalculator?.value(atIndexPath: indexPath) else { return 0 }
+        return build.hasWorkflows ? 95 : 75
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return diffCalculator?.numberOfSections() ?? 0
     }
@@ -173,9 +193,14 @@ class BuildsViewController: UITableViewController {
         if indexPath.section == 1 {
             return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! BuildTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: BuildTableViewCell.identifier) as! BuildTableViewCell
         cell.build = diffCalculator?.value(atIndexPath: indexPath)
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: .showBuildDetail, sender: cell)
     }
 
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

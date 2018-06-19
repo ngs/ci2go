@@ -25,6 +25,7 @@ class ColorSchemesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: ColorSchemeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ColorSchemeTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         colorSchemes = ColorScheme.all
     }
@@ -44,7 +45,7 @@ class ColorSchemesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ColorSchemeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ColorSchemeTableViewCell.identifier) as! ColorSchemeTableViewCell
         cell.colorScheme = diffCalculator?.value(atIndexPath: indexPath)
         return cell
     }

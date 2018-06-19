@@ -83,6 +83,6 @@ struct Project: Decodable, EndpointConvertable {
 
 extension Project: Comparable {
     static func < (lhs: Project, rhs: Project) -> Bool {
-        return "\(lhs.username)/\(lhs.name)" < "\(rhs.username)/\(rhs.name)"
+        return lhs.path < rhs.path
     }
 }

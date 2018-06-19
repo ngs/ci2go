@@ -108,6 +108,10 @@ struct Build: Decodable, EndpointConvertable {
     var timestamp: Date? {
         return queuedAt ?? commits.first?.authorDate
     }
+
+    var hasWorkflows: Bool {
+        return workflow?.name.isEmpty == false && workflow?.jobName.isEmpty == false
+    }
 }
 
 extension Build: Comparable {

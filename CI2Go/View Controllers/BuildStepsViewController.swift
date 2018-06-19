@@ -10,6 +10,10 @@ import UIKit
 
 class BuildStepsViewController: UITableViewController {
 
+    var build: Build? {
+        didSet {}
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

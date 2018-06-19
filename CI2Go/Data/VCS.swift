@@ -20,4 +20,8 @@ enum VCS: String, Codable {
             return "bitbucket.org"
         }
     }
+
+    var icon: UIImage {
+        return UIImage(named: "icon-\(rawValue)")!
+    }
 }

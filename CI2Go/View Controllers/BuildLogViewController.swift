@@ -9,6 +9,7 @@
 import UIKit
 
 class BuildLogViewController: UIViewController {
+    @IBOutlet weak var textView: BuildLogTextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()

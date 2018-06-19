@@ -44,6 +44,11 @@
 		856609AF20D8D58700557249 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609AE20D8D58700557249 /* DateExtension.swift */; };
 		856609B320D8F5D200557249 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609B220D8F5D200557249 /* LoadingCell.swift */; };
 		856609B520D8F84D00557249 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B420D8F84D00557249 /* LoadingCell.xib */; };
+		856609B720D965F800557249 /* BuildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B620D965F800557249 /* BuildTableViewCell.xib */; };
+		856609B920D966FC00557249 /* SegueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609B820D966FC00557249 /* SegueExtension.swift */; };
+		856609BB20D9685300557249 /* ColorSchemeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609BA20D9685300557249 /* ColorSchemeTableViewCell.xib */; };
+		856609BD20D96AF700557249 /* BuildActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */; };
+		856609BF20D979B200557249 /* MBProgressHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609BE20D979B200557249 /* MBProgressHUDExtension.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -269,6 +274,11 @@
 		856609AE20D8D58700557249 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		856609B220D8F5D200557249 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		856609B420D8F84D00557249 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		856609B620D965F800557249 /* BuildTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildTableViewCell.xib; sourceTree = "<group>"; };
+		856609B820D966FC00557249 /* SegueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueExtension.swift; sourceTree = "<group>"; };
+		856609BA20D9685300557249 /* ColorSchemeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSchemeTableViewCell.xib; sourceTree = "<group>"; };
+		856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildActionTableViewCell.xib; sourceTree = "<group>"; };
+		856609BE20D979B200557249 /* MBProgressHUDExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDExtension.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -490,12 +500,15 @@
 				8566097E20D82C8300557249 /* APITokenCaptionView.swift */,
 				8566098020D82C9800557249 /* APITokenCaptionView.xib */,
 				8566097420D805BB00557249 /* BuildActionTableViewCell.swift */,
+				856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */,
 				853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */,
 				8566097520D805BB00557249 /* BuildTableViewCell.swift */,
+				856609B620D965F800557249 /* BuildTableViewCell.xib */,
 				8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */,
+				856609BA20D9685300557249 /* ColorSchemeTableViewCell.xib */,
 				856609B220D8F5D200557249 /* LoadingCell.swift */,
-				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 				856609B420D8F84D00557249 /* LoadingCell.xib */,
+				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -767,6 +780,8 @@
 				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
 				853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */,
 				856609AE20D8D58700557249 /* DateExtension.swift */,
+				856609B820D966FC00557249 /* SegueExtension.swift */,
+				856609BE20D979B200557249 /* MBProgressHUDExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -993,6 +1008,7 @@
 				85CAE1E920D5BAE2002CD128 /* Earthsong.itermcolors in Resources */,
 				85CAE20120D5BAE2002CD128 /* NightLion v1.itermcolors in Resources */,
 				85CAE1AC20D5BAE2002CD128 /* Zenburn.itermcolors in Resources */,
+				856609BB20D9685300557249 /* ColorSchemeTableViewCell.xib in Resources */,
 				85CAE1E620D5BAE2002CD128 /* Wombat.itermcolors in Resources */,
 				85CAE1F120D5BAE2002CD128 /* Red Sands.itermcolors in Resources */,
 				85CAE1C420D5BAE2002CD128 /* Grape.itermcolors in Resources */,
@@ -1065,6 +1081,8 @@
 				85CAE1B420D5BAE2002CD128 /* AlienBlood.itermcolors in Resources */,
 				85CAE1CE20D5BAE2002CD128 /* Royal.itermcolors in Resources */,
 				85CAE1E320D5BAE2002CD128 /* Hardcore.itermcolors in Resources */,
+				856609B720D965F800557249 /* BuildTableViewCell.xib in Resources */,
+				856609BD20D96AF700557249 /* BuildActionTableViewCell.xib in Resources */,
 				85CAE20E20D5BAE2002CD128 /* Elemental.itermcolors in Resources */,
 				85CAE1D220D5BAE2002CD128 /* Smyck.itermcolors in Resources */,
 				85CAE1C020D5BAE2002CD128 /* Neopolitan.itermcolors in Resources */,
@@ -1148,7 +1166,9 @@
 				8566096920D7405C00557249 /* BuildsViewController.swift in Sources */,
 				853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */,
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
+				856609B920D966FC00557249 /* SegueExtension.swift in Sources */,
 				85CAE26220D61909002CD128 /* BuildAction.Status.swift in Sources */,
+				856609BF20D979B200557249 /* MBProgressHUDExtension.swift in Sources */,
 				8566098920D84CAC00557249 /* PusherEvent.swift in Sources */,
 				85CAE26F20D629B3002CD128 /* Branch.swift in Sources */,
 				856609B320D8F5D200557249 /* LoadingCell.swift in Sources */,

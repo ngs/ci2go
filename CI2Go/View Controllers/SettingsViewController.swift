@@ -16,7 +16,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var doneButtonItem: UIBarButtonItem!
     @IBOutlet weak var apiTokenField: UITextField!
-    @IBOutlet weak var colorSchemeCell: ColorSchemeTableViewCell!
     private var isTokenModified = false
 
     lazy var apiTokenCaptionView: APITokenCaptionView = {
@@ -31,7 +30,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         let scheme = ColorScheme.current
         let token = Keychain.shared.token ?? ""
         let isValid = isValidToken(token)
-        colorSchemeCell.colorScheme = scheme
         apiTokenField.setValue(scheme.placeholder, forKeyPath: "_placeholderLabel.textColor")
         apiTokenField.text = token
         cancelButtonItem.isEnabled = isValid
@@ -39,10 +37,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         tableView.isScrollEnabled = false
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: ColorSchemeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ColorSchemeTableViewCell.identifier)
     }
-
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -77,14 +75,14 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                 hud.hide(animated: true, afterDelay: 1)
                 guard let user = user else {
                     hud.label.text = "Failed to authenticate"
-                    hud.customView = UIImageView(image: UIImage(named: "791-warning-hud"))
+                    hud.icon = .warning
                     crashlytics.recordError(err ?? APIError.noData)
                     Answers.logLogin(withMethod: nil, success: false, customAttributes: nil)
                     return
                 }
                 Keychain.shared.token = token
                 hud.label.text = "Authenticated"
-                hud.customView = UIImageView(image: UIImage(named: "1040-checkmark-hud"))
+                hud.icon = .success
                 crashlytics.setUserIdentifier(user.login)
                 crashlytics.setUserName(user.name)
                 Answers.logLogin(withMethod: nil, success: true, customAttributes: nil)
@@ -92,10 +90,20 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                     self.dismiss(animated: true)
                 }
             }
-        }.resume()
+            }.resume()
     }
 
     // MARK: - UITableView
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ColorSchemeTableViewCell.identifier) as! ColorSchemeTableViewCell
+            cell.colorScheme = ColorScheme.current
+            return cell
+        }
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        return cell
+    }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return section == 0 ? apiTokenCaptionView : nil
@@ -103,6 +111,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return section == 0 ? 40 : 0
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            performSegue(withIdentifier: .showThemeList, sender: nil)
+        }
     }
 
     // MARK: - UITextFieldDelegate
