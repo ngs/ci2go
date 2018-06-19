@@ -14,9 +14,7 @@
 		853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */; };
 		853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */; };
 		853D1A5B20D65E1000C7F4FC /* CompensationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */; };
-		853D1A5D20D6692D00C7F4FC /* CollectionChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5C20D6692D00C7F4FC /* CollectionChange.swift */; };
 		853D1A5F20D6891E00C7F4FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */; };
-		853D1A6120D695DD00C7F4FC /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6020D695DD00C7F4FC /* Section.swift */; };
 		853D1A6320D6B2FF00C7F4FC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6220D6B2FF00C7F4FC /* Fabric.framework */; };
 		853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */; };
 		853D1A6720D6B8CA00C7F4FC /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */; };
@@ -40,9 +38,9 @@
 		8566097F20D82C8300557249 /* APITokenCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097E20D82C8300557249 /* APITokenCaptionView.swift */; };
 		8566098120D82C9800557249 /* APITokenCaptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8566098020D82C9800557249 /* APITokenCaptionView.xib */; };
 		8566098320D8316900557249 /* ColorScheme+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098220D8316900557249 /* ColorScheme+Color.swift */; };
-		8566098520D831EC00557249 /* ColorScheme+Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098420D831EC00557249 /* ColorScheme+Section.swift */; };
 		8566098720D83EE100557249 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098620D83EE100557249 /* Error.swift */; };
 		8566098920D84CAC00557249 /* PusherEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098820D84CAC00557249 /* PusherEvent.swift */; };
+		856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -238,9 +236,7 @@
 		853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointConvertable.swift; sourceTree = "<group>"; };
 		853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompensationTests.swift; sourceTree = "<group>"; };
-		853D1A5C20D6692D00C7F4FC /* CollectionChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionChange.swift; sourceTree = "<group>"; };
 		853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		853D1A6020D695DD00C7F4FC /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		853D1A6220D6B2FF00C7F4FC /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Vendor/Fabric.framework; sourceTree = "<group>"; };
 		853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
@@ -264,9 +260,9 @@
 		8566097E20D82C8300557249 /* APITokenCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenCaptionView.swift; sourceTree = "<group>"; };
 		8566098020D82C9800557249 /* APITokenCaptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APITokenCaptionView.xib; sourceTree = "<group>"; };
 		8566098220D8316900557249 /* ColorScheme+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+Color.swift"; sourceTree = "<group>"; };
-		8566098420D831EC00557249 /* ColorScheme+Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+Section.swift"; sourceTree = "<group>"; };
 		8566098620D83EE100557249 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		8566098820D84CAC00557249 /* PusherEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherEvent.swift; sourceTree = "<group>"; };
+		856609AB20D8C3AE00557249 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -451,6 +447,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */,
 				85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */,
 				85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */,
 				85CAE22C20D5C62D002CD128 /* Crashlytics.framework in Frameworks */,
@@ -566,6 +563,7 @@
 		85CAE11C20D5B74E002CD128 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				856609AB20D8C3AE00557249 /* Dwifft.framework */,
 				853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */,
 				853D1A6220D6B2FF00C7F4FC /* Fabric.framework */,
 				85CAE22A20D5C62D002CD128 /* Crashlytics.framework */,
@@ -776,17 +774,14 @@
 				85CAE26120D61909002CD128 /* BuildAction.Status.swift */,
 				85CAE25720D60017002CD128 /* BuildAction.swift */,
 				85CAE25920D60023002CD128 /* BuildStep.swift */,
-				853D1A5C20D6692D00C7F4FC /* CollectionChange.swift */,
 				85CAE23020D5DBEB002CD128 /* ColorScheme.swift */,
 				85CAE26320D619B9002CD128 /* ColorScheme+ANSI.swift */,
 				8566098220D8316900557249 /* ColorScheme+Color.swift */,
-				8566098420D831EC00557249 /* ColorScheme+Section.swift */,
 				853D1A6E20D6CD6400C7F4FC /* ColorScheme+UI.swift */,
 				85CAE25120D5F5C5002CD128 /* Commit.swift */,
 				853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */,
 				8566098620D83EE100557249 /* Error.swift */,
 				85CAE26C20D62876002CD128 /* Project.swift */,
-				853D1A6020D695DD00C7F4FC /* Section.swift */,
 				85CAE24720D5EFBE002CD128 /* User.swift */,
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
@@ -1108,6 +1103,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TaskQueue.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Dwifft.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -1118,6 +1114,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Reachability.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Starscream.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Dwifft.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1143,7 +1140,6 @@
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
 				85CAE26220D61909002CD128 /* BuildAction.Status.swift in Sources */,
 				8566098920D84CAC00557249 /* PusherEvent.swift in Sources */,
-				853D1A6120D695DD00C7F4FC /* Section.swift in Sources */,
 				85CAE26F20D629B3002CD128 /* Branch.swift in Sources */,
 				85CAE26D20D62876002CD128 /* Project.swift in Sources */,
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
@@ -1168,12 +1164,10 @@
 				853D1A7420D6DB5C00C7F4FC /* BuildLogTextView.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
 				85CAE26620D61ADD002CD128 /* UIFontExtension.swift in Sources */,
-				853D1A5D20D6692D00C7F4FC /* CollectionChange.swift in Sources */,
 				853D1A6920D6B91100C7F4FC /* KeychainExtension.swift in Sources */,
 				8566097320D8051600557249 /* ColorSchemeTableViewCell.swift in Sources */,
 				85CAE24820D5EFBE002CD128 /* User.swift in Sources */,
 				8566097F20D82C8300557249 /* APITokenCaptionView.swift in Sources */,
-				8566098520D831EC00557249 /* ColorScheme+Section.swift in Sources */,
 				85CAE25A20D60023002CD128 /* BuildStep.swift in Sources */,
 				85CAE25E20D60F36002CD128 /* Workflow.swift in Sources */,
 				85CAE23920D5E944002CD128 /* StringExtension.swift in Sources */,

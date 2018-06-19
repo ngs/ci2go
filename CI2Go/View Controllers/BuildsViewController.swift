@@ -10,15 +10,24 @@ import UIKit
 import KeychainAccess
 import Crashlytics
 import PusherSwift
+import Dwifft
 
 class BuildsViewController: UITableViewController {
     var currentUser: User?
     var userChannel: PusherChannel?
-    var builds = [Build]()
     var hasMore = false
     var isLoading = false
     var currentOffset = 0
     let limit = 30
+    var diffCalculator: TableViewDiffCalculator<Int, Build>?
+
+    var builds: [Build] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.diffCalculator?.sectionedValues = SectionedValues<Int, Build>([(0, self.builds)])
+            }
+        }
+    }
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {}
 
@@ -34,7 +43,8 @@ class BuildsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        diffCalculator = TableViewDiffCalculator(tableView: tableView)
+        builds = []
     }
 
     func loadUser() {
@@ -92,23 +102,12 @@ class BuildsViewController: UITableViewController {
                 return
             }
             self.hasMore = builds.count >= self.limit
-            let changes = self.builds.merge(elements: builds)
-            DispatchQueue.main.async {
-                guard let tableView = self.tableView else { return }
-                tableView.performBatchUpdates({
-                    changes.forEach { change in
-                        print(change)
-                        switch change {
-                        case let .insertRows(indexPaths):
-                            tableView.insertRows(at: indexPaths, with: .automatic)
-                        case let .updateRows(indexPaths):
-                            tableView.reloadRows(at: indexPaths, with: .automatic)
-                            return
-                        case let .insertSections(sections):
-                            tableView.insertSections(sections, with: .automatic)
-                        }
-                    }
-                }, completion: nil)
+            self.builds = builds.reduce(into: self.builds) { (result, element) in
+                if let i = result.index(of: element) {
+                    result[i] = element
+                    return
+                }
+                result.append(element)
             }
             }.resume()
     }
@@ -116,16 +115,16 @@ class BuildsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return diffCalculator?.numberOfSections() ?? 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return builds.count
+        return diffCalculator?.numberOfObjects(inSection: section) ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! BuildTableViewCell
-        cell.build = builds[indexPath.row]
+        cell.build = diffCalculator?.value(atIndexPath: indexPath)
         return cell
     }
 

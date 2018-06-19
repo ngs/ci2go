@@ -7,43 +7,61 @@
 //
 
 import UIKit
+import Dwifft
 
 class ColorSchemesViewController: UITableViewController {
 
-    var sections: Sections<ColorScheme>!
+    var diffCalculator: TableViewDiffCalculator<String, ColorScheme>?
+
+    var colorSchemes: [ColorScheme] = [] {
+        didSet {
+            diffCalculator?.sectionedValues = SectionedValues(
+                values: colorSchemes,
+                valueToSection: { String($0.name.first!).uppercased() },
+                sortSections: { $0 < $1 },
+                sortValues: { $0 < $1 })
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sections = ColorScheme.all.sectionized
+        diffCalculator = TableViewDiffCalculator(tableView: tableView)
+        colorSchemes = ColorScheme.all
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return diffCalculator?.numberOfSections() ?? 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections.numberOfObjects(in: section)
+        return diffCalculator?.numberOfObjects(inSection: section) ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ColorSchemeTableViewCell
-        cell.colorScheme = sections.object(at: indexPath)
+        cell.colorScheme = diffCalculator?.value(atIndexPath: indexPath)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let scheme = sections.object(at: indexPath)
+        guard let scheme = diffCalculator?.value(atIndexPath: indexPath) else { return }
         scheme.apply()
         navigationController?.popViewController(animated: true)
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sections.map { $0.title! }
+        return (0..<numberOfSections(in: tableView)).map {
+            self.tableView(tableView, titleForHeaderInSection: $0) ?? ""
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].title
+        return diffCalculator?.value(forSection: section)
     }
 }

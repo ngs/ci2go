@@ -58,3 +58,15 @@ struct ColorScheme {
         return nil
     }
 }
+
+extension ColorScheme: Equatable {
+    static func == (lhs: ColorScheme, rhs: ColorScheme) -> Bool {
+        return lhs.name.uppercased() == rhs.name.uppercased()
+    }
+}
+
+extension ColorScheme: Comparable {
+    static func < (lhs: ColorScheme, rhs: ColorScheme) -> Bool {
+        return lhs.name.uppercased() < rhs.name.uppercased()
+    }
+}
