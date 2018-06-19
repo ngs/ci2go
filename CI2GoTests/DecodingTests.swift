@@ -36,7 +36,7 @@ class DecodingTests: XCTestCase {
     func testDecodingCommit1() {
         let data = try! Data(json: "commit1")
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
         let commit = try! decoder.decode(Commit.self, from: data)
         XCTAssertEqual("test", commit.body)
         XCTAssertEqual("develop-2", commit.branch)
@@ -56,7 +56,7 @@ class DecodingTests: XCTestCase {
     func testDecodingBuildDetail() {
         let data = try! Data(json: "build-detail")
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
         let build = try! decoder.decode(Build.self, from: data)
         XCTAssertEqual("Atsushi NAGASE", build.user!.name)
         XCTAssertEqual("ngs", build.user!.login)
@@ -82,7 +82,7 @@ class DecodingTests: XCTestCase {
     func testDecodingRecentBuilds() {
         let data = try! Data(json: "recent-builds")
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
         let builds = try! decoder.decode([Build].self, from: data)
         XCTAssertEqual([
             "https://github.com/ngs/ci2go/compare/f6db837b6166...40d6291e9b38",
@@ -224,7 +224,7 @@ class DecodingTests: XCTestCase {
     func testDecodingProjects() {
         let data = try! Data(json: "projects")
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
         let projects = try! decoder.decode([Project].self, from: data)
         XCTAssertEqual(["master", "campfire", "ruby-2.4.0", "ts-dakoku"], projects[0].branches.map{ $0.name })
         XCTAssertEqual(["sources.ngs.io", "ci2go", "ci2go.com", "ci2go.com"], projects.map { $0.name })

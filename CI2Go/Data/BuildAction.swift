@@ -16,6 +16,7 @@ struct BuildAction: Codable {
     let bashCommand: String?
     let hasOutput: Bool
     let durationMills: Double
+    let startedAt: Date?
 
     enum CodingKeys: String, CodingKey {
         case index
@@ -25,6 +26,7 @@ struct BuildAction: Codable {
         case bashCommand = "bash_command"
         case hasOutput = "has_output"
         case durationMills = "run_time_millis"
+        case startedAt = "start_time"
     }
 }
 
