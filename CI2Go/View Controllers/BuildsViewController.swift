@@ -13,21 +13,41 @@ import PusherSwift
 import Dwifft
 
 class BuildsViewController: UITableViewController {
-    var currentUser: User?
-    var userChannel: PusherChannel?
     var hasMore = false
-    var isLoading = false
     var currentOffset = 0
     let limit = 30
     var diffCalculator: TableViewDiffCalculator<Int, Build>?
+    var isMutating = false
+    var reloadTimer: Timer?
+    var foregroundObserver: NSObjectProtocol?
 
-    var builds: [Build] = [] {
+    var currentUser: User? {
         didSet {
-            DispatchQueue.main.async {
-                self.diffCalculator?.sectionedValues = SectionedValues<Int, Build>([(0, self.builds)])
+            if currentUser == oldValue { return }
+            if let _ = currentUser {
+                connectPusher()
+            } else {
+                Pusher.logout()
             }
         }
     }
+
+    var builds: [Build] = [] {
+        didSet {
+            DispatchQueue.main.async { self.refreshData() }
+        }
+    }
+
+    var isLoading = false  {
+        didSet {
+            DispatchQueue.main.async { self.refreshData() }
+        }
+    }
+
+    lazy var dummyLoadingBuild: Build = {
+        let project = Project(vcs: .github, username: "-", name: "-")
+        return Build(project: project, number: -1)
+    }()
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {}
 
@@ -37,14 +57,46 @@ class BuildsViewController: UITableViewController {
             showSettings()
             return
         }
-        connectPusher()
+        loadUser()
         loadBuilds()
+        reloadTimer?.invalidate()
+        reloadTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard
+                let tableView = self?.tableView,
+                let indexPaths = tableView.indexPathsForVisibleRows
+                else { return }
+            tableView.reloadRows(at: indexPaths, with: .none)
+        }
+        foregroundObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name.UIApplicationWillEnterForeground,
+            object: nil,
+            queue: nil) { [weak self] _ in self?.loadUser() }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        reloadTimer?.invalidate()
+        reloadTimer = nil
+        if let foregroundObserver = foregroundObserver {
+            NotificationCenter.default.removeObserver(foregroundObserver)
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         builds = []
+    }
+
+    func refreshData() {
+        isMutating = true
+        var values = [(0, builds)]
+        if isLoading {
+            values.append((1, [dummyLoadingBuild]))
+        }
+        diffCalculator?.sectionedValues = SectionedValues<Int, Build>(values)
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.isMutating = false
+        }
     }
 
     func loadUser() {
@@ -63,13 +115,11 @@ class BuildsViewController: UITableViewController {
             let user = currentUser,
             let channelName = user.pusherChannelName,
             let pusher = Pusher.shared,
-            userChannel == nil
+            pusher.connection.connectionState != .connected
             else { return }
 
-        userChannel = pusher.subscribe(channelName)
-        userChannel?.bind(.call) { _ in
-            self.loadBuilds()
-        }
+        let userChannel = pusher.subscribe(channelName)
+        userChannel.bind(.call) { _ in self.loadBuilds() }
         pusher.connect()
     }
 
@@ -81,34 +131,30 @@ class BuildsViewController: UITableViewController {
         if isLoading {
             return
         }
-        if more {
-            currentOffset += limit
-        } else {
+        isLoading = true
+        if !more {
             currentOffset = 0
         }
         let endpoint: Endpoint<[Build]>
         if let branch = UserDefaults.shared.branch {
-            endpoint = .builds(branch: branch)
+            endpoint = .builds(branch: branch, offset: currentOffset, limit: limit)
         } else if let project = UserDefaults.shared.project {
-            endpoint = .builds(project: project)
+            endpoint = .builds(project: project, offset: currentOffset, limit: limit)
         } else {
-            endpoint = .recent
+            endpoint = .recent(offset: currentOffset, limit: limit)
         }
         URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, _, err) in
             guard let `self` = self else { return }
+            let builds = builds ?? []
+            let newBuilds: [Build] = self.builds.merged(with: builds).sorted().reversed()
+            self.currentOffset = more ? newBuilds.count : builds.count
             self.isLoading = false
-            guard let builds = builds else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+            if let err = err {
+                Crashlytics.sharedInstance().recordError(err)
                 return
             }
             self.hasMore = builds.count >= self.limit
-            self.builds = builds.reduce(into: self.builds) { (result, element) in
-                if let i = result.index(of: element) {
-                    result[i] = element
-                    return
-                }
-                result.append(element)
-            }
+            self.builds = newBuilds
             }.resume()
     }
 
@@ -123,10 +169,19 @@ class BuildsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCell")!
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! BuildTableViewCell
         cell.build = diffCalculator?.value(atIndexPath: indexPath)
         return cell
     }
 
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let lastVisible = tableView.indexPathsForVisibleRows?.last,
+            lastVisible.row >= currentOffset - 1 && hasMore && !isLoading else { return }
+        loadBuilds(more: true)
+    }
 
 }

@@ -38,22 +38,23 @@ class BuildTableViewCell: UITableViewCell {
         }
         self.isHidden = false
         statusLabel.text = build.status.humanize
-        //        if let branchName = build.branch?.name, shortHash = build.triggeredCommit?.shortHash {
-        //            branchNameLabel.text = "\(branchName) (\(shortHash))"
-        //        } else {
-        //            branchNameLabel.text = build.branch?.name ?? ""
-        //        }
-        //        buildNumLabel.text = "#\(build.number)"
-        //        projectNameLabel.text = build.project?.path ?? ""
-        //        subjectLabel.text = build.triggeredCommit?.subject
-        //        userLabel.text = build.user?.name ?? build.user?.login ?? build.triggeredCommit?.author?.name ?? build.triggeredCommit?.author?.login
-        //        timeLabel.text = build.startedAt?.timeAgoSinceNow() ?? ""
-        //        let scheme = ColorScheme()
-        //        statusLabel.layer.cornerRadius = 3
-        //        statusLabel.layer.masksToBounds = true
-        //        statusLabel.textColor = scheme.backgroundColor()
-        //        statusLabel.backgroundColor = scheme.badgeColor(status: status)
-        //        branchIconImageView.image = UIImage(named: "1081-branch-toolbar")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        //        branchIconImageView.tintColor = scheme.foregroundColor()
+        if
+            let branchName = build.branch?.name,
+            let rev = build.vcsRevision?.prefix(shortHashLength) {
+            branchNameLabel.text = "\(branchName) (\(rev))"
+        } else {
+            branchNameLabel.text = build.branch?.name ?? ""
+        }
+        buildNumLabel.text = "#\(build.number)"
+        projectNameLabel.text = build.project.path
+        subjectLabel.text = build.body
+        userLabel.text = build.user?.name ?? build.user?.login
+        timeLabel.text = build.timestamp?.timeAgoSinceNow
+        let scheme = ColorScheme.current
+        statusLabel.layer.cornerRadius = 3
+        statusLabel.layer.masksToBounds = true
+        statusLabel.textColor = scheme.background
+        statusLabel.backgroundColor = build.status.color
+        branchIconImageView.tintColor = scheme.foreground
     }
 }

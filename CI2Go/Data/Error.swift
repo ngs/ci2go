@@ -11,3 +11,7 @@ import Foundation
 enum APIError: Error {
     case noData
 }
+
+enum DateError: String, Error {
+    case invalidDate
+}

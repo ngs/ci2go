@@ -20,11 +20,13 @@ struct Build: Decodable, EndpointConvertable {
     let jobName: String?
     let workflow: Workflow?
     let outcome: Outcome
+    let user: User?
     let status: Status
     let lifecycle: Lifecycle
     let project: Project
     let queuedAt: Date?
     let branch: Branch?
+    let vcsRevision: String?
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -40,15 +42,19 @@ struct Build: Decodable, EndpointConvertable {
         case lifecycle
         case queuedAt = "queued_at"
         case branchName = "branch"
+        case vcsRevision = "vcs_revision"
+        case user = "user"
     }
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         project = try Project(from: decoder)
         number = try values.decode(Int.self, forKey: .number)
+        vcsRevision = try? values.decode(String.self, forKey: .vcsRevision)
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
         status = try values.decode(Status.self, forKey: .status)
+        user = try? values.decode(User.self, forKey: .user)
         queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
         if let compareURLStr = (try? values.decode(String.self, forKey: .compareURL))?
             .replacingOccurrences(of: "^", with: "") {
@@ -76,9 +82,10 @@ struct Build: Decodable, EndpointConvertable {
         self.workflow = workflow
     }
 
-    init(project: Project, number: Int) {
+    init(project: Project, number: Int, status: Status = .notRun) {
         self.project = project
         self.number = number
+        self.status = status
         compareURL = nil
         buildParameters = [:]
         steps = []
@@ -89,12 +96,17 @@ struct Build: Decodable, EndpointConvertable {
         queuedAt = nil
         branch = nil
         outcome = .invalid
-        status = .notRun
         lifecycle = .notRun
+        vcsRevision = nil
+        user = nil
     }
 
     var apiPath: String {
         return "\(project.apiPath)/\(number)"
+    }
+
+    var timestamp: Date? {
+        return queuedAt ?? commits.first?.authorDate
     }
 }
 
@@ -116,3 +128,10 @@ extension Build: Comparable {
         return false
     }
 }
+
+extension Build: Equatable {
+    static func == (lhs: Build, rhs: Build) -> Bool {
+        return lhs.apiPath == rhs.apiPath && lhs.status == rhs.status
+    }
+}
+

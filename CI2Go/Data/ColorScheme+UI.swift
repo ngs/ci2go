@@ -66,6 +66,9 @@ extension ColorScheme {
         buildLogTextView.backgroundColor = background
         buildLogTextView.textColor = foreground
 
+        let activityIndicatorView = UIActivityIndicatorView.appearance() as UIActivityIndicatorView
+        activityIndicatorView.activityIndicatorViewStyle = activityIndicatorViewStyle
+
         // TODO: customize UIAlertController.
         // TODO: SFSafariViewController preferredControlTintColor
 
@@ -83,6 +86,10 @@ extension ColorScheme {
 
     var scrollViewIndicatorStyle: UIScrollViewIndicatorStyle {
         return isLight ? .black : .white
+    }
+
+    var activityIndicatorViewStyle: UIActivityIndicatorViewStyle {
+        return isLight ? .gray : .white
     }
 
     func resetViews() {

@@ -17,3 +17,5 @@ func isValidToken(_ token: String) -> Bool {
         range: NSRange(location: 0, length: token.lengthOfBytes(using: .utf8))
         ).count == 1
 }
+
+let shortHashLength = 7

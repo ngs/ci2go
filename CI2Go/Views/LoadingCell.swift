@@ -1,0 +1,18 @@
+//
+//  LoadingCell.swift
+//  CI2Go
+//
+//  Created by Atsushi Nagase on 2018/06/19.
+//  Copyright © 2018 LittleApps Inc. All rights reserved.
+//
+
+import UIKit
+
+class LoadingCell: UITableViewCell {
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        activityIndicatorView.startAnimating()
+    }
+}

@@ -72,8 +72,12 @@ struct Project: Decodable, EndpointConvertable {
         self.init(vcs: vcs, username: username, name: name)
     }
 
+    var path: String {
+        return "\(username)/\(name)"
+    }
+
     var apiPath: String {
-        return "/project/\(vcs.rawValue)/\(username)/\(name)"
+        return "/project/\(vcs.rawValue)/\(path)"
     }
 }
 

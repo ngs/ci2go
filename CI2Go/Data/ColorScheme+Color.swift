@@ -105,7 +105,7 @@ extension ColorScheme {
             return green
         case .running:
             return blue
-        case .failed, .timedout, .infrastructureFail:
+        case .failed, .timedout, .infrastructureFail, .noTests:
             return red
         default:
             return .gray

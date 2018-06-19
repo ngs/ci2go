@@ -24,7 +24,25 @@ extension URLSession {
                 }
                 do {
                     let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
+                    decoder.dateDecodingStrategy = .custom({ d in
+                        let container = try d.singleValueContainer()
+                        let dateStr = try container.decode(String.self)
+                        let formatter = DateFormatter()
+                        formatter.calendar = Calendar(identifier: .iso8601)
+                        formatter.locale = Locale(identifier: "en_US_POSIX")
+                        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+                        // 2018-06-19T06:29:50.030Z
+                        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        if let date = formatter.date(from: dateStr) {
+                            return date
+                        }
+                        // 2018-06-19T15:29:08+09:00
+                        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXXXX"
+                        if let date = formatter.date(from: dateStr) {
+                            return date
+                        }
+                        throw DateError.invalidDate
+                    })
                     let decoded = try decoder.decode(T.self, from: data)
                     completionHandler(decoded, res, nil)
                 } catch {

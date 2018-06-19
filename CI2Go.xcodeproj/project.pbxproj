@@ -41,6 +41,8 @@
 		8566098720D83EE100557249 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098620D83EE100557249 /* Error.swift */; };
 		8566098920D84CAC00557249 /* PusherEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098820D84CAC00557249 /* PusherEvent.swift */; };
 		856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; };
+		856609AF20D8D58700557249 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609AE20D8D58700557249 /* DateExtension.swift */; };
+		856609B320D8F5D200557249 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609B220D8F5D200557249 /* LoadingCell.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -263,6 +265,8 @@
 		8566098620D83EE100557249 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		8566098820D84CAC00557249 /* PusherEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherEvent.swift; sourceTree = "<group>"; };
 		856609AB20D8C3AE00557249 /* Dwifft.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dwifft.framework; path = Carthage/Build/iOS/Dwifft.framework; sourceTree = "<group>"; };
+		856609AE20D8D58700557249 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		856609B220D8F5D200557249 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -481,13 +485,14 @@
 		853D1A7020D6D99800C7F4FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8566097E20D82C8300557249 /* APITokenCaptionView.swift */,
+				8566098020D82C9800557249 /* APITokenCaptionView.xib */,
 				8566097420D805BB00557249 /* BuildActionTableViewCell.swift */,
 				853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */,
 				8566097520D805BB00557249 /* BuildTableViewCell.swift */,
 				8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */,
+				856609B220D8F5D200557249 /* LoadingCell.swift */,
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
-				8566097E20D82C8300557249 /* APITokenCaptionView.swift */,
-				8566098020D82C9800557249 /* APITokenCaptionView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -758,6 +763,7 @@
 				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
 				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
 				853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */,
+				856609AE20D8D58700557249 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1141,6 +1147,7 @@
 				85CAE26220D61909002CD128 /* BuildAction.Status.swift in Sources */,
 				8566098920D84CAC00557249 /* PusherEvent.swift in Sources */,
 				85CAE26F20D629B3002CD128 /* Branch.swift in Sources */,
+				856609B320D8F5D200557249 /* LoadingCell.swift in Sources */,
 				85CAE26D20D62876002CD128 /* Project.swift in Sources */,
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
@@ -1163,6 +1170,7 @@
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				853D1A7420D6DB5C00C7F4FC /* BuildLogTextView.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
+				856609AF20D8D58700557249 /* DateExtension.swift in Sources */,
 				85CAE26620D61ADD002CD128 /* UIFontExtension.swift in Sources */,
 				853D1A6920D6B91100C7F4FC /* KeychainExtension.swift in Sources */,
 				8566097320D8051600557249 /* ColorSchemeTableViewCell.swift in Sources */,

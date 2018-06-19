@@ -58,6 +58,8 @@ class DecodingTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let build = try! decoder.decode(Build.self, from: data)
+        XCTAssertEqual("Atsushi NAGASE", build.user!.name)
+        XCTAssertEqual("ngs", build.user!.login)
         XCTAssertEqual([
             1, 1, 1, 1, 1, 1, 1, 1, 1
             ], build.steps.map { $0.actions.count })
