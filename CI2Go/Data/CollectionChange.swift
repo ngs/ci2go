@@ -29,4 +29,17 @@ extension CollectionChange: Equatable {
     }
 }
 
+extension CollectionChange: CustomDebugStringConvertible {
+    var debugDescription: String {
+        switch self {
+        case let .insertRows(indexPaths):
+            return "insertRows \(indexPaths)"
+        case let .updateRows(indexPaths):
+            return "updateRows \(indexPaths)"
+        case let .insertSections(sections):
+            return "insertSections \(sections)"
+        }
+    }
+}
+
 typealias CollectionChanges = [CollectionChange]

@@ -11,9 +11,9 @@ import Foundation
 typealias URLValues = [String: String]
 
 struct Endpoint<T: Decodable> {
-    private let host = "circleci.com"
-    private let prefix = "/api/v1.1"
-    private let scheme = "https"
+    let host = "circleci.com"
+    let prefix = "/api/v1.1"
+    let scheme = "https"
 
     let httpMethod: HTTPMethod
     let url: URL
@@ -41,11 +41,18 @@ struct Endpoint<T: Decodable> {
     static var projects: Endpoint<[Project]> {
         return Endpoint<[Project]>(httpMethod: .get, action: "projects")
     }
-    
+
     static func builds(project: Project, offset: Int = 0, limit: Int = 30) -> Endpoint<[Build]> {
         return Endpoint<[Build]>(
             httpMethod: .get,
             data: project,
+            parameters: [ "limit": String(limit), "offset": String(offset) ])
+    }
+
+    static func builds(branch: Branch, offset: Int = 0, limit: Int = 30) -> Endpoint<[Build]> {
+        return Endpoint<[Build]>(
+            httpMethod: .get,
+            data: branch,
             parameters: [ "limit": String(limit), "offset": String(offset) ])
     }
     
@@ -96,7 +103,7 @@ struct Endpoint<T: Decodable> {
         if
             let token = token,
             let credential = "\(token):".data(using: .utf8)?.base64EncodedString() {
-            req.setValue("Basic: \(credential)", forHTTPHeaderField: "Authorization")
+            req.setValue("Basic \(credential)", forHTTPHeaderField: "Authorization")
         }
         return req
     }

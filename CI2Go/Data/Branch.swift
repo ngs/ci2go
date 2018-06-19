@@ -8,16 +8,14 @@
 
 import Foundation
 
-struct Branch {
+struct Branch: EndpointConvertable {
     let name: String
     let project: Project
 
-    var dictionary: [String: String] {
+    var dictionary: [String: Any] {
         return [
-            "name": name,
-            "projectName": project.name,
-            "projectUsername": project.username,
-            "projectVCS": project.vcs.rawValue
+            "project": project.dictionary,
+            "name": name
         ]
     }
     init(_ project: Project, _ name: String) {
@@ -25,24 +23,20 @@ struct Branch {
         self.name = name
     }
 
-    init?(dictionary: [String: String]) {
+    init?(dictionary: [String: Any]) {
         guard
-            let name = dictionary["name"],
-            let projectName = dictionary["projectName"],
-            let projectUsername = dictionary["projectUsername"],
-            let projectVCS = dictionary["projectVCS"],
-            let vcs = VCS(rawValue: projectVCS)
+            let name = dictionary["name"] as? String,
+            let projectDictionary = dictionary["project"] as? [String: String],
+            let project = Project(dictionary: projectDictionary)
             else {
                 return nil
         }
         self.name = name
-        self.project = Project(vcs: vcs, username: projectUsername, name: projectName)
+        self.project = project
     }
-}
 
-extension Branch: Equatable {
-    static func == (lhs: Branch, rhs: Branch) -> Bool {
-        return lhs.project == rhs.project && lhs.name == rhs.name
+    var apiPath: String {
+        return project.apiPath + "/tree/\(name)"
     }
 }
 

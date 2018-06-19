@@ -30,7 +30,7 @@ class PusherAuthRequestBuilder: AuthRequestBuilderProtocol {
 }
 
 extension Pusher {
-    var shared: Pusher? {
+    static var shared: Pusher? {
         if let shared = _shared {
             return shared
         }
@@ -48,5 +48,12 @@ extension Pusher {
         shared.unsubscribeAll()
         _shared = nil
     }
+}
 
+extension PusherChannel {
+    @discardableResult func bind(_ event: PusherEvent, _ callback: (([String: Any]) -> Void)?) -> String {
+        return bind(eventName: event.rawValue, callback: { data in
+            callback?((data as? [String: Any]) ?? [:])
+        })
+    }
 }

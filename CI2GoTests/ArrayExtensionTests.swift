@@ -59,11 +59,11 @@ class ArrayExtensionTests: XCTestCase {
             DummySectionable(1, 0),
             ])
         XCTAssertEqual(["Section 2", "Section 1"], sections.map{ $0.title! })
-        XCTAssertEqual([1, 2], sections.map{ $0.items.count })
+        XCTAssertEqual([1, 2], sections.map{ $0.objects.count })
         XCTAssertEqual([
             [DummySectionable(2, 1)],
             [DummySectionable(1, 0), DummySectionable(1, 1)]
-            ], sections.map{ $0.items })
+            ], sections.map{ $0.objects })
 
         XCTAssertEqual(3, res.count)
         XCTAssertEqual(.insertSections(IndexSet([0])), res[0])
@@ -79,7 +79,7 @@ class ArrayExtensionTests: XCTestCase {
             ])
 
         XCTAssertEqual(["Section 2", "Section 1", "Section 0"], sections.map{ $0.title! })
-        XCTAssertEqual([2, 3, 1], sections.map{ $0.items.count })
+        XCTAssertEqual([2, 3, 1], sections.map{ $0.objects.count })
 
         XCTAssertEqual(5, res.count)
         XCTAssertEqual(.insertRows([IndexPath(row: 2, section: 1)]), res[0])
@@ -91,6 +91,6 @@ class ArrayExtensionTests: XCTestCase {
             [DummySectionable(2, 0), DummySectionable(2, 1)],
             [DummySectionable(1, 0), DummySectionable(1, 1), DummySectionable(1, 2)],
             [DummySectionable(0, 1)]
-            ], sections.map{ $0.items })
+            ], sections.map{ $0.objects })
     }
 }

@@ -42,6 +42,14 @@ struct Project: Decodable, EndpointConvertable {
         }
     }
 
+    var dictionary: [String: String] {
+        return [
+            "name": name,
+            "username": username,
+            "vcs": vcs.rawValue
+        ]
+    }
+
     init(vcs: VCS, username: String, name: String) {
         vcsURL = URL(string: "https://\(vcs.host)/\(username)/\(name)")!
         isFollowing = false
@@ -52,14 +60,20 @@ struct Project: Decodable, EndpointConvertable {
         self.name = name
     }
 
+    init?(dictionary: [String: String]) {
+        guard
+            let name = dictionary["name"],
+            let username = dictionary["username"],
+            let rawVCS = dictionary["vcs"],
+            let vcs = VCS(rawValue: rawVCS)
+            else {
+                return nil
+        }
+        self.init(vcs: vcs, username: username, name: name)
+    }
+
     var apiPath: String {
         return "/project/\(vcs.rawValue)/\(username)/\(name)"
-    }
-}
-
-extension Project: Equatable {
-    static func == (lhs: Project, rhs: Project) -> Bool {
-        return lhs.apiPath == rhs.apiPath
     }
 }
 

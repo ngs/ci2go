@@ -12,10 +12,12 @@ import KeychainAccess
 extension URLSession {
     func dataTask<T: Decodable>(
         endpoint: Endpoint<T>,
-        completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        token: String? = nil,
+        completionHandler: ((T?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
         return dataTask(
-            with: endpoint.urlRequest(with: Keychain.shared.token),
+            with: endpoint.urlRequest(with: token ?? Keychain.shared.token),
             completionHandler: { (data, res, err) in
+                guard let completionHandler = completionHandler else { return }
                 guard let data = data else {
                     completionHandler(nil, res, err)
                     return

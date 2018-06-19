@@ -6,7 +6,7 @@
 //  Copyright © 2018 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension BuildAction {
     enum Status: String, Codable {
@@ -15,5 +15,8 @@ extension BuildAction {
         case canceled = "canceled"
         case timedout = "timedout"
         case running = "running"
+        var color: UIColor {
+            return ColorScheme.current.action(status: self)
+        }
     }
 }

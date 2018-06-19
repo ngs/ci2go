@@ -15,12 +15,12 @@ protocol Sectionable: Comparable & Equatable {
 }
 
 struct Section<T: Sectionable> {
-    let items: [T]
+    let objects: [T]
     var title: String? {
-        return items.first?.sectionTitle
+        return objects.first?.sectionTitle
     }
     var comparable: T.Element? {
-        return items.first?.sectionComparable
+        return objects.first?.sectionComparable
     }
 }
 

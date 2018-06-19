@@ -11,3 +11,9 @@ import Foundation
 protocol EndpointConvertable {
     var apiPath: String { get }
 }
+
+extension Equatable where Self: EndpointConvertable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.apiPath == rhs.apiPath
+    }
+}

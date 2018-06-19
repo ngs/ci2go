@@ -2,20 +2,24 @@
 //  SettingsTableView.swift
 //  CI2Go
 //
-//  Created by Atsushi Nagase on 2018/06/18.
-//  Copyright © 2018 LittleApps Inc. All rights reserved.
+//  Created by Atsushi Nagase on 10/26/14.
+//  Copyright (c) 2014 LittleApps Inc. All rights reserved.
 //
 
 import UIKit
 
 class SettingsTableView: UITableView {
+    @IBOutlet weak var apiTokenField: UITextField!
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = ColorScheme.current.background
     }
-    */
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if apiTokenField.isFirstResponder {
+            apiTokenField.resignFirstResponder()
+        }
+        super.touchesBegan(touches, with: event)
+    }
 }

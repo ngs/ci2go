@@ -12,13 +12,31 @@ import Fabric
 import KeychainAccess
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Crashlytics.self])
+
+        splitViewController?.delegate = self
+        splitViewController?.preferredDisplayMode = .allVisible
+
         ColorScheme.current.apply()
         return true
+    }
+
+    // MARK: - Split View
+
+    var splitViewController: UISplitViewController? {
+        return window?.rootViewController as? UISplitViewController
+    }
+
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        if let secondaryAsNavController = secondaryViewController as? UINavigationController {
+            let vc = secondaryAsNavController.topViewController
+            return vc is BuildLogViewController || vc is TextViewController
+        }
+        return false
     }
 }
 

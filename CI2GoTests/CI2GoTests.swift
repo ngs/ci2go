@@ -9,5 +9,12 @@
 import XCTest
 @testable import CI2Go
 
-class CI2GoTests: XCTestCase {    
+class CI2GoTests: XCTestCase {
+
+    func testGlobal() {
+        XCTAssertTrue(isValidToken("0123456789abcdef0123456789abcdef01234567"))
+        XCTAssertFalse(isValidToken("x123456789abcdef0123456789abcdef01234567"))
+        XCTAssertFalse(isValidToken("00123456789abcdef0123456789abcdef01234567"))
+        XCTAssertFalse(isValidToken(""))
+    }
 }

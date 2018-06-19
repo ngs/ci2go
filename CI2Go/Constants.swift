@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+let tokenRegularExpression = try! NSRegularExpression(pattern: "^([a-f0-9]{40})$", options: NSRegularExpression.Options(rawValue: 0))
+
+func isValidToken(_ token: String) -> Bool {
+    return tokenRegularExpression.matches(
+        in: token,
+        options: .anchored,
+        range: NSRange(location: 0, length: token.lengthOfBytes(using: .utf8))
+        ).count == 1
+}

@@ -15,6 +15,7 @@ extension UserDefaults {
     enum Key: String {
         case colorScheme = "CI2GoColorScheme"
         case branch = "CI2GoSelectedBranch2"
+        case project = "CI2GoSelectedProject2"
     }
 
     static var shared: UserDefaults {
@@ -27,6 +28,10 @@ extension UserDefaults {
     }
 
     // MARK: -
+
+    func removeObject(forKey defaultKey: Key) {
+        removeObject(forKey: defaultKey.rawValue)
+    }
 
     func set(_ value: Any?, forKey defaultKey: Key) {
         set(value, forKey: defaultKey.rawValue)
@@ -58,13 +63,28 @@ extension UserDefaults {
     var branch: Branch? {
         get {
             guard
-                let dictionary = dictionary(forKey: .branch) as? [String: String],
+                let dictionary = dictionary(forKey: .branch),
                 let branch = Branch(dictionary: dictionary)
                 else { return nil }
             return branch
         }
         set(value) {
+            removeObject(forKey: .project)
             set(value?.dictionary, forKey: .branch)
+        }
+    }
+
+    var project: Project? {
+        get {
+            guard
+                let dictionary = dictionary(forKey: .project) as? [String: String],
+                let project = Project(dictionary: dictionary)
+                else { return nil }
+            return project
+        }
+        set(value) {
+            removeObject(forKey: .branch)
+            set(value?.dictionary, forKey: .project)
         }
     }
 }

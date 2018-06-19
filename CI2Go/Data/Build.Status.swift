@@ -6,7 +6,7 @@
 //  Copyright © 2018 LittleApps Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Build {
     enum Status: String, Codable {
@@ -25,6 +25,9 @@ extension Build {
         case success = "success"
         var humanize: String {
             return rawValue.humanize
+        }
+        var color: UIColor {
+            return ColorScheme.current.badge(status: self)
         }
     }
 }

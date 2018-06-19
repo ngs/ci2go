@@ -12,11 +12,13 @@ import XCTest
 class EndpointTests: XCTestCase {
     var project: Project!
     var build: Build!
+    var branch: Branch!
 
     override func setUp() {
         super.setUp()
         project = Project(vcs: .github, username: "ngs", name: "ci2go")
         build = Build(project: project, number: 123)
+        branch = Branch(project, "test")
     }
 
     func testCancelBuild() {
@@ -83,6 +85,22 @@ class EndpointTests: XCTestCase {
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
 
+    func testGetBranchBuilds() {
+        let endpoint: Endpoint<[Build]> = .builds(branch: branch)
+        XCTAssertEqual(
+            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go/tree/test?offset=0&limit=30")!,
+            endpoint.url)
+        XCTAssertEqual(.get, endpoint.httpMethod)
+    }
+
+    func testGetBranchBuildsWithParams() {
+        let endpoint: Endpoint<[Build]> = .builds(branch: branch, offset: 20, limit: 50)
+        XCTAssertEqual(
+            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go/tree/test?offset=20&limit=50")!,
+            endpoint.url)
+        XCTAssertEqual(.get, endpoint.httpMethod)
+    }
+
     func testGetRecentBuilds() {
         let endpoint: Endpoint<[Build]> = .recent
         XCTAssertEqual(
@@ -121,7 +139,7 @@ class EndpointTests: XCTestCase {
         let keys = Array(headers.keys)
         XCTAssertEqual(["Accept", "Authorization"], keys)
         XCTAssertEqual("application/json", headers["Accept"]!)
-        XCTAssertEqual("Basic: Rm9vOg==", headers["Authorization"]!)
+        XCTAssertEqual("Basic Rm9vOg==", headers["Authorization"]!)
     }
     
 }

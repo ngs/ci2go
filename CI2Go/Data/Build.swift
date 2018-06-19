@@ -24,6 +24,7 @@ struct Build: Decodable, EndpointConvertable {
     let lifecycle: Lifecycle
     let project: Project
     let queuedAt: Date?
+    let branch: Branch?
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -38,6 +39,7 @@ struct Build: Decodable, EndpointConvertable {
         case outcome
         case lifecycle
         case queuedAt = "queued_at"
+        case branchName = "branch"
     }
     
     public init(from decoder: Decoder) throws {
@@ -48,9 +50,12 @@ struct Build: Decodable, EndpointConvertable {
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
         status = try values.decode(Status.self, forKey: .status)
         queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
-        let compareURLStr = (try values.decode(String.self, forKey: .compareURL))
-            .replacingOccurrences(of: "^", with: "")
-        compareURL = URL(string: compareURLStr)
+        if let compareURLStr = (try? values.decode(String.self, forKey: .compareURL))?
+            .replacingOccurrences(of: "^", with: "") {
+            compareURL = URL(string: compareURLStr)
+        } else {
+            compareURL = nil
+        }
         buildParameters = (try? values.decode(BuildParameters.self, forKey: .compareURL)) ??
             BuildParameters()
         steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
@@ -58,6 +63,11 @@ struct Build: Decodable, EndpointConvertable {
         var body = (try? values.decode(String.self, forKey: .body)) ?? ""
         if let subject = commits.first?.subject, body.isEmpty {
             body = subject
+        }
+        if let branchName = try? values.decode(String.self, forKey: .branchName) {
+            branch = Branch(project, branchName)
+        } else {
+            branch = nil
         }
         let workflow = try? values.decode(Workflow.self, forKey: .workflow)
         jobName = (try? values.decode(String.self, forKey: .jobName)) ?? workflow?.jobName
@@ -77,6 +87,7 @@ struct Build: Decodable, EndpointConvertable {
         jobName = nil
         workflow = nil
         queuedAt = nil
+        branch = nil
         outcome = .invalid
         status = .notRun
         lifecycle = .notRun
@@ -84,12 +95,6 @@ struct Build: Decodable, EndpointConvertable {
 
     var apiPath: String {
         return "\(project.apiPath)/\(number)"
-    }
-}
-
-extension Build: Equatable {
-    static func == (lhs: Build, rhs: Build) -> Bool {
-        return lhs.apiPath == rhs.apiPath
     }
 }
 
