@@ -12,6 +12,8 @@ import Crashlytics
 import FileKit
 
 class ProjectsViewController: UITableViewController {
+    static let allCellIdentifier = "AllProjectsCell"
+
     var diffCalculator: TableViewDiffCalculator<String, Project?>?
     var isLoading = false
 
@@ -92,11 +94,17 @@ class ProjectsViewController: UITableViewController {
     // MARK: -
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            let vc = segue.destination as? BranchesViewController,
-            let cell = sender as? ProjectTableViewCell
-            else  { return }
-        vc.project = cell.project
+        switch (segue.destination, sender) {
+        case let (vc as BranchesViewController, cell as ProjectTableViewCell):
+            vc.project = cell.project
+            return
+        case let (vc as BuildsViewController, _):
+            vc.selected = (nil, nil)
+            return
+        default:
+            break
+        }
+
     }
 
     // MARK: - Table view data source
@@ -124,7 +132,7 @@ class ProjectsViewController: UITableViewController {
             if isLoading && projects.isEmpty {
                 return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
             }
-            return tableView.dequeueReusableCell(withIdentifier: "AllProjectsCell")!
+            return tableView.dequeueReusableCell(withIdentifier: ProjectsViewController.allCellIdentifier)!
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: ProjectTableViewCell.identifier) as! ProjectTableViewCell
         cell.project = diffCalculator?.value(atIndexPath: indexPath)
@@ -132,12 +140,11 @@ class ProjectsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? ProjectTableViewCell {
+        let cell = tableView.cellForRow(at: indexPath)
+        if let cell = cell as? ProjectTableViewCell {
             performSegue(withIdentifier: .showBranches, sender: cell)
             return
         }
-        UserDefaults.shared.project = nil
-        UserDefaults.shared.branch = nil
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: .unwindSegue, sender: cell)
     }
 }

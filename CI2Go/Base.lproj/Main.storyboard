@@ -44,12 +44,13 @@
                     <navigationItem key="navigationItem" title="Select Project" id="RgQ-GZ-psG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Mwy-E9-xgW">
                             <connections>
-                                <segue destination="a8o-z8-Nur" kind="unwind" unwindAction="unwindSegue:" id="Jk4-Ks-VOo"/>
+                                <segue destination="a8o-z8-Nur" kind="unwind" unwindAction="unwindSegue:" id="L0a-dd-fk1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="gJA-ds-gVz" kind="show" identifier="showBranches" id="gPL-Ka-Nce"/>
+                        <segue destination="a8o-z8-Nur" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="1ZV-M6-0Oe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGc-pe-rYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,14 +86,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="5iD-RU-7AQ" style="IBUITableViewCellStyleDefault" id="fLb-Cz-86i">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllBranchCell" textLabel="5iD-RU-7AQ" style="IBUITableViewCellStyleDefault" id="fLb-Cz-86i">
                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fLb-Cz-86i" id="Mjf-aH-N5G">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5iD-RU-7AQ">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="All Branches" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5iD-RU-7AQ">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BranchTableViewCell" textLabel="uie-1f-X2z" style="IBUITableViewCellStyleDefault" id="h4Z-OQ-EQU" customClass="BranchTableViewCell" customModule="CI2Go" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="82" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h4Z-OQ-EQU" id="Vkl-Jr-TQa">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uie-1f-X2z">
                                             <rect key="frame" x="16" y="0.0" width="343" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -108,8 +126,12 @@
                             <outlet property="delegate" destination="gJA-ds-gVz" id="HBx-GM-IAT"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="pEZ-Gk-DFf" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="oEt-JX-yrx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYl-nA-Sdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pEZ-Gk-DFf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2758" y="63"/>
         </scene>

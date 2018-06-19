@@ -9,6 +9,7 @@
 import UIKit
 
 class BranchesViewController: UITableViewController {
+    let allCellIdentifier = "AllBranchCell"
 
     var project: Project? {
         didSet {
@@ -16,6 +17,19 @@ class BranchesViewController: UITableViewController {
         }
     }
     var branches: [Branch] = []
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch (segue.destination, sender) {
+        case let (vc as BuildsViewController, cell as BranchTableViewCell):
+            vc.selected = (nil, cell.branch)
+            return
+        case let (vc as BuildsViewController, _):
+            vc.selected = (project, nil)
+            return
+        default:
+            break
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -31,8 +45,11 @@ class BranchesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        cell.textLabel?.text = indexPath.section == 0 ? "All Branches" : branches[indexPath.row].name
+        if indexPath.section == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: allCellIdentifier)!
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: BranchTableViewCell.identifier) as! BranchTableViewCell
+        cell.branch = branches[indexPath.row]
         return cell
     }
 
@@ -42,7 +59,8 @@ class BranchesViewController: UITableViewController {
         } else {
             UserDefaults.shared.branch = branches[indexPath.row]
         }
-        dismiss(animated: true, completion: nil)
+        let cell = tableView.cellForRow(at: indexPath)
+        performSegue(withIdentifier: .unwindSegue, sender: cell)
     }
 
 }

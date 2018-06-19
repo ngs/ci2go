@@ -53,6 +53,7 @@
 		856609C320D98C6C00557249 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609C120D98C6C00557249 /* ProjectTableViewCell.xib */; };
 		856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C620D99FAB00557249 /* NetworkActivityManager.swift */; };
 		856609C920D9A73500557249 /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C820D9A73500557249 /* AnyDecodable.swift */; };
+		856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CA20D9B88E00557249 /* BranchTableViewCell.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -287,6 +288,7 @@
 		856609C120D98C6C00557249 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
 		856609C620D99FAB00557249 /* NetworkActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManager.swift; sourceTree = "<group>"; };
 		856609C820D9A73500557249 /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
+		856609CA20D9B88E00557249 /* BranchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchTableViewCell.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				856609C020D98C6C00557249 /* ProjectTableViewCell.swift */,
 				856609C120D98C6C00557249 /* ProjectTableViewCell.xib */,
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
+				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1173,6 +1176,7 @@
 				8566096120D72B7700557249 /* BranchesViewController.swift in Sources */,
 				853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */,
 				85CAE24620D5EDD4002CD128 /* Build.Outcome.swift in Sources */,
+				856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */,
 				85CAE26920D62013002CD128 /* Constants.swift in Sources */,
 				85CAE22B20D5C62D002CD128 /* AMR_ANSIEscapeHelper.m in Sources */,
 				853D1A6B20D6BEAC00C7F4FC /* PusherExtension.swift in Sources */,

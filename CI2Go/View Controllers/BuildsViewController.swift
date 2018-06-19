@@ -21,20 +21,22 @@ class BuildsViewController: UITableViewController {
     var reloadTimer: Timer?
     var foregroundObserver: NSObjectProtocol?
 
-    var project: Project? {
+    var selected: (Project?, Branch?) {
         didSet {
-            if oldValue != project {
+            let (oldProject, oldBranch) = oldValue
+            let (project, branch) = selected
+            let d = UserDefaults.shared
+            d.project = project
+            d.branch = branch
+            if oldProject != project || oldBranch != branch {
                 builds = []
-                navigationItem.prompt = project?.promptText
-            }
-        }
-    }
-
-    var branch: Branch? {
-        didSet {
-            if oldValue != branch {
-                builds = []
-                navigationItem.prompt = branch?.promptText
+                if let branch = branch {
+                    navigationItem.prompt = branch.promptText
+                } else if let project = project {
+                    navigationItem.prompt = project.promptText
+                } else {
+                    navigationItem.prompt = nil
+                }
             }
         }
     }
@@ -70,8 +72,6 @@ class BuildsViewController: UITableViewController {
             showSettings()
             return
         }
-        project = UserDefaults.shared.project
-        branch = UserDefaults.shared.branch
         loadUser()
         loadBuilds()
         reloadTimer?.invalidate()
@@ -102,6 +102,8 @@ class BuildsViewController: UITableViewController {
         tableView.register(UINib(nibName: BuildTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         builds = []
+        let d = UserDefaults.shared
+        selected = (d.project, d.branch)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,6 +169,7 @@ class BuildsViewController: UITableViewController {
             currentOffset = 0
         }
         let endpoint: Endpoint<[Build]>
+        let (project, branch) = selected
         if let branch = branch {
             endpoint = .builds(branch: branch, offset: currentOffset, limit: limit)
         } else if let project = project {
