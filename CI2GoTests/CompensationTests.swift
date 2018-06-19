@@ -28,11 +28,6 @@ class CompensationTests: XCTestCase {
         XCTAssertFalse(project1 > project2)
 
         project1 = Project(vcs: .github, username: "ngs", name: "ci2go")
-        project2 = Project(vcs: .bitbucket, username: "ngt", name: "ci2go")
-        XCTAssertTrue(project1 < project2)
-        XCTAssertFalse(project1 > project2)
-
-        project1 = Project(vcs: .github, username: "ngs", name: "ci2go")
         project2 = Project(vcs: .bitbucket, username: "ngs", name: "ci3go")
         XCTAssertTrue(project1 < project2)
         XCTAssertFalse(project1 > project2)

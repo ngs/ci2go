@@ -36,7 +36,11 @@ struct Branch: EndpointConvertable {
     }
 
     var apiPath: String {
-        return project.apiPath + "/tree/\(name)"
+        return project.apiPath + "/tree/\(name.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!)"
+    }
+
+    var promptText: String {
+        return "\(project.promptText)/\(name)"
     }
 }
 

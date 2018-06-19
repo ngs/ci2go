@@ -13,13 +13,14 @@ extension URLSession {
     func dataTask<T: Decodable>(
         endpoint: Endpoint<T>,
         token: String? = nil,
-        completionHandler: ((T?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
+        completionHandler: ((T?, Data?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
+        NetworkActivityManager.start()
         return dataTask(
             with: endpoint.urlRequest(with: token ?? Keychain.shared.token),
             completionHandler: { (data, res, err) in
                 guard let completionHandler = completionHandler else { return }
                 guard let data = data else {
-                    completionHandler(nil, res, err)
+                    completionHandler(nil, nil, res, err)
                     return
                 }
                 do {
@@ -44,10 +45,11 @@ extension URLSession {
                         throw DateError.invalidDate
                     })
                     let decoded = try decoder.decode(T.self, from: data)
-                    completionHandler(decoded, res, nil)
+                    completionHandler(decoded, data, res, nil)
                 } catch {
-                    completionHandler(nil, res, error)
+                    completionHandler(nil, data, res, error)
                 }
+                NetworkActivityManager.stop()
         })
     }
 }

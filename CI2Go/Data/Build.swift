@@ -64,7 +64,11 @@ struct Build: Decodable, EndpointConvertable {
         }
         buildParameters = (try? values.decode(BuildParameters.self, forKey: .compareURL)) ??
             BuildParameters()
-        steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
+        var steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
+        for (index, _) in steps.enumerated() {
+            steps[index].index = index
+        }
+        self.steps = steps
         let commits = (try? values.decode([Commit].self, forKey: .commits)) ?? []
         var body = (try? values.decode(String.self, forKey: .body)) ?? ""
         if let subject = commits.first?.subject, body.isEmpty {

@@ -24,4 +24,13 @@ enum VCS: String, Codable {
     var icon: UIImage {
         return UIImage(named: "icon-\(rawValue)")!
     }
+
+    var shortName: String {
+        switch self {
+        case .github:
+            return "gh"
+        case .bitbucket:
+            return "bb"
+        }
+    }
 }

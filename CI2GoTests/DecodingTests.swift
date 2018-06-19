@@ -64,6 +64,9 @@ class DecodingTests: XCTestCase {
             1, 1, 1, 1, 1, 1, 1, 1, 1
             ], build.steps.map { $0.actions.count })
         XCTAssertEqual([
+            0, 1, 2, 3, 4, 5, 6, 7, 8
+            ], build.steps.map { $0.index })
+        XCTAssertEqual([
             "Spin up Environment",
             "Checkout code",
             "Restoring Cache",
@@ -223,6 +226,7 @@ class DecodingTests: XCTestCase {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let projects = try! decoder.decode([Project].self, from: data)
+        XCTAssertEqual(["master", "campfire", "ruby-2.4.0", "ts-dakoku"], projects[0].branches.map{ $0.name })
         XCTAssertEqual(["sources.ngs.io", "ci2go", "ci2go.com", "ci2go.com"], projects.map { $0.name })
         XCTAssertEqual([
             "https://github.com/ngs/sources.ngs.io",
@@ -231,5 +235,10 @@ class DecodingTests: XCTestCase {
             "https://bitbucket.org/ngs/ci2go.com"
             ], projects.map { $0.vcsURL!.absoluteString })
     }
-    
+
+    func testBranchAPIPath() {
+        let project = Project(vcs: .github, username: "ngs", name: "ci2go")
+        XCTAssertEqual("/project/github/ngs/ci2go/tree/%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AFabc", Branch(project, "こんにちはabc").apiPath)
+        XCTAssertEqual("/project/github/ngs/ci2go/tree/ruby%2D2%2E4%2E0", Branch(project, "ruby-2.4.0").apiPath)
+    }
 }

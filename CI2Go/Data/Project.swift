@@ -23,7 +23,7 @@ struct Project: Decodable, EndpointConvertable {
         case name = "reponame"
         case isFollowing = "followed"
         case isOSS = "oss"
-        case branches
+        case branches = "branches"
         case vcs = "vcs_type"
     }
 
@@ -35,11 +35,9 @@ struct Project: Decodable, EndpointConvertable {
         isFollowing = (try? values.decode(Bool.self, forKey: .isFollowing)) ?? false
         vcs = try values.decode(VCS.self, forKey: .vcs)
         isOSS = (try? values.decode(Bool.self, forKey: .isOSS)) ?? false
-        let branches = (try? values.nestedUnkeyedContainer(forKey: .branches)) as? [String: Any]
+        let branches: [String: AnyDecodable] = (try? values.decode([String: AnyDecodable].self, forKey: .branches)) ?? [:]
         self.branches = []
-        if let branches = branches {
-            self.branches = branches.keys.map { Branch(self, $0) }
-        }
+        self.branches = branches.keys.map { Branch(self, $0.removingPercentEncoding!) }
     }
 
     var dictionary: [String: String] {
@@ -79,10 +77,14 @@ struct Project: Decodable, EndpointConvertable {
     var apiPath: String {
         return "/project/\(vcs.rawValue)/\(path)"
     }
+
+    var promptText: String {
+        return "\(vcs.shortName)/\(path)"
+    }
 }
 
 extension Project: Comparable {
     static func < (lhs: Project, rhs: Project) -> Bool {
-        return lhs.path < rhs.path
+        return lhs.name.lowercased() < rhs.name.lowercased()
     }
 }

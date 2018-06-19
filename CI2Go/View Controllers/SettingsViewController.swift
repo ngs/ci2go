@@ -68,7 +68,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         hud.backgroundView.style = .solidColor
         hud.label.text = "Authenticating"
         hud.show(animated: true)
-        URLSession.shared.dataTask(endpoint: .me, token: token) { (user, res, err) in
+        URLSession.shared.dataTask(endpoint: .me, token: token) { (user, _, _, err) in
             DispatchQueue.main.async {
                 let crashlytics = Crashlytics.sharedInstance()
                 hud.mode = .customView

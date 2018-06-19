@@ -16,10 +16,28 @@ class BuildsViewController: UITableViewController {
     var hasMore = false
     var currentOffset = 0
     let limit = 30
-    var diffCalculator: TableViewDiffCalculator<Int, Build>?
+    var diffCalculator: TableViewDiffCalculator<Int, Build?>?
     var isMutating = false
     var reloadTimer: Timer?
     var foregroundObserver: NSObjectProtocol?
+
+    var project: Project? {
+        didSet {
+            if oldValue != project {
+                builds = []
+                navigationItem.prompt = project?.promptText
+            }
+        }
+    }
+
+    var branch: Branch? {
+        didSet {
+            if oldValue != branch {
+                builds = []
+                navigationItem.prompt = branch?.promptText
+            }
+        }
+    }
 
     var currentUser: User? {
         didSet {
@@ -44,11 +62,6 @@ class BuildsViewController: UITableViewController {
         }
     }
 
-    lazy var dummyLoadingBuild: Build = {
-        let project = Project(vcs: .github, username: "-", name: "-")
-        return Build(project: project, number: -1)
-    }()
-
     // MARK: - UIViewController
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +70,8 @@ class BuildsViewController: UITableViewController {
             showSettings()
             return
         }
+        project = UserDefaults.shared.project
+        branch = UserDefaults.shared.branch
         loadUser()
         loadBuilds()
         reloadTimer?.invalidate()
@@ -105,18 +120,18 @@ class BuildsViewController: UITableViewController {
 
     func refreshData() {
         isMutating = true
-        var values = [(0, builds)]
+        var values: [(Int, [Build?])] = [(0, builds)]
         if isLoading {
-            values.append((1, [dummyLoadingBuild]))
+            values.append((1, [nil]))
         }
-        diffCalculator?.sectionedValues = SectionedValues<Int, Build>(values)
+        diffCalculator?.sectionedValues = SectionedValues<Int, Build?>(values)
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.isMutating = false
         }
     }
 
     func loadUser() {
-        URLSession.shared.dataTask(endpoint: .me) { (user, _, err) in
+        URLSession.shared.dataTask(endpoint: .me) { (user, _, _, err) in
             guard let user = user else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                 DispatchQueue.main.async { self.showSettings() }
@@ -131,7 +146,7 @@ class BuildsViewController: UITableViewController {
             let user = currentUser,
             let channelName = user.pusherChannelName,
             let pusher = Pusher.shared,
-            pusher.connection.connectionState != .connected
+            pusher.connection.connectionState == .disconnected
             else { return }
 
         let userChannel = pusher.subscribe(channelName)
@@ -152,14 +167,14 @@ class BuildsViewController: UITableViewController {
             currentOffset = 0
         }
         let endpoint: Endpoint<[Build]>
-        if let branch = UserDefaults.shared.branch {
+        if let branch = branch {
             endpoint = .builds(branch: branch, offset: currentOffset, limit: limit)
-        } else if let project = UserDefaults.shared.project {
+        } else if let project = project {
             endpoint = .builds(project: project, offset: currentOffset, limit: limit)
         } else {
             endpoint = .recent(offset: currentOffset, limit: limit)
         }
-        URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, _, err) in
+        URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, _, _, err) in
             guard let `self` = self else { return }
             let builds = builds ?? []
             let newBuilds: [Build] = self.builds.merged(with: builds).sorted().reversed()
@@ -177,7 +192,9 @@ class BuildsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let build = diffCalculator?.value(atIndexPath: indexPath) else { return 0 }
+        guard let build = diffCalculator?.value(atIndexPath: indexPath) else {
+            return 44
+        }
         return build.hasWorkflows ? 95 : 75
     }
 
