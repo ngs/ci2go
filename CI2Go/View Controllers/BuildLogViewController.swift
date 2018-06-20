@@ -64,10 +64,6 @@ class BuildLogViewController: UIViewController {
             pusherChannel.unbind(.appendAction, callbackId: callbackId)
         }
         callbackId = pusherChannel.bind(.appendAction, { [weak self] data in
-            guard
-                let textView = self?.textView,
-                let ansiHelper = self?.ansiHelper
-                else { return }
             let rawOut = data.map { datum in
                 guard
                     let index = datum["index"] as? Int,
@@ -79,15 +75,24 @@ class BuildLogViewController: UIViewController {
                     else { return "" }
                 return message
                 }.joined()
+            self?.appendLog(string: rawOut)
+        })
+    }
+
+    func appendLog(string: String) {
+        if string.isEmpty { return }
+        OperationQueue.main.addOperation { [weak self] in
             guard
-                let str = ansiHelper.attributedString(withANSIEscapedString: rawOut),
-                let mstr = textView.attributedText.mutableCopy() as? NSMutableAttributedString,
-                rawOut != ""
+                let ansiHelper = self?.ansiHelper,
+                let str = ansiHelper.attributedString(withANSIEscapedString: string),
+                let mstr = self?.textView.attributedText.mutableCopy() as? NSMutableAttributedString
                 else { return }
             mstr.append(str)
-            textView.attributedText = mstr
-            textView.scrollIfNeeded()
-        })
+            self?.textView?.attributedText = mstr
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                self?.textView?.scrollIfNeeded()
+            })
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
