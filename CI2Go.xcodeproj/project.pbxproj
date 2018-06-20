@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
 		853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
@@ -224,6 +225,7 @@
 		85CAE26F20D629B3002CD128 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
 		85CAE27120D62AA9002CD128 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE27020D62AA9002CD128 /* projects.json */; };
 		85CAE27320D63429002CD128 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
+		85CEABB620DAD10700D9EE0C /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CEABB520DAD10700D9EE0C /* UIAlertControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +246,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -470,6 +473,7 @@
 		85CAE26E20D629B3002CD128 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85CAE27020D62AA9002CD128 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85CAE27220D63429002CD128 /* Artifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
+		85CEABB520DAD10700D9EE0C /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -526,6 +530,7 @@
 				856609C120D98C6C00557249 /* ProjectTableViewCell.xib */,
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
+				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -788,17 +793,18 @@
 		85CAE22E20D5DBAF002CD128 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */,
+				856609AE20D8D58700557249 /* DateExtension.swift */,
+				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
+				856609BE20D979B200557249 /* MBProgressHUDExtension.swift */,
+				853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */,
+				856609B820D966FC00557249 /* SegueExtension.swift */,
 				85CAE23820D5E944002CD128 /* StringExtension.swift */,
 				85CAE25F20D61564002CD128 /* UIColor+Interpolation.swift */,
 				85CAE26520D61ADD002CD128 /* UIFontExtension.swift */,
 				853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */,
-				853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */,
 				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
-				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
-				853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */,
-				856609AE20D8D58700557249 /* DateExtension.swift */,
-				856609B820D966FC00557249 /* SegueExtension.swift */,
-				856609BE20D979B200557249 /* MBProgressHUDExtension.swift */,
+				85CEABB520DAD10700D9EE0C /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1183,6 +1189,7 @@
 				853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */,
 				85CAE24620D5EDD4002CD128 /* Build.Outcome.swift in Sources */,
 				856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */,
+				8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */,
 				85CAE26920D62013002CD128 /* Constants.swift in Sources */,
 				85CAE22B20D5C62D002CD128 /* AMR_ANSIEscapeHelper.m in Sources */,
 				853D1A6B20D6BEAC00C7F4FC /* PusherExtension.swift in Sources */,
@@ -1205,6 +1212,7 @@
 				856D904620DAB5770030F432 /* BuildLog.swift in Sources */,
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,
 				85CAE24A20D5F00F002CD128 /* VCS.swift in Sources */,
+				85CEABB620DAD10700D9EE0C /* UIAlertControllerExtension.swift in Sources */,
 				8566097720D805BB00557249 /* BuildTableViewCell.swift in Sources */,
 				856609C220D98C6C00557249 /* ProjectTableViewCell.swift in Sources */,
 				853D1A5F20D6891E00C7F4FC /* ArrayExtension.swift in Sources */,

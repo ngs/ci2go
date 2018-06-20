@@ -198,7 +198,7 @@ class BuildsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let build = diffCalculator?.value(atIndexPath: indexPath) else {
-            return 44
+            return 75
         }
         return build.hasWorkflows ? 95 : 75
     }
@@ -221,7 +221,7 @@ class BuildsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
+        guard let cell = tableView.cellForRow(at: indexPath) as? BuildTableViewCell else { return }
         performSegue(withIdentifier: .showBuildDetail, sender: cell)
     }
 

@@ -9,7 +9,7 @@
 import UIKit
 //import DateTools
 
-class BuildTableViewCell: UITableViewCell {
+class BuildTableViewCell: CustomTableViewCell {
 
     static let identifier = "BuildTableViewCell"
 

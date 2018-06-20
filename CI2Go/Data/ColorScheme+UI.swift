@@ -32,16 +32,7 @@ extension ColorScheme {
         tableView.backgroundColor = background
 
         let tableViewCell = UITableViewCell.appearance() as UITableViewCell
-
-        let cellBackgroundView = UIView()
-        cellBackgroundView.backgroundColor = background
-
-        let cellSelectedBackgroundView = UIView()
-        cellSelectedBackgroundView.backgroundColor = tableViewCellSelectedBackground
-
         tableViewCell.backgroundColor = background
-        tableViewCell.backgroundView = cellBackgroundView
-        tableViewCell.selectedBackgroundView = cellSelectedBackgroundView
 
         let textField = UITextField.appearance() as UITextField
         textField.textColor = foreground
@@ -71,6 +62,8 @@ extension ColorScheme {
 
         // TODO: customize UIAlertController.
         // TODO: SFSafariViewController preferredControlTintColor
+
+        let v = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
 
         setAsCurrent()
         resetViews()

@@ -88,15 +88,15 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="QC4-Hz-04J"/>
-                                                <exclude reference="53M-QY-ywn"/>
                                                 <exclude reference="2KK-I5-d3p"/>
+                                                <exclude reference="53M-QY-ywn"/>
+                                                <exclude reference="QC4-Hz-04J"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
-                                                <exclude reference="QC4-Hz-04J"/>
                                                 <exclude reference="2KK-I5-d3p"/>
+                                                <exclude reference="QC4-Hz-04J"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -160,15 +160,15 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="atu-g3-pyo"/>
                                                 <exclude reference="hNw-rB-0Wa"/>
                                                 <exclude reference="r5l-N6-DS7"/>
-                                                <exclude reference="atu-g3-pyo"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
-                                                <exclude reference="hNw-rB-0Wa"/>
                                                 <exclude reference="atu-g3-pyo"/>
+                                                <exclude reference="hNw-rB-0Wa"/>
                                             </mask>
                                         </variation>
                                     </imageView>
@@ -202,15 +202,15 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="thM-j8-IdQ"/>
                                                 <exclude reference="QQH-0t-Cvt"/>
                                                 <exclude reference="iJU-Qh-ZgA"/>
+                                                <exclude reference="thM-j8-IdQ"/>
                                             </mask>
                                         </variation>
                                         <variation key="widthClass=compact">
                                             <mask key="constraints">
-                                                <exclude reference="thM-j8-IdQ"/>
                                                 <exclude reference="iJU-Qh-ZgA"/>
+                                                <exclude reference="thM-j8-IdQ"/>
                                             </mask>
                                         </variation>
                                     </imageView>

@@ -115,6 +115,16 @@ class BuildActionsViewController: UITableViewController {
         }
     }
 
+    @IBAction func openActionSheet(_ sender: Any) {
+        let av = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        av.addAction(UIAlertAction(title: "View Configuration", style: .default, handler: {
+            self.performSegue(withIdentifier: .showBuildConfig, sender: $0)
+        }))
+        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(av, animated: true, completion: nil)
+        av.customize()
+    }
+
     // MARK: -
 
     override func numberOfSections(in tableView: UITableView) -> Int {

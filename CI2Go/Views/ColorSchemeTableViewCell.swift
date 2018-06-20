@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorSchemeTableViewCell: UITableViewCell {
+class ColorSchemeTableViewCell: CustomTableViewCell {
     static let identifier = "ColorSchemeTableViewCell"
 
     @IBOutlet weak var yellowColorView: UIView!

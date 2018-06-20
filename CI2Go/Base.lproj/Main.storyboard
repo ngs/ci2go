@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllProjectsCell" textLabel="ZhV-nt-XpG" style="IBUITableViewCellStyleDefault" id="I6o-DL-12K">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllProjectsCell" textLabel="ZhV-nt-XpG" style="IBUITableViewCellStyleDefault" id="I6o-DL-12K" customClass="CustomTableViewCell" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I6o-DL-12K" id="ccp-0t-OWP">
@@ -86,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllBranchCell" textLabel="5iD-RU-7AQ" style="IBUITableViewCellStyleDefault" id="fLb-Cz-86i">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllBranchCell" textLabel="5iD-RU-7AQ" style="IBUITableViewCellStyleDefault" id="fLb-Cz-86i" customClass="CustomTableViewCell" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fLb-Cz-86i" id="Mjf-aH-N5G">
@@ -301,12 +301,12 @@
                     <navigationItem key="navigationItem" title="#1234" id="jQA-07-YND">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="SJb-1m-VyB">
                             <connections>
-                                <action selector="openActionSheet:" destination="w1T-PU-rde" id="vGW-sQ-V0a"/>
+                                <action selector="openActionSheet:" destination="w1T-PU-rde" id="0Ng-XP-Nkv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="ThN-66-8OR" kind="show" identifier="showYamlSegue" id="F5H-UV-NcB"/>
+                        <segue destination="ThN-66-8OR" kind="showDetail" identifier="showBuildConfig" id="F5H-UV-NcB"/>
                         <segue destination="4Pm-bp-c0z" kind="showDetail" identifier="showBuildLog" id="e6V-Z6-GmV"/>
                     </connections>
                 </tableViewController>

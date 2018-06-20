@@ -15,6 +15,7 @@ enum SegueIdentifier: String {
     case showBuildLog = "showBuildLog"
     case showBranches = "showBranches"
     case unwindSegue = "unwindSegue"
+    case showBuildConfig = "showBuildConfig"
 }
 
 extension UIViewController {

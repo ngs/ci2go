@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BranchTableViewCell: UITableViewCell {
+class BranchTableViewCell: CustomTableViewCell {
     static let identifier = "BranchTableViewCell"
     var branch: Branch? {
         didSet {

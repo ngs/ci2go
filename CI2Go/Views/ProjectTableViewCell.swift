@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectTableViewCell: UITableViewCell {
+class ProjectTableViewCell: CustomTableViewCell {
     static let identifier = "ProjectTableViewCell"
 
     @IBOutlet weak var nameLabel: UILabel!
