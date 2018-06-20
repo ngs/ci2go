@@ -74,6 +74,7 @@ class BuildsViewController: UITableViewController {
         }
         loadUser()
         loadBuilds()
+        connectPusher()
         reloadTimer?.invalidate()
         reloadTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard

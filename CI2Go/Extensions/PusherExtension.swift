@@ -51,9 +51,13 @@ extension Pusher {
 }
 
 extension PusherChannel {
-    @discardableResult func bind(_ event: PusherEvent, _ callback: (([String: Any]) -> Void)?) -> String {
+    @discardableResult func bind(_ event: PusherEvent, _ callback: (([[String: Any]]) -> Void)?) -> String {
         return bind(eventName: event.rawValue, callback: { data in
-            callback?((data as? [String: Any]) ?? [:])
+            callback?((data as? [[String: Any]]) ?? [])
         })
+    }
+
+    func unbind(_ event: PusherEvent, callbackId: String) {
+        unbind(eventName: event.rawValue, callbackId: callbackId)
     }
 }

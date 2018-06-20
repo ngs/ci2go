@@ -14,8 +14,10 @@ import Dwifft
 class BuildActionsViewController: UITableViewController {
     var isLoading = false
     var isMutating = false
+    var isNavigatingToNext = false
     var diffCalculator: TableViewDiffCalculator<Int, BuildAction>?
     var reloadTimer: Timer?
+    var pusherChannels: [PusherChannel] = []
 
     var build: Build? {
         didSet {
@@ -51,6 +53,25 @@ class BuildActionsViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         reloadTimer?.invalidate()
         reloadTimer = nil
+        if let pusher = Pusher.shared, !isNavigatingToNext {
+            pusherChannels.forEach {
+                pusher.unsubscribe($0.name)
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let nvc = segue.destination as? UINavigationController,
+            let vc = nvc.topViewController as? BuildLogViewController,
+            let cell = sender as? BuildActionTableViewCell,
+            let action = cell.buildAction,
+            let build = build
+            else { return }
+        vc.pusherChannel = pusherChannels.first(where: { c in
+            c.name == "\(build.pusherChannelNamePrefix)@\(action.index)"
+        })
+        vc.buildAction = action
     }
 
     // MARK: -
@@ -81,11 +102,11 @@ class BuildActionsViewController: UITableViewController {
             let pusher = Pusher.shared,
             let build = build
             else { return }
-        let channels = build.pusherChannelNames.map {
+        let events: [PusherEvent] = [.updateAction, .newAction]
+        pusherChannels = build.pusherChannelNames.map {
             pusher.subscribe($0)
         }
-        let events: [PusherEvent] = [.updateAction, .newAction]
-        channels.forEach { channel in
+        pusherChannels.forEach { channel in
             events.forEach {
                 channel.bind($0, { [weak self] _ in
                     self?.loadBuild()
@@ -112,6 +133,7 @@ class BuildActionsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath), cell.selectionStyle != .none else { return }
+        isNavigatingToNext = true
         performSegue(withIdentifier: .showBuildLog, sender: cell)
     }
 }

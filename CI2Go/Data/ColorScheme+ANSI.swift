@@ -19,7 +19,7 @@ extension ColorScheme {
             h.ansiColors[50 + i] = color2
         }
         h.defaultStringColor = foreground
-        h.font = UIFont(monotype: 17)
+        h.font = UIFont(monotype: 12)
         return h
     }
 }

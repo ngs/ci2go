@@ -55,6 +55,7 @@
 		856609C920D9A73500557249 /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C820D9A73500557249 /* AnyDecodable.swift */; };
 		856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CA20D9B88E00557249 /* BranchTableViewCell.swift */; };
 		856609CD20D9C04600557249 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
+		856D904620DAB5770030F432 /* BuildLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D904520DAB5770030F432 /* BuildLog.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -291,6 +292,7 @@
 		856609C820D9A73500557249 /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
 		856609CA20D9B88E00557249 /* BranchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchTableViewCell.swift; sourceTree = "<group>"; };
 		856609CC20D9C04600557249 /* DateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecoder.swift; sourceTree = "<group>"; };
+		856D904520DAB5770030F432 /* BuildLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLog.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
 				856609C820D9A73500557249 /* AnyDecodable.swift */,
 				856609CC20D9C04600557249 /* DateDecoder.swift */,
+				856D904520DAB5770030F432 /* BuildLog.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1199,6 +1202,7 @@
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */,
 				8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */,
+				856D904620DAB5770030F432 /* BuildLog.swift in Sources */,
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,
 				85CAE24A20D5F00F002CD128 /* VCS.swift in Sources */,
 				8566097720D805BB00557249 /* BuildTableViewCell.swift in Sources */,
