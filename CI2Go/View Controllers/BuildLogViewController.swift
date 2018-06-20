@@ -52,6 +52,7 @@ class BuildLogViewController: UIViewController {
             let astr = self.ansiHelper.attributedString(withANSIEscapedString: str)
             DispatchQueue.main.async {
                 self.textView.attributedText = astr
+                self.textView.scrollIfNeeded()
             }
             }.resume()
         return
@@ -67,8 +68,7 @@ class BuildLogViewController: UIViewController {
                 let textView = self?.textView,
                 let ansiHelper = self?.ansiHelper
                 else { return }
-            var rawOut = ""
-            data.forEach { datum in
+            let rawOut = data.map { datum in
                 guard
                     let index = datum["index"] as? Int,
                     let step = datum["step"] as? Int,
@@ -76,15 +76,17 @@ class BuildLogViewController: UIViewController {
                     let message = out["message"] as? String,
                     let buildAction = self?.buildAction,
                     buildAction.index == index && buildAction.step == step
-                    else { return }
-                rawOut += message
-            }
+                    else { return "" }
+                return message
+                }.joined()
             guard
                 let str = ansiHelper.attributedString(withANSIEscapedString: rawOut),
-                let mstr = textView.attributedText.mutableCopy() as? NSMutableAttributedString
+                let mstr = textView.attributedText.mutableCopy() as? NSMutableAttributedString,
+                rawOut != ""
                 else { return }
             mstr.append(str)
-            self?.textView.attributedText = mstr
+            textView.attributedText = mstr
+            textView.scrollIfNeeded()
         })
     }
 
