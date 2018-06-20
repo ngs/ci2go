@@ -92,7 +92,8 @@ class BuildActionsViewController: UITableViewController {
         isMutating = true
         let values: [BuildAction] = steps.flatMap { $0.actions }.sorted()
         diffCalculator?.sectionedValues = SectionedValues<Int, BuildAction>([(0, values)])
-        DispatchQueue.global().asyncAfter(deadline: .now() + 1) { [weak self] in
+        scrollToBottom()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.isMutating = false
         }
     }
@@ -112,6 +113,15 @@ class BuildActionsViewController: UITableViewController {
                     self?.loadBuild()
                 })
             }
+        }
+    }
+
+    func scrollToBottom(animated: Bool = false) {
+        let section = numberOfSections(in: tableView) - 1
+        let row = tableView(tableView, numberOfRowsInSection: section) - 1
+        let diff = tableView.bounds.height + tableView.contentOffset.y - tableView.contentSize.height
+        if section >= 0 && row >= 0 && diff < tableView.rowHeight {
+            tableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: animated)
         }
     }
 
