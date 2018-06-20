@@ -79,9 +79,7 @@ class BuildsViewController: UITableViewController {
         reloadTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard
                 let tableView = self?.tableView,
-                let indexPaths = tableView.indexPathsForVisibleRows?.filter({
-                    self?.diffCalculator?.value(atIndexPath: $0)?.status == .running
-                }),
+                let indexPaths = tableView.indexPathsForVisibleRows,
                 self?.isMutating == false && indexPaths.count > 0
                 else { return }
             tableView.reloadRows(at: indexPaths, with: .none)
