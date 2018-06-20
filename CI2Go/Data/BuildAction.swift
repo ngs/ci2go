@@ -10,12 +10,13 @@ import Foundation
 
 struct BuildAction: Codable {
     let index: Int
+    let step: Int
     let name: String
     let status: Status
     let outputURL: URL?
     let bashCommand: String?
     let hasOutput: Bool
-    let durationMills: Double
+    private let _durationMills: Int
     let startedAt: Date?
 
     enum CodingKeys: String, CodingKey {
@@ -25,8 +26,52 @@ struct BuildAction: Codable {
         case outputURL = "output_url"
         case bashCommand = "bash_command"
         case hasOutput = "has_output"
-        case durationMills = "run_time_millis"
+        case _durationMills = "run_time_millis"
         case startedAt = "start_time"
+        case step
+    }
+
+    var durationMills: Double {
+        if let startedAt = startedAt, status == .running {
+            return -startedAt.timeIntervalSinceNow * 1000
+        }
+        return Double(_durationMills)
+    }
+
+    var durationFormatted: String {
+        let mills = durationMills
+        let min = (mills / 60 / 1000).rounded(.towardZero)
+        let sec = (mills / 1000).truncatingRemainder(dividingBy: 60).rounded(.towardZero)
+        return String(format: "%02d:%02d", Int(min), Int(sec))
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        index = try values.decode(Int.self, forKey: .index)
+        name = try values.decode(String.self, forKey: .name)
+        status = try values.decode(Status.self, forKey: .status)
+        outputURL = try? values.decode(URL.self, forKey: .outputURL)
+        bashCommand = try? values.decode(String.self, forKey: .bashCommand)
+        hasOutput = (try? values.decode(Bool.self, forKey: .hasOutput)) ?? false
+        _durationMills = (try? values.decode(Int.self, forKey: ._durationMills)) ?? 0
+        startedAt = try? values.decode(Date.self, forKey: .startedAt)
+        step = (try? values.decode(Int.self, forKey: .step)) ?? 0
     }
 }
 
+extension BuildAction: Equatable {
+    static func == (lhs: BuildAction, rhs: BuildAction) -> Bool {
+        return lhs.index == rhs.index &&
+            lhs.name == rhs.name &&
+            lhs.bashCommand == rhs.bashCommand &&
+            lhs.hasOutput == rhs.hasOutput &&
+            lhs.status == rhs.status
+    }
+}
+
+
+extension BuildAction: Comparable {
+    static func < (lhs: BuildAction, rhs: BuildAction) -> Bool {
+        return lhs.step < rhs.step
+    }
+}

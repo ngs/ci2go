@@ -78,7 +78,10 @@ class BuildsViewController: UITableViewController {
         reloadTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard
                 let tableView = self?.tableView,
-                let indexPaths = tableView.indexPathsForVisibleRows
+                let indexPaths = tableView.indexPathsForVisibleRows?.filter({
+                    self?.diffCalculator?.value(atIndexPath: $0)?.status == .running
+                }),
+                self?.isMutating == false && indexPaths.count > 0
                 else { return }
             tableView.reloadRows(at: indexPaths, with: .none)
         }
@@ -108,7 +111,7 @@ class BuildsViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.destination, sender) {
-        case let (vc as BuildStepsViewController, cell as BuildTableViewCell):
+        case let (vc as BuildActionsViewController, cell as BuildTableViewCell):
             vc.build = cell.build
             break
         default:

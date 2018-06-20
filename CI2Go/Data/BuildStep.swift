@@ -11,7 +11,6 @@ import Foundation
 struct BuildStep: Decodable {
     let actions: [BuildAction]
     let name: String
-    var index: Int = 0
 
 
     enum CodingKeys: String, CodingKey {

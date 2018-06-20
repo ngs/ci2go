@@ -288,7 +288,7 @@
         <!--#1234-->
         <scene sceneID="hDv-Ni-Zb1">
             <objects>
-                <tableViewController storyboardIdentifier="BuildStepsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w1T-PU-rde" customClass="BuildStepsViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BuildStepsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w1T-PU-rde" customClass="BuildActionsViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="Gag-o6-e4m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

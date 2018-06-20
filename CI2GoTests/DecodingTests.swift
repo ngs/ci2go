@@ -64,8 +64,8 @@ class DecodingTests: XCTestCase {
             1, 1, 1, 1, 1, 1, 1, 1, 1
             ], build.steps.map { $0.actions.count })
         XCTAssertEqual([
-            0, 1, 2, 3, 4, 5, 6, 7, 8
-            ], build.steps.map { $0.index })
+            0, 101, 102, 103, 104, 105, 106, 107, 108
+            ], build.steps.map { $0.actions.first!.step })
         XCTAssertEqual([
             "Spin up Environment",
             "Checkout code",

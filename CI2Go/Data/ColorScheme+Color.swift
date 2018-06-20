@@ -117,7 +117,7 @@ extension ColorScheme {
         case .success:
             return green
         case .running:
-            return yellow
+            return blue
         case .failed, .timedout:
             return red
         default:

@@ -26,7 +26,7 @@
 		853D1A7420D6DB5C00C7F4FC /* BuildLogTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
-		8566096620D72B9D00557249 /* BuildStepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildStepsViewController.swift */; };
+		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
 		8566096920D7405C00557249 /* BuildsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096820D7405C00557249 /* BuildsViewController.swift */; };
 		8566096B20D7406C00557249 /* ColorSchemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096A20D7406C00557249 /* ColorSchemesViewController.swift */; };
 		8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096C20D7407D00557249 /* ProjectsViewController.swift */; };
@@ -262,7 +262,7 @@
 		853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogTextView.swift; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
-		8566096520D72B9D00557249 /* BuildStepsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildStepsViewController.swift; sourceTree = "<group>"; };
+		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
 		8566096820D7405C00557249 /* BuildsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsViewController.swift; sourceTree = "<group>"; };
 		8566096A20D7406C00557249 /* ColorSchemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchemesViewController.swift; sourceTree = "<group>"; };
 		8566096C20D7407D00557249 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
@@ -774,7 +774,7 @@
 				8566096020D72B7700557249 /* BranchesViewController.swift */,
 				8566096220D72B8900557249 /* BuildLogViewController.swift */,
 				8566096820D7405C00557249 /* BuildsViewController.swift */,
-				8566096520D72B9D00557249 /* BuildStepsViewController.swift */,
+				8566096520D72B9D00557249 /* BuildActionsViewController.swift */,
 				8566096A20D7406C00557249 /* ColorSchemesViewController.swift */,
 				8566096C20D7407D00557249 /* ProjectsViewController.swift */,
 				8566096E20D7409000557249 /* SettingsViewController.swift */,
@@ -1196,7 +1196,7 @@
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
 				85CAE25220D5F5C5002CD128 /* Commit.swift in Sources */,
-				8566096620D72B9D00557249 /* BuildStepsViewController.swift in Sources */,
+				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */,
 				8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */,
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,

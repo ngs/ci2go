@@ -27,6 +27,7 @@ struct Build: Decodable, EndpointConvertable {
     let queuedAt: Date?
     let branch: Branch?
     let vcsRevision: String?
+    let parallelCount: Int
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -44,6 +45,7 @@ struct Build: Decodable, EndpointConvertable {
         case branchName = "branch"
         case vcsRevision = "vcs_revision"
         case user = "user"
+        case parallelCount = "parallel"
     }
     
     public init(from decoder: Decoder) throws {
@@ -56,6 +58,7 @@ struct Build: Decodable, EndpointConvertable {
         status = try values.decode(Status.self, forKey: .status)
         user = try? values.decode(User.self, forKey: .user)
         queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
+        parallelCount = (try? values.decode(Int.self, forKey: .parallelCount)) ?? 1
         if let compareURLStr = (try? values.decode(String.self, forKey: .compareURL))?
             .replacingOccurrences(of: "^", with: "") {
             compareURL = URL(string: compareURLStr)
@@ -64,11 +67,7 @@ struct Build: Decodable, EndpointConvertable {
         }
         buildParameters = (try? values.decode(BuildParameters.self, forKey: .compareURL)) ??
             BuildParameters()
-        var steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
-        for (index, _) in steps.enumerated() {
-            steps[index].index = index
-        }
-        self.steps = steps
+        steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
         let commits = (try? values.decode([Commit].self, forKey: .commits)) ?? []
         var body = (try? values.decode(String.self, forKey: .body)) ?? ""
         if let subject = commits.first?.subject, body.isEmpty {
@@ -103,6 +102,7 @@ struct Build: Decodable, EndpointConvertable {
         lifecycle = .notRun
         vcsRevision = nil
         user = nil
+        parallelCount = 1
     }
 
     var apiPath: String {
@@ -115,6 +115,22 @@ struct Build: Decodable, EndpointConvertable {
 
     var hasWorkflows: Bool {
         return workflow?.name.isEmpty == false && workflow?.jobName.isEmpty == false
+    }
+
+    var pusherChannelNamePrefix: String {
+        // private-ngs@ci2go@494@vcs-github
+        return "private-\(project.username)@\(project.name)@\(number)@vcs-\(project.vcs.rawValue)"
+    }
+
+    var pusherChannelNames: [String] {
+        var names: [String] = [
+            pusherChannelNamePrefix,
+            "\(pusherChannelNamePrefix)@all"
+        ]
+        for i in 0..<parallelCount {
+            names.append("\(pusherChannelNamePrefix)@\(i)")
+        }
+        return names
     }
 }
 
