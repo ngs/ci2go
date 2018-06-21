@@ -174,6 +174,11 @@ class BuildActionsViewController: UITableViewController {
 
     @IBAction func openActionSheet(_ sender: Any) {
         let av = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if let url = build?.compareURL {
+            av.addAction(UIAlertAction(title: "Open diffs in browser", style: .default, handler: { _ in
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }))
+        }
         av.addAction(UIAlertAction(title: "Retry build", style: .default, handler: { _ in
             self.retryBuild()
         }))
