@@ -18,6 +18,26 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     var callbackId: String?
     var ansiHelper: AMR_ANSIEscapeHelper!
     let operationQueue = OperationQueue()
+    @IBOutlet weak var scrollButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollButton: UIButton!
+
+    var isScrollButtonVisible: Bool = false {
+        didSet {
+            let newBottom: CGFloat = isScrollButtonVisible ? -5 : scrollButton.frame.height
+            scrollButtonBottomConstraint.constant = newBottom
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    var scrollBottom: CGFloat? {
+        let contentHeight = textView.contentSize.height
+        let offsetY = textView.contentOffset.y
+        let height = textView.frame.height
+        if contentHeight < height { return nil }
+        return contentHeight - offsetY - height
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,6 +48,16 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         } else {
             downloadLog()
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textView.text = ""
+        scrollButtonBottomConstraint.constant = scrollButton.frame.height
+        let s = ColorScheme.current
+        scrollButton.tintColor = s.background
+        scrollButton.backgroundColor = s.foreground
+        scrollButton.isHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -110,13 +140,20 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+    @IBAction func scrollToBottom(_ sender: Any) {
+        textView.scrollToBottom()
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let scrollBottom = scrollBottom {
+            isScrollButtonVisible = scrollBottom >= 12
+        }
+    }
+
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard let scrollView = scrollView as? BuildLogTextView else { return }
-        let contentHeight = scrollView.contentSize.height
-        let offsetY = scrollView.contentOffset.y
-        let height = scrollView.frame.height
-        if contentHeight < height { return }
-        let diff = contentHeight - offsetY - height
-        scrollView.snapToBottom = diff <= 0
+        if let scrollBottom = scrollBottom {
+            textView.snapToBottom = scrollBottom < 12
+            scrollButton.isHidden = false
+        }
     }
 }

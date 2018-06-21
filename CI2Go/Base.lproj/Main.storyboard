@@ -8,6 +8,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SourceCodePro-Regular.ttf">
+            <string>SourceCodePro-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Select Project-->
         <scene sceneID="ttr-vX-5RV">
@@ -366,16 +371,45 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae metus porta, volutpat diam sit amet, blandit urna. Morbi eu nunc laoreet, pharetra metus eget, elementum ipsum. Ut sit amet finibus enim. Integer auctor metus vitae nisl varius, vel maximus felis consectetur. Nulla sapien lectus, scelerisque ac faucibus id, ultrices vel nisl. Phasellus sem quam, placerat ut tellus quis, lobortis suscipit mi. Morbi luctus arcu ante, vel malesuada lacus interdum ac. Nunc vulputate nisl quis odio euismod ultricies. Aenean id porta tellus. Donec euismod facilisis augue sit amet interdum. Morbi et nibh dapibus, tincidunt libero quis, pellentesque mauris. In consectetur nibh ac elit congue, eu dignissim felis malesuada.
+
+Donec convallis quis dui nec tincidunt. Sed eget nunc rhoncus, gravida nunc ac, dapibus enim. Aliquam at tempor turpis. Vestibulum a nulla venenatis, faucibus ligula ac, congue magna. Suspendisse sed urna sapien. Maecenas justo lorem, maximus sed risus vitae, ullamcorper dictum velit. Nam hendrerit non odio non laoreet. In hac habitasse platea dictumst. Nullam hendrerit porttitor enim.
+
+Sed at ex dapibus, ornare nulla semper, consectetur nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer dapibus lorem justo, non sodales dolor sollicitudin eu. Vivamus nec nibh eget nunc rutrum convallis eget tristique odio. Sed non viverra ante, id luctus ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus libero id laoreet venenatis. Pellentesque mi risus, facilisis id tincidunt nec, porttitor vel ex. Vivamus accumsan tortor sit amet venenatis condimentum. Sed maximus arcu lectus, eget cursus massa tempor at. Morbi feugiat, dolor et venenatis suscipit, est augue laoreet est, ut condimentum risus libero in nunc.
+
+Curabitur posuere tortor purus, sit amet aliquam erat molestie eget. In ornare ante ut felis lobortis, non congue augue pretium. Cras mollis sodales molestie. Fusce in neque mi. Aliquam eu neque mollis, rhoncus nibh non, lacinia purus. Morbi purus odio, euismod at ultrices eget, ultrices ut quam. Vivamus et condimentum sapien, in pretium est.
+
+Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam blandit risus sed ante laoreet iaculis. Fusce eleifend imperdiet arcu et elementum. Vestibulum consectetur, magna vel tincidunt interdum, ante orci suscipit ex, quis consectetur nibh sapien eu purus. Etiam lobortis justo non consequat condimentum. Sed ex mi, fringilla sed elit at, ultricies maximus magna. Cras pharetra a est eget molestie. Sed sollicitudin purus vitae molestie viverra. Mauris sodales eu felis ut varius.</mutableString>
+                                <fontDescription key="fontDescription" name="SourceCodePro-Regular" family="Source Code Pro" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="cfZ-lg-upH" id="nwt-Fn-hlq"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-0j-oqc">
+                                <rect key="frame" x="127" y="637" width="120" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="button-scroll-bottom">
+                                    <color key="titleColor" red="0.98816142259999995" green="0.98816142259999995" blue="0.98816142259999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="scrollToBottom:" destination="cfZ-lg-upH" eventType="touchUpInside" id="9WI-3F-Rta"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="0eP-0j-oqc" firstAttribute="bottom" secondItem="jIr-4S-3Qm" secondAttribute="top" id="Aqt-Ld-4uX"/>
                             <constraint firstItem="TRK-rV-Tuw" firstAttribute="top" secondItem="Ij9-d7-WRv" secondAttribute="top" id="Io9-d7-Nqx"/>
+                            <constraint firstItem="0eP-0j-oqc" firstAttribute="centerX" secondItem="Ij9-d7-WRv" secondAttribute="centerX" id="PZJ-Wd-Id9"/>
                             <constraint firstItem="TRK-rV-Tuw" firstAttribute="leading" secondItem="Ij9-d7-WRv" secondAttribute="leading" id="dIA-Kf-axc"/>
                             <constraint firstAttribute="trailing" secondItem="TRK-rV-Tuw" secondAttribute="trailing" id="imS-V4-Kim"/>
                             <constraint firstAttribute="bottom" secondItem="TRK-rV-Tuw" secondAttribute="bottom" id="lIY-3h-BnM"/>
@@ -383,6 +417,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="ILl-8V-UbW"/>
                     <connections>
+                        <outlet property="scrollButton" destination="0eP-0j-oqc" id="Cnq-eU-MkX"/>
+                        <outlet property="scrollButtonBottomConstraint" destination="Aqt-Ld-4uX" id="wAT-VN-kjd"/>
                         <outlet property="textView" destination="TRK-rV-Tuw" id="IqJ-ST-VAZ"/>
                     </connections>
                 </viewController>
@@ -451,7 +487,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vitae metus porta, volutpat diam sit amet, blandit urna. Morbi eu nunc laoreet, pharetra metus eget, elementum ipsum. Ut sit amet finibus enim. Integer auctor metus vitae nisl varius, vel maximus felis consectetur. Nulla sapien lectus, scelerisque ac faucibus id, ultrices vel nisl. Phasellus sem quam, placerat ut tellus quis, lobortis suscipit mi. Morbi luctus arcu ante, vel malesuada lacus interdum ac. Nunc vulputate nisl quis odio euismod ultricies. Aenean id porta tellus. Donec euismod facilisis augue sit amet interdum. Morbi et nibh dapibus, tincidunt libero quis, pellentesque mauris. In consectetur nibh ac elit congue, eu dignissim felis malesuada.
+
+Donec convallis quis dui nec tincidunt. Sed eget nunc rhoncus, gravida nunc ac, dapibus enim. Aliquam at tempor turpis. Vestibulum a nulla venenatis, faucibus ligula ac, congue magna. Suspendisse sed urna sapien. Maecenas justo lorem, maximus sed risus vitae, ullamcorper dictum velit. Nam hendrerit non odio non laoreet. In hac habitasse platea dictumst. Nullam hendrerit porttitor enim.
+
+Sed at ex dapibus, ornare nulla semper, consectetur nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer dapibus lorem justo, non sodales dolor sollicitudin eu. Vivamus nec nibh eget nunc rutrum convallis eget tristique odio. Sed non viverra ante, id luctus ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus libero id laoreet venenatis. Pellentesque mi risus, facilisis id tincidunt nec, porttitor vel ex. Vivamus accumsan tortor sit amet venenatis condimentum. Sed maximus arcu lectus, eget cursus massa tempor at. Morbi feugiat, dolor et venenatis suscipit, est augue laoreet est, ut condimentum risus libero in nunc.
+
+Curabitur posuere tortor purus, sit amet aliquam erat molestie eget. In ornare ante ut felis lobortis, non congue augue pretium. Cras mollis sodales molestie. Fusce in neque mi. Aliquam eu neque mollis, rhoncus nibh non, lacinia purus. Morbi purus odio, euismod at ultrices eget, ultrices ut quam. Vivamus et condimentum sapien, in pretium est.
+
+Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam blandit risus sed ante laoreet iaculis. Fusce eleifend imperdiet arcu et elementum. Vestibulum consectetur, magna vel tincidunt interdum, ante orci suscipit ex, quis consectetur nibh sapien eu purus. Etiam lobortis justo non consequat condimentum. Sed ex mi, fringilla sed elit at, ultricies maximus magna. Cras pharetra a est eget molestie. Sed sollicitudin purus vitae molestie viverra. Mauris sodales eu felis ut varius.</mutableString>
+                                <fontDescription key="fontDescription" name="SourceCodePro-Regular" family="Source Code Pro" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="no"/>
                             </textView>
                         </subviews>
@@ -512,6 +557,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="button-scroll-bottom" width="120" height="30"/>
         <image name="toolbar-code-branch" width="22" height="22"/>
         <image name="toolbar-cog" width="22" height="22"/>
     </resources>

@@ -55,8 +55,6 @@ class BuildTableViewCell: CustomTableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let scheme = ColorScheme.current
-        statusLabel.layer.cornerRadius = 3
-        statusLabel.layer.masksToBounds = true
         statusLabel.textColor = scheme.background
         statusLabel.backgroundColor = build?.status.color
         vcsIconImageView.image = build?.project.vcs.icon

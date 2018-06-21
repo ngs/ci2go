@@ -24,7 +24,6 @@ class TextViewController: UIViewController {
         let s = ColorScheme.current
         textView.backgroundColor = s.background
         textView.textColor = s.foreground
-        textView.font = UIFont(monotype: 12)
         textView.isScrollEnabled = false
         textView.text = text
         textView.isScrollEnabled = true

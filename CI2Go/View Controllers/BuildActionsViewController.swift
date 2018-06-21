@@ -48,7 +48,9 @@ class BuildActionsViewController: UITableViewController {
                 let indexPaths = tableView.indexPathsForVisibleRows,
                 self?.isMutating == false
                 else { return }
+            let selectedIndexPath = tableView.indexPathForSelectedRow
             tableView.reloadRows(at: indexPaths, with: .none)
+            tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
         }
     }
 
