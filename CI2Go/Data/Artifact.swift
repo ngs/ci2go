@@ -27,7 +27,7 @@ struct Artifact: Decodable {
     }
 
     var localPath: Path {
-        return Path.userDownloads + "Artifacts/\(downloadURL.host ?? "localhost")/\(downloadURL.path)"
+        return Path.userDocuments + "Artifacts/\(downloadURL.host ?? "localhost")/\(downloadURL.path)"
     }
 
     var progressFilePath: Path {
