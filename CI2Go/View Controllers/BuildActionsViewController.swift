@@ -39,6 +39,7 @@ class BuildActionsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isNavigatingToNext = false
         loadBuild()
         connectPusher()
         reloadTimer?.invalidate()
@@ -65,19 +66,18 @@ class BuildActionsViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            let nvc = segue.destination as? UINavigationController,
-            let build = build
-            else { return }
+        guard let build = build else { return }
+        isNavigatingToNext = true
+        let vc = (segue.destination as? UINavigationController)?.topViewController ?? segue.destination
 
         if
-            let displayModeButtomItem = splitViewController?.displayModeButtonItem,
-            let navigationItem = nvc.topViewController?.navigationItem {
-            navigationItem.leftBarButtonItem = displayModeButtomItem
-            navigationItem.leftItemsSupplementBackButton = true
+            let _ = segue.destination as? UINavigationController,
+            let displayModeButtomItem = splitViewController?.displayModeButtonItem {
+            vc.navigationItem.leftBarButtonItem = displayModeButtomItem
+            vc.navigationItem.leftItemsSupplementBackButton = true
         }
 
-        switch (nvc.topViewController, sender) {
+        switch (vc, sender) {
         case let (vc as BuildLogViewController, cell as BuildActionTableViewCell):
             guard let action = cell.buildAction else { return }
             vc.pusherChannel = pusherChannels.first(where: { c in
@@ -86,9 +86,11 @@ class BuildActionsViewController: UITableViewController {
             vc.buildAction = action
             break
         case let (vc as TextViewController, _):
-            // vc.text = build.conf
             vc.text = build.configuration
             vc.title = build.configurationName
+            break
+        case let (vc as BuildArtifactsViewController, _):
+            vc.build = build
             break
         default:
             break
@@ -232,8 +234,9 @@ class BuildActionsViewController: UITableViewController {
             let cell = tableView.cellForRow(at: indexPath),
             let item = diffCalculator?.value(atIndexPath: indexPath),
             cell.selectionStyle != .none else { return }
-        isNavigatingToNext = true
-        performSegue(withIdentifier: item.segueIdentifier, sender: cell)
+        if item.segueIdentifier == .showBuildLog {
+            performSegue(withIdentifier: item.segueIdentifier, sender: cell)
+        }
     }
 }
 

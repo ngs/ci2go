@@ -140,6 +140,19 @@
             </objects>
             <point key="canvasLocation" x="2758" y="63"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gcc-Qa-Vp4">
+            <objects>
+                <navigationController id="1bQ-D2-Qfk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RSH-ZQ-yJ1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cg-bN-8gK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2758" y="799"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="o9g-kd-3rk">
             <objects>
@@ -315,6 +328,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ThN-66-8OR" kind="showDetail" identifier="showBuildConfig" id="RQ9-cP-lH8"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtifactsCell" textLabel="bxv-tS-C1L" style="IBUITableViewCellStyleDefault" id="nW4-7K-LR9" customClass="CustomTableViewCell" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="102" width="375" height="80"/>
@@ -332,6 +348,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="IRc-aj-agi" kind="show" identifier="showBuildArtifacts" id="ihs-SO-Lac"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -347,13 +366,33 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="ThN-66-8OR" kind="showDetail" identifier="showBuildConfig" id="F5H-UV-NcB"/>
                         <segue destination="4Pm-bp-c0z" kind="showDetail" identifier="showBuildLog" id="e6V-Z6-GmV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYa-TI-Cuc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1142" y="797"/>
+        </scene>
+        <!--Artifacts-->
+        <scene sceneID="DkQ-Bm-jpl">
+            <objects>
+                <tableViewController storyboardIdentifier="BuildArtifactsViewController" title="Artifacts" id="IRc-aj-agi" customClass="BuildArtifactsViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TVM-71-FHg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="IRc-aj-agi" id="AK4-QG-Vqz"/>
+                            <outlet property="delegate" destination="IRc-aj-agi" id="gLi-HL-Iab"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <segue destination="1bQ-D2-Qfk" kind="showDetail" identifier="showQuickLook" id="Kvt-Ga-DxD"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ja-aT-PuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1970" y="794"/>
         </scene>
         <!--Build Log View Controller-->
         <scene sceneID="5j9-bU-kXN">
@@ -367,7 +406,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customClass="CustomTextView" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -468,7 +507,7 @@ Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam bl
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knK-CV-1i1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="1560"/>
+            <point key="canvasLocation" x="-828" y="1561"/>
         </scene>
         <!--circle.yml-->
         <scene sceneID="EMW-mD-H2l">
@@ -482,7 +521,7 @@ Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam bl
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6G-5P-hjm">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6G-5P-hjm" customClass="CustomTextView" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import QuickLook
 
 extension ColorScheme {
     func apply() {
@@ -53,7 +54,7 @@ extension ColorScheme {
         tableButton.setTitleColor(bold, for: .normal)
         tableButton.setTitleColor(foreground, for: .highlighted)
 
-        let textView = UITextView.appearance()
+        let textView = CustomTextView.appearance()
         textView.backgroundColor = background
         textView.textColor = foreground
 

@@ -11,6 +11,11 @@
 		8504A06C20DB9733001D0C08 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */; };
 		8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */; };
 		8504A07020DBAE75001D0C08 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */; };
+		8504A07220DBD67D001D0C08 /* BuildArtifactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A07120DBD67D001D0C08 /* BuildArtifactsViewController.swift */; };
+		8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */; };
+		8504A07620DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */; };
+		8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */; };
+		8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
@@ -252,6 +257,11 @@
 		8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		8504A07120DBD67D001D0C08 /* BuildArtifactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildArtifactsViewController.swift; sourceTree = "<group>"; };
+		8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildArtifactTableViewCell.swift; sourceTree = "<group>"; };
+		8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildArtifactTableViewCell.xib; sourceTree = "<group>"; };
+		8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQuickLookDataSource.swift; sourceTree = "<group>"; };
+		8504A09920DC1DB5001D0C08 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -521,22 +531,25 @@
 			children = (
 				8566097E20D82C8300557249 /* APITokenCaptionView.swift */,
 				8566098020D82C9800557249 /* APITokenCaptionView.xib */,
+				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
 				8566097420D805BB00557249 /* BuildActionTableViewCell.swift */,
 				856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */,
+				8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */,
+				8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */,
 				8566097520D805BB00557249 /* BuildTableViewCell.swift */,
 				856609B620D965F800557249 /* BuildTableViewCell.xib */,
 				8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */,
 				856609BA20D9685300557249 /* ColorSchemeTableViewCell.xib */,
+				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
+				8504A06920DB8F36001D0C08 /* InversedColorButton.swift */,
 				856609B220D8F5D200557249 /* LoadingCell.swift */,
 				856609B420D8F84D00557249 /* LoadingCell.xib */,
 				856609C020D98C6C00557249 /* ProjectTableViewCell.swift */,
 				856609C120D98C6C00557249 /* ProjectTableViewCell.xib */,
-				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
-				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
-				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
-				8504A06920DB8F36001D0C08 /* InversedColorButton.swift */,
 				8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */,
 				8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */,
+				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
+				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -785,9 +798,10 @@
 			isa = PBXGroup;
 			children = (
 				8566096020D72B7700557249 /* BranchesViewController.swift */,
+				8566096520D72B9D00557249 /* BuildActionsViewController.swift */,
+				8504A07120DBD67D001D0C08 /* BuildArtifactsViewController.swift */,
 				8566096220D72B8900557249 /* BuildLogViewController.swift */,
 				8566096820D7405C00557249 /* BuildsViewController.swift */,
-				8566096520D72B9D00557249 /* BuildActionsViewController.swift */,
 				8566096A20D7406C00557249 /* ColorSchemesViewController.swift */,
 				8566096C20D7407D00557249 /* ProjectsViewController.swift */,
 				8566096E20D7409000557249 /* SettingsViewController.swift */,
@@ -841,6 +855,7 @@
 				856609C820D9A73500557249 /* AnyDecodable.swift */,
 				856609CC20D9C04600557249 /* DateDecoder.swift */,
 				856D904520DAB5770030F432 /* BuildLog.swift */,
+				8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1019,6 +1034,7 @@
 				85CAE1C920D5BAE2002CD128 /* Man Page.itermcolors in Resources */,
 				85CAE1C120D5BAE2002CD128 /* Tomorrow Night Eighties.itermcolors in Resources */,
 				85CAE1AB20D5BAE2002CD128 /* Dark Pastel.itermcolors in Resources */,
+				8504A07620DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib in Resources */,
 				85CAE1ED20D5BAE2002CD128 /* Chalkboard.itermcolors in Resources */,
 				85CAE20F20D5BAE2002CD128 /* AdventureTime.itermcolors in Resources */,
 				85CAE1DF20D5BAE2002CD128 /* ToyChest.itermcolors in Resources */,
@@ -1195,6 +1211,7 @@
 				8566096120D72B7700557249 /* BranchesViewController.swift in Sources */,
 				853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */,
 				85CAE24620D5EDD4002CD128 /* Build.Outcome.swift in Sources */,
+				8504A07220DBD67D001D0C08 /* BuildArtifactsViewController.swift in Sources */,
 				856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */,
 				8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */,
 				85CAE26920D62013002CD128 /* Constants.swift in Sources */,
@@ -1215,7 +1232,9 @@
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
 				85CAE25220D5F5C5002CD128 /* Commit.swift in Sources */,
+				8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */,
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
+				8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */,
 				853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */,
 				8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */,
 				856D904620DAB5770030F432 /* BuildLog.swift in Sources */,
@@ -1237,6 +1256,7 @@
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
+				8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */,
 				856609AF20D8D58700557249 /* DateExtension.swift in Sources */,
 				85CAE26620D61ADD002CD128 /* UIFontExtension.swift in Sources */,
 				853D1A6920D6B91100C7F4FC /* KeychainExtension.swift in Sources */,
