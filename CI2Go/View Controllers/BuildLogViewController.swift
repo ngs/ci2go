@@ -11,7 +11,7 @@ import PusherSwift
 import Crashlytics
 import MBProgressHUD
 
-class BuildLogViewController: UIViewController {
+class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var textView: BuildLogTextView!
     var pusherChannel: PusherChannel?
     var buildAction: BuildAction?
@@ -52,7 +52,9 @@ class BuildLogViewController: UIViewController {
             let astr = self.ansiHelper.attributedString(withANSIEscapedString: str)
             DispatchQueue.main.async {
                 self.textView.attributedText = astr
-                self.textView.scrollIfNeeded()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                    self.textView.scrollToBottom()
+                })
             }
             }.resume()
         return
@@ -101,5 +103,15 @@ class BuildLogViewController: UIViewController {
             pusherChannel?.unbind(.appendAction, callbackId: callbackId)
         }
         pusherChannel = nil
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let scrollView = scrollView as? BuildLogTextView else { return }
+        let contentHeight = scrollView.contentSize.height
+        let offsetY = scrollView.contentOffset.y
+        let height = scrollView.frame.height
+        if contentHeight < height { return }
+        let diff = contentHeight - offsetY - height
+        scrollView.snapToBottom = diff < height / 2
     }
 }

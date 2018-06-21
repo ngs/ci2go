@@ -90,9 +90,15 @@ class BuildActionsViewController: UITableViewController {
     func refreshData() {
         guard let steps = build?.steps, steps.count > 0 else { return }
         isMutating = true
+        let animateScroll: Bool
+        if let (_, items) = diffCalculator?.sectionedValues.sectionsAndValues.first, !items.isEmpty {
+            animateScroll = true
+        } else {
+            animateScroll = false
+        }
         let values: [BuildAction] = steps.flatMap { $0.actions }.sorted()
         diffCalculator?.sectionedValues = SectionedValues<Int, BuildAction>([(0, values)])
-        scrollToBottom()
+        scrollToBottom(animated: animateScroll)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.isMutating = false
         }
@@ -132,7 +138,6 @@ class BuildActionsViewController: UITableViewController {
         }))
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(av, animated: true, completion: nil)
-        av.customize()
     }
 
     // MARK: -

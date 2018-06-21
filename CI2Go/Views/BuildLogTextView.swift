@@ -26,11 +26,9 @@ class BuildLogTextView: UITextView {
 
     func scrollToBottom() {
         if shouldScrollToBottom() {
-            UIView.setAnimationsEnabled(false)
-            let location = attributedText.length - 1
-            let bottom = NSMakeRange(location, 1)
+            let location = attributedText.length
+            let bottom = NSMakeRange(location, 0)
             scrollRangeToVisible(bottom)
-            UIView.setAnimationsEnabled(true)
             isScrollEnabled = false
             isScrollEnabled = true
         }

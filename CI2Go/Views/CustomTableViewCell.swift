@@ -20,4 +20,10 @@ class CustomTableViewCell: UITableViewCell {
         selectedBackgroundView.backgroundColor = ColorScheme.current.tableViewCellSelectedBackground
         self.selectedBackgroundView = selectedBackgroundView
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundView?.backgroundColor = ColorScheme.current.background
+        selectedBackgroundView?.backgroundColor = ColorScheme.current.tableViewCellSelectedBackground
+    }
 }

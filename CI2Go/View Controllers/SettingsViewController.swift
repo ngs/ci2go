@@ -35,6 +35,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         cancelButtonItem.isEnabled = isValid
         doneButtonItem.isEnabled = isValid
         tableView.isScrollEnabled = false
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {

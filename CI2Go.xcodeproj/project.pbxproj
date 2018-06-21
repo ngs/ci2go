@@ -225,7 +225,6 @@
 		85CAE26F20D629B3002CD128 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
 		85CAE27120D62AA9002CD128 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE27020D62AA9002CD128 /* projects.json */; };
 		85CAE27320D63429002CD128 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
-		85CEABB620DAD10700D9EE0C /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CEABB520DAD10700D9EE0C /* UIAlertControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,7 +472,6 @@
 		85CAE26E20D629B3002CD128 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85CAE27020D62AA9002CD128 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85CAE27220D63429002CD128 /* Artifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
-		85CEABB520DAD10700D9EE0C /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -804,7 +802,6 @@
 				85CAE26520D61ADD002CD128 /* UIFontExtension.swift */,
 				853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */,
 				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
-				85CEABB520DAD10700D9EE0C /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1212,7 +1209,6 @@
 				856D904620DAB5770030F432 /* BuildLog.swift in Sources */,
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,
 				85CAE24A20D5F00F002CD128 /* VCS.swift in Sources */,
-				85CEABB620DAD10700D9EE0C /* UIAlertControllerExtension.swift in Sources */,
 				8566097720D805BB00557249 /* BuildTableViewCell.swift in Sources */,
 				856609C220D98C6C00557249 /* ProjectTableViewCell.swift in Sources */,
 				853D1A5F20D6891E00C7F4FC /* ArrayExtension.swift in Sources */,

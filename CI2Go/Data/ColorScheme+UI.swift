@@ -24,7 +24,6 @@ extension ColorScheme {
 
         let scrollView = UIScrollView.appearance() as UIScrollView
         scrollView.indicatorStyle = scrollViewIndicatorStyle
-        scrollView.backgroundColor = background
 
         let tableView = UITableView.appearance() as UITableView
         tableView.separatorColor = tableViewSeperator
@@ -44,8 +43,6 @@ extension ColorScheme {
         let settingsTableView = SettingsTableView.appearance()
         settingsTableView.backgroundColor = background
 
-        UIScrollView.appearance(whenContainedInInstancesOf: [SettingsTableView.self]).backgroundColor = groupTableViewBackground
-
         UITableView.appearance(whenContainedInInstancesOf: [SettingsTableView.self]).backgroundColor = groupTableViewBackground
 
         let tableButton = UIButton.appearance(whenContainedInInstancesOf: [UITableView.self]) as UIButton
@@ -63,10 +60,15 @@ extension ColorScheme {
         // TODO: customize UIAlertController.
         // TODO: SFSafariViewController preferredControlTintColor
 
-        let v = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
+        let alertView = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
+        alertView.tintColor = alertViewTint
 
         setAsCurrent()
         resetViews()
+    }
+
+    var alertViewTint: UIColor {
+        return isLight ? foreground : background
     }
 
     var statusBarStyle: UIStatusBarStyle {

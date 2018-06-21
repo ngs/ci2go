@@ -46,7 +46,8 @@ class ColorSchemeTableViewCell: CustomTableViewCell {
         redColorView.backgroundColor = colorScheme?.red
         greenColorView.backgroundColor = colorScheme?.green
         backgroundColor = colorScheme?.background
+        backgroundView?.backgroundColor = colorScheme?.background
+        selectedBackgroundView?.backgroundColor = colorScheme?.tableViewCellSelectedBackground
         nameLabel.textColor = colorScheme?.foreground
     }
-
 }
