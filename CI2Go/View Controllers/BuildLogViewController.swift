@@ -133,14 +133,24 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+    func updateSnapToBottom() {
+        guard textView.isOverflowed else { return }
+        snapToBottom = textView.bottomOffsetY < 12
+    }
+
     @IBAction func scrollToBottom(_ sender: Any? = nil) {
         scrollButton.setNeedsLayout()
         textView.scrollToBottom(animated: true)
         snapToBottom = true
     }
 
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            updateSnapToBottom()
+        }
+    }
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        guard scrollView.isOverflowed else { return }
-        snapToBottom = scrollView.bottomOffsetY < 12
+        updateSnapToBottom()
     }
 }
