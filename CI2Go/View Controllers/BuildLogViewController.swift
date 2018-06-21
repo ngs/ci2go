@@ -18,7 +18,6 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     var callbackId: String?
     var ansiHelper: AMR_ANSIEscapeHelper!
     let operationQueue = OperationQueue()
-    var isTouching = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,11 +37,6 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
         pusherChannel = nil
         operationQueue.cancelAllOperations()
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        isTouching = true
     }
 
     func downloadLog() {
@@ -116,15 +110,13 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        guard let scrollView = scrollView as? BuildLogTextView, isTouching else { return }
-        isTouching = false
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        guard let scrollView = scrollView as? BuildLogTextView else { return }
         let contentHeight = scrollView.contentSize.height
         let offsetY = scrollView.contentOffset.y
         let height = scrollView.frame.height
         if contentHeight < height { return }
         let diff = contentHeight - offsetY - height
-        scrollView.snapToBottom = diff < height / 2
-
+        scrollView.snapToBottom = diff <= 0
     }
 }
