@@ -34,31 +34,32 @@ class ProjectsViewController: UITableViewController {
         tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
         tableView.register(UINib(nibName: ProjectTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProjectTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
+        isLoading = true
         projects = []
+        tableView.reloadData()
         DispatchQueue.global().async {
             let decoder = JSONDecoder()
             guard
                 let data = (try? self.cacheFile.read())?.data(using: .utf8),
                 let projects = (try? decoder.decode([Project].self, from: data))
-            else { return }
+            else {
+                self.loadProjects(force: true)
+                return
+            }
             DispatchQueue.main.async {
                 UIView.setAnimationsEnabled(false)
                 self.projects = projects
                 self.refreshData()
                 UIView.setAnimationsEnabled(true)
+                self.loadProjects(force: true)
             }
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadProjects()
-    }
-
     // MARK: -
 
-    func loadProjects() {
-        if isLoading {
+    func loadProjects(force: Bool = false) {
+        if isLoading && !force {
             return
         }
         isLoading = true
