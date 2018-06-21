@@ -30,6 +30,7 @@ struct Build: Decodable, EndpointConvertable {
     let parallelCount: Int
     let configuration: String
     let isPlatformV2: Bool
+    let hasArtifacts: Bool
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -50,6 +51,7 @@ struct Build: Decodable, EndpointConvertable {
         case parallelCount = "parallel"
         case configuration = "circle_yml"
         case platform = "platform"
+        case hasArtifacts = "has_artifacts"
     }
     
     public init(from decoder: Decoder) throws {
@@ -59,6 +61,7 @@ struct Build: Decodable, EndpointConvertable {
         vcsRevision = try? values.decode(String.self, forKey: .vcsRevision)
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
+        hasArtifacts = (try? values.decode(Bool.self, forKey: .hasArtifacts)) ?? false
         status = try values.decode(Status.self, forKey: .status)
         user = try? values.decode(User.self, forKey: .user)
         queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
@@ -112,6 +115,7 @@ struct Build: Decodable, EndpointConvertable {
         parallelCount = 1
         configuration = ""
         isPlatformV2 = false
+        hasArtifacts = false
     }
 
     var apiPath: String {

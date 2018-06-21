@@ -15,7 +15,7 @@ class BuildActionsViewController: UITableViewController {
     var isLoading = false
     var isMutating = false
     var isNavigatingToNext = false
-    var diffCalculator: TableViewDiffCalculator<Int, BuildAction>?
+    var diffCalculator: TableViewDiffCalculator<String, RowItem>?
     var reloadTimer: Timer?
     var pusherChannels: [PusherChannel] = []
 
@@ -23,7 +23,9 @@ class BuildActionsViewController: UITableViewController {
         didSet {
             guard let build = build else { return }
             title = "\(build.project.name) #\(build.number)"
-            DispatchQueue.main.async { self.refreshData() }
+            DispatchQueue.main.async {
+                self.refreshData(scroll: oldValue?.steps.count != build.steps.count)
+            }
         }
     }
 
@@ -97,7 +99,7 @@ class BuildActionsViewController: UITableViewController {
             }.resume()
     }
 
-    func refreshData() {
+    func refreshData(scroll: Bool = false) {
         guard let steps = build?.steps, steps.count > 0 else { return }
         isMutating = true
         let animateScroll: Bool
@@ -106,9 +108,21 @@ class BuildActionsViewController: UITableViewController {
         } else {
             animateScroll = false
         }
-        let values: [BuildAction] = steps.flatMap { $0.actions }.sorted()
-        diffCalculator?.sectionedValues = SectionedValues<Int, BuildAction>([(0, values)])
-        scrollToBottom(animated: animateScroll)
+        let configRow = RowItem(isConfiguration: true)
+        let actionRows = steps.flatMap { $0.actions }.sorted().map { RowItem(action: $0) }
+        let artifactsRow = RowItem(isArtifacts: true)
+        var values: [(String, [RowItem])] = [
+            ("Configuration", [configRow]),
+            ("Actions", actionRows)
+        ]
+        if let build = build, build.hasArtifacts, !build.status.isLive {
+            values.append(("Artifacts", [artifactsRow]))
+        }
+        diffCalculator?.sectionedValues = SectionedValues<String, RowItem>(values)
+
+        if scroll {
+            scrollToBottom(animated: animateScroll)
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.isMutating = false
         }
@@ -142,12 +156,12 @@ class BuildActionsViewController: UITableViewController {
     }
 
     @IBAction func openActionSheet(_ sender: Any) {
-        let av = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        av.addAction(UIAlertAction(title: "View Configuration", style: .default, handler: {
-            self.performSegue(withIdentifier: .showBuildConfig, sender: $0)
-        }))
-        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(av, animated: true, completion: nil)
+//        let av = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//        av.addAction(UIAlertAction(title: "View Configuration", style: .default, handler: {
+//            self.performSegue(withIdentifier: .showBuildConfig, sender: $0)
+//        }))
+//        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        present(av, animated: true, completion: nil)
     }
 
     // MARK: -
@@ -161,14 +175,78 @@ class BuildActionsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: BuildActionTableViewCell.identifier) as? BuildActionTableViewCell
-        cell?.buildAction = diffCalculator?.value(atIndexPath: indexPath)
-        return cell!
+        guard let item = diffCalculator?.value(atIndexPath: indexPath) else { fatalError() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)!
+        if let cell = cell as? BuildActionTableViewCell {
+            cell.buildAction = item.action
+        }
+        if item.isConfiguration {
+            cell.textLabel?.text = build?.configurationName
+        }
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return diffCalculator?.value(forSection: section)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath), cell.selectionStyle != .none else { return }
+        guard
+            let cell = tableView.cellForRow(at: indexPath),
+            let item = diffCalculator?.value(atIndexPath: indexPath),
+            cell.selectionStyle != .none else { return }
         isNavigatingToNext = true
-        performSegue(withIdentifier: .showBuildLog, sender: cell)
+        performSegue(withIdentifier: item.segueIdentifier, sender: cell)
+    }
+}
+
+extension BuildActionsViewController {
+    struct RowItem: Equatable, Comparable {
+        let action: BuildAction?
+        let isConfiguration: Bool
+        let isArtifacts: Bool
+
+        init(action: BuildAction? = nil, isConfiguration: Bool = false, isArtifacts: Bool = false) {
+            self.action = action
+            self.isConfiguration = isConfiguration
+            self.isArtifacts = isArtifacts
+        }
+
+        static func ==(_ lhs: RowItem, _ rhs: RowItem) -> Bool {
+            if let la = lhs.action, let ra = rhs.action {
+                return la == ra
+            }
+            return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
+        }
+
+        static func < (lhs: RowItem, rhs: RowItem) -> Bool {
+            if let la = lhs.action, let ra = rhs.action {
+                return la < ra
+            }
+            if lhs.isConfiguration && !rhs.isConfiguration {
+
+            }
+            return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
+        }
+
+        var cellIdentifier: String {
+            if isConfiguration {
+                return "ConfigurationCell"
+            }
+            if isArtifacts {
+                return "ArtifactsCell"
+            }
+            return BuildActionTableViewCell.identifier
+        }
+
+        var segueIdentifier: SegueIdentifier {
+            if isConfiguration {
+                return .showBuildConfig
+            }
+            if isArtifacts {
+                return .showBuildConfig
+            }
+            return .showBuildLog
+        }
     }
 }

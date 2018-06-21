@@ -21,3 +21,18 @@ struct Artifact: Decodable {
         case URL = "url"
     }
 }
+
+extension Artifact: Equatable {
+    static func == (lhs: Artifact, rhs: Artifact) -> Bool {
+        return lhs.nodeIndex == rhs.nodeIndex && lhs.path == rhs.path
+    }
+}
+
+extension Artifact: Comparable {
+    static func < (lhs: Artifact, rhs: Artifact) -> Bool {
+        if lhs.nodeIndex != rhs.nodeIndex {
+            return lhs.nodeIndex < rhs.nodeIndex
+        }
+        return lhs.path < rhs.path
+    }
+}

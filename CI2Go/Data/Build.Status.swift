@@ -29,5 +29,13 @@ extension Build {
         var color: UIColor {
             return ColorScheme.current.badge(status: self)
         }
+
+        var isLive: Bool {
+            return Status.liveStates.contains(self)
+        }
+
+        static var liveStates: [Status] {
+            return [.running, .queued, .scheduled]
+        }
     }
 }
