@@ -36,6 +36,9 @@ extension ColorScheme {
         let textField = UITextField.appearance() as UITextField
         textField.textColor = foreground
 
+        let cellImageView = UIImageView.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
+        cellImageView.tintColor = foreground
+
         let cellLabel = UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self])
         cellLabel.textColor = foreground
         cellLabel.highlightedTextColor = selectedText
@@ -62,6 +65,13 @@ extension ColorScheme {
 
         let alertView = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
         alertView.tintColor = alertViewTint
+
+        let buildActionSectionHeaderView = SectionHeaderView.appearance()
+        buildActionSectionHeaderView.backgroundColor = background.withAlphaComponent(0.7)
+
+        let buildActionSectionHeaderLabel = UILabel.appearance(whenContainedInInstancesOf: [SectionHeaderView.self])
+        buildActionSectionHeaderLabel.textColor = foreground
+        buildActionSectionHeaderLabel.backgroundColor = .clear
 
         setAsCurrent()
         resetViews()

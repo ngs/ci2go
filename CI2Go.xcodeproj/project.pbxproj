@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06920DB8F36001D0C08 /* InversedColorButton.swift */; };
 		8504A06C20DB9733001D0C08 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */; };
+		8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */; };
+		8504A07020DBAE75001D0C08 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
@@ -248,6 +250,8 @@
 /* Begin PBXFileReference section */
 		8504A06920DB8F36001D0C08 /* InversedColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InversedColorButton.swift; sourceTree = "<group>"; };
 		8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -531,6 +535,8 @@
 				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
 				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
 				8504A06920DB8F36001D0C08 /* InversedColorButton.swift */,
+				8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */,
+				8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1076,6 +1082,7 @@
 				85CAE1FE20D5BAE2002CD128 /* Homebrew.itermcolors in Resources */,
 				85CAE1CA20D5BAE2002CD128 /* idleToes.itermcolors in Resources */,
 				85CAE1C820D5BAE2002CD128 /* Solarized Light.itermcolors in Resources */,
+				8504A07020DBAE75001D0C08 /* SectionHeaderView.xib in Resources */,
 				85CAE1EE20D5BAE2002CD128 /* IR_Black.itermcolors in Resources */,
 				85CAE21520D5BAE2002CD128 /* Cobalt2.itermcolors in Resources */,
 				85CAE1D020D5BAE2002CD128 /* Desert.itermcolors in Resources */,
@@ -1196,6 +1203,7 @@
 				8566096920D7405C00557249 /* BuildsViewController.swift in Sources */,
 				853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */,
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
+				8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */,
 				856609B920D966FC00557249 /* SegueExtension.swift in Sources */,
 				85CAE26220D61909002CD128 /* BuildAction.Status.swift in Sources */,
 				856609BF20D979B200557249 /* MBProgressHUDExtension.swift in Sources */,

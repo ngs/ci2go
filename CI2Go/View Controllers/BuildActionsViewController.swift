@@ -165,7 +165,11 @@ class BuildActionsViewController: UITableViewController {
     }
 
     func retryBuild() {
+        // TODO
+    }
 
+    func cancelBuild() {
+        // TODO
     }
 
     @IBAction func openActionSheet(_ sender: Any) {
@@ -173,6 +177,11 @@ class BuildActionsViewController: UITableViewController {
         av.addAction(UIAlertAction(title: "Retry build", style: .default, handler: { _ in
             self.retryBuild()
         }))
+        if let build = build, build.status == .running {
+            av.addAction(UIAlertAction(title: "Cancel build", style: .default, handler: { _ in
+                self.cancelBuild()
+            }))
+        }
         av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(av, animated: true, completion: nil)
     }
@@ -201,6 +210,16 @@ class BuildActionsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return diffCalculator?.value(forSection: section)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UINib(nibName: SectionHeaderView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil).first as! SectionHeaderView
+        v.text = self.tableView(tableView, titleForHeaderInSection: section)
+        return v
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
