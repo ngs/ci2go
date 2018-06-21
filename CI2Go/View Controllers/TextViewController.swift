@@ -21,9 +21,6 @@ class TextViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let s = ColorScheme.current
-        textView.backgroundColor = s.background
-        textView.textColor = s.foreground
         textView.isScrollEnabled = false
         textView.text = text
         textView.isScrollEnabled = true

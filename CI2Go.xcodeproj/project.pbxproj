@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06920DB8F36001D0C08 /* InversedColorButton.swift */; };
+		8504A06C20DB9733001D0C08 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
@@ -25,7 +26,6 @@
 		853D1A6D20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6C20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift */; };
 		853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6E20D6CD6400C7F4FC /* ColorScheme+UI.swift */; };
 		853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */; };
-		853D1A7420D6DB5C00C7F4FC /* BuildLogTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -247,6 +247,7 @@
 
 /* Begin PBXFileReference section */
 		8504A06920DB8F36001D0C08 /* InversedColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InversedColorButton.swift; sourceTree = "<group>"; };
+		8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -264,7 +265,6 @@
 		853D1A6C20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensionTests.swift; sourceTree = "<group>"; };
 		853D1A6E20D6CD6400C7F4FC /* ColorScheme+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+UI.swift"; sourceTree = "<group>"; };
 		853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
-		853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogTextView.swift; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
@@ -519,7 +519,6 @@
 				8566098020D82C9800557249 /* APITokenCaptionView.xib */,
 				8566097420D805BB00557249 /* BuildActionTableViewCell.swift */,
 				856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */,
-				853D1A7320D6DB5C00C7F4FC /* BuildLogTextView.swift */,
 				8566097520D805BB00557249 /* BuildTableViewCell.swift */,
 				856609B620D965F800557249 /* BuildTableViewCell.xib */,
 				8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */,
@@ -805,6 +804,7 @@
 				85CAE26520D61ADD002CD128 /* UIFontExtension.swift */,
 				853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */,
 				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
+				8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1217,6 +1217,7 @@
 				856609C220D98C6C00557249 /* ProjectTableViewCell.swift in Sources */,
 				853D1A5F20D6891E00C7F4FC /* ArrayExtension.swift in Sources */,
 				853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */,
+				8504A06C20DB9733001D0C08 /* UIScrollViewExtension.swift in Sources */,
 				856609CD20D9C04600557249 /* DateDecoder.swift in Sources */,
 				8566096F20D7409000557249 /* SettingsViewController.swift in Sources */,
 				85CAE24420D5EDB9002CD128 /* Build.Status.swift in Sources */,
@@ -1226,7 +1227,6 @@
 				8566097120D740A800557249 /* TextViewController.swift in Sources */,
 				8566096B20D7406C00557249 /* ColorSchemesViewController.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
-				853D1A7420D6DB5C00C7F4FC /* BuildLogTextView.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
 				856609AF20D8D58700557249 /* DateExtension.swift in Sources */,

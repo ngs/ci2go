@@ -50,9 +50,9 @@ extension ColorScheme {
         tableButton.setTitleColor(bold, for: .normal)
         tableButton.setTitleColor(foreground, for: .highlighted)
 
-        let buildLogTextView = BuildLogTextView.appearance()
-        buildLogTextView.backgroundColor = background
-        buildLogTextView.textColor = foreground
+        let textView = UITextView.appearance()
+        textView.backgroundColor = background
+        textView.textColor = foreground
 
         let activityIndicatorView = UIActivityIndicatorView.appearance() as UIActivityIndicatorView
         activityIndicatorView.activityIndicatorViewStyle = activityIndicatorViewStyle

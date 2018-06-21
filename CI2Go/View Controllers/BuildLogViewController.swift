@@ -12,7 +12,7 @@ import Crashlytics
 import MBProgressHUD
 
 class BuildLogViewController: UIViewController, UIScrollViewDelegate {
-    @IBOutlet weak var textView: BuildLogTextView!
+    @IBOutlet weak var textView: UITextView!
     var pusherChannel: PusherChannel?
     var buildAction: BuildAction?
     var callbackId: String?
@@ -20,23 +20,17 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     let operationQueue = OperationQueue()
     @IBOutlet weak var scrollButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollButton: UIButton!
-
-    var isScrollButtonVisible: Bool = false {
+    var snapToBottom = true {
         didSet {
-            let newBottom: CGFloat = isScrollButtonVisible ? -5 : scrollButton.frame.height
-            scrollButtonBottomConstraint.constant = newBottom
+            if !snapToBottom {
+                scrollButton.isHidden = false
+            }
+            let newBottom: CGFloat = snapToBottom ? scrollButton.frame.height + view.safeAreaInsets.bottom : -5
+            scrollButtonBottomConstraint.constant =  newBottom
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
         }
-    }
-
-    var scrollBottom: CGFloat? {
-        let contentHeight = textView.contentSize.height
-        let offsetY = textView.contentOffset.y
-        let height = textView.frame.height
-        if contentHeight < height { return nil }
-        return contentHeight - offsetY - height
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +84,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
             DispatchQueue.main.async {
                 self.textView.attributedText = astr
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    self.scrollToBottom()
+                    self.textView.scrollToBottom()
                 })
             }
             }.resume()
@@ -131,7 +125,9 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
                 mstr.append(str)
                 textView.attributedText = mstr
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    textView.scrollIfNeeded()
+                    if self?.snapToBottom == true {
+                        textView.scrollToBottom(animated: true)
+                    }
                 })
             }
         }
@@ -139,19 +135,12 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     @IBAction func scrollToBottom(_ sender: Any? = nil) {
         scrollButton.setNeedsLayout()
-        textView.scrollToBottom()
+        textView.scrollToBottom(animated: true)
+        snapToBottom = true
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let scrollBottom = scrollBottom {
-            isScrollButtonVisible = scrollBottom >= 12
-        }
-    }
-
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if let scrollBottom = scrollBottom {
-            textView.snapToBottom = scrollBottom < 12
-            scrollButton.isHidden = false
-        }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView.isOverflowed else { return }
+        snapToBottom = scrollView.bottomOffsetY < 12
     }
 }

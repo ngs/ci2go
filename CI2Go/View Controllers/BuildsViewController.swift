@@ -26,10 +26,17 @@ class BuildsViewController: UITableViewController {
             let (oldProject, oldBranch) = oldValue
             let (project, branch) = selected
             let d = UserDefaults.shared
-            d.project = project
-            d.branch = branch
+            if let branch = branch {
+                d.branch = branch
+            } else if let project = project {
+                d.project = project
+            } else {
+                d.project = nil
+                d.branch = nil
+            }
             if oldProject != project || oldBranch != branch {
                 builds = []
+                loadBuilds()
                 if let branch = branch {
                     navigationItem.prompt = branch.promptText
                 } else if let project = project {
