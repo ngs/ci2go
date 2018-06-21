@@ -70,6 +70,13 @@ class BuildActionsViewController: UITableViewController {
             let build = build
             else { return }
 
+        if
+            let displayModeButtomItem = splitViewController?.displayModeButtonItem,
+            let navigationItem = nvc.topViewController?.navigationItem {
+            navigationItem.leftBarButtonItem = displayModeButtomItem
+            navigationItem.leftItemsSupplementBackButton = true
+        }
+
         switch (nvc.topViewController, sender) {
         case let (vc as BuildLogViewController, cell as BuildActionTableViewCell):
             guard let action = cell.buildAction else { return }

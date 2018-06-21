@@ -54,9 +54,6 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         textView.text = ""
         scrollButtonBottomConstraint.constant = scrollButton.frame.height
-        let s = ColorScheme.current
-        scrollButton.tintColor = s.background
-        scrollButton.backgroundColor = s.foreground
         scrollButton.isHidden = true
     }
 
@@ -93,7 +90,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
             DispatchQueue.main.async {
                 self.textView.attributedText = astr
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    self.textView.scrollToBottom()
+                    self.scrollToBottom()
                 })
             }
             }.resume()
@@ -140,7 +137,8 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    @IBAction func scrollToBottom(_ sender: Any) {
+    @IBAction func scrollToBottom(_ sender: Any? = nil) {
+        scrollButton.setNeedsLayout()
         textView.scrollToBottom()
     }
 

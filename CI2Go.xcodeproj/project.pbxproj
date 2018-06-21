@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06920DB8F36001D0C08 /* InversedColorButton.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
@@ -245,6 +246,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8504A06920DB8F36001D0C08 /* InversedColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InversedColorButton.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
 				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
+				8504A06920DB8F36001D0C08 /* InversedColorButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1199,6 +1202,7 @@
 				8566098920D84CAC00557249 /* PusherEvent.swift in Sources */,
 				85CAE26F20D629B3002CD128 /* Branch.swift in Sources */,
 				856609B320D8F5D200557249 /* LoadingCell.swift in Sources */,
+				8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */,
 				85CAE26D20D62876002CD128 /* Project.swift in Sources */,
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
