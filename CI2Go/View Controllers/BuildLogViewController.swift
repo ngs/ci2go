@@ -17,6 +17,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     var buildAction: BuildAction?
     var callbackId: String?
     var ansiHelper: AMR_ANSIEscapeHelper!
+    let operationQueue = OperationQueue()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,6 +28,15 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         } else {
             downloadLog()
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let callbackId = callbackId {
+            pusherChannel?.unbind(.appendAction, callbackId: callbackId)
+        }
+        pusherChannel = nil
+        operationQueue.cancelAllOperations()
     }
 
     func downloadLog() {
@@ -83,26 +93,21 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func appendLog(string: String) {
         if string.isEmpty { return }
-        OperationQueue.main.addOperation { [weak self] in
-            guard
-                let ansiHelper = self?.ansiHelper,
-                let str = ansiHelper.attributedString(withANSIEscapedString: string),
-                let mstr = self?.textView.attributedText.mutableCopy() as? NSMutableAttributedString
-                else { return }
-            mstr.append(str)
-            self?.textView?.attributedText = mstr
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                self?.textView?.scrollIfNeeded()
-            })
+        operationQueue.addOperation { [weak self] in
+            DispatchQueue.main.sync {
+                guard
+                    let ansiHelper = self?.ansiHelper,
+                    let textView = self?.textView,
+                    let str = ansiHelper.attributedString(withANSIEscapedString: string),
+                    let mstr = self?.textView.attributedText.mutableCopy() as? NSMutableAttributedString
+                    else { return }
+                mstr.append(str)
+                textView.attributedText = mstr
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                    textView.scrollIfNeeded()
+                })
+            }
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if let callbackId = callbackId {
-            pusherChannel?.unbind(.appendAction, callbackId: callbackId)
-        }
-        pusherChannel = nil
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
