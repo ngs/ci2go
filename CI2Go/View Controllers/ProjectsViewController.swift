@@ -34,16 +34,19 @@ class ProjectsViewController: UITableViewController {
         tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
         tableView.register(UINib(nibName: ProjectTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProjectTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
-        let decoder = JSONDecoder()
-        if
-            let data = (try? cacheFile.read())?.data(using: .utf8),
-            let projects = (try? decoder.decode([Project].self, from: data)) {
-            UIView.setAnimationsEnabled(false)
-            self.projects = projects
-            refreshData()
-            UIView.setAnimationsEnabled(true)
-        } else {
-            projects = []
+        projects = []
+        DispatchQueue.global().async {
+            let decoder = JSONDecoder()
+            guard
+                let data = (try? self.cacheFile.read())?.data(using: .utf8),
+                let projects = (try? decoder.decode([Project].self, from: data))
+            else { return }
+            DispatchQueue.main.async {
+                UIView.setAnimationsEnabled(false)
+                self.projects = projects
+                self.refreshData()
+                UIView.setAnimationsEnabled(true)
+            }
         }
     }
 
@@ -89,6 +92,9 @@ class ProjectsViewController: UITableViewController {
             guard let rhs = rhs else { return false }
             return lhs < rhs
         })
+        if let indexPath = tableView.indexPathsForVisibleRows?.first, indexPath.section == 0 {
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
     }
 
     // MARK: -
