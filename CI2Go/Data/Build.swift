@@ -28,6 +28,8 @@ struct Build: Decodable, EndpointConvertable {
     let branch: Branch?
     let vcsRevision: String?
     let parallelCount: Int
+    let configuration: String
+    let isPlatformV2: Bool
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -46,6 +48,8 @@ struct Build: Decodable, EndpointConvertable {
         case vcsRevision = "vcs_revision"
         case user = "user"
         case parallelCount = "parallel"
+        case configuration = "circle_yml"
+        case platform = "platform"
     }
     
     public init(from decoder: Decoder) throws {
@@ -58,6 +62,9 @@ struct Build: Decodable, EndpointConvertable {
         status = try values.decode(Status.self, forKey: .status)
         user = try? values.decode(User.self, forKey: .user)
         queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
+        let config = (try? values.decode([String: String].self, forKey: .configuration)) ?? [:]
+        configuration = config["string"] ?? ""
+        isPlatformV2 = ((try? values.decode(String.self, forKey: .platform)) ?? "") == "2.0"
         parallelCount = (try? values.decode(Int.self, forKey: .parallelCount)) ?? 1
         if let compareURLStr = (try? values.decode(String.self, forKey: .compareURL))?
             .replacingOccurrences(of: "^", with: "") {
@@ -103,6 +110,8 @@ struct Build: Decodable, EndpointConvertable {
         vcsRevision = nil
         user = nil
         parallelCount = 1
+        configuration = ""
+        isPlatformV2 = false
     }
 
     var apiPath: String {
@@ -131,6 +140,10 @@ struct Build: Decodable, EndpointConvertable {
             names.append("\(pusherChannelNamePrefix)@\(i)")
         }
         return names
+    }
+
+    var configurationName: String {
+        return isPlatformV2 ? ".circleci/config.yml" : "circle.yml"
     }
 }
 

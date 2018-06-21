@@ -29,8 +29,6 @@ class BuildLogTextView: UITextView {
             let location = attributedText.length
             let bottom = NSMakeRange(location, 0)
             scrollRangeToVisible(bottom)
-            isScrollEnabled = false
-            isScrollEnabled = true
         }
     }
 

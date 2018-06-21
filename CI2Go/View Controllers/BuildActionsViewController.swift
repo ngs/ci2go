@@ -63,15 +63,25 @@ class BuildActionsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let nvc = segue.destination as? UINavigationController,
-            let vc = nvc.topViewController as? BuildLogViewController,
-            let cell = sender as? BuildActionTableViewCell,
-            let action = cell.buildAction,
             let build = build
             else { return }
-        vc.pusherChannel = pusherChannels.first(where: { c in
-            c.name == "\(build.pusherChannelNamePrefix)@\(action.index)"
-        })
-        vc.buildAction = action
+
+        switch (nvc.topViewController, sender) {
+        case let (vc as BuildLogViewController, cell as BuildActionTableViewCell):
+            guard let action = cell.buildAction else { return }
+            vc.pusherChannel = pusherChannels.first(where: { c in
+                c.name == "\(build.pusherChannelNamePrefix)@\(action.index)"
+            })
+            vc.buildAction = action
+            break
+        case let (vc as TextViewController, _):
+            // vc.text = build.conf
+            vc.text = build.configuration
+            vc.title = build.configurationName
+            break
+        default:
+            break
+        }
     }
 
     // MARK: -

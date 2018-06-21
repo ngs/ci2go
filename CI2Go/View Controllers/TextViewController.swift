@@ -9,27 +9,24 @@
 import UIKit
 
 class TextViewController: UIViewController {
+    @IBOutlet weak var textView: UITextView!
+
+    var text: String? = nil {
+        didSet {
+            textView?.isScrollEnabled = false
+            textView?.text = text
+            textView?.isScrollEnabled = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let s = ColorScheme.current
+        textView.backgroundColor = s.background
+        textView.textColor = s.foreground
+        textView.font = UIFont(monotype: 12)
+        textView.isScrollEnabled = false
+        textView.text = text
+        textView.isScrollEnabled = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

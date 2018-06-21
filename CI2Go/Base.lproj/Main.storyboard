@@ -451,7 +451,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="circle.yml" id="BJY-bo-ikt"/>
                     <connections>
-                        <outlet property="textView" destination="T6G-5P-hjm" id="W3y-JN-OCD"/>
+                        <outlet property="textView" destination="T6G-5P-hjm" id="rm9-Gx-MLS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtd-Az-c8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
