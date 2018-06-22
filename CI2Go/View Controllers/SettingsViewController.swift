@@ -62,8 +62,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             let navigationView = navigationController?.view,
             let token = apiTokenField.text
             else { return }
-        let hud = MBProgressHUD(view: navigationView)
-        navigationView.addSubview(hud)
+        let hud = MBProgressHUD.showAdded(to: navigationView, animated: true)
         hud.animationType = .fade
         hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         hud.backgroundView.style = .solidColor

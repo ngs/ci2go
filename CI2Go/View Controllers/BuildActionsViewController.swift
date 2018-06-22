@@ -10,6 +10,7 @@ import UIKit
 import Crashlytics
 import PusherSwift
 import Dwifft
+import MBProgressHUD
 
 class BuildActionsViewController: UITableViewController {
     var isLoading = false
@@ -22,8 +23,8 @@ class BuildActionsViewController: UITableViewController {
     var build: Build? {
         didSet {
             guard let build = build else { return }
-            title = "\(build.project.name) #\(build.number)"
             DispatchQueue.main.async {
+                self.title = "\(build.project.name) #\(build.number)"
                 self.refreshData(scroll: oldValue?.steps.count != build.steps.count)
             }
         }
@@ -144,7 +145,7 @@ class BuildActionsViewController: UITableViewController {
             let pusher = Pusher.shared,
             let build = build
             else { return }
-        let events: [PusherEvent] = [.updateAction, .newAction]
+        let events: [PusherEvent] = [.updateAction, .newAction, .updateObservables, .fetchTestResults]
         pusherChannels = build.pusherChannelNames.map {
             pusher.subscribe($0)
         }
@@ -167,7 +168,36 @@ class BuildActionsViewController: UITableViewController {
     }
 
     func retryBuild() {
-        // TODO
+        guard
+            let build = build,
+            let nvc = navigationController
+            else { return }
+        let hud = MBProgressHUD.showAdded(to: nvc.view, animated: true)
+        hud.animationType = .fade
+        hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        hud.backgroundView.style = .solidColor
+        hud.label.text = "Triggering retry build"
+        URLSession.shared.dataTask(endpoint: .retry(build: build)) { [weak self] (build, _, _, err) in
+            DispatchQueue.main.async {
+                let crashlytics = Crashlytics.sharedInstance()
+                hud.mode = .customView
+                hud.hide(animated: true, afterDelay: 1)
+                guard let build = build else {
+                    hud.label.text = "Failed to retry build"
+                    hud.icon = .warning
+                    crashlytics.recordError(err ?? APIError.noData)
+                    return
+                }
+                hud.label.text = "Build queued!"
+                hud.icon = .success
+                guard
+                    let storyboard = self?.storyboard,
+                    let vc = storyboard.instantiateViewController(withIdentifier: "BuildActionsViewController") as? BuildActionsViewController
+                    else { return }
+                vc.build = build
+                nvc.pushViewController(vc, animated: true)
+            }
+            }.resume()
     }
 
     func cancelBuild() {
