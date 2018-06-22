@@ -44,7 +44,7 @@ struct Build: Decodable, EndpointConvertable {
         case status
         case outcome
         case lifecycle
-        case queuedAt = "queued_at"
+        case queuedAt = "usage_queued_at"
         case branchName = "branch"
         case vcsRevision = "vcs_revision"
         case user = "user"

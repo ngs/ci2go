@@ -49,7 +49,7 @@ class BuildTableViewCell: CustomTableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.isHidden = true
+        isHidden = true
     }
 
     override func layoutSubviews() {
@@ -58,5 +58,6 @@ class BuildTableViewCell: CustomTableViewCell {
         statusLabel.textColor = scheme.background
         statusLabel.backgroundColor = build?.status.color
         vcsIconImageView.image = build?.project.vcs.icon
+        timeLabel.text = build?.timestamp?.timeAgoSinceNow
     }
 }

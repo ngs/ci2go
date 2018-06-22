@@ -30,6 +30,7 @@ extension Date {
             Item(multi: "months ago", single: "1 month ago", last: "Last month", value: components.month),
             Item(multi: "weeks ago", single: "1 week ago", last: "Last week", value: components.weekday),
             Item(multi: "days ago", single: "1 day ago", last: "Last day", value: components.day),
+            Item(multi: "hours ago", single: "1 hour ago", last: "Last hour", value: components.hour),
             Item(multi: "minutes ago", single: "1 minute ago", last: "Last minute", value: components.minute),
             Item(multi: "seconds ago", single: "Just now", last: "Last second", value: components.second)
         ]
