@@ -53,7 +53,10 @@ class BuildsViewController: UITableViewController {
     var currentUser: User? {
         didSet {
             if currentUser == oldValue { return }
-            if let _ = currentUser {
+            if let user = currentUser {
+                let crashlytics = Crashlytics.sharedInstance()
+                crashlytics.setUserIdentifier(user.login)
+                crashlytics.setUserName(user.name)
                 connectPusher()
             } else {
                 Pusher.logout()
