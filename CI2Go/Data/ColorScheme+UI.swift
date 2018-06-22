@@ -61,9 +61,6 @@ extension ColorScheme {
         let activityIndicatorView = UIActivityIndicatorView.appearance() as UIActivityIndicatorView
         activityIndicatorView.activityIndicatorViewStyle = activityIndicatorViewStyle
 
-        // TODO: customize UIAlertController.
-        // TODO: SFSafariViewController preferredControlTintColor
-
         let alertView = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
         alertView.tintColor = alertViewTint
 

@@ -234,7 +234,31 @@ class BuildActionsViewController: UITableViewController {
     }
 
     func cancelBuild() {
-        // TODO
+        guard
+            let build = build,
+            let nvc = navigationController
+            else { return }
+        let hud = MBProgressHUD.showAdded(to: nvc.view, animated: true)
+        hud.animationType = .fade
+        hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        hud.backgroundView.style = .solidColor
+        hud.label.text = "Cancelling build"
+        URLSession.shared.dataTask(endpoint: .cancel(build: build)) { [weak self] (build, _, _, err) in
+            DispatchQueue.main.async {
+                let crashlytics = Crashlytics.sharedInstance()
+                hud.mode = .customView
+                hud.hide(animated: true, afterDelay: 1)
+                guard let build = build else {
+                    hud.label.text = "Failed to cancel build"
+                    hud.icon = .warning
+                    crashlytics.recordError(err ?? APIError.noData)
+                    return
+                }
+                hud.label.text = "Build cancelled!"
+                hud.icon = .success
+                self?.build = build
+            }
+            }.resume()
     }
 
     @IBAction func openActionSheet(_ sender: Any) {
@@ -247,8 +271,8 @@ class BuildActionsViewController: UITableViewController {
         av.addAction(UIAlertAction(title: "Retry build", style: .default, handler: { _ in
             self.retryBuild()
         }))
-        if let build = build, build.status == .running {
-            av.addAction(UIAlertAction(title: "Cancel build", style: .default, handler: { _ in
+        if let build = build, build.status == .running || build.status == .scheduled {
+            av.addAction(UIAlertAction(title: "Cancel build", style: .destructive, handler: { _ in
                 self.cancelBuild()
             }))
         }
