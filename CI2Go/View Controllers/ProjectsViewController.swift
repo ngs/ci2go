@@ -106,7 +106,7 @@ class ProjectsViewController: UITableViewController {
         case let (vc as BranchesViewController, cell as ProjectTableViewCell):
             vc.project = cell.project
             return
-        case let (vc as BuildsViewController, _):
+        case let (vc as BuildsViewController, _ as UITableViewCell):
             vc.selected = (nil, nil)
             return
         default:
