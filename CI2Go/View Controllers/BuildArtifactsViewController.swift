@@ -65,15 +65,15 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         }
         isLoading = true
         refreshData()
-        URLSession.shared.dataTask(endpoint: .artifacts(build: build)) { (artifacts, _, _, err) in
-            self.isLoading = false
+        URLSession.shared.dataTask(endpoint: .artifacts(build: build)) { [weak self] (artifacts, _, _, err) in
+            self?.isLoading = false
             guard let artifacts = artifacts else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                 return
             }
-            self.path = ""
-            self.artifacts = artifacts
-            self.refreshData()
+            self?.path = ""
+            self?.artifacts = artifacts
+            self?.refreshData()
             }.resume()
     }
 

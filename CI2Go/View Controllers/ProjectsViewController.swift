@@ -63,16 +63,17 @@ class ProjectsViewController: UITableViewController {
             return
         }
         isLoading = true
-        URLSession.shared.dataTask(endpoint: .projects) { (projects, data, res, err) in
+        let cacheFile = self.cacheFile
+        URLSession.shared.dataTask(endpoint: .projects) { [weak self] (projects, data, res, err) in
             guard let projects = projects, let data = data else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                 return
             }
             if let jsonString = String(data: data, encoding: .utf8) {
-                try? jsonString |> self.cacheFile
+                try? jsonString |> cacheFile
             }
-            self.isLoading = false
-            self.projects = projects
+            self?.isLoading = false
+            self?.projects = projects
             }.resume()
     }
 

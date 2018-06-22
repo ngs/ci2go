@@ -66,6 +66,18 @@ struct Endpoint<T: Decodable> {
             action: "recent-builds",
             parameters: [ "limit": String(limit), "offset": String(offset) ])
     }
+
+    static func builds(object: EndpointConvertable?, offset: Int = 0, limit: Int = 30) -> Endpoint<[Build]>  {
+        switch object {
+        case let branch as Branch:
+            return .builds(branch: branch, offset: offset, limit: limit)
+        case let project as Project:
+            return .builds(project: project, offset: offset, limit: limit)
+        default:
+            return .recent(offset: offset, limit: limit)
+        }
+
+    }
     
     static func retry(build: Build) -> Endpoint<Build> {
         return Endpoint<Build>(httpMethod: .post, data: build, action: "retry")

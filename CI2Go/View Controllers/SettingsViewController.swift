@@ -69,7 +69,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         hud.backgroundView.style = .solidColor
         hud.label.text = "Authenticating"
         hud.show(animated: true)
-        URLSession.shared.dataTask(endpoint: .me, token: token) { (user, _, _, err) in
+        URLSession.shared.dataTask(endpoint: .me, token: token) { [weak self] (user, _, _, err) in
             DispatchQueue.main.async {
                 let crashlytics = Crashlytics.sharedInstance()
                 hud.mode = .customView
@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                 crashlytics.setUserName(user.name)
                 Answers.logLogin(withMethod: nil, success: true, customAttributes: nil)
                 if dismissAfterSuccess {
-                    self.dismiss(animated: true)
+                    self?.dismiss(animated: true)
                 }
             }
             }.resume()

@@ -13,6 +13,7 @@ import PusherSwift
 import Dwifft
 
 class BuildsViewController: UITableViewController {
+    let apiRequestOperationQueue = OperationQueue()
     var hasMore = false
     var currentOffset = 0
     let limit = 30
@@ -36,6 +37,7 @@ class BuildsViewController: UITableViewController {
             }
             if oldProject != project || oldBranch != branch {
                 builds = []
+                apiRequestOperationQueue.cancelAllOperations()
                 loadBuilds()
                 if let branch = branch {
                     navigationItem.prompt = branch.promptText
@@ -142,13 +144,13 @@ class BuildsViewController: UITableViewController {
     }
 
     func loadUser() {
-        URLSession.shared.dataTask(endpoint: .me) { (user, _, _, err) in
+        URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, _, err) in
             guard let user = user else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
-                DispatchQueue.main.async { self.showSettings() }
+                DispatchQueue.main.async { self?.showSettings() }
                 return
             }
-            self.currentUser = user
+            self?.currentUser = user
             }.resume()
     }
 
@@ -177,28 +179,27 @@ class BuildsViewController: UITableViewController {
         if !more {
             currentOffset = 0
         }
-        let endpoint: Endpoint<[Build]>
         let (project, branch) = selected
-        if let branch = branch {
-            endpoint = .builds(branch: branch, offset: currentOffset, limit: limit)
-        } else if let project = project {
-            endpoint = .builds(project: project, offset: currentOffset, limit: limit)
-        } else {
-            endpoint = .recent(offset: currentOffset, limit: limit)
+        apiRequestOperationQueue.addOperation {
+            URLSession.shared.dataTask(
+                endpoint: .builds(
+                    object: branch ?? project,
+                    offset: self.currentOffset,
+                    limit: self.limit)
+            ) { [weak self] (builds, _, _, err) in
+                guard let `self` = self else { return }
+                let builds = builds ?? []
+                let newBuilds: [Build] = self.builds.merged(with: builds).sorted().reversed()
+                self.currentOffset = more ? newBuilds.count : builds.count
+                self.isLoading = false
+                if let err = err {
+                    Crashlytics.sharedInstance().recordError(err)
+                    return
+                }
+                self.hasMore = builds.count >= self.limit
+                self.builds = newBuilds
+                }.resume()
         }
-        URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, _, _, err) in
-            guard let `self` = self else { return }
-            let builds = builds ?? []
-            let newBuilds: [Build] = self.builds.merged(with: builds).sorted().reversed()
-            self.currentOffset = more ? newBuilds.count : builds.count
-            self.isLoading = false
-            if let err = err {
-                Crashlytics.sharedInstance().recordError(err)
-                return
-            }
-            self.hasMore = builds.count >= self.limit
-            self.builds = newBuilds
-            }.resume()
     }
 
     // MARK: - Table view data source

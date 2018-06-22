@@ -63,8 +63,9 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     func downloadLog() {
         guard let outputURL = buildAction?.outputURL else { return }
         NetworkActivityManager.start()
-        URLSession.shared.dataTask(with: outputURL) { (data, res, err) in
+        URLSession.shared.dataTask(with: outputURL) { [weak self] (data, res, err) in
             NetworkActivityManager.stop()
+            guard let `self` = self else { return }
             let decoder = JSONDecoder()
             guard
                 let data = data,

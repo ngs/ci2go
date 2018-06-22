@@ -104,9 +104,9 @@ class BuildActionsViewController: UITableViewController {
             return
         }
         isLoading = true
-        URLSession.shared.dataTask(endpoint: .get(build: build)) { (build, _, _, err) in
-            self.isLoading = false
-            self.build = build
+        URLSession.shared.dataTask(endpoint: .get(build: build)) { [weak self] (build, _, _, err) in
+            self?.isLoading = false
+            self?.build = build
             }.resume()
     }
 
