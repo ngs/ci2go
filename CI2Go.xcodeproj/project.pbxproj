@@ -233,6 +233,7 @@
 		85CAE26F20D629B3002CD128 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
 		85CAE27120D62AA9002CD128 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE27020D62AA9002CD128 /* projects.json */; };
 		85CAE27320D63429002CD128 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
+		85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -488,6 +489,7 @@
 		85CAE26E20D629B3002CD128 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85CAE27020D62AA9002CD128 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85CAE27220D63429002CD128 /* Artifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
+		85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactDownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -891,6 +893,7 @@
 				853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */,
 				8566098820D84CAC00557249 /* PusherEvent.swift */,
 				856609C620D99FAB00557249 /* NetworkActivityManager.swift */,
+				85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				853D1A6B20D6BEAC00C7F4FC /* PusherExtension.swift in Sources */,
 				8566096920D7405C00557249 /* BuildsViewController.swift in Sources */,
 				853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */,
+				85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */,
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
 				8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */,
 				856609B920D966FC00557249 /* SegueExtension.swift in Sources */,

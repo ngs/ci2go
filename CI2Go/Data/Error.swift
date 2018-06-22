@@ -10,6 +10,7 @@ import Foundation
 
 enum APIError: Error {
     case noData
+    case notLoggedIn
 }
 
 enum DateError: String, Error {

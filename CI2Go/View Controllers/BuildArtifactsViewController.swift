@@ -10,8 +10,6 @@ import UIKit
 import Crashlytics
 import Dwifft
 import QuickLook
-import KeychainAccess
-import FileKit
 
 class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDelegate {
 
@@ -98,34 +96,13 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         if artifact.isInProgress {
             return
         }
-        guard
-            let token = Keychain.shared.token
-            else { fatalError() }
-        var comps = URLComponents(url: artifact.downloadURL, resolvingAgainstBaseURL: false)!
-        comps.queryItems = [URLQueryItem(name: "circle-token", value: token)]
-        try! artifact.createProgressFile()
+        ArtifactDownloadManager.shared.download(artifact) { err in
+            if let err = err {
+                Crashlytics.sharedInstance().recordError(err)
+            }
+            self.tableView.reloadData()
+        }
         tableView.reloadData()
-        NetworkActivityManager.start()
-        URLSession.shared.downloadTask(with: comps.url!) { (tmpFileURL, res, err) in
-            NetworkActivityManager.stop()
-            guard let tmpFileURL = tmpFileURL else {
-                try? artifact.unlinkProgressFile()
-                DispatchQueue.main.async { self.tableView.reloadData() }
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
-                return
-            }
-            let path: Path = "\(tmpFileURL.path)"
-            do {
-                try artifact.localPath.parent.createDirectory(withIntermediateDirectories: true)
-                try path.copyFile(to: artifact.localPath)
-                try artifact.unlinkProgressFile()
-                DispatchQueue.main.async { self.tableView.reloadData() }
-            } catch {
-                Crashlytics.sharedInstance().recordError(error)
-                return
-            }
-            }.resume()
-
     }
 
     func showQuickLook(name: String, fileURL: URL) {
