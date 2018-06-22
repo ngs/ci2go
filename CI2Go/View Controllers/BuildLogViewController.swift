@@ -15,7 +15,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var textView: UITextView!
     var pusherChannel: PusherChannel?
     var buildAction: BuildAction?
-    var callbackId: String?
+    var callbackIds: [String] = []
     var ansiHelper: AMR_ANSIEscapeHelper!
     let operationQueue = OperationQueue()
     @IBOutlet weak var scrollButtonBottomConstraint: NSLayoutConstraint!
@@ -38,7 +38,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         ansiHelper = ColorScheme.current.createANSIEscapeHelper()
         title = buildAction?.name
         if buildAction?.status == .running {
-            bindPusherEvent()
+            bindPusherEvents()
         } else {
             downloadLog()
         }
@@ -53,11 +53,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let callbackId = callbackId {
-            pusherChannel?.unbind(.appendAction, callbackId: callbackId)
-        }
-        pusherChannel = nil
-        operationQueue.cancelAllOperations()
+        unbindPusherEvents()
     }
 
     func downloadLog() {
@@ -92,12 +88,16 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         return
     }
 
-    func bindPusherEvent() {
+    func bindPusherEvents() {
         guard let pusherChannel = pusherChannel else { return }
-        if let callbackId = callbackId {
-            pusherChannel.unbind(.appendAction, callbackId: callbackId)
+        let av = UIActivityIndicatorView(activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+        av.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: av)
+        callbackIds.forEach {
+            pusherChannel.unbind(.appendAction, callbackId: $0)
         }
-        callbackId = pusherChannel.bind(.appendAction, { [weak self] data in
+        callbackIds = []
+        callbackIds.append(pusherChannel.bind(.appendAction, { [weak self] data in
             let rawOut = data.map { datum in
                 guard
                     let index = datum["index"] as? Int,
@@ -110,7 +110,33 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
                 return message
                 }.joined()
             self?.appendLog(string: rawOut)
-        })
+        }))
+        callbackIds.append(pusherChannel.bind(.updateAction, { [weak self] data in
+            data.forEach { datum in
+                guard
+                    let action = self?.buildAction,
+                    let log = datum["log"] as? [String: Any],
+                    let step = datum["step"] as? Int,
+                    let index = datum["index"] as? Int,
+                    let statusStr = log["status"] as? String,
+                    let status = BuildAction.Status(rawValue: statusStr),
+                    action.step == step &&
+                        action.index == index &&
+                        status != .running
+                    else { return }
+                self?.unbindPusherEvents()
+            }
+        }))
+    }
+
+    func unbindPusherEvents() {
+        callbackIds.forEach {
+            pusherChannel?.unbind(.appendAction, callbackId: $0)
+        }
+        callbackIds.removeAll()
+        pusherChannel = nil
+        operationQueue.cancelAllOperations()
+        navigationItem.rightBarButtonItem = nil
     }
 
     func appendLog(string: String) {

@@ -145,13 +145,46 @@ class BuildActionsViewController: UITableViewController {
             let pusher = Pusher.shared,
             let build = build
             else { return }
-        let events: [PusherEvent] = [.updateAction, .newAction, .updateObservables, .fetchTestResults]
+        let events: [PusherEvent] = [.newAction, .updateAction, .updateObservables, .fetchTestResults]
         pusherChannels = build.pusherChannelNames.map {
             pusher.subscribe($0)
         }
         pusherChannels.forEach { channel in
-            events.forEach {
-                channel.bind($0, { [weak self] _ in
+            events.forEach { event in
+                channel.bind(event, { [weak self] data in
+                    guard var newBuild = self?.build else {
+                        self?.loadBuild()
+                        return
+                    }
+                    data.forEach { datum in
+                        guard
+                            let log = datum["log"] as? [String: Any],
+                            let step = datum["step"] as? Int,
+                            let index = datum["index"] as? Int,
+                            let name = log["name"] as? String,
+                            let statusStr = log["status"] as? String,
+                            let status = BuildAction.Status(rawValue: statusStr)
+                            else { return }
+                        switch event {
+                        case .updateAction:
+                            newBuild = newBuild.build(withNewActionStatus: status, in: index, step: step)
+                            break
+                        case .newAction:
+                            let newAction = BuildAction(name: name, index: index, step: step, status: status)
+                            var buildStep = newBuild.steps.first {$0.actions.first?.step == step }
+                            if buildStep != nil {
+                                let actions = buildStep!.actions + [newAction]
+                                buildStep = BuildStep(name: name, actions: actions)
+                            } else {
+                                buildStep = BuildStep(name: name, actions: [newAction])
+                            }
+                            newBuild = Build(build: newBuild, newSteps: newBuild.steps + [buildStep!])
+                            break
+                        default:
+                            break
+                        }
+                    }
+                    self?.build = newBuild
                     self?.loadBuild()
                 })
             }

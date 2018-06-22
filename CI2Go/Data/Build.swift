@@ -118,6 +118,42 @@ struct Build: Decodable, EndpointConvertable {
         hasArtifacts = false
     }
 
+    init(build: Build, newSteps: [BuildStep]) {
+        project = build.project
+        number = build.number
+        status = build.status
+        compareURL = build.compareURL
+        buildParameters = build.buildParameters
+        steps = newSteps
+        commits = build.commits
+        body = build.body
+        jobName = build.jobName
+        workflow = build.workflow
+        queuedAt = build.queuedAt
+        branch = build.branch
+        outcome = build.outcome
+        lifecycle = build.lifecycle
+        vcsRevision = build.vcsRevision
+        user = build.user
+        parallelCount = build.parallelCount
+        configuration = build.configuration
+        isPlatformV2 = build.isPlatformV2
+        hasArtifacts = build.hasArtifacts
+    }
+
+    func build(withNewActionStatus status: BuildAction.Status, in nodeIndex:  Int, step: Int) -> Build {
+        let newSteps = steps.map { buildStep -> BuildStep in
+            let actions = buildStep.actions.map { action -> BuildAction in
+                if action.index == nodeIndex && action.step == step {
+                    return BuildAction(action: action, newStatus: status)
+                }
+                return action
+            }
+            return BuildStep(name: buildStep.name, actions: actions)
+        }
+        return Build(build: self, newSteps: newSteps)
+    }
+
     var apiPath: String {
         return "\(project.apiPath)/\(number)"
     }

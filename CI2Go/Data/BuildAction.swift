@@ -45,7 +45,7 @@ struct BuildAction: Codable {
         return String(format: "%02d:%02d", Int(min), Int(sec))
     }
 
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         index = try values.decode(Int.self, forKey: .index)
         name = try values.decode(String.self, forKey: .name)
@@ -57,14 +57,36 @@ struct BuildAction: Codable {
         startedAt = try? values.decode(Date.self, forKey: .startedAt)
         step = (try? values.decode(Int.self, forKey: .step)) ?? 0
     }
+
+    init(action: BuildAction, newStatus: Status) {
+        index = action.index
+        name = action.name
+        status = newStatus
+        outputURL = action.outputURL
+        bashCommand = action.bashCommand
+        hasOutput = action.hasOutput
+        _durationMills = action._durationMills
+        startedAt = action.startedAt
+        step = action.step
+    }
+
+    init(name: String, index: Int, step: Int, status: Status) {
+        self.name = name
+        self.index = index
+        self.step = step
+        self.status = status
+        outputURL = nil
+        bashCommand = nil
+        hasOutput = false
+        _durationMills = 0
+        startedAt = Date()
+    }
 }
 
 extension BuildAction: Equatable {
     static func == (lhs: BuildAction, rhs: BuildAction) -> Bool {
         return lhs.index == rhs.index &&
-            lhs.name == rhs.name &&
-            lhs.bashCommand == rhs.bashCommand &&
-            lhs.hasOutput == rhs.hasOutput &&
+            lhs.step == rhs.step &&
             lhs.status == rhs.status
     }
 }
