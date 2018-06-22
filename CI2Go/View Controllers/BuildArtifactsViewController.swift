@@ -17,11 +17,14 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
     var path = "" {
         didSet {
             if path.isEmpty { return }
-            title = path.components(separatedBy: "/").last
+            let title = path.components(separatedBy: "/").last
+            DispatchQueue.main.async {
+                self.title = title
+            }
         }
     }
     var diffCalculator: TableViewDiffCalculator<Int, RowItem>?
-
+    var isLoading = false
     var artifacts: [Artifact] = []
     var quickLookDataSource: SingleQuickLookDataSource?
 
@@ -30,6 +33,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: BuildArtifactTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildArtifactTableViewCell.identifier)
+        tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +60,13 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
             refreshData()
             return
         }
+        if isLoading {
+            return
+        }
+        isLoading = true
+        refreshData()
         URLSession.shared.dataTask(endpoint: .artifacts(build: build)) { (artifacts, _, _, err) in
+            self.isLoading = false
             guard let artifacts = artifacts else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                 return
@@ -68,6 +78,13 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
     }
 
     func refreshData() {
+        if isLoading {
+            self.path = ""
+            DispatchQueue.main.async {
+                self.diffCalculator?.sectionedValues = SectionedValues<Int, RowItem>([(0, [RowItem(isLoading: true)])])
+            }
+            return
+        }
         let path = self.path
         let items: [RowItem] = artifacts.map { a in
             guard a.pathWithNodeIndex.starts(with: path) else { return nil }
@@ -96,11 +113,11 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         if artifact.isInProgress {
             return
         }
-        ArtifactDownloadManager.shared.download(artifact) { err in
+        ArtifactDownloadManager.shared.download(artifact) { [weak self] err in
             if let err = err {
                 Crashlytics.sharedInstance().recordError(err)
             }
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
         tableView.reloadData()
     }
@@ -126,10 +143,11 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let item = diffCalculator?.value(atIndexPath: indexPath),
-            let cell = tableView.dequeueReusableCell(withIdentifier: BuildArtifactTableViewCell.identifier) as? BuildArtifactTableViewCell
-            else { fatalError() }
+        guard let item = diffCalculator?.value(atIndexPath: indexPath) else { fatalError() }
+        if item.isLoading {
+            return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: BuildArtifactTableViewCell.identifier) as! BuildArtifactTableViewCell
         cell.item = item
         return cell
     }
@@ -151,14 +169,16 @@ extension BuildArtifactsViewController {
     struct RowItem: Equatable, Comparable {
         let artifact: Artifact?
         let name: String
+        let isLoading: Bool
 
-        init(_ name: String, artifact: Artifact? = nil) {
+        init(_ name: String = "", artifact: Artifact? = nil, isLoading: Bool = false) {
             self.name = name
             self.artifact = artifact
+            self.isLoading = isLoading
         }
 
         static func ==(_ lhs: RowItem, _ rhs: RowItem) -> Bool {
-            return lhs.name == rhs.name
+            return lhs.name == rhs.name && lhs.isLoading == rhs.isLoading
         }
 
         static func < (lhs: RowItem, rhs: RowItem) -> Bool {
