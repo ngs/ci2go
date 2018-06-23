@@ -236,7 +236,7 @@
 		85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */; };
 		85F93BB420DDCD0500327DE9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB220DDCD0500327DE9 /* Interface.storyboard */; };
 		85F93BB620DDCD0600327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB520DDCD0600327DE9 /* Assets.xcassets */; };
-		85F93BBD20DDCD0700327DE9 /* CI2GoWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85F93BBC20DDCD0700327DE9 /* CI2GoWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		85F93BBD20DDCD0700327DE9 /* CI2GoWatchExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		85F93BC220DDCD0700327DE9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC120DDCD0700327DE9 /* InterfaceController.swift */; };
 		85F93BC420DDCD0700327DE9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */; };
 		85F93BC620DDCD0700327DE9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC520DDCD0700327DE9 /* NotificationController.swift */; };
@@ -283,7 +283,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				85F93BBD20DDCD0700327DE9 /* CI2GoWatch Extension.appex in Embed App Extensions */,
+				85F93BBD20DDCD0700327DE9 /* CI2GoWatchExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,7 +542,7 @@
 		85F93BB320DDCD0500327DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		85F93BB520DDCD0600327DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85F93BB720DDCD0600327DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		85F93BBC20DDCD0700327DE9 /* CI2GoWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CI2GoWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CI2GoWatchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F93BC120DDCD0700327DE9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		85F93BC520DDCD0700327DE9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -550,7 +550,7 @@
 		85F93BC920DDCD0700327DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85F93BCB20DDCD0700327DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		85F93BD820DDCDEB00327DE9 /* CI2GoWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CI2GoWatch Extension.entitlements"; sourceTree = "<group>"; };
+		85F93BD820DDCDEB00327DE9 /* CI2GoWatchExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoWatchExtension.entitlements; sourceTree = "<group>"; };
 		85F93BD920DDD05000327DE9 /* CI2GoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoWatch.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -633,7 +633,7 @@
 				85B4CD9620D23E30005A6DA9 /* CI2GoTests */,
 				85B4CDA120D23E30005A6DA9 /* CI2GoUITests */,
 				85F93BB120DDCD0500327DE9 /* CI2GoWatch */,
-				85F93BC020DDCD0700327DE9 /* CI2GoWatch Extension */,
+				85F93BC020DDCD0700327DE9 /* CI2GoWatchExtension */,
 				85B4CD8020D23E2D005A6DA9 /* Products */,
 				85CAE11C20D5B74E002CD128 /* Frameworks */,
 			);
@@ -646,7 +646,7 @@
 				85B4CD9320D23E30005A6DA9 /* CI2GoTests.xctest */,
 				85B4CD9E20D23E30005A6DA9 /* CI2GoUITests.xctest */,
 				85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */,
-				85F93BBC20DDCD0700327DE9 /* CI2GoWatch Extension.appex */,
+				85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -982,10 +982,10 @@
 			path = CI2GoWatch;
 			sourceTree = "<group>";
 		};
-		85F93BC020DDCD0700327DE9 /* CI2GoWatch Extension */ = {
+		85F93BC020DDCD0700327DE9 /* CI2GoWatchExtension */ = {
 			isa = PBXGroup;
 			children = (
-				85F93BD820DDCDEB00327DE9 /* CI2GoWatch Extension.entitlements */,
+				85F93BD820DDCDEB00327DE9 /* CI2GoWatchExtension.entitlements */,
 				85F93BC120DDCD0700327DE9 /* InterfaceController.swift */,
 				85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */,
 				85F93BC520DDCD0700327DE9 /* NotificationController.swift */,
@@ -994,7 +994,7 @@
 				85F93BCB20DDCD0700327DE9 /* Info.plist */,
 				85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */,
 			);
-			path = "CI2GoWatch Extension";
+			path = CI2GoWatchExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1073,9 +1073,9 @@
 			productReference = 85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
-		85F93BBB20DDCD0700327DE9 /* CI2GoWatch Extension */ = {
+		85F93BBB20DDCD0700327DE9 /* CI2GoWatchExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 85F93BD020DDCD0700327DE9 /* Build configuration list for PBXNativeTarget "CI2GoWatch Extension" */;
+			buildConfigurationList = 85F93BD020DDCD0700327DE9 /* Build configuration list for PBXNativeTarget "CI2GoWatchExtension" */;
 			buildPhases = (
 				85F93BB820DDCD0700327DE9 /* Sources */,
 				85F93BB920DDCD0700327DE9 /* Frameworks */,
@@ -1085,9 +1085,9 @@
 			);
 			dependencies = (
 			);
-			name = "CI2GoWatch Extension";
+			name = CI2GoWatchExtension;
 			productName = "CI2GoWatch Extension";
-			productReference = 85F93BBC20DDCD0700327DE9 /* CI2GoWatch Extension.appex */;
+			productReference = 85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
@@ -1152,7 +1152,7 @@
 			targets = (
 				85B4CD7E20D23E2D005A6DA9 /* CI2Go */,
 				85F93BAF20DDCD0500327DE9 /* CI2GoWatch */,
-				85F93BBB20DDCD0700327DE9 /* CI2GoWatch Extension */,
+				85F93BBB20DDCD0700327DE9 /* CI2GoWatchExtension */,
 				85B4CD9220D23E30005A6DA9 /* CI2GoTests */,
 				85B4CD9D20D23E30005A6DA9 /* CI2GoUITests */,
 			);
@@ -1498,7 +1498,7 @@
 		};
 		85F93BBF20DDCD0700327DE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 85F93BBB20DDCD0700327DE9 /* CI2GoWatch Extension */;
+			target = 85F93BBB20DDCD0700327DE9 /* CI2GoWatchExtension */;
 			targetProxy = 85F93BBE20DDCD0700327DE9 /* PBXContainerItemProxy */;
 		};
 		85F93BCE20DDCD0700327DE9 /* PBXTargetDependency */ = {
@@ -1797,10 +1797,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "CI2GoWatch Extension/CI2GoWatch Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CI2GoWatchExtension/CI2GoWatchExtension.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				INFOPLIST_FILE = "CI2GoWatch Extension/Info.plist";
+				INFOPLIST_FILE = CI2GoWatchExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1822,11 +1822,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "CI2GoWatch Extension/CI2GoWatch Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CI2GoWatchExtension/CI2GoWatchExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				INFOPLIST_FILE = "CI2GoWatch Extension/Info.plist";
+				INFOPLIST_FILE = CI2GoWatchExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1852,7 +1852,7 @@
 				CODE_SIGN_ENTITLEMENTS = CI2GoWatch/CI2GoWatch.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				IBSC_MODULE = CI2GoWatch_Extension;
+				IBSC_MODULE = CI2GoWatchExtension;
 				INFOPLIST_FILE = CI2GoWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1875,7 +1875,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				IBSC_MODULE = CI2GoWatch_Extension;
+				IBSC_MODULE = CI2GoWatchExtension;
 				INFOPLIST_FILE = CI2GoWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1928,7 +1928,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		85F93BD020DDCD0700327DE9 /* Build configuration list for PBXNativeTarget "CI2GoWatch Extension" */ = {
+		85F93BD020DDCD0700327DE9 /* Build configuration list for PBXNativeTarget "CI2GoWatchExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				85F93BD120DDCD0700327DE9 /* Debug */,
