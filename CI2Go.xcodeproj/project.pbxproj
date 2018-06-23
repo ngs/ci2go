@@ -550,6 +550,8 @@
 		85F93BC920DDCD0700327DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85F93BCB20DDCD0700327DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		85F93BD820DDCDEB00327DE9 /* CI2GoWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CI2GoWatch Extension.entitlements"; sourceTree = "<group>"; };
+		85F93BD920DDD05000327DE9 /* CI2GoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoWatch.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -972,6 +974,7 @@
 		85F93BB120DDCD0500327DE9 /* CI2GoWatch */ = {
 			isa = PBXGroup;
 			children = (
+				85F93BD920DDD05000327DE9 /* CI2GoWatch.entitlements */,
 				85F93BB220DDCD0500327DE9 /* Interface.storyboard */,
 				85F93BB520DDCD0600327DE9 /* Assets.xcassets */,
 				85F93BB720DDCD0600327DE9 /* Info.plist */,
@@ -982,6 +985,7 @@
 		85F93BC020DDCD0700327DE9 /* CI2GoWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				85F93BD820DDCDEB00327DE9 /* CI2GoWatch Extension.entitlements */,
 				85F93BC120DDCD0700327DE9 /* InterfaceController.swift */,
 				85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */,
 				85F93BC520DDCD0700327DE9 /* NotificationController.swift */,
@@ -1117,9 +1121,19 @@
 					};
 					85F93BAF20DDCD0500327DE9 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					85F93BBB20DDCD0700327DE9 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1137,10 +1151,10 @@
 			projectRoot = "";
 			targets = (
 				85B4CD7E20D23E2D005A6DA9 /* CI2Go */,
-				85B4CD9220D23E30005A6DA9 /* CI2GoTests */,
-				85B4CD9D20D23E30005A6DA9 /* CI2GoUITests */,
 				85F93BAF20DDCD0500327DE9 /* CI2GoWatch */,
 				85F93BBB20DDCD0700327DE9 /* CI2GoWatch Extension */,
+				85B4CD9220D23E30005A6DA9 /* CI2GoTests */,
+				85B4CD9D20D23E30005A6DA9 /* CI2GoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1783,7 +1797,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "CI2GoWatch Extension/CI2GoWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				INFOPLIST_FILE = "CI2GoWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1791,8 +1806,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "d6ab99bd-fd9a-4ea0-8151-875cb549b2c0";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle.watchkitapp.ext";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -1805,7 +1822,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "CI2GoWatch Extension/CI2GoWatch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				INFOPLIST_FILE = "CI2GoWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1813,8 +1832,10 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "9cb5d7bb-eaaf-4372-bed4-43728d5a1191";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.watchkitapp.ext";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -1828,17 +1849,20 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = CI2GoWatch/CI2GoWatch.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				IBSC_MODULE = CI2GoWatch_Extension;
 				INFOPLIST_FILE = CI2GoWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7a554e6a-d012-4a8f-972c-683f60cb18b5";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1847,18 +1871,21 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CI2GoWatch/CI2GoWatch.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
 				IBSC_MODULE = CI2GoWatch_Extension;
 				INFOPLIST_FILE = CI2GoWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ca91b809-4679-41c0-8165-ce1b259d6e93";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};

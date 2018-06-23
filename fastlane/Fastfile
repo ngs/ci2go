@@ -41,7 +41,16 @@ platform :ios do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
     match type: 'appstore'
-    disable_automatic_code_signing profile_name: 'match AppStore com.ci2go.ios.Circle'
+    %w[
+      com.ci2go.ios.Circle
+      com.ci2go.ios.Circle.watchkitapp
+      com.ci2go.ios.Circle.watchkitapp.ext
+    ].each do |identifier|
+      disable_automatic_code_signing(
+        profile_name: "match AppStore #{identifier}",
+        bundle_identifier: identifier
+      )
+    end
     build_app(
       project: 'CI2Go.xcodeproj',
       scheme: 'CI2Go',

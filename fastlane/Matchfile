@@ -1,2 +1,6 @@
 type("development")
-app_identifier("com.ci2go.ios.Circle")
+app_identifier %w[
+  com.ci2go.ios.Circle
+  com.ci2go.ios.Circle.watchkitapp
+  com.ci2go.ios.Circle.watchkitapp.ext
+]
