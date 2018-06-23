@@ -17,6 +17,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var doneButtonItem: UIBarButtonItem!
     @IBOutlet weak var apiTokenField: UITextField!
     private var isTokenModified = false
+    var foregroundObserver: NSObjectProtocol?
 
     lazy var apiTokenCaptionView: APITokenCaptionView = {
         return UINib(nibName: "APITokenCaptionView", bundle: nil)
@@ -36,6 +37,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         doneButtonItem.isEnabled = isValid
         tableView.isScrollEnabled = false
         tableView.reloadData()
+        foregroundObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name.UIApplicationWillEnterForeground,
+            object: nil,
+            queue: nil) { [weak self] _ in
+                self?.fillTokenFromPasteboard()
+        }
     }
 
     override func viewDidLoad() {
@@ -46,9 +53,37 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         apiTokenField.resignFirstResponder()
+        if let foregroundObserver = foregroundObserver {
+            NotificationCenter.default.removeObserver(foregroundObserver)
+        }
+        foregroundObserver = nil
     }
 
     // MARK: - IBActions
+
+    func fillTokenFromPasteboard() {
+        let pb = UIPasteboard.general
+        guard
+            let str = pb.string,
+            let m = tokenRegularExpression.firstMatch(
+                in: str,
+                options: NSRegularExpression.MatchingOptions(rawValue: 0),
+                range: NSRange(location: 0, length: str.count)),
+            m.numberOfRanges > 0
+            else { return }
+        let range = m.range(at: 0)
+        let substr = str[str.index(str.startIndex, offsetBy: range.location)..<str.index(str.startIndex, offsetBy: range.location + range.length)]
+        let av = UIAlertController(
+            title: "Found token from clipboard",
+            message: "String matching API token was found in your clipboard.\n\n\(substr)\n\nWould you like to use this as CircleCI API token?",
+            preferredStyle: .alert)
+        av.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            self.apiTokenField.text = String(substr)
+            self.validateAPIToken(dismissAfterSuccess: true)
+        }))
+        av.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        present(av, animated: true, completion: nil)
+    }
 
     @IBAction func doneButtonTapped(_ sender: Any) {
         if Keychain.shared.token == apiTokenField.text {
