@@ -43,8 +43,15 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, Sessi
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        guard activationState == .activated else { return }
-        session.sendMessage(WatchConnectivityFunction.activate.message, replyHandler: nil, errorHandler: nil)
+        guard activationState == .activated else {
+            reload()
+            return
+        }
+        requestActivation()
+    }
+
+    func requestActivation() {
+        WCSession.default.sendMessage(WatchConnectivityFunction.activate.message, replyHandler: nil, errorHandler: nil)
     }
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -64,6 +71,11 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, Sessi
 
     @objc func reload() {
         let d = UserDefaults.shared
+        let s = WCSession.default
+        if s.activationState == .activated {
+            requestActivation()
+            return
+        }
         loadBuilds(project: d.project, branch: d.branch)
     }
 

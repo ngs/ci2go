@@ -49,7 +49,7 @@ class BuildsViewController: UITableViewController {
                 }
             }
             DispatchQueue.global().async {
-                WCSession.default.sendActivationResult()
+                WCSession.default.sendActivationResult(project: project, branch: branch)
             }
         }
     }

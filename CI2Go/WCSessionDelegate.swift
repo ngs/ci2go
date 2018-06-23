@@ -29,11 +29,14 @@ extension AppDelegate: WCSessionDelegate {
 extension WCSession {
     func sendActivationResult() {
         let d = UserDefaults.shared
+        sendActivationResult(project: d.project, branch: d.branch)
+    }
+    func sendActivationResult(project: Project?, branch: Branch?) {
         let result: WatchConnectivityFunction = .activationResult(
             Keychain.shared.token,
             ColorScheme.current,
-            d.project,
-            d.branch
+            project,
+            branch
         )
         sendMessage(result.message, replyHandler: nil, errorHandler: nil)
     }
