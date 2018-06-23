@@ -26,9 +26,6 @@ extension Build {
         var humanize: String {
             return rawValue.humanize
         }
-        var color: UIColor {
-            return ColorScheme.current.badge(status: self)
-        }
 
         var isLive: Bool {
             return Status.liveStates.contains(self)

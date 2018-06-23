@@ -15,8 +15,5 @@ extension BuildAction {
         case canceled = "canceled"
         case timedout = "timedout"
         case running = "running"
-        var color: UIColor {
-            return ColorScheme.current.action(status: self)
-        }
     }
 }

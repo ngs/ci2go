@@ -17,6 +17,142 @@
 		8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */; };
 		8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
+		8533DE1120DE368F00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */; };
+		8533DE1320DE38BE00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1220DE38BE00CA7E0C /* WCSessionDelegate.swift */; };
+		8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
+		8533DE1620DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
+		8533DE1820DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */; };
+		8533DE1920DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */; };
+		8533DE1A20DE413B00CA7E0C /* 3024 Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13920D5BAE1002CD128 /* 3024 Day.itermcolors */; };
+		8533DE1B20DE413B00CA7E0C /* 3024 Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19D20D5BAE2002CD128 /* 3024 Night.itermcolors */; };
+		8533DE1C20DE413B00CA7E0C /* AdventureTime.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19320D5BAE1002CD128 /* AdventureTime.itermcolors */; };
+		8533DE1D20DE413B00CA7E0C /* Afterglow.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15E20D5BAE1002CD128 /* Afterglow.itermcolors */; };
+		8533DE1E20DE413B00CA7E0C /* AlienBlood.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13820D5BAE1002CD128 /* AlienBlood.itermcolors */; };
+		8533DE1F20DE413B00CA7E0C /* Argonaut.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18720D5BAE1002CD128 /* Argonaut.itermcolors */; };
+		8533DE2020DE413B00CA7E0C /* Arthur.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18320D5BAE1002CD128 /* Arthur.itermcolors */; };
+		8533DE2120DE413B00CA7E0C /* Atom.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14A20D5BAE1002CD128 /* Atom.itermcolors */; };
+		8533DE2220DE413B00CA7E0C /* Belafonte Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16120D5BAE1002CD128 /* Belafonte Day.itermcolors */; };
+		8533DE2320DE413B00CA7E0C /* Belafonte Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14220D5BAE1002CD128 /* Belafonte Night.itermcolors */; };
+		8533DE2420DE413B00CA7E0C /* BirdsOfParadise.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15D20D5BAE1002CD128 /* BirdsOfParadise.itermcolors */; };
+		8533DE2520DE413B00CA7E0C /* Blazer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19B20D5BAE1002CD128 /* Blazer.itermcolors */; };
+		8533DE2620DE413B00CA7E0C /* Broadcast.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16F20D5BAE1002CD128 /* Broadcast.itermcolors */; };
+		8533DE2720DE413B00CA7E0C /* Brogrammer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14F20D5BAE1002CD128 /* Brogrammer.itermcolors */; };
+		8533DE2820DE413B00CA7E0C /* C64.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16520D5BAE1002CD128 /* C64.itermcolors */; };
+		8533DE2920DE413B00CA7E0C /* Chalk.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13D20D5BAE1002CD128 /* Chalk.itermcolors */; };
+		8533DE2A20DE413B00CA7E0C /* Chalkboard.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17120D5BAE1002CD128 /* Chalkboard.itermcolors */; };
+		8533DE2B20DE413B00CA7E0C /* Ciapre.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13520D5BAE1002CD128 /* Ciapre.itermcolors */; };
+		8533DE2C20DE413B00CA7E0C /* CLRS.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13E20D5BAE1002CD128 /* CLRS.itermcolors */; };
+		8533DE2D20DE413B00CA7E0C /* Cobalt2.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19920D5BAE1002CD128 /* Cobalt2.itermcolors */; };
+		8533DE2E20DE413B00CA7E0C /* CrayonPonyFish.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17820D5BAE1002CD128 /* CrayonPonyFish.itermcolors */; };
+		8533DE2F20DE413B00CA7E0C /* Dark Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12F20D5BAE1002CD128 /* Dark Pastel.itermcolors */; };
+		8533DE3020DE413B00CA7E0C /* Darkside.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17420D5BAE1002CD128 /* Darkside.itermcolors */; };
+		8533DE3120DE413B00CA7E0C /* Desert.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15420D5BAE1002CD128 /* Desert.itermcolors */; };
+		8533DE3220DE413B00CA7E0C /* DimmedMonokai.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13220D5BAE1002CD128 /* DimmedMonokai.itermcolors */; };
+		8533DE3320DE413B00CA7E0C /* Dracula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16920D5BAE1002CD128 /* Dracula.itermcolors */; };
+		8533DE3420DE413B00CA7E0C /* Earthsong.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16D20D5BAE1002CD128 /* Earthsong.itermcolors */; };
+		8533DE3520DE413B00CA7E0C /* Elemental.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19220D5BAE1002CD128 /* Elemental.itermcolors */; };
+		8533DE3620DE413B00CA7E0C /* Espresso Libre.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13320D5BAE1002CD128 /* Espresso Libre.itermcolors */; };
+		8533DE3720DE413B00CA7E0C /* Espresso.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15120D5BAE1002CD128 /* Espresso.itermcolors */; };
+		8533DE3820DE413B00CA7E0C /* FishTank.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15520D5BAE1002CD128 /* FishTank.itermcolors */; };
+		8533DE3920DE413B00CA7E0C /* Flat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19420D5BAE1002CD128 /* Flat.itermcolors */; };
+		8533DE3A20DE413B00CA7E0C /* FrontEndDelight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14720D5BAE1002CD128 /* FrontEndDelight.itermcolors */; };
+		8533DE3B20DE413B00CA7E0C /* FunForrest.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18E20D5BAE1002CD128 /* FunForrest.itermcolors */; };
+		8533DE3C20DE413B00CA7E0C /* Github.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14120D5BAE1002CD128 /* Github.itermcolors */; };
+		8533DE3D20DE413B00CA7E0C /* Grape.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14820D5BAE1002CD128 /* Grape.itermcolors */; };
+		8533DE3E20DE413B00CA7E0C /* Grass.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16E20D5BAE1002CD128 /* Grass.itermcolors */; };
+		8533DE3F20DE413B00CA7E0C /* Hardcore.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16720D5BAE1002CD128 /* Hardcore.itermcolors */; };
+		8533DE4020DE413B00CA7E0C /* Harper.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18F20D5BAE1002CD128 /* Harper.itermcolors */; };
+		8533DE4120DE413B00CA7E0C /* Highway.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13720D5BAE1002CD128 /* Highway.itermcolors */; };
+		8533DE4220DE413B00CA7E0C /* Hipster Green.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17C20D5BAE1002CD128 /* Hipster Green.itermcolors */; };
+		8533DE4320DE413B00CA7E0C /* Homebrew.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18220D5BAE1002CD128 /* Homebrew.itermcolors */; };
+		8533DE4420DE413B00CA7E0C /* Hurtado.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19E20D5BAE2002CD128 /* Hurtado.itermcolors */; };
+		8533DE4520DE413B00CA7E0C /* Hybrid.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12E20D5BAE1002CD128 /* Hybrid.itermcolors */; };
+		8533DE4620DE413B00CA7E0C /* IC_Green_PPL.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18B20D5BAE1002CD128 /* IC_Green_PPL.itermcolors */; };
+		8533DE4720DE413B00CA7E0C /* IC_Orange_PPL.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17A20D5BAE1002CD128 /* IC_Orange_PPL.itermcolors */; };
+		8533DE4820DE413B00CA7E0C /* idleToes.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14E20D5BAE1002CD128 /* idleToes.itermcolors */; };
+		8533DE4920DE413B00CA7E0C /* IR_Black.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17220D5BAE1002CD128 /* IR_Black.itermcolors */; };
+		8533DE4A20DE413B00CA7E0C /* Jackie Brown.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19120D5BAE1002CD128 /* Jackie Brown.itermcolors */; };
+		8533DE4B20DE413B00CA7E0C /* Japanesque.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14B20D5BAE1002CD128 /* Japanesque.itermcolors */; };
+		8533DE4C20DE413B00CA7E0C /* Jellybeans.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16820D5BAE1002CD128 /* Jellybeans.itermcolors */; };
+		8533DE4D20DE413B00CA7E0C /* Kibble.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16620D5BAE1002CD128 /* Kibble.itermcolors */; };
+		8533DE4E20DE413B00CA7E0C /* Lavandula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15820D5BAE1002CD128 /* Lavandula.itermcolors */; };
+		8533DE4F20DE413B00CA7E0C /* LiquidCarbon.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17D20D5BAE1002CD128 /* LiquidCarbon.itermcolors */; };
+		8533DE5020DE413B00CA7E0C /* LiquidCarbonTransparent.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15C20D5BAE1002CD128 /* LiquidCarbonTransparent.itermcolors */; };
+		8533DE5120DE413B00CA7E0C /* LiquidCarbonTransparentInverse.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19820D5BAE1002CD128 /* LiquidCarbonTransparentInverse.itermcolors */; };
+		8533DE5220DE413B00CA7E0C /* Man Page.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14D20D5BAE1002CD128 /* Man Page.itermcolors */; };
+		8533DE5320DE413B00CA7E0C /* Mathias.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15920D5BAE1002CD128 /* Mathias.itermcolors */; };
+		8533DE5420DE413B00CA7E0C /* Medallion.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13F20D5BAE1002CD128 /* Medallion.itermcolors */; };
+		8533DE5520DE413B00CA7E0C /* Misterioso.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19720D5BAE1002CD128 /* Misterioso.itermcolors */; };
+		8533DE5620DE413B00CA7E0C /* Molokai.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13B20D5BAE1002CD128 /* Molokai.itermcolors */; };
+		8533DE5720DE413B00CA7E0C /* MonaLisa.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14020D5BAE1002CD128 /* MonaLisa.itermcolors */; };
+		8533DE5820DE413B00CA7E0C /* Monokai Soda.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13A20D5BAE1002CD128 /* Monokai Soda.itermcolors */; };
+		8533DE5920DE413B00CA7E0C /* N0tch2k.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13420D5BAE1002CD128 /* N0tch2k.itermcolors */; };
+		8533DE5A20DE413B00CA7E0C /* Neopolitan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14420D5BAE1002CD128 /* Neopolitan.itermcolors */; };
+		8533DE5B20DE413B00CA7E0C /* NightLion v1.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18520D5BAE1002CD128 /* NightLion v1.itermcolors */; };
+		8533DE5C20DE413B00CA7E0C /* NightLion v2.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17E20D5BAE1002CD128 /* NightLion v2.itermcolors */; };
+		8533DE5D20DE413B00CA7E0C /* Novel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15720D5BAE1002CD128 /* Novel.itermcolors */; };
+		8533DE5E20DE413B00CA7E0C /* Obsidian.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17F20D5BAE1002CD128 /* Obsidian.itermcolors */; };
+		8533DE5F20DE413B00CA7E0C /* Ocean.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16220D5BAE1002CD128 /* Ocean.itermcolors */; };
+		8533DE6020DE413B00CA7E0C /* Ollie.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16C20D5BAE1002CD128 /* Ollie.itermcolors */; };
+		8533DE6120DE413B00CA7E0C /* Parasio Dark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16B20D5BAE1002CD128 /* Parasio Dark.itermcolors */; };
+		8533DE6220DE413B00CA7E0C /* PaulMillr.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16020D5BAE1002CD128 /* PaulMillr.itermcolors */; };
+		8533DE6320DE413B00CA7E0C /* PencilDark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE1A020D5BAE2002CD128 /* PencilDark.itermcolors */; };
+		8533DE6420DE413B00CA7E0C /* PencilLight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17320D5BAE1002CD128 /* PencilLight.itermcolors */; };
+		8533DE6520DE413B00CA7E0C /* Pnevma.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18A20D5BAE1002CD128 /* Pnevma.itermcolors */; };
+		8533DE6620DE413B00CA7E0C /* Pro.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13120D5BAE1002CD128 /* Pro.itermcolors */; };
+		8533DE6720DE413B00CA7E0C /* Red Alert.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13C20D5BAE1002CD128 /* Red Alert.itermcolors */; };
+		8533DE6820DE413B00CA7E0C /* Red Sands.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17520D5BAE1002CD128 /* Red Sands.itermcolors */; };
+		8533DE6920DE413B00CA7E0C /* Rippedcasts.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14320D5BAE1002CD128 /* Rippedcasts.itermcolors */; };
+		8533DE6A20DE413B00CA7E0C /* Royal.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15220D5BAE1002CD128 /* Royal.itermcolors */; };
+		8533DE6B20DE413B00CA7E0C /* Seafoam Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18420D5BAE1002CD128 /* Seafoam Pastel.itermcolors */; };
+		8533DE6C20DE413B00CA7E0C /* SeaShells.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17620D5BAE1002CD128 /* SeaShells.itermcolors */; };
+		8533DE6D20DE413B00CA7E0C /* Seti.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18620D5BAE1002CD128 /* Seti.itermcolors */; };
+		8533DE6E20DE413B00CA7E0C /* Shaman.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15320D5BAE1002CD128 /* Shaman.itermcolors */; };
+		8533DE6F20DE413B00CA7E0C /* Smyck.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15620D5BAE1002CD128 /* Smyck.itermcolors */; };
+		8533DE7020DE413B00CA7E0C /* SoftServer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14920D5BAE1002CD128 /* SoftServer.itermcolors */; };
+		8533DE7120DE413B00CA7E0C /* Solarized Darcula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15F20D5BAE1002CD128 /* Solarized Darcula.itermcolors */; };
+		8533DE7220DE413B00CA7E0C /* Solarized Dark Higher Contrast.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18D20D5BAE1002CD128 /* Solarized Dark Higher Contrast.itermcolors */; };
+		8533DE7320DE413B00CA7E0C /* Solarized Dark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18920D5BAE1002CD128 /* Solarized Dark.itermcolors */; };
+		8533DE7420DE413B00CA7E0C /* Solarized Light.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14C20D5BAE1002CD128 /* Solarized Light.itermcolors */; };
+		8533DE7520DE413B00CA7E0C /* Spacedust.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19F20D5BAE2002CD128 /* Spacedust.itermcolors */; };
+		8533DE7620DE413B00CA7E0C /* SpaceGray.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15A20D5BAE1002CD128 /* SpaceGray.itermcolors */; };
+		8533DE7720DE413B00CA7E0C /* Spring.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18820D5BAE1002CD128 /* Spring.itermcolors */; };
+		8533DE7820DE413B00CA7E0C /* Square.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13620D5BAE1002CD128 /* Square.itermcolors */; };
+		8533DE7920DE413B00CA7E0C /* Sundried.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14620D5BAE1002CD128 /* Sundried.itermcolors */; };
+		8533DE7A20DE413B00CA7E0C /* Symfonic.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19620D5BAE1002CD128 /* Symfonic.itermcolors */; };
+		8533DE7B20DE413B00CA7E0C /* Teerb.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18020D5BAE1002CD128 /* Teerb.itermcolors */; };
+		8533DE7C20DE413B00CA7E0C /* Terminal Basic.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15B20D5BAE1002CD128 /* Terminal Basic.itermcolors */; };
+		8533DE7D20DE413B00CA7E0C /* Thayer Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19020D5BAE1002CD128 /* Thayer Bright.itermcolors */; };
+		8533DE7E20DE413B00CA7E0C /* Tomorrow Night Blue.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19520D5BAE1002CD128 /* Tomorrow Night Blue.itermcolors */; };
+		8533DE7F20DE413B00CA7E0C /* Tomorrow Night Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12D20D5BAE1002CD128 /* Tomorrow Night Bright.itermcolors */; };
+		8533DE8020DE413B00CA7E0C /* Tomorrow Night Eighties.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14520D5BAE1002CD128 /* Tomorrow Night Eighties.itermcolors */; };
+		8533DE8120DE413B00CA7E0C /* Tomorrow Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17720D5BAE1002CD128 /* Tomorrow Night.itermcolors */; };
+		8533DE8220DE413B00CA7E0C /* Tomorrow.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16420D5BAE1002CD128 /* Tomorrow.itermcolors */; };
+		8533DE8320DE413B00CA7E0C /* ToyChest.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16320D5BAE1002CD128 /* ToyChest.itermcolors */; };
+		8533DE8420DE413B00CA7E0C /* Treehouse.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19C20D5BAE1002CD128 /* Treehouse.itermcolors */; };
+		8533DE8520DE413B00CA7E0C /* Twilight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19A20D5BAE1002CD128 /* Twilight.itermcolors */; };
+		8533DE8620DE413B00CA7E0C /* Urple.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17B20D5BAE1002CD128 /* Urple.itermcolors */; };
+		8533DE8720DE413B00CA7E0C /* Vaughn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15020D5BAE1002CD128 /* Vaughn.itermcolors */; };
+		8533DE8820DE413B00CA7E0C /* VibrantInk.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18120D5BAE1002CD128 /* VibrantInk.itermcolors */; };
+		8533DE8920DE413B00CA7E0C /* WarmNeon.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17920D5BAE1002CD128 /* WarmNeon.itermcolors */; };
+		8533DE8A20DE413B00CA7E0C /* Wez.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18C20D5BAE1002CD128 /* Wez.itermcolors */; };
+		8533DE8B20DE413B00CA7E0C /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16A20D5BAE1002CD128 /* Wombat.itermcolors */; };
+		8533DE8C20DE413B00CA7E0C /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17020D5BAE1002CD128 /* Wryan.itermcolors */; };
+		8533DE8D20DE413B00CA7E0C /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13020D5BAE1002CD128 /* Zenburn.itermcolors */; };
+		8533DE9120DE443D00CA7E0C /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */; };
+		8533DE9320DE445600CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */; };
+		8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */; };
+		8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */; };
+		8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
+		8533DE9E20DE4C7000CA7E0C /* BuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */; };
+		8533DEA020DE4D2A00CA7E0C /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */; };
+		8533DEA220DE4DE700CA7E0C /* ColorScheme+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098220D8316900557249 /* ColorScheme+Color.swift */; };
+		8533DEA320DE4DFC00CA7E0C /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25F20D61564002CD128 /* UIColor+Interpolation.swift */; };
+		8533DEA520DE528300CA7E0C /* SegueContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DEA420DE528300CA7E0C /* SegueContext.swift */; };
+		8533DEA620DE5ECC00CA7E0C /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */; };
+		8533DEA820DE5ECD00CA7E0C /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8533DEA720DE5ECD00CA7E0C /* FileKit.framework */; };
+		8533DEAA20DE5F5600CA7E0C /* KeychainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */; };
+		8533DEAB20DE5FA600CA7E0C /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
 		853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
@@ -71,6 +207,10 @@
 		85B4CD8D20D23E2F005A6DA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8B20D23E2F005A6DA9 /* LaunchScreen.storyboard */; };
 		85B4CD9820D23E30005A6DA9 /* CI2GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD9720D23E30005A6DA9 /* CI2GoTests.swift */; };
 		85B4CDA320D23E30005A6DA9 /* CI2GoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CDA220D23E30005A6DA9 /* CI2GoUITests.swift */; };
+		85BE576920DDFF26004C92DA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
+		85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE576A20DDFF4F004C92DA /* Artifact+File.swift */; };
+		85BE576C20DDFF7E004C92DA /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
+		85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
 		85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11D20D5B74E002CD128 /* Reachability.framework */; };
 		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; };
 		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; };
@@ -237,12 +377,35 @@
 		85F93BB420DDCD0500327DE9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB220DDCD0500327DE9 /* Interface.storyboard */; };
 		85F93BB620DDCD0600327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB520DDCD0600327DE9 /* Assets.xcassets */; };
 		85F93BBD20DDCD0700327DE9 /* CI2GoWatchExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		85F93BC220DDCD0700327DE9 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC120DDCD0700327DE9 /* InterfaceController.swift */; };
+		85F93BC220DDCD0700327DE9 /* BuildsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC120DDCD0700327DE9 /* BuildsInterfaceController.swift */; };
 		85F93BC420DDCD0700327DE9 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */; };
 		85F93BC620DDCD0700327DE9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC520DDCD0700327DE9 /* NotificationController.swift */; };
 		85F93BC820DDCD0700327DE9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC720DDCD0700327DE9 /* ComplicationController.swift */; };
 		85F93BCA20DDCD0700327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BC920DDCD0700327DE9 /* Assets.xcassets */; };
 		85F93BCF20DDCD0700327DE9 /* CI2GoWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */; };
+		85F93BDA20DDD46700327DE9 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23420D5E8E8002CD128 /* Build.swift */; };
+		85F93BDB20DDD47400327DE9 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25920D60023002CD128 /* BuildStep.swift */; };
+		85F93BDC20DDD47600327DE9 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25720D60017002CD128 /* BuildAction.swift */; };
+		85F93BDD20DDD47B00327DE9 /* Build.Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24520D5EDD4002CD128 /* Build.Outcome.swift */; };
+		85F93BDE20DDD47E00327DE9 /* Build.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24320D5EDB9002CD128 /* Build.Status.swift */; };
+		85F93BDF20DDD48100327DE9 /* Build.Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24120D5ED9F002CD128 /* Build.Lifecycle.swift */; };
+		85F93BE020DDD48D00327DE9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26C20D62876002CD128 /* Project.swift */; };
+		85F93BE120DDD49200327DE9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24720D5EFBE002CD128 /* User.swift */; };
+		85F93BE220DDD49400327DE9 /* VCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24920D5F00F002CD128 /* VCS.swift */; };
+		85F93BE320DDD49700327DE9 /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25D20D60F36002CD128 /* Workflow.swift */; };
+		85F93BE420DDD4A300327DE9 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25120D5F5C5002CD128 /* Commit.swift */; };
+		85F93BE520DDD4AE00327DE9 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
+		85F93BE620DDD4C100327DE9 /* EndpointConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */; };
+		85F93BE720DDD4C300327DE9 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098620D83EE100557249 /* Error.swift */; };
+		85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C820D9A73500557249 /* AnyDecodable.swift */; };
+		85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
+		85F93BEA20DDD4D500327DE9 /* BuildAction.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26120D61909002CD128 /* BuildAction.Status.swift */; };
+		85F93BEB20DDD4E700327DE9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609AE20D8D58700557249 /* DateExtension.swift */; };
+		85F93BEC20DDD4E900327DE9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23820D5E944002CD128 /* StringExtension.swift */; };
+		85F93BF220DDD58500327DE9 /* VCS+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF120DDD58500327DE9 /* VCS+Image.swift */; };
+		85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23020D5DBEB002CD128 /* ColorScheme.swift */; };
+		85F93BF620DDD6F000327DE9 /* BuildAction.Status+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */; };
+		85F93BF820DDEECF00327DE9 /* Build.Status+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -312,6 +475,17 @@
 		8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQuickLookDataSource.swift; sourceTree = "<group>"; };
 		8504A09920DC1DB5001D0C08 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
+		8533DE1220DE38BE00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
+		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
+		8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityFunction.swift; sourceTree = "<group>"; };
+		8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsExtension+Shared.swift"; sourceTree = "<group>"; };
+		8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManager.swift; sourceTree = "<group>"; };
+		8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionExtension+Keychain.swift"; sourceTree = "<group>"; };
+		8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInterfaceController.swift; sourceTree = "<group>"; };
+		8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
+		8533DEA420DE528300CA7E0C /* SegueContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueContext.swift; sourceTree = "<group>"; };
+		8533DEA720DE5ECD00CA7E0C /* FileKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileKit.framework; path = Carthage/Build/watchOS/FileKit.framework; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -372,6 +546,7 @@
 		85B4CD9E20D23E30005A6DA9 /* CI2GoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CI2GoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CDA220D23E30005A6DA9 /* CI2GoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoUITests.swift; sourceTree = "<group>"; };
 		85B4CDA420D23E30005A6DA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85BE576A20DDFF4F004C92DA /* Artifact+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artifact+File.swift"; sourceTree = "<group>"; };
 		85CAE11D20D5B74E002CD128 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		85CAE11F20D5B74E002CD128 /* FileKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileKit.framework; path = Carthage/Build/iOS/FileKit.framework; sourceTree = "<group>"; };
@@ -543,7 +718,7 @@
 		85F93BB520DDCD0600327DE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85F93BB720DDCD0600327DE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CI2GoWatchExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		85F93BC120DDCD0700327DE9 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		85F93BC120DDCD0700327DE9 /* BuildsInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildsInterfaceController.swift; sourceTree = "<group>"; };
 		85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		85F93BC520DDCD0700327DE9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		85F93BC720DDCD0700327DE9 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -552,6 +727,10 @@
 		85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		85F93BD820DDCDEB00327DE9 /* CI2GoWatchExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoWatchExtension.entitlements; sourceTree = "<group>"; };
 		85F93BD920DDD05000327DE9 /* CI2GoWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoWatch.entitlements; sourceTree = "<group>"; };
+		85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/watchOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		85F93BF120DDD58500327DE9 /* VCS+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VCS+Image.swift"; sourceTree = "<group>"; };
+		85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuildAction.Status+Color.swift"; sourceTree = "<group>"; };
+		85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build.Status+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -591,6 +770,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8533DEA820DE5ECD00CA7E0C /* FileKit.framework in Frameworks */,
+				8533DEA620DE5ECC00CA7E0C /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +836,7 @@
 			isa = PBXGroup;
 			children = (
 				85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */,
+				8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */,
 				85CAE26820D62013002CD128 /* Constants.swift */,
 				85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */,
 				85CAE12C20D5BAE1002CD128 /* Color Schemes */,
@@ -700,6 +882,8 @@
 		85CAE11C20D5B74E002CD128 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8533DEA720DE5ECD00CA7E0C /* FileKit.framework */,
+				85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */,
 				856609AB20D8C3AE00557249 /* Dwifft.framework */,
 				853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */,
 				853D1A6220D6B2FF00C7F4FC /* Fabric.framework */,
@@ -897,9 +1081,12 @@
 				85CAE23820D5E944002CD128 /* StringExtension.swift */,
 				85CAE25F20D61564002CD128 /* UIColor+Interpolation.swift */,
 				85CAE26520D61ADD002CD128 /* UIFontExtension.swift */,
-				853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */,
-				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
 				8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */,
+				853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */,
+				8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */,
+				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
+				8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */,
+				8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -907,30 +1094,35 @@
 		85CAE22F20D5DBAF002CD128 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				856609C820D9A73500557249 /* AnyDecodable.swift */,
 				85CAE27220D63429002CD128 /* Artifact.swift */,
+				85BE576A20DDFF4F004C92DA /* Artifact+File.swift */,
 				85CAE26E20D629B3002CD128 /* Branch.swift */,
 				85CAE24120D5ED9F002CD128 /* Build.Lifecycle.swift */,
 				85CAE24520D5EDD4002CD128 /* Build.Outcome.swift */,
 				85CAE24320D5EDB9002CD128 /* Build.Status.swift */,
+				85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */,
 				85CAE23420D5E8E8002CD128 /* Build.swift */,
 				85CAE26120D61909002CD128 /* BuildAction.Status.swift */,
+				85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */,
 				85CAE25720D60017002CD128 /* BuildAction.swift */,
+				856D904520DAB5770030F432 /* BuildLog.swift */,
 				85CAE25920D60023002CD128 /* BuildStep.swift */,
 				85CAE23020D5DBEB002CD128 /* ColorScheme.swift */,
 				85CAE26320D619B9002CD128 /* ColorScheme+ANSI.swift */,
 				8566098220D8316900557249 /* ColorScheme+Color.swift */,
 				853D1A6E20D6CD6400C7F4FC /* ColorScheme+UI.swift */,
 				85CAE25120D5F5C5002CD128 /* Commit.swift */,
+				856609CC20D9C04600557249 /* DateDecoder.swift */,
 				853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */,
 				8566098620D83EE100557249 /* Error.swift */,
 				85CAE26C20D62876002CD128 /* Project.swift */,
+				8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */,
 				85CAE24720D5EFBE002CD128 /* User.swift */,
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
+				85F93BF120DDD58500327DE9 /* VCS+Image.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
-				856609C820D9A73500557249 /* AnyDecodable.swift */,
-				856609CC20D9C04600557249 /* DateDecoder.swift */,
-				856D904520DAB5770030F432 /* BuildLog.swift */,
-				8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */,
+				8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -986,13 +1178,18 @@
 			isa = PBXGroup;
 			children = (
 				85F93BD820DDCDEB00327DE9 /* CI2GoWatchExtension.entitlements */,
-				85F93BC120DDCD0700327DE9 /* InterfaceController.swift */,
+				85F93BC120DDCD0700327DE9 /* BuildsInterfaceController.swift */,
+				8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */,
 				85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */,
+				8533DE1220DE38BE00CA7E0C /* WCSessionDelegate.swift */,
 				85F93BC520DDCD0700327DE9 /* NotificationController.swift */,
 				85F93BC720DDCD0700327DE9 /* ComplicationController.swift */,
 				85F93BC920DDCD0700327DE9 /* Assets.xcassets */,
 				85F93BCB20DDCD0700327DE9 /* Info.plist */,
 				85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */,
+				8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */,
+				8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */,
+				8533DEA420DE528300CA7E0C /* SegueContext.swift */,
 			);
 			path = CI2GoWatchExtension;
 			sourceTree = "<group>";
@@ -1080,6 +1277,7 @@
 				85F93BB820DDCD0700327DE9 /* Sources */,
 				85F93BB920DDCD0700327DE9 /* Frameworks */,
 				85F93BBA20DDCD0700327DE9 /* Resources */,
+				8533DEA920DE5EDB00CA7E0C /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1131,6 +1329,9 @@
 						CreatedOnToolsVersion = 9.4;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -1334,13 +1535,147 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8533DE8B20DE413B00CA7E0C /* Wombat.itermcolors in Resources */,
+				8533DE5F20DE413B00CA7E0C /* Ocean.itermcolors in Resources */,
+				8533DE6D20DE413B00CA7E0C /* Seti.itermcolors in Resources */,
+				8533DE6120DE413B00CA7E0C /* Parasio Dark.itermcolors in Resources */,
+				8533DE4F20DE413B00CA7E0C /* LiquidCarbon.itermcolors in Resources */,
+				8533DE2A20DE413B00CA7E0C /* Chalkboard.itermcolors in Resources */,
+				8533DE7D20DE413B00CA7E0C /* Thayer Bright.itermcolors in Resources */,
+				8533DE8C20DE413B00CA7E0C /* Wryan.itermcolors in Resources */,
+				8533DE1B20DE413B00CA7E0C /* 3024 Night.itermcolors in Resources */,
+				8533DE2020DE413B00CA7E0C /* Arthur.itermcolors in Resources */,
+				8533DE8720DE413B00CA7E0C /* Vaughn.itermcolors in Resources */,
+				8533DE4420DE413B00CA7E0C /* Hurtado.itermcolors in Resources */,
+				8533DE3F20DE413B00CA7E0C /* Hardcore.itermcolors in Resources */,
+				8533DE8920DE413B00CA7E0C /* WarmNeon.itermcolors in Resources */,
+				8533DE3A20DE413B00CA7E0C /* FrontEndDelight.itermcolors in Resources */,
+				8533DE7020DE413B00CA7E0C /* SoftServer.itermcolors in Resources */,
+				8533DE4720DE413B00CA7E0C /* IC_Orange_PPL.itermcolors in Resources */,
+				8533DE1A20DE413B00CA7E0C /* 3024 Day.itermcolors in Resources */,
+				8533DE8820DE413B00CA7E0C /* VibrantInk.itermcolors in Resources */,
+				8533DE8420DE413B00CA7E0C /* Treehouse.itermcolors in Resources */,
+				8533DE3220DE413B00CA7E0C /* DimmedMonokai.itermcolors in Resources */,
 				85F93BCA20DDCD0700327DE9 /* Assets.xcassets in Resources */,
+				8533DE2E20DE413B00CA7E0C /* CrayonPonyFish.itermcolors in Resources */,
+				8533DE5520DE413B00CA7E0C /* Misterioso.itermcolors in Resources */,
+				8533DE8520DE413B00CA7E0C /* Twilight.itermcolors in Resources */,
+				8533DE4620DE413B00CA7E0C /* IC_Green_PPL.itermcolors in Resources */,
+				8533DE6B20DE413B00CA7E0C /* Seafoam Pastel.itermcolors in Resources */,
+				8533DE3620DE413B00CA7E0C /* Espresso Libre.itermcolors in Resources */,
+				8533DE6E20DE413B00CA7E0C /* Shaman.itermcolors in Resources */,
+				8533DE6620DE413B00CA7E0C /* Pro.itermcolors in Resources */,
+				8533DE3520DE413B00CA7E0C /* Elemental.itermcolors in Resources */,
+				8533DE5B20DE413B00CA7E0C /* NightLion v1.itermcolors in Resources */,
+				8533DE4820DE413B00CA7E0C /* idleToes.itermcolors in Resources */,
+				8533DE2B20DE413B00CA7E0C /* Ciapre.itermcolors in Resources */,
+				8533DE8320DE413B00CA7E0C /* ToyChest.itermcolors in Resources */,
+				8533DE7B20DE413B00CA7E0C /* Teerb.itermcolors in Resources */,
+				8533DE6320DE413B00CA7E0C /* PencilDark.itermcolors in Resources */,
+				8533DE7220DE413B00CA7E0C /* Solarized Dark Higher Contrast.itermcolors in Resources */,
+				8533DE3B20DE413B00CA7E0C /* FunForrest.itermcolors in Resources */,
+				8533DE5E20DE413B00CA7E0C /* Obsidian.itermcolors in Resources */,
+				8533DE3D20DE413B00CA7E0C /* Grape.itermcolors in Resources */,
+				8533DE6020DE413B00CA7E0C /* Ollie.itermcolors in Resources */,
+				8533DE5020DE413B00CA7E0C /* LiquidCarbonTransparent.itermcolors in Resources */,
+				8533DE6920DE413B00CA7E0C /* Rippedcasts.itermcolors in Resources */,
+				8533DE6C20DE413B00CA7E0C /* SeaShells.itermcolors in Resources */,
+				8533DE3720DE413B00CA7E0C /* Espresso.itermcolors in Resources */,
+				8533DE5920DE413B00CA7E0C /* N0tch2k.itermcolors in Resources */,
+				8533DE2520DE413B00CA7E0C /* Blazer.itermcolors in Resources */,
+				8533DE4C20DE413B00CA7E0C /* Jellybeans.itermcolors in Resources */,
+				8533DE3C20DE413B00CA7E0C /* Github.itermcolors in Resources */,
+				8533DE4120DE413B00CA7E0C /* Highway.itermcolors in Resources */,
+				8533DE7720DE413B00CA7E0C /* Spring.itermcolors in Resources */,
+				8533DE4320DE413B00CA7E0C /* Homebrew.itermcolors in Resources */,
+				8533DE2920DE413B00CA7E0C /* Chalk.itermcolors in Resources */,
+				8533DE5420DE413B00CA7E0C /* Medallion.itermcolors in Resources */,
+				8533DE3820DE413B00CA7E0C /* FishTank.itermcolors in Resources */,
+				8533DE6520DE413B00CA7E0C /* Pnevma.itermcolors in Resources */,
+				8533DE8020DE413B00CA7E0C /* Tomorrow Night Eighties.itermcolors in Resources */,
+				8533DE7A20DE413B00CA7E0C /* Symfonic.itermcolors in Resources */,
+				8533DE2720DE413B00CA7E0C /* Brogrammer.itermcolors in Resources */,
+				8533DE2C20DE413B00CA7E0C /* CLRS.itermcolors in Resources */,
+				8533DE4B20DE413B00CA7E0C /* Japanesque.itermcolors in Resources */,
+				8533DE2120DE413B00CA7E0C /* Atom.itermcolors in Resources */,
+				8533DE7C20DE413B00CA7E0C /* Terminal Basic.itermcolors in Resources */,
+				8533DE3420DE413B00CA7E0C /* Earthsong.itermcolors in Resources */,
+				8533DE5120DE413B00CA7E0C /* LiquidCarbonTransparentInverse.itermcolors in Resources */,
+				8533DE4220DE413B00CA7E0C /* Hipster Green.itermcolors in Resources */,
+				8533DE7920DE413B00CA7E0C /* Sundried.itermcolors in Resources */,
+				8533DE3020DE413B00CA7E0C /* Darkside.itermcolors in Resources */,
+				8533DE7520DE413B00CA7E0C /* Spacedust.itermcolors in Resources */,
+				8533DE5720DE413B00CA7E0C /* MonaLisa.itermcolors in Resources */,
+				8533DE5320DE413B00CA7E0C /* Mathias.itermcolors in Resources */,
+				8533DE7120DE413B00CA7E0C /* Solarized Darcula.itermcolors in Resources */,
+				8533DE1C20DE413B00CA7E0C /* AdventureTime.itermcolors in Resources */,
+				8533DE5A20DE413B00CA7E0C /* Neopolitan.itermcolors in Resources */,
+				8533DE4E20DE413B00CA7E0C /* Lavandula.itermcolors in Resources */,
+				8533DE3120DE413B00CA7E0C /* Desert.itermcolors in Resources */,
+				8533DE8620DE413B00CA7E0C /* Urple.itermcolors in Resources */,
+				8533DE2D20DE413B00CA7E0C /* Cobalt2.itermcolors in Resources */,
+				8533DE2320DE413B00CA7E0C /* Belafonte Night.itermcolors in Resources */,
+				8533DE4D20DE413B00CA7E0C /* Kibble.itermcolors in Resources */,
+				8533DE5820DE413B00CA7E0C /* Monokai Soda.itermcolors in Resources */,
+				8533DE6420DE413B00CA7E0C /* PencilLight.itermcolors in Resources */,
+				8533DE7820DE413B00CA7E0C /* Square.itermcolors in Resources */,
+				8533DE7620DE413B00CA7E0C /* SpaceGray.itermcolors in Resources */,
+				8533DE6820DE413B00CA7E0C /* Red Sands.itermcolors in Resources */,
+				8533DE8D20DE413B00CA7E0C /* Zenburn.itermcolors in Resources */,
+				8533DE6220DE413B00CA7E0C /* PaulMillr.itermcolors in Resources */,
+				8533DE7320DE413B00CA7E0C /* Solarized Dark.itermcolors in Resources */,
+				8533DE1E20DE413B00CA7E0C /* AlienBlood.itermcolors in Resources */,
+				8533DE5620DE413B00CA7E0C /* Molokai.itermcolors in Resources */,
+				8533DE4020DE413B00CA7E0C /* Harper.itermcolors in Resources */,
+				8533DE5220DE413B00CA7E0C /* Man Page.itermcolors in Resources */,
+				8533DE3320DE413B00CA7E0C /* Dracula.itermcolors in Resources */,
+				8533DE7E20DE413B00CA7E0C /* Tomorrow Night Blue.itermcolors in Resources */,
+				8533DE8A20DE413B00CA7E0C /* Wez.itermcolors in Resources */,
+				8533DE4920DE413B00CA7E0C /* IR_Black.itermcolors in Resources */,
+				8533DE1F20DE413B00CA7E0C /* Argonaut.itermcolors in Resources */,
+				8533DE7F20DE413B00CA7E0C /* Tomorrow Night Bright.itermcolors in Resources */,
+				8533DE5C20DE413B00CA7E0C /* NightLion v2.itermcolors in Resources */,
+				8533DE2220DE413B00CA7E0C /* Belafonte Day.itermcolors in Resources */,
+				8533DE3920DE413B00CA7E0C /* Flat.itermcolors in Resources */,
+				8533DE4520DE413B00CA7E0C /* Hybrid.itermcolors in Resources */,
+				8533DE2420DE413B00CA7E0C /* BirdsOfParadise.itermcolors in Resources */,
+				8533DE7420DE413B00CA7E0C /* Solarized Light.itermcolors in Resources */,
+				8533DE2820DE413B00CA7E0C /* C64.itermcolors in Resources */,
+				8533DE3E20DE413B00CA7E0C /* Grass.itermcolors in Resources */,
+				8533DE4A20DE413B00CA7E0C /* Jackie Brown.itermcolors in Resources */,
+				8533DE5D20DE413B00CA7E0C /* Novel.itermcolors in Resources */,
+				8533DE6A20DE413B00CA7E0C /* Royal.itermcolors in Resources */,
+				8533DE6F20DE413B00CA7E0C /* Smyck.itermcolors in Resources */,
+				8533DE8220DE413B00CA7E0C /* Tomorrow.itermcolors in Resources */,
+				8533DE1D20DE413B00CA7E0C /* Afterglow.itermcolors in Resources */,
+				8533DE2620DE413B00CA7E0C /* Broadcast.itermcolors in Resources */,
+				8533DE6720DE413B00CA7E0C /* Red Alert.itermcolors in Resources */,
+				8533DE2F20DE413B00CA7E0C /* Dark Pastel.itermcolors in Resources */,
+				8533DE8120DE413B00CA7E0C /* Tomorrow Night.itermcolors in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8533DEA920DE5EDB00CA7E0C /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/watchOS/FileKit.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FileKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		85CAE12B20D5B758002CD128 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1396,6 +1731,7 @@
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
 				8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */,
 				856609B920D966FC00557249 /* SegueExtension.swift in Sources */,
+				85F93BF220DDD58500327DE9 /* VCS+Image.swift in Sources */,
 				85CAE26220D61909002CD128 /* BuildAction.Status.swift in Sources */,
 				856609BF20D979B200557249 /* MBProgressHUDExtension.swift in Sources */,
 				8566098920D84CAC00557249 /* PusherEvent.swift in Sources */,
@@ -1404,14 +1740,17 @@
 				8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */,
 				85CAE26D20D62876002CD128 /* Project.swift in Sources */,
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
+				8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */,
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
 				85CAE25220D5F5C5002CD128 /* Commit.swift in Sources */,
+				8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
 				8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */,
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */,
 				853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */,
 				8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */,
 				856D904620DAB5770030F432 /* BuildLog.swift in Sources */,
+				8533DE9320DE445600CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,
 				85CAE24A20D5F00F002CD128 /* VCS.swift in Sources */,
 				8566097720D805BB00557249 /* BuildTableViewCell.swift in Sources */,
@@ -1424,9 +1763,11 @@
 				85CAE24420D5EDB9002CD128 /* Build.Status.swift in Sources */,
 				85CAE26020D61564002CD128 /* UIColor+Interpolation.swift in Sources */,
 				85CAE23120D5DBEB002CD128 /* ColorScheme.swift in Sources */,
+				8533DE1120DE368F00CA7E0C /* WCSessionDelegate.swift in Sources */,
 				85CAE24220D5ED9F002CD128 /* Build.Lifecycle.swift in Sources */,
 				8566097120D740A800557249 /* TextViewController.swift in Sources */,
 				8566096B20D7406C00557249 /* ColorSchemesViewController.swift in Sources */,
+				85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
@@ -1441,7 +1782,10 @@
 				85CAE25E20D60F36002CD128 /* Workflow.swift in Sources */,
 				85CAE23920D5E944002CD128 /* StringExtension.swift in Sources */,
 				85CAE23520D5E8E8002CD128 /* Build.swift in Sources */,
+				8533DE1820DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */,
 				85CAE26420D619B9002CD128 /* ColorScheme+ANSI.swift in Sources */,
+				85F93BF820DDEECF00327DE9 /* Build.Status+Color.swift in Sources */,
+				85F93BF620DDD6F000327DE9 /* BuildAction.Status+Color.swift in Sources */,
 				8566098720D83EE100557249 /* Error.swift in Sources */,
 				85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */,
 				856609C920D9A73500557249 /* AnyDecodable.swift in Sources */,
@@ -1477,9 +1821,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F93BC620DDCD0700327DE9 /* NotificationController.swift in Sources */,
+				85BE576920DDFF26004C92DA /* Endpoint.swift in Sources */,
 				85F93BC820DDCD0700327DE9 /* ComplicationController.swift in Sources */,
 				85F93BC420DDCD0700327DE9 /* ExtensionDelegate.swift in Sources */,
-				85F93BC220DDCD0700327DE9 /* InterfaceController.swift in Sources */,
+				85F93BC220DDCD0700327DE9 /* BuildsInterfaceController.swift in Sources */,
+				85F93BDA20DDD46700327DE9 /* Build.swift in Sources */,
+				85F93BDB20DDD47400327DE9 /* BuildStep.swift in Sources */,
+				85F93BDC20DDD47600327DE9 /* BuildAction.swift in Sources */,
+				85F93BDD20DDD47B00327DE9 /* Build.Outcome.swift in Sources */,
+				8533DE1620DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */,
+				8533DE9120DE443D00CA7E0C /* UserDefaultsExtension.swift in Sources */,
+				85F93BEA20DDD4D500327DE9 /* BuildAction.Status.swift in Sources */,
+				85F93BDE20DDD47E00327DE9 /* Build.Status.swift in Sources */,
+				85F93BEC20DDD4E900327DE9 /* StringExtension.swift in Sources */,
+				85F93BEB20DDD4E700327DE9 /* DateExtension.swift in Sources */,
+				85F93BDF20DDD48100327DE9 /* Build.Lifecycle.swift in Sources */,
+				85BE576C20DDFF7E004C92DA /* Artifact.swift in Sources */,
+				85F93BE020DDD48D00327DE9 /* Project.swift in Sources */,
+				8533DE9E20DE4C7000CA7E0C /* BuildInterfaceController.swift in Sources */,
+				85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */,
+				85F93BE120DDD49200327DE9 /* User.swift in Sources */,
+				8533DEA520DE528300CA7E0C /* SegueContext.swift in Sources */,
+				85F93BE220DDD49400327DE9 /* VCS.swift in Sources */,
+				8533DEA320DE4DFC00CA7E0C /* UIColor+Interpolation.swift in Sources */,
+				8533DEAB20DE5FA600CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
+				8533DEA020DE4D2A00CA7E0C /* BuildTableRowController.swift in Sources */,
+				85F93BE320DDD49700327DE9 /* Workflow.swift in Sources */,
+				8533DEAA20DE5F5600CA7E0C /* KeychainExtension.swift in Sources */,
+				8533DEA220DE4DE700CA7E0C /* ColorScheme+Color.swift in Sources */,
+				8533DE1920DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */,
+				85F93BE520DDD4AE00327DE9 /* Branch.swift in Sources */,
+				85F93BE420DDD4A300327DE9 /* Commit.swift in Sources */,
+				85F93BE620DDD4C100327DE9 /* EndpointConvertable.swift in Sources */,
+				85F93BE720DDD4C300327DE9 /* Error.swift in Sources */,
+				85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */,
+				8533DE1320DE38BE00CA7E0C /* WCSessionDelegate.swift in Sources */,
+				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
+				8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */,
+				85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */,
+				8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1800,6 +2180,10 @@
 				CODE_SIGN_ENTITLEMENTS = CI2GoWatchExtension/CI2GoWatchExtension.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = CI2GoWatchExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1826,6 +2210,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				INFOPLIST_FILE = CI2GoWatchExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

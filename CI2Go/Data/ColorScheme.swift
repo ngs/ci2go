@@ -7,8 +7,24 @@
 //
 
 import Foundation
+import CoreGraphics
 
 struct ColorScheme {
+    fileprivate static var configurationCache = [String: Configuration]()
+
+    var configuration: Configuration {
+        if let config = ColorScheme.configurationCache[name] {
+            return config
+        }
+        let path = Bundle.main.path(forResource: name, ofType: ColorScheme.fileExtension)!
+        let dict = NSDictionary(contentsOfFile: path) as! [String: [String: NSNumber]]
+        let config: Configuration = dict.mapValues {
+            $0.mapValues { $0.floatValue }
+        }
+        ColorScheme.configurationCache[name] = config
+        return config
+    }
+
     let name: String
     typealias Configuration = [String: [String: Float]]
     
@@ -34,14 +50,6 @@ struct ColorScheme {
     
     static var `default`: ColorScheme {
         return ColorScheme(defaultName)!
-    }
-    
-    static var current: ColorScheme {
-        return UserDefaults.shared.colorScheme
-    }
-    
-    func setAsCurrent() {
-        UserDefaults.shared.colorScheme = self
     }
     
     func components(key: String) -> (CGFloat, CGFloat, CGFloat)? {

@@ -8,23 +8,11 @@
 
 import Foundation
 
-fileprivate var _shared: UserDefaults?
-fileprivate let suiteName = "group.com.ci2go.ios.Circle"
-
 extension UserDefaults {
     enum Key: String {
         case colorScheme = "CI2GoColorScheme"
         case branch = "CI2GoSelectedBranch2"
         case project = "CI2GoSelectedProject2"
-    }
-
-    static var shared: UserDefaults {
-        if let shared = _shared {
-            return shared
-        }
-        let shared = UserDefaults(suiteName: suiteName)!
-        _shared = shared
-        return shared
     }
 
     // MARK: -

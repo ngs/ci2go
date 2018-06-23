@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import KeychainAccess
 
 extension URLSession {
     func dataTask<T: Decodable>(
         endpoint: Endpoint<T>,
-        token: String? = nil,
+        token: String?,
         completionHandler: ((T?, Data?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
         NetworkActivityManager.start()
         return dataTask(
-            with: endpoint.urlRequest(with: token ?? Keychain.shared.token),
+            with: endpoint.urlRequest(with: token),
             completionHandler: { (data, res, err) in
                 guard let completionHandler = completionHandler else { return }
                 guard let data = data else {

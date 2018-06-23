@@ -9,21 +9,7 @@
 import UIKit
 
 extension ColorScheme {
-    fileprivate static var configurationCache = [String: Configuration]()
     fileprivate static var colorCache: [String: [String: UIColor]] = [:]
-
-    var configuration: Configuration {
-        if let config = ColorScheme.configurationCache[name] {
-            return config
-        }
-        let path = Bundle.main.path(forResource: name, ofType: ColorScheme.fileExtension)!
-        let dict = NSDictionary(contentsOfFile: path) as! [String: [String: NSNumber]]
-        let config: Configuration = dict.mapValues {
-            $0.mapValues { $0.floatValue }
-        }
-        ColorScheme.configurationCache[name] = config
-        return config
-    }
 
     func color(key: String) -> UIColor? {
         if let color = ColorScheme.colorCache[name]?[key] {

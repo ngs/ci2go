@@ -11,6 +11,14 @@ import SafariServices
 import QuickLook
 
 extension ColorScheme {
+    static var current: ColorScheme {
+        return UserDefaults.shared.colorScheme
+    }
+
+    func setAsCurrent() {
+        UserDefaults.shared.colorScheme = self
+    }
+
     func apply() {
         let app = UIApplication.shared
         app.statusBarStyle = statusBarStyle

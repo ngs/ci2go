@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FileKit
 
 struct Artifact: Decodable {
     let path: String
@@ -24,27 +23,6 @@ struct Artifact: Decodable {
 
     var pathWithNodeIndex: String {
         return "Container \(nodeIndex)/\(prettyPath)"
-    }
-
-    var localPath: Path {
-        return Path.userDocuments + "Artifacts/\(downloadURL.host ?? "localhost")/\(downloadURL.path)"
-    }
-
-    var progressFilePath: Path {
-        return localPath.parent + ".\(localPath.fileName).progress"
-    }
-
-    var isInProgress: Bool {
-        return progressFilePath.exists
-    }
-
-    func unlinkProgressFile() throws {
-        try progressFilePath.deleteFile()
-    }
-
-    func createProgressFile() throws {
-        try progressFilePath.parent.createDirectory(withIntermediateDirectories: true)
-        try progressFilePath.createFile()
     }
 }
 
