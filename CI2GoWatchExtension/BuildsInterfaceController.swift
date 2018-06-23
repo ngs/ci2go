@@ -12,7 +12,7 @@ import WatchConnectivity
 import KeychainAccess
 import FileKit
 
-class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
+class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, SessionActivationResultDelegate {
     @IBOutlet weak var interfaceTable: WKInterfaceTable!
     @IBOutlet weak var placeholderGroup: WKInterfaceGroup!
 
@@ -49,23 +49,17 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         guard let fn = WatchConnectivityFunction(message: message) else { return }
-        switch fn {
-        case let .activationResult(token, colorScheme, project, branch):
-            guard let _ = token else {
-                self.placeholderGroup.setHidden(false)
-                self.interfaceTable.setHidden(true)
-                return
-            }
-            let d = UserDefaults.shared
-            d.colorScheme = colorScheme
-            d.project = project
-            d.branch = branch
-            Keychain.shared.token = token
-            loadBuilds(project: project, branch: branch)
-            break
-        default:
+        self.session(session, didReceiveFunction: fn)
+    }
+
+    func session(_ sesion: WCSession, didReceiveActivationResult data: (String?, ColorScheme, Project?, Branch?)) {
+        let (token, _, project, branch) = data
+        guard let _ = token else {
+            placeholderGroup.setHidden(false)
+            interfaceTable.setHidden(true)
             return
         }
+        loadBuilds(project: project, branch: branch)
     }
 
     @objc func reload() {
@@ -115,5 +109,5 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
             else { return nil }
         return build
     }
-    
+
 }

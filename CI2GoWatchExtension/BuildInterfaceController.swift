@@ -8,8 +8,9 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
-class BuildInterfaceController: WKInterfaceController {
+class BuildInterfaceController: WKInterfaceController, WCSessionDelegate, SessionActivationResultDelegate {
     @IBOutlet weak var branchLabel: WKInterfaceLabel!
     @IBOutlet weak var buildNumLabel: WKInterfaceLabel!
     @IBOutlet weak var repoLabel: WKInterfaceLabel!
@@ -39,6 +40,28 @@ class BuildInterfaceController: WKInterfaceController {
                 addMenuItem(with: .decline, title: "Cancel", action: #selector(cancelBuild))
             }
         }
+    }
+
+    override func willActivate() {
+        super.willActivate()
+        activateWCSession()
+    }
+
+
+    func session(_ sesion: WCSession, didReceiveActivationResult data: (String?, ColorScheme, Project?, Branch?)) {
+        guard let build = build else { return }
+        let (_, colorScheme, _, _) = data
+        statusGroup.setBackgroundColor(colorScheme.badge(status: build.status))
+    }
+
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        guard activationState == .activated else { return }
+        session.sendMessage(WatchConnectivityFunction.activate.message, replyHandler: nil, errorHandler: nil)
+    }
+
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        guard let fn = WatchConnectivityFunction(message: message) else { return }
+        self.session(session, didReceiveFunction: fn)
     }
 
     override func awake(withContext context: Any?) {
