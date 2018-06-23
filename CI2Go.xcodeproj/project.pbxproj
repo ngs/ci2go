@@ -148,11 +148,12 @@
 		8533DEA020DE4D2A00CA7E0C /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */; };
 		8533DEA220DE4DE700CA7E0C /* ColorScheme+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098220D8316900557249 /* ColorScheme+Color.swift */; };
 		8533DEA320DE4DFC00CA7E0C /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25F20D61564002CD128 /* UIColor+Interpolation.swift */; };
-		8533DEA520DE528300CA7E0C /* SegueContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DEA420DE528300CA7E0C /* SegueContext.swift */; };
 		8533DEA620DE5ECC00CA7E0C /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */; };
 		8533DEA820DE5ECD00CA7E0C /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8533DEA720DE5ECD00CA7E0C /* FileKit.framework */; };
 		8533DEAA20DE5F5600CA7E0C /* KeychainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */; };
 		8533DEAB20DE5FA600CA7E0C /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
+		8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */; };
+		8533DEAD20DE68D800CA7E0C /* Build.Status+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */; };
 		853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */; };
 		853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
 		853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
@@ -484,7 +485,6 @@
 		8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionExtension+Keychain.swift"; sourceTree = "<group>"; };
 		8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInterfaceController.swift; sourceTree = "<group>"; };
 		8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
-		8533DEA420DE528300CA7E0C /* SegueContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueContext.swift; sourceTree = "<group>"; };
 		8533DEA720DE5ECD00CA7E0C /* FileKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileKit.framework; path = Carthage/Build/watchOS/FileKit.framework; sourceTree = "<group>"; };
 		853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		853D1A5020D639E000C7F4FC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -1189,7 +1189,6 @@
 				85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */,
 				8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */,
 				8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */,
-				8533DEA420DE528300CA7E0C /* SegueContext.swift */,
 			);
 			path = CI2GoWatchExtension;
 			sourceTree = "<group>";
@@ -1839,9 +1838,9 @@
 				85BE576C20DDFF7E004C92DA /* Artifact.swift in Sources */,
 				85F93BE020DDD48D00327DE9 /* Project.swift in Sources */,
 				8533DE9E20DE4C7000CA7E0C /* BuildInterfaceController.swift in Sources */,
+				8533DEAD20DE68D800CA7E0C /* Build.Status+Color.swift in Sources */,
 				85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */,
 				85F93BE120DDD49200327DE9 /* User.swift in Sources */,
-				8533DEA520DE528300CA7E0C /* SegueContext.swift in Sources */,
 				85F93BE220DDD49400327DE9 /* VCS.swift in Sources */,
 				8533DEA320DE4DFC00CA7E0C /* UIColor+Interpolation.swift in Sources */,
 				8533DEAB20DE5FA600CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
@@ -1857,6 +1856,7 @@
 				85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */,
 				8533DE1320DE38BE00CA7E0C /* WCSessionDelegate.swift in Sources */,
 				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
+				8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
 				8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */,
 				85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */,
 				8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */,

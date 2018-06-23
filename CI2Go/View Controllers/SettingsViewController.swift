@@ -10,6 +10,7 @@ import UIKit
 import KeychainAccess
 import MBProgressHUD
 import Crashlytics
+import WatchConnectivity
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
@@ -116,6 +117,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                     return
                 }
                 Keychain.shared.token = token
+                WCSession.default.sendActivationResult()
                 hud.label.text = "Authenticated"
                 hud.icon = .success
                 crashlytics.setUserIdentifier(user.login)

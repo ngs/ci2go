@@ -8,9 +8,18 @@
 
 import Foundation
 import CoreGraphics
+import WatchConnectivity
 
 struct ColorScheme {
     fileprivate static var configurationCache = [String: Configuration]()
+
+    static var current: ColorScheme {
+        return UserDefaults.shared.colorScheme
+    }
+
+    func setAsCurrent() {
+        UserDefaults.shared.colorScheme = self
+    }
 
     var configuration: Configuration {
         if let config = ColorScheme.configurationCache[name] {

@@ -9,16 +9,9 @@
 import UIKit
 import SafariServices
 import QuickLook
+import WatchConnectivity
 
 extension ColorScheme {
-    static var current: ColorScheme {
-        return UserDefaults.shared.colorScheme
-    }
-
-    func setAsCurrent() {
-        UserDefaults.shared.colorScheme = self
-    }
-
     func apply() {
         let app = UIApplication.shared
         app.statusBarStyle = statusBarStyle
@@ -80,6 +73,7 @@ extension ColorScheme {
         buildActionSectionHeaderLabel.backgroundColor = .clear
 
         setAsCurrent()
+        WCSession.default.sendActivationResult()
         resetViews()
     }
 

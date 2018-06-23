@@ -6,24 +6,16 @@
 //  Copyright © 2018 LittleApps Inc. All rights reserved.
 //
 
-import WatchConnectivity
 import KeychainAccess
+import WatchConnectivity
 
 extension AppDelegate: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
 
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         guard let fn = WatchConnectivityFunction(message: message), fn == .activate else { return }
-
-        let d = UserDefaults.shared
-        let result: WatchConnectivityFunction = .activationResult(
-            Keychain.shared.token,
-            ColorScheme.current,
-            d.project,
-            d.branch
-        )
-        replyHandler(result.message)
+        session.sendActivationResult()
     }
 
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -31,6 +23,18 @@ extension AppDelegate: WCSessionDelegate {
 
     func sessionDidDeactivate(_ session: WCSession) {
     }
+}
 
 
+extension WCSession {
+    func sendActivationResult() {
+        let d = UserDefaults.shared
+        let result: WatchConnectivityFunction = .activationResult(
+            Keychain.shared.token,
+            ColorScheme.current,
+            d.project,
+            d.branch
+        )
+        sendMessage(result.message, replyHandler: nil, errorHandler: nil)
+    }
 }

@@ -20,15 +20,10 @@ class BuildInterfaceController: WKInterfaceController {
     @IBOutlet weak var branchIcon: WKInterfaceImage!
     @IBOutlet weak var timeLabel: WKInterfaceLabel!
 
-    var colorScheme: ColorScheme?
-
     var build: Build? {
         didSet {
-            guard
-                let build = build,
-                let colorScheme = colorScheme
-                else { return }
-            statusGroup.setBackgroundColor(colorScheme.badge(status: build.status))
+            guard let build = build else { return }
+            statusGroup.setBackgroundColor(build.status.color)
             statusLabel.setText(build.status.humanize)
             repoLabel.setText(build.project.path)
             let numText = "#\(build.number)"
@@ -47,11 +42,7 @@ class BuildInterfaceController: WKInterfaceController {
     }
 
     override func awake(withContext context: Any?) {
-        guard let context = context as? SegueContext else {
-            return
-        }
-        colorScheme = context.colorScheme
-        build = context.build
+        self.build = context as? Build
     }
 
     @objc func retryBuild() {

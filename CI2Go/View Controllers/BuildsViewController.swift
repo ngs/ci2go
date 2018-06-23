@@ -11,6 +11,7 @@ import KeychainAccess
 import Crashlytics
 import PusherSwift
 import Dwifft
+import WatchConnectivity
 
 class BuildsViewController: UITableViewController {
     let apiRequestOperationQueue = OperationQueue()
@@ -46,6 +47,9 @@ class BuildsViewController: UITableViewController {
                 } else {
                     navigationItem.prompt = nil
                 }
+            }
+            DispatchQueue.global().async {
+                WCSession.default.sendActivationResult()
             }
         }
     }

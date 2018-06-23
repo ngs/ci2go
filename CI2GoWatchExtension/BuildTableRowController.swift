@@ -14,15 +14,15 @@ class BuildTableRowController: NSObject {
     @IBOutlet weak var buildNumLabel: WKInterfaceLabel!
     @IBOutlet weak var repoLabel: WKInterfaceLabel!
     @IBOutlet weak var statusColorBar: WKInterfaceGroup!
-    var build: Build?
-    var colorScheme: ColorScheme?
+    var build: Build? {
+        didSet {
+            updateViews()
+        }
+    }
 
     func updateViews() {
-        guard
-            let build = build,
-            let colorScheme = colorScheme
-            else { return }
-        statusColorBar.setBackgroundColor(colorScheme.badge(status: build.status))
+        guard let build = build else { return }
+        statusColorBar.setBackgroundColor(build.status.color)
         repoLabel.setText(build.project.path)
         buildNumLabel.setText("#\(build.number)")
         branchLabel.setText(build.branch?.name ?? "")
