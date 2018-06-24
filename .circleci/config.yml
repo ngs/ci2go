@@ -89,11 +89,11 @@ workflows:
             - tests
           filters:
             branches:
-              only: [ci, master]
+              only: [ci, develop]
       - release:
           requires:
             - tests
           filters:
             branches:
-              only: release
+              only: master
 
