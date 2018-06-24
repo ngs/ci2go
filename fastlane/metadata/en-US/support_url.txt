@@ -1,1 +1,1 @@
-http://ngs.io
+https://github.com/ngs/ci2go/issues

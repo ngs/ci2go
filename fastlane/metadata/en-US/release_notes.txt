@@ -1,9 +1,4 @@
-- New Features!!
-    - Rebuild without Cache
-    - Browse Build Artifacts
-    - View circle.yml
-
-- Bug Fixes
-    - Fix realtime build log updating was unavailable due to CircleCI's Web Socket API update
-    - Realtime build list updating is still unavailable due to CircleCI's Web Socket event is not fired now.
-      See: https://discuss.circleci.com/t/build-history-does-not-update-in-realtime/2823
+- Performance improvement
+- Refine artifacts browser
+- iPhone X support
+- Apple Watch Complications support
