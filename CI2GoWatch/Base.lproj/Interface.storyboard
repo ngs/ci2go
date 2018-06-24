@@ -31,7 +31,9 @@ Please launch the app on your iPhone.</string>
                                 <tableRow identifier="default" id="THa-0R-2PX" customClass="BuildTableRowController" customModule="CI2GoWatchExtension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" spacing="4" id="Dd8-f4-OAM">
                                         <items>
-                                            <group width="5" height="1" alignment="left" radius="0.0" id="DcR-iw-Ui4"/>
+                                            <group width="5" height="1" alignment="left" radius="2" id="DcR-iw-Ui4">
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </group>
                                             <group width="0.94999999999999996" alignment="left" layout="vertical" radius="0.0" id="dcG-VR-BcJ">
                                                 <items>
                                                     <group alignment="left" spacing="2" id="rB1-Ka-wWc">

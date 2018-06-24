@@ -30,13 +30,10 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, Sessi
         super.willActivate()
         placeholderGroup.setHidden(true)
         interfaceTable.setHidden(false)
-        let jsonDecoder = JSONDecoder()
         if
             let _ = UserDefaults.shared.string(forKey: .colorScheme),
             builds.isEmpty,
-            let jsonString = try? cacheFile.read(),
-            let data = jsonString.data(using: .utf8),
-            let cachedBuilds = try? jsonDecoder.decode([Build].self, from: data) {
+            let cachedBuilds = [Build].fromCache() {
             self.builds = cachedBuilds
         }
         activateWCSession()
@@ -79,21 +76,16 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, Sessi
         loadBuilds(project: d.project, branch: d.branch)
     }
 
-    var cacheFile: TextFile {
-        return TextFile(path: Path.userDocuments + "/project.json")
-    }
-
     func loadBuilds(project: Project?, branch: Branch?) {
         placeholderGroup.setHidden(true)
         interfaceTable.setHidden(false)
         let endpoint = Endpoint<[Build]>.builds(object: branch ?? project, offset: 0, limit: maxBuilds)
         URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, data, _, err) in
             guard let `self` = self, let builds = builds else { return }
-            let cachePath = self.cacheFile.path
             self.fileOperationQueue.addOperation {
                 if let data = data, let jsonString = String(data: data, encoding: .utf8) {
                     do {
-                        try jsonString.write(to: cachePath)
+                        try jsonString.write(to: type(of: builds).cacheFile.path)
                     } catch {
                         print(error)
                     }
