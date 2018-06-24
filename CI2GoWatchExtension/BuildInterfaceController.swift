@@ -10,7 +10,8 @@ import WatchKit
 import Foundation
 import WatchConnectivity
 
-class BuildInterfaceController: WKInterfaceController, WCSessionDelegate, SessionActivationResultDelegate {
+class BuildInterfaceController: WKInterfaceController, WCSessionDelegate {
+
     @IBOutlet weak var branchLabel: WKInterfaceLabel!
     @IBOutlet weak var buildNumLabel: WKInterfaceLabel!
     @IBOutlet weak var repoLabel: WKInterfaceLabel!
@@ -44,9 +45,12 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate, Sessio
 
     override func willActivate() {
         super.willActivate()
+        WKExtension.shared().isFrontmostTimeoutExtended = true
         activateWCSession()
     }
 
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
 
     func session(_ sesion: WCSession, didReceiveActivationResult data: (String?, ColorScheme, Project?, Branch?)) {
         guard let build = build else { return }
@@ -54,14 +58,9 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate, Sessio
         statusGroup.setBackgroundColor(colorScheme.badge(status: build.status))
     }
 
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        guard activationState == .activated else { return }
-        session.sendMessage(WatchConnectivityFunction.activate.message, replyHandler: nil, errorHandler: nil)
-    }
-
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        guard let fn = WatchConnectivityFunction(message: message) else { return }
-        self.session(session, didReceiveFunction: fn)
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        let userInfo = UserInfo(userInfo)
+        userInfo.persist()
     }
 
     override func awake(withContext context: Any?) {

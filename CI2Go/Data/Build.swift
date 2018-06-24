@@ -45,6 +45,7 @@ struct Build: Decodable, EndpointConvertable {
         case outcome
         case lifecycle
         case queuedAt = "usage_queued_at"
+        case authorDate = "author_date"
         case branchName = "branch"
         case vcsRevision = "vcs_revision"
         case user = "user"
@@ -64,7 +65,11 @@ struct Build: Decodable, EndpointConvertable {
         hasArtifacts = (try? values.decode(Bool.self, forKey: .hasArtifacts)) ?? false
         status = try values.decode(Status.self, forKey: .status)
         user = try? values.decode(User.self, forKey: .user)
-        queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
+        var queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
+        if queuedAt == nil {
+            queuedAt = try? values.decode(Date.self, forKey: .authorDate)
+        }
+        self.queuedAt = queuedAt
         let config = (try? values.decode([String: String].self, forKey: .configuration)) ?? [:]
         configuration = config["string"] ?? ""
         isPlatformV2 = ((try? values.decode(String.self, forKey: .platform)) ?? "") == "2.0"

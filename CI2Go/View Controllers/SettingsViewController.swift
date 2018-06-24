@@ -117,7 +117,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                     return
                 }
                 Keychain.shared.token = token
-                WCSession.default.sendActivationResult()
+                WCSession.default.transferToken(token: token)
                 hud.label.text = "Authenticated"
                 hud.icon = .success
                 crashlytics.setUserIdentifier(user.login)

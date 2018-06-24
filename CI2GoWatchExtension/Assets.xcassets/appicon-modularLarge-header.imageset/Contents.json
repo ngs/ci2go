@@ -2,13 +2,13 @@
   "images" : [
     {
       "idiom" : "watch",
-      "filename" : "appicon-utilitarian-square+38mm@2x.png",
+      "filename" : "appicon-modularLarge-header+38mm@2x.png",
       "screen-width" : "<=145",
       "scale" : "2x"
     },
     {
       "idiom" : "watch",
-      "filename" : "appicon-utilitarian-square+42mm@2x.png",
+      "filename" : "appicon-modularLarge-header+42mm@2x.png",
       "screen-width" : ">145",
       "scale" : "2x"
     }

@@ -18,11 +18,8 @@
 		8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		8533DE1120DE368F00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */; };
-		8533DE1320DE38BE00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1220DE38BE00CA7E0C /* WCSessionDelegate.swift */; };
 		8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
 		8533DE1620DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
-		8533DE1820DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */; };
-		8533DE1920DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */; };
 		8533DE1A20DE413B00CA7E0C /* 3024 Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13920D5BAE1002CD128 /* 3024 Day.itermcolors */; };
 		8533DE1B20DE413B00CA7E0C /* 3024 Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19D20D5BAE2002CD128 /* 3024 Night.itermcolors */; };
 		8533DE1C20DE413B00CA7E0C /* AdventureTime.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19320D5BAE1002CD128 /* AdventureTime.itermcolors */; };
@@ -204,6 +201,7 @@
 		856609CD20D9C04600557249 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
 		856D904620DAB5770030F432 /* BuildLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D904520DAB5770030F432 /* BuildLog.swift */; };
 		85B30E6720DF365C00CC7876 /* Build+Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6620DF365C00CC7876 /* Build+Complication.swift */; };
+		85B30E6920DFFB2300CC7876 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6820DFFB2300CC7876 /* UserInfo.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
 		85B4CD8820D23E2D005A6DA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8620D23E2D005A6DA9 /* Main.storyboard */; };
 		85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */; };
@@ -479,9 +477,7 @@
 		8504A09920DC1DB5001D0C08 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
-		8533DE1220DE38BE00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
-		8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityFunction.swift; sourceTree = "<group>"; };
 		8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsExtension+Shared.swift"; sourceTree = "<group>"; };
 		8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManager.swift; sourceTree = "<group>"; };
 		8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionExtension+Keychain.swift"; sourceTree = "<group>"; };
@@ -538,6 +534,7 @@
 		856609CC20D9C04600557249 /* DateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecoder.swift; sourceTree = "<group>"; };
 		856D904520DAB5770030F432 /* BuildLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLog.swift; sourceTree = "<group>"; };
 		85B30E6620DF365C00CC7876 /* Build+Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+Complication.swift"; sourceTree = "<group>"; };
+		85B30E6820DFFB2300CC7876 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85B4CD8720D23E2D005A6DA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1137,7 +1134,6 @@
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85F93BF120DDD58500327DE9 /* VCS+Image.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
-				8533DE1720DE3AC000CA7E0C /* WatchConnectivityFunction.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1201,8 +1197,8 @@
 				85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */,
 				8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */,
 				85F93BC520DDCD0700327DE9 /* NotificationController.swift */,
-				8533DE1220DE38BE00CA7E0C /* WCSessionDelegate.swift */,
 				8533DEB120DF339200CA7E0C /* Supporting Files */,
+				85B30E6820DFFB2300CC7876 /* UserInfo.swift */,
 			);
 			path = CI2GoWatchExtension;
 			sourceTree = "<group>";
@@ -1795,7 +1791,6 @@
 				85CAE25E20D60F36002CD128 /* Workflow.swift in Sources */,
 				85CAE23920D5E944002CD128 /* StringExtension.swift in Sources */,
 				85CAE23520D5E8E8002CD128 /* Build.swift in Sources */,
-				8533DE1820DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */,
 				85CAE26420D619B9002CD128 /* ColorScheme+ANSI.swift in Sources */,
 				85F93BF820DDEECF00327DE9 /* Build.Status+Color.swift in Sources */,
 				85F93BF620DDD6F000327DE9 /* BuildAction.Status+Color.swift in Sources */,
@@ -1853,6 +1848,7 @@
 				85F93BE020DDD48D00327DE9 /* Project.swift in Sources */,
 				8533DE9E20DE4C7000CA7E0C /* BuildInterfaceController.swift in Sources */,
 				8533DEAD20DE68D800CA7E0C /* Build.Status+Color.swift in Sources */,
+				85B30E6920DFFB2300CC7876 /* UserInfo.swift in Sources */,
 				85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */,
 				85F93BE120DDD49200327DE9 /* User.swift in Sources */,
 				85F93BE220DDD49400327DE9 /* VCS.swift in Sources */,
@@ -1862,13 +1858,11 @@
 				85F93BE320DDD49700327DE9 /* Workflow.swift in Sources */,
 				8533DEAA20DE5F5600CA7E0C /* KeychainExtension.swift in Sources */,
 				8533DEA220DE4DE700CA7E0C /* ColorScheme+Color.swift in Sources */,
-				8533DE1920DE3AC000CA7E0C /* WatchConnectivityFunction.swift in Sources */,
 				85F93BE520DDD4AE00327DE9 /* Branch.swift in Sources */,
 				85F93BE420DDD4A300327DE9 /* Commit.swift in Sources */,
 				85F93BE620DDD4C100327DE9 /* EndpointConvertable.swift in Sources */,
 				85F93BE720DDD4C300327DE9 /* Error.swift in Sources */,
 				85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */,
-				8533DE1320DE38BE00CA7E0C /* WCSessionDelegate.swift in Sources */,
 				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
 				8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
 				8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */,

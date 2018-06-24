@@ -12,9 +12,12 @@ import WatchConnectivity
 import KeychainAccess
 import FileKit
 
-class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, SessionActivationResultDelegate {
+class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var interfaceTable: WKInterfaceTable!
     @IBOutlet weak var placeholderGroup: WKInterfaceGroup!
+
+    var project: Project?
+    var branch: Branch?
 
     let maxBuilds = 20
     let fileOperationQueue = OperationQueue()
@@ -30,50 +33,26 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate, Sessi
         super.willActivate()
         placeholderGroup.setHidden(true)
         interfaceTable.setHidden(false)
-        if
-            let _ = UserDefaults.shared.string(forKey: .colorScheme),
-            builds.isEmpty,
-            let cachedBuilds = [Build].fromCache() {
+        if let cachedBuilds = [Build].fromCache() {
             self.builds = cachedBuilds
         }
+        reload()
         activateWCSession()
     }
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        guard activationState == .activated else {
-            reload()
-            return
-        }
-        requestActivation()
     }
 
-    func requestActivation() {
-        WCSession.default.sendMessage(WatchConnectivityFunction.activate.message, replyHandler: nil, errorHandler: nil)
-    }
-
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        guard let fn = WatchConnectivityFunction(message: message) else { return }
-        self.session(session, didReceiveFunction: fn)
-    }
-
-    func session(_ sesion: WCSession, didReceiveActivationResult data: (String?, ColorScheme, Project?, Branch?)) {
-        let (token, _, project, branch) = data
-        guard let _ = token else {
-            placeholderGroup.setHidden(false)
-            interfaceTable.setHidden(true)
-            return
-        }
-        loadBuilds(project: project, branch: branch)
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        let userInfo = UserInfo(userInfo)
+        userInfo.persist()
+        project = userInfo.project
+        branch = userInfo.branch
+        loadBuilds(project: userInfo.project, branch: userInfo.branch)
     }
 
     @objc func reload() {
-        let d = UserDefaults.shared
-        let s = WCSession.default
-        if s.activationState == .activated {
-            requestActivation()
-            return
-        }
-        loadBuilds(project: d.project, branch: d.branch)
+        loadBuilds(project: project, branch: branch)
     }
 
     func loadBuilds(project: Project?, branch: Branch?) {

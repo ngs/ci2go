@@ -93,8 +93,42 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        // This method will be called once per supported complication, and the results will be cached
         handler(nil)
     }
-    
+
+    func template(for complication: CLKComplication) -> CLKComplicationTemplate {
+        let appNameTextProvider = CLKTextProvider.localizableTextProvider(withStringsFileTextKey: "CI2Go")
+        let emptyTextProvider = CLKTextProvider.localizableTextProvider(withStringsFileTextKey: "")
+        switch complication.family {
+        case .circularSmall:
+            let t = CLKComplicationTemplateCircularSmallSimpleImage()
+            t.imageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-circularSmall"))
+            return t
+        case .extraLarge:
+            let t = CLKComplicationTemplateExtraLargeSimpleImage()
+            t.imageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-extraLarge"))
+            return t
+        case .modularLarge:
+            let t = CLKComplicationTemplateModularLargeStandardBody()
+            t.headerImageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-modularLarge-header"))
+            t.headerTextProvider = emptyTextProvider
+            t.body1TextProvider = appNameTextProvider
+            t.body2TextProvider = emptyTextProvider
+            return t
+        case .modularSmall:
+            let t = CLKComplicationTemplateModularSmallSimpleImage()
+            t.imageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-modularSmall"))
+            return t
+        case .utilitarianLarge:
+            let t = CLKComplicationTemplateUtilitarianLargeFlat()
+            t.imageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+            t.textProvider = appNameTextProvider
+            return t
+        case .utilitarianSmallFlat, .utilitarianSmall:
+            let t = CLKComplicationTemplateUtilitarianSmallFlat()
+            t.imageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+            t.textProvider = appNameTextProvider
+            return t
+        }
+    }
 }

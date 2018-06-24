@@ -73,7 +73,7 @@ extension ColorScheme {
         buildActionSectionHeaderLabel.backgroundColor = .clear
 
         setAsCurrent()
-        WCSession.default.sendActivationResult()
+        WCSession.default.transferColorScheme(colorScheme: self)
         resetViews()
     }
 
