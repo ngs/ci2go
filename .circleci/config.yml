@@ -58,11 +58,17 @@ jobs:
       - run: sudo gem install fastlane
       - run: fastlane set_build_number
       - run: fastlane tests
+      - persist_to_workspace:
+          root: .
+          paths:
+            - DerivedData
       - <<: *store_scan_logs
 
   screenshots:
     <<: *base
     steps:
+      - attach_workspace:
+          at: .
       - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
@@ -71,9 +77,9 @@ jobs:
       - run: fastlane set_build_number
       - run: 'fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
       - persist_to_workspace:
-          root: fastlane
+          root: .
           paths:
-            - screenshots
+            - fastlane/screenshots
       - <<: *store_screenshots
       - <<: *store_snapshot_logs
 
@@ -95,7 +101,7 @@ jobs:
     <<: *base
     steps:
       - attach_workspace:
-          at: fastlane
+          at: .
       - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
@@ -113,6 +119,8 @@ workflows:
     jobs:
       - tests
       - screenshots:
+          requires:
+            - tests
           filters:
             branches:
               only: [screenshots, release]
@@ -124,7 +132,6 @@ workflows:
               only: [ci, develop]
       - release:
           requires:
-            - tests
             - screenshots
           filters:
             branches:
