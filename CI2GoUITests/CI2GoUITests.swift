@@ -97,16 +97,16 @@ class CI2GoUITests: XCTestCase {
 
         element = app.tables["BuildsTableView"].cells.element(matching: NSPredicate(block: { (attr, _) -> Bool in
             guard let label = (attr as? XCUIElementAttributes)?.label else { return false }
-            return (label.contains("Success") || label.contains("Fixed")) && label.contains("screenshots, screenshots")
+            return (label.contains("Success") || label.contains("Fixed"))
         })).firstMatch
         expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
         waitForExpectations(timeout: 60, handler: nil)
         XCTAssertTrue(element.exists)
-        element.tap()
+        element.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).tap()
 
         element = app.tables["BuildActionsTableView"].cells.element(matching: NSPredicate(block: { (attr, _) -> Bool in
             guard let label = (attr as? XCUIElementAttributes)?.label else { return false }
-            return label.contains("fastlane screenshots")
+            return label.contains("fastlane screenshots") || label.contains("fastlane tests")
         })).firstMatch
         expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
         waitForExpectations(timeout: 60, handler: nil)
@@ -119,21 +119,13 @@ class CI2GoUITests: XCTestCase {
 
         snapshot("2-Build-Log")
 
-        if app.navigationBars.element.buttons["Back"].exists {
-            app.navigationBars.element.buttons["Back"].tap()
+        if app.navigationBars.element.buttons.count == 1 {
+            app.navigationBars.element.buttons.firstMatch.tap()
         }
-        app.tables["BuildActionsTableView"].cells["BuildArtifactsCell"].firstMatch.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).tap()
-
-        element = app.tables["BuildArtifactsTableView"].cells["screenshots"]
-        expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-        XCTAssertTrue(element.exists)
-
-        element.tap()
+        app.tables["BuildActionsTableView"].cells["BuildArtifactsCell"].firstMatch.tap()
 
         snapshot("3-Build-Artifacts")
 
-        app.navigationBars.element.buttons.firstMatch.tap()
         app.navigationBars.element.buttons.firstMatch.tap()
 
         element = app.tables["BuildActionsTableView"]
@@ -141,7 +133,7 @@ class CI2GoUITests: XCTestCase {
 
         snapshot("1-Build-Detail")
 
-        element.cells["BuildConfigurationCell"].tap()
+        element.cells["BuildConfigurationCell"].coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).tap()
 
         snapshot("4-Build-Config")
     }

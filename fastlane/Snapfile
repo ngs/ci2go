@@ -1,10 +1,10 @@
 devices([
-  "iPhone 8"
-# "iPhone 8 Plus",
-# "iPhone SE",
-# "iPhone X",
-# "iPad Pro (12.9-inch)",
-# "iPad Pro (9.7-inch)",
+  "iPhone 8",
+  "iPhone 8 Plus",
+  "iPhone SE",
+  "iPhone X",
+  "iPad Pro (12.9-inch)",
+  "iPad Pro (9.7-inch)"
 #   "Apple TV 1080p"
 ])
 
@@ -19,4 +19,5 @@ launch_arguments ["-circleToken #{ENV.fetch('UI_TEST_CIRCLE_TOKEN')}"]
 # For more information about all available options run
 # fastlane action snapshot
 derived_data_path 'DerivedData'
-# test_without_building true
+namespace_log_files true
+# ttest_without_building true
