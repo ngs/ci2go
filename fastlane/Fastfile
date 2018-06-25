@@ -68,4 +68,9 @@ platform :ios do
       force: true
     )
   end
+
+  lane :screenshots do
+    capture_screenshots
+  end
+
 end

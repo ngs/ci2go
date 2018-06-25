@@ -36,6 +36,11 @@ fastlane ios beta
 fastlane ios release
 ```
 
+### ios screenshots
+```
+fastlane ios screenshots
+```
+
 
 ----
 

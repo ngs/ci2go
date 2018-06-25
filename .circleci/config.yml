@@ -8,6 +8,7 @@ references:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
       XCODE_PATH: /Applications/Xcode-9.4.app
+      FASTLANE_SKIP_UPDATE_CHECK: 1
 
   steps:
     restore_cache: &restore_cache
@@ -37,6 +38,14 @@ references:
       store_artifacts:
         path: ~/Library/Logs/scan
         destination: logs/scan
+    store_snapshot_logs: &store_snapshot_logs
+      store_artifacts:
+        path: ~/Library/Logs/snapshot
+        destination: logs/snapshot
+    store_screenshots: &store_screenshots
+      store_artifacts:
+        path: fastlane/screenshots
+        destination: screenshots
 
 jobs:
   tests:
@@ -50,6 +59,23 @@ jobs:
       - run: fastlane set_build_number
       - run: fastlane tests
       - <<: *store_scan_logs
+
+  screenshots:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - run: .circleci/bootstrap-carthage.sh
+      - <<: *save_cache
+      - run: sudo gem install fastlane
+      - run: fastlane set_build_number
+      - run: 'fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
+      - persist_to_workspace:
+          root: fastlane
+          paths:
+            - screenshots
+      - <<: *store_screenshots
+      - <<: *store_snapshot_logs
 
   beta:
     <<: *base
@@ -68,6 +94,8 @@ jobs:
   release:
     <<: *base
     steps:
+      - attach_workspace:
+          at: fastlane
       - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
@@ -84,6 +112,10 @@ workflows:
   app:
     jobs:
       - tests
+      - screenshots:
+          filters:
+            branches:
+              only: [screenshots, release]
       - beta:
           requires:
             - tests
@@ -93,6 +125,7 @@ workflows:
       - release:
           requires:
             - tests
+            - screenshots
           filters:
             branches:
               only: master
