@@ -64,8 +64,6 @@ jobs:
     <<: *base
     steps:
       - checkout
-      - attach_workspace:
-          at: .
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
@@ -97,8 +95,6 @@ jobs:
     <<: *base
     steps:
       - checkout
-      - attach_workspace:
-          at: fastlane
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
@@ -113,13 +109,16 @@ workflows:
   version: 2
   app:
     jobs:
-      - tests
+      - tests:
+          filters:
+            branches:
+              ignore: /screenshots.*/
       - screenshots:
           requires:
             - tests
           filters:
             branches:
-              only: [screenshots, release]
+              only: /screenshots.*/
       - beta:
           requires:
             - tests
@@ -128,7 +127,7 @@ workflows:
               only: [ci, develop]
       - release:
           requires:
-            - screenshots
+            - tests
           filters:
             branches:
               only: master
