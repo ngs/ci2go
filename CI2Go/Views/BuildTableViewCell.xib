@@ -281,6 +281,9 @@
                     <constraint firstAttribute="bottom" secondItem="Z3o-eV-QaI" secondAttribute="bottom" constant="10" id="QkQ-vt-dC3"/>
                 </constraints>
             </tableViewCellContentView>
+            <accessibility key="accessibilityConfiguration" identifier="BuildTableViewCell">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <connections>
                 <outlet property="branchNameLabel" destination="Ipa-sh-hgd" id="y0c-0E-E7c"/>
                 <outlet property="buildNumLabel" destination="srb-5Z-mGt" id="sAF-jF-FMQ"/>

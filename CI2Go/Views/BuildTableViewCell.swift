@@ -11,8 +11,6 @@ import UIKit
 
 class BuildTableViewCell: CustomTableViewCell {
 
-    static let identifier = "BuildTableViewCell"
-
     @IBOutlet weak var workflowsStackView: UIStackView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var subjectLabel: UILabel!

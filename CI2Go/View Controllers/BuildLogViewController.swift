@@ -59,6 +59,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     func downloadLog() {
         guard let outputURL = buildAction?.outputURL else { return }
         NetworkActivityManager.start()
+        showActivityIndicatorItem()
         URLSession.shared.dataTask(with: outputURL) { [weak self] (data, res, err) in
             NetworkActivityManager.stop()
             guard let `self` = self else { return }
@@ -82,17 +83,22 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
                 self.textView.attributedText = astr
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
                     self.textView.scrollToBottom()
+                    self.navigationItem.rightBarButtonItem = nil
                 })
             }
             }.resume()
         return
     }
 
-    func bindPusherEvents() {
-        guard let pusherChannel = pusherChannel else { return }
+    func showActivityIndicatorItem() {
         let av = UIActivityIndicatorView(activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
         av.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: av)
+    }
+
+    func bindPusherEvents() {
+        guard let pusherChannel = pusherChannel else { return }
+        showActivityIndicatorItem()
         callbackIds.forEach {
             pusherChannel.unbind(.appendAction, callbackId: $0)
         }

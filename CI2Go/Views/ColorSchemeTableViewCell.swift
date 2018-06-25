@@ -9,7 +9,6 @@
 import UIKit
 
 class ColorSchemeTableViewCell: CustomTableViewCell {
-    static let identifier = "ColorSchemeTableViewCell"
 
     @IBOutlet weak var yellowColorView: UIView!
     @IBOutlet weak var blueColorView: UIView!
@@ -36,6 +35,12 @@ class ColorSchemeTableViewCell: CustomTableViewCell {
                 }
             }
         }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        isAccessibilityElement = true
+        accessibilityIdentifier = ColorSchemeTableViewCell.identifier
     }
 
     override func layoutSubviews() {

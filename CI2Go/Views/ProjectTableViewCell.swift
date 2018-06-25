@@ -9,7 +9,6 @@
 import UIKit
 
 class ProjectTableViewCell: CustomTableViewCell {
-    static let identifier = "ProjectTableViewCell"
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var vcsIconImageView: UIImageView!

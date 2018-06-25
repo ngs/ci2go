@@ -9,7 +9,6 @@
 import UIKit
 
 class BranchTableViewCell: CustomTableViewCell {
-    static let identifier = "BranchTableViewCell"
     var branch: Branch? {
         didSet {
             textLabel?.text = branch?.name ?? "All Branches"

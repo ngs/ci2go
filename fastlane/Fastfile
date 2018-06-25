@@ -13,11 +13,7 @@ platform :ios do
 
   lane :tests do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
-    run_tests(
-      project: 'CI2Go.xcodeproj',
-      scheme: 'CI2GoTests',
-      devices: ['iPhone 6s']
-    )
+    run_tests
   end
 
   lane :beta do
@@ -68,4 +64,10 @@ platform :ios do
       force: true
     )
   end
+
+  lane :screenshots do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    capture_screenshots
+  end
+
 end

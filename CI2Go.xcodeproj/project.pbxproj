@@ -200,6 +200,7 @@
 		856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CA20D9B88E00557249 /* BranchTableViewCell.swift */; };
 		856609CD20D9C04600557249 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
 		856D904620DAB5770030F432 /* BuildLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D904520DAB5770030F432 /* BuildLog.swift */; };
+		85AF4B6320E091220040214B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF4B6220E091220040214B /* SnapshotHelper.swift */; };
 		85B30E6720DF365C00CC7876 /* Build+Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6620DF365C00CC7876 /* Build+Complication.swift */; };
 		85B30E6920DFFB2300CC7876 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6820DFFB2300CC7876 /* UserInfo.swift */; };
 		85B4CD8320D23E2D005A6DA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */; };
@@ -533,6 +534,7 @@
 		856609CA20D9B88E00557249 /* BranchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchTableViewCell.swift; sourceTree = "<group>"; };
 		856609CC20D9C04600557249 /* DateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecoder.swift; sourceTree = "<group>"; };
 		856D904520DAB5770030F432 /* BuildLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLog.swift; sourceTree = "<group>"; };
+		85AF4B6220E091220040214B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85B30E6620DF365C00CC7876 /* Build+Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+Complication.swift"; sourceTree = "<group>"; };
 		85B30E6820DFFB2300CC7876 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		85B4CD7F20D23E2D005A6DA9 /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -885,6 +887,7 @@
 		85B4CDA120D23E30005A6DA9 /* CI2GoUITests */ = {
 			isa = PBXGroup;
 			children = (
+				85AF4B6220E091220040214B /* SnapshotHelper.swift */,
 				85B4CDA220D23E30005A6DA9 /* CI2GoUITests.swift */,
 				85B4CDA420D23E30005A6DA9 /* Info.plist */,
 			);
@@ -1821,6 +1824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85B4CDA320D23E30005A6DA9 /* CI2GoUITests.swift in Sources */,
+				85AF4B6320E091220040214B /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
