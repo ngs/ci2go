@@ -41,6 +41,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="ProjectsTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="eHo-gr-dGD" id="zTH-tV-qFh"/>
                             <outlet property="delegate" destination="eHo-gr-dGD" id="WGb-KZ-PJX"/>
@@ -71,6 +75,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="ColorSchemeTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="U6Z-Nj-zJd" id="WCm-FM-Zae"/>
                             <outlet property="delegate" destination="U6Z-Nj-zJd" id="aRc-b9-qGn"/>
@@ -126,6 +134,10 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="BranchesTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="gJA-ds-gVz" id="2y6-ah-Qcx"/>
                             <outlet property="delegate" destination="gJA-ds-gVz" id="HBx-GM-IAT"/>
@@ -173,12 +185,15 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="API Token" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRQ-5I-Wfp">
                                                     <rect key="frame" x="15" y="0.0" width="360" height="50"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="APITokenField"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="point" keyPath="padding">
                                                             <point key="value" x="15" y="0.0"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="APITokenField"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <outlet property="delegate" destination="o99-g4-N94" id="rWj-xF-65e"/>
@@ -192,6 +207,9 @@
                                                 <constraint firstItem="qRQ-5I-Wfp" firstAttribute="trailing" secondItem="OeM-aH-gZA" secondAttribute="trailing" id="z9r-n1-WNV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="APITokenFieldCell">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -204,10 +222,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" label="ColorSchemeCell">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="SettingsTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="apiTokenField" destination="qRQ-5I-Wfp" id="cMM-MB-RR1"/>
                             <outlet property="dataSource" destination="o99-g4-N94" id="pio-aN-BXM"/>
@@ -278,18 +303,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="BuildsTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="3M0-Ym-eTF" id="qC0-Eg-3SB"/>
                             <outlet property="delegate" destination="3M0-Ym-eTF" id="zdB-DZ-ibG"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Builds" id="p3H-BP-Kdf">
-                        <barButtonItem key="leftBarButtonItem" image="toolbar-cog" id="VYu-4s-khJ">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" image="toolbar-cog" largeContentSizeImage="toolbar-cog" id="VYu-4s-khJ">
                             <connections>
                                 <segue destination="kFZ-8K-EBT" kind="presentation" identifier="showSettings" id="Hec-7w-ePI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="toolbar-code-branch" id="LXp-iW-Ynl">
+                        <barButtonItem key="rightBarButtonItem" title="Select Project" image="toolbar-code-branch" largeContentSizeImage="toolbar-code-branch" id="LXp-iW-Ynl">
                             <connections>
                                 <segue destination="IfH-1Z-563" kind="presentation" id="Wtu-UZ-4TH"/>
                             </connections>
@@ -328,6 +357,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="BuildConfigurationCell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <segue destination="ThN-66-8OR" kind="showDetail" identifier="showBuildConfig" id="RQ9-cP-lH8"/>
                                 </connections>
@@ -348,11 +380,18 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="BuildArtifactsCell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <connections>
                                     <segue destination="IRc-aj-agi" kind="show" identifier="showBuildArtifacts" id="ihs-SO-Lac"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="BuildActionsTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="w1T-PU-rde" id="GPO-cu-1et"/>
                             <outlet property="delegate" destination="w1T-PU-rde" id="VK3-Or-daD"/>
@@ -381,6 +420,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="BuildArtifactsTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="IRc-aj-agi" id="AK4-QG-Vqz"/>
                             <outlet property="delegate" destination="IRc-aj-agi" id="gLi-HL-Iab"/>

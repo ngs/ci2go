@@ -9,7 +9,6 @@
 import UIKit
 
 class BuildArtifactTableViewCell: CustomTableViewCell {
-    static let identifier = "BuildArtifactTableViewCell"
 
     var item: BuildArtifactsViewController.RowItem? = nil {
         didSet {

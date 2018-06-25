@@ -9,7 +9,6 @@
 import UIKit
 
 class BuildActionTableViewCell: CustomTableViewCell {
-    static let identifier = "BuildActionTableViewCell"
     @IBOutlet weak var buildStatusBar: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!

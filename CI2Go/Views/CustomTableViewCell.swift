@@ -9,8 +9,16 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        if accessibilityIdentifier?.isEmpty ?? true {
+            accessibilityIdentifier = type(of: self).identifier
+            isAccessibilityElement = true
+        }
 
         let backgroundView = UIView()
         backgroundView.backgroundColor = ColorScheme.current.background
