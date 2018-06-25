@@ -67,9 +67,9 @@ jobs:
   screenshots:
     <<: *base
     steps:
+      - checkout
       - attach_workspace:
           at: .
-      - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
@@ -100,9 +100,9 @@ jobs:
   release:
     <<: *base
     steps:
+      - checkout
       - attach_workspace:
           at: .
-      - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
