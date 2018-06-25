@@ -44,6 +44,8 @@
 	</dict>
 	<key>SharedAccessGroup</key>
 	<string>$(AppIdentifierPrefix)com.ci2go.shared</string>
+	<key>WKAppBundleIdentifier</key>
+	<string>com.ci2go.ios.Circle.watchkitapp</string>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 </dict>
