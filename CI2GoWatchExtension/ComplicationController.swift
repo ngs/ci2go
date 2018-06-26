@@ -89,6 +89,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         }
         handler(entries)
     }
+
+    func getTimelineAnimationBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineAnimationBehavior) -> Void) {
+        handler(.grouped)
+    }
     
     // MARK: - Placeholder Templates
     
