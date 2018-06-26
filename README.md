@@ -9,10 +9,9 @@ CI2Go
 
 ![](CI2Go/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png)
 
-
-![](fastlane/screenshots/en-US/iPhone 8 Plus-0-Build-List.png)&nbsp;
-![](fastlane/screenshots/en-US/iPhone 8 Plus-1-Build-Detail.png)&nbsp;
-![](fastlane/screenshots/en-US/iPhone 8 Plus-2-Build-Log.png)
+![](fastlane/screenshots/en-US/iPhone%208%20Plus-0-Build-List.png) &nbsp;
+![](fastlane/screenshots/en-US/iPhone%208%20Plus-1-Build-Detail.png) &nbsp;
+![](fastlane/screenshots/en-US/iPhone%208%20Plus-2-Build-Log.png)
 
 Author
 ======
