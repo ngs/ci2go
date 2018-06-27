@@ -242,7 +242,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="7QS-oZ-PhE">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2ma-OM-mQY">
                             <connections>
-                                <segue destination="DU2-Qy-CPV" kind="unwind" unwindAction="unwindSegue:" id="5WD-Nm-HBI"/>
+                                <segue destination="DU2-Qy-CPV" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="5WD-Nm-HBI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="iFw-Sh-YF5">
