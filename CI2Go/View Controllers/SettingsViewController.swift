@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func doneButtonTapped(_ sender: Any) {
         if Keychain.shared.token == apiTokenField.text {
-            dismiss(animated: true, completion: nil)
+            performSegue(withIdentifier: .unwindSegue, sender: nil)
         } else {
             validateAPIToken(dismissAfterSuccess: true)
         }
@@ -124,7 +124,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
                 crashlytics.setUserName(user.name)
                 Answers.logLogin(withMethod: nil, success: true, customAttributes: nil)
                 if dismissAfterSuccess {
-                    self?.dismiss(animated: true)
+                    self?.performSegue(withIdentifier: .unwindSegue, sender: nil)
                 }
             }
             }.resume()

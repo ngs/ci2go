@@ -136,7 +136,12 @@ class BuildsViewController: UITableViewController {
 
     // MARK: -
 
-    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {}
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        if let _ = Keychain.shared.token, builds.isEmpty {
+            loadUser()
+            loadBuilds()
+        }
+    }
 
     func refreshData() {
         isMutating = true
