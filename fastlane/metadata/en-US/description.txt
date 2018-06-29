@@ -8,6 +8,14 @@ https://ngs.io/
 Version history
 ---------------
 
+[2.0.0]
+
+- Performance improvement
+- Update login flow to use Single Sign-On instead of filling API Token
+- Refine artifacts browser
+- iPhone X support
+- Apple Watch Complications support
+
 [1.3.0]
 
 - Rebuild without Cache
