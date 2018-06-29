@@ -85,7 +85,7 @@ class BuildsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let token = Keychain.shared.token, isValidToken(token) else {
-            showSettings()
+            logout()
             return
         }
         loadUser()
@@ -103,7 +103,10 @@ class BuildsViewController: UITableViewController {
         foregroundObserver = NotificationCenter.default.addObserver(
             forName: Notification.Name.UIApplicationWillEnterForeground,
             object: nil,
-            queue: nil) { [weak self] _ in self?.loadUser() }
+            queue: nil) { [weak self] _ in
+                self?.loadUser()
+                self?.loadBuilds()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -160,10 +163,7 @@ class BuildsViewController: UITableViewController {
         URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, _, err) in
             guard let user = user else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
-                DispatchQueue.main.async {
-                    Keychain.shared.token = nil
-                    self?.showSettings()
-                }
+                self?.logout()
                 return
             }
             self?.currentUser = user
@@ -180,7 +180,24 @@ class BuildsViewController: UITableViewController {
 
         let userChannel = pusher.subscribe(channelName)
         userChannel.bind(.call) { _ in self.loadBuilds() }
+        pusher.bind { [weak self] message in
+            guard
+                let message = message as? [String: Any],
+                let eventName = message["event"] as? String,
+                eventName == "pusher:subscription_error"
+                else { return }
+            self?.logout()
+        }
         pusher.connect()
+    }
+
+    func logout() {
+        Pusher.logout()
+        builds = []
+        Keychain.shared.token = nil
+        DispatchQueue.main.async {
+            self.showSettings()
+        }
     }
 
     func showSettings() {
