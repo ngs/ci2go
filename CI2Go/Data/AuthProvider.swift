@@ -17,7 +17,7 @@ enum AuthProvider: Int {
         case .github:
             return "GitHub"
         case .bitbucket:
-            return "BitBucket"
+            return "Bitbucket"
         }
     }
 

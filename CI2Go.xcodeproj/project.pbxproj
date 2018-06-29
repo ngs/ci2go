@@ -1103,10 +1103,10 @@
 				8566096220D72B8900557249 /* BuildLogViewController.swift */,
 				8566096820D7405C00557249 /* BuildsViewController.swift */,
 				8566096A20D7406C00557249 /* ColorSchemesViewController.swift */,
+				8582284620E5C8DB0092B8CF /* LoginViewController.swift */,
 				8566096C20D7407D00557249 /* ProjectsViewController.swift */,
 				8566096E20D7409000557249 /* SettingsViewController.swift */,
 				8566097020D740A800557249 /* TextViewController.swift */,
-				8582284620E5C8DB0092B8CF /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1140,6 +1140,7 @@
 				856609C820D9A73500557249 /* AnyDecodable.swift */,
 				85CAE27220D63429002CD128 /* Artifact.swift */,
 				85BE576A20DDFF4F004C92DA /* Artifact+File.swift */,
+				8582284F20E5E1F90092B8CF /* AuthProvider.swift */,
 				85CAE26E20D629B3002CD128 /* Branch.swift */,
 				85CAE24120D5ED9F002CD128 /* Build.Lifecycle.swift */,
 				85CAE24520D5EDD4002CD128 /* Build.Outcome.swift */,
@@ -1165,7 +1166,6 @@
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85F93BF120DDD58500327DE9 /* VCS+Image.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
-				8582284F20E5E1F90092B8CF /* AuthProvider.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
