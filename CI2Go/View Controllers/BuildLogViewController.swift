@@ -91,9 +91,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func showActivityIndicatorItem() {
-        let av = UIActivityIndicatorView(activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
-        av.startAnimating()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: av)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
     }
 
     func bindPusherEvents() {

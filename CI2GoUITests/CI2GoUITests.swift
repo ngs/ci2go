@@ -13,14 +13,6 @@ class CI2GoUITests: XCTestCase {
     let nonexistencePredicate = NSPredicate(format: "exists == false")
     let existencePredicate = NSPredicate(format: "exists == true")
 
-    func randomHexString(length: Int) -> String {
-        var string = ""
-        for _ in 0..<length {
-            string += String(format: "%01X", Int(arc4random_uniform(0x10)))
-        }
-        return string.lowercased()
-    }
-
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -45,13 +37,6 @@ class CI2GoUITests: XCTestCase {
 
         app.navigationBars["Builds"].buttons["Settings"].tap()
 
-        element = app.tables["SettingsTableView"].cells["APITokenFieldCell"].textFields.element
-        expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-        XCTAssertTrue(element.exists)
-        element.tap()
-        element.typeText(randomHexString(length: 40))
-
         snapshot("5-Settings")
 
         element = app.tables["SettingsTableView"].cells["ColorSchemeTableViewCell"]
@@ -68,7 +53,7 @@ class CI2GoUITests: XCTestCase {
         snapshot("6-ColorScheme")
 
         app.navigationBars["Select theme"].buttons["Settings"].tap()
-        app.navigationBars["Settings"].buttons["Cancel"].tap()
+        app.navigationBars["Settings"].buttons["Done"].tap()
 
         app.navigationBars["Builds"].buttons["Select Project"].tap()
 
@@ -83,7 +68,7 @@ class CI2GoUITests: XCTestCase {
 
         element.tap()
 
-        element = app.tables["BranchesTableView"].cells["screenshots"]
+        element = app.tables["BranchesTableView"].cells["All Branches"]
         expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
         waitForExpectations(timeout: 60, handler: nil)
         XCTAssertTrue(element.exists)

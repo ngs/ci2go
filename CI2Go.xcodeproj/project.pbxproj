@@ -160,9 +160,9 @@
 		853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */; };
 		853D1A5B20D65E1000C7F4FC /* CompensationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */; };
 		853D1A5F20D6891E00C7F4FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */; };
-		853D1A6320D6B2FF00C7F4FC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6220D6B2FF00C7F4FC /* Fabric.framework */; };
+		853D1A6320D6B2FF00C7F4FC /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6220D6B2FF00C7F4FC /* Fabric.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */; };
-		853D1A6720D6B8CA00C7F4FC /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */; };
+		853D1A6720D6B8CA00C7F4FC /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		853D1A6920D6B91100C7F4FC /* KeychainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */; };
 		853D1A6B20D6BEAC00C7F4FC /* PusherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */; };
 		853D1A6D20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6C20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift */; };
@@ -179,12 +179,10 @@
 		8566097320D8051600557249 /* ColorSchemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */; };
 		8566097620D805BB00557249 /* BuildActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097420D805BB00557249 /* BuildActionTableViewCell.swift */; };
 		8566097720D805BB00557249 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097520D805BB00557249 /* BuildTableViewCell.swift */; };
-		8566097F20D82C8300557249 /* APITokenCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097E20D82C8300557249 /* APITokenCaptionView.swift */; };
-		8566098120D82C9800557249 /* APITokenCaptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8566098020D82C9800557249 /* APITokenCaptionView.xib */; };
 		8566098320D8316900557249 /* ColorScheme+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098220D8316900557249 /* ColorScheme+Color.swift */; };
 		8566098720D83EE100557249 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098620D83EE100557249 /* Error.swift */; };
 		8566098920D84CAC00557249 /* PusherEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098820D84CAC00557249 /* PusherEvent.swift */; };
-		856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; };
+		856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		856609AF20D8D58700557249 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609AE20D8D58700557249 /* DateExtension.swift */; };
 		856609B320D8F5D200557249 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609B220D8F5D200557249 /* LoadingCell.swift */; };
 		856609B520D8F84D00557249 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B420D8F84D00557249 /* LoadingCell.xib */; };
@@ -200,6 +198,15 @@
 		856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CA20D9B88E00557249 /* BranchTableViewCell.swift */; };
 		856609CD20D9C04600557249 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
 		856D904620DAB5770030F432 /* BuildLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D904520DAB5770030F432 /* BuildLog.swift */; };
+		8582284720E5C8DB0092B8CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284620E5C8DB0092B8CF /* LoginViewController.swift */; };
+		8582284920E5CF3E0092B8CF /* LoginProviderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */; };
+		8582284C20E5D6B50092B8CF /* fetchToken.js in Resources */ = {isa = PBXBuildFile; fileRef = 8582284B20E5D6B50092B8CF /* fetchToken.js */; };
+		8582284E20E5DA630092B8CF /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284D20E5DA630092B8CF /* UIBarButtonItemExtension.swift */; };
+		8582285020E5E1F90092B8CF /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284F20E5E1F90092B8CF /* AuthProvider.swift */; };
+		8582285220E5E6B60092B8CF /* login-github.com.js in Resources */ = {isa = PBXBuildFile; fileRef = 8582285120E5E6B60092B8CF /* login-github.com.js */; };
+		8582285420E5E8630092B8CF /* login-bitbucket.org.js in Resources */ = {isa = PBXBuildFile; fileRef = 8582285320E5E8620092B8CF /* login-bitbucket.org.js */; };
+		8582285620E5E9110092B8CF /* OnePasswordExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8582285520E5E9110092B8CF /* OnePasswordExtension.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		8582285820E5F01A0092B8CF /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8582285720E5F01A0092B8CF /* 1Password.xcassets */; };
 		85AF4B6320E091220040214B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF4B6220E091220040214B /* SnapshotHelper.swift */; };
 		85B30E6720DF365C00CC7876 /* Build+Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6620DF365C00CC7876 /* Build+Complication.swift */; };
 		85B30E6920DFFB2300CC7876 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6820DFFB2300CC7876 /* UserInfo.swift */; };
@@ -213,13 +220,13 @@
 		85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE576A20DDFF4F004C92DA /* Artifact+File.swift */; };
 		85BE576C20DDFF7E004C92DA /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
 		85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
-		85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11D20D5B74E002CD128 /* Reachability.framework */; };
-		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; };
-		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; };
-		85CAE12720D5B74F002CD128 /* PusherSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12020D5B74E002CD128 /* PusherSwift.framework */; };
-		85CAE12820D5B74F002CD128 /* TaskQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12120D5B74E002CD128 /* TaskQueue.framework */; };
-		85CAE12920D5B74F002CD128 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12220D5B74F002CD128 /* Starscream.framework */; };
-		85CAE12A20D5B74F002CD128 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12320D5B74F002CD128 /* CryptoSwift.framework */; };
+		85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11D20D5B74E002CD128 /* Reachability.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		85CAE12720D5B74F002CD128 /* PusherSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12020D5B74E002CD128 /* PusherSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		85CAE12820D5B74F002CD128 /* TaskQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12120D5B74E002CD128 /* TaskQueue.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		85CAE12920D5B74F002CD128 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12220D5B74F002CD128 /* Starscream.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		85CAE12A20D5B74F002CD128 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12320D5B74F002CD128 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE1A920D5BAE2002CD128 /* Tomorrow Night Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12D20D5BAE1002CD128 /* Tomorrow Night Bright.itermcolors */; };
 		85CAE1AA20D5BAE2002CD128 /* Hybrid.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12E20D5BAE1002CD128 /* Hybrid.itermcolors */; };
 		85CAE1AB20D5BAE2002CD128 /* Dark Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12F20D5BAE1002CD128 /* Dark Pastel.itermcolors */; };
@@ -344,7 +351,7 @@
 		85CAE22220D5BAE2002CD128 /* SourceCodePro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE1A720D5BAE2002CD128 /* SourceCodePro-Regular.ttf */; };
 		85CAE22320D5BAE2002CD128 /* SourceCodePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE1A820D5BAE2002CD128 /* SourceCodePro-Bold.ttf */; };
 		85CAE22B20D5C62D002CD128 /* AMR_ANSIEscapeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE22820D5C62D002CD128 /* AMR_ANSIEscapeHelper.m */; };
-		85CAE22C20D5C62D002CD128 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE22A20D5C62D002CD128 /* Crashlytics.framework */; };
+		85CAE22C20D5C62D002CD128 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE22A20D5C62D002CD128 /* Crashlytics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE23120D5DBEB002CD128 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23020D5DBEB002CD128 /* ColorScheme.swift */; };
 		85CAE23320D5DEA1002CD128 /* ColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23220D5DEA1002CD128 /* ColorSchemeTests.swift */; };
 		85CAE23520D5E8E8002CD128 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23420D5E8E8002CD128 /* Build.swift */; };
@@ -513,8 +520,6 @@
 		8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSchemeTableViewCell.swift; sourceTree = "<group>"; };
 		8566097420D805BB00557249 /* BuildActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildActionTableViewCell.swift; sourceTree = "<group>"; };
 		8566097520D805BB00557249 /* BuildTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildTableViewCell.swift; sourceTree = "<group>"; };
-		8566097E20D82C8300557249 /* APITokenCaptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITokenCaptionView.swift; sourceTree = "<group>"; };
-		8566098020D82C9800557249 /* APITokenCaptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APITokenCaptionView.xib; sourceTree = "<group>"; };
 		8566098220D8316900557249 /* ColorScheme+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+Color.swift"; sourceTree = "<group>"; };
 		8566098620D83EE100557249 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		8566098820D84CAC00557249 /* PusherEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PusherEvent.swift; sourceTree = "<group>"; };
@@ -534,6 +539,15 @@
 		856609CA20D9B88E00557249 /* BranchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchTableViewCell.swift; sourceTree = "<group>"; };
 		856609CC20D9C04600557249 /* DateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecoder.swift; sourceTree = "<group>"; };
 		856D904520DAB5770030F432 /* BuildLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLog.swift; sourceTree = "<group>"; };
+		8582284620E5C8DB0092B8CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProviderTableViewCell.swift; sourceTree = "<group>"; };
+		8582284B20E5D6B50092B8CF /* fetchToken.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fetchToken.js; sourceTree = "<group>"; };
+		8582284D20E5DA630092B8CF /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
+		8582284F20E5E1F90092B8CF /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		8582285120E5E6B60092B8CF /* login-github.com.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "login-github.com.js"; sourceTree = "<group>"; };
+		8582285320E5E8620092B8CF /* login-bitbucket.org.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "login-bitbucket.org.js"; sourceTree = "<group>"; };
+		8582285520E5E9110092B8CF /* OnePasswordExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OnePasswordExtension.framework; path = Carthage/Build/iOS/OnePasswordExtension.framework; sourceTree = "<group>"; };
+		8582285720E5F01A0092B8CF /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = "Carthage/Checkouts/onepassword-extension/1Password.xcassets"; sourceTree = SOURCE_ROOT; };
 		85AF4B6220E091220040214B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85B30E6620DF365C00CC7876 /* Build+Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+Complication.swift"; sourceTree = "<group>"; };
 		85B30E6820DFFB2300CC7876 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -741,6 +755,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8582285620E5E9110092B8CF /* OnePasswordExtension.framework in Frameworks */,
 				856609AC20D8C3AE00557249 /* Dwifft.framework in Frameworks */,
 				85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */,
 				85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */,
@@ -795,8 +810,6 @@
 		853D1A7020D6D99800C7F4FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8566097E20D82C8300557249 /* APITokenCaptionView.swift */,
-				8566098020D82C9800557249 /* APITokenCaptionView.xib */,
 				856609CA20D9B88E00557249 /* BranchTableViewCell.swift */,
 				8566097420D805BB00557249 /* BuildActionTableViewCell.swift */,
 				856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */,
@@ -816,8 +829,19 @@
 				8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */,
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
+				8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8582284A20E5D68C0092B8CF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8582285320E5E8620092B8CF /* login-bitbucket.org.js */,
+				8582285120E5E6B60092B8CF /* login-github.com.js */,
+				8582284B20E5D6B50092B8CF /* fetchToken.js */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		85B4CD7620D23E2D005A6DA9 = {
@@ -849,6 +873,7 @@
 		85B4CD8120D23E2D005A6DA9 /* CI2Go */ = {
 			isa = PBXGroup;
 			children = (
+				8582284A20E5D68C0092B8CF /* Assets */,
 				85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */,
 				8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */,
 				85CAE26820D62013002CD128 /* Constants.swift */,
@@ -897,6 +922,7 @@
 		85CAE11C20D5B74E002CD128 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8582285520E5E9110092B8CF /* OnePasswordExtension.framework */,
 				8533DEA720DE5ECD00CA7E0C /* FileKit.framework */,
 				85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */,
 				856609AB20D8C3AE00557249 /* Dwifft.framework */,
@@ -1080,6 +1106,7 @@
 				8566096C20D7407D00557249 /* ProjectsViewController.swift */,
 				8566096E20D7409000557249 /* SettingsViewController.swift */,
 				8566097020D740A800557249 /* TextViewController.swift */,
+				8582284620E5C8DB0092B8CF /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1102,6 +1129,7 @@
 				853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */,
 				8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */,
 				8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */,
+				8582284D20E5DA630092B8CF /* UIBarButtonItemExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1137,6 +1165,7 @@
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85F93BF120DDD58500327DE9 /* VCS+Image.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
+				8582284F20E5E1F90092B8CF /* AuthProvider.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1157,6 +1186,7 @@
 		85CAE25C20D6060A002CD128 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8582285720E5F01A0092B8CF /* 1Password.xcassets */,
 				85B4CD8B20D23E2F005A6DA9 /* LaunchScreen.storyboard */,
 				85CAE22420D5C531002CD128 /* CI2Go.entitlements */,
 				85CAE22520D5C604002CD128 /* CI2Go-Bridging-Header.h */,
@@ -1394,6 +1424,7 @@
 				85CAE1DC20D5BAE2002CD128 /* PaulMillr.itermcolors in Resources */,
 				85CAE1B620D5BAE2002CD128 /* Monokai Soda.itermcolors in Resources */,
 				85CAE21D20D5BAE2002CD128 /* SourceCodePro-Semibold.ttf in Resources */,
+				8582285220E5E6B60092B8CF /* login-github.com.js in Resources */,
 				85CAE20220D5BAE2002CD128 /* Seti.itermcolors in Resources */,
 				85CAE21820D5BAE2002CD128 /* Treehouse.itermcolors in Resources */,
 				85CAE1DB20D5BAE2002CD128 /* Solarized Darcula.itermcolors in Resources */,
@@ -1426,6 +1457,7 @@
 				85CAE1E920D5BAE2002CD128 /* Earthsong.itermcolors in Resources */,
 				85CAE20120D5BAE2002CD128 /* NightLion v1.itermcolors in Resources */,
 				85CAE1AC20D5BAE2002CD128 /* Zenburn.itermcolors in Resources */,
+				8582285420E5E8630092B8CF /* login-bitbucket.org.js in Resources */,
 				856609BB20D9685300557249 /* ColorSchemeTableViewCell.xib in Resources */,
 				85CAE1E620D5BAE2002CD128 /* Wombat.itermcolors in Resources */,
 				85CAE1F120D5BAE2002CD128 /* Red Sands.itermcolors in Resources */,
@@ -1438,10 +1470,11 @@
 				85CAE20420D5BAE2002CD128 /* Spring.itermcolors in Resources */,
 				85CAE21420D5BAE2002CD128 /* LiquidCarbonTransparentInverse.itermcolors in Resources */,
 				85CAE21E20D5BAE2002CD128 /* SourceCodePro-Medium.ttf in Resources */,
-				8566098120D82C9800557249 /* APITokenCaptionView.xib in Resources */,
+				8582284C20E5D6B50092B8CF /* fetchToken.js in Resources */,
 				85CAE1CF20D5BAE2002CD128 /* Shaman.itermcolors in Resources */,
 				85CAE1DD20D5BAE2002CD128 /* Belafonte Day.itermcolors in Resources */,
 				856609B520D8F84D00557249 /* LoadingCell.xib in Resources */,
+				8582285820E5F01A0092B8CF /* 1Password.xcassets in Resources */,
 				85CAE22020D5BAE2002CD128 /* SourceCodePro-Black.ttf in Resources */,
 				85CAE21220D5BAE2002CD128 /* Symfonic.itermcolors in Resources */,
 				85CAE1D420D5BAE2002CD128 /* Lavandula.itermcolors in Resources */,
@@ -1703,6 +1736,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/TaskQueue.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Dwifft.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OnePasswordExtension.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -1714,6 +1748,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Starscream.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Dwifft.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OnePasswordExtension.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1738,6 +1773,7 @@
 				85CAE22B20D5C62D002CD128 /* AMR_ANSIEscapeHelper.m in Sources */,
 				853D1A6B20D6BEAC00C7F4FC /* PusherExtension.swift in Sources */,
 				8566096920D7405C00557249 /* BuildsViewController.swift in Sources */,
+				8582284E20E5DA630092B8CF /* UIBarButtonItemExtension.swift in Sources */,
 				853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */,
 				85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */,
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
@@ -1750,12 +1786,14 @@
 				85CAE26F20D629B3002CD128 /* Branch.swift in Sources */,
 				856609B320D8F5D200557249 /* LoadingCell.swift in Sources */,
 				8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */,
+				8582284720E5C8DB0092B8CF /* LoginViewController.swift in Sources */,
 				85CAE26D20D62876002CD128 /* Project.swift in Sources */,
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
 				8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */,
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
 				85CAE25220D5F5C5002CD128 /* Commit.swift in Sources */,
 				8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
+				8582285020E5E1F90092B8CF /* AuthProvider.swift in Sources */,
 				8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */,
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */,
@@ -1771,6 +1809,7 @@
 				853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */,
 				8504A06C20DB9733001D0C08 /* UIScrollViewExtension.swift in Sources */,
 				856609CD20D9C04600557249 /* DateDecoder.swift in Sources */,
+				8582284920E5CF3E0092B8CF /* LoginProviderTableViewCell.swift in Sources */,
 				8566096F20D7409000557249 /* SettingsViewController.swift in Sources */,
 				85CAE24420D5EDB9002CD128 /* Build.Status.swift in Sources */,
 				85CAE26020D61564002CD128 /* UIColor+Interpolation.swift in Sources */,
@@ -1789,7 +1828,6 @@
 				853D1A6920D6B91100C7F4FC /* KeychainExtension.swift in Sources */,
 				8566097320D8051600557249 /* ColorSchemeTableViewCell.swift in Sources */,
 				85CAE24820D5EFBE002CD128 /* User.swift in Sources */,
-				8566097F20D82C8300557249 /* APITokenCaptionView.swift in Sources */,
 				85CAE25A20D60023002CD128 /* BuildStep.swift in Sources */,
 				85CAE25E20D60F36002CD128 /* Workflow.swift in Sources */,
 				85CAE23920D5E944002CD128 /* StringExtension.swift in Sources */,

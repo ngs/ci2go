@@ -9,17 +9,9 @@
 import UIKit
 
 class SettingsTableView: UITableView {
-    @IBOutlet weak var apiTokenField: UITextField!
 
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = ColorScheme.current.background
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if apiTokenField.isFirstResponder {
-            apiTokenField.resignFirstResponder()
-        }
-        super.touchesBegan(touches, with: event)
     }
 }

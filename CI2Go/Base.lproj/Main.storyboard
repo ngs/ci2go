@@ -165,97 +165,75 @@
             </objects>
             <point key="canvasLocation" x="2758" y="799"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="EMf-QX-jns">
+            <objects>
+                <viewController id="jFv-Z8-15x" customClass="LoginViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QaR-tW-T37"/>
+                        <viewControllerLayoutGuide type="bottom" id="dJB-5l-Sa3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pw2-oB-54d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhf-Pv-XRd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dhf-Pv-XRd" firstAttribute="top" secondItem="pw2-oB-54d" secondAttribute="top" id="9B5-OE-V76"/>
+                            <constraint firstItem="dhf-Pv-XRd" firstAttribute="leading" secondItem="pw2-oB-54d" secondAttribute="leading" id="mid-Ik-frw"/>
+                            <constraint firstAttribute="trailing" secondItem="dhf-Pv-XRd" secondAttribute="trailing" id="qC5-be-ZaR"/>
+                            <constraint firstAttribute="bottom" secondItem="dhf-Pv-XRd" secondAttribute="bottom" id="rDp-gk-Lug"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="x8M-qy-qkk"/>
+                    <connections>
+                        <outlet property="webView" destination="dhf-Pv-XRd" id="Ikg-Hf-5oQ"/>
+                        <segue destination="Si0-9Z-dq0" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="3cy-TD-isN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UkQ-Jz-Sds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Si0-9Z-dq0" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2865" y="-1408"/>
+        </scene>
         <!--Settings-->
         <scene sceneID="o9g-kd-3rk">
             <objects>
                 <tableViewController id="o99-g4-N94" customClass="SettingsViewController" customModule="CI2Go" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ynp-4Z-Rx5" customClass="SettingsTableView" customModule="CI2Go" customModuleProvider="target">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ynp-4Z-Rx5" customClass="SettingsTableView" customModule="CI2Go" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <sections>
-                            <tableViewSection headerTitle="API Token" id="KdI-pV-IAd">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="Sl9-la-Eoi">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sl9-la-Eoi" id="OeM-aH-gZA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="API Token" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qRQ-5I-Wfp">
-                                                    <rect key="frame" x="15" y="0.0" width="360" height="50"/>
-                                                    <accessibility key="accessibilityConfiguration" identifier="APITokenField"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="point" keyPath="padding">
-                                                            <point key="value" x="15" y="0.0"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="APITokenField"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="o99-g4-N94" id="rWj-xF-65e"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="qRQ-5I-Wfp" firstAttribute="leading" secondItem="OeM-aH-gZA" secondAttribute="leading" constant="15" id="Icc-TT-skF"/>
-                                                <constraint firstAttribute="bottom" secondItem="qRQ-5I-Wfp" secondAttribute="bottom" id="fSj-YS-z5R"/>
-                                                <constraint firstItem="qRQ-5I-Wfp" firstAttribute="top" secondItem="OeM-aH-gZA" secondAttribute="top" id="ssZ-aR-wA1"/>
-                                                <constraint firstItem="qRQ-5I-Wfp" firstAttribute="trailing" secondItem="OeM-aH-gZA" secondAttribute="trailing" id="z9r-n1-WNV"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <accessibility key="accessibilityConfiguration" label="APITokenFieldCell">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Color scheme" id="MXw-A6-7GM">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="V3f-xG-6VP">
-                                        <rect key="frame" x="0.0" y="153.5" width="375" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V3f-xG-6VP" id="Wk9-e8-SSQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <accessibility key="accessibilityConfiguration" label="ColorSchemeCell">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <sections/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="SettingsTableView"/>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <outlet property="apiTokenField" destination="qRQ-5I-Wfp" id="cMM-MB-RR1"/>
                             <outlet property="dataSource" destination="o99-g4-N94" id="pio-aN-BXM"/>
                             <outlet property="delegate" destination="o99-g4-N94" id="QXY-zp-Cd1"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="7QS-oZ-PhE">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2ma-OM-mQY">
-                            <connections>
-                                <segue destination="DU2-Qy-CPV" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="5WD-Nm-HBI"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="iFw-Sh-YF5">
                             <connections>
-                                <action selector="doneButtonTapped:" destination="o99-g4-N94" id="4ha-8M-bZX"/>
+                                <segue destination="DU2-Qy-CPV" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="Dly-nH-Grc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="apiTokenField" destination="qRQ-5I-Wfp" id="4l0-oY-gu0"/>
-                        <outlet property="cancelButtonItem" destination="2ma-OM-mQY" id="5k2-Xa-m9S"/>
                         <outlet property="doneButtonItem" destination="iFw-Sh-YF5" id="oou-UU-n3B"/>
                         <segue destination="U6Z-Nj-zJd" kind="show" identifier="showThemeList" id="oNf-gd-Dfk"/>
+                        <segue destination="jFv-Z8-15x" kind="show" identifier="login" id="OwW-jh-CH6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZx-1I-lP4" userLabel="First Responder" sceneMemberID="firstResponder"/>

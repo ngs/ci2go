@@ -19,7 +19,26 @@ class CustomTableViewCell: UITableViewCell {
             accessibilityIdentifier = type(of: self).identifier
             isAccessibilityElement = true
         }
+        setupBackground()
+    }
 
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupBackground()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupBackground()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundView?.backgroundColor = ColorScheme.current.background
+        selectedBackgroundView?.backgroundColor = ColorScheme.current.tableViewCellSelectedBackground
+    }
+
+    private func setupBackground() {
         let backgroundView = UIView()
         backgroundView.backgroundColor = ColorScheme.current.background
         self.backgroundView = backgroundView
@@ -27,11 +46,5 @@ class CustomTableViewCell: UITableViewCell {
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = ColorScheme.current.tableViewCellSelectedBackground
         self.selectedBackgroundView = selectedBackgroundView
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        backgroundView?.backgroundColor = ColorScheme.current.background
-        selectedBackgroundView?.backgroundColor = ColorScheme.current.tableViewCellSelectedBackground
     }
 }
