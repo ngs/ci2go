@@ -1,4 +1,5 @@
 - Performance improvement
+- Update login flow to use Single Sign-On instead of filling API Token
 - Refine artifacts browser
 - iPhone X support
 - Apple Watch Complications support
