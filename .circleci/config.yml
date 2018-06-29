@@ -112,10 +112,10 @@ workflows:
       - tests:
           filters:
             branches:
-              ignore: /screenshots.*/
+              ignore:
+                - /screenshots.*/
+                - /metadata.*/
       - screenshots:
-          requires:
-            - tests
           filters:
             branches:
               only: /screenshots.*/
