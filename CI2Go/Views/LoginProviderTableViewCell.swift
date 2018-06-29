@@ -11,7 +11,7 @@ import UIKit
 class LoginProviderTableViewCell: CustomTableViewCell {
     static let loginCellIdentifier = "LoginProviderTableViewCell"
 
-    var provider: LoginViewController.Provider? = nil {
+    var provider: AuthProvider? = nil {
         didSet {
             textLabel?.text = provider?.label
             imageView?.image = provider?.image

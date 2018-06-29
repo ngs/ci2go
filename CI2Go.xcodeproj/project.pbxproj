@@ -202,6 +202,7 @@
 		8582284920E5CF3E0092B8CF /* LoginProviderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */; };
 		8582284C20E5D6B50092B8CF /* fetchToken.js in Resources */ = {isa = PBXBuildFile; fileRef = 8582284B20E5D6B50092B8CF /* fetchToken.js */; };
 		8582284E20E5DA630092B8CF /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284D20E5DA630092B8CF /* UIBarButtonItemExtension.swift */; };
+		8582285020E5E1F90092B8CF /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284F20E5E1F90092B8CF /* AuthProvider.swift */; };
 		85AF4B6320E091220040214B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF4B6220E091220040214B /* SnapshotHelper.swift */; };
 		85B30E6720DF365C00CC7876 /* Build+Complication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6620DF365C00CC7876 /* Build+Complication.swift */; };
 		85B30E6920DFFB2300CC7876 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B30E6820DFFB2300CC7876 /* UserInfo.swift */; };
@@ -538,6 +539,7 @@
 		8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProviderTableViewCell.swift; sourceTree = "<group>"; };
 		8582284B20E5D6B50092B8CF /* fetchToken.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = fetchToken.js; sourceTree = "<group>"; };
 		8582284D20E5DA630092B8CF /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
+		8582284F20E5E1F90092B8CF /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		85AF4B6220E091220040214B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85B30E6620DF365C00CC7876 /* Build+Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+Complication.swift"; sourceTree = "<group>"; };
 		85B30E6820DFFB2300CC7876 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -1151,6 +1153,7 @@
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85F93BF120DDD58500327DE9 /* VCS+Image.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
+				8582284F20E5E1F90092B8CF /* AuthProvider.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1772,6 +1775,7 @@
 				853D1A6520D6B34A00C7F4FC /* UserDefaultsExtension.swift in Sources */,
 				85CAE25220D5F5C5002CD128 /* Commit.swift in Sources */,
 				8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
+				8582285020E5E1F90092B8CF /* AuthProvider.swift in Sources */,
 				8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */,
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */,

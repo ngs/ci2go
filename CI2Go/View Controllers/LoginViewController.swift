@@ -14,43 +14,7 @@ import WatchConnectivity
 class LoginViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
 
-    enum Provider: Int {
-        case github = 0
-        case bitbucket = 1
-
-        var name: String {
-            switch self {
-            case .github:
-                return "GitHub"
-            case .bitbucket:
-                return "BitBucket"
-            }
-        }
-
-        var image: UIImage {
-            switch self {
-            case .github:
-                return #imageLiteral(resourceName: "github")
-            case .bitbucket:
-                return #imageLiteral(resourceName: "bitbucket")
-            }
-        }
-
-        var url: URL {
-            switch self {
-            case .github:
-                return URL(string: "https://circleci.com/login?return-to=https://circleci.com/account/api")!
-            default:
-                return URL(string: "https://circleci.com/bitbucket-login?return-to=https://circleci.com/account/api")!
-            }
-        }
-
-        var label: String {
-            return "Login with \(name)"
-        }
-    }
-
-    var provider: Provider!
+    var provider: AuthProvider!
 
     lazy var fetchTokenJS: String = {
         return try! String(contentsOf: Bundle.main.url(forResource: "fetchToken", withExtension: "js")!)

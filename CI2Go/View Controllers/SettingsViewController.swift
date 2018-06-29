@@ -67,7 +67,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: LoginProviderTableViewCell.identifier) as! LoginProviderTableViewCell
-        cell.provider = LoginViewController.Provider(rawValue: indexPath.row)!
+        cell.provider = AuthProvider(rawValue: indexPath.row)!
         return cell
     }
 
