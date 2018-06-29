@@ -159,7 +159,10 @@ class BuildsViewController: UITableViewController {
         URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, _, err) in
             guard let user = user else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
-                DispatchQueue.main.async { self?.showSettings() }
+                DispatchQueue.main.async {
+                    Keychain.shared.token = nil
+                    self?.showSettings()
+                }
                 return
             }
             self?.currentUser = user

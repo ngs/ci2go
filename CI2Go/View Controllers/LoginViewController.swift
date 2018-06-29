@@ -10,14 +10,20 @@ import UIKit
 import WebKit
 import KeychainAccess
 import WatchConnectivity
+import OnePasswordExtension
+import Crashlytics
 
 class LoginViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
 
     var provider: AuthProvider!
 
+    func loadScript(name: String) -> String {
+        return try! String(contentsOf: Bundle.main.url(forResource: name, withExtension: "js")!)
+    }
+
     lazy var fetchTokenJS: String = {
-        return try! String(contentsOf: Bundle.main.url(forResource: "fetchToken", withExtension: "js")!)
+        return loadScript(name: "fetchToken")
     }()
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -53,12 +59,59 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         webView.load(req)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        webView.stopLoading()
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        guard let url = webView.url, url.host == "circleci.com" else {
-            navigationItem.rightBarButtonItem = nil
+        guard let url = webView.url, let host = url.host else { return }
+        if host == "circleci.com" {
+            let js = fetchTokenJS + "('\(UIDevice.current.name) (\(UIDevice.current.systemName) \(UIDevice.current.systemVersion))')"
+            webView.evaluateJavaScript(js, completionHandler: { (res, err) in
+                if let err = err {
+                    Crashlytics.sharedInstance().recordError(err)
+                }
+            })
             return
         }
-        webView.evaluateJavaScript(fetchTokenJS + "('\(UIDevice.current.name) (\(UIDevice.current.systemName) \(UIDevice.current.systemVersion))')")
+        if ["github.com", "bitbucket.org"].contains(host) && OnePasswordExtension.shared().isAppExtensionAvailable() {
+            let item = UIBarButtonItem(image: #imageLiteral(resourceName: "onepassword-navbar"), style: .plain, target: self, action: #selector(openPasswordManager(_:)))
+            navigationItem.rightBarButtonItem = item
+            return
+        }
+        navigationItem.rightBarButtonItem = nil
+    }
+
+    @objc func openPasswordManager(_ sender: Any?) {
+        guard
+            let urlString = webView.url?.absoluteString,
+            let host = webView.url?.host,
+            ["github.com", "bitbucket.org"].contains(host)
+            else { return }
+        OnePasswordExtension.shared().findLogin(forURLString: urlString, for: self, sender: sender) { (data, err) in
+            if let err = err {
+                Crashlytics.sharedInstance().recordError(err)
+            }
+            guard
+                let data = data,
+                let username = data["username"] as? String,
+                let password = data["password"] as? String
+                else { return }
+            let js = self.loadScript(name: "login-\(host)") + "('\(username)', '\(password)')"
+            self.webView.evaluateJavaScript(js, completionHandler: { (res, err) in
+                if let err = err {
+                    Crashlytics.sharedInstance().recordError(err)
+                }
+                if let res = res as? String, res != "OK" {
+                    self.webView.evaluateJavaScript(res, completionHandler: { (_, err) in
+                        if let err = err {
+                            Crashlytics.sharedInstance().recordError(err)
+                        }
+                    })
+                }
+            })
+        }
     }
 
 }
