@@ -103,7 +103,10 @@ class BuildsViewController: UITableViewController {
         foregroundObserver = NotificationCenter.default.addObserver(
             forName: Notification.Name.UIApplicationWillEnterForeground,
             object: nil,
-            queue: nil) { [weak self] _ in self?.loadUser() }
+            queue: nil) { [weak self] _ in
+                self?.loadUser()
+                self?.loadBuilds()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
