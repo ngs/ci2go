@@ -112,6 +112,7 @@ class BuildsViewController: UITableViewController {
         if let foregroundObserver = foregroundObserver {
             NotificationCenter.default.removeObserver(foregroundObserver)
         }
+        foregroundObserver = nil
     }
 
     override func viewDidLoad() {

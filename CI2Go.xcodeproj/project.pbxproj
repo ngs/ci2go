@@ -16,6 +16,7 @@
 		8504A07620DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */; };
 		8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */; };
 		8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
+		852350ED20E61A91005BD0E8 /* Hostname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852350EC20E61A91005BD0E8 /* Hostname.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		8533DE1120DE368F00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */; };
 		8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
@@ -220,6 +221,8 @@
 		85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE576A20DDFF4F004C92DA /* Artifact+File.swift */; };
 		85BE576C20DDFF7E004C92DA /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
 		85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
+		85C6618E20E61F05007B58CD /* totp-github.com.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618D20E61F05007B58CD /* totp-github.com.js */; };
+		85C6619020E61F12007B58CD /* totp-bitbucket.org.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */; };
 		85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11D20D5B74E002CD128 /* Reachability.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -483,6 +486,7 @@
 		8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildArtifactTableViewCell.xib; sourceTree = "<group>"; };
 		8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQuickLookDataSource.swift; sourceTree = "<group>"; };
 		8504A09920DC1DB5001D0C08 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		852350EC20E61A91005BD0E8 /* Hostname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hostname.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
@@ -564,6 +568,8 @@
 		85B4CDA220D23E30005A6DA9 /* CI2GoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CI2GoUITests.swift; sourceTree = "<group>"; };
 		85B4CDA420D23E30005A6DA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85BE576A20DDFF4F004C92DA /* Artifact+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artifact+File.swift"; sourceTree = "<group>"; };
+		85C6618D20E61F05007B58CD /* totp-github.com.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-github.com.js"; sourceTree = "<group>"; };
+		85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-bitbucket.org.js"; sourceTree = "<group>"; };
 		85CAE11D20D5B74E002CD128 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		85CAE11F20D5B74E002CD128 /* FileKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileKit.framework; path = Carthage/Build/iOS/FileKit.framework; sourceTree = "<group>"; };
@@ -840,6 +846,8 @@
 				8582285320E5E8620092B8CF /* login-bitbucket.org.js */,
 				8582285120E5E6B60092B8CF /* login-github.com.js */,
 				8582284B20E5D6B50092B8CF /* fetchToken.js */,
+				85C6618D20E61F05007B58CD /* totp-github.com.js */,
+				85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1160,6 +1168,7 @@
 				856609CC20D9C04600557249 /* DateDecoder.swift */,
 				853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */,
 				8566098620D83EE100557249 /* Error.swift */,
+				852350EC20E61A91005BD0E8 /* Hostname.swift */,
 				85CAE26C20D62876002CD128 /* Project.swift */,
 				8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */,
 				85CAE24720D5EFBE002CD128 /* User.swift */,
@@ -1458,6 +1467,7 @@
 				85CAE20120D5BAE2002CD128 /* NightLion v1.itermcolors in Resources */,
 				85CAE1AC20D5BAE2002CD128 /* Zenburn.itermcolors in Resources */,
 				8582285420E5E8630092B8CF /* login-bitbucket.org.js in Resources */,
+				85C6618E20E61F05007B58CD /* totp-github.com.js in Resources */,
 				856609BB20D9685300557249 /* ColorSchemeTableViewCell.xib in Resources */,
 				85CAE1E620D5BAE2002CD128 /* Wombat.itermcolors in Resources */,
 				85CAE1F120D5BAE2002CD128 /* Red Sands.itermcolors in Resources */,
@@ -1525,6 +1535,7 @@
 				85CAE1BE20D5BAE2002CD128 /* Belafonte Night.itermcolors in Resources */,
 				85CAE1CD20D5BAE2002CD128 /* Espresso.itermcolors in Resources */,
 				85CAE1EA20D5BAE2002CD128 /* Grass.itermcolors in Resources */,
+				85C6619020E61F12007B58CD /* totp-bitbucket.org.js in Resources */,
 				85CAE1AA20D5BAE2002CD128 /* Hybrid.itermcolors in Resources */,
 				85CAE1D120D5BAE2002CD128 /* FishTank.itermcolors in Resources */,
 				85CAE1F920D5BAE2002CD128 /* LiquidCarbon.itermcolors in Resources */,
@@ -1831,6 +1842,7 @@
 				85CAE25A20D60023002CD128 /* BuildStep.swift in Sources */,
 				85CAE25E20D60F36002CD128 /* Workflow.swift in Sources */,
 				85CAE23920D5E944002CD128 /* StringExtension.swift in Sources */,
+				852350ED20E61A91005BD0E8 /* Hostname.swift in Sources */,
 				85CAE23520D5E8E8002CD128 /* Build.swift in Sources */,
 				85CAE26420D619B9002CD128 /* ColorScheme+ANSI.swift in Sources */,
 				85F93BF820DDEECF00327DE9 /* Build.Status+Color.swift in Sources */,
