@@ -160,10 +160,12 @@ class BuildsViewController: UITableViewController {
     }
 
     func loadUser() {
-        URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, _, err) in
+        URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, res, err) in
             guard let user = user else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
-                self?.logout()
+                if let res = res as? HTTPURLResponse, res.statusCode == 401 {
+                    self?.logout()
+                }
                 return
             }
             self?.currentUser = user
