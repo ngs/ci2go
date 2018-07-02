@@ -388,6 +388,8 @@
 		85CAE26F20D629B3002CD128 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
 		85CAE27120D62AA9002CD128 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE27020D62AA9002CD128 /* projects.json */; };
 		85CAE27320D63429002CD128 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
+		85D9053620EAE88100CBF5B6 /* SettingsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */; };
+		85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */; };
 		85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */; };
 		85F93BB420DDCD0500327DE9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB220DDCD0500327DE9 /* Interface.storyboard */; };
 		85F93BB620DDCD0600327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB520DDCD0600327DE9 /* Assets.xcassets */; };
@@ -740,6 +742,8 @@
 		85CAE26E20D629B3002CD128 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85CAE27020D62AA9002CD128 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85CAE27220D63429002CD128 /* Artifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
+		85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsFooterView.xib; sourceTree = "<group>"; };
+		85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactDownloadManager.swift; sourceTree = "<group>"; };
 		85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2GoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F93BB320DDCD0500327DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -841,6 +845,8 @@
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
 				8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */,
+				85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */,
+				85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1541,6 +1547,7 @@
 				85CAE1B520D5BAE2002CD128 /* 3024 Day.itermcolors in Resources */,
 				85CAE1BE20D5BAE2002CD128 /* Belafonte Night.itermcolors in Resources */,
 				85CAE1CD20D5BAE2002CD128 /* Espresso.itermcolors in Resources */,
+				85D9053620EAE88100CBF5B6 /* SettingsFooterView.xib in Resources */,
 				85CAE1EA20D5BAE2002CD128 /* Grass.itermcolors in Resources */,
 				85C6619020E61F12007B58CD /* totp-bitbucket.org.js in Resources */,
 				85CAE1AA20D5BAE2002CD128 /* Hybrid.itermcolors in Resources */,
@@ -1841,6 +1848,7 @@
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
 				85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */,
+				85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
 				8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */,
 				856609AF20D8D58700557249 /* DateExtension.swift in Sources */,
