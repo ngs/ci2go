@@ -36,6 +36,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>ssh</string>
 		<string>org-appextension-feature-password-management</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>

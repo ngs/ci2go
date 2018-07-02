@@ -223,6 +223,9 @@
 		85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
 		85C6618E20E61F05007B58CD /* totp-github.com.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618D20E61F05007B58CD /* totp-github.com.js */; };
 		85C6619020E61F12007B58CD /* totp-bitbucket.org.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */; };
+		85C6619220EAB995007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
+		85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
+		85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619420EACBCE007B58CD /* Build+UIKit.swift */; };
 		85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11D20D5B74E002CD128 /* Reachability.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -570,6 +573,8 @@
 		85BE576A20DDFF4F004C92DA /* Artifact+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artifact+File.swift"; sourceTree = "<group>"; };
 		85C6618D20E61F05007B58CD /* totp-github.com.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-github.com.js"; sourceTree = "<group>"; };
 		85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-bitbucket.org.js"; sourceTree = "<group>"; };
+		85C6619120EAB995007B58CD /* BuildNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNode.swift; sourceTree = "<group>"; };
+		85C6619420EACBCE007B58CD /* Build+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+UIKit.swift"; sourceTree = "<group>"; };
 		85CAE11D20D5B74E002CD128 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		85CAE11F20D5B74E002CD128 /* FileKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileKit.framework; path = Carthage/Build/iOS/FileKit.framework; sourceTree = "<group>"; };
@@ -1155,10 +1160,12 @@
 				85CAE24320D5EDB9002CD128 /* Build.Status.swift */,
 				85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */,
 				85CAE23420D5E8E8002CD128 /* Build.swift */,
+				85C6619420EACBCE007B58CD /* Build+UIKit.swift */,
 				85CAE26120D61909002CD128 /* BuildAction.Status.swift */,
 				85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */,
 				85CAE25720D60017002CD128 /* BuildAction.swift */,
 				856D904520DAB5770030F432 /* BuildLog.swift */,
+				85C6619120EAB995007B58CD /* BuildNode.swift */,
 				85CAE25920D60023002CD128 /* BuildStep.swift */,
 				85CAE23020D5DBEB002CD128 /* ColorScheme.swift */,
 				85CAE26320D619B9002CD128 /* ColorScheme+ANSI.swift */,
@@ -1776,6 +1783,7 @@
 				8566097620D805BB00557249 /* BuildActionTableViewCell.swift in Sources */,
 				8566096120D72B7700557249 /* BranchesViewController.swift in Sources */,
 				853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */,
+				85C6619220EAB995007B58CD /* BuildNode.swift in Sources */,
 				85CAE24620D5EDD4002CD128 /* Build.Outcome.swift in Sources */,
 				8504A07220DBD67D001D0C08 /* BuildArtifactsViewController.swift in Sources */,
 				856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */,
@@ -1832,6 +1840,7 @@
 				85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
+				85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
 				8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */,
 				856609AF20D8D58700557249 /* DateExtension.swift in Sources */,
@@ -1919,6 +1928,7 @@
 				85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */,
 				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
 				8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
+				85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */,
 				8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */,
 				85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */,
 				8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */,

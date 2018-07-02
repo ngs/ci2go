@@ -342,14 +342,14 @@
                                     <segue destination="ThN-66-8OR" kind="showDetail" identifier="showBuildConfig" id="RQ9-cP-lH8"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtifactsCell" textLabel="bxv-tS-C1L" style="IBUITableViewCellStyleDefault" id="nW4-7K-LR9" customClass="CustomTableViewCell" customModule="CI2Go" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ArtifactsCell" textLabel="bd3-gE-wYO" style="IBUITableViewCellStyleDefault" id="lHH-kK-mxZ" customClass="CustomTableViewCell" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="102" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nW4-7K-LR9" id="T6p-YO-yKX">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lHH-kK-mxZ" id="Xrp-oh-Jda">
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Build Artifacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bxv-tS-C1L">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Build Artifacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bd3-gE-wYO">
                                             <rect key="frame" x="16" y="0.0" width="324" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -362,8 +362,35 @@
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                                 <connections>
-                                    <segue destination="IRc-aj-agi" kind="show" identifier="showBuildArtifacts" id="ihs-SO-Lac"/>
+                                    <segue destination="IRc-aj-agi" kind="show" identifier="showBuildArtifacts" id="Vfo-nN-N4x"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SSHCell" textLabel="bxv-tS-C1L" detailTextLabel="I3H-u7-yHd" style="IBUITableViewCellStyleSubtitle" id="nW4-7K-LR9" customClass="CustomTableViewCell" customModule="CI2Go" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="182" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nW4-7K-LR9" id="T6p-YO-yKX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Container 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bxv-tS-C1L">
+                                            <rect key="frame" x="16" y="20" width="89.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="user@foo:1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I3H-u7-yHd">
+                                            <rect key="frame" x="16" y="43.5" width="86" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="BuildArtifactsCell">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                             </tableViewCell>
                         </prototypes>
                         <userDefinedRuntimeAttributes>
