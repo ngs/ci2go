@@ -31,6 +31,7 @@ struct Build: Decodable, EndpointConvertable {
     let configuration: String
     let isPlatformV2: Bool
     let hasArtifacts: Bool
+    let nodes: [BuildNode]
     
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -53,6 +54,8 @@ struct Build: Decodable, EndpointConvertable {
         case configuration = "circle_yml"
         case platform = "platform"
         case hasArtifacts = "has_artifacts"
+        case nodes = "node"
+        case picard = "picard"
     }
     
     public init(from decoder: Decoder) throws {
@@ -95,6 +98,14 @@ struct Build: Decodable, EndpointConvertable {
         }
         let workflow = try? values.decode(Workflow.self, forKey: .workflow)
         jobName = (try? values.decode(String.self, forKey: .jobName)) ?? workflow?.jobName
+        if let nodes = try? values.decode([BuildNode].self, forKey: .nodes) {
+            self.nodes = nodes
+        } else if
+            let picard = try? values.decode(Picard.self, forKey: .picard) {
+            self.nodes = picard.nodes
+        } else {
+            self.nodes = []
+        }
         self.body = body
         self.commits = commits
         self.workflow = workflow
@@ -121,6 +132,7 @@ struct Build: Decodable, EndpointConvertable {
         configuration = ""
         isPlatformV2 = false
         hasArtifacts = false
+        nodes = []
     }
 
     init(build: Build, newSteps: [BuildStep]) {
@@ -144,6 +156,7 @@ struct Build: Decodable, EndpointConvertable {
         configuration = build.configuration
         isPlatformV2 = build.isPlatformV2
         hasArtifacts = build.hasArtifacts
+        nodes = build.nodes
     }
 
     func build(withNewActionStatus status: BuildAction.Status, in nodeIndex:  Int, step: Int) -> Build {
@@ -189,6 +202,26 @@ struct Build: Decodable, EndpointConvertable {
 
     var configurationName: String {
         return isPlatformV2 ? ".circleci/config.yml" : "circle.yml"
+    }
+
+    var isSSHEnabled: Bool {
+        return nodes.first(where: { $0.isSSHEnabled })?.isSSHEnabled ?? false
+    }
+
+    var sshURLs: [URL] {
+        return nodes
+            .filter { $0.isSSHEnabled }
+            .map { $0.sshURL }
+    }
+}
+
+extension Build {
+    struct Picard: Decodable {
+        let nodes: [BuildNode]
+
+        enum CodingKeys: String, CodingKey {
+            case nodes = "ssh_servers"
+        }
     }
 }
 
