@@ -25,22 +25,27 @@ Set Build Number to CIRCLE_BUILD_NUM
 ```
 fastlane ios tests
 ```
-
+Run tests
 ### ios beta
 ```
 fastlane ios beta
 ```
-
+Publish app to Fabric Beta
 ### ios release
 ```
 fastlane ios release
 ```
-
+Publish app to App Store
 ### ios screenshots
 ```
 fastlane ios screenshots
 ```
-
+Take screenshots
+### ios increment_minor_version
+```
+fastlane ios increment_minor_version
+```
+Increment minor version
 
 ----
 

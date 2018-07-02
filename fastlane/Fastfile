@@ -11,11 +11,13 @@ platform :ios do
     )
   end
 
+  desc 'Run tests'
   lane :tests do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     run_tests
   end
 
+  desc 'Publish app to Fabric Beta'
   lane :beta do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
@@ -33,6 +35,7 @@ platform :ios do
     )
   end
 
+  desc 'Publish app to App Store'
   lane :release do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
@@ -65,9 +68,14 @@ platform :ios do
     )
   end
 
+  desc 'Take screenshots'
   lane :screenshots do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     capture_screenshots
   end
 
+  desc 'Increment minor version'
+  lane :increment_minor_version do
+    increment_version_number bump_type: 'minor'
+  end
 end
