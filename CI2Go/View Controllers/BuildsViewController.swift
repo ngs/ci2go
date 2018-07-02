@@ -124,6 +124,10 @@ class BuildsViewController: UITableViewController {
         tableView.register(UINib(nibName: BuildTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         builds = []
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadBuilds), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        self.refreshControl = refreshControl
         let d = UserDefaults.shared
         selected = (d.project, d.branch)
     }
@@ -154,6 +158,7 @@ class BuildsViewController: UITableViewController {
             values.append((1, [nil]))
         }
         diffCalculator?.sectionedValues = SectionedValues<Int, Build?>(values)
+        refreshControl?.endRefreshing()
         DispatchQueue.global().asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.isMutating = false
         }
@@ -206,7 +211,7 @@ class BuildsViewController: UITableViewController {
         performSegue(withIdentifier: .showSettings, sender: nil)
     }
 
-    func loadBuilds(more: Bool = false) {
+    @objc func loadBuilds(more: Bool = false) {
         if isLoading {
             return
         }

@@ -72,6 +72,8 @@ extension ColorScheme {
         buildActionSectionHeaderLabel.textColor = foreground
         buildActionSectionHeaderLabel.backgroundColor = .clear
 
+        UIRefreshControl.appearance().tintColor = foreground
+
         setAsCurrent()
         WCSession.default.transferColorScheme(colorScheme: self)
         resetViews()
