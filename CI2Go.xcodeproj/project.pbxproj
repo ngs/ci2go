@@ -732,7 +732,6 @@
 		8555C4F220EB8C6F003F5C93 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8555C4F520EB8C6F003F5C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		8555C4F720EB8C6F003F5C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8555C50120EB9023003F5C93 /* CI2Go.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CI2Go.xcodeproj; path = /Users/ngs/src/ci2go/CI2Go.xcodeproj; sourceTree = "<absolute>"; };
 		8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellStub.swift; sourceTree = "<group>"; };
 		8555C5B620EBA231003F5C93 /* CI2GoTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoTodayExtension.entitlements; sourceTree = "<group>"; };
 		8555C5B920EBB4CA003F5C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1190,7 +1189,6 @@
 				8582285520E5E9110092B8CF /* OnePasswordExtension.framework */,
 				8533DEA720DE5ECD00CA7E0C /* FileKit.framework */,
 				85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */,
-				8555C50120EB9023003F5C93 /* CI2Go.xcodeproj */,
 				856609AB20D8C3AE00557249 /* Dwifft.framework */,
 				853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */,
 				853D1A6220D6B2FF00C7F4FC /* Fabric.framework */,
