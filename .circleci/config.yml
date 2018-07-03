@@ -127,6 +127,8 @@ workflows:
   version: 2
   app:
     jobs:
+      - swiftlint
+      - danger
       - tests:
           requires:
             - swiftlint
