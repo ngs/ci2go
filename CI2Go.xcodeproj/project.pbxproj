@@ -358,6 +358,8 @@
 		8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DEAE20DF337200CA7E0C /* Build+Cache.swift */; };
 		8555C5BE20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5BD20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift */; };
 		8555C5C120EBC557003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5BF20EBC551003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift */; };
+		8555C5C320EBD5E2003F5C93 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */; };
+		8555C5C420EBD5EA003F5C93 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -741,6 +743,7 @@
 		8555C5B920EBB4CA003F5C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8555C5BD20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuildTableViewCell+Layout.swift"; sourceTree = "<group>"; };
 		8555C5BF20EBC551003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildTableViewCell+Layout+TodayExtension.swift"; sourceTree = "<group>"; };
+		8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
@@ -1393,6 +1396,7 @@
 			children = (
 				853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */,
 				856609AE20D8D58700557249 /* DateExtension.swift */,
+				8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */,
 				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
 				856609BE20D979B200557249 /* MBProgressHUDExtension.swift */,
 				853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */,
@@ -2253,6 +2257,7 @@
 			files = (
 				8555C57F20EB9054003F5C93 /* Build.Outcome.swift in Sources */,
 				8555C5A420EB9067003F5C93 /* UIFontExtension.swift in Sources */,
+				8555C5C420EBD5EA003F5C93 /* FileKitExtension.swift in Sources */,
 				8555C59520EB9054003F5C93 /* SingleQuickLookDataSource.swift in Sources */,
 				8555C57920EB9054003F5C93 /* AnyDecodable.swift in Sources */,
 				8555C59B20EB9067003F5C93 /* ArrayExtension.swift in Sources */,
@@ -2358,6 +2363,7 @@
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,
 				85CAE24A20D5F00F002CD128 /* VCS.swift in Sources */,
 				8566097720D805BB00557249 /* BuildTableViewCell.swift in Sources */,
+				8555C5C320EBD5E2003F5C93 /* FileKitExtension.swift in Sources */,
 				856609C220D98C6C00557249 /* ProjectTableViewCell.swift in Sources */,
 				853D1A5F20D6891E00C7F4FC /* ArrayExtension.swift in Sources */,
 				853D1A5120D639E000C7F4FC /* Endpoint.swift in Sources */,
