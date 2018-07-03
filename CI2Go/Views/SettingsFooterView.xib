@@ -38,11 +38,13 @@
                         <constraint firstAttribute="width" constant="260" id="qhP-j8-a6G"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CI2Go 2.1.0 (123) © 2014-2018 LittleApps Inc." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
-                    <rect key="frame" x="0.0" y="250" width="374" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
+                    <rect key="frame" x="0.0" y="230" width="374" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="dkH-LP-6G5"/>
+                        <constraint firstAttribute="height" constant="40" id="dkH-LP-6G5"/>
                     </constraints>
+                    <string key="text">CI2Go 2.1.0 (123)
+© 2014-2018 LittleApps Inc.</string>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

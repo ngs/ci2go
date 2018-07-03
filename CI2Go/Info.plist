@@ -41,6 +41,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2014-2018 LittleApps Inc. All Rights Reserved.</string>
 	<key>SharedAccessGroup</key>
 	<string>$(AppIdentifierPrefix)com.ci2go.shared</string>
 	<key>UIAppFonts</key>

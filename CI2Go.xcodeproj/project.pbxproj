@@ -390,6 +390,7 @@
 		85CAE27320D63429002CD128 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
 		85D9053620EAE88100CBF5B6 /* SettingsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */; };
 		85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */; };
+		85D9053D20EAF9D500CBF5B6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 85D9053C20EAF9D400CBF5B6 /* Settings.bundle */; };
 		85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */; };
 		85F93BB420DDCD0500327DE9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB220DDCD0500327DE9 /* Interface.storyboard */; };
 		85F93BB620DDCD0600327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB520DDCD0600327DE9 /* Assets.xcassets */; };
@@ -744,6 +745,7 @@
 		85CAE27220D63429002CD128 /* Artifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
 		85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsFooterView.xib; sourceTree = "<group>"; };
 		85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
+		85D9053C20EAF9D400CBF5B6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactDownloadManager.swift; sourceTree = "<group>"; };
 		85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2GoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F93BB320DDCD0500327DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -1208,6 +1210,7 @@
 		85CAE25C20D6060A002CD128 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				85D9053C20EAF9D400CBF5B6 /* Settings.bundle */,
 				8582285720E5F01A0092B8CF /* 1Password.xcassets */,
 				85B4CD8B20D23E2F005A6DA9 /* LaunchScreen.storyboard */,
 				85CAE22420D5C531002CD128 /* CI2Go.entitlements */,
@@ -1270,6 +1273,8 @@
 				85B4CD7D20D23E2D005A6DA9 /* Resources */,
 				85CAE12B20D5B758002CD128 /* Copy Carthage Frameworks */,
 				85F93BD720DDCD0700327DE9 /* Embed Watch Content */,
+				85D9053B20EAF8D900CBF5B6 /* Update License Plist */,
+				85D9053E20EAFB2B00CBF5B6 /* Update Root Plist in Settings Bundle */,
 			);
 			buildRules = (
 			);
@@ -1499,6 +1504,7 @@
 				856609B520D8F84D00557249 /* LoadingCell.xib in Resources */,
 				8582285820E5F01A0092B8CF /* 1Password.xcassets in Resources */,
 				85CAE22020D5BAE2002CD128 /* SourceCodePro-Black.ttf in Resources */,
+				85D9053D20EAF9D500CBF5B6 /* Settings.bundle in Resources */,
 				85CAE21220D5BAE2002CD128 /* Symfonic.itermcolors in Resources */,
 				85CAE1D420D5BAE2002CD128 /* Lavandula.itermcolors in Resources */,
 				85CAE22220D5BAE2002CD128 /* SourceCodePro-Regular.ttf in Resources */,
@@ -1778,6 +1784,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		85D9053B20EAF8D900CBF5B6 /* Update License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update License Plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n  /usr/local/bin/license-plist \\\n    --cartfile-path $SRCROOT/Cartfile \\\n    --output-path $PRODUCT_NAME/Settings.bundle \\\n    --suppress-opening-directory\nfi";
+		};
+		85D9053E20EAFB2B00CBF5B6 /* Update Root Plist in Settings Bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update Root Plist in Settings Bundle";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COPYRIGHT=$(/usr/libexec/PlistBuddy -c \"Print NSHumanReadableCopyright\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:0:FooterText ${COPYRIGHT}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nAPP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nBUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${BUILD_NUMBER}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

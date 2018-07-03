@@ -16,7 +16,7 @@ class SettingsFooterView: UIView {
         let info = Bundle.main.infoDictionary ?? [:]
         let version = info["CFBundleShortVersionString"] as! String
         let buildNum = info["CFBundleVersion"] as! String
-        let y = Calendar.current.component(.year, from: Date())
-        copyrightLabel.text = "CI2Go \(version) (\(buildNum)) © 2014-\(y) LittleApps Inc."
+        let copyright = info["NSHumanReadableCopyright"] as! String
+        copyrightLabel.text = "CI2Go \(version) (\(buildNum))\n\(copyright)"
     }
 }
