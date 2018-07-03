@@ -21,12 +21,12 @@ class CI2GoUITests: XCTestCase {
         setupSnapshot(app)
         app.launch()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
 
-    func testBuidList() {
+    func testBuidList() { // swiftlint:disable:this function_body_length
         let app = XCUIApplication()
         var element: XCUIElement!
 
@@ -122,5 +122,5 @@ class CI2GoUITests: XCTestCase {
 
         snapshot("4-Build-Config")
     }
-    
+
 }

@@ -9,15 +9,15 @@
 import UIKit
 
 enum SegueIdentifier: String {
-    case showSettings = "showSettings"
-    case showThemeList = "showThemeList"
-    case showBuildDetail = "showBuildDetail"
-    case showBuildLog = "showBuildLog"
-    case showBranches = "showBranches"
-    case unwindSegue = "unwindSegue"
-    case showBuildConfig = "showBuildConfig"
-    case showQuickLook = "showQuickLook"
-    case login = "login"
+    case showSettings
+    case showThemeList
+    case showBuildDetail
+    case showBuildLog
+    case showBranches
+    case unwindSegue
+    case showBuildConfig
+    case showQuickLook
+    case login
 }
 
 extension UIViewController {

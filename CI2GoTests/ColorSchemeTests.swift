@@ -10,13 +10,13 @@ import XCTest
 @testable import CI2Go
 
 class ColorSchemeTests: XCTestCase {
-    
+
     func testPerformanceExample() {
         self.measure {
             XCTAssertEqual(ColorScheme.names.count, 116)
         }
     }
-    
+
     func testNames() {
         XCTAssertEqual([
             "3024 Day", "3024 Night", "AdventureTime", "Afterglow", "AlienBlood", "Argonaut", "Arthur", "Atom",
@@ -25,15 +25,17 @@ class ColorSchemeTests: XCTestCase {
             "Desert", "DimmedMonokai", "Dracula", "Earthsong", "Elemental", "Espresso", "Espresso Libre", "FishTank",
             "Flat", "FrontEndDelight", "FunForrest", "Github", "Grape", "Grass", "Hardcore", "Harper", "Highway",
             "Hipster Green", "Homebrew", "Hurtado", "Hybrid", "IC_Green_PPL", "IC_Orange_PPL", "idleToes", "IR_Black",
-            "Jackie Brown", "Japanesque", "Jellybeans", "Kibble", "Lavandula", "LiquidCarbon", "LiquidCarbonTransparent",
-            "LiquidCarbonTransparentInverse", "Man Page", "Mathias", "Medallion", "Misterioso", "Molokai", "MonaLisa",
-            "Monokai Soda", "N0tch2k", "Neopolitan", "NightLion v1", "NightLion v2", "Novel", "Obsidian", "Ocean", "Ollie",
-            "Parasio Dark", "PaulMillr", "PencilDark", "PencilLight", "Pnevma", "Pro", "Red Alert", "Red Sands",
-            "Rippedcasts", "Royal", "Seafoam Pastel", "SeaShells", "Seti", "Shaman", "Smyck", "SoftServer", "Solarized Darcula",
-            "Solarized Dark", "Solarized Dark Higher Contrast", "Solarized Light", "Spacedust", "SpaceGray", "Spring",
+            "Jackie Brown", "Japanesque", "Jellybeans", "Kibble", "Lavandula", "LiquidCarbon",
+            "LiquidCarbonTransparent", "LiquidCarbonTransparentInverse", "Man Page", "Mathias", "Medallion",
+            "Misterioso", "Molokai", "MonaLisa", "Monokai Soda", "N0tch2k", "Neopolitan", "NightLion v1",
+            "NightLion v2", "Novel", "Obsidian", "Ocean", "Ollie", "Parasio Dark", "PaulMillr", "PencilDark",
+            "PencilLight", "Pnevma", "Pro", "Red Alert", "Red Sands", "Rippedcasts", "Royal", "Seafoam Pastel",
+            "SeaShells", "Seti", "Shaman", "Smyck", "SoftServer", "Solarized Darcula", "Solarized Dark",
+            "Solarized Dark Higher Contrast", "Solarized Light", "Spacedust", "SpaceGray", "Spring",
             "Square", "Sundried", "Symfonic", "Teerb", "Terminal Basic", "Thayer Bright", "Tomorrow", "Tomorrow Night",
-            "Tomorrow Night Blue", "Tomorrow Night Bright", "Tomorrow Night Eighties", "ToyChest", "Treehouse", "Twilight",
-            "Urple", "Vaughn", "VibrantInk", "WarmNeon", "Wez", "Wombat", "Wryan", "Zenburn"], ColorScheme.names)
+            "Tomorrow Night Blue", "Tomorrow Night Bright", "Tomorrow Night Eighties", "ToyChest", "Treehouse",
+            "Twilight", "Urple", "Vaughn", "VibrantInk", "WarmNeon", "Wez", "Wombat", "Wryan", "Zenburn"
+            ], ColorScheme.names)
     }
 
     func testInit() {
@@ -57,5 +59,5 @@ class ColorSchemeTests: XCTestCase {
         let color = ColorScheme("Tomorrow Morning")
         XCTAssertNil(color)
     }
-    
+
 }

@@ -44,10 +44,15 @@ public struct AnyDecodable: Decodable {
             } else if let stringVal = try? container.decode(String.self) {
                 value = stringVal
             } else {
-                throw DecodingError.dataCorruptedError(in: container, debugDescription: "the container contains nothing serialisable")
+                throw DecodingError.dataCorruptedError(
+                    in: container,
+                    debugDescription: "the container contains nothing serialisable")
             }
         } else {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Could not serialise"))
+            throw DecodingError.dataCorrupted(
+                DecodingError.Context(
+                    codingPath: decoder.codingPath,
+                    debugDescription: "Could not serialise"))
         }
     }
 }

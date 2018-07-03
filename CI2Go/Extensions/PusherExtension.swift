@@ -10,9 +10,9 @@ import Foundation
 import PusherSwift
 import KeychainAccess
 
-fileprivate var _shared: Pusher?
-fileprivate let apiKey = "1cf6e0e755e419d2ac9a"
-fileprivate let authURL = "https://circleci.com/auth/pusher?circle-token="
+private var _shared: Pusher?
+private let apiKey = "1cf6e0e755e419d2ac9a"
+private let authURL = "https://circleci.com/auth/pusher?circle-token="
 
 class PusherAuthRequestBuilder: AuthRequestBuilderProtocol {
     let token: String
@@ -59,5 +59,50 @@ extension PusherChannel {
 
     func unbind(_ event: PusherEvent, callbackId: String) {
         unbind(eventName: event.rawValue, callbackId: callbackId)
+    }
+
+    func bindBuildEvents(
+        fetchBuild: @escaping ([[String: Any]]) -> Build?,
+        completionHandler: @escaping (Build) -> Void) {
+        let events: [PusherEvent] = [.newAction, .updateAction, .updateObservables, .fetchTestResults]
+        events.forEach { event in
+            self.bind(event, fetchBuild: fetchBuild, completionHandler: completionHandler)
+        }
+    }
+
+    func bind(_ event: PusherEvent,
+              fetchBuild: @escaping ([[String: Any]]) -> Build?,
+              completionHandler: @escaping (Build) -> Void) {
+        bind(event) { data in
+            guard let build = fetchBuild(data) else {
+                return
+            }
+            data.forEach { datum in
+                guard
+                    let log = datum["log"] as? [String: Any],
+                    let step = datum["step"] as? Int,
+                    let index = datum["index"] as? Int,
+                    let name = log["name"] as? String,
+                    let statusStr = log["status"] as? String,
+                    let status = BuildAction.Status(rawValue: statusStr)
+                    else { return }
+                switch event {
+                case .updateAction:
+                    completionHandler(build.build(withNewActionStatus: status, in: index, step: step))
+                case .newAction:
+                    let newAction = BuildAction(name: name, index: index, step: step, status: status)
+                    var buildStep = build.steps.first {$0.actions.first?.step == step }
+                    if buildStep != nil {
+                        let actions = buildStep!.actions + [newAction]
+                        buildStep = BuildStep(name: name, actions: actions)
+                    } else {
+                        buildStep = BuildStep(name: name, actions: [newAction])
+                    }
+                    completionHandler(Build(build: build, newSteps: build.steps + [buildStep!]))
+                default:
+                    break
+                }
+            }
+        }
     }
 }

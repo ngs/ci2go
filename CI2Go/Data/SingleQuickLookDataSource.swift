@@ -31,7 +31,6 @@ class SingleQuickLookDataSource: NSObject, QLPreviewControllerDataSource {
         item = Item(name: name, fileURL: fileURL)
     }
 
-
     func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
     }
@@ -39,6 +38,5 @@ class SingleQuickLookDataSource: NSObject, QLPreviewControllerDataSource {
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
         return item
     }
-
 
 }

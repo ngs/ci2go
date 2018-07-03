@@ -21,13 +21,13 @@ class LoginProviderTableViewCell: CustomTableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let fg = ColorScheme.current.foreground
-        let bg = ColorScheme.current.background
-        let bg2 = ColorScheme.current.tableViewCellSelectedBackground
-        textLabel?.textColor = fg
-        imageView?.tintColor = fg
-        backgroundColor = bg
-        backgroundView?.backgroundColor = bg
-        selectedBackgroundView?.backgroundColor = bg2
+        let foreground = ColorScheme.current.foreground
+        let background = ColorScheme.current.background
+        let background2 = ColorScheme.current.tableViewCellSelectedBackground
+        textLabel?.textColor = foreground
+        imageView?.tintColor = foreground
+        backgroundColor = background
+        backgroundView?.backgroundColor = background
+        selectedBackgroundView?.backgroundColor = background2
     }
 }

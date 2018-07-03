@@ -16,7 +16,7 @@ struct BuildAction: Codable {
     let outputURL: URL?
     let bashCommand: String?
     let hasOutput: Bool
-    private let _durationMills: Int
+    private let internalDurationMills: Int
     let startedAt: Date?
 
     enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ struct BuildAction: Codable {
         case outputURL = "output_url"
         case bashCommand = "bash_command"
         case hasOutput = "has_output"
-        case _durationMills = "run_time_millis"
+        case internalDurationMills = "run_time_millis"
         case startedAt = "start_time"
         case step
     }
@@ -35,7 +35,7 @@ struct BuildAction: Codable {
         if let startedAt = startedAt, status == .running {
             return -startedAt.timeIntervalSinceNow * 1000
         }
-        return Double(_durationMills)
+        return Double(internalDurationMills)
     }
 
     var durationFormatted: String {
@@ -53,7 +53,7 @@ struct BuildAction: Codable {
         outputURL = try? values.decode(URL.self, forKey: .outputURL)
         bashCommand = try? values.decode(String.self, forKey: .bashCommand)
         hasOutput = (try? values.decode(Bool.self, forKey: .hasOutput)) ?? false
-        _durationMills = (try? values.decode(Int.self, forKey: ._durationMills)) ?? 0
+        internalDurationMills = (try? values.decode(Int.self, forKey: .internalDurationMills)) ?? 0
         startedAt = try? values.decode(Date.self, forKey: .startedAt)
         step = (try? values.decode(Int.self, forKey: .step)) ?? 0
     }
@@ -65,7 +65,7 @@ struct BuildAction: Codable {
         outputURL = action.outputURL
         bashCommand = action.bashCommand
         hasOutput = action.hasOutput
-        _durationMills = action._durationMills
+        internalDurationMills = action.internalDurationMills
         startedAt = action.startedAt
         step = action.step
     }
@@ -78,7 +78,7 @@ struct BuildAction: Codable {
         outputURL = nil
         bashCommand = nil
         hasOutput = false
-        _durationMills = 0
+        internalDurationMills = 0
         startedAt = Date()
     }
 }
@@ -90,7 +90,6 @@ extension BuildAction: Equatable {
             lhs.status == rhs.status
     }
 }
-
 
 extension BuildAction: Comparable {
     static func < (lhs: BuildAction, rhs: BuildAction) -> Bool {

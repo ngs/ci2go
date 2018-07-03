@@ -18,11 +18,10 @@ extension MBProgressHUD {
     }
     var icon: Icon? {
         get {
-            return nil // TODO
+            fatalError("No getter")
         }
         set(icon) {
             customView = UIImageView(image: icon?.image)
         }
     }
 }
-

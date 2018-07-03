@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import Crashlytics
-import PusherSwift
 import Dwifft
-import MBProgressHUD
+import PusherSwift
 
 class BuildActionsViewController: UITableViewController {
     var isLoading = false
@@ -34,7 +32,9 @@ class BuildActionsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: BuildActionTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildActionTableViewCell.identifier)
+        tableView.register(
+            UINib(nibName: BuildActionTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: BuildActionTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
     }
 
@@ -59,57 +59,39 @@ class BuildActionsViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         reloadTimer?.invalidate()
         reloadTimer = nil
-        if let pusher = Pusher.shared, !isNavigatingToNext {
-            pusherChannels.forEach {
-                pusher.unsubscribe($0.name)
-            }
-        }
+        unsubscribePusher()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let build = build else { return }
         isNavigatingToNext = true
-        let vc = (segue.destination as? UINavigationController)?.topViewController ?? segue.destination
+        let viewController = (segue.destination as? UINavigationController)?.topViewController ?? segue.destination
 
         if
-            let _ = segue.destination as? UINavigationController,
+            (segue.destination as? UINavigationController) != nil,
             let displayModeButtomItem = splitViewController?.displayModeButtonItem {
-            vc.navigationItem.leftBarButtonItem = displayModeButtomItem
-            vc.navigationItem.leftItemsSupplementBackButton = true
+            viewController.navigationItem.leftBarButtonItem = displayModeButtomItem
+            viewController.navigationItem.leftItemsSupplementBackButton = true
         }
 
-        switch (vc, sender) {
-        case let (vc as BuildLogViewController, cell as BuildActionTableViewCell):
+        switch (viewController, sender) {
+        case let (viewController as BuildLogViewController, cell as BuildActionTableViewCell):
             guard let action = cell.buildAction else { return }
-            vc.pusherChannel = pusherChannels.first(where: { c in
-                c.name == "\(build.pusherChannelNamePrefix)@\(action.index)"
+            viewController.pusherChannel = pusherChannels.first(where: { channel in
+                channel.name == "\(build.pusherChannelNamePrefix)@\(action.index)"
             })
-            vc.buildAction = action
-            break
-        case let (vc as TextViewController, _):
-            vc.text = build.configuration
-            vc.title = build.configurationName
-            break
-        case let (vc as BuildArtifactsViewController, _):
-            vc.build = build
-            break
+            viewController.buildAction = action
+        case let (viewController as TextViewController, _):
+            viewController.text = build.configuration
+            viewController.title = build.configurationName
+        case let (viewController as BuildArtifactsViewController, _):
+            viewController.build = build
         default:
             break
         }
     }
 
     // MARK: -
-
-    func loadBuild() {
-        guard let build = self.build, !isLoading else {
-            return
-        }
-        isLoading = true
-        URLSession.shared.dataTask(endpoint: .get(build: build)) { [weak self] (build, _, _, err) in
-            self?.isLoading = false
-            self?.build = build
-            }.resume()
-    }
 
     func refreshData(scroll: Bool = false) {
         guard let steps = build?.steps, steps.count > 0 else { return }
@@ -131,8 +113,8 @@ class BuildActionsViewController: UITableViewController {
             values.append(("Artifacts", [artifactsRow]))
         }
         if let build = build, build.isSSHAvailable {
-            let sshRows = build.sshURLs.enumerated().map { (i, url) in
-                return RowItem(sshInfo: SSHInfo(index: i, url: url))
+            let sshRows = build.sshURLs.enumerated().map { (index, url) in
+                return RowItem(sshInfo: SSHInfo(index: index, url: url))
             }
             values.append(("SSH", sshRows))
         }
@@ -146,57 +128,6 @@ class BuildActionsViewController: UITableViewController {
         }
     }
 
-    func connectPusher() {
-        guard
-            let pusher = Pusher.shared,
-            let build = build
-            else { return }
-        let events: [PusherEvent] = [.newAction, .updateAction, .updateObservables, .fetchTestResults]
-        pusherChannels = build.pusherChannelNames.map {
-            pusher.subscribe($0)
-        }
-        pusherChannels.forEach { channel in
-            events.forEach { event in
-                channel.bind(event, { [weak self] data in
-                    guard var newBuild = self?.build else {
-                        self?.loadBuild()
-                        return
-                    }
-                    data.forEach { datum in
-                        guard
-                            let log = datum["log"] as? [String: Any],
-                            let step = datum["step"] as? Int,
-                            let index = datum["index"] as? Int,
-                            let name = log["name"] as? String,
-                            let statusStr = log["status"] as? String,
-                            let status = BuildAction.Status(rawValue: statusStr)
-                            else { return }
-                        switch event {
-                        case .updateAction:
-                            newBuild = newBuild.build(withNewActionStatus: status, in: index, step: step)
-                            break
-                        case .newAction:
-                            let newAction = BuildAction(name: name, index: index, step: step, status: status)
-                            var buildStep = newBuild.steps.first {$0.actions.first?.step == step }
-                            if buildStep != nil {
-                                let actions = buildStep!.actions + [newAction]
-                                buildStep = BuildStep(name: name, actions: actions)
-                            } else {
-                                buildStep = BuildStep(name: name, actions: [newAction])
-                            }
-                            newBuild = Build(build: newBuild, newSteps: newBuild.steps + [buildStep!])
-                            break
-                        default:
-                            break
-                        }
-                    }
-                    self?.build = newBuild
-                    self?.loadBuild()
-                })
-            }
-        }
-    }
-
     func scrollToBottom(animated: Bool = false) {
         let section = numberOfSections(in: tableView) - 1
         let row = tableView(tableView, numberOfRowsInSection: section) - 1
@@ -206,89 +137,28 @@ class BuildActionsViewController: UITableViewController {
         }
     }
 
-    func retryBuild(ssh: Bool = false) {
-        guard
-            let build = build,
-            let nvc = navigationController
-            else { return }
-        let hud = MBProgressHUD.showAdded(to: nvc.view, animated: true)
-        hud.animationType = .fade
-        hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        hud.backgroundView.style = .solidColor
-        hud.label.text = "Rerunning job"
-        URLSession.shared.dataTask(endpoint: .retry(build: build, ssh: ssh)) { [weak self] (build, _, _, err) in
-            DispatchQueue.main.async {
-                let crashlytics = Crashlytics.sharedInstance()
-                hud.mode = .customView
-                hud.hide(animated: true, afterDelay: 1)
-                guard let build = build else {
-                    hud.label.text = "Failed to rerun job"
-                    hud.icon = .warning
-                    crashlytics.recordError(err ?? APIError.noData)
-                    return
-                }
-                hud.label.text = "Job queued!"
-                hud.icon = .success
-                guard
-                    let storyboard = self?.storyboard,
-                    let vc = storyboard.instantiateViewController(withIdentifier: "BuildActionsViewController") as? BuildActionsViewController
-                    else { return }
-                vc.build = build
-                nvc.pushViewController(vc, animated: true)
-            }
-            }.resume()
-    }
-
-    func cancelBuild() {
-        guard
-            let build = build,
-            let nvc = navigationController
-            else { return }
-        let hud = MBProgressHUD.showAdded(to: nvc.view, animated: true)
-        hud.animationType = .fade
-        hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        hud.backgroundView.style = .solidColor
-        hud.label.text = "Canceling job"
-        URLSession.shared.dataTask(endpoint: .cancel(build: build)) { [weak self] (build, _, _, err) in
-            DispatchQueue.main.async {
-                let crashlytics = Crashlytics.sharedInstance()
-                hud.mode = .customView
-                hud.hide(animated: true, afterDelay: 1)
-                guard let build = build else {
-                    hud.label.text = "Failed to cancel job"
-                    hud.icon = .warning
-                    crashlytics.recordError(err ?? APIError.noData)
-                    return
-                }
-                hud.label.text = "Job canceled!"
-                hud.icon = .success
-                self?.build = build
-            }
-            }.resume()
-    }
-
     @IBAction func openActionSheet(_ sender: Any) {
-        let av = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if let url = build?.compareURL {
-            av.addAction(UIAlertAction(title: "Open diffs in browser", style: .default, handler: { _ in
+            controller.addAction(UIAlertAction(title: "Open diffs in browser", style: .default, handler: { _ in
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }))
         }
-        av.addAction(UIAlertAction(title: "Rerun job", style: .default, handler: { _ in
+        controller.addAction(UIAlertAction(title: "Rerun job", style: .default, handler: { _ in
             self.retryBuild()
         }))
         if UIApplication.shared.canOpenURL(URL(string: "ssh://foo@dummy.com:1234")!) {
-            av.addAction(UIAlertAction(title: "Rerun job with SSH", style: .default, handler: { _ in
+            controller.addAction(UIAlertAction(title: "Rerun job with SSH", style: .default, handler: { _ in
                 self.retryBuild(ssh: true)
             }))
         }
         if let build = build, build.status.isLive {
-            av.addAction(UIAlertAction(title: "Cancel job", style: .destructive, handler: { _ in
+            controller.addAction(UIAlertAction(title: "Cancel job", style: .destructive, handler: { _ in
                 self.cancelBuild()
             }))
         }
-        av.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(av, animated: true, completion: nil)
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(controller, animated: true, completion: nil)
     }
 
     // MARK: -
@@ -329,9 +199,11 @@ class BuildActionsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let v = UINib(nibName: SectionHeaderView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil).first as! SectionHeaderView
-        v.text = self.tableView(tableView, titleForHeaderInSection: section)
-        return v
+        guard let view = UINib(nibName: SectionHeaderView.identifier, bundle: nil)
+            .instantiate(withOwner: nil, options: nil).first as? SectionHeaderView
+            else { fatalError() }
+        view.text = self.tableView(tableView, titleForHeaderInSection: section)
+        return view
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -348,89 +220,6 @@ class BuildActionsViewController: UITableViewController {
         }
         if item.segueIdentifier == .showBuildLog {
             performSegue(withIdentifier: item.segueIdentifier, sender: cell)
-        }
-    }
-}
-
-extension BuildActionsViewController {
-    struct SSHInfo: Equatable, Comparable {
-        let index: Int
-        let url: URL
-
-        static func ==(_ lhs: SSHInfo, _ rhs: SSHInfo) -> Bool {
-            return lhs.index == rhs.index
-        }
-
-        static func < (lhs: SSHInfo, rhs: SSHInfo) -> Bool {
-            return lhs.index < rhs.index
-        }
-
-        var title: String {
-            return "Container \(index)"
-        }
-
-        var server: String {
-            if url.user == "circleci" {
-                return String(url.absoluteString.dropFirst("ssh://circleci@".count))
-            }
-            return String(url.absoluteString.dropFirst("ssh://".count))
-        }
-    }
-
-    struct RowItem: Equatable, Comparable {
-        let action: BuildAction?
-        let isConfiguration: Bool
-        let isArtifacts: Bool
-        let sshInfo: SSHInfo?
-
-        init(action: BuildAction? = nil, isConfiguration: Bool = false, isArtifacts: Bool = false, sshInfo: SSHInfo? = nil) {
-            self.action = action
-            self.isConfiguration = isConfiguration
-            self.isArtifacts = isArtifacts
-            self.sshInfo = sshInfo
-        }
-
-        static func ==(_ lhs: RowItem, _ rhs: RowItem) -> Bool {
-            if let la = lhs.action, let ra = rhs.action {
-                return la == ra
-            }
-            if let la = lhs.sshInfo, let ra = rhs.sshInfo {
-                return la == ra
-            }
-            return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
-        }
-
-        static func < (lhs: RowItem, rhs: RowItem) -> Bool {
-            if let la = lhs.action, let ra = rhs.action {
-                return la < ra
-            }
-            if let la = lhs.sshInfo, let ra = rhs.sshInfo {
-                return la < ra
-            }
-            return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
-        }
-
-        var cellIdentifier: String {
-            if isConfiguration {
-                return "ConfigurationCell"
-            }
-            if isArtifacts {
-                return "ArtifactsCell"
-            }
-            if let _ = sshInfo {
-                return "SSHCell"
-            }
-            return BuildActionTableViewCell.identifier
-        }
-
-        var segueIdentifier: SegueIdentifier {
-            if isConfiguration {
-                return .showBuildConfig
-            }
-            if isArtifacts {
-                return .showBuildConfig
-            }
-            return .showBuildLog
         }
     }
 }

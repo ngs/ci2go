@@ -8,9 +8,11 @@
 
 import Foundation
 
-let tokenRegularExpression = try! NSRegularExpression(pattern: "([a-f0-9]{40})", options: NSRegularExpression.Options(rawValue: 0))
+let tokenRegularExpression = (try? NSRegularExpression(pattern: "([a-f0-9]{40})",
+                                                       options: NSRegularExpression.Options(rawValue: 0)))!
 
-let totpRegularExpression = try! NSRegularExpression(pattern: "^([0-9]{6})$", options: NSRegularExpression.Options(rawValue: 0))
+let totpRegularExpression = (try? NSRegularExpression(pattern: "^([0-9]{6})$",
+                                                      options: NSRegularExpression.Options(rawValue: 0)))!
 
 func isValidToken(_ token: String) -> Bool {
     return tokenRegularExpression.matches(

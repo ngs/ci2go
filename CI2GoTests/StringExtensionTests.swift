@@ -10,9 +10,9 @@ import XCTest
 @testable import CI2Go
 
 class StringExtensionTests: XCTestCase {
-    
+
     func testHumanize() {
         XCTAssertEqual("Hello World", "hello_world".humanize)
     }
-    
+
 }

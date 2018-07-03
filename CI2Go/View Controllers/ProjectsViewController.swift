@@ -31,8 +31,12 @@ class ProjectsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
-        tableView.register(UINib(nibName: ProjectTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProjectTableViewCell.identifier)
+        tableView.register(
+            UINib(nibName: LoadingCell.identifier, bundle: nil),
+            forCellReuseIdentifier: LoadingCell.identifier)
+        tableView.register(
+            UINib(nibName: ProjectTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: ProjectTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         isLoading = true
         projects = []
@@ -42,9 +46,9 @@ class ProjectsViewController: UITableViewController {
             guard
                 let data = (try? self.cacheFile.read())?.data(using: .utf8),
                 let projects = (try? decoder.decode([Project].self, from: data))
-            else {
-                self.loadProjects(force: true)
-                return
+                else {
+                    self.loadProjects(force: true)
+                    return
             }
             DispatchQueue.main.async {
                 UIView.setAnimationsEnabled(false)
@@ -64,7 +68,7 @@ class ProjectsViewController: UITableViewController {
         }
         isLoading = true
         let cacheFile = self.cacheFile
-        URLSession.shared.dataTask(endpoint: .projects) { [weak self] (projects, data, res, err) in
+        URLSession.shared.dataTask(endpoint: .projects) { [weak self] (projects, data, _, err) in
             guard let projects = projects, let data = data else {
                 Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                 return
@@ -103,11 +107,11 @@ class ProjectsViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.destination, sender) {
-        case let (vc as BranchesViewController, cell as ProjectTableViewCell):
-            vc.project = cell.project
+        case let (viewController as BranchesViewController, cell as ProjectTableViewCell):
+            viewController.project = cell.project
             return
-        case let (vc as BuildsViewController, _ as UITableViewCell):
-            vc.selected = (nil, nil)
+        case let (viewController as BuildsViewController, _ as UITableViewCell):
+            viewController.selected = (nil, nil)
             return
         default:
             break
@@ -142,7 +146,9 @@ class ProjectsViewController: UITableViewController {
             }
             return tableView.dequeueReusableCell(withIdentifier: ProjectsViewController.allCellIdentifier)!
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProjectTableViewCell.identifier) as! ProjectTableViewCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ProjectTableViewCell.identifier) as? ProjectTableViewCell
+            else { fatalError() }
         cell.project = diffCalculator?.value(atIndexPath: indexPath)
         return cell
     }

@@ -26,7 +26,8 @@ struct ColorScheme {
             return config
         }
         let path = Bundle.main.path(forResource: name, ofType: ColorScheme.fileExtension)!
-        let dict = NSDictionary(contentsOfFile: path) as! [String: [String: NSNumber]]
+        guard let dict = NSDictionary(contentsOfFile: path) as? [String: [String: NSNumber]]
+            else { fatalError() }
         let config: Configuration = dict.mapValues {
             $0.mapValues { $0.floatValue }
         }
@@ -36,40 +37,40 @@ struct ColorScheme {
 
     let name: String
     typealias Configuration = [String: [String: Float]]
-    
     static let defaultName = "Github"
     static let fileExtension = "itermcolors"
-    
+
     static var names: [String] = {
         let files: [URL] = Bundle.main.urls(forResourcesWithExtension: fileExtension, subdirectory: nil) ?? []
         return files.map { ($0.lastPathComponent as NSString).deletingPathExtension }
-            .sorted{$0.compare($1, options: .caseInsensitive) == .orderedAscending }
+            .sorted {$0.compare($1, options: .caseInsensitive) == .orderedAscending }
     }()
-    
+
     static var all: [ColorScheme] = {
         return names.map { ColorScheme($0)! }
     }()
-    
+
     init?(_ name: String) {
         if !ColorScheme.names.contains(name) {
             return nil
         }
         self.name = name
     }
-    
+
     static var `default`: ColorScheme {
         return ColorScheme(defaultName)!
     }
-    
+
+    // swiftlint:disable:next large_tuple
     func components(key: String) -> (CGFloat, CGFloat, CGFloat)? {
         if let cmps = configuration[key + " Color"],
-            let r = cmps["Red Component"],
-            let g = cmps["Green Component"],
-            let b = cmps["Blue Component"] {
+            let red = cmps["Red Component"],
+            let green = cmps["Green Component"],
+            let blue = cmps["Blue Component"] {
             return (
-                CGFloat(r),
-                CGFloat(g),
-                CGFloat(b)
+                CGFloat(red),
+                CGFloat(green),
+                CGFloat(blue)
             )
         }
         return nil

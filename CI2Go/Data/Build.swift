@@ -10,7 +10,7 @@ import Foundation
 
 struct Build: Decodable, EndpointConvertable {
     typealias BuildParameters = [String: String]
-    
+
     let number: Int
     let compareURL: URL?
     let buildParameters: BuildParameters
@@ -32,7 +32,7 @@ struct Build: Decodable, EndpointConvertable {
     let isPlatformV2: Bool
     let hasArtifacts: Bool
     let nodes: [BuildNode]
-    
+
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
         case compareURL = "compare"
@@ -57,8 +57,8 @@ struct Build: Decodable, EndpointConvertable {
         case nodes = "node"
         case picard = "picard"
     }
-    
-    public init(from decoder: Decoder) throws {
+
+    public init(from decoder: Decoder) throws { // swiftlint:disable:this function_body_length
         let values = try decoder.container(keyedBy: CodingKeys.self)
         project = try Project(from: decoder)
         number = try values.decode(Int.self, forKey: .number)
@@ -159,7 +159,7 @@ struct Build: Decodable, EndpointConvertable {
         nodes = build.nodes
     }
 
-    func build(withNewActionStatus status: BuildAction.Status, in nodeIndex:  Int, step: Int) -> Build {
+    func build(withNewActionStatus status: BuildAction.Status, in nodeIndex: Int, step: Int) -> Build {
         let newSteps = steps.map { buildStep -> BuildStep in
             let actions = buildStep.actions.map { action -> BuildAction in
                 if action.index == nodeIndex && action.step == step {
@@ -194,8 +194,8 @@ struct Build: Decodable, EndpointConvertable {
             pusherChannelNamePrefix,
             "\(pusherChannelNamePrefix)@all"
         ]
-        for i in 0..<parallelCount {
-            names.append("\(pusherChannelNamePrefix)@\(i)")
+        for index in 0..<parallelCount {
+            names.append("\(pusherChannelNamePrefix)@\(index)")
         }
         return names
     }
@@ -215,30 +215,20 @@ struct Build: Decodable, EndpointConvertable {
     }
 }
 
-extension Build {
-    struct Picard: Decodable {
-        let nodes: [BuildNode]
-
-        enum CodingKeys: String, CodingKey {
-            case nodes = "ssh_servers"
-        }
-    }
-}
-
 extension Build: Comparable {
     static func < (lhs: Build, rhs: Build) -> Bool {
         if
-            let lq = lhs.queuedAt,
-            let rq = rhs.queuedAt {
-            return lq < rq
+            let ltime = lhs.queuedAt,
+            let rtime = rhs.queuedAt {
+            return ltime < rtime
         }
         if lhs.project == rhs.project {
             return lhs.number < rhs.number
         }
         if
-            let lq = lhs.commits.first?.authorDate,
-            let rq = rhs.commits.first?.authorDate {
-            return lq < rq
+            let ltime = lhs.commits.first?.authorDate,
+            let rtime = rhs.commits.first?.authorDate {
+            return ltime < rtime
         }
         return false
     }
@@ -249,4 +239,3 @@ extension Build: Equatable {
         return lhs.apiPath == rhs.apiPath && lhs.status == rhs.status
     }
 }
-

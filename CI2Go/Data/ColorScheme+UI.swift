@@ -12,7 +12,7 @@ import QuickLook
 import WatchConnectivity
 
 extension ColorScheme {
-    func apply() {
+    func apply() { // swiftlint:disable:this function_body_length
         let app = UIApplication.shared
         app.statusBarStyle = statusBarStyle
         app.windows.forEach { $0.tintColor = bold }
@@ -48,7 +48,9 @@ extension ColorScheme {
         let settingsTableView = SettingsTableView.appearance()
         settingsTableView.backgroundColor = background
 
-        UITableView.appearance(whenContainedInInstancesOf: [SettingsTableView.self]).backgroundColor = groupTableViewBackground
+        UITableView.appearance(
+            whenContainedInInstancesOf: [SettingsTableView.self])
+            .backgroundColor = groupTableViewBackground
 
         let tableButton = UIButton.appearance(whenContainedInInstancesOf: [UITableView.self]) as UIButton
 
@@ -106,9 +108,9 @@ extension ColorScheme {
         let windows = UIApplication.shared.windows
         for window in windows {
             let subviews = window.subviews
-            for v in subviews {
-                v.removeFromSuperview()
-                window.addSubview(v)
+            for view in subviews {
+                view.removeFromSuperview()
+                window.addSubview(view)
             }
         }
     }

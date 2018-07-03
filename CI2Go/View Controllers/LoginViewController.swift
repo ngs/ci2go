@@ -20,14 +20,19 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
     var foregroundObserver: NSObjectProtocol?
 
     func loadScript(name: String) -> String {
-        return try! String(contentsOf: Bundle.main.url(forResource: name, withExtension: "js")!)
+        do {
+            return try String(contentsOf: Bundle.main.url(forResource: name, withExtension: "js")!)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
 
     lazy var fetchTokenJS: String = {
         return loadScript(name: "fetchToken")
     }()
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard
             let url = navigationAction.request.url,
             Hostname(url: url) == .app,
@@ -41,7 +46,8 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                 let isCircle = Hostname(url: navigationAction.request.url)?.isCircleCI == true
                 webView.alpha = isCircle ? 0 : 1
                 webView.isUserInteractionEnabled = !isCircle
-                navigationItem.rightBarButtonItem = UIBarButtonItem(activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+                navigationItem.rightBarButtonItem = UIBarButtonItem(
+                    activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
                 decisionHandler(.allow)
                 return
         }
@@ -77,14 +83,20 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let url = webView.url, let host = Hostname(url: url) else { return }
         if host.isCircleCI {
-            let js = fetchTokenJS + "('\(UIDevice.current.name) (\(UIDevice.current.systemName) \(UIDevice.current.systemVersion))')"
-            evaluateJavaScript(js)
+            let args = String(format: "('%@ (%@ %@)')",
+                              UIDevice.current.name,
+                              UIDevice.current.systemName,
+                              UIDevice.current.systemVersion)
+            let script = fetchTokenJS + args
+            evaluateJavaScript(script)
             return
         }
         if host.isAuthProvider {
             fillTotpToken()
             if OnePasswordExtension.shared().isAppExtensionAvailable() {
-                let item = UIBarButtonItem(image: #imageLiteral(resourceName: "onepassword-navbar"), style: .plain, target: self, action: #selector(openPasswordManager(_:)))
+                let item = UIBarButtonItem(
+                    image: #imageLiteral(resourceName: "onepassword-navbar"), style: .plain,
+                    target: self, action: #selector(openPasswordManager(_:)))
                 navigationItem.rightBarButtonItem = item
                 return
             }
@@ -93,12 +105,12 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
     }
 
     func fillTotpToken() {
-        let pb = UIPasteboard.general
+        let pasteboard = UIPasteboard.general
         guard
             let url = webView.url,
             let host = Hostname(url: url),
             host.isAuthProvider,
-            let str = pb.string,
+            let str = pasteboard.string,
             isTOTP(str)
             else { return }
         switch host {
@@ -106,19 +118,17 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
             guard url.path == "/sessions/two-factor" else {
                 return
             }
-            break
         case .bitbucket:
             let comps = url.pathComponents
             guard comps.count > 3 && comps[3] == "two-step-verification"  else {
                 return
             }
-            break
         default:
             fatalError()
         }
         UIPasteboard.general.items.removeAll()
-        let js = self.loadScript(name: "totp-\(host.rawValue)") + "('\(str)')"
-        self.evaluateJavaScript(js)
+        let script = self.loadScript(name: "totp-\(host.rawValue)") + "('\(str)')"
+        self.evaluateJavaScript(script)
 
     }
 
@@ -128,17 +138,19 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
             let host = Hostname(url: url),
             host.isAuthProvider
             else { return }
-        OnePasswordExtension.shared().findLogin(forURLString: url.absoluteString, for: self, sender: sender) { (data, err) in
-            if let err = err {
-                Crashlytics.sharedInstance().recordError(err)
-            }
-            guard
-                let data = data,
-                let username = data["username"] as? String,
-                let password = data["password"] as? String
-                else { return }
-            let js = self.loadScript(name: "login-\(host.rawValue)") + "('\(username)', '\(password)')"
-            self.evaluateJavaScript(js)
+        OnePasswordExtension.shared().findLogin(
+            forURLString: url.absoluteString,
+            for: self, sender: sender) { (data, err) in
+                if let err = err {
+                    Crashlytics.sharedInstance().recordError(err)
+                }
+                guard
+                    let data = data,
+                    let username = data["username"] as? String,
+                    let password = data["password"] as? String
+                    else { return }
+                let script = self.loadScript(name: "login-\(host.rawValue)") + "('\(username)', '\(password)')"
+                self.evaluateJavaScript(script)
         }
     }
 

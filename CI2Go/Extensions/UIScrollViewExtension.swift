@@ -30,16 +30,16 @@ extension UIScrollView {
     }
 
     var bottomOffset: CGPoint {
-        let x = contentOffset.x
-        let y = contentHeight - height + safeAreaInsets.bottom
-        return CGPoint(x: x, y: y)
+        let ptX = contentOffset.x
+        let ptY = contentHeight - height + safeAreaInsets.bottom
+        return CGPoint(x: ptX, y: ptY)
     }
 
     func scrollToBottom(animated: Bool = false) {
         if isOverflowed {
             if let textView = self as? UITextView {
                 let location = textView.attributedText.length
-                let bottom = NSMakeRange(location, 0)
+                let bottom = NSRange(location: location, length: 0)
                 textView.scrollRangeToVisible(bottom)
                 return
             }

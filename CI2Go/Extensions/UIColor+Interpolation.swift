@@ -12,6 +12,7 @@
 import UIKit
 
 extension UIColor {
+    // swiftlint:disable:next large_tuple
     var components: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         let components = self.cgColor.components!
 
@@ -25,11 +26,11 @@ extension UIColor {
         let fromComponents = components
         let toComponents = toColor.components
 
-        let r = (1 - progress) * fromComponents.r + progress * toComponents.r
-        let g = (1 - progress) * fromComponents.g + progress * toComponents.g
-        let b = (1 - progress) * fromComponents.b + progress * toComponents.b
-        let a = (1 - progress) * fromComponents.a + progress * toComponents.a
+        let red = (1 - progress) * fromComponents.r + progress * toComponents.r
+        let green = (1 - progress) * fromComponents.g + progress * toComponents.g
+        let blue = (1 - progress) * fromComponents.b + progress * toComponents.b
+        let alpha = (1 - progress) * fromComponents.a + progress * toComponents.a
 
-        return UIColor(red: r, green: g, blue: b, alpha: a)
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
 }

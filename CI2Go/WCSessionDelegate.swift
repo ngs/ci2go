@@ -11,11 +11,12 @@ import WatchConnectivity
 import Crashlytics
 
 extension AppDelegate: WCSessionDelegate {
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState,
+                 error: Error?) {
         session.transferUserInfo()
     }
 
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         session.transferUserInfo()
     }
 
@@ -26,25 +27,24 @@ extension AppDelegate: WCSessionDelegate {
     }
 }
 
-
 extension WCSession {
     func transferUserInfo() {
-        let d = UserDefaults.shared
+        let defaults = UserDefaults.shared
         transferUserInfo(
             token: Keychain.shared.token,
-            colorScheme: d.colorScheme,
-            project: d.project,
-            branch: d.branch
+            colorScheme: defaults.colorScheme,
+            project: defaults.project,
+            branch: defaults.branch
         )
     }
 
     func transferToken(token: String) {
-        let d = UserDefaults.shared
+        let defaults = UserDefaults.shared
         transferUserInfo(
             token: token,
-            colorScheme: d.colorScheme,
-            project: d.project,
-            branch: d.branch
+            colorScheme: defaults.colorScheme,
+            project: defaults.project,
+            branch: defaults.branch
         )
     }
 
@@ -58,22 +58,22 @@ extension WCSession {
     }
 
     func transferColorScheme(colorScheme: ColorScheme) {
-        let d = UserDefaults.shared
+        let defaults = UserDefaults.shared
         transferUserInfo(
             token: Keychain.shared.token,
             colorScheme: UserDefaults.shared.colorScheme,
-            project: d.project,
-            branch: d.branch
+            project: defaults.project,
+            branch: defaults.branch
         )
     }
 
     fileprivate func transferUserInfo(token: String?, colorScheme: ColorScheme, project: Project?, branch: Branch?) {
-        let d = UserDefaults.standard
+        let defaults = UserDefaults.standard
         var userInfo: [String: Any] = [:]
         if let token = token ?? Keychain.shared.token {
             userInfo["token"] = token
         }
-        if let branch = branch ?? d.branch {
+        if let branch = branch ?? defaults.branch {
             userInfo["branch"] = branch.dictionary
         }
         if let project = project {

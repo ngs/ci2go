@@ -11,15 +11,15 @@ import KeychainAccess
 import FileKit
 
 class ArtifactDownloadManager {
-    fileprivate static var _shared: ArtifactDownloadManager?
+    fileprivate static var sharedManager: ArtifactDownloadManager?
     let operationQueue = OperationQueue()
 
     static var shared: ArtifactDownloadManager {
-        if let _shared = _shared {
-            return _shared
+        if let sharedManager = sharedManager {
+            return sharedManager
         }
-        _shared = ArtifactDownloadManager()
-        return _shared!
+        sharedManager = ArtifactDownloadManager()
+        return sharedManager!
     }
 
     func download(_ artifact: Artifact, completion: @escaping (Error?) -> Void) {
@@ -41,7 +41,7 @@ class ArtifactDownloadManager {
             var comps = URLComponents(url: artifact.downloadURL, resolvingAgainstBaseURL: false)!
             comps.queryItems = [URLQueryItem(name: "circle-token", value: token)]
             NetworkActivityManager.start()
-            URLSession.shared.downloadTask(with: comps.url!) { (tmpFileURL, res, err) in
+            URLSession.shared.downloadTask(with: comps.url!) { (tmpFileURL, _, err) in
                 NetworkActivityManager.stop()
                 guard let tmpFileURL = tmpFileURL else {
                     try? artifact.unlinkProgressFile()
