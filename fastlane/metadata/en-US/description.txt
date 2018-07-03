@@ -10,6 +10,7 @@ Version history
 
 [2.1.0]
 
+- Today Extension
 - Add item to connect container via SSH
 - Swipe build artifacts to delete local cache
 - Pull build list to refresh

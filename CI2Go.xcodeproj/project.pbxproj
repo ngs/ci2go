@@ -140,7 +140,7 @@
 		8533DE9120DE443D00CA7E0C /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */; };
 		8533DE9320DE445600CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */; };
 		8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */; };
-		8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */; };
+		8533DE9A20DE495600CA7E0C /* NetworkActivityManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */; };
 		8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
 		8533DE9E20DE4C7000CA7E0C /* BuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */; };
 		8533DEA020DE4D2A00CA7E0C /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */; };
@@ -175,6 +175,187 @@
 		8555C4E520EB5F74003F5C93 /* BuildActionsViewController.RowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4E420EB5F74003F5C93 /* BuildActionsViewController.RowItem.swift */; };
 		8555C4E720EB5FB3003F5C93 /* BuildActionsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4E620EB5FB3003F5C93 /* BuildActionsViewController+Actions.swift */; };
 		8555C4E920EB6056003F5C93 /* BuildActionsViewController+Pusher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4E820EB6056003F5C93 /* BuildActionsViewController+Pusher.swift */; };
+		8555C4F020EB8C6F003F5C93 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8555C4EF20EB8C6F003F5C93 /* NotificationCenter.framework */; };
+		8555C4F320EB8C6F003F5C93 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4F220EB8C6F003F5C93 /* TodayViewController.swift */; };
+		8555C4F620EB8C6F003F5C93 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8555C4F420EB8C6F003F5C93 /* MainInterface.storyboard */; };
+		8555C4FB20EB8C6F003F5C93 /* CI2GoTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8555C4FF20EB9019003F5C93 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; };
+		8555C50020EB901C003F5C93 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */; };
+		8555C50320EB9023003F5C93 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6220D6B2FF00C7F4FC /* Fabric.framework */; };
+		8555C50420EB9023003F5C93 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE22A20D5C62D002CD128 /* Crashlytics.framework */; };
+		8555C50520EB9044003F5C93 /* 3024 Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13920D5BAE1002CD128 /* 3024 Day.itermcolors */; };
+		8555C50620EB9044003F5C93 /* 3024 Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19D20D5BAE2002CD128 /* 3024 Night.itermcolors */; };
+		8555C50720EB9044003F5C93 /* AdventureTime.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19320D5BAE1002CD128 /* AdventureTime.itermcolors */; };
+		8555C50820EB9044003F5C93 /* Afterglow.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15E20D5BAE1002CD128 /* Afterglow.itermcolors */; };
+		8555C50920EB9044003F5C93 /* AlienBlood.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13820D5BAE1002CD128 /* AlienBlood.itermcolors */; };
+		8555C50A20EB9044003F5C93 /* Argonaut.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18720D5BAE1002CD128 /* Argonaut.itermcolors */; };
+		8555C50B20EB9044003F5C93 /* Arthur.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18320D5BAE1002CD128 /* Arthur.itermcolors */; };
+		8555C50C20EB9044003F5C93 /* Atom.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14A20D5BAE1002CD128 /* Atom.itermcolors */; };
+		8555C50D20EB9044003F5C93 /* Belafonte Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16120D5BAE1002CD128 /* Belafonte Day.itermcolors */; };
+		8555C50E20EB9044003F5C93 /* Belafonte Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14220D5BAE1002CD128 /* Belafonte Night.itermcolors */; };
+		8555C50F20EB9044003F5C93 /* BirdsOfParadise.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15D20D5BAE1002CD128 /* BirdsOfParadise.itermcolors */; };
+		8555C51020EB9044003F5C93 /* Blazer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19B20D5BAE1002CD128 /* Blazer.itermcolors */; };
+		8555C51120EB9044003F5C93 /* Broadcast.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16F20D5BAE1002CD128 /* Broadcast.itermcolors */; };
+		8555C51220EB9044003F5C93 /* Brogrammer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14F20D5BAE1002CD128 /* Brogrammer.itermcolors */; };
+		8555C51320EB9044003F5C93 /* C64.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16520D5BAE1002CD128 /* C64.itermcolors */; };
+		8555C51420EB9044003F5C93 /* Chalk.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13D20D5BAE1002CD128 /* Chalk.itermcolors */; };
+		8555C51520EB9044003F5C93 /* Chalkboard.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17120D5BAE1002CD128 /* Chalkboard.itermcolors */; };
+		8555C51620EB9044003F5C93 /* Ciapre.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13520D5BAE1002CD128 /* Ciapre.itermcolors */; };
+		8555C51720EB9044003F5C93 /* CLRS.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13E20D5BAE1002CD128 /* CLRS.itermcolors */; };
+		8555C51820EB9044003F5C93 /* Cobalt2.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19920D5BAE1002CD128 /* Cobalt2.itermcolors */; };
+		8555C51920EB9044003F5C93 /* CrayonPonyFish.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17820D5BAE1002CD128 /* CrayonPonyFish.itermcolors */; };
+		8555C51A20EB9044003F5C93 /* Dark Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12F20D5BAE1002CD128 /* Dark Pastel.itermcolors */; };
+		8555C51B20EB9044003F5C93 /* Darkside.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17420D5BAE1002CD128 /* Darkside.itermcolors */; };
+		8555C51C20EB9044003F5C93 /* Desert.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15420D5BAE1002CD128 /* Desert.itermcolors */; };
+		8555C51D20EB9044003F5C93 /* DimmedMonokai.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13220D5BAE1002CD128 /* DimmedMonokai.itermcolors */; };
+		8555C51E20EB9044003F5C93 /* Dracula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16920D5BAE1002CD128 /* Dracula.itermcolors */; };
+		8555C51F20EB9044003F5C93 /* Earthsong.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16D20D5BAE1002CD128 /* Earthsong.itermcolors */; };
+		8555C52020EB9044003F5C93 /* Elemental.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19220D5BAE1002CD128 /* Elemental.itermcolors */; };
+		8555C52120EB9044003F5C93 /* Espresso Libre.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13320D5BAE1002CD128 /* Espresso Libre.itermcolors */; };
+		8555C52220EB9044003F5C93 /* Espresso.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15120D5BAE1002CD128 /* Espresso.itermcolors */; };
+		8555C52320EB9044003F5C93 /* FishTank.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15520D5BAE1002CD128 /* FishTank.itermcolors */; };
+		8555C52420EB9044003F5C93 /* Flat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19420D5BAE1002CD128 /* Flat.itermcolors */; };
+		8555C52520EB9044003F5C93 /* FrontEndDelight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14720D5BAE1002CD128 /* FrontEndDelight.itermcolors */; };
+		8555C52620EB9044003F5C93 /* FunForrest.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18E20D5BAE1002CD128 /* FunForrest.itermcolors */; };
+		8555C52720EB9044003F5C93 /* Github.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14120D5BAE1002CD128 /* Github.itermcolors */; };
+		8555C52820EB9044003F5C93 /* Grape.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14820D5BAE1002CD128 /* Grape.itermcolors */; };
+		8555C52920EB9044003F5C93 /* Grass.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16E20D5BAE1002CD128 /* Grass.itermcolors */; };
+		8555C52A20EB9044003F5C93 /* Hardcore.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16720D5BAE1002CD128 /* Hardcore.itermcolors */; };
+		8555C52B20EB9044003F5C93 /* Harper.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18F20D5BAE1002CD128 /* Harper.itermcolors */; };
+		8555C52C20EB9044003F5C93 /* Highway.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13720D5BAE1002CD128 /* Highway.itermcolors */; };
+		8555C52D20EB9044003F5C93 /* Hipster Green.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17C20D5BAE1002CD128 /* Hipster Green.itermcolors */; };
+		8555C52E20EB9044003F5C93 /* Homebrew.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18220D5BAE1002CD128 /* Homebrew.itermcolors */; };
+		8555C52F20EB9044003F5C93 /* Hurtado.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19E20D5BAE2002CD128 /* Hurtado.itermcolors */; };
+		8555C53020EB9044003F5C93 /* Hybrid.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12E20D5BAE1002CD128 /* Hybrid.itermcolors */; };
+		8555C53120EB9044003F5C93 /* IC_Green_PPL.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18B20D5BAE1002CD128 /* IC_Green_PPL.itermcolors */; };
+		8555C53220EB9044003F5C93 /* IC_Orange_PPL.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17A20D5BAE1002CD128 /* IC_Orange_PPL.itermcolors */; };
+		8555C53320EB9044003F5C93 /* idleToes.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14E20D5BAE1002CD128 /* idleToes.itermcolors */; };
+		8555C53420EB9044003F5C93 /* IR_Black.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17220D5BAE1002CD128 /* IR_Black.itermcolors */; };
+		8555C53520EB9044003F5C93 /* Jackie Brown.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19120D5BAE1002CD128 /* Jackie Brown.itermcolors */; };
+		8555C53620EB9044003F5C93 /* Japanesque.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14B20D5BAE1002CD128 /* Japanesque.itermcolors */; };
+		8555C53720EB9044003F5C93 /* Jellybeans.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16820D5BAE1002CD128 /* Jellybeans.itermcolors */; };
+		8555C53820EB9044003F5C93 /* Kibble.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16620D5BAE1002CD128 /* Kibble.itermcolors */; };
+		8555C53920EB9044003F5C93 /* Lavandula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15820D5BAE1002CD128 /* Lavandula.itermcolors */; };
+		8555C53A20EB9044003F5C93 /* LiquidCarbon.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17D20D5BAE1002CD128 /* LiquidCarbon.itermcolors */; };
+		8555C53B20EB9044003F5C93 /* LiquidCarbonTransparent.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15C20D5BAE1002CD128 /* LiquidCarbonTransparent.itermcolors */; };
+		8555C53C20EB9044003F5C93 /* LiquidCarbonTransparentInverse.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19820D5BAE1002CD128 /* LiquidCarbonTransparentInverse.itermcolors */; };
+		8555C53D20EB9044003F5C93 /* Man Page.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14D20D5BAE1002CD128 /* Man Page.itermcolors */; };
+		8555C53E20EB9044003F5C93 /* Mathias.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15920D5BAE1002CD128 /* Mathias.itermcolors */; };
+		8555C53F20EB9044003F5C93 /* Medallion.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13F20D5BAE1002CD128 /* Medallion.itermcolors */; };
+		8555C54020EB9044003F5C93 /* Misterioso.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19720D5BAE1002CD128 /* Misterioso.itermcolors */; };
+		8555C54120EB9044003F5C93 /* Molokai.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13B20D5BAE1002CD128 /* Molokai.itermcolors */; };
+		8555C54220EB9044003F5C93 /* MonaLisa.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14020D5BAE1002CD128 /* MonaLisa.itermcolors */; };
+		8555C54320EB9044003F5C93 /* Monokai Soda.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13A20D5BAE1002CD128 /* Monokai Soda.itermcolors */; };
+		8555C54420EB9044003F5C93 /* N0tch2k.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13420D5BAE1002CD128 /* N0tch2k.itermcolors */; };
+		8555C54520EB9044003F5C93 /* Neopolitan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14420D5BAE1002CD128 /* Neopolitan.itermcolors */; };
+		8555C54620EB9044003F5C93 /* NightLion v1.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18520D5BAE1002CD128 /* NightLion v1.itermcolors */; };
+		8555C54720EB9044003F5C93 /* NightLion v2.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17E20D5BAE1002CD128 /* NightLion v2.itermcolors */; };
+		8555C54820EB9044003F5C93 /* Novel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15720D5BAE1002CD128 /* Novel.itermcolors */; };
+		8555C54920EB9044003F5C93 /* Obsidian.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17F20D5BAE1002CD128 /* Obsidian.itermcolors */; };
+		8555C54A20EB9044003F5C93 /* Ocean.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16220D5BAE1002CD128 /* Ocean.itermcolors */; };
+		8555C54B20EB9044003F5C93 /* Ollie.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16C20D5BAE1002CD128 /* Ollie.itermcolors */; };
+		8555C54C20EB9044003F5C93 /* Parasio Dark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16B20D5BAE1002CD128 /* Parasio Dark.itermcolors */; };
+		8555C54D20EB9044003F5C93 /* PaulMillr.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16020D5BAE1002CD128 /* PaulMillr.itermcolors */; };
+		8555C54E20EB9044003F5C93 /* PencilDark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE1A020D5BAE2002CD128 /* PencilDark.itermcolors */; };
+		8555C54F20EB9044003F5C93 /* PencilLight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17320D5BAE1002CD128 /* PencilLight.itermcolors */; };
+		8555C55020EB9044003F5C93 /* Pnevma.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18A20D5BAE1002CD128 /* Pnevma.itermcolors */; };
+		8555C55120EB9044003F5C93 /* Pro.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13120D5BAE1002CD128 /* Pro.itermcolors */; };
+		8555C55220EB9044003F5C93 /* Red Alert.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13C20D5BAE1002CD128 /* Red Alert.itermcolors */; };
+		8555C55320EB9044003F5C93 /* Red Sands.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17520D5BAE1002CD128 /* Red Sands.itermcolors */; };
+		8555C55420EB9044003F5C93 /* Rippedcasts.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14320D5BAE1002CD128 /* Rippedcasts.itermcolors */; };
+		8555C55520EB9044003F5C93 /* Royal.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15220D5BAE1002CD128 /* Royal.itermcolors */; };
+		8555C55620EB9044003F5C93 /* Seafoam Pastel.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18420D5BAE1002CD128 /* Seafoam Pastel.itermcolors */; };
+		8555C55720EB9044003F5C93 /* SeaShells.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17620D5BAE1002CD128 /* SeaShells.itermcolors */; };
+		8555C55820EB9044003F5C93 /* Seti.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18620D5BAE1002CD128 /* Seti.itermcolors */; };
+		8555C55920EB9044003F5C93 /* Shaman.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15320D5BAE1002CD128 /* Shaman.itermcolors */; };
+		8555C55A20EB9044003F5C93 /* Smyck.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15620D5BAE1002CD128 /* Smyck.itermcolors */; };
+		8555C55B20EB9044003F5C93 /* SoftServer.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14920D5BAE1002CD128 /* SoftServer.itermcolors */; };
+		8555C55C20EB9044003F5C93 /* Solarized Darcula.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15F20D5BAE1002CD128 /* Solarized Darcula.itermcolors */; };
+		8555C55D20EB9044003F5C93 /* Solarized Dark Higher Contrast.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18D20D5BAE1002CD128 /* Solarized Dark Higher Contrast.itermcolors */; };
+		8555C55E20EB9044003F5C93 /* Solarized Dark.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18920D5BAE1002CD128 /* Solarized Dark.itermcolors */; };
+		8555C55F20EB9044003F5C93 /* Solarized Light.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14C20D5BAE1002CD128 /* Solarized Light.itermcolors */; };
+		8555C56020EB9044003F5C93 /* Spacedust.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19F20D5BAE2002CD128 /* Spacedust.itermcolors */; };
+		8555C56120EB9044003F5C93 /* SpaceGray.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15A20D5BAE1002CD128 /* SpaceGray.itermcolors */; };
+		8555C56220EB9044003F5C93 /* Spring.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18820D5BAE1002CD128 /* Spring.itermcolors */; };
+		8555C56320EB9044003F5C93 /* Square.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13620D5BAE1002CD128 /* Square.itermcolors */; };
+		8555C56420EB9044003F5C93 /* Sundried.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14620D5BAE1002CD128 /* Sundried.itermcolors */; };
+		8555C56520EB9044003F5C93 /* Symfonic.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19620D5BAE1002CD128 /* Symfonic.itermcolors */; };
+		8555C56620EB9044003F5C93 /* Teerb.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18020D5BAE1002CD128 /* Teerb.itermcolors */; };
+		8555C56720EB9044003F5C93 /* Terminal Basic.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15B20D5BAE1002CD128 /* Terminal Basic.itermcolors */; };
+		8555C56820EB9044003F5C93 /* Thayer Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19020D5BAE1002CD128 /* Thayer Bright.itermcolors */; };
+		8555C56920EB9044003F5C93 /* Tomorrow Night Blue.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19520D5BAE1002CD128 /* Tomorrow Night Blue.itermcolors */; };
+		8555C56A20EB9044003F5C93 /* Tomorrow Night Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12D20D5BAE1002CD128 /* Tomorrow Night Bright.itermcolors */; };
+		8555C56B20EB9044003F5C93 /* Tomorrow Night Eighties.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE14520D5BAE1002CD128 /* Tomorrow Night Eighties.itermcolors */; };
+		8555C56C20EB9044003F5C93 /* Tomorrow Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17720D5BAE1002CD128 /* Tomorrow Night.itermcolors */; };
+		8555C56D20EB9044003F5C93 /* Tomorrow.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16420D5BAE1002CD128 /* Tomorrow.itermcolors */; };
+		8555C56E20EB9044003F5C93 /* ToyChest.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16320D5BAE1002CD128 /* ToyChest.itermcolors */; };
+		8555C56F20EB9044003F5C93 /* Treehouse.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19C20D5BAE1002CD128 /* Treehouse.itermcolors */; };
+		8555C57020EB9044003F5C93 /* Twilight.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19A20D5BAE1002CD128 /* Twilight.itermcolors */; };
+		8555C57120EB9044003F5C93 /* Urple.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17B20D5BAE1002CD128 /* Urple.itermcolors */; };
+		8555C57220EB9044003F5C93 /* Vaughn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE15020D5BAE1002CD128 /* Vaughn.itermcolors */; };
+		8555C57320EB9044003F5C93 /* VibrantInk.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18120D5BAE1002CD128 /* VibrantInk.itermcolors */; };
+		8555C57420EB9044003F5C93 /* WarmNeon.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17920D5BAE1002CD128 /* WarmNeon.itermcolors */; };
+		8555C57520EB9044003F5C93 /* Wez.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE18C20D5BAE1002CD128 /* Wez.itermcolors */; };
+		8555C57620EB9044003F5C93 /* Wombat.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE16A20D5BAE1002CD128 /* Wombat.itermcolors */; };
+		8555C57720EB9044003F5C93 /* Wryan.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE17020D5BAE1002CD128 /* Wryan.itermcolors */; };
+		8555C57820EB9044003F5C93 /* Zenburn.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13020D5BAE1002CD128 /* Zenburn.itermcolors */; };
+		8555C57920EB9054003F5C93 /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C820D9A73500557249 /* AnyDecodable.swift */; };
+		8555C57A20EB9054003F5C93 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
+		8555C57B20EB9054003F5C93 /* Artifact+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE576A20DDFF4F004C92DA /* Artifact+File.swift */; };
+		8555C57C20EB9054003F5C93 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284F20E5E1F90092B8CF /* AuthProvider.swift */; };
+		8555C57D20EB9054003F5C93 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
+		8555C57E20EB9054003F5C93 /* Build.Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24120D5ED9F002CD128 /* Build.Lifecycle.swift */; };
+		8555C57F20EB9054003F5C93 /* Build.Outcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24520D5EDD4002CD128 /* Build.Outcome.swift */; };
+		8555C58020EB9054003F5C93 /* Build.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24320D5EDB9002CD128 /* Build.Status.swift */; };
+		8555C58120EB9054003F5C93 /* Build.Status+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */; };
+		8555C58220EB9054003F5C93 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23420D5E8E8002CD128 /* Build.swift */; };
+		8555C58420EB9054003F5C93 /* BuildAction.Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26120D61909002CD128 /* BuildAction.Status.swift */; };
+		8555C58520EB9054003F5C93 /* BuildAction.Status+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */; };
+		8555C58620EB9054003F5C93 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25720D60017002CD128 /* BuildAction.swift */; };
+		8555C58720EB9054003F5C93 /* BuildLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856D904520DAB5770030F432 /* BuildLog.swift */; };
+		8555C58820EB9054003F5C93 /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
+		8555C58920EB9054003F5C93 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25920D60023002CD128 /* BuildStep.swift */; };
+		8555C58A20EB9054003F5C93 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23020D5DBEB002CD128 /* ColorScheme.swift */; };
+		8555C58C20EB9054003F5C93 /* ColorScheme+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098220D8316900557249 /* ColorScheme+Color.swift */; };
+		8555C58E20EB9054003F5C93 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25120D5F5C5002CD128 /* Commit.swift */; };
+		8555C58F20EB9054003F5C93 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
+		8555C59020EB9054003F5C93 /* EndpointConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5820D64A9300C7F4FC /* EndpointConvertable.swift */; };
+		8555C59120EB9054003F5C93 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566098620D83EE100557249 /* Error.swift */; };
+		8555C59220EB9054003F5C93 /* Hostname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852350EC20E61A91005BD0E8 /* Hostname.swift */; };
+		8555C59320EB9054003F5C93 /* Picard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4DF20EB592B003F5C93 /* Picard.swift */; };
+		8555C59420EB9054003F5C93 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26C20D62876002CD128 /* Project.swift */; };
+		8555C59520EB9054003F5C93 /* SingleQuickLookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */; };
+		8555C59620EB9054003F5C93 /* SSHInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4E220EB5F39003F5C93 /* SSHInfo.swift */; };
+		8555C59720EB9054003F5C93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24720D5EFBE002CD128 /* User.swift */; };
+		8555C59820EB9054003F5C93 /* VCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE24920D5F00F002CD128 /* VCS.swift */; };
+		8555C59920EB9054003F5C93 /* VCS+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BF120DDD58500327DE9 /* VCS+Image.swift */; };
+		8555C59A20EB9054003F5C93 /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25D20D60F36002CD128 /* Workflow.swift */; };
+		8555C59B20EB9067003F5C93 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */; };
+		8555C59C20EB9067003F5C93 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609AE20D8D58700557249 /* DateExtension.swift */; };
+		8555C59D20EB9067003F5C93 /* KeychainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */; };
+		8555C59E20EB9067003F5C93 /* MBProgressHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609BE20D979B200557249 /* MBProgressHUDExtension.swift */; };
+		8555C5A020EB9067003F5C93 /* SegueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609B820D966FC00557249 /* SegueExtension.swift */; };
+		8555C5A120EB9067003F5C93 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23820D5E944002CD128 /* StringExtension.swift */; };
+		8555C5A220EB9067003F5C93 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284D20E5DA630092B8CF /* UIBarButtonItemExtension.swift */; };
+		8555C5A320EB9067003F5C93 /* UIColor+Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25F20D61564002CD128 /* UIColor+Interpolation.swift */; };
+		8555C5A420EB9067003F5C93 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26520D61ADD002CD128 /* UIFontExtension.swift */; };
+		8555C5A520EB9067003F5C93 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */; };
+		8555C5A620EB9067003F5C93 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */; };
+		8555C5A720EB9067003F5C93 /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
+		8555C5A820EB9067003F5C93 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */; };
+		8555C5A920EB9067003F5C93 /* UserDefaultsExtension+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */; };
+		8555C5AA20EB907E003F5C93 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
+		8555C5AB20EB907E003F5C93 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
+		8555C5AD20EB912A003F5C93 /* NetworkActivityManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */; };
+		8555C5AF20EB9DE8003F5C93 /* BuildArtifactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */; };
+		8555C5B020EB9DE8003F5C93 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097520D805BB00557249 /* BuildTableViewCell.swift */; };
+		8555C5B220EB9E10003F5C93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26820D62013002CD128 /* Constants.swift */; };
+		8555C5B320EB9E1A003F5C93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26820D62013002CD128 /* Constants.swift */; };
+		8555C5B520EB9EB5003F5C93 /* CustomTableViewCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */; };
+		8555C5B820EBA65E003F5C93 /* BuildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B620D965F800557249 /* BuildTableViewCell.xib */; };
+		8555C5BA20EBB4CA003F5C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8555C5B920EBB4CA003F5C93 /* Assets.xcassets */; };
+		8555C5BB20EBBF44003F5C93 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; };
+		8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DEAE20DF337200CA7E0C /* Build+Cache.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -433,6 +614,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8555C4F820EB8C6F003F5C93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85B4CD7720D23E2D005A6DA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8555C4ED20EB8C6F003F5C93;
+			remoteInfo = CI2GoTodayExtension;
+		};
 		85B4CD9420D23E30005A6DA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85B4CD7720D23E2D005A6DA9 /* Project object */;
@@ -464,6 +652,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8555C4FA20EB8C6F003F5C93 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8555C4FB20EB8C6F003F5C93 /* CI2GoTodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85F93BD320DDCD0700327DE9 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -503,7 +702,7 @@
 		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
 		8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsExtension+Shared.swift"; sourceTree = "<group>"; };
-		8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManager.swift; sourceTree = "<group>"; };
+		8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManagerStub.swift; sourceTree = "<group>"; };
 		8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionExtension+Keychain.swift"; sourceTree = "<group>"; };
 		8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInterfaceController.swift; sourceTree = "<group>"; };
 		8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
@@ -530,6 +729,14 @@
 		8555C4E420EB5F74003F5C93 /* BuildActionsViewController.RowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.RowItem.swift; sourceTree = "<group>"; };
 		8555C4E620EB5FB3003F5C93 /* BuildActionsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuildActionsViewController+Actions.swift"; sourceTree = "<group>"; };
 		8555C4E820EB6056003F5C93 /* BuildActionsViewController+Pusher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuildActionsViewController+Pusher.swift"; sourceTree = "<group>"; };
+		8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CI2GoTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8555C4EF20EB8C6F003F5C93 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8555C4F220EB8C6F003F5C93 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8555C4F520EB8C6F003F5C93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8555C4F720EB8C6F003F5C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellStub.swift; sourceTree = "<group>"; };
+		8555C5B620EBA231003F5C93 /* CI2GoTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoTodayExtension.entitlements; sourceTree = "<group>"; };
+		8555C5B920EBB4CA003F5C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
@@ -779,6 +986,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8555C4EB20EB8C6F003F5C93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8555C5BB20EBBF44003F5C93 /* FileKit.framework in Frameworks */,
+				8555C4F020EB8C6F003F5C93 /* NotificationCenter.framework in Frameworks */,
+				8555C4FF20EB9019003F5C93 /* Dwifft.framework in Frameworks */,
+				8555C50020EB901C003F5C93 /* KeychainAccess.framework in Frameworks */,
+				8555C50320EB9023003F5C93 /* Fabric.framework in Frameworks */,
+				8555C50420EB9023003F5C93 /* Crashlytics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85B4CD7C20D23E2D005A6DA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -864,6 +1084,19 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8555C4F120EB8C6F003F5C93 /* CI2GoTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				8555C5B920EBB4CA003F5C93 /* Assets.xcassets */,
+				8555C5B620EBA231003F5C93 /* CI2GoTodayExtension.entitlements */,
+				8555C4F220EB8C6F003F5C93 /* TodayViewController.swift */,
+				8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */,
+				8555C4F420EB8C6F003F5C93 /* MainInterface.storyboard */,
+				8555C4F720EB8C6F003F5C93 /* Info.plist */,
+			);
+			path = CI2GoTodayExtension;
+			sourceTree = "<group>";
+		};
 		8582284A20E5D68C0092B8CF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,6 +1118,7 @@
 				85B4CDA120D23E30005A6DA9 /* CI2GoUITests */,
 				85F93BB120DDCD0500327DE9 /* CI2GoWatch */,
 				85F93BC020DDCD0700327DE9 /* CI2GoWatchExtension */,
+				8555C4F120EB8C6F003F5C93 /* CI2GoTodayExtension */,
 				85B4CD8020D23E2D005A6DA9 /* Products */,
 				85CAE11C20D5B74E002CD128 /* Frameworks */,
 			);
@@ -898,6 +1132,7 @@
 				85B4CD9E20D23E30005A6DA9 /* CI2GoUITests.xctest */,
 				85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */,
 				85F93BBC20DDCD0700327DE9 /* CI2GoWatchExtension.appex */,
+				8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -968,6 +1203,7 @@
 				85CAE11D20D5B74E002CD128 /* Reachability.framework */,
 				85CAE12220D5B74F002CD128 /* Starscream.framework */,
 				85CAE12120D5B74E002CD128 /* TaskQueue.framework */,
+				8555C4EF20EB8C6F003F5C93 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1182,6 +1418,7 @@
 				85CAE24320D5EDB9002CD128 /* Build.Status.swift */,
 				85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */,
 				85CAE23420D5E8E8002CD128 /* Build.swift */,
+				8533DEAE20DF337200CA7E0C /* Build+Cache.swift */,
 				85C6619420EACBCE007B58CD /* Build+UIKit.swift */,
 				85CAE26120D61909002CD128 /* BuildAction.Status.swift */,
 				85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */,
@@ -1243,6 +1480,7 @@
 				853D1A5020D639E000C7F4FC /* Endpoint.swift */,
 				853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */,
 				856609C620D99FAB00557249 /* NetworkActivityManager.swift */,
+				8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */,
 				8566098820D84CAC00557249 /* PusherEvent.swift */,
 			);
 			path = Networking;
@@ -1262,14 +1500,12 @@
 		85F93BC020DDCD0700327DE9 /* CI2GoWatchExtension */ = {
 			isa = PBXGroup;
 			children = (
-				8533DEAE20DF337200CA7E0C /* Build+Cache.swift */,
 				85B30E6620DF365C00CC7876 /* Build+Complication.swift */,
 				8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */,
 				85F93BC120DDCD0700327DE9 /* BuildsInterfaceController.swift */,
 				8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */,
 				85F93BC720DDCD0700327DE9 /* ComplicationController.swift */,
 				85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */,
-				8533DE9920DE495600CA7E0C /* NetworkActivityManager.swift */,
 				85F93BC520DDCD0700327DE9 /* NotificationController.swift */,
 				8533DEB120DF339200CA7E0C /* Supporting Files */,
 				85B30E6820DFFB2300CC7876 /* UserInfo.swift */,
@@ -1280,6 +1516,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8555C4ED20EB8C6F003F5C93 /* CI2GoTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8555C4FE20EB8C6F003F5C93 /* Build configuration list for PBXNativeTarget "CI2GoTodayExtension" */;
+			buildPhases = (
+				8555C4EA20EB8C6F003F5C93 /* Sources */,
+				8555C4EB20EB8C6F003F5C93 /* Frameworks */,
+				8555C4EC20EB8C6F003F5C93 /* Resources */,
+				8555C5AE20EB91AE003F5C93 /* Copy Carthage Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CI2GoTodayExtension;
+			productName = CI2GoTodayExtension;
+			productReference = 8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		85B4CD7E20D23E2D005A6DA9 /* CI2Go */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85B4CDA720D23E30005A6DA9 /* Build configuration list for PBXNativeTarget "CI2Go" */;
@@ -1292,11 +1546,13 @@
 				85CAE12B20D5B758002CD128 /* Copy Carthage Frameworks */,
 				85F93BD720DDCD0700327DE9 /* Embed Watch Content */,
 				85D9053B20EAF8D900CBF5B6 /* Update License Plist */,
+				8555C4FA20EB8C6F003F5C93 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				85F93BCE20DDCD0700327DE9 /* PBXTargetDependency */,
+				8555C4F920EB8C6F003F5C93 /* PBXTargetDependency */,
 			);
 			name = CI2Go;
 			productName = CI2Go;
@@ -1384,6 +1640,17 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "LittleApps Inc.";
 				TargetAttributes = {
+					8555C4ED20EB8C6F003F5C93 = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
 					85B4CD7E20D23E2D005A6DA9 = {
 						CreatedOnToolsVersion = 9.4;
 						SystemCapabilities = {
@@ -1439,6 +1706,7 @@
 			targets = (
 				85B4CD7E20D23E2D005A6DA9 /* CI2Go */,
 				85F93BAF20DDCD0500327DE9 /* CI2GoWatch */,
+				8555C4ED20EB8C6F003F5C93 /* CI2GoTodayExtension */,
 				85F93BBB20DDCD0700327DE9 /* CI2GoWatchExtension */,
 				85B4CD9220D23E30005A6DA9 /* CI2GoTests */,
 				85B4CD9D20D23E30005A6DA9 /* CI2GoUITests */,
@@ -1447,6 +1715,133 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8555C4EC20EB8C6F003F5C93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8555C57620EB9044003F5C93 /* Wombat.itermcolors in Resources */,
+				8555C54A20EB9044003F5C93 /* Ocean.itermcolors in Resources */,
+				8555C55820EB9044003F5C93 /* Seti.itermcolors in Resources */,
+				8555C54C20EB9044003F5C93 /* Parasio Dark.itermcolors in Resources */,
+				8555C53A20EB9044003F5C93 /* LiquidCarbon.itermcolors in Resources */,
+				8555C51520EB9044003F5C93 /* Chalkboard.itermcolors in Resources */,
+				8555C56820EB9044003F5C93 /* Thayer Bright.itermcolors in Resources */,
+				8555C57720EB9044003F5C93 /* Wryan.itermcolors in Resources */,
+				8555C50620EB9044003F5C93 /* 3024 Night.itermcolors in Resources */,
+				8555C50B20EB9044003F5C93 /* Arthur.itermcolors in Resources */,
+				8555C57220EB9044003F5C93 /* Vaughn.itermcolors in Resources */,
+				8555C52F20EB9044003F5C93 /* Hurtado.itermcolors in Resources */,
+				8555C52A20EB9044003F5C93 /* Hardcore.itermcolors in Resources */,
+				8555C57420EB9044003F5C93 /* WarmNeon.itermcolors in Resources */,
+				8555C52520EB9044003F5C93 /* FrontEndDelight.itermcolors in Resources */,
+				8555C55B20EB9044003F5C93 /* SoftServer.itermcolors in Resources */,
+				8555C53220EB9044003F5C93 /* IC_Orange_PPL.itermcolors in Resources */,
+				8555C50520EB9044003F5C93 /* 3024 Day.itermcolors in Resources */,
+				8555C57320EB9044003F5C93 /* VibrantInk.itermcolors in Resources */,
+				8555C56F20EB9044003F5C93 /* Treehouse.itermcolors in Resources */,
+				8555C51D20EB9044003F5C93 /* DimmedMonokai.itermcolors in Resources */,
+				8555C4F620EB8C6F003F5C93 /* MainInterface.storyboard in Resources */,
+				8555C51920EB9044003F5C93 /* CrayonPonyFish.itermcolors in Resources */,
+				8555C54020EB9044003F5C93 /* Misterioso.itermcolors in Resources */,
+				8555C57020EB9044003F5C93 /* Twilight.itermcolors in Resources */,
+				8555C53120EB9044003F5C93 /* IC_Green_PPL.itermcolors in Resources */,
+				8555C55620EB9044003F5C93 /* Seafoam Pastel.itermcolors in Resources */,
+				8555C52120EB9044003F5C93 /* Espresso Libre.itermcolors in Resources */,
+				8555C55920EB9044003F5C93 /* Shaman.itermcolors in Resources */,
+				8555C55120EB9044003F5C93 /* Pro.itermcolors in Resources */,
+				8555C52020EB9044003F5C93 /* Elemental.itermcolors in Resources */,
+				8555C54620EB9044003F5C93 /* NightLion v1.itermcolors in Resources */,
+				8555C53320EB9044003F5C93 /* idleToes.itermcolors in Resources */,
+				8555C51620EB9044003F5C93 /* Ciapre.itermcolors in Resources */,
+				8555C56E20EB9044003F5C93 /* ToyChest.itermcolors in Resources */,
+				8555C56620EB9044003F5C93 /* Teerb.itermcolors in Resources */,
+				8555C54E20EB9044003F5C93 /* PencilDark.itermcolors in Resources */,
+				8555C55D20EB9044003F5C93 /* Solarized Dark Higher Contrast.itermcolors in Resources */,
+				8555C52620EB9044003F5C93 /* FunForrest.itermcolors in Resources */,
+				8555C54920EB9044003F5C93 /* Obsidian.itermcolors in Resources */,
+				8555C52820EB9044003F5C93 /* Grape.itermcolors in Resources */,
+				8555C54B20EB9044003F5C93 /* Ollie.itermcolors in Resources */,
+				8555C5B820EBA65E003F5C93 /* BuildTableViewCell.xib in Resources */,
+				8555C53B20EB9044003F5C93 /* LiquidCarbonTransparent.itermcolors in Resources */,
+				8555C55420EB9044003F5C93 /* Rippedcasts.itermcolors in Resources */,
+				8555C55720EB9044003F5C93 /* SeaShells.itermcolors in Resources */,
+				8555C5BA20EBB4CA003F5C93 /* Assets.xcassets in Resources */,
+				8555C52220EB9044003F5C93 /* Espresso.itermcolors in Resources */,
+				8555C54420EB9044003F5C93 /* N0tch2k.itermcolors in Resources */,
+				8555C51020EB9044003F5C93 /* Blazer.itermcolors in Resources */,
+				8555C53720EB9044003F5C93 /* Jellybeans.itermcolors in Resources */,
+				8555C52720EB9044003F5C93 /* Github.itermcolors in Resources */,
+				8555C52C20EB9044003F5C93 /* Highway.itermcolors in Resources */,
+				8555C56220EB9044003F5C93 /* Spring.itermcolors in Resources */,
+				8555C52E20EB9044003F5C93 /* Homebrew.itermcolors in Resources */,
+				8555C51420EB9044003F5C93 /* Chalk.itermcolors in Resources */,
+				8555C53F20EB9044003F5C93 /* Medallion.itermcolors in Resources */,
+				8555C52320EB9044003F5C93 /* FishTank.itermcolors in Resources */,
+				8555C55020EB9044003F5C93 /* Pnevma.itermcolors in Resources */,
+				8555C56B20EB9044003F5C93 /* Tomorrow Night Eighties.itermcolors in Resources */,
+				8555C56520EB9044003F5C93 /* Symfonic.itermcolors in Resources */,
+				8555C51220EB9044003F5C93 /* Brogrammer.itermcolors in Resources */,
+				8555C51720EB9044003F5C93 /* CLRS.itermcolors in Resources */,
+				8555C53620EB9044003F5C93 /* Japanesque.itermcolors in Resources */,
+				8555C50C20EB9044003F5C93 /* Atom.itermcolors in Resources */,
+				8555C56720EB9044003F5C93 /* Terminal Basic.itermcolors in Resources */,
+				8555C51F20EB9044003F5C93 /* Earthsong.itermcolors in Resources */,
+				8555C53C20EB9044003F5C93 /* LiquidCarbonTransparentInverse.itermcolors in Resources */,
+				8555C52D20EB9044003F5C93 /* Hipster Green.itermcolors in Resources */,
+				8555C56420EB9044003F5C93 /* Sundried.itermcolors in Resources */,
+				8555C51B20EB9044003F5C93 /* Darkside.itermcolors in Resources */,
+				8555C56020EB9044003F5C93 /* Spacedust.itermcolors in Resources */,
+				8555C54220EB9044003F5C93 /* MonaLisa.itermcolors in Resources */,
+				8555C53E20EB9044003F5C93 /* Mathias.itermcolors in Resources */,
+				8555C55C20EB9044003F5C93 /* Solarized Darcula.itermcolors in Resources */,
+				8555C50720EB9044003F5C93 /* AdventureTime.itermcolors in Resources */,
+				8555C54520EB9044003F5C93 /* Neopolitan.itermcolors in Resources */,
+				8555C53920EB9044003F5C93 /* Lavandula.itermcolors in Resources */,
+				8555C51C20EB9044003F5C93 /* Desert.itermcolors in Resources */,
+				8555C57120EB9044003F5C93 /* Urple.itermcolors in Resources */,
+				8555C51820EB9044003F5C93 /* Cobalt2.itermcolors in Resources */,
+				8555C50E20EB9044003F5C93 /* Belafonte Night.itermcolors in Resources */,
+				8555C53820EB9044003F5C93 /* Kibble.itermcolors in Resources */,
+				8555C54320EB9044003F5C93 /* Monokai Soda.itermcolors in Resources */,
+				8555C54F20EB9044003F5C93 /* PencilLight.itermcolors in Resources */,
+				8555C56320EB9044003F5C93 /* Square.itermcolors in Resources */,
+				8555C56120EB9044003F5C93 /* SpaceGray.itermcolors in Resources */,
+				8555C55320EB9044003F5C93 /* Red Sands.itermcolors in Resources */,
+				8555C57820EB9044003F5C93 /* Zenburn.itermcolors in Resources */,
+				8555C54D20EB9044003F5C93 /* PaulMillr.itermcolors in Resources */,
+				8555C5AF20EB9DE8003F5C93 /* BuildArtifactTableViewCell.xib in Resources */,
+				8555C55E20EB9044003F5C93 /* Solarized Dark.itermcolors in Resources */,
+				8555C50920EB9044003F5C93 /* AlienBlood.itermcolors in Resources */,
+				8555C54120EB9044003F5C93 /* Molokai.itermcolors in Resources */,
+				8555C52B20EB9044003F5C93 /* Harper.itermcolors in Resources */,
+				8555C53D20EB9044003F5C93 /* Man Page.itermcolors in Resources */,
+				8555C51E20EB9044003F5C93 /* Dracula.itermcolors in Resources */,
+				8555C56920EB9044003F5C93 /* Tomorrow Night Blue.itermcolors in Resources */,
+				8555C57520EB9044003F5C93 /* Wez.itermcolors in Resources */,
+				8555C53420EB9044003F5C93 /* IR_Black.itermcolors in Resources */,
+				8555C50A20EB9044003F5C93 /* Argonaut.itermcolors in Resources */,
+				8555C56A20EB9044003F5C93 /* Tomorrow Night Bright.itermcolors in Resources */,
+				8555C54720EB9044003F5C93 /* NightLion v2.itermcolors in Resources */,
+				8555C50D20EB9044003F5C93 /* Belafonte Day.itermcolors in Resources */,
+				8555C52420EB9044003F5C93 /* Flat.itermcolors in Resources */,
+				8555C53020EB9044003F5C93 /* Hybrid.itermcolors in Resources */,
+				8555C50F20EB9044003F5C93 /* BirdsOfParadise.itermcolors in Resources */,
+				8555C55F20EB9044003F5C93 /* Solarized Light.itermcolors in Resources */,
+				8555C51320EB9044003F5C93 /* C64.itermcolors in Resources */,
+				8555C52920EB9044003F5C93 /* Grass.itermcolors in Resources */,
+				8555C53520EB9044003F5C93 /* Jackie Brown.itermcolors in Resources */,
+				8555C54820EB9044003F5C93 /* Novel.itermcolors in Resources */,
+				8555C55520EB9044003F5C93 /* Royal.itermcolors in Resources */,
+				8555C55A20EB9044003F5C93 /* Smyck.itermcolors in Resources */,
+				8555C56D20EB9044003F5C93 /* Tomorrow.itermcolors in Resources */,
+				8555C50820EB9044003F5C93 /* Afterglow.itermcolors in Resources */,
+				8555C51120EB9044003F5C93 /* Broadcast.itermcolors in Resources */,
+				8555C55220EB9044003F5C93 /* Red Alert.itermcolors in Resources */,
+				8555C51A20EB9044003F5C93 /* Dark Pastel.itermcolors in Resources */,
+				8555C56C20EB9044003F5C93 /* Tomorrow Night.itermcolors in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85B4CD7D20D23E2D005A6DA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1783,6 +2178,26 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint lint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		8555C5AE20EB91AE003F5C93 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Dwifft.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FileKit.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Dwifft.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FileKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		85CAE12B20D5B758002CD128 /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1847,6 +2262,66 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8555C4EA20EB8C6F003F5C93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8555C57F20EB9054003F5C93 /* Build.Outcome.swift in Sources */,
+				8555C5A420EB9067003F5C93 /* UIFontExtension.swift in Sources */,
+				8555C59520EB9054003F5C93 /* SingleQuickLookDataSource.swift in Sources */,
+				8555C57920EB9054003F5C93 /* AnyDecodable.swift in Sources */,
+				8555C59B20EB9067003F5C93 /* ArrayExtension.swift in Sources */,
+				8555C57D20EB9054003F5C93 /* Branch.swift in Sources */,
+				8555C59720EB9054003F5C93 /* User.swift in Sources */,
+				8555C5B220EB9E10003F5C93 /* Constants.swift in Sources */,
+				8555C5B520EB9EB5003F5C93 /* CustomTableViewCellStub.swift in Sources */,
+				8555C5AD20EB912A003F5C93 /* NetworkActivityManagerStub.swift in Sources */,
+				8555C5A720EB9067003F5C93 /* URLSessionExtension+Keychain.swift in Sources */,
+				8555C57A20EB9054003F5C93 /* Artifact.swift in Sources */,
+				8555C5A520EB9067003F5C93 /* UIScrollViewExtension.swift in Sources */,
+				8555C5A920EB9067003F5C93 /* UserDefaultsExtension+Shared.swift in Sources */,
+				8555C5A120EB9067003F5C93 /* StringExtension.swift in Sources */,
+				8555C58420EB9054003F5C93 /* BuildAction.Status.swift in Sources */,
+				8555C58A20EB9054003F5C93 /* ColorScheme.swift in Sources */,
+				8555C58C20EB9054003F5C93 /* ColorScheme+Color.swift in Sources */,
+				8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */,
+				8555C58E20EB9054003F5C93 /* Commit.swift in Sources */,
+				8555C58520EB9054003F5C93 /* BuildAction.Status+Color.swift in Sources */,
+				8555C5A020EB9067003F5C93 /* SegueExtension.swift in Sources */,
+				8555C5A220EB9067003F5C93 /* UIBarButtonItemExtension.swift in Sources */,
+				8555C58020EB9054003F5C93 /* Build.Status.swift in Sources */,
+				8555C59020EB9054003F5C93 /* EndpointConvertable.swift in Sources */,
+				8555C5B020EB9DE8003F5C93 /* BuildTableViewCell.swift in Sources */,
+				8555C59920EB9054003F5C93 /* VCS+Image.swift in Sources */,
+				8555C58220EB9054003F5C93 /* Build.swift in Sources */,
+				8555C59820EB9054003F5C93 /* VCS.swift in Sources */,
+				8555C59220EB9054003F5C93 /* Hostname.swift in Sources */,
+				8555C59420EB9054003F5C93 /* Project.swift in Sources */,
+				8555C59320EB9054003F5C93 /* Picard.swift in Sources */,
+				8555C58620EB9054003F5C93 /* BuildAction.swift in Sources */,
+				8555C57E20EB9054003F5C93 /* Build.Lifecycle.swift in Sources */,
+				8555C59620EB9054003F5C93 /* SSHInfo.swift in Sources */,
+				8555C57C20EB9054003F5C93 /* AuthProvider.swift in Sources */,
+				8555C59A20EB9054003F5C93 /* Workflow.swift in Sources */,
+				8555C5A820EB9067003F5C93 /* UserDefaultsExtension.swift in Sources */,
+				8555C5A620EB9067003F5C93 /* URLSessionExtension.swift in Sources */,
+				8555C5AB20EB907E003F5C93 /* HTTPMethod.swift in Sources */,
+				8555C59E20EB9067003F5C93 /* MBProgressHUDExtension.swift in Sources */,
+				8555C59120EB9054003F5C93 /* Error.swift in Sources */,
+				8555C58F20EB9054003F5C93 /* DateDecoder.swift in Sources */,
+				8555C58820EB9054003F5C93 /* BuildNode.swift in Sources */,
+				8555C58920EB9054003F5C93 /* BuildStep.swift in Sources */,
+				8555C59D20EB9067003F5C93 /* KeychainExtension.swift in Sources */,
+				8555C58720EB9054003F5C93 /* BuildLog.swift in Sources */,
+				8555C58120EB9054003F5C93 /* Build.Status+Color.swift in Sources */,
+				8555C4F320EB8C6F003F5C93 /* TodayViewController.swift in Sources */,
+				8555C59C20EB9067003F5C93 /* DateExtension.swift in Sources */,
+				8555C5A320EB9067003F5C93 /* UIColor+Interpolation.swift in Sources */,
+				8555C5AA20EB907E003F5C93 /* Endpoint.swift in Sources */,
+				8555C57B20EB9054003F5C93 /* Artifact+File.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85B4CD7B20D23E2D005A6DA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2004,11 +2479,12 @@
 				85F93BE420DDD4A300327DE9 /* Commit.swift in Sources */,
 				85F93BE620DDD4C100327DE9 /* EndpointConvertable.swift in Sources */,
 				85F93BE720DDD4C300327DE9 /* Error.swift in Sources */,
+				8555C5B320EB9E1A003F5C93 /* Constants.swift in Sources */,
 				85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */,
 				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
 				8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
 				85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */,
-				8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */,
+				8533DE9A20DE495600CA7E0C /* NetworkActivityManagerStub.swift in Sources */,
 				85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */,
 				8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */,
 				8533DEB020DF337600CA7E0C /* Build+Cache.swift in Sources */,
@@ -2019,6 +2495,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8555C4F920EB8C6F003F5C93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8555C4ED20EB8C6F003F5C93 /* CI2GoTodayExtension */;
+			targetProxy = 8555C4F820EB8C6F003F5C93 /* PBXContainerItemProxy */;
+		};
 		85B4CD9520D23E30005A6DA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 85B4CD7E20D23E2D005A6DA9 /* CI2Go */;
@@ -2042,6 +2523,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8555C4F420EB8C6F003F5C93 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8555C4F520EB8C6F003F5C93 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		85B4CD8620D23E2D005A6DA9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2069,6 +2558,65 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8555C4FC20EB8C6F003F5C93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CI2GoTodayExtension/CI2GoTodayExtension.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+					"$(PROJECT_DIR)/Vendor",
+				);
+				INFOPLIST_FILE = CI2GoTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.todayext;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d1378c1a-8696-4b83-972c-301bf4b1dfe1";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle.todayext";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8555C4FD20EB8C6F003F5C93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CI2GoTodayExtension/CI2GoTodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3Y8APYUG2G;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+					"$(PROJECT_DIR)/Vendor",
+				);
+				INFOPLIST_FILE = CI2GoTodayExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.todayext;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "01ee9ea5-4cc1-4e1a-bd7a-3177c5f0a5db";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.todayext";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		85B4CDA520D23E30005A6DA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2192,6 +2740,7 @@
 		85B4CDA820D23E30005A6DA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
 				CODE_SIGN_STYLE = Manual;
@@ -2219,6 +2768,7 @@
 		85B4CDA920D23E30005A6DA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -2433,6 +2983,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8555C4FE20EB8C6F003F5C93 /* Build configuration list for PBXNativeTarget "CI2GoTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8555C4FC20EB8C6F003F5C93 /* Debug */,
+				8555C4FD20EB8C6F003F5C93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		85B4CD7A20D23E2D005A6DA9 /* Build configuration list for PBXProject "CI2Go" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

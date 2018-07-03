@@ -28,6 +28,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
 
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        guard
+            let build = Build(inAppURL: url),
+            let splitVC = window?.rootViewController as? UISplitViewController,
+            let viewController: BuildsViewController = splitVC.viewControllers
+                .map({ (viewController: UIViewController) -> BuildsViewController? in
+                    guard
+                        let nvc = viewController as? UINavigationController,
+                        let viewController = nvc.viewControllers.first as? BuildsViewController
+                        else { return nil }
+                    return viewController
+                })
+                .first(where: { $0 != nil }) as? BuildsViewController
+            else { return false }
+
+        viewController.navigationController?.popToViewController(viewController, animated: false)
+        viewController.performSegue(withIdentifier: .showBuildDetail, sender: build)
+        return true
+    }
+
     // MARK: - Split View
 
     var splitViewController: UISplitViewController? {
