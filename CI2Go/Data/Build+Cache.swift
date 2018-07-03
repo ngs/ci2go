@@ -11,7 +11,7 @@ import Foundation
 
 extension Array where Element == Build {
     static var cacheFile: TextFile {
-        return TextFile(path: Path.userDocuments + "/project.json")
+        return TextFile(path: Path.userDocuments + "/builds.json")
     }
 
     static func fromCache() -> [Build]? {
@@ -22,5 +22,14 @@ extension Array where Element == Build {
             else { return nil }
         jsonDecoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
         return try? jsonDecoder.decode(self, from: data)
+    }
+
+    static func wtriteCache(data: Data?) throws {
+        guard
+            let data = data,
+            let jsonString = String(data: data, encoding: .utf8) else {
+                return
+        }
+        try jsonString.write(to: cacheFile.path)
     }
 }

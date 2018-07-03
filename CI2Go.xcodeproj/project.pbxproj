@@ -354,6 +354,8 @@
 		8555C5B520EB9EB5003F5C93 /* CustomTableViewCellStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */; };
 		8555C5B820EBA65E003F5C93 /* BuildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B620D965F800557249 /* BuildTableViewCell.xib */; };
 		8555C5BA20EBB4CA003F5C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8555C5B920EBB4CA003F5C93 /* Assets.xcassets */; };
+		8555C5BB20EBBF44003F5C93 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; };
+		8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DEAE20DF337200CA7E0C /* Build+Cache.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -988,6 +990,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8555C5BB20EBBF44003F5C93 /* FileKit.framework in Frameworks */,
 				8555C4F020EB8C6F003F5C93 /* NotificationCenter.framework in Frameworks */,
 				8555C4FF20EB9019003F5C93 /* Dwifft.framework in Frameworks */,
 				8555C50020EB901C003F5C93 /* KeychainAccess.framework in Frameworks */,
@@ -1415,6 +1418,7 @@
 				85CAE24320D5EDB9002CD128 /* Build.Status.swift */,
 				85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */,
 				85CAE23420D5E8E8002CD128 /* Build.swift */,
+				8533DEAE20DF337200CA7E0C /* Build+Cache.swift */,
 				85C6619420EACBCE007B58CD /* Build+UIKit.swift */,
 				85CAE26120D61909002CD128 /* BuildAction.Status.swift */,
 				85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */,
@@ -1496,7 +1500,6 @@
 		85F93BC020DDCD0700327DE9 /* CI2GoWatchExtension */ = {
 			isa = PBXGroup;
 			children = (
-				8533DEAE20DF337200CA7E0C /* Build+Cache.swift */,
 				85B30E6620DF365C00CC7876 /* Build+Complication.swift */,
 				8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */,
 				85F93BC120DDCD0700327DE9 /* BuildsInterfaceController.swift */,
@@ -2183,11 +2186,13 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Dwifft.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FileKit.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Dwifft.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FileKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2279,6 +2284,7 @@
 				8555C58420EB9054003F5C93 /* BuildAction.Status.swift in Sources */,
 				8555C58A20EB9054003F5C93 /* ColorScheme.swift in Sources */,
 				8555C58C20EB9054003F5C93 /* ColorScheme+Color.swift in Sources */,
+				8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */,
 				8555C58E20EB9054003F5C93 /* Commit.swift in Sources */,
 				8555C58520EB9054003F5C93 /* BuildAction.Status+Color.swift in Sources */,
 				8555C5A020EB9067003F5C93 /* SegueExtension.swift in Sources */,

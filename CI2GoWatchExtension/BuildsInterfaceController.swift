@@ -63,13 +63,7 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
         URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, data, _, _) in
             guard let `self` = self, let builds = builds else { return }
             self.fileOperationQueue.addOperation {
-                if let data = data, let jsonString = String(data: data, encoding: .utf8) {
-                    do {
-                        try jsonString.write(to: type(of: builds).cacheFile.path)
-                    } catch {
-                        print(error)
-                    }
-                }
+                try? [Build].wtriteCache(data: data)
             }
             self.builds = Array(builds.prefix(self.maxBuilds))
             } .resume()

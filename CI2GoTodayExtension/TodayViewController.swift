@@ -22,9 +22,13 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
         tableView.register(
             UINib(nibName: BuildTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: BuildTableViewCell.identifier)
-        diffCalculator = TableViewDiffCalculator(tableView: tableView)
-        diffCalculator.insertionAnimation = .none
-        extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        if diffCalculator == nil {
+            diffCalculator = TableViewDiffCalculator(tableView: tableView)
+            extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        }
+        if let cache = [Build].fromCache() {
+            diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, cache)])
+        }
     }
 
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -32,24 +36,28 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
             completionHandler(.noData)
             return
         }
+        self.updatePreferredContentSize()
         let limit = self.limit
         let defaults = UserDefaults.shared
         let object: EndpointConvertable? = defaults.branch ?? defaults.project
         let endpoint: Endpoint<[Build]> = .builds(object: object, offset: 0, limit: limit)
         let diffCalculator = self.diffCalculator
-        URLSession.shared.dataTask(endpoint: endpoint, token: token) { [weak self] (builds, _, _, err) in
-            guard let `self` = self else { return }
-            if let err = err {
-                Crashlytics.sharedInstance().recordError(err)
+        URLSession.shared.dataTask(endpoint: endpoint, token: token) { [weak self] (builds, data, _, err) in
+            guard let builds = builds else {
+                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                 completionHandler(.failed)
                 return
             }
+            guard let `self` = self else {
+                completionHandler(.failed)
+                return
+            }
+            try? [Build].wtriteCache(data: data)
             let oldBuilds: [Build] = diffCalculator?.sectionedValues.sectionsAndValues.first?.1 ?? []
-            let newBuilds: [Build] = Array(oldBuilds.merged(with: builds ?? []).sorted().reversed().prefix(limit))
+            let newBuilds: [Build] = Array(oldBuilds.merged(with: builds).sorted().reversed().prefix(limit))
             DispatchQueue.main.async {
                 self.diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, newBuilds)])
                 self.updatePreferredContentSize()
-                self.tableView.reloadData()
                 completionHandler(.newData)
             }
         }.resume()
@@ -69,13 +77,16 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
     }
 
     func updatePreferredContentSize(for activeDisplayMode: NCWidgetDisplayMode? = nil, width: CGFloat? = nil) {
-        guard let activeDisplayMode = activeDisplayMode ?? self.extensionContext?.widgetActiveDisplayMode else {
+        let builds: [Build] = diffCalculator?.sectionedValues.sectionsAndValues.first?.1 ?? []
+        guard
+            let activeDisplayMode = activeDisplayMode ?? self.extensionContext?.widgetActiveDisplayMode,
+            !builds.isEmpty else {
             return
         }
         let width = width ?? preferredContentSize.width
-        let builds: [Build] = diffCalculator?.sectionedValues.sectionsAndValues.first?.1 ?? []
+
         let limit = numberOfRows(for: activeDisplayMode)
-        let sum = builds.prefix(limit).reduce(CGFloat(20)) { (num, build) -> CGFloat in
+        let sum = builds.prefix(limit).reduce(CGFloat(0)) { (num, build) -> CGFloat in
             return num + BuildTableViewCell.height(for: build)
         }
         preferredContentSize = CGSize(width: width, height: sum)
