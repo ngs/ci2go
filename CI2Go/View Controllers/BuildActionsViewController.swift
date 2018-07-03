@@ -130,6 +130,12 @@ class BuildActionsViewController: UITableViewController {
         if let build = build, build.hasArtifacts, !build.status.isLive {
             values.append(("Artifacts", [artifactsRow]))
         }
+        if let build = build, build.isSSHAvailable {
+            let sshRows = build.sshURLs.enumerated().map { (i, url) in
+                return RowItem(sshInfo: SSHInfo(index: i, url: url))
+            }
+            values.append(("SSH", sshRows))
+        }
         diffCalculator?.sectionedValues = SectionedValues<String, RowItem>(values)
 
         if scroll {
@@ -200,7 +206,7 @@ class BuildActionsViewController: UITableViewController {
         }
     }
 
-    func retryBuild() {
+    func retryBuild(ssh: Bool = false) {
         guard
             let build = build,
             let nvc = navigationController
@@ -209,19 +215,19 @@ class BuildActionsViewController: UITableViewController {
         hud.animationType = .fade
         hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         hud.backgroundView.style = .solidColor
-        hud.label.text = "Triggering retry build"
-        URLSession.shared.dataTask(endpoint: .retry(build: build)) { [weak self] (build, _, _, err) in
+        hud.label.text = "Rerunning job"
+        URLSession.shared.dataTask(endpoint: .retry(build: build, ssh: ssh)) { [weak self] (build, _, _, err) in
             DispatchQueue.main.async {
                 let crashlytics = Crashlytics.sharedInstance()
                 hud.mode = .customView
                 hud.hide(animated: true, afterDelay: 1)
                 guard let build = build else {
-                    hud.label.text = "Failed to retry build"
+                    hud.label.text = "Failed to rerun job"
                     hud.icon = .warning
                     crashlytics.recordError(err ?? APIError.noData)
                     return
                 }
-                hud.label.text = "Build queued!"
+                hud.label.text = "Job queued!"
                 hud.icon = .success
                 guard
                     let storyboard = self?.storyboard,
@@ -242,19 +248,19 @@ class BuildActionsViewController: UITableViewController {
         hud.animationType = .fade
         hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         hud.backgroundView.style = .solidColor
-        hud.label.text = "Cancelling build"
+        hud.label.text = "Canceling job"
         URLSession.shared.dataTask(endpoint: .cancel(build: build)) { [weak self] (build, _, _, err) in
             DispatchQueue.main.async {
                 let crashlytics = Crashlytics.sharedInstance()
                 hud.mode = .customView
                 hud.hide(animated: true, afterDelay: 1)
                 guard let build = build else {
-                    hud.label.text = "Failed to cancel build"
+                    hud.label.text = "Failed to cancel job"
                     hud.icon = .warning
                     crashlytics.recordError(err ?? APIError.noData)
                     return
                 }
-                hud.label.text = "Build cancelled!"
+                hud.label.text = "Job canceled!"
                 hud.icon = .success
                 self?.build = build
             }
@@ -268,11 +274,16 @@ class BuildActionsViewController: UITableViewController {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }))
         }
-        av.addAction(UIAlertAction(title: "Retry build", style: .default, handler: { _ in
+        av.addAction(UIAlertAction(title: "Rerun job", style: .default, handler: { _ in
             self.retryBuild()
         }))
-        if let build = build, build.status == .running || build.status == .scheduled {
-            av.addAction(UIAlertAction(title: "Cancel build", style: .destructive, handler: { _ in
+        if UIApplication.shared.canOpenURL(URL(string: "ssh://foo@dummy.com:1234")!) {
+            av.addAction(UIAlertAction(title: "Rerun job with SSH", style: .default, handler: { _ in
+                self.retryBuild(ssh: true)
+            }))
+        }
+        if let build = build, build.status.isLive {
+            av.addAction(UIAlertAction(title: "Cancel job", style: .destructive, handler: { _ in
                 self.cancelBuild()
             }))
         }
@@ -295,9 +306,16 @@ class BuildActionsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)!
         if let cell = cell as? BuildActionTableViewCell {
             cell.buildAction = item.action
+            return cell
+        }
+        if let sshInfo = item.sshInfo {
+            cell.textLabel?.text = sshInfo.title
+            cell.detailTextLabel?.text = sshInfo.server
+            return cell
         }
         if item.isConfiguration {
             cell.textLabel?.text = build?.configurationName
+            return cell
         }
         return cell
     }
@@ -319,8 +337,15 @@ class BuildActionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard
             let cell = tableView.cellForRow(at: indexPath),
-            let item = diffCalculator?.value(atIndexPath: indexPath),
-            cell.selectionStyle != .none else { return }
+            let item = diffCalculator?.value(atIndexPath: indexPath) else { return }
+        if let sshInfo = item.sshInfo {
+            UIApplication.shared.open(sshInfo.url, options: [:], completionHandler: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
+        if cell.selectionStyle == .none {
+            return
+        }
         if item.segueIdentifier == .showBuildLog {
             performSegue(withIdentifier: item.segueIdentifier, sender: cell)
         }
@@ -328,19 +353,48 @@ class BuildActionsViewController: UITableViewController {
 }
 
 extension BuildActionsViewController {
+    struct SSHInfo: Equatable, Comparable {
+        let index: Int
+        let url: URL
+
+        static func ==(_ lhs: SSHInfo, _ rhs: SSHInfo) -> Bool {
+            return lhs.index == rhs.index
+        }
+
+        static func < (lhs: SSHInfo, rhs: SSHInfo) -> Bool {
+            return lhs.index < rhs.index
+        }
+
+        var title: String {
+            return "Container \(index)"
+        }
+
+        var server: String {
+            if url.user == "circleci" {
+                return String(url.absoluteString.dropFirst("ssh://circleci@".count))
+            }
+            return String(url.absoluteString.dropFirst("ssh://".count))
+        }
+    }
+
     struct RowItem: Equatable, Comparable {
         let action: BuildAction?
         let isConfiguration: Bool
         let isArtifacts: Bool
+        let sshInfo: SSHInfo?
 
-        init(action: BuildAction? = nil, isConfiguration: Bool = false, isArtifacts: Bool = false) {
+        init(action: BuildAction? = nil, isConfiguration: Bool = false, isArtifacts: Bool = false, sshInfo: SSHInfo? = nil) {
             self.action = action
             self.isConfiguration = isConfiguration
             self.isArtifacts = isArtifacts
+            self.sshInfo = sshInfo
         }
 
         static func ==(_ lhs: RowItem, _ rhs: RowItem) -> Bool {
             if let la = lhs.action, let ra = rhs.action {
+                return la == ra
+            }
+            if let la = lhs.sshInfo, let ra = rhs.sshInfo {
                 return la == ra
             }
             return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
@@ -350,8 +404,8 @@ extension BuildActionsViewController {
             if let la = lhs.action, let ra = rhs.action {
                 return la < ra
             }
-            if lhs.isConfiguration && !rhs.isConfiguration {
-
+            if let la = lhs.sshInfo, let ra = rhs.sshInfo {
+                return la < ra
             }
             return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
         }
@@ -362,6 +416,9 @@ extension BuildActionsViewController {
             }
             if isArtifacts {
                 return "ArtifactsCell"
+            }
+            if let _ = sshInfo {
+                return "SSHCell"
             }
             return BuildActionTableViewCell.identifier
         }

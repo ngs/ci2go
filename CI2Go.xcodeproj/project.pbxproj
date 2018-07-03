@@ -223,6 +223,9 @@
 		85BE576D20DDFF89004C92DA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
 		85C6618E20E61F05007B58CD /* totp-github.com.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618D20E61F05007B58CD /* totp-github.com.js */; };
 		85C6619020E61F12007B58CD /* totp-bitbucket.org.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */; };
+		85C6619220EAB995007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
+		85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
+		85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619420EACBCE007B58CD /* Build+UIKit.swift */; };
 		85CAE12420D5B74F002CD128 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11D20D5B74E002CD128 /* Reachability.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -385,6 +388,9 @@
 		85CAE26F20D629B3002CD128 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26E20D629B3002CD128 /* Branch.swift */; };
 		85CAE27120D62AA9002CD128 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE27020D62AA9002CD128 /* projects.json */; };
 		85CAE27320D63429002CD128 /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
+		85D9053620EAE88100CBF5B6 /* SettingsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */; };
+		85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */; };
+		85D9053D20EAF9D500CBF5B6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 85D9053C20EAF9D400CBF5B6 /* Settings.bundle */; };
 		85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */; };
 		85F93BB420DDCD0500327DE9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB220DDCD0500327DE9 /* Interface.storyboard */; };
 		85F93BB620DDCD0600327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB520DDCD0600327DE9 /* Assets.xcassets */; };
@@ -570,6 +576,8 @@
 		85BE576A20DDFF4F004C92DA /* Artifact+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artifact+File.swift"; sourceTree = "<group>"; };
 		85C6618D20E61F05007B58CD /* totp-github.com.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-github.com.js"; sourceTree = "<group>"; };
 		85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-bitbucket.org.js"; sourceTree = "<group>"; };
+		85C6619120EAB995007B58CD /* BuildNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNode.swift; sourceTree = "<group>"; };
+		85C6619420EACBCE007B58CD /* Build+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+UIKit.swift"; sourceTree = "<group>"; };
 		85CAE11D20D5B74E002CD128 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
 		85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = Carthage/Build/iOS/MBProgressHUD.framework; sourceTree = "<group>"; };
 		85CAE11F20D5B74E002CD128 /* FileKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileKit.framework; path = Carthage/Build/iOS/FileKit.framework; sourceTree = "<group>"; };
@@ -735,6 +743,9 @@
 		85CAE26E20D629B3002CD128 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
 		85CAE27020D62AA9002CD128 /* projects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
 		85CAE27220D63429002CD128 /* Artifact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artifact.swift; sourceTree = "<group>"; };
+		85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsFooterView.xib; sourceTree = "<group>"; };
+		85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
+		85D9053C20EAF9D400CBF5B6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactDownloadManager.swift; sourceTree = "<group>"; };
 		85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2GoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F93BB320DDCD0500327DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -836,6 +847,8 @@
 				853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */,
 				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
 				8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */,
+				85D9053520EAE88100CBF5B6 /* SettingsFooterView.xib */,
+				85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1155,10 +1168,12 @@
 				85CAE24320D5EDB9002CD128 /* Build.Status.swift */,
 				85F93BF720DDEECF00327DE9 /* Build.Status+Color.swift */,
 				85CAE23420D5E8E8002CD128 /* Build.swift */,
+				85C6619420EACBCE007B58CD /* Build+UIKit.swift */,
 				85CAE26120D61909002CD128 /* BuildAction.Status.swift */,
 				85F93BF520DDD6F000327DE9 /* BuildAction.Status+Color.swift */,
 				85CAE25720D60017002CD128 /* BuildAction.swift */,
 				856D904520DAB5770030F432 /* BuildLog.swift */,
+				85C6619120EAB995007B58CD /* BuildNode.swift */,
 				85CAE25920D60023002CD128 /* BuildStep.swift */,
 				85CAE23020D5DBEB002CD128 /* ColorScheme.swift */,
 				85CAE26320D619B9002CD128 /* ColorScheme+ANSI.swift */,
@@ -1195,6 +1210,7 @@
 		85CAE25C20D6060A002CD128 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				85D9053C20EAF9D400CBF5B6 /* Settings.bundle */,
 				8582285720E5F01A0092B8CF /* 1Password.xcassets */,
 				85B4CD8B20D23E2F005A6DA9 /* LaunchScreen.storyboard */,
 				85CAE22420D5C531002CD128 /* CI2Go.entitlements */,
@@ -1257,6 +1273,8 @@
 				85B4CD7D20D23E2D005A6DA9 /* Resources */,
 				85CAE12B20D5B758002CD128 /* Copy Carthage Frameworks */,
 				85F93BD720DDCD0700327DE9 /* Embed Watch Content */,
+				85D9053B20EAF8D900CBF5B6 /* Update License Plist */,
+				85D9053E20EAFB2B00CBF5B6 /* Update Root Plist in Settings Bundle */,
 			);
 			buildRules = (
 			);
@@ -1486,6 +1504,7 @@
 				856609B520D8F84D00557249 /* LoadingCell.xib in Resources */,
 				8582285820E5F01A0092B8CF /* 1Password.xcassets in Resources */,
 				85CAE22020D5BAE2002CD128 /* SourceCodePro-Black.ttf in Resources */,
+				85D9053D20EAF9D500CBF5B6 /* Settings.bundle in Resources */,
 				85CAE21220D5BAE2002CD128 /* Symfonic.itermcolors in Resources */,
 				85CAE1D420D5BAE2002CD128 /* Lavandula.itermcolors in Resources */,
 				85CAE22220D5BAE2002CD128 /* SourceCodePro-Regular.ttf in Resources */,
@@ -1534,6 +1553,7 @@
 				85CAE1B520D5BAE2002CD128 /* 3024 Day.itermcolors in Resources */,
 				85CAE1BE20D5BAE2002CD128 /* Belafonte Night.itermcolors in Resources */,
 				85CAE1CD20D5BAE2002CD128 /* Espresso.itermcolors in Resources */,
+				85D9053620EAE88100CBF5B6 /* SettingsFooterView.xib in Resources */,
 				85CAE1EA20D5BAE2002CD128 /* Grass.itermcolors in Resources */,
 				85C6619020E61F12007B58CD /* totp-bitbucket.org.js in Resources */,
 				85CAE1AA20D5BAE2002CD128 /* Hybrid.itermcolors in Resources */,
@@ -1765,6 +1785,34 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		85D9053B20EAF8D900CBF5B6 /* Update License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update License Plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n  /usr/local/bin/license-plist \\\n    --cartfile-path $SRCROOT/Cartfile \\\n    --output-path $PRODUCT_NAME/Settings.bundle \\\n    --suppress-opening-directory\nfi";
+		};
+		85D9053E20EAFB2B00CBF5B6 /* Update Root Plist in Settings Bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update Root Plist in Settings Bundle";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COPYRIGHT=$(/usr/libexec/PlistBuddy -c \"Print NSHumanReadableCopyright\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:0:FooterText ${COPYRIGHT}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nAPP_VERSION=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:1:DefaultValue ${APP_VERSION}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\nBUILD_NUMBER=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $PRODUCT_SETTINGS_PATH)\n/usr/libexec/PlistBuddy -c \"Set :PreferenceSpecifiers:2:DefaultValue ${BUILD_NUMBER}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Settings.bundle/Root.plist\"\n\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1776,6 +1824,7 @@
 				8566097620D805BB00557249 /* BuildActionTableViewCell.swift in Sources */,
 				8566096120D72B7700557249 /* BranchesViewController.swift in Sources */,
 				853D1A5920D64A9300C7F4FC /* EndpointConvertable.swift in Sources */,
+				85C6619220EAB995007B58CD /* BuildNode.swift in Sources */,
 				85CAE24620D5EDD4002CD128 /* Build.Outcome.swift in Sources */,
 				8504A07220DBD67D001D0C08 /* BuildArtifactsViewController.swift in Sources */,
 				856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */,
@@ -1832,6 +1881,8 @@
 				85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
+				85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */,
+				85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
 				8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */,
 				856609AF20D8D58700557249 /* DateExtension.swift in Sources */,
@@ -1919,6 +1970,7 @@
 				85F93BE820DDD4C800327DE9 /* AnyDecodable.swift in Sources */,
 				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
 				8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
+				85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */,
 				8533DE9A20DE495600CA7E0C /* NetworkActivityManager.swift in Sources */,
 				85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */,
 				8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */,

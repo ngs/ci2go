@@ -78,9 +78,9 @@ struct Endpoint<T: Decodable> {
         }
 
     }
-    
-    static func retry(build: Build) -> Endpoint<Build> {
-        return Endpoint<Build>(httpMethod: .post, data: build, action: "retry")
+
+    static func retry(build: Build, ssh: Bool = false) -> Endpoint<Build> {
+        return Endpoint<Build>(httpMethod: .post, data: build, action: ssh ? "ssh" : "retry")
     }
     
     init(

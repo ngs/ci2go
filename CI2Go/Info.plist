@@ -36,10 +36,13 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>ssh</string>
 		<string>org-appextension-feature-password-management</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2014-2018 LittleApps Inc. All Rights Reserved.</string>
 	<key>SharedAccessGroup</key>
 	<string>$(AppIdentifierPrefix)com.ci2go.shared</string>
 	<key>UIAppFonts</key>

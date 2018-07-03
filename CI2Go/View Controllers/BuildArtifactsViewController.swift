@@ -10,6 +10,7 @@ import UIKit
 import Crashlytics
 import Dwifft
 import QuickLook
+import FileKit
 
 class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDelegate {
 
@@ -162,6 +163,37 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         vc.path = "\(path)/\(item.name)"
         vc.artifacts = artifacts
         navigationController?.pushViewController(vc, animated: true)
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard let item = diffCalculator?.value(atIndexPath: indexPath), let artifact = item.artifact, artifact.localPath.exists else {
+            return []
+        }
+        let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+        }
+        return [delete]
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let item = diffCalculator?.value(atIndexPath: indexPath), let artifact = item.artifact, artifact.localPath.exists else {
+            return UISwipeActionsConfiguration(actions: [])
+        }
+        let action = UIContextualAction(style: .normal, title: nil) { (_, _, complete) in
+            DispatchQueue.global().async {
+                do {
+                    try artifact.localPath.deleteFile()
+                    DispatchQueue.main.async { [weak tableView] in
+                        tableView?.reloadRows(at: [indexPath], with: .fade)
+                        complete(true)
+                    }
+                } catch {
+                    complete(false)
+                }
+            }
+        }
+        action.backgroundColor = ColorScheme.current.red
+        action.image = #imageLiteral(resourceName: "trash")
+        return UISwipeActionsConfiguration(actions: [action])
     }
 }
 
