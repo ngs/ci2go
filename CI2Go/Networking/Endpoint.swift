@@ -17,27 +17,27 @@ struct Endpoint<T: Decodable> {
 
     let httpMethod: HTTPMethod
     let url: URL
-    
+
     static func cancel(build: Build) -> Endpoint<Build> {
         return Endpoint<Build>(httpMethod: .post, data: build, action: "cancel")
     }
-    
+
     static func follow(project: Project) -> Endpoint<Project> {
         return Endpoint<Project>(httpMethod: .post, data: project, action: "follow")
     }
-    
+
     static func get(build: Build) -> Endpoint<Build> {
         return Endpoint<Build>(httpMethod: .get, data: build)
     }
-    
+
     static func artifacts(build: Build) -> Endpoint<[Artifact]> {
         return Endpoint<[Artifact]>(httpMethod: .get, data: build, action: "artifacts")
     }
-    
+
     static var me: Endpoint<User> {
         return Endpoint<User>(httpMethod: .get, action: "me")
     }
-    
+
     static var projects: Endpoint<[Project]> {
         return Endpoint<[Project]>(httpMethod: .get, action: "projects")
     }
@@ -55,11 +55,11 @@ struct Endpoint<T: Decodable> {
             data: branch,
             parameters: [ "limit": String(limit), "offset": String(offset) ])
     }
-    
+
     static var recent: Endpoint<[Build]> {
         return recent(offset: 0)
     }
-    
+
     static func recent(offset: Int, limit: Int = 30) -> Endpoint<[Build]> {
         return Endpoint<[Build]>(
             httpMethod: .get,
@@ -67,7 +67,7 @@ struct Endpoint<T: Decodable> {
             parameters: [ "limit": String(limit), "offset": String(offset) ])
     }
 
-    static func builds(object: EndpointConvertable?, offset: Int = 0, limit: Int = 30) -> Endpoint<[Build]>  {
+    static func builds(object: EndpointConvertable?, offset: Int = 0, limit: Int = 30) -> Endpoint<[Build]> {
         switch object {
         case let branch as Branch:
             return .builds(branch: branch, offset: offset, limit: limit)
@@ -82,7 +82,7 @@ struct Endpoint<T: Decodable> {
     static func retry(build: Build, ssh: Bool = false) -> Endpoint<Build> {
         return Endpoint<Build>(httpMethod: .post, data: build, action: ssh ? "ssh" : "retry")
     }
-    
+
     init(
         httpMethod: HTTPMethod,
         data: EndpointConvertable? = nil,

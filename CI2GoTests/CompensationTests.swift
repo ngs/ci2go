@@ -33,7 +33,6 @@ class CompensationTests: XCTestCase {
         XCTAssertFalse(project1 > project2)
     }
 
-
     func testEqualBuilds() {
         let data = try! Data(json: "recent-builds")
         let decoder = JSONDecoder()

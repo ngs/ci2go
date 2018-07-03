@@ -28,5 +28,5 @@ struct BuildLog: Decodable {
         }
         message = ""
     }
-    
+
 }

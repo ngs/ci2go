@@ -8,8 +8,8 @@
 
 import Foundation
 
-fileprivate var _shared: UserDefaults?
-fileprivate let suiteName = "group.com.ci2go.ios.Circle"
+private var _shared: UserDefaults?
+private let suiteName = "group.com.ci2go.ios.Circle"
 
 extension UserDefaults {
     static var shared: UserDefaults {

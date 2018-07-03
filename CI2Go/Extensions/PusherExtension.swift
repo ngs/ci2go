@@ -10,9 +10,9 @@ import Foundation
 import PusherSwift
 import KeychainAccess
 
-fileprivate var _shared: Pusher?
-fileprivate let apiKey = "1cf6e0e755e419d2ac9a"
-fileprivate let authURL = "https://circleci.com/auth/pusher?circle-token="
+private var _shared: Pusher?
+private let apiKey = "1cf6e0e755e419d2ac9a"
+private let authURL = "https://circleci.com/auth/pusher?circle-token="
 
 class PusherAuthRequestBuilder: AuthRequestBuilderProtocol {
     let token: String

@@ -10,13 +10,13 @@ import XCTest
 @testable import CI2Go
 
 class ColorSchemeTests: XCTestCase {
-    
+
     func testPerformanceExample() {
         self.measure {
             XCTAssertEqual(ColorScheme.names.count, 116)
         }
     }
-    
+
     func testNames() {
         XCTAssertEqual([
             "3024 Day", "3024 Night", "AdventureTime", "Afterglow", "AlienBlood", "Argonaut", "Arthur", "Atom",
@@ -57,5 +57,5 @@ class ColorSchemeTests: XCTestCase {
         let color = ColorScheme("Tomorrow Morning")
         XCTAssertNil(color)
     }
-    
+
 }

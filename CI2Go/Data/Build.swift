@@ -10,7 +10,7 @@ import Foundation
 
 struct Build: Decodable, EndpointConvertable {
     typealias BuildParameters = [String: String]
-    
+
     let number: Int
     let compareURL: URL?
     let buildParameters: BuildParameters
@@ -32,7 +32,7 @@ struct Build: Decodable, EndpointConvertable {
     let isPlatformV2: Bool
     let hasArtifacts: Bool
     let nodes: [BuildNode]
-    
+
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
         case compareURL = "compare"
@@ -57,7 +57,7 @@ struct Build: Decodable, EndpointConvertable {
         case nodes = "node"
         case picard = "picard"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         project = try Project(from: decoder)
@@ -159,7 +159,7 @@ struct Build: Decodable, EndpointConvertable {
         nodes = build.nodes
     }
 
-    func build(withNewActionStatus status: BuildAction.Status, in nodeIndex:  Int, step: Int) -> Build {
+    func build(withNewActionStatus status: BuildAction.Status, in nodeIndex: Int, step: Int) -> Build {
         let newSteps = steps.map { buildStep -> BuildStep in
             let actions = buildStep.actions.map { action -> BuildAction in
                 if action.index == nodeIndex && action.step == step {
@@ -249,4 +249,3 @@ extension Build: Equatable {
         return lhs.apiPath == rhs.apiPath && lhs.status == rhs.status
     }
 }
-

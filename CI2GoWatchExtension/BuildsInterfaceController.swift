@@ -28,7 +28,7 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
             }
         }
     }
-    
+
     override func willActivate() {
         super.willActivate()
         placeholderGroup.setHidden(true)
@@ -39,11 +39,11 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
         reload()
         activateWCSession()
     }
-    
+
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
 
-    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {
         let userInfo = UserInfo(userInfo)
         userInfo.persist()
         project = userInfo.project
@@ -73,7 +73,7 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
             self.builds = Array(builds.prefix(self.maxBuilds))
             } .resume()
     }
-    
+
     func updateList() {
         clearAllMenuItems()
         if builds.isEmpty { return }
@@ -84,7 +84,7 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         addMenuItem(with: .repeat, title: "Reload", action: #selector(reload))
     }
-    
+
     override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         guard
             let row = table.rowController(at: rowIndex) as? BuildTableRowController,

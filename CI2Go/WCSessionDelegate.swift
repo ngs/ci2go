@@ -15,7 +15,7 @@ extension AppDelegate: WCSessionDelegate {
         session.transferUserInfo()
     }
 
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String: Any]) {
         session.transferUserInfo()
     }
 
@@ -25,7 +25,6 @@ extension AppDelegate: WCSessionDelegate {
     func sessionDidDeactivate(_ session: WCSession) {
     }
 }
-
 
 extension WCSession {
     func transferUserInfo() {

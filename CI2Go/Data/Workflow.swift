@@ -25,4 +25,3 @@ struct Workflow: Codable {
         case upstreamJobIDs = "upstream_job_ids"
     }
 }
-

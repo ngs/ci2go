@@ -141,5 +141,5 @@ class EndpointTests: XCTestCase {
         XCTAssertEqual("application/json", headers["Accept"]!)
         XCTAssertEqual("Basic Rm9vOg==", headers["Authorization"]!)
     }
-    
+
 }

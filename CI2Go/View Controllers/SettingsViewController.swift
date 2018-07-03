@@ -17,7 +17,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     let links: [(String, URL)] = [
         ("Rate CI2Go", URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
         ("Submit an issue", URL(string: "https://github.com/ngs/ci2go/issues/new")!),
-        ("Contact author", URL(string: "mailto:corp+ci2go@littleapps.jp?subject=CI2Go%20Support")!),
+        ("Contact author", URL(string: "mailto:corp+ci2go@littleapps.jp?subject=CI2Go%20Support")!)
         ]
 
     var diffCalculator: TableViewDiffCalculator<String?, RowItem>!

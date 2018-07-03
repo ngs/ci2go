@@ -15,7 +15,7 @@ struct User: Decodable {
     let vcs: VCS?
     let id: Int?
     let pusherID: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case login
         case avatarURL = "avatar_url"

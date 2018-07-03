@@ -9,8 +9,8 @@
 import Foundation
 import KeychainAccess
 
-fileprivate var _sharedKeychain: Keychain?
-fileprivate let serviceName = "com.ci2go.circle-token"
+private var _sharedKeychain: Keychain?
+private let serviceName = "com.ci2go.circle-token"
 
 extension Keychain {
     static var shared: Keychain {

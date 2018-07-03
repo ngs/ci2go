@@ -58,7 +58,7 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate {
         statusGroup.setBackgroundColor(colorScheme.badge(status: build.status))
     }
 
-    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {
         let userInfo = UserInfo(userInfo)
         userInfo.persist()
     }

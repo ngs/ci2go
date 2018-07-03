@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate class BundleClass {}
+private class BundleClass {}
 
 extension Bundle {
     static var test: Bundle {

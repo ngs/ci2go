@@ -91,7 +91,6 @@ extension BuildAction: Equatable {
     }
 }
 
-
 extension BuildAction: Comparable {
     static func < (lhs: BuildAction, rhs: BuildAction) -> Bool {
         return lhs.step < rhs.step

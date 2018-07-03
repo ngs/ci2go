@@ -74,7 +74,7 @@ class BuildsViewController: UITableViewController {
         }
     }
 
-    var isLoading = false  {
+    var isLoading = false {
         didSet {
             DispatchQueue.main.async { self.refreshData() }
         }

@@ -112,7 +112,7 @@ extension ColorScheme {
     }
 
     var isLight: Bool {
-        var brightness: CGFloat = 0.0;
+        var brightness: CGFloat = 0.0
         background.getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
         return brightness > 0.5
     }

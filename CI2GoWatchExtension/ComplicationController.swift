@@ -8,9 +8,8 @@
 
 import ClockKit
 
-
 class ComplicationController: NSObject, CLKComplicationDataSource {
-    
+
     // MARK: - Timeline Configuration
 
     lazy var builds: [Build] = {
@@ -18,29 +17,29 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }()
 
     func builds(for complation: CLKComplication) -> [Build] {
-        return builds.filter{ $0.template(for: complation) != nil }.sorted()
+        return builds.filter { $0.template(for: complation) != nil }.sorted()
     }
-    
+
     func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
         handler([.forward, .backward])
     }
-    
+
     func getTimelineStartDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         let date = self.builds(for: complication).first?.timestamp
         handler(date)
     }
-    
+
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         let date = self.builds(for: complication).last?.timestamp
         handler(date)
     }
-    
+
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         handler(.showOnLockScreen)
     }
-    
+
     // MARK: - Timeline Population
-    
+
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         // Call the handler with the current timeline entry
         guard
@@ -53,7 +52,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let entry = CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
         handler(entry)
     }
-    
+
     func getTimelineEntries(for complication: CLKComplication, before date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         let entries: [CLKComplicationTimelineEntry] = self.builds(for: complication)
             .filter { build in
@@ -71,7 +70,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         }
         handler(entries)
     }
-    
+
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         let entries: [CLKComplicationTimelineEntry] = self.builds(for: complication)
             .filter { build in
@@ -93,9 +92,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getTimelineAnimationBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineAnimationBehavior) -> Void) {
         handler(.grouped)
     }
-    
+
     // MARK: - Placeholder Templates
-    
+
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         handler(nil)
     }

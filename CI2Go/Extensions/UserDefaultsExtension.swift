@@ -29,7 +29,7 @@ extension UserDefaults {
         return string(forKey: defaultKey.rawValue)
     }
 
-    func dictionary(forKey defaultKey: Key) -> [String : Any]? {
+    func dictionary(forKey defaultKey: Key) -> [String: Any]? {
         return dictionary(forKey: defaultKey.rawValue)
     }
 

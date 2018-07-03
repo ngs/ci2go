@@ -39,7 +39,7 @@ extension UIScrollView {
         if isOverflowed {
             if let textView = self as? UITextView {
                 let location = textView.attributedText.length
-                let bottom = NSMakeRange(location, 0)
+                let bottom = NSRange(location: location, length: 0)
                 textView.scrollRangeToVisible(bottom)
                 return
             }

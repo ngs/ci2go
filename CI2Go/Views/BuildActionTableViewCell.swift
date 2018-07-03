@@ -33,5 +33,5 @@ class BuildActionTableViewCell: CustomTableViewCell {
         super.layoutSubviews()
         buildStatusBar.backgroundColor = buildAction?.status.color
     }
-    
+
 }
