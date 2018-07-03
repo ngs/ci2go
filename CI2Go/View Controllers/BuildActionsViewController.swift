@@ -7,10 +7,8 @@
 //
 
 import UIKit
-import Crashlytics
-import PusherSwift
 import Dwifft
-import MBProgressHUD
+import PusherSwift
 
 class BuildActionsViewController: UITableViewController {
     var isLoading = false
@@ -61,11 +59,7 @@ class BuildActionsViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         reloadTimer?.invalidate()
         reloadTimer = nil
-        if let pusher = Pusher.shared, !isNavigatingToNext {
-            pusherChannels.forEach {
-                pusher.unsubscribe($0.name)
-            }
-        }
+        unsubscribePusher()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,17 +92,6 @@ class BuildActionsViewController: UITableViewController {
     }
 
     // MARK: -
-
-    func loadBuild() {
-        guard let build = self.build, !isLoading else {
-            return
-        }
-        isLoading = true
-        URLSession.shared.dataTask(endpoint: .get(build: build)) { [weak self] (build, _, _, _) in
-            self?.isLoading = false
-            self?.build = build
-            }.resume()
-    }
 
     func refreshData(scroll: Bool = false) {
         guard let steps = build?.steps, steps.count > 0 else { return }
@@ -145,55 +128,6 @@ class BuildActionsViewController: UITableViewController {
         }
     }
 
-    func connectPusher() { // TODO: Expose to extension
-        guard
-            let pusher = Pusher.shared,
-            let build = build
-            else { return }
-        let events: [PusherEvent] = [.newAction, .updateAction, .updateObservables, .fetchTestResults]
-        pusherChannels = build.pusherChannelNames.map {
-            pusher.subscribe($0)
-        }
-        pusherChannels.forEach { channel in
-            events.forEach { event in
-                channel.bind(event, { [weak self] data in
-                    guard var newBuild = self?.build else {
-                        self?.loadBuild()
-                        return
-                    }
-                    data.forEach { datum in
-                        guard
-                            let log = datum["log"] as? [String: Any],
-                            let step = datum["step"] as? Int,
-                            let index = datum["index"] as? Int,
-                            let name = log["name"] as? String,
-                            let statusStr = log["status"] as? String,
-                            let status = BuildAction.Status(rawValue: statusStr)
-                            else { return }
-                        switch event {
-                        case .updateAction:
-                            newBuild = newBuild.build(withNewActionStatus: status, in: index, step: step)
-                        case .newAction:
-                            let newAction = BuildAction(name: name, index: index, step: step, status: status)
-                            var buildStep = newBuild.steps.first {$0.actions.first?.step == step }
-                            if buildStep != nil {
-                                let actions = buildStep!.actions + [newAction]
-                                buildStep = BuildStep(name: name, actions: actions)
-                            } else {
-                                buildStep = BuildStep(name: name, actions: [newAction])
-                            }
-                            newBuild = Build(build: newBuild, newSteps: newBuild.steps + [buildStep!])
-                        default:
-                            break
-                        }
-                    }
-                    self?.build = newBuild
-                    self?.loadBuild()
-                })
-            }
-        }
-    }
-
     func scrollToBottom(animated: Bool = false) {
         let section = numberOfSections(in: tableView) - 1
         let row = tableView(tableView, numberOfRowsInSection: section) - 1
@@ -201,69 +135,6 @@ class BuildActionsViewController: UITableViewController {
         if section >= 0 && row >= 0 && diff < tableView.rowHeight {
             tableView.scrollToRow(at: IndexPath(row: row, section: section), at: .bottom, animated: animated)
         }
-    }
-
-    func retryBuild(ssh: Bool = false) {
-        guard
-            let build = build,
-            let nvc = navigationController
-            else { return }
-        let hud = MBProgressHUD.showAdded(to: nvc.view, animated: true)
-        hud.animationType = .fade
-        hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        hud.backgroundView.style = .solidColor
-        hud.label.text = "Rerunning job"
-        URLSession.shared.dataTask(endpoint: .retry(build: build, ssh: ssh)) { [weak self] (build, _, _, err) in
-            DispatchQueue.main.async {
-                let crashlytics = Crashlytics.sharedInstance()
-                hud.mode = .customView
-                hud.hide(animated: true, afterDelay: 1)
-                guard let build = build else {
-                    hud.label.text = "Failed to rerun job"
-                    hud.icon = .warning
-                    crashlytics.recordError(err ?? APIError.noData)
-                    return
-                }
-                hud.label.text = "Job queued!"
-                hud.icon = .success
-                guard
-                    let storyboard = self?.storyboard,
-                    let viewController = storyboard.instantiateViewController(
-                        withIdentifier: "BuildActionsViewController")
-                        as? BuildActionsViewController
-                    else { return }
-                viewController.build = build
-                nvc.pushViewController(viewController, animated: true)
-            }
-            }.resume()
-    }
-
-    func cancelBuild() {
-        guard
-            let build = build,
-            let nvc = navigationController
-            else { return }
-        let hud = MBProgressHUD.showAdded(to: nvc.view, animated: true)
-        hud.animationType = .fade
-        hud.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        hud.backgroundView.style = .solidColor
-        hud.label.text = "Canceling job"
-        URLSession.shared.dataTask(endpoint: .cancel(build: build)) { [weak self] (build, _, _, err) in
-            DispatchQueue.main.async {
-                let crashlytics = Crashlytics.sharedInstance()
-                hud.mode = .customView
-                hud.hide(animated: true, afterDelay: 1)
-                guard let build = build else {
-                    hud.label.text = "Failed to cancel job"
-                    hud.icon = .warning
-                    crashlytics.recordError(err ?? APIError.noData)
-                    return
-                }
-                hud.label.text = "Job canceled!"
-                hud.icon = .success
-                self?.build = build
-            }
-            }.resume()
     }
 
     @IBAction func openActionSheet(_ sender: Any) {
@@ -349,93 +220,6 @@ class BuildActionsViewController: UITableViewController {
         }
         if item.segueIdentifier == .showBuildLog {
             performSegue(withIdentifier: item.segueIdentifier, sender: cell)
-        }
-    }
-}
-
-extension BuildActionsViewController {
-    struct SSHInfo: Equatable, Comparable {
-        let index: Int
-        let url: URL
-
-        static func == (_ lhs: SSHInfo, _ rhs: SSHInfo) -> Bool {
-            return lhs.index == rhs.index
-        }
-
-        static func < (lhs: SSHInfo, rhs: SSHInfo) -> Bool {
-            return lhs.index < rhs.index
-        }
-
-        var title: String {
-            return "Container \(index)"
-        }
-
-        var server: String {
-            if url.user == "circleci" {
-                return String(url.absoluteString.dropFirst("ssh://circleci@".count))
-            }
-            return String(url.absoluteString.dropFirst("ssh://".count))
-        }
-    }
-
-    struct RowItem: Equatable, Comparable {
-        let action: BuildAction?
-        let isConfiguration: Bool
-        let isArtifacts: Bool
-        let sshInfo: SSHInfo?
-
-        init(
-            action: BuildAction? = nil,
-            isConfiguration: Bool = false,
-            isArtifacts: Bool = false,
-            sshInfo: SSHInfo? = nil) {
-            self.action = action
-            self.isConfiguration = isConfiguration
-            self.isArtifacts = isArtifacts
-            self.sshInfo = sshInfo
-        }
-
-        static func == (_ lhs: RowItem, _ rhs: RowItem) -> Bool {
-            if let lobj = lhs.action, let robj = rhs.action {
-                return lobj == robj
-            }
-            if let lobj = lhs.sshInfo, let robj = rhs.sshInfo {
-                return lobj == robj
-            }
-            return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
-        }
-
-        static func < (lhs: RowItem, rhs: RowItem) -> Bool {
-            if let lobj = lhs.action, let robj = rhs.action {
-                return lobj < robj
-            }
-            if let lobj = lhs.sshInfo, let robj = rhs.sshInfo {
-                return lobj < robj
-            }
-            return lhs.isConfiguration == rhs.isConfiguration && lhs.isArtifacts == rhs.isArtifacts
-        }
-
-        var cellIdentifier: String {
-            if isConfiguration {
-                return "ConfigurationCell"
-            }
-            if isArtifacts {
-                return "ArtifactsCell"
-            }
-            if sshInfo != nil {
-                return "SSHCell"
-            }
-            return BuildActionTableViewCell.identifier
-        }
-
-        var segueIdentifier: SegueIdentifier {
-            if isConfiguration {
-                return .showBuildConfig
-            }
-            if isArtifacts {
-                return .showBuildConfig
-            }
-            return .showBuildLog
         }
     }
 }
