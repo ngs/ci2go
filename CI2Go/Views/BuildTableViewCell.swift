@@ -50,26 +50,6 @@ class BuildTableViewCell: CustomTableViewCell {
         isHidden = true
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let scheme = ColorScheme.current
-        let foreground: UIColor
-        let background: UIColor
-        if #available(iOSApplicationExtension 10, *) {
-            foreground = .darkText
-            background = .lightText
-        } else {
-            foreground = scheme.foreground
-            background = scheme.background
-        }
-        tintColor = foreground
-        statusLabel.textColor = background
-        statusLabel.highlightedTextColor = background
-        statusLabel.backgroundColor = build?.status.color
-        vcsIconImageView.image = build?.project.vcs.icon
-        timeLabel.text = build?.timestamp?.timeAgoSinceNow
-    }
-
     static func height(for build: Build?) -> CGFloat {
         return build?.hasWorkflows == true ? 95 : 75
     }
