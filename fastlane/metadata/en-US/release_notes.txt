@@ -1,5 +1,3 @@
-- Performance improvement
-- Update login flow to use Single Sign-On instead of filling API Token
-- Refine artifacts browser
-- iPhone X support
-- Apple Watch Complications support
+- Add item to connect container via SSH
+- Swipe build artifacts to delete local cache
+- Pull build list to refresh
