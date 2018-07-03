@@ -12,10 +12,23 @@ import Crashlytics
 import Dwifft
 import KeychainAccess
 
-class TodayViewController: UITableViewController, NCWidgetProviding {
+class TodayViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var controlViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var controlView: UIStackView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var updatedTimeLabel: UILabel!
     let limit = 5
 
     var diffCalculator: TableViewDiffCalculator<Int, Build>!
+
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        return formatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,42 +42,15 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
         if let cache = [Build].fromCache() {
             diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, cache)])
         }
-    }
-
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        guard let token = Keychain.shared.token else {
-            completionHandler(.noData)
-            return
+        if let date = [Build].cacheFile.modifiedDate {
+            updatedTimeLabel.text = "Last update: " + dateFormatter.string(from: date)
+        } else {
+            updatedTimeLabel.text = ""
         }
-        self.updatePreferredContentSize()
-        let limit = self.limit
-        let defaults = UserDefaults.shared
-        let object: EndpointConvertable? = defaults.branch ?? defaults.project
-        let endpoint: Endpoint<[Build]> = .builds(object: object, offset: 0, limit: limit)
-        let diffCalculator = self.diffCalculator
-        URLSession.shared.dataTask(endpoint: endpoint, token: token) { [weak self] (builds, data, _, err) in
-            guard let builds = builds else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
-                completionHandler(.failed)
-                return
-            }
-            guard let `self` = self else {
-                completionHandler(.failed)
-                return
-            }
-            try? [Build].wtriteCache(data: data)
-            let oldBuilds: [Build] = diffCalculator?.sectionedValues.sectionsAndValues.first?.1 ?? []
-            let newBuilds: [Build] = Array(oldBuilds.merged(with: builds).sorted().reversed().prefix(limit))
-            DispatchQueue.main.async {
-                self.diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, newBuilds)])
-                self.updatePreferredContentSize()
-                completionHandler(.newData)
-            }
-        }.resume()
     }
 
-    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-        updatePreferredContentSize(for: activeDisplayMode, width: maxSize.width)
+    @IBAction func refresh(_ sender: Any) {
+        loadBuilds()
     }
 
     func numberOfRows(for activeDisplayMode: NCWidgetDisplayMode) -> Int {
@@ -86,23 +72,78 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
         let width = width ?? preferredContentSize.width
 
         let limit = numberOfRows(for: activeDisplayMode)
-        let sum = builds.prefix(limit).reduce(CGFloat(0)) { (num, build) -> CGFloat in
+        let isHidden = activeDisplayMode == .compact
+        controlView.isHidden = isHidden
+        controlViewHeightConstraint.constant = controlView.isHidden ? 0 : 40
+        let sum = builds.prefix(limit).reduce(controlViewHeightConstraint.constant) { (num, build) -> CGFloat in
             return num + BuildTableViewCell.height(for: build)
         }
         preferredContentSize = CGSize(width: width, height: sum)
     }
 
-    // MARK: - Table view data source
+    func loadBuilds(completionHandler: ((NCUpdateResult) -> Void)? = nil) {
+        guard let token = Keychain.shared.token else {
+            completionHandler?(.noData)
+            return
+        }
+        self.updatePreferredContentSize()
+        let limit = self.limit
+        let defaults = UserDefaults.shared
+        let object: EndpointConvertable? = defaults.branch ?? defaults.project
+        let endpoint: Endpoint<[Build]> = .builds(object: object, offset: 0, limit: limit)
+        let diffCalculator = self.diffCalculator
+        refreshButton.isHidden = true
+        activityIndicatorView.startAnimating()
+        URLSession.shared.dataTask(endpoint: endpoint, token: token) { [weak self] (builds, data, _, err) in
+            DispatchQueue.main.async {
+                self?.refreshButton.isHidden = false
+                self?.activityIndicatorView.stopAnimating()
+            }
+            guard let builds = builds else {
+                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                completionHandler?(.failed)
+                return
+            }
+            guard let `self` = self else {
+                completionHandler?(.failed)
+                return
+            }
+            try? [Build].wtriteCache(data: data)
+            let oldBuilds: [Build] = diffCalculator?.sectionedValues.sectionsAndValues.first?.1 ?? []
+            let newBuilds: [Build] = Array(oldBuilds.merged(with: builds).sorted().reversed().prefix(limit))
+            DispatchQueue.main.async {
+                self.diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, newBuilds)])
+                self.updatePreferredContentSize()
+                self.updatedTimeLabel.text = "Last update: " + self.dateFormatter.string(from: Date())
+                completionHandler?(.newData)
+            }
+            }.resume()
+    }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+}
+
+extension TodayViewController: NCWidgetProviding {
+
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        loadBuilds(completionHandler: completionHandler)
+    }
+
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        updatePreferredContentSize(for: activeDisplayMode, width: maxSize.width)
+    }
+}
+
+extension TodayViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
         return diffCalculator.numberOfSections()
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return diffCalculator.numberOfObjects(inSection: section)
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = diffCalculator.value(atIndexPath: indexPath)
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
@@ -111,16 +152,17 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = diffCalculator.value(atIndexPath: indexPath)
         return BuildTableViewCell.height(for: item)
     }
+}
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+extension TodayViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let url = diffCalculator.value(atIndexPath: indexPath).inAppURL
         extensionContext?.open(url, completionHandler: { _ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         })
     }
-
 }
