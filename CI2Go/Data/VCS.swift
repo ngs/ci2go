@@ -12,6 +12,17 @@ enum VCS: String, Codable {
     case github
     case bitbucket
 
+    init?(shortName: String) {
+        switch shortName {
+        case VCS.github.shortName:
+             self = .github
+        case VCS.bitbucket.shortName:
+            self = .bitbucket
+        default:
+            return nil
+        }
+    }
+
     var host: String {
         switch self {
         case .github:

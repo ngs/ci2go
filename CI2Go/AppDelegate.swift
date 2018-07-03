@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                      open url: URL,
                      options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         guard
-            let build = Build(inAppURL: url),
+            let build = Build(inAppURL: url) ?? Build(webURL: url),
             let splitVC = window?.rootViewController as? UISplitViewController,
             let viewController: BuildsViewController = splitVC.viewControllers
                 .map({ (viewController: UIViewController) -> BuildsViewController? in

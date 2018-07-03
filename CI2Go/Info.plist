@@ -28,6 +28,36 @@
 				<string>ci2go</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ci2go.ios.Circle.uri.https</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>https</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ci2go.ios.Circle.uri.chttps</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>chttps</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.ci2go.ios.Circle.uri.httpsPrefixed</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ci2go+https</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

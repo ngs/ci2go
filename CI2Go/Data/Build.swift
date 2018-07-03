@@ -117,10 +117,22 @@ struct Build: Decodable, EndpointConvertable {
             let scheme = inAppURL.scheme, scheme == "ci2go",
             let host = inAppURL.host, host == "ci2go.app",
             comps.count == 6 && comps[1] == "project",
-        let vcs = VCS(rawValue: comps[2]),
-        let num = Int(comps[5])
+            let vcs = VCS(rawValue: comps[2]),
+            let num = Int(comps[5])
             else { return nil }
         let project = Project(vcs: vcs, username: comps[3], name: comps[4])
+        self.init(project: project, number: num)
+    }
+
+    init?(webURL: URL) {
+        let comps = webURL.pathComponents
+        guard
+            let host = webURL.host, host == "circleci.com",
+            comps.count == 5,
+            let vcs = VCS(shortName: comps[1]),
+            let num = Int(comps[4])
+            else { return nil }
+        let project = Project(vcs: vcs, username: comps[2], name: comps[3])
         self.init(project: project, number: num)
     }
 
