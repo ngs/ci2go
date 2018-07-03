@@ -9,6 +9,7 @@
 import UIKit
 import KeychainAccess
 import Crashlytics
+import Dwifft
 import WatchConnectivity
 import WebKit
 
@@ -19,17 +20,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         ("Contact author", URL(string: "mailto:corp+ci2go@littleapps.jp?subject=CI2Go%20Support")!),
         ]
 
+    var diffCalculator: TableViewDiffCalculator<String?, RowItem>!
+
     @IBOutlet weak var doneButtonItem: UIBarButtonItem!
+
     var isTokenValid: Bool {
         return isValidToken(Keychain.shared.token ?? "")
-    }
-
-    var colorSchemeSection: Int {
-        return isTokenValid ? 0 : 1
-    }
-
-    var linksSection: Int {
-        return isTokenValid ? 1 : 2
     }
 
     func confirmLogout() {
@@ -50,7 +46,24 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             }
         }
         navigationItem.rightBarButtonItem?.isEnabled = false
-        tableView.reloadData()
+        refreshData()
+    }
+
+    func refreshData() {
+        let colorSchemeTitle = "Color Scheme"
+        let supportTitle = "Support"
+        let linkItems: [RowItem] = links.map { .link($0.0, $0.1) }
+        var values = [(String?, [RowItem])]()
+        if isTokenValid {
+            values.append((colorSchemeTitle, [.colorScheme]))
+            values.append((supportTitle, linkItems))
+            values.append((nil, [.logout]))
+        } else {
+            values.append((nil, [.auth(.github), .auth(.bitbucket)]))
+            values.append((colorSchemeTitle, [.colorScheme]))
+            values.append((supportTitle, linkItems))
+        }
+        diffCalculator.sectionedValues = SectionedValues<String?, RowItem>(values)
     }
 
     // MARK: - UIViewController
@@ -63,8 +76,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        diffCalculator = TableViewDiffCalculator(tableView: tableView)
         tableView.register(UINib(nibName: ColorSchemeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ColorSchemeTableViewCell.identifier)
         tableView.register(LoginProviderTableViewCell.self, forCellReuseIdentifier: LoginProviderTableViewCell.identifier)
+        refreshData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,29 +94,15 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - UITableView
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return diffCalculator.numberOfSections()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case colorSchemeSection:
-            return 1
-        case linksSection:
-            return links.count
-        default:
-            return isTokenValid ? 1 : 2
-        }
+        return diffCalculator.numberOfObjects(inSection: section)
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case colorSchemeSection:
-            return "Color Scheme"
-        case linksSection:
-            return "Support"
-        default:
-            return nil
-        }
+        return diffCalculator.value(forSection: section)
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -116,50 +117,68 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case colorSchemeSection:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ColorSchemeTableViewCell.identifier) as! ColorSchemeTableViewCell
+        let item = diffCalculator.value(atIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)
+        switch item {
+        case .colorScheme:
+            let cell = cell as! ColorSchemeTableViewCell
             cell.colorScheme = ColorScheme.current
             return cell
-        case linksSection:
-            let identifier = "LinkCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? CustomTableViewCell(style: .default, reuseIdentifier: identifier)
-            cell.textLabel?.text = links[indexPath.row].0
+        case .logout:
+            let cell = cell ?? CustomTableViewCell(style: .default, reuseIdentifier: item.cellIdentifier)
+            cell.textLabel?.text = "Logout"
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = ColorScheme.current.red
+            return cell
+        case let .link(title, _):
+            let cell = cell ?? CustomTableViewCell(style: .default, reuseIdentifier: item.cellIdentifier)
+            cell.textLabel?.text = title
             cell.textLabel?.textColor = ColorScheme.current.foreground
             return cell
-        default:
-            if isTokenValid {
-                let identifier = "LogoutCell"
-                let cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? CustomTableViewCell(style: .default, reuseIdentifier: identifier)
-                cell.textLabel?.textAlignment = .center
-                cell.textLabel?.textColor = ColorScheme.current.red
-                cell.textLabel?.text = "Logout"
-                return cell
-            }
-            let cell = tableView.dequeueReusableCell(withIdentifier: LoginProviderTableViewCell.identifier) as! LoginProviderTableViewCell
-            cell.provider = AuthProvider(rawValue: indexPath.row)!
+        case let .auth(provider):
+            let cell = cell as! LoginProviderTableViewCell
+            cell.accessoryType = .disclosureIndicator
+            cell.provider = provider
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        switch indexPath.section {
-        case colorSchemeSection:
+        let item = diffCalculator.value(atIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)
+        switch item {
+        case .colorScheme:
             performSegue(withIdentifier: .showThemeList, sender: cell)
-            return
-        case linksSection:
-            let url = links[indexPath.row].1
+        case .logout:
+            tableView.deselectRow(at: indexPath, animated: true)
+            confirmLogout()
+        case let .link(_, url):
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
             tableView.deselectRow(at: indexPath, animated: true)
-            return
-        default:
-            if isTokenValid {
-                tableView.deselectRow(at: indexPath, animated: true)
-                confirmLogout()
-                return
-            }
+        case let .auth(provider):
+            let cell = cell as! LoginProviderTableViewCell
+            cell.provider = provider
             performSegue(withIdentifier: .login, sender: cell)
+        }
+    }
+
+    enum RowItem: Equatable {
+        case colorScheme
+        case link(String, URL)
+        case logout
+        case auth(AuthProvider)
+
+        var cellIdentifier: String {
+            switch self {
+            case .colorScheme:
+                return ColorSchemeTableViewCell.identifier
+            case .link(_, _):
+                return "LinkCell"
+            case .logout:
+                return "LogoutCell"
+            case .auth(_):
+                return LoginProviderTableViewCell.identifier
+            }
         }
     }
 }

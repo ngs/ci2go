@@ -11,11 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view alpha="0.20000000000000001" contentMode="scaleToFill" id="iN0-l3-epB" customClass="SettingsFooterView" customModule="CI2Go" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SettingsFooterView" customModule="CI2Go" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="374" height="326"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUILT BY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djU-qJ-lcz">
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUILT BY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djU-qJ-lcz">
                     <rect key="frame" x="0.0" y="175" width="374" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="MoK-9Q-CG0"/>
@@ -24,21 +24,21 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ci2go-logo" translatesAutoresizingMaskIntoConstraints="NO" id="gv5-No-j30">
+                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ci2go-logo" translatesAutoresizingMaskIntoConstraints="NO" id="gv5-No-j30">
                     <rect key="frame" x="122" y="60" width="130" height="110"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="PA3-1I-p2G"/>
                         <constraint firstAttribute="height" constant="110" id="WCI-qr-jKk"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="littleapps-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fgz-5f-abC">
+                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="littleapps-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fgz-5f-abC">
                     <rect key="frame" x="57" y="205" width="260" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="GKX-eS-i4c"/>
                         <constraint firstAttribute="width" constant="260" id="qhP-j8-a6G"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
                     <rect key="frame" x="0.0" y="266" width="374" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="dkH-LP-6G5"/>
