@@ -18,7 +18,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         ("Rate CI2Go", URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
         ("Submit an issue", URL(string: "https://github.com/ngs/ci2go/issues/new")!),
         ("Contact author", URL(string: "mailto:corp+ci2go@littleapps.jp?subject=CI2Go%20Support")!)
-        ]
+    ]
 
     var diffCalculator: TableViewDiffCalculator<String?, RowItem>!
 
@@ -29,12 +29,15 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
 
     func confirmLogout() {
-        let av = UIAlertController(title: "Logging out", message: "Are you sure to log out from CircleCI?", preferredStyle: .actionSheet)
-        av.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
+        let alert = UIAlertController(
+            title: "Logging out",
+            message: "Are you sure to log out from CircleCI?",
+            preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             self.logout()
         }))
-        av.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        present(av, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 
     func logout() {
@@ -77,18 +80,22 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
-        tableView.register(UINib(nibName: ColorSchemeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ColorSchemeTableViewCell.identifier)
-        tableView.register(LoginProviderTableViewCell.self, forCellReuseIdentifier: LoginProviderTableViewCell.identifier)
+        tableView.register(
+            UINib(nibName: ColorSchemeTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: ColorSchemeTableViewCell.identifier)
+        tableView.register(
+            LoginProviderTableViewCell.self,
+            forCellReuseIdentifier: LoginProviderTableViewCell.identifier)
         refreshData()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
-            let vc = segue.destination as? LoginViewController,
+            let viewController = segue.destination as? LoginViewController,
             let cell = sender as? LoginProviderTableViewCell,
             let provider = cell.provider
             else { return }
-        vc.provider = provider
+        viewController.provider = provider
     }
 
     // MARK: - UITableView
@@ -112,8 +119,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard numberOfSections(in: tableView) - 1 == section else { return nil }
-        let v = UINib(nibName: "SettingsFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SettingsFooterView
-        return v
+        guard let view = UINib(nibName: "SettingsFooterView", bundle: nil)
+            .instantiate(withOwner: nil, options: nil).first as? SettingsFooterView
+            else { fatalError() }
+        return view
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,7 +130,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)
         switch item {
         case .colorScheme:
-            let cell = cell as! ColorSchemeTableViewCell
+            guard let cell = cell as? ColorSchemeTableViewCell else {
+                fatalError()
+            }
             cell.colorScheme = ColorScheme.current
             return cell
         case .logout:
@@ -136,7 +147,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             cell.textLabel?.textColor = ColorScheme.current.foreground
             return cell
         case let .auth(provider):
-            let cell = cell as! LoginProviderTableViewCell
+            guard let cell = cell as? LoginProviderTableViewCell else {
+                fatalError()
+            }
             cell.accessoryType = .disclosureIndicator
             cell.provider = provider
             return cell
@@ -156,7 +169,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
             tableView.deselectRow(at: indexPath, animated: true)
         case let .auth(provider):
-            let cell = cell as! LoginProviderTableViewCell
+            guard let cell = cell as? LoginProviderTableViewCell else {
+                fatalError()
+            }
             cell.provider = provider
             performSegue(withIdentifier: .login, sender: cell)
         }
@@ -172,11 +187,11 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             switch self {
             case .colorScheme:
                 return ColorSchemeTableViewCell.identifier
-            case .link(_, _):
+            case .link:
                 return "LinkCell"
             case .logout:
                 return "LogoutCell"
-            case .auth(_):
+            case .auth:
                 return LoginProviderTableViewCell.identifier
             }
         }

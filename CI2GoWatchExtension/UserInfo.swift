@@ -35,10 +35,10 @@ struct UserInfo {
     }
 
     func persist() {
-        let d = UserDefaults.shared
-        d.project = project
-        d.branch = branch
-        d.colorScheme = colorScheme
+        let defaults = UserDefaults.shared
+        defaults.project = project
+        defaults.branch = branch
+        defaults.colorScheme = colorScheme
         Keychain.shared.token = token
     }
 }

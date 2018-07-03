@@ -9,12 +9,12 @@
 import XCTest
 @testable import CI2Go
 
-class DecodingTests: XCTestCase {
+class DecodingTests: XCTestCase { // swiftlint:disable:this type_body_length
 
     func testDecodingUser1() {
-        let data = try! Data(json: "user1")
+        let data = try! Data(json: "user1") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
-        let user = try! decoder.decode(User.self, from: data)
+        let user = try! decoder.decode(User.self, from: data) // swiftlint:disable:this force_try
         XCTAssertEqual("ngs", user.login)
         XCTAssertEqual(URL(string: "https://avatars0.githubusercontent.com/u/18631?v=4")!, user.avatarURL)
         XCTAssertEqual("Atsushi NAGASE", user.name)
@@ -23,9 +23,9 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodingUser2() {
-        let data = try! Data(json: "user2")
+        let data = try! Data(json: "user2") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
-        let user = try! decoder.decode(User.self, from: data)
+        let user = try! decoder.decode(User.self, from: data) // swiftlint:disable:this force_try
         XCTAssertEqual("ci2go", user.login)
         XCTAssertEqual(URL(string: "https://avatars1.githubusercontent.com/u/40327043?v=4")!, user.avatarURL)
         XCTAssertEqual("CI2Go", user.name)
@@ -34,14 +34,15 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodingCommit1() {
-        let data = try! Data(json: "commit1")
+        let data = try! Data(json: "commit1") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
-        let commit = try! decoder.decode(Commit.self, from: data)
+        let commit = try! decoder.decode(Commit.self, from: data) // swiftlint:disable:this force_try
         XCTAssertEqual("test", commit.body)
         XCTAssertEqual("develop-2", commit.branch)
         XCTAssertEqual("40d6291e9b38e02d3c6a36d922ee9906525496da", commit.hash)
         XCTAssertEqual("Initial import", commit.subject)
+        // swiftlint:disable:next line_length
         XCTAssertEqual(URL(string: "https://github.com/ngs/ci2go/commit/40d6291e9b38e02d3c6a36d922ee9906525496da")!, commit.URL)
         XCTAssertEqual("ngs", commit.committerLogin)
         XCTAssertEqual("Atsushi Nagase", commit.committerName)
@@ -54,10 +55,10 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodingBuildDetail() {
-        let data = try! Data(json: "build-detail")
+        let data = try! Data(json: "build-detail") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
-        let build = try! decoder.decode(Build.self, from: data)
+        let build = try! decoder.decode(Build.self, from: data) // swiftlint:disable:this force_try
         XCTAssertEqual("Atsushi NAGASE", build.user!.name)
         XCTAssertEqual("ngs", build.user!.login)
         XCTAssertEqual([
@@ -79,11 +80,11 @@ class DecodingTests: XCTestCase {
             ], build.steps.map { $0.name })
     }
 
-    func testDecodingRecentBuilds() {
-        let data = try! Data(json: "recent-builds")
+    func testDecodingRecentBuilds() { // swiftlint:disable:this function_body_length
+        let data = try! Data(json: "recent-builds") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
-        let builds = try! decoder.decode([Build].self, from: data)
+        let builds = try! decoder.decode([Build].self, from: data) // swiftlint:disable:this force_try
         XCTAssertEqual([
             "https://github.com/ngs/ci2go/compare/f6db837b6166...40d6291e9b38",
             "https://github.com/ngs/ci2go/compare/837a9ccda223...f6db837b6166",
@@ -222,10 +223,10 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodingProjects() {
-        let data = try! Data(json: "projects")
+        let data = try! Data(json: "projects") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
-        let projects = try! decoder.decode([Project].self, from: data)
+        let projects = try! decoder.decode([Project].self, from: data) // swiftlint:disable:this force_try
         XCTAssertEqual(["master", "campfire", "ruby-2.4.0", "ts-dakoku"], projects[0].branches.map { $0.name })
         XCTAssertEqual(["sources.ngs.io", "ci2go", "ci2go.com", "ci2go.com"], projects.map { $0.name })
         XCTAssertEqual([
@@ -238,6 +239,8 @@ class DecodingTests: XCTestCase {
 
     func testBranchAPIPath() {
         let project = Project(vcs: .github, username: "ngs", name: "ci2go")
+
+         // swiftlint:disable:next line_length
         XCTAssertEqual("/project/github/ngs/ci2go/tree/%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AFabc", Branch(project, "こんにちはabc").apiPath)
         XCTAssertEqual("/project/github/ngs/ci2go/tree/ruby%2D2%2E4%2E0", Branch(project, "ruby-2.4.0").apiPath)
     }

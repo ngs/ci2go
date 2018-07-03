@@ -9,8 +9,8 @@
 import Foundation
 
 enum VCS: String, Codable {
-    case github = "github"
-    case bitbucket = "bitbucket"
+    case github
+    case bitbucket
 
     var host: String {
         switch self {

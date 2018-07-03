@@ -169,6 +169,8 @@
 		853D1A6D20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6C20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift */; };
 		853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6E20D6CD6400C7F4FC /* ColorScheme+UI.swift */; };
 		853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */; };
+		8555C4E020EB592B003F5C93 /* Picard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4DF20EB592B003F5C93 /* Picard.swift */; };
+		8555C4E120EB592B003F5C93 /* Picard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4DF20EB592B003F5C93 /* Picard.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -519,6 +521,7 @@
 		853D1A6C20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensionTests.swift; sourceTree = "<group>"; };
 		853D1A6E20D6CD6400C7F4FC /* ColorScheme+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+UI.swift"; sourceTree = "<group>"; };
 		853D1A7120D6D9C500C7F4FC /* SettingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableView.swift; sourceTree = "<group>"; };
+		8555C4DF20EB592B003F5C93 /* Picard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picard.swift; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
@@ -1190,6 +1193,7 @@
 				85CAE24920D5F00F002CD128 /* VCS.swift */,
 				85F93BF120DDD58500327DE9 /* VCS+Image.swift */,
 				85CAE25D20D60F36002CD128 /* Workflow.swift */,
+				8555C4DF20EB592B003F5C93 /* Picard.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1869,6 +1873,7 @@
 				85CAE25220D5F5C5002CD128 /* Commit.swift in Sources */,
 				8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
 				8582285020E5E1F90092B8CF /* AuthProvider.swift in Sources */,
+				8555C4E020EB592B003F5C93 /* Picard.swift in Sources */,
 				8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */,
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */,
@@ -1978,6 +1983,7 @@
 				85F93BE320DDD49700327DE9 /* Workflow.swift in Sources */,
 				8533DEAA20DE5F5600CA7E0C /* KeychainExtension.swift in Sources */,
 				8533DEA220DE4DE700CA7E0C /* ColorScheme+Color.swift in Sources */,
+				8555C4E120EB592B003F5C93 /* Picard.swift in Sources */,
 				85F93BE520DDD4AE00327DE9 /* Branch.swift in Sources */,
 				85F93BE420DDD4A300327DE9 /* Commit.swift in Sources */,
 				85F93BE620DDD4C100327DE9 /* EndpointConvertable.swift in Sources */,

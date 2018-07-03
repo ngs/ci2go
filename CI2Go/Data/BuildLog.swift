@@ -11,7 +11,7 @@ import Foundation
 struct BuildLog: Decodable {
     let message: String
     enum CodingKeys: String, CodingKey {
-        case message = "message"
+        case message
     }
     public init(from decoder: Decoder) throws {
         if

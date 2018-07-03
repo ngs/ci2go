@@ -16,8 +16,8 @@ extension ColorScheme {
             return color
         }
         if
-            let (r, g, b) = components(key: key) {
-            let color = UIColor(red: r, green: g, blue: b, alpha: 1.0)
+            let (red, green, blue) = components(key: key) {
+            let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
             ColorScheme.colorCache[name] = ColorScheme.colorCache[name] ?? [:]
             ColorScheme.colorCache[name]?[key] = color
             return color

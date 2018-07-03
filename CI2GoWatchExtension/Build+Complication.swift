@@ -13,33 +13,41 @@ extension Build.Status {
     func complicationImage(for complication: CLKComplication) -> UIImage {
         switch self {
         case .success, .fixed:
-            switch complication.family {
-            case .circularSmall:
-                return #imageLiteral(resourceName: "success-circularSmall")
-            case .extraLarge:
-                return #imageLiteral(resourceName: "success-circle-extraLarge")
-            case .modularLarge:
-                return #imageLiteral(resourceName: "success-circle-modularLarge-header")
-            case .modularSmall:
-                return #imageLiteral(resourceName: "success-modularSmall")
-            case .utilitarianLarge, .utilitarianSmallFlat, .utilitarianSmall:
-                return #imageLiteral(resourceName: "success-utilitarian")
-            }
+            return successImage(for: complication)
         case .failed:
-            switch complication.family {
-            case .circularSmall:
-                return #imageLiteral(resourceName: "failed-circularSmall")
-            case .extraLarge:
-                return #imageLiteral(resourceName: "failed-circle-extraLarge")
-            case .modularLarge:
-                return #imageLiteral(resourceName: "failed-circle-modularLarge-header")
-            case .modularSmall:
-                return #imageLiteral(resourceName: "failed-modularSmall")
-            case .utilitarianLarge, .utilitarianSmallFlat, .utilitarianSmall:
-                return #imageLiteral(resourceName: "failed-utilitarian")
-            }
+            return failedImage(for: complication)
         default:
             fatalError("Unsupported status: \(rawValue)")
+        }
+    }
+
+    private func successImage(for complication: CLKComplication) -> UIImage {
+        switch complication.family {
+        case .circularSmall:
+            return #imageLiteral(resourceName: "success-circularSmall")
+        case .extraLarge:
+            return #imageLiteral(resourceName: "success-circle-extraLarge")
+        case .modularLarge:
+            return #imageLiteral(resourceName: "success-circle-modularLarge-header")
+        case .modularSmall:
+            return #imageLiteral(resourceName: "success-modularSmall")
+        case .utilitarianLarge, .utilitarianSmallFlat, .utilitarianSmall:
+            return #imageLiteral(resourceName: "success-utilitarian")
+        }
+    }
+
+    private func failedImage(for complication: CLKComplication) -> UIImage {
+        switch complication.family {
+        case .circularSmall:
+            return #imageLiteral(resourceName: "failed-circularSmall")
+        case .extraLarge:
+            return #imageLiteral(resourceName: "failed-circle-extraLarge")
+        case .modularLarge:
+            return #imageLiteral(resourceName: "failed-circle-modularLarge-header")
+        case .modularSmall:
+            return #imageLiteral(resourceName: "failed-modularSmall")
+        case .utilitarianLarge, .utilitarianSmallFlat, .utilitarianSmall:
+            return #imageLiteral(resourceName: "failed-utilitarian")
         }
     }
 }
@@ -47,51 +55,74 @@ extension Build.Status {
 extension Build {
     func template(for complication: CLKComplication) -> CLKComplicationTemplate? {
         let visibleStatuses: [Build.Status] = [.success, .fixed, .failed]
-        guard let _ = timestamp, visibleStatuses.contains(status) else {
+        guard timestamp != nil && visibleStatuses.contains(status) else {
             return nil
         }
-        let tintColor = status.color
         switch complication.family {
         case .circularSmall:
-            let t = CLKComplicationTemplateCircularSmallStackImage()
-            t.line1ImageProvider = complicationImageProvider(for: complication)
-            t.line2TextProvider = complicationBuildNumberProvider
-            t.tintColor = tintColor
-            return t
+            return circularSmallTemplate(for: complication)
         case .extraLarge:
-            let t = CLKComplicationTemplateExtraLargeStackImage()
-            t.line1ImageProvider = complicationImageProvider(for: complication)
-            t.line2TextProvider = complicationBuildNumberProvider
-            t.tintColor = tintColor
-            return t
+            return extraLargeTemplate(for: complication)
         case .modularLarge:
-            let t = CLKComplicationTemplateModularLargeStandardBody()
-            t.headerImageProvider = complicationImageProvider(for: complication)
-            t.headerTextProvider = complicationBuildNumberProvider
-            t.body1TextProvider = complicationProjectNameProvider
-            t.body2TextProvider = complicationBranchNameProvider
-            t.tintColor = tintColor
-            return t
+            return modularLargeTemplate(for: complication)
         case .modularSmall:
-            let t = CLKComplicationTemplateModularSmallStackImage()
-            t.line1ImageProvider = complicationImageProvider(for: complication)
-            t.line2TextProvider = complicationBuildNumberProvider
-            t.tintColor = tintColor
-            t.highlightLine2 = false
-            return t
+            return modularSmallTemplate(for: complication)
         case .utilitarianLarge:
-            let t = CLKComplicationTemplateUtilitarianLargeFlat()
-            t.imageProvider = complicationImageProvider(for: complication)
-            t.textProvider = complicationProjectNameProvider
-            t.tintColor = tintColor
-            return t
+            return utilitarianLargeTemplate(for: complication)
         case .utilitarianSmallFlat, .utilitarianSmall:
-            let t = CLKComplicationTemplateUtilitarianSmallFlat()
-            t.imageProvider = complicationImageProvider(for: complication)
-            t.textProvider = complicationBuildNumberProvider
-            t.tintColor = tintColor
-            return t
+            return utilitarianSmallTemplate(for: complication)
         }
+    }
+
+    func circularSmallTemplate(for complication: CLKComplication) -> CLKComplicationTemplateCircularSmallStackImage {
+        let tmpl = CLKComplicationTemplateCircularSmallStackImage()
+        tmpl.line1ImageProvider = complicationImageProvider(for: complication)
+        tmpl.line2TextProvider = complicationBuildNumberProvider
+        tmpl.tintColor = status.color
+        return tmpl
+    }
+
+    func extraLargeTemplate(for complication: CLKComplication) -> CLKComplicationTemplateExtraLargeStackImage {
+        let tmpl = CLKComplicationTemplateExtraLargeStackImage()
+        tmpl.line1ImageProvider = complicationImageProvider(for: complication)
+        tmpl.line2TextProvider = complicationBuildNumberProvider
+        tmpl.tintColor = status.color
+        return tmpl
+    }
+
+    func modularLargeTemplate(for complication: CLKComplication) -> CLKComplicationTemplateModularLargeStandardBody {
+        let tmpl = CLKComplicationTemplateModularLargeStandardBody()
+        tmpl.headerImageProvider = complicationImageProvider(for: complication)
+        tmpl.headerTextProvider = complicationBuildNumberProvider
+        tmpl.body1TextProvider = complicationProjectNameProvider
+        tmpl.body2TextProvider = complicationBranchNameProvider
+        tmpl.tintColor = status.color
+        return tmpl
+    }
+
+    func modularSmallTemplate(for complication: CLKComplication) -> CLKComplicationTemplateModularSmallStackImage {
+        let tmpl = CLKComplicationTemplateModularSmallStackImage()
+        tmpl.line1ImageProvider = complicationImageProvider(for: complication)
+        tmpl.line2TextProvider = complicationBuildNumberProvider
+        tmpl.tintColor = status.color
+        tmpl.highlightLine2 = false
+        return tmpl
+    }
+
+    func utilitarianLargeTemplate(for complication: CLKComplication) -> CLKComplicationTemplateUtilitarianLargeFlat {
+        let tmpl = CLKComplicationTemplateUtilitarianLargeFlat()
+        tmpl.imageProvider = complicationImageProvider(for: complication)
+        tmpl.textProvider = complicationProjectNameProvider
+        tmpl.tintColor = status.color
+        return tmpl
+    }
+
+    func utilitarianSmallTemplate(for complication: CLKComplication) -> CLKComplicationTemplateUtilitarianSmallFlat {
+        let tmpl = CLKComplicationTemplateUtilitarianSmallFlat()
+        tmpl.imageProvider = complicationImageProvider(for: complication)
+        tmpl.textProvider = complicationBuildNumberProvider
+        tmpl.tintColor = status.color
+        return tmpl
     }
 
     func complicationImageProvider(for complication: CLKComplication) -> CLKImageProvider {

@@ -15,8 +15,8 @@ extension String {
         for word in words {
             guard let firstChar = word.first else { continue }
             let remainingChars = word.dropFirst()
-            let w = String(firstChar).uppercased() + String(remainingChars)
-            ret.append(w)
+            let word = String(firstChar).uppercased() + String(remainingChars)
+            ret.append(word)
         }
         return ret.joined(separator: " ")
     }

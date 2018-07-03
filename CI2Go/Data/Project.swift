@@ -35,7 +35,8 @@ struct Project: Decodable, EndpointConvertable {
         isFollowing = (try? values.decode(Bool.self, forKey: .isFollowing)) ?? false
         vcs = try values.decode(VCS.self, forKey: .vcs)
         isOSS = (try? values.decode(Bool.self, forKey: .isOSS)) ?? false
-        let branches: [String: AnyDecodable] = (try? values.decode([String: AnyDecodable].self, forKey: .branches)) ?? [:]
+        let branches: [String: AnyDecodable] = (
+            try? values.decode([String: AnyDecodable].self, forKey: .branches)) ?? [:]
         self.branches = []
         self.branches = branches.keys.map { Branch(self, $0.removingPercentEncoding!) }
     }

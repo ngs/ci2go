@@ -34,6 +34,7 @@ struct Endpoint<T: Decodable> {
         return Endpoint<[Artifact]>(httpMethod: .get, data: build, action: "artifacts")
     }
 
+    // swiftlint:disable:next identifier_name
     static var me: Endpoint<User> {
         return Endpoint<User>(httpMethod: .get, action: "me")
     }

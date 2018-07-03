@@ -33,8 +33,12 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: BuildArtifactTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildArtifactTableViewCell.identifier)
-        tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
+        tableView.register(
+            UINib(nibName: BuildArtifactTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: BuildArtifactTableViewCell.identifier)
+        tableView.register(
+            UINib(nibName: LoadingCell.identifier, bundle: nil),
+            forCellReuseIdentifier: LoadingCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -47,11 +51,11 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
             let nvc = segue.destination as? UINavigationController,
             let dataSource = sender as? SingleQuickLookDataSource
             else { return }
-        let vc = QLPreviewController()
-        vc.view.backgroundColor = ColorScheme.current.background
-        vc.dataSource = dataSource
-        vc.delegate = self
-        nvc.viewControllers = [vc]
+        let controller = QLPreviewController()
+        controller.view.backgroundColor = ColorScheme.current.background
+        controller.dataSource = dataSource
+        controller.delegate = self
+        nvc.viewControllers = [controller]
     }
 
     // MARK: -
@@ -87,14 +91,14 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
             return
         }
         let path = self.path
-        let items: [RowItem] = artifacts.map { a in
-            guard a.pathWithNodeIndex.starts(with: path) else { return nil }
-            let comps = a.pathWithNodeIndex
+        let items: [RowItem] = artifacts.map { artifact in
+            guard artifact.pathWithNodeIndex.starts(with: path) else { return nil }
+            let comps = artifact.pathWithNodeIndex
                 .dropFirst(path.count)
                 .drop(while: { $0 == "/" })
                 .components(separatedBy: "/")
             guard let name = comps.first else { return nil }
-            return RowItem(name, artifact: comps.count == 1 ? a : nil)
+            return RowItem(name, artifact: comps.count == 1 ? artifact : nil)
             }.filter { $0 != nil }.map { $0! }.unique
         if items.count == 1 && items.first?.artifact == nil {
             self.path = "\(path)\(path.isEmpty ? "" : "/")\(items.first!.name)"
@@ -148,7 +152,10 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         if item.isLoading {
             return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: BuildArtifactTableViewCell.identifier) as! BuildArtifactTableViewCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BuildArtifactTableViewCell.identifier)
+            as? BuildArtifactTableViewCell
+            else { fatalError() }
         cell.item = item
         return cell
     }
@@ -159,24 +166,22 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
             downloadAndQuickLook(name: item.name, artifact: artifact)
             return
         }
-        let vc = storyboard?.instantiateViewController(withIdentifier: "BuildArtifactsViewController") as! BuildArtifactsViewController
-        vc.path = "\(path)/\(item.name)"
-        vc.artifacts = artifacts
-        navigationController?.pushViewController(vc, animated: true)
+        guard let controller = storyboard?.instantiateViewController(
+            withIdentifier: "BuildArtifactsViewController") as? BuildArtifactsViewController
+            else { fatalError() }
+        controller.path = "\(path)/\(item.name)"
+        controller.artifacts = artifacts
+        navigationController?.pushViewController(controller, animated: true)
     }
 
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard let item = diffCalculator?.value(atIndexPath: indexPath), let artifact = item.artifact, artifact.localPath.exists else {
-            return []
-        }
-        let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
-        }
-        return [delete]
-    }
-
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        guard let item = diffCalculator?.value(atIndexPath: indexPath), let artifact = item.artifact, artifact.localPath.exists else {
-            return UISwipeActionsConfiguration(actions: [])
+    override func tableView(_ tableView: UITableView,
+                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+        ) -> UISwipeActionsConfiguration? {
+        guard
+            let item = diffCalculator?.value(atIndexPath: indexPath),
+            let artifact = item.artifact,
+            artifact.localPath.exists else {
+                return UISwipeActionsConfiguration(actions: [])
         }
         let action = UIContextualAction(style: .normal, title: nil) { (_, _, complete) in
             DispatchQueue.global().async {
@@ -209,7 +214,7 @@ extension BuildArtifactsViewController {
             self.isLoading = isLoading
         }
 
-        static func ==(_ lhs: RowItem, _ rhs: RowItem) -> Bool {
+        static func == (_ lhs: RowItem, _ rhs: RowItem) -> Bool {
             return lhs.name == rhs.name && lhs.isLoading == rhs.isLoading
         }
 
@@ -221,10 +226,7 @@ extension BuildArtifactsViewController {
         }
 
         var icon: UIImage {
-            if let _ = artifact {
-                return #imageLiteral(resourceName: "file")
-            }
-            return #imageLiteral(resourceName: "folder")
+            return artifact != nil ? #imageLiteral(resourceName: "file") : #imageLiteral(resourceName: "folder")
         }
     }
 }

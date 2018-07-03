@@ -34,20 +34,20 @@ class CompensationTests: XCTestCase {
     }
 
     func testEqualBuilds() {
-        let data = try! Data(json: "recent-builds")
+        let data = try! Data(json: "recent-builds") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let builds = try! decoder.decode([Build].self, from: data)
+        let builds = try! decoder.decode([Build].self, from: data) // swiftlint:disable:this force_try
 
         XCTAssertTrue(builds[0] == builds[0])
         XCTAssertFalse(builds[0] == builds[1])
     }
 
     func testComparingBuilds() {
-        let data = try! Data(json: "recent-builds")
+        let data = try! Data(json: "recent-builds") // swiftlint:disable:this force_try
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        let builds = try! decoder.decode([Build].self, from: data)
+        let builds = try! decoder.decode([Build].self, from: data) // swiftlint:disable:this force_try
 
         XCTAssertFalse(builds[0] < builds[0])
         XCTAssertFalse(builds[0] > builds[0])

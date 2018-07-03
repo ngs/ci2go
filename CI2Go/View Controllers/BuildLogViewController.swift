@@ -60,7 +60,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         guard let outputURL = buildAction?.outputURL else { return }
         NetworkActivityManager.start()
         showActivityIndicatorItem()
-        URLSession.shared.dataTask(with: outputURL) { [weak self] (data, res, err) in
+        URLSession.shared.dataTask(with: outputURL) { [weak self] (data, _, err) in
             NetworkActivityManager.stop()
             guard let `self` = self else { return }
             let decoder = JSONDecoder()
@@ -70,7 +70,9 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
                 else {
                     Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
                     DispatchQueue.main.async {
-                        let hud = MBProgressHUD.showAdded(to: self.navigationController?.view ?? self.view, animated: true)
+                        let hud = MBProgressHUD.showAdded(
+                            to: self.navigationController?.view ?? self.view,
+                            animated: true)
                         hud.label.text = "Failed to load log"
                         hud.icon = .warning
                         hud.hide(animated: true, afterDelay: 2)
@@ -91,7 +93,8 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func showActivityIndicatorItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
     }
 
     func bindPusherEvents() {

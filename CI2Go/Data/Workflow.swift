@@ -11,7 +11,7 @@ import Foundation
 struct Workflow: Codable {
     let jobName: String
     let jobID: String
-    let id: String
+    let id: String // swiftlint:disable:this identifier_name
     let name: String
     let workspaceID: String
     let upstreamJobIDs: [String]
@@ -19,7 +19,7 @@ struct Workflow: Codable {
     enum CodingKeys: String, CodingKey {
         case jobName = "job_name"
         case jobID = "job_id"
-        case id = "workflow_id"
+        case id = "workflow_id" // swiftlint:disable:this identifier_name
         case name = "workflow_name"
         case workspaceID = "workspace_id"
         case upstreamJobIDs = "upstream_job_ids"

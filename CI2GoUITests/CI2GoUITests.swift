@@ -26,7 +26,7 @@ class CI2GoUITests: XCTestCase {
         super.tearDown()
     }
 
-    func testBuidList() {
+    func testBuidList() { // swiftlint:disable:this function_body_length
         let app = XCUIApplication()
         var element: XCUIElement!
 

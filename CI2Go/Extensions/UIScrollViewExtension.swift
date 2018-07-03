@@ -30,9 +30,9 @@ extension UIScrollView {
     }
 
     var bottomOffset: CGPoint {
-        let x = contentOffset.x
-        let y = contentHeight - height + safeAreaInsets.bottom
-        return CGPoint(x: x, y: y)
+        let ptX = contentOffset.x
+        let ptY = contentHeight - height + safeAreaInsets.bottom
+        return CGPoint(x: ptX, y: ptY)
     }
 
     func scrollToBottom(animated: Bool = false) {

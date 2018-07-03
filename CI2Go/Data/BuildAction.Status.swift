@@ -10,10 +10,10 @@ import UIKit
 
 extension BuildAction {
     enum Status: String, Codable {
-        case success = "success"
-        case failed = "failed"
-        case canceled = "canceled"
-        case timedout = "timedout"
-        case running = "running"
+        case success
+        case failed
+        case canceled
+        case timedout
+        case running
     }
 }

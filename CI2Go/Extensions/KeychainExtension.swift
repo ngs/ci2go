@@ -9,24 +9,25 @@
 import Foundation
 import KeychainAccess
 
-private var _sharedKeychain: Keychain?
+private var sharedKeychain: Keychain?
 private let serviceName = "com.ci2go.circle-token"
 
 extension Keychain {
     static var shared: Keychain {
-        if let kc = _sharedKeychain {
-            return kc
+        if let keychain = sharedKeychain {
+            return keychain
         }
-        let groupID = Bundle.main.object(forInfoDictionaryKey: "SharedAccessGroup") as! String
-        let kc = Keychain(service: serviceName, accessGroup: groupID)
-        _sharedKeychain = kc
-        return kc
+        guard let groupID = Bundle.main.object(forInfoDictionaryKey: "SharedAccessGroup") as? String
+            else { fatalError() }
+        let keychain = Keychain(service: serviceName, accessGroup: groupID)
+        sharedKeychain = keychain
+        return keychain
     }
 
     var token: String? {
         get {
-            let d = UserDefaults.standard
-            if let token = d.string(forKey: "circleToken"), d.bool(forKey: "FASTLANE_SNAPSHOT") {
+            let defaults = UserDefaults.standard
+            if let token = defaults.string(forKey: "circleToken"), defaults.bool(forKey: "FASTLANE_SNAPSHOT") {
                 return token
             }
             return self["token"]

@@ -49,13 +49,8 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate {
         activateWCSession()
     }
 
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-    }
-
-    func session(_ sesion: WCSession, didReceiveActivationResult data: (String?, ColorScheme, Project?, Branch?)) {
-        guard let build = build else { return }
-        let (_, colorScheme, _, _) = data
-        statusGroup.setBackgroundColor(colorScheme.badge(status: build.status))
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
 
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {

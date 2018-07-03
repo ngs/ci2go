@@ -10,16 +10,16 @@ import UIKit
 
 extension ColorScheme {
     func createANSIEscapeHelper() -> AMR_ANSIEscapeHelper {
-        let h = AMR_ANSIEscapeHelper()
-        for i in 0..<8 {
-            let color1 = self.color(code: i)
-            let color2 = self.color(code: i + 8)
-            h.ansiColors[30 + i] = color1
-            h.ansiColors[40 + i] = color1
-            h.ansiColors[50 + i] = color2
+        let helper = AMR_ANSIEscapeHelper()
+        for index in 0..<8 {
+            let color1 = self.color(code: index)
+            let color2 = self.color(code: index + 8)
+            helper.ansiColors[30 + index] = color1
+            helper.ansiColors[40 + index] = color1
+            helper.ansiColors[50 + index] = color2
         }
-        h.defaultStringColor = foreground
-        h.font = UIFont(monotype: 12)
-        return h
+        helper.defaultStringColor = foreground
+        helper.font = UIFont(monotype: 12)
+        return helper
     }
 }

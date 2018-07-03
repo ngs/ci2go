@@ -18,35 +18,35 @@ class UserDefaultsExtensionTests: XCTestCase {
         super.setUp()
         project = Project(vcs: .github, username: "ngs", name: "ci2go")
         branch = Branch(project, "master")
-        let d = UserDefaults()
-        d.removeObject(forKey: .colorScheme)
-        d.removeObject(forKey: .branch)
-        d.removeObject(forKey: .project)
+        let defaults = UserDefaults()
+        defaults.removeObject(forKey: .colorScheme)
+        defaults.removeObject(forKey: .branch)
+        defaults.removeObject(forKey: .project)
     }
 
     func testColorScheme() {
-        let d = UserDefaults()
-        XCTAssertEqual(d.colorScheme.name, "Github")
-        d.set("Foo", forKey: .colorScheme)
-        XCTAssertEqual(d.colorScheme.name, "Github")
-        d.set("Tomorrow Night", forKey: .colorScheme)
-        XCTAssertEqual(d.colorScheme.name, "Tomorrow Night")
+        let defaults = UserDefaults()
+        XCTAssertEqual(defaults.colorScheme.name, "Github")
+        defaults.set("Foo", forKey: .colorScheme)
+        XCTAssertEqual(defaults.colorScheme.name, "Github")
+        defaults.set("Tomorrow Night", forKey: .colorScheme)
+        XCTAssertEqual(defaults.colorScheme.name, "Tomorrow Night")
     }
 
     func testBranchAndProject() {
-        let d = UserDefaults()
-        XCTAssertNil(d.branch)
-        XCTAssertNil(d.project)
-        d.project = project
-        d.branch = nil
-        XCTAssertNil(d.branch)
-        XCTAssertNil(d.project)
-        d.project = project
-        d.branch = branch
-        XCTAssertEqual(d.branch!, branch)
-        XCTAssertNil(d.project)
-        d.project = project
-        XCTAssertNil(d.branch)
-        XCTAssertEqual(d.project!, project)
+        let defaults = UserDefaults()
+        XCTAssertNil(defaults.branch)
+        XCTAssertNil(defaults.project)
+        defaults.project = project
+        defaults.branch = nil
+        XCTAssertNil(defaults.branch)
+        XCTAssertNil(defaults.project)
+        defaults.project = project
+        defaults.branch = branch
+        XCTAssertEqual(defaults.branch!, branch)
+        XCTAssertNil(defaults.project)
+        defaults.project = project
+        XCTAssertNil(defaults.branch)
+        XCTAssertEqual(defaults.project!, project)
     }
 }

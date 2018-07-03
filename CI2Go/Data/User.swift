@@ -13,7 +13,7 @@ struct User: Decodable {
     let avatarURL: URL?
     let name: String?
     let vcs: VCS?
-    let id: Int?
+    let id: Int? // swiftlint:disable:this identifier_name
     let pusherID: String?
 
     enum CodingKeys: String, CodingKey {
@@ -22,7 +22,7 @@ struct User: Decodable {
         case name
         case vcs = "vcs_type"
         case pusherID = "pusher_id"
-        case id
+        case id // swiftlint:disable:this identifier_name
     }
 
     var pusherChannelName: String? {

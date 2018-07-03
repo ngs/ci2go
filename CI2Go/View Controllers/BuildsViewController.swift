@@ -27,14 +27,14 @@ class BuildsViewController: UITableViewController {
         didSet {
             let (oldProject, oldBranch) = oldValue
             let (project, branch) = selected
-            let d = UserDefaults.shared
+            let defaults = UserDefaults.shared
             if let branch = branch {
-                d.branch = branch
+                defaults.branch = branch
             } else if let project = project {
-                d.project = project
+                defaults.project = project
             } else {
-                d.project = nil
-                d.branch = nil
+                defaults.project = nil
+                defaults.branch = nil
             }
             if oldProject != project || oldBranch != branch {
                 builds = []
@@ -120,23 +120,26 @@ class BuildsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: LoadingCell.identifier, bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
-        tableView.register(UINib(nibName: BuildTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BuildTableViewCell.identifier)
+        tableView.register(
+            UINib(nibName: LoadingCell.identifier, bundle: nil),
+            forCellReuseIdentifier: LoadingCell.identifier)
+        tableView.register(
+            UINib(nibName: BuildTableViewCell.identifier, bundle: nil),
+            forCellReuseIdentifier: BuildTableViewCell.identifier)
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         builds = []
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(loadBuilds), for: .valueChanged)
         tableView.addSubview(refreshControl)
         self.refreshControl = refreshControl
-        let d = UserDefaults.shared
-        selected = (d.project, d.branch)
+        let defaults = UserDefaults.shared
+        selected = (defaults.project, defaults.branch)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch (segue.destination, sender) {
-        case let (vc as BuildActionsViewController, cell as BuildTableViewCell):
-            vc.build = cell.build
-            break
+        case let (viewController as BuildActionsViewController, cell as BuildTableViewCell):
+            viewController.build = cell.build
         default:
             break
         }
@@ -145,7 +148,7 @@ class BuildsViewController: UITableViewController {
     // MARK: -
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        if let _ = Keychain.shared.token, builds.isEmpty {
+        if let token = Keychain.shared.token, !token.isEmpty && builds.isEmpty {
             loadUser()
             loadBuilds()
         }
@@ -263,7 +266,9 @@ class BuildsViewController: UITableViewController {
         if indexPath.section == 1 {
             return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: BuildTableViewCell.identifier) as! BuildTableViewCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
+            else { fatalError() }
         cell.build = diffCalculator?.value(atIndexPath: indexPath)
         return cell
     }

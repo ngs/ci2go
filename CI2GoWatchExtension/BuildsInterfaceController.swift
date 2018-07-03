@@ -40,7 +40,8 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
         activateWCSession()
     }
 
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    func session(_ session: WCSession,
+                 activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
 
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {
@@ -59,7 +60,7 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
         placeholderGroup.setHidden(true)
         interfaceTable.setHidden(false)
         let endpoint = Endpoint<[Build]>.builds(object: branch ?? project, offset: 0, limit: maxBuilds)
-        URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, data, _, err) in
+        URLSession.shared.dataTask(endpoint: endpoint) { [weak self] (builds, data, _, _) in
             guard let `self` = self, let builds = builds else { return }
             self.fileOperationQueue.addOperation {
                 if let data = data, let jsonString = String(data: data, encoding: .utf8) {
@@ -78,14 +79,17 @@ class BuildsInterfaceController: WKInterfaceController, WCSessionDelegate {
         clearAllMenuItems()
         if builds.isEmpty { return }
         interfaceTable.setNumberOfRows(builds.count, withRowType: "default")
-        for (i, build) in builds.enumerated() {
-            let row = interfaceTable.rowController(at: i) as! BuildTableRowController
+        for (index, build) in builds.enumerated() {
+            guard let row = interfaceTable.rowController(at: index) as? BuildTableRowController else {
+                fatalError()
+            }
             row.build = build
         }
         addMenuItem(with: .repeat, title: "Reload", action: #selector(reload))
     }
 
-    override func contextForSegue(withIdentifier segueIdentifier: String, in table: WKInterfaceTable, rowIndex: Int) -> Any? {
+    override func contextForSegue(withIdentifier segueIdentifier: String,
+                                  in table: WKInterfaceTable, rowIndex: Int) -> Any? {
         guard
             let row = table.rowController(at: rowIndex) as? BuildTableRowController,
             let build = row.build
