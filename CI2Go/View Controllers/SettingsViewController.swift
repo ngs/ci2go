@@ -13,6 +13,12 @@ import WatchConnectivity
 import WebKit
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
+    let links: [(String, URL)] = [
+        ("Rate CI2Go", URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
+        ("Submit an issue", URL(string: "https://github.com/ngs/ci2go/issues/new")!),
+        ("Contact author", URL(string: "mailto:corp+ci2go@littleapps.jp?subject=CI2Go%20Support")!),
+        ]
+
     @IBOutlet weak var doneButtonItem: UIBarButtonItem!
     var isTokenValid: Bool {
         return isValidToken(Keychain.shared.token ?? "")
@@ -20,6 +26,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     var colorSchemeSection: Int {
         return isTokenValid ? 0 : 1
+    }
+
+    var linksSection: Int {
+        return isTokenValid ? 1 : 2
     }
 
     func confirmLogout() {
@@ -69,61 +79,87 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - UITableView
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colorSchemeSection == section ? 1 : isTokenValid ? 1 : 2
+        switch section {
+        case colorSchemeSection:
+            return 1
+        case linksSection:
+            return links.count
+        default:
+            return isTokenValid ? 1 : 2
+        }
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == colorSchemeSection {
+        switch section {
+        case colorSchemeSection:
             return "Color Scheme"
+        case linksSection:
+            return "Support"
+        default:
+            return nil
         }
-        return nil
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard section == 1 else { return 0 }
-        return 300
+        guard numberOfSections(in: tableView) - 1 == section else { return 0 }
+        return SettingsFooterView.height
     }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard section == 1 else { return nil }
+        guard numberOfSections(in: tableView) - 1 == section else { return nil }
         let v = UINib(nibName: "SettingsFooterView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! SettingsFooterView
         return v
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == colorSchemeSection {
+        switch indexPath.section {
+        case colorSchemeSection:
             let cell = tableView.dequeueReusableCell(withIdentifier: ColorSchemeTableViewCell.identifier) as! ColorSchemeTableViewCell
             cell.colorScheme = ColorScheme.current
             return cell
-        }
-        if isTokenValid {
-            let identifier = "LogoutCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? UITableViewCell(style: .default, reuseIdentifier: identifier)
-            cell.textLabel?.textAlignment = .center
-            cell.textLabel?.textColor = ColorScheme.current.red
-            cell.textLabel?.text = "Logout"
+        case linksSection:
+            let identifier = "LinkCell"
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? CustomTableViewCell(style: .default, reuseIdentifier: identifier)
+            cell.textLabel?.text = links[indexPath.row].0
+            cell.textLabel?.textColor = ColorScheme.current.foreground
+            return cell
+        default:
+            if isTokenValid {
+                let identifier = "LogoutCell"
+                let cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? CustomTableViewCell(style: .default, reuseIdentifier: identifier)
+                cell.textLabel?.textAlignment = .center
+                cell.textLabel?.textColor = ColorScheme.current.red
+                cell.textLabel?.text = "Logout"
+                return cell
+            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoginProviderTableViewCell.identifier) as! LoginProviderTableViewCell
+            cell.provider = AuthProvider(rawValue: indexPath.row)!
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: LoginProviderTableViewCell.identifier) as! LoginProviderTableViewCell
-        cell.provider = AuthProvider(rawValue: indexPath.row)!
-        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        if indexPath.section == colorSchemeSection {
+        switch indexPath.section {
+        case colorSchemeSection:
             performSegue(withIdentifier: .showThemeList, sender: cell)
             return
-        }
-        if isTokenValid {
+        case linksSection:
+            let url = links[indexPath.row].1
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             tableView.deselectRow(at: indexPath, animated: true)
-            confirmLogout()
             return
+        default:
+            if isTokenValid {
+                tableView.deselectRow(at: indexPath, animated: true)
+                confirmLogout()
+                return
+            }
+            performSegue(withIdentifier: .login, sender: cell)
         }
-        performSegue(withIdentifier: .login, sender: cell)
     }
 }

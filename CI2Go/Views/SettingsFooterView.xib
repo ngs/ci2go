@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view alpha="0.20000000000000001" contentMode="scaleToFill" id="iN0-l3-epB" customClass="SettingsFooterView" customModule="CI2Go" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="374" height="270"/>
+            <rect key="frame" x="0.0" y="0.0" width="374" height="326"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUILT BY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djU-qJ-lcz">
@@ -39,7 +39,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
-                    <rect key="frame" x="0.0" y="230" width="374" height="40"/>
+                    <rect key="frame" x="0.0" y="266" width="374" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="dkH-LP-6G5"/>
                     </constraints>
@@ -58,7 +58,7 @@
                 <constraint firstItem="gv5-No-j30" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Reh-hU-r9g"/>
                 <constraint firstItem="uM7-q6-IBp" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="e3J-ck-zc1"/>
                 <constraint firstItem="gv5-No-j30" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="g4e-0K-idQ"/>
-                <constraint firstItem="uM7-q6-IBp" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="pLQ-QX-e0y"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uM7-q6-IBp" secondAttribute="bottom" constant="20" id="pLQ-QX-e0y"/>
                 <constraint firstItem="djU-qJ-lcz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pW9-5f-mUS"/>
                 <constraint firstItem="uM7-q6-IBp" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yih-1I-bcc"/>
             </constraints>
@@ -67,7 +67,7 @@
             <connections>
                 <outlet property="copyrightLabel" destination="uM7-q6-IBp" id="NaR-NQ-zjB"/>
             </connections>
-            <point key="canvasLocation" x="33" y="-161.5"/>
+            <point key="canvasLocation" x="33" y="-134"/>
         </view>
     </objects>
     <resources>

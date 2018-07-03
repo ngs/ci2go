@@ -11,6 +11,10 @@ import UIKit
 class SettingsFooterView: UIView {
     @IBOutlet weak var copyrightLabel: UILabel!
 
+    static var height: CGFloat {
+        return 350
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         let info = Bundle.main.infoDictionary ?? [:]
