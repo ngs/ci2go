@@ -2,4 +2,5 @@ app_identifier %w[
   com.ci2go.ios.Circle
   com.ci2go.ios.Circle.watchkitapp
   com.ci2go.ios.Circle.watchkitapp.ext
+  com.ci2go.ios.Circle.todayext
 ]

@@ -140,6 +140,8 @@ class BuildsViewController: UITableViewController {
         switch (segue.destination, sender) {
         case let (viewController as BuildActionsViewController, cell as BuildTableViewCell):
             viewController.build = cell.build
+        case let (viewController as BuildActionsViewController, build as Build):
+            viewController.build = build
         default:
             break
         }
@@ -248,10 +250,7 @@ class BuildsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let build = diffCalculator?.value(atIndexPath: indexPath) else {
-            return 75
-        }
-        return build.hasWorkflows ? 95 : 75
+        return BuildTableViewCell.height(for: diffCalculator?.value(atIndexPath: indexPath))
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

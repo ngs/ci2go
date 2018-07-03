@@ -111,6 +111,19 @@ struct Build: Decodable, EndpointConvertable {
         self.workflow = workflow
     }
 
+    init?(inAppURL: URL) {
+        let comps = inAppURL.pathComponents
+        guard
+            let scheme = inAppURL.scheme, scheme == "ci2go",
+            let host = inAppURL.host, host == "ci2go.app",
+            comps.count == 6 && comps[1] == "project",
+        let vcs = VCS(rawValue: comps[2]),
+        let num = Int(comps[5])
+            else { return nil }
+        let project = Project(vcs: vcs, username: comps[3], name: comps[4])
+        self.init(project: project, number: num)
+    }
+
     init(project: Project, number: Int, status: Status = .notRun) {
         self.project = project
         self.number = number
@@ -212,6 +225,14 @@ struct Build: Decodable, EndpointConvertable {
         return nodes
             .filter { $0.isSSHEnabled }
             .map { $0.sshURL }
+    }
+
+    var inAppURL: URL {
+        var comps = URLComponents()
+        comps.scheme = "ci2go"
+        comps.path = apiPath
+        comps.host = "ci2go.app"
+        return comps.url!
     }
 }
 

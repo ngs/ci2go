@@ -43,7 +43,8 @@ platform :ios do
     {
       'CI2Go' => 'com.ci2go.ios.Circle',
       'CI2GoWatch' => 'com.ci2go.ios.Circle.watchkitapp',
-      'CI2GoWatchExtension' => 'com.ci2go.ios.Circle.watchkitapp.ext'
+      'CI2GoWatchExtension' => 'com.ci2go.ios.Circle.watchkitapp.ext',
+      'CI2GoTodayExtension' => 'com.ci2go.ios.Circle.todayext',
     }.each do |target, identifier|
       profile_name = "match AppStore #{identifier}"
       disable_automatic_code_signing(

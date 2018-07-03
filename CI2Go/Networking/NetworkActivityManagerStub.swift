@@ -1,6 +1,6 @@
 //
 //  NetworkActivityManager.swift
-//  CI2GoWatchExtension
+//  CI2Go
 //
 //  Created by Atsushi Nagase on 2018/06/23.
 //  Copyright © 2018 LittleApps Inc. All rights reserved.
