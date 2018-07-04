@@ -18,6 +18,7 @@ class BuildTableViewCell: CustomTableViewCell {
     @IBOutlet weak var buildNumLabel: UILabel!
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var statusBackgroundView: UIView!
     @IBOutlet weak var branchNameLabel: UILabel!
     @IBOutlet weak var commitLabel: UILabel!
     @IBOutlet weak var workflowLabel: UILabel!
@@ -41,8 +42,16 @@ class BuildTableViewCell: CustomTableViewCell {
             subjectLabel.text = build.body
             userLabel.text = build.user?.name ?? build.user?.login
             timeLabel.text = build.timestamp?.timeAgoSinceNow
+            statusBackgroundView.mask = statusLabel
             setNeedsLayout()
         }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        statusBackgroundView.backgroundColor = build?.status.color
+        vcsIconImageView.image = build?.project.vcs.icon
+        timeLabel.text = build?.timestamp?.timeAgoSinceNow
     }
 
     override func prepareForReuse() {

@@ -43,7 +43,7 @@ class TodayViewController: UIViewController {
             diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, cache)])
         }
         if let date = [Build].cacheFile.modifiedDate {
-            updatedTimeLabel.text = "Last update: " + dateFormatter.string(from: date)
+            updatedTimeLabel.text = "Last update " + dateFormatter.string(from: date)
         } else {
             updatedTimeLabel.text = ""
         }
@@ -149,6 +149,7 @@ extension TodayViewController: UITableViewDataSource {
             withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
             else { fatalError() }
         cell.build = item
+        cell.tintColor = .darkText
         return cell
     }
 
