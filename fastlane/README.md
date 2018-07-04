@@ -81,6 +81,11 @@ Take screenshots
 fastlane ios increment_minor_version
 ```
 Increment minor version
+### ios coveralls
+```
+fastlane ios coveralls
+```
+Upload Coverage data to Coveralls
 
 ----
 

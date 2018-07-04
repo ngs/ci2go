@@ -1,2 +1,3 @@
-*
-!CI2Go*
+- CI2GoTests
+- CI2GoUITests
+- Vendor/.*

@@ -15,17 +15,13 @@ platform :ios do
   lane :tests do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     run_tests
-    cov
-  end
-
-  lane :cov do
     xcov(
       project: 'CI2Go.xcodeproj',
       scheme: 'CI2GoTests',
       output_directory: 'fastlane/test_output/xcov',
       ignore_file_path: '.xcovignore',
       derived_data_path: 'DerivedData',
-      source_directory: 'CI2Go'
+      disable_coveralls: true
     )
   end
 
@@ -117,5 +113,50 @@ platform :ios do
   desc 'Increment minor version'
   lane :increment_minor_version do
     increment_version_number bump_type: 'minor'
+  end
+
+  desc 'Upload Coverage data to Coveralls'
+  lane :coveralls do
+    fastlane_require 'buff/ignore'
+    fastlane_require 'coveralls'
+
+    root_path = Pathname(`git rev-parse --show-toplevel`.strip)
+    archive = Dir["#{root_path}/DerivedData/**/*.xccovarchive"].first
+    UI.user_error! ".xcovarchive not found" unless archive
+
+    commit = `git rev-parse HEAD`.strip
+
+    files=`xcrun xccov view --file-list #{archive}`
+      .strip
+      .split("\n")
+      .map(&:to_s)
+
+    ignore = Buff::Ignore::IgnoreFile.new("#{root_path}/.coverallsignore")
+    ignore.apply!(files)
+
+    # http://docs.coveralls.io/api-introduction
+    source_files = files.map do |file|
+      name = Pathname(file).relative_path_from(root_path).to_s
+      lines = `xcrun xccov view --file "#{file}" "#{archive}"`.strip.split("\n")
+
+      coverage = lines.map do |line|
+        line.strip!
+        line = line.split(/[\s:]/).reject(&:empty?)
+        next unless line[0].match(/^\d+$/)
+        hits = line[1]
+        hits == '*' ? nil : hits.to_i
+      end
+
+      {
+        name: name,
+        source_digest: `git hash-object "#{file}"`.strip,
+        coverage: coverage
+      }
+    end
+
+    json = {
+      source_files: source_files
+    }
+    Coveralls::API.post_json 'jobs', json
   end
 end
