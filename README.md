@@ -9,9 +9,9 @@ CI2Go
 
 ![](CI2Go/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png)
 
-![](fastlane/screenshots/en-US/iPhone%208%20Plus-0-Build-List.png) &nbsp;
-![](fastlane/screenshots/en-US/iPhone%208%20Plus-1-Build-Detail.png) &nbsp;
-![](fastlane/screenshots/en-US/iPhone%208%20Plus-2-Build-Log.png)
+<img src="https://github.com/ngs/ci2go/blob/master/fastlane/screenshots/en-US/iPhone%20X-0-Build-List.png?raw=true" width="30%"> &nbsp;
+<img src="https://github.com/ngs/ci2go/blob/master/fastlane/screenshots/en-US/iPhone%20X-1-Build-Detail.png?raw=true" width="30%"> &nbsp;
+<img src="https://github.com/ngs/ci2go/blob/master/fastlane/screenshots/en-US/iPhone%20X-2-Build-Log.png?raw=true" width="30%">
 
 Author
 ======
