@@ -356,10 +356,10 @@
 		8555C5BA20EBB4CA003F5C93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8555C5B920EBB4CA003F5C93 /* Assets.xcassets */; };
 		8555C5BB20EBBF44003F5C93 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; };
 		8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DEAE20DF337200CA7E0C /* Build+Cache.swift */; };
-		8555C5BE20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5BD20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift */; };
-		8555C5C120EBC557003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5BF20EBC551003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift */; };
 		8555C5C320EBD5E2003F5C93 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */; };
 		8555C5C420EBD5EA003F5C93 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */; };
+		8555C5C620ECB236003F5C93 /* InvertedMaskLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */; };
+		8555C5C720ECB23E003F5C93 /* InvertedMaskLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -741,9 +741,8 @@
 		8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCellStub.swift; sourceTree = "<group>"; };
 		8555C5B620EBA231003F5C93 /* CI2GoTodayExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CI2GoTodayExtension.entitlements; sourceTree = "<group>"; };
 		8555C5B920EBB4CA003F5C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8555C5BD20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuildTableViewCell+Layout.swift"; sourceTree = "<group>"; };
-		8555C5BF20EBC551003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildTableViewCell+Layout+TodayExtension.swift"; sourceTree = "<group>"; };
 		8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
+		8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedMaskLabel.swift; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
@@ -1071,14 +1070,13 @@
 				8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */,
 				8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */,
 				8566097520D805BB00557249 /* BuildTableViewCell.swift */,
-				8555C5BD20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift */,
-				8555C5BF20EBC551003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift */,
 				856609B620D965F800557249 /* BuildTableViewCell.xib */,
 				8566097220D8051600557249 /* ColorSchemeTableViewCell.swift */,
 				856609BA20D9685300557249 /* ColorSchemeTableViewCell.xib */,
 				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
 				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
 				8504A06920DB8F36001D0C08 /* InversedColorButton.swift */,
+				8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */,
 				856609B220D8F5D200557249 /* LoadingCell.swift */,
 				856609B420D8F84D00557249 /* LoadingCell.xib */,
 				8582284820E5CF3E0092B8CF /* LoginProviderTableViewCell.swift */,
@@ -2274,6 +2272,7 @@
 				8555C58420EB9054003F5C93 /* BuildAction.Status.swift in Sources */,
 				8555C58A20EB9054003F5C93 /* ColorScheme.swift in Sources */,
 				8555C58C20EB9054003F5C93 /* ColorScheme+Color.swift in Sources */,
+				8555C5C720ECB23E003F5C93 /* InvertedMaskLabel.swift in Sources */,
 				8555C5BC20EBBFA0003F5C93 /* Build+Cache.swift in Sources */,
 				8555C58E20EB9054003F5C93 /* Commit.swift in Sources */,
 				8555C58520EB9054003F5C93 /* BuildAction.Status+Color.swift in Sources */,
@@ -2294,7 +2293,6 @@
 				8555C57C20EB9054003F5C93 /* AuthProvider.swift in Sources */,
 				8555C59A20EB9054003F5C93 /* Workflow.swift in Sources */,
 				8555C5A820EB9067003F5C93 /* UserDefaultsExtension.swift in Sources */,
-				8555C5C120EBC557003F5C93 /* BuildTableViewCell+Layout+TodayExtension.swift in Sources */,
 				8555C5A620EB9067003F5C93 /* URLSessionExtension.swift in Sources */,
 				8555C5AB20EB907E003F5C93 /* HTTPMethod.swift in Sources */,
 				8555C59E20EB9067003F5C93 /* MBProgressHUDExtension.swift in Sources */,
@@ -2380,6 +2378,7 @@
 				8566097120D740A800557249 /* TextViewController.swift in Sources */,
 				8566096B20D7406C00557249 /* ColorSchemesViewController.swift in Sources */,
 				85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */,
+				8555C5C620ECB236003F5C93 /* InvertedMaskLabel.swift in Sources */,
 				8555C4E520EB5F74003F5C93 /* BuildActionsViewController.RowItem.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
 				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
@@ -2392,7 +2391,6 @@
 				853D1A6920D6B91100C7F4FC /* KeychainExtension.swift in Sources */,
 				8566097320D8051600557249 /* ColorSchemeTableViewCell.swift in Sources */,
 				85CAE24820D5EFBE002CD128 /* User.swift in Sources */,
-				8555C5BE20EBC4F0003F5C93 /* BuildTableViewCell+Layout.swift in Sources */,
 				85CAE25A20D60023002CD128 /* BuildStep.swift in Sources */,
 				85CAE25E20D60F36002CD128 /* Workflow.swift in Sources */,
 				85CAE23920D5E944002CD128 /* StringExtension.swift in Sources */,

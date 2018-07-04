@@ -54,12 +54,21 @@
                                             </mask>
                                         </variation>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TFQ-KH-6Ad">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="bij-K3-YBg">
                                         <rect key="frame" x="295" y="0.0" width="65" height="22"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H48-Wc-T1m">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7x-45-UVz">
                                                 <rect key="frame" x="0.0" y="0.0" width="65" height="22"/>
-                                                <color key="backgroundColor" red="0.45882352939999999" green="0.65098039220000004" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.45882352939999999" green="0.65098039220000004" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="Success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H48-Wc-T1m" customClass="InvertedMaskLabel" customModule="CI2Go" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="cos-eL-hwd"/>
                                                 </constraints>
@@ -75,9 +84,18 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="65" id="Or7-KP-BM3"/>
+                                            <constraint firstAttribute="bottom" secondItem="x7x-45-UVz" secondAttribute="bottom" id="1yw-fG-f82"/>
+                                            <constraint firstAttribute="height" constant="22" id="FGO-eq-Wkr"/>
+                                            <constraint firstItem="x7x-45-UVz" firstAttribute="leading" secondItem="bij-K3-YBg" secondAttribute="leading" id="M7C-7O-lfU"/>
+                                            <constraint firstAttribute="trailing" secondItem="H48-Wc-T1m" secondAttribute="trailing" id="TIt-v5-dw0"/>
+                                            <constraint firstAttribute="width" constant="65" id="XXR-xM-dl4"/>
+                                            <constraint firstItem="x7x-45-UVz" firstAttribute="top" secondItem="bij-K3-YBg" secondAttribute="top" id="dPu-MW-MtF"/>
+                                            <constraint firstAttribute="trailing" secondItem="x7x-45-UVz" secondAttribute="trailing" id="ext-xH-NtS"/>
+                                            <constraint firstAttribute="bottom" secondItem="H48-Wc-T1m" secondAttribute="bottom" id="i69-US-8Om"/>
+                                            <constraint firstItem="H48-Wc-T1m" firstAttribute="leading" secondItem="bij-K3-YBg" secondAttribute="leading" id="iQW-6R-mGo"/>
+                                            <constraint firstItem="H48-Wc-T1m" firstAttribute="top" secondItem="bij-K3-YBg" secondAttribute="top" id="vzx-Th-UqG"/>
                                         </constraints>
-                                    </stackView>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="8yd-Ev-z8n">
@@ -290,6 +308,7 @@
                 <outlet property="commitLabel" destination="fSP-zV-cMX" id="Dyu-3z-S5O"/>
                 <outlet property="jobLabel" destination="PDI-Dz-q4O" id="2vu-XQ-TW6"/>
                 <outlet property="projectNameLabel" destination="iHM-3i-SY8" id="cVa-Qr-naz"/>
+                <outlet property="statusBackgroundView" destination="x7x-45-UVz" id="aQ7-pg-7QO"/>
                 <outlet property="statusLabel" destination="H48-Wc-T1m" id="Hd5-hV-TAT"/>
                 <outlet property="subjectLabel" destination="2Mi-Kx-eym" id="xnH-z3-zg1"/>
                 <outlet property="timeLabel" destination="SDl-Gz-cPY" id="UJN-2F-fWw"/>
