@@ -11,36 +11,39 @@ references:
       FASTLANE_SKIP_UPDATE_CHECK: 1
 
   steps:
-    restore_cache: &restore_cache
+    restore_carthage_cache: &restore_carthage_cache
       restore_cache:
-        key: 1-charthage-{{ checksum "Cartfile.resolved" }}
-    save_cache: &save_cache
+        key: 1-carthage-{{ checksum "Cartfile.resolved" }}
+
+    save_carthage_cache: &save_carthage_cache
       save_cache:
-        key: 1-charthage-{{ checksum "Cartfile.resolved" }}
+        key: 1-carthage-{{ checksum "Cartfile.resolved" }}
         paths:
           - Carthage
+
+    restore_bundler_cache: &restore_bundler_cache
+      restore_cache:
+        key: 1-bundler-{{ checksum "Gemfile.lock" }}
+
+    save_bundler_cache: &save_bundler_cache
+      save_cache:
+        key: 1-bundler-{{ checksum "Gemfile.lock" }}
+        paths:
+          - Vendor/bundler
+
     store_build_artifacts: &store_build_artifacts
       store_artifacts:
         path: build
         destination: build
+
     store_gym_logs: &store_gym_logs
       store_artifacts:
         path: ~/Library/Logs/gym
         destination: logs/gym
-    store_scan_logs: &store_scan_logs
-      store_artifacts:
-        path: ~/Library/Logs/scan
-        destination: logs/scan
-    store_snapshot_logs: &store_snapshot_logs
-      store_artifacts:
-        path: ~/Library/Logs/snapshot
-        destination: logs/snapshot
-    store_screenshots: &store_screenshots
-      store_artifacts:
-        path: fastlane/screenshots
-        destination: screenshots
-    install_fastlane: &install_fastlane
-      run: sudo gem install fastlane
+
+    bundle_install: &bundle_install
+      run: bundle install --path Vendor/bundler
+
     attach_build_workspace: &attach_build_workspace
       attach_workspace:
         at: build
@@ -68,42 +71,60 @@ jobs:
     <<: *base
     steps:
       - checkout
-      - <<: *restore_cache
+      - <<: *restore_carthage_cache
       - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_cache
-      - <<: *install_fastlane
-      - run: fastlane set_build_number
-      - run: fastlane tests
-      - <<: *store_scan_logs
+      - <<: *save_carthage_cache
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane set_build_number
+      - run: bundle exec fastlane tests
+      - run: bundle exec fastlane coveralls
+      - store_test_results:
+          path: fastlane/test_output
+      - store_artifacts:
+          path: fastlane/test_output
+          destination: test_output
+      - store_artifacts:
+          path: ~/Library/Logs/scan
+          destination: logs/scan
 
   screenshots:
     <<: *base
     steps:
       - checkout
-      - <<: *restore_cache
+      - <<: *restore_carthage_cache
       - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_cache
-      - <<: *install_fastlane
-      - run: fastlane set_build_number
-      - run: 'fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
+      - <<: *save_carthage_cache
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane set_build_number
+      - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
       - persist_to_workspace:
           root: fastlane
           paths:
             - screenshots
-      - <<: *store_screenshots
-      - <<: *store_snapshot_logs
+      - store_artifacts:
+          path: fastlane/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: ~/Library/Logs/snapshot
+          destination: logs/snapshot
 
   beta_build:
     <<: *base
     steps:
       - checkout
-      - <<: *restore_cache
+      - <<: *restore_carthage_cache
       - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_cache
-      - <<: *install_fastlane
-      - run: fastlane beta_match
-      - run: fastlane set_build_number
-      - run: fastlane beta_build
+      - <<: *save_carthage_cache
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane beta_match
+      - run: bundle exec fastlane set_build_number
+      - run: bundle exec fastlane beta_build
       - <<: *store_build_artifacts
       - <<: *store_gym_logs
       - persist_to_workspace:
@@ -116,21 +137,25 @@ jobs:
     steps:
       - checkout
       - <<: *attach_build_workspace
-      - <<: *install_fastlane
-      - run: fastlane beta_match
-      - run: fastlane beta_upload
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane beta_match
+      - run: bundle exec fastlane beta_upload
 
   release_build:
     <<: *base
     steps:
       - checkout
-      - <<: *restore_cache
+      - <<: *restore_carthage_cache
       - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_cache
-      - <<: *install_fastlane
-      - run: fastlane release_match
-      - run: fastlane set_build_number
-      - run: fastlane release_build
+      - <<: *save_carthage_cache
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane release_match
+      - run: bundle exec fastlane set_build_number
+      - run: bundle exec fastlane release_build
       - <<: *store_build_artifacts
       - <<: *store_gym_logs
       - persist_to_workspace:
@@ -143,23 +168,29 @@ jobs:
     steps:
       - checkout
       - <<: *attach_build_workspace
-      - <<: *install_fastlane
-      - run: fastlane release_match
-      - run: fastlane release_upload
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane release_match
+      - run: bundle exec fastlane release_upload
 
   release_metadata:
     <<: *base
     steps:
       - checkout
-      - <<: *install_fastlane
-      - run: fastlane release_metadata
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane release_metadata
 
   release_screenshots:
     <<: *base
     steps:
       - checkout
-      - <<: *install_fastlane
-      - run: fastlane release_screenshots
+      - <<: *restore_bundler_cache
+      - <<: *bundle_install
+      - <<: *save_bundler_cache
+      - run: bundle exec fastlane release_screenshots
 
 workflows:
   version: 2

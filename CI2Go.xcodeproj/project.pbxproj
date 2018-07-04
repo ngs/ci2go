@@ -1054,7 +1054,6 @@
 			isa = PBXGroup;
 			children = (
 				85F93BD820DDCDEB00327DE9 /* CI2GoWatchExtension.entitlements */,
-				85F93BC920DDCD0700327DE9 /* Assets.xcassets */,
 				85F93BCB20DDCD0700327DE9 /* Info.plist */,
 				85F93BCC20DDCD0700327DE9 /* PushNotificationPayload.apns */,
 			);
@@ -1095,11 +1094,10 @@
 			isa = PBXGroup;
 			children = (
 				8555C5B920EBB4CA003F5C93 /* Assets.xcassets */,
-				8555C5B620EBA231003F5C93 /* CI2GoTodayExtension.entitlements */,
 				8555C4F220EB8C6F003F5C93 /* TodayViewController.swift */,
 				8555C5B420EB9EB5003F5C93 /* CustomTableViewCellStub.swift */,
 				8555C4F420EB8C6F003F5C93 /* MainInterface.storyboard */,
-				8555C4F720EB8C6F003F5C93 /* Info.plist */,
+				85FF372D20ED1867006183EA /* Supporting Files */,
 			);
 			path = CI2GoTodayExtension;
 			sourceTree = "<group>";
@@ -1508,6 +1506,7 @@
 		85F93BC020DDCD0700327DE9 /* CI2GoWatchExtension */ = {
 			isa = PBXGroup;
 			children = (
+				85F93BC920DDCD0700327DE9 /* Assets.xcassets */,
 				85B30E6620DF365C00CC7876 /* Build+Complication.swift */,
 				8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */,
 				85F93BC120DDCD0700327DE9 /* BuildsInterfaceController.swift */,
@@ -1515,10 +1514,19 @@
 				85F93BC720DDCD0700327DE9 /* ComplicationController.swift */,
 				85F93BC320DDCD0700327DE9 /* ExtensionDelegate.swift */,
 				85F93BC520DDCD0700327DE9 /* NotificationController.swift */,
-				8533DEB120DF339200CA7E0C /* Supporting Files */,
 				85B30E6820DFFB2300CC7876 /* UserInfo.swift */,
+				8533DEB120DF339200CA7E0C /* Supporting Files */,
 			);
 			path = CI2GoWatchExtension;
+			sourceTree = "<group>";
+		};
+		85FF372D20ED1867006183EA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8555C5B620EBA231003F5C93 /* CI2GoTodayExtension.entitlements */,
+				8555C4F720EB8C6F003F5C93 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
