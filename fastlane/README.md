@@ -26,16 +26,46 @@ Set Build Number to CIRCLE_BUILD_NUM
 fastlane ios tests
 ```
 Run tests
-### ios beta
+### ios beta_build
 ```
-fastlane ios beta
+fastlane ios beta_build
 ```
-Publish app to Fabric Beta
-### ios release
+Build app for beta
+### ios beta_upload
 ```
-fastlane ios release
+fastlane ios beta_upload
+```
+Upload app to Fabric Beta
+### ios beta_match
+```
+fastlane ios beta_match
+```
+Match Ad-Hoc Provisioning Profiles
+### ios release_match
+```
+fastlane ios release_match
+```
+Match App Store Provisioning Profiles
+### ios release_build
+```
+fastlane ios release_build
+```
+Build app for beta
+### ios release_upload
+```
+fastlane ios release_upload
 ```
 Publish app to App Store
+### ios release_metadata
+```
+fastlane ios release_metadata
+```
+Upload metadata to App Store
+### ios release_screenshots
+```
+fastlane ios release_screenshots
+```
+Upload screenshots to App Store
 ### ios screenshots
 ```
 fastlane ios screenshots

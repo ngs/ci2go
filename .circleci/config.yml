@@ -19,16 +19,9 @@ references:
         key: 1-charthage-{{ checksum "Cartfile.resolved" }}
         paths:
           - Carthage
-    move_artifacts: &move_artifacts
-      run:
-        name: Move artifacts
-        command: |
-          mkdir -p /tmp/artifacts
-          mv CI2Go.app.dSYM.zip /tmp/artifacts
-          mv CI2Go.ipa /tmp/artifacts
     store_build_artifacts: &store_build_artifacts
       store_artifacts:
-        path: /tmp/artifacts
+        path: build
         destination: build
     store_gym_logs: &store_gym_logs
       store_artifacts:
@@ -46,6 +39,11 @@ references:
       store_artifacts:
         path: fastlane/screenshots
         destination: screenshots
+    install_fastlane: &install_fastlane
+      run: sudo gem install fastlane
+    attach_build_workspace: &attach_build_workspace
+      attach_workspace:
+        at: build
 
 jobs:
   swiftlint:
@@ -73,7 +71,7 @@ jobs:
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
-      - run: sudo gem install fastlane
+      - <<: *install_fastlane
       - run: fastlane set_build_number
       - run: fastlane tests
       - <<: *store_scan_logs
@@ -85,7 +83,7 @@ jobs:
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
-      - run: sudo gem install fastlane
+      - <<: *install_fastlane
       - run: fastlane set_build_number
       - run: 'fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
       - persist_to_workspace:
@@ -95,63 +93,132 @@ jobs:
       - <<: *store_screenshots
       - <<: *store_snapshot_logs
 
-  beta:
+  beta_build:
     <<: *base
     steps:
       - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
-      - run: sudo gem install fastlane
+      - <<: *install_fastlane
+      - run: fastlane beta_match
       - run: fastlane set_build_number
-      - run: fastlane beta
-      - <<: *move_artifacts
+      - run: fastlane beta_build
       - <<: *store_build_artifacts
       - <<: *store_gym_logs
+      - persist_to_workspace:
+          root: build
+          paths:
+            - adhoc
 
-  release:
+  beta_upload:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *attach_build_workspace
+      - <<: *install_fastlane
+      - run: fastlane beta_match
+      - run: fastlane beta_upload
+
+  release_build:
     <<: *base
     steps:
       - checkout
       - <<: *restore_cache
       - run: .circleci/bootstrap-carthage.sh
       - <<: *save_cache
-      - run: sudo gem install fastlane
+      - <<: *install_fastlane
+      - run: fastlane release_match
       - run: fastlane set_build_number
-      - run: fastlane release
-      - <<: *move_artifacts
+      - run: fastlane release_build
       - <<: *store_build_artifacts
       - <<: *store_gym_logs
+      - persist_to_workspace:
+          root: build
+          paths:
+            - release
+
+  release_upload:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *attach_build_workspace
+      - <<: *install_fastlane
+      - run: fastlane release_match
+      - run: fastlane release_upload
+
+  release_metadata:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *install_fastlane
+      - run: fastlane release_metadata
+
+  release_screenshots:
+    <<: *base
+    steps:
+      - checkout
+      - <<: *install_fastlane
+      - run: fastlane release_screenshots
 
 workflows:
   version: 2
   app:
     jobs:
-      - swiftlint
-      - danger
+      - swiftlint:
+          filters:
+            branches:
+              ignore: [screenshots, metadata]
+
+      - danger:
+          filters:
+            branches:
+              ignore: [screenshots, metadata]
+
       - tests:
           requires:
             - swiftlint
             - danger
           filters:
             branches:
-              ignore:
-                - /screenshots.*/
-                - /metadata.*/
+              ignore: [screenshots, metadata]
+
       - screenshots:
           filters:
             branches:
-              only: /screenshots.*/
-      - beta:
-          requires:
-            - tests
-          filters:
-            branches:
-              only: [ci, develop]
-      - release:
-          requires:
-            - tests
-          filters:
-            branches:
-              only: master
+              only: new-screenshots
 
+      - beta_build:
+          requires:
+            - tests
+          filters:
+            branches:
+              only: [develop]
+
+      - beta_upload:
+          requires:
+            - beta_build
+
+      - release_build:
+          requires:
+            - tests
+          filters:
+            branches:
+              only: [master]
+
+      - release_upload:
+          requires:
+            - release_build
+          filters:
+            branches:
+              ignore: metadata
+
+      - release_metadata:
+          filters:
+            branches:
+              only: [master, metadata]
+
+      - release_screenshots:
+          filters:
+            branches:
+              only: screenshots

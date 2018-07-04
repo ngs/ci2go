@@ -1,3 +1,5 @@
-# The Deliverfile allows you to store various iTunes Connect metadata
-# For more information, check out the docs
-# https://docs.fastlane.tools/actions/deliver/
+# vim: set ft=ruby
+
+skip_binary_upload true
+force true
+skip_app_version_update true

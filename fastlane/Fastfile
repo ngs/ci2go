@@ -17,29 +17,44 @@ platform :ios do
     run_tests
   end
 
-  desc 'Publish app to Fabric Beta'
-  lane :beta do
+  desc 'Build app for beta'
+  lane :beta_build do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
-    setup_circle_ci
-    match type: 'adhoc'
     build_app(
-      project: 'CI2Go.xcodeproj',
-      scheme: 'CI2Go',
-      export_method: 'ad-hoc'
+      export_method: 'ad-hoc',
+      output_directory: './build/adhoc'
     )
+  end
+
+  desc 'Upload app to Fabric Beta'
+  lane :beta_upload do
     crashlytics(
       crashlytics_path: 'Vendor/Crashlytics.framework',
+      ipa_path: './build/adhoc/CI2Go.ipa',
       api_token: '4f9578d15d7c0f51fa422575e9b409e496ebe259',
       notifications: true,
       notes: `git log -1 --pretty=%B`
     )
   end
 
-  desc 'Publish app to App Store'
-  lane :release do
+  desc 'Match Ad-Hoc Provisioning Profiles'
+  lane :beta_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    setup_circle_ci
+    match type: 'adhoc'
+  end
+
+  desc 'Match App Store Provisioning Profiles'
+  lane :release_match do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
     match type: 'appstore'
+  end
+
+
+  desc 'Build app for beta'
+  lane :release_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     {
       'CI2Go' => 'com.ci2go.ios.Circle',
       'CI2GoWatch' => 'com.ci2go.ios.Circle.watchkitapp',
@@ -54,19 +69,31 @@ platform :ios do
       )
     end
     build_app(
-      project: 'CI2Go.xcodeproj',
-      scheme: 'CI2Go',
-      export_method: 'app-store'
+      export_method: 'app-store',
+      output_directory: './build/release'
     )
+  end
+
+  desc 'Publish app to App Store'
+  lane :release_upload do
     pilot(
       skip_waiting_for_build_processing: true,
+      distribute_external: true,
+      notify_external_testers: true,
       changelog: `git log -1 --pretty=%B`,
-      testers_file_path: './fastlane/testers.csv'
+      testers_file_path: './fastlane/testers.csv',
+      ipa: './build/release/CI2Go.ipa'
     )
-    deliver(
-      skip_binary_upload: true,
-      force: true
-    )
+  end
+
+  desc 'Upload metadata to App Store'
+  lane :release_metadata do
+    deliver skip_screenshots: true
+  end
+
+  desc 'Upload screenshots to App Store'
+  lane :release_screenshots do
+    deliver skip_metadata: true, run_precheck_before_submit: false
   end
 
   desc 'Take screenshots'

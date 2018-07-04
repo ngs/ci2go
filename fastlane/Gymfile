@@ -1,0 +1,4 @@
+# vim: set ft=ruby
+
+project 'CI2Go.xcodeproj'
+scheme 'CI2Go'
