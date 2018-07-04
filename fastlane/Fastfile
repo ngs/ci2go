@@ -15,6 +15,18 @@ platform :ios do
   lane :tests do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     run_tests
+    cov
+  end
+
+  lane :cov do
+    xcov(
+      project: 'CI2Go.xcodeproj',
+      scheme: 'CI2GoTests',
+      output_directory: 'fastlane/test_output/xcov',
+      ignore_file_path: '.xcovignore',
+      derived_data_path: 'DerivedData',
+      source_directory: 'CI2Go'
+    )
   end
 
   desc 'Build app for beta'

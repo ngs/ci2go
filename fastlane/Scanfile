@@ -4,3 +4,4 @@ project 'CI2Go.xcodeproj'
 scheme 'CI2GoTests'
 devices ['iPhone 6s']
 derived_data_path 'DerivedData'
+code_coverage true

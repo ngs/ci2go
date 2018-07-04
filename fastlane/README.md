@@ -26,6 +26,11 @@ Set Build Number to CIRCLE_BUILD_NUM
 fastlane ios tests
 ```
 Run tests
+### ios cov
+```
+fastlane ios cov
+```
+
 ### ios beta_build
 ```
 fastlane ios beta_build
