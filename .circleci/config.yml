@@ -79,7 +79,7 @@ jobs:
       - <<: *save_bundler_cache
       - run: bundle exec fastlane set_build_number
       - run: bundle exec fastlane tests
-      - run: bundle exec fastlane coveralls
+      - run: bundle exec fastlane send_coveralls
       - store_test_results:
           path: fastlane/test_output
       - store_artifacts:

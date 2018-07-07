@@ -26,11 +26,6 @@ Set Build Number to CIRCLE_BUILD_NUM
 fastlane ios tests
 ```
 Run tests
-### ios cov
-```
-fastlane ios cov
-```
-
 ### ios beta_build
 ```
 fastlane ios beta_build
@@ -81,9 +76,9 @@ Take screenshots
 fastlane ios increment_minor_version
 ```
 Increment minor version
-### ios coveralls
+### ios send_coveralls
 ```
-fastlane ios coveralls
+fastlane ios send_coveralls
 ```
 Upload Coverage data to Coveralls
 
