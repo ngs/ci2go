@@ -116,47 +116,10 @@ platform :ios do
   end
 
   desc 'Upload Coverage data to Coveralls'
-  lane :coveralls do
-    fastlane_require 'buff/ignore'
-    fastlane_require 'coveralls'
-
-    root_path = Pathname(`git rev-parse --show-toplevel`.strip)
-    archive = Dir["#{root_path}/DerivedData/**/*.xccovarchive"].first
-    UI.user_error! ".xcovarchive not found" unless archive
-
-    commit = `git rev-parse HEAD`.strip
-
-    files=`xcrun xccov view --file-list #{archive}`
-      .strip
-      .split("\n")
-      .map(&:to_s)
-
-    ignore = Buff::Ignore::IgnoreFile.new("#{root_path}/.coverallsignore")
-    ignore.apply!(files)
-
-    # http://docs.coveralls.io/api-introduction
-    source_files = files.map do |file|
-      name = Pathname(file).relative_path_from(root_path).to_s
-      lines = `xcrun xccov view --file "#{file}" "#{archive}"`.strip.split("\n")
-
-      coverage = lines.map do |line|
-        line.strip!
-        line = line.split(/[\s:]/).reject(&:empty?)
-        next unless line[0].match(/^\d+$/)
-        hits = line[1]
-        hits == '*' ? nil : hits.to_i
-      end
-
-      {
-        name: name,
-        source_digest: `git hash-object "#{file}"`.strip,
-        coverage: coverage
-      }
-    end
-
-    json = {
-      source_files: source_files
-    }
-    Coveralls::API.post_json 'jobs', json
+  lane :send_coveralls do
+    coveralls(
+      repo_token: ENV.fetch('COVERALLS_REPO_TOKEN'),
+      derived_data_path: 'DerivedData'
+    )
   end
 end
