@@ -235,7 +235,7 @@ workflows:
             - tests
           filters:
             branches:
-              only: [master]
+              only: [master, /release-.+/]
 
       - release_upload:
           requires:
