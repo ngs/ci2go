@@ -1,0 +1,22 @@
+{
+  "author": "",
+  "commands": [
+    {
+      "script": "script.cocoascript",
+      "name": "CI2Go App Icons",
+      "handlers": {
+        "run": "onRun"
+      },
+      "identifier": "com.ci2go.sketch.app-icons"
+    }
+  ],
+  "menu": {
+    "title": "Create CI2Go App Icons",
+    "items": ["com.ci2go.sketch.app-icons"]
+  },
+  "identifier": "com.ci2go.sketch",
+  "version": "1.0",
+  "description": "Atsushi Nagase",
+  "authorEmail": "CI2Go",
+  "name": "Create CI2Go App Icons"
+}

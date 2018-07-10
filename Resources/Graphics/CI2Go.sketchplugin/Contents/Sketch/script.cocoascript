@@ -1,0 +1,214 @@
+// vim: set ft=javascript:
+var sketch = require('sketch')
+
+var Artboard = require('sketch/dom').Artboard
+var Document = require('sketch/dom').Document
+var Library = require('sketch/dom').Library
+var Page = require('sketch/dom').Page
+var Rectangle = require('sketch/dom').Rectangle
+var Shape = require('sketch/dom').Shape
+var Style = require('sketch/dom').Style
+var SymbolMaster = require('sketch/dom').SymbolMaster
+
+var W = 1024, H = 1024, MARGIN = 100, MAX_X = (W + MARGIN) * 5
+
+var colorDictToHex = function (dict) {
+  var f2hex = function(f) {
+    var s = Math.floor(f * 0xff).toString(0x10)
+    while (s.length < 2) { s = '0' + s }
+    return s
+  }
+  var r = dict['Red Component']
+  var g = dict['Green Component']
+  var b = dict['Blue Component']
+  var hex = '#' + f2hex(r) + f2hex(g) + f2hex(b)
+  return hex
+}
+
+var createSymbolMasters = function(projectRoot, document, page) {
+  var colorSchemePath = projectRoot + '/CI2Go/Color Schemes'
+  var fileURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: colorSchemePath error:nil];
+  var colorSchemes = []
+  for (var i = 0; i < fileURLs.length; i++) {
+    var file = [fileURLs objectAtIndex: i];
+    var fileURL = [NSURL fileURLWithPath: colorSchemePath + '/' + file]
+    var dict = [[NSDictionary alloc] initWithContentsOfURL: fileURL error: nil];
+    var fg = colorDictToHex(dict['Foreground Color'])
+    var bg = colorDictToHex(dict['Background Color'])
+    colorSchemes.push({
+      name: file.replace(/\.itermcolors$/, ''),
+      foreground: fg,
+      background: bg
+    })
+  }
+  colorSchemes = colorSchemes.sort((a, b) => { return a.name.toUpperCase() > b.name.toUpperCase() })
+  var createFrame = function() {
+    var ret = { x: frameX, y: frameY, width: W, height: H }
+    page.frame = new Rectangle(0, 0, frameX + W, frameY + H)
+    frameX += W + MARGIN
+    if (frameX >= MAX_X) {
+      frameX = 0
+      frameY += H + MARGIN
+    }
+    return ret
+  }
+
+  var frameX = 0, frameY = 0
+
+  var library = Library.getLibraryForDocumentAtPath(
+    projectRoot + '/Resources/Graphics/AppIcon.sketch'
+  )
+
+  var symbolMaster = library.getImportableSymbolReferencesForDocument(
+      document
+  )[0].import()
+
+  var grid = symbolMaster.layers.filter((layer) => { return layer.name === 'grid' })[0]
+  var logo = grid.layers.filter((layer) => { return layer.name === 'logo' })[0]
+
+  var createSymbolMaster = function(scheme) {
+    var newLogo = logo.duplicate()
+    newLogo.layers.forEach((layer) => {
+      layer.style = {
+        fills: [{
+          color: scheme.foreground,
+          fillType: Style.FillType.Color
+        }],
+        borders: []
+      }
+    })
+    var ab = new Artboard({
+      name: scheme.name,
+      flowStartPoint: true,
+      frame: createFrame(),
+      layers: [
+        new Shape({
+          name: 'Background',
+          frame: new Rectangle(0, 0, W, H),
+          style: {
+            fills: [{
+              color: scheme.background,
+              fillType: Style.FillType.Color
+            }]
+          }
+        }),
+        newLogo
+      ]
+    })
+    var master = SymbolMaster.fromArtboard(ab)
+    return master
+  }
+
+  return colorSchemes.map((s) => {
+    return createSymbolMaster(s)
+  })
+}
+
+var createPage = (projectRoot, document, master) => {
+  var iconSizes = []
+  var json = []
+  var idiomScales = {
+    iphone: [2, 3],
+    ipad: [1, 2],
+    'ios-marketing': [1]
+  }
+
+  var idiomSuffixes = {
+    iphone: '~iphone',
+    ipad: '~ipad'
+  }
+
+  var sizeSpecs = [
+    { size: 20, name: 'Icon-Notification' },
+    { size: 29, name: 'Icon-Small' },
+    { size: 40, name: 'Icon-Small-40' },
+    { size: 60, name: 'Icon-60', idiom: ['iphone'] },
+    { size: 76, name: 'Icon-76', idiom: ['ipad'] },
+    { size: 83.5, name: 'Icon-83.5', idiom: ['ipad'], scales: [2] },
+    // { size: 1024, name: 'iTunesArtwork', idiom: ['ios-marketing'] }
+  ]
+
+  sizeSpecs.forEach((sizeSpec) => {
+    var size = sizeSpec.size
+    var name = sizeSpec.name
+    var idioms = sizeSpec.idiom || ['iphone', 'ipad']
+    idioms.forEach((idiom) => {
+      var scales = sizeSpec.scales || idiomScales[idiom]
+      scales.forEach((scale) => {
+        var s = size * scale
+        var filename = master.name + '-' + name + (scale > 1 ? '@' + scale + 'x' : '') + (idiomSuffixes[idiom] || '')
+        iconSizes.push({
+          name: filename,
+          idiom: idiom,
+          width: s,
+          height: s
+        })
+        json.push({
+          size: [s, s].join('x'),
+          idiom: idiom,
+          filename: filename,
+          scale: scale + 'x'
+        })
+      })
+    })
+  })
+
+
+  var y = 0
+  var layers = iconSizes.map((size) => {
+    var instance = master.createNewInstance()
+    instance.frame = new Rectangle(0, 0, size.width, size.height)
+    var artboard = new Artboard({
+      name: size.name,
+      frame: new Rectangle(0, y, size.width, size.height),
+      layers: [instance]
+    })
+    y += size.height + MARGIN
+    return artboard
+  })
+
+  var page = new Page({
+    name: master.name,
+    parent: document,
+    frame: new Rectangle(0, 0, 1024, y),
+    layers: layers
+  })
+
+  var dir = projectRoot + '/Resources/Graphics/AppIcons/' + master.name + '.appiconset'
+
+  sketch.export(layers, {
+    output: dir
+  })
+
+  var jsonStr = NSString.stringWithString(JSON.stringify({ images: json }, null, 2))
+  var jsonPath = dir + '/Contents.json'
+  [jsonStr writeToFile: jsonPath atomically: true encoding: NSUTF8StringEncoding error: null];
+
+  return page
+}
+
+
+var onRun = function(context) {
+  var projectRoot = context.scriptPath.replace(/\/Resources\/Graphics.+/, '')
+  var document = new Document()
+  var page = document.selectedPage
+  var symbolMasters = createSymbolMasters(projectRoot, document, page)
+  var alternateIcons = [NSMutableDictionary dictionary];
+
+  page.name = 'Symbols'
+  page.layers = symbolMasters
+  symbolMasters.forEach((master) => {
+    var page = createPage(projectRoot, document, master)
+    var obj = {
+      CFBundleIconFiles: page.layers.map((layer) => { return layer.name }),
+      UIPrerenderedIcon: false
+    }
+    [alternateIcons setObject: obj forKey: master.name]
+  })
+
+  var plistPath = projectRoot + '/Resources/Graphics/CFBundleIconFiles.plist'
+  var url = [NSURL fileURLWithPath: plistPath];
+  var res = [alternateIcons writeToURL: url error: nil]
+  console.info(res)
+};
+
