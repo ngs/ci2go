@@ -199,8 +199,10 @@ var onRun = function(context) {
   page.layers = symbolMasters
   symbolMasters.forEach((master) => {
     var page = createPage(projectRoot, document, master)
+    var files = page.layers.map((layer) => { return layer.name.replace(/[~@].+$/, '') })
+    files = files.filter((file, i) => { return files.indexOf(file) === i })
     var obj = {
-      CFBundleIconFiles: page.layers.map((layer) => { return layer.name }),
+      CFBundleIconFiles: files,
       UIPrerenderedIcon: false
     }
     [alternateIcons setObject: obj forKey: master.name]

@@ -8,6 +8,7 @@
 
 import UIKit
 import Dwifft
+import Crashlytics
 
 class ColorSchemesViewController: UITableViewController {
 
@@ -52,7 +53,11 @@ class ColorSchemesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let scheme = diffCalculator?.value(atIndexPath: indexPath) else { return }
-        UIApplication.shared.setAlternateIconName(scheme.name, completionHandler: nil)
+        UIApplication.shared.setAlternateIconName(scheme.name) { err in
+            if let err = err {
+                Crashlytics.sharedInstance().recordError(err)
+            }
+        }
         scheme.apply()
         navigationController?.popViewController(animated: true)
     }
