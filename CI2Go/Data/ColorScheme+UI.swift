@@ -81,6 +81,7 @@ extension ColorScheme {
 
         setAsCurrent()
         WCSession.default.transferColorScheme(colorScheme: self)
+
         resetViews()
     }
 

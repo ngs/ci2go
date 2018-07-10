@@ -6,6 +6,2932 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>3024 Day</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>3024 Day-Icon-Notification@2x~iphone</string>
+					<string>3024 Day-Icon-Notification@3x~iphone</string>
+					<string>3024 Day-Icon-Notification~ipad</string>
+					<string>3024 Day-Icon-Notification@2x~ipad</string>
+					<string>3024 Day-Icon-Small@2x~iphone</string>
+					<string>3024 Day-Icon-Small@3x~iphone</string>
+					<string>3024 Day-Icon-Small~ipad</string>
+					<string>3024 Day-Icon-Small@2x~ipad</string>
+					<string>3024 Day-Icon-Small-40@2x~iphone</string>
+					<string>3024 Day-Icon-Small-40@3x~iphone</string>
+					<string>3024 Day-Icon-Small-40~ipad</string>
+					<string>3024 Day-Icon-Small-40@2x~ipad</string>
+					<string>3024 Day-Icon-60@2x~iphone</string>
+					<string>3024 Day-Icon-60@3x~iphone</string>
+					<string>3024 Day-Icon-76~ipad</string>
+					<string>3024 Day-Icon-76@2x~ipad</string>
+					<string>3024 Day-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>3024 Night</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>3024 Night-Icon-Notification@2x~iphone</string>
+					<string>3024 Night-Icon-Notification@3x~iphone</string>
+					<string>3024 Night-Icon-Notification~ipad</string>
+					<string>3024 Night-Icon-Notification@2x~ipad</string>
+					<string>3024 Night-Icon-Small@2x~iphone</string>
+					<string>3024 Night-Icon-Small@3x~iphone</string>
+					<string>3024 Night-Icon-Small~ipad</string>
+					<string>3024 Night-Icon-Small@2x~ipad</string>
+					<string>3024 Night-Icon-Small-40@2x~iphone</string>
+					<string>3024 Night-Icon-Small-40@3x~iphone</string>
+					<string>3024 Night-Icon-Small-40~ipad</string>
+					<string>3024 Night-Icon-Small-40@2x~ipad</string>
+					<string>3024 Night-Icon-60@2x~iphone</string>
+					<string>3024 Night-Icon-60@3x~iphone</string>
+					<string>3024 Night-Icon-76~ipad</string>
+					<string>3024 Night-Icon-76@2x~ipad</string>
+					<string>3024 Night-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>AdventureTime</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AdventureTime-Icon-Notification@2x~iphone</string>
+					<string>AdventureTime-Icon-Notification@3x~iphone</string>
+					<string>AdventureTime-Icon-Notification~ipad</string>
+					<string>AdventureTime-Icon-Notification@2x~ipad</string>
+					<string>AdventureTime-Icon-Small@2x~iphone</string>
+					<string>AdventureTime-Icon-Small@3x~iphone</string>
+					<string>AdventureTime-Icon-Small~ipad</string>
+					<string>AdventureTime-Icon-Small@2x~ipad</string>
+					<string>AdventureTime-Icon-Small-40@2x~iphone</string>
+					<string>AdventureTime-Icon-Small-40@3x~iphone</string>
+					<string>AdventureTime-Icon-Small-40~ipad</string>
+					<string>AdventureTime-Icon-Small-40@2x~ipad</string>
+					<string>AdventureTime-Icon-60@2x~iphone</string>
+					<string>AdventureTime-Icon-60@3x~iphone</string>
+					<string>AdventureTime-Icon-76~ipad</string>
+					<string>AdventureTime-Icon-76@2x~ipad</string>
+					<string>AdventureTime-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Afterglow</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Afterglow-Icon-Notification@2x~iphone</string>
+					<string>Afterglow-Icon-Notification@3x~iphone</string>
+					<string>Afterglow-Icon-Notification~ipad</string>
+					<string>Afterglow-Icon-Notification@2x~ipad</string>
+					<string>Afterglow-Icon-Small@2x~iphone</string>
+					<string>Afterglow-Icon-Small@3x~iphone</string>
+					<string>Afterglow-Icon-Small~ipad</string>
+					<string>Afterglow-Icon-Small@2x~ipad</string>
+					<string>Afterglow-Icon-Small-40@2x~iphone</string>
+					<string>Afterglow-Icon-Small-40@3x~iphone</string>
+					<string>Afterglow-Icon-Small-40~ipad</string>
+					<string>Afterglow-Icon-Small-40@2x~ipad</string>
+					<string>Afterglow-Icon-60@2x~iphone</string>
+					<string>Afterglow-Icon-60@3x~iphone</string>
+					<string>Afterglow-Icon-76~ipad</string>
+					<string>Afterglow-Icon-76@2x~ipad</string>
+					<string>Afterglow-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>AlienBlood</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AlienBlood-Icon-Notification@2x~iphone</string>
+					<string>AlienBlood-Icon-Notification@3x~iphone</string>
+					<string>AlienBlood-Icon-Notification~ipad</string>
+					<string>AlienBlood-Icon-Notification@2x~ipad</string>
+					<string>AlienBlood-Icon-Small@2x~iphone</string>
+					<string>AlienBlood-Icon-Small@3x~iphone</string>
+					<string>AlienBlood-Icon-Small~ipad</string>
+					<string>AlienBlood-Icon-Small@2x~ipad</string>
+					<string>AlienBlood-Icon-Small-40@2x~iphone</string>
+					<string>AlienBlood-Icon-Small-40@3x~iphone</string>
+					<string>AlienBlood-Icon-Small-40~ipad</string>
+					<string>AlienBlood-Icon-Small-40@2x~ipad</string>
+					<string>AlienBlood-Icon-60@2x~iphone</string>
+					<string>AlienBlood-Icon-60@3x~iphone</string>
+					<string>AlienBlood-Icon-76~ipad</string>
+					<string>AlienBlood-Icon-76@2x~ipad</string>
+					<string>AlienBlood-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Argonaut</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Argonaut-Icon-Notification@2x~iphone</string>
+					<string>Argonaut-Icon-Notification@3x~iphone</string>
+					<string>Argonaut-Icon-Notification~ipad</string>
+					<string>Argonaut-Icon-Notification@2x~ipad</string>
+					<string>Argonaut-Icon-Small@2x~iphone</string>
+					<string>Argonaut-Icon-Small@3x~iphone</string>
+					<string>Argonaut-Icon-Small~ipad</string>
+					<string>Argonaut-Icon-Small@2x~ipad</string>
+					<string>Argonaut-Icon-Small-40@2x~iphone</string>
+					<string>Argonaut-Icon-Small-40@3x~iphone</string>
+					<string>Argonaut-Icon-Small-40~ipad</string>
+					<string>Argonaut-Icon-Small-40@2x~ipad</string>
+					<string>Argonaut-Icon-60@2x~iphone</string>
+					<string>Argonaut-Icon-60@3x~iphone</string>
+					<string>Argonaut-Icon-76~ipad</string>
+					<string>Argonaut-Icon-76@2x~ipad</string>
+					<string>Argonaut-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Arthur</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Arthur-Icon-Notification@2x~iphone</string>
+					<string>Arthur-Icon-Notification@3x~iphone</string>
+					<string>Arthur-Icon-Notification~ipad</string>
+					<string>Arthur-Icon-Notification@2x~ipad</string>
+					<string>Arthur-Icon-Small@2x~iphone</string>
+					<string>Arthur-Icon-Small@3x~iphone</string>
+					<string>Arthur-Icon-Small~ipad</string>
+					<string>Arthur-Icon-Small@2x~ipad</string>
+					<string>Arthur-Icon-Small-40@2x~iphone</string>
+					<string>Arthur-Icon-Small-40@3x~iphone</string>
+					<string>Arthur-Icon-Small-40~ipad</string>
+					<string>Arthur-Icon-Small-40@2x~ipad</string>
+					<string>Arthur-Icon-60@2x~iphone</string>
+					<string>Arthur-Icon-60@3x~iphone</string>
+					<string>Arthur-Icon-76~ipad</string>
+					<string>Arthur-Icon-76@2x~ipad</string>
+					<string>Arthur-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Atom</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Atom-Icon-Notification@2x~iphone</string>
+					<string>Atom-Icon-Notification@3x~iphone</string>
+					<string>Atom-Icon-Notification~ipad</string>
+					<string>Atom-Icon-Notification@2x~ipad</string>
+					<string>Atom-Icon-Small@2x~iphone</string>
+					<string>Atom-Icon-Small@3x~iphone</string>
+					<string>Atom-Icon-Small~ipad</string>
+					<string>Atom-Icon-Small@2x~ipad</string>
+					<string>Atom-Icon-Small-40@2x~iphone</string>
+					<string>Atom-Icon-Small-40@3x~iphone</string>
+					<string>Atom-Icon-Small-40~ipad</string>
+					<string>Atom-Icon-Small-40@2x~ipad</string>
+					<string>Atom-Icon-60@2x~iphone</string>
+					<string>Atom-Icon-60@3x~iphone</string>
+					<string>Atom-Icon-76~ipad</string>
+					<string>Atom-Icon-76@2x~ipad</string>
+					<string>Atom-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Belafonte Day</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Belafonte Day-Icon-Notification@2x~iphone</string>
+					<string>Belafonte Day-Icon-Notification@3x~iphone</string>
+					<string>Belafonte Day-Icon-Notification~ipad</string>
+					<string>Belafonte Day-Icon-Notification@2x~ipad</string>
+					<string>Belafonte Day-Icon-Small@2x~iphone</string>
+					<string>Belafonte Day-Icon-Small@3x~iphone</string>
+					<string>Belafonte Day-Icon-Small~ipad</string>
+					<string>Belafonte Day-Icon-Small@2x~ipad</string>
+					<string>Belafonte Day-Icon-Small-40@2x~iphone</string>
+					<string>Belafonte Day-Icon-Small-40@3x~iphone</string>
+					<string>Belafonte Day-Icon-Small-40~ipad</string>
+					<string>Belafonte Day-Icon-Small-40@2x~ipad</string>
+					<string>Belafonte Day-Icon-60@2x~iphone</string>
+					<string>Belafonte Day-Icon-60@3x~iphone</string>
+					<string>Belafonte Day-Icon-76~ipad</string>
+					<string>Belafonte Day-Icon-76@2x~ipad</string>
+					<string>Belafonte Day-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Belafonte Night</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Belafonte Night-Icon-Notification@2x~iphone</string>
+					<string>Belafonte Night-Icon-Notification@3x~iphone</string>
+					<string>Belafonte Night-Icon-Notification~ipad</string>
+					<string>Belafonte Night-Icon-Notification@2x~ipad</string>
+					<string>Belafonte Night-Icon-Small@2x~iphone</string>
+					<string>Belafonte Night-Icon-Small@3x~iphone</string>
+					<string>Belafonte Night-Icon-Small~ipad</string>
+					<string>Belafonte Night-Icon-Small@2x~ipad</string>
+					<string>Belafonte Night-Icon-Small-40@2x~iphone</string>
+					<string>Belafonte Night-Icon-Small-40@3x~iphone</string>
+					<string>Belafonte Night-Icon-Small-40~ipad</string>
+					<string>Belafonte Night-Icon-Small-40@2x~ipad</string>
+					<string>Belafonte Night-Icon-60@2x~iphone</string>
+					<string>Belafonte Night-Icon-60@3x~iphone</string>
+					<string>Belafonte Night-Icon-76~ipad</string>
+					<string>Belafonte Night-Icon-76@2x~ipad</string>
+					<string>Belafonte Night-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>BirdsOfParadise</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>BirdsOfParadise-Icon-Notification@2x~iphone</string>
+					<string>BirdsOfParadise-Icon-Notification@3x~iphone</string>
+					<string>BirdsOfParadise-Icon-Notification~ipad</string>
+					<string>BirdsOfParadise-Icon-Notification@2x~ipad</string>
+					<string>BirdsOfParadise-Icon-Small@2x~iphone</string>
+					<string>BirdsOfParadise-Icon-Small@3x~iphone</string>
+					<string>BirdsOfParadise-Icon-Small~ipad</string>
+					<string>BirdsOfParadise-Icon-Small@2x~ipad</string>
+					<string>BirdsOfParadise-Icon-Small-40@2x~iphone</string>
+					<string>BirdsOfParadise-Icon-Small-40@3x~iphone</string>
+					<string>BirdsOfParadise-Icon-Small-40~ipad</string>
+					<string>BirdsOfParadise-Icon-Small-40@2x~ipad</string>
+					<string>BirdsOfParadise-Icon-60@2x~iphone</string>
+					<string>BirdsOfParadise-Icon-60@3x~iphone</string>
+					<string>BirdsOfParadise-Icon-76~ipad</string>
+					<string>BirdsOfParadise-Icon-76@2x~ipad</string>
+					<string>BirdsOfParadise-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Blazer</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Blazer-Icon-Notification@2x~iphone</string>
+					<string>Blazer-Icon-Notification@3x~iphone</string>
+					<string>Blazer-Icon-Notification~ipad</string>
+					<string>Blazer-Icon-Notification@2x~ipad</string>
+					<string>Blazer-Icon-Small@2x~iphone</string>
+					<string>Blazer-Icon-Small@3x~iphone</string>
+					<string>Blazer-Icon-Small~ipad</string>
+					<string>Blazer-Icon-Small@2x~ipad</string>
+					<string>Blazer-Icon-Small-40@2x~iphone</string>
+					<string>Blazer-Icon-Small-40@3x~iphone</string>
+					<string>Blazer-Icon-Small-40~ipad</string>
+					<string>Blazer-Icon-Small-40@2x~ipad</string>
+					<string>Blazer-Icon-60@2x~iphone</string>
+					<string>Blazer-Icon-60@3x~iphone</string>
+					<string>Blazer-Icon-76~ipad</string>
+					<string>Blazer-Icon-76@2x~ipad</string>
+					<string>Blazer-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Broadcast</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Broadcast-Icon-Notification@2x~iphone</string>
+					<string>Broadcast-Icon-Notification@3x~iphone</string>
+					<string>Broadcast-Icon-Notification~ipad</string>
+					<string>Broadcast-Icon-Notification@2x~ipad</string>
+					<string>Broadcast-Icon-Small@2x~iphone</string>
+					<string>Broadcast-Icon-Small@3x~iphone</string>
+					<string>Broadcast-Icon-Small~ipad</string>
+					<string>Broadcast-Icon-Small@2x~ipad</string>
+					<string>Broadcast-Icon-Small-40@2x~iphone</string>
+					<string>Broadcast-Icon-Small-40@3x~iphone</string>
+					<string>Broadcast-Icon-Small-40~ipad</string>
+					<string>Broadcast-Icon-Small-40@2x~ipad</string>
+					<string>Broadcast-Icon-60@2x~iphone</string>
+					<string>Broadcast-Icon-60@3x~iphone</string>
+					<string>Broadcast-Icon-76~ipad</string>
+					<string>Broadcast-Icon-76@2x~ipad</string>
+					<string>Broadcast-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Brogrammer</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Brogrammer-Icon-Notification@2x~iphone</string>
+					<string>Brogrammer-Icon-Notification@3x~iphone</string>
+					<string>Brogrammer-Icon-Notification~ipad</string>
+					<string>Brogrammer-Icon-Notification@2x~ipad</string>
+					<string>Brogrammer-Icon-Small@2x~iphone</string>
+					<string>Brogrammer-Icon-Small@3x~iphone</string>
+					<string>Brogrammer-Icon-Small~ipad</string>
+					<string>Brogrammer-Icon-Small@2x~ipad</string>
+					<string>Brogrammer-Icon-Small-40@2x~iphone</string>
+					<string>Brogrammer-Icon-Small-40@3x~iphone</string>
+					<string>Brogrammer-Icon-Small-40~ipad</string>
+					<string>Brogrammer-Icon-Small-40@2x~ipad</string>
+					<string>Brogrammer-Icon-60@2x~iphone</string>
+					<string>Brogrammer-Icon-60@3x~iphone</string>
+					<string>Brogrammer-Icon-76~ipad</string>
+					<string>Brogrammer-Icon-76@2x~ipad</string>
+					<string>Brogrammer-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>C64</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>C64-Icon-Notification@2x~iphone</string>
+					<string>C64-Icon-Notification@3x~iphone</string>
+					<string>C64-Icon-Notification~ipad</string>
+					<string>C64-Icon-Notification@2x~ipad</string>
+					<string>C64-Icon-Small@2x~iphone</string>
+					<string>C64-Icon-Small@3x~iphone</string>
+					<string>C64-Icon-Small~ipad</string>
+					<string>C64-Icon-Small@2x~ipad</string>
+					<string>C64-Icon-Small-40@2x~iphone</string>
+					<string>C64-Icon-Small-40@3x~iphone</string>
+					<string>C64-Icon-Small-40~ipad</string>
+					<string>C64-Icon-Small-40@2x~ipad</string>
+					<string>C64-Icon-60@2x~iphone</string>
+					<string>C64-Icon-60@3x~iphone</string>
+					<string>C64-Icon-76~ipad</string>
+					<string>C64-Icon-76@2x~ipad</string>
+					<string>C64-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>CLRS</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>CLRS-Icon-Notification@2x~iphone</string>
+					<string>CLRS-Icon-Notification@3x~iphone</string>
+					<string>CLRS-Icon-Notification~ipad</string>
+					<string>CLRS-Icon-Notification@2x~ipad</string>
+					<string>CLRS-Icon-Small@2x~iphone</string>
+					<string>CLRS-Icon-Small@3x~iphone</string>
+					<string>CLRS-Icon-Small~ipad</string>
+					<string>CLRS-Icon-Small@2x~ipad</string>
+					<string>CLRS-Icon-Small-40@2x~iphone</string>
+					<string>CLRS-Icon-Small-40@3x~iphone</string>
+					<string>CLRS-Icon-Small-40~ipad</string>
+					<string>CLRS-Icon-Small-40@2x~ipad</string>
+					<string>CLRS-Icon-60@2x~iphone</string>
+					<string>CLRS-Icon-60@3x~iphone</string>
+					<string>CLRS-Icon-76~ipad</string>
+					<string>CLRS-Icon-76@2x~ipad</string>
+					<string>CLRS-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Chalk</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Chalk-Icon-Notification@2x~iphone</string>
+					<string>Chalk-Icon-Notification@3x~iphone</string>
+					<string>Chalk-Icon-Notification~ipad</string>
+					<string>Chalk-Icon-Notification@2x~ipad</string>
+					<string>Chalk-Icon-Small@2x~iphone</string>
+					<string>Chalk-Icon-Small@3x~iphone</string>
+					<string>Chalk-Icon-Small~ipad</string>
+					<string>Chalk-Icon-Small@2x~ipad</string>
+					<string>Chalk-Icon-Small-40@2x~iphone</string>
+					<string>Chalk-Icon-Small-40@3x~iphone</string>
+					<string>Chalk-Icon-Small-40~ipad</string>
+					<string>Chalk-Icon-Small-40@2x~ipad</string>
+					<string>Chalk-Icon-60@2x~iphone</string>
+					<string>Chalk-Icon-60@3x~iphone</string>
+					<string>Chalk-Icon-76~ipad</string>
+					<string>Chalk-Icon-76@2x~ipad</string>
+					<string>Chalk-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Chalkboard</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Chalkboard-Icon-Notification@2x~iphone</string>
+					<string>Chalkboard-Icon-Notification@3x~iphone</string>
+					<string>Chalkboard-Icon-Notification~ipad</string>
+					<string>Chalkboard-Icon-Notification@2x~ipad</string>
+					<string>Chalkboard-Icon-Small@2x~iphone</string>
+					<string>Chalkboard-Icon-Small@3x~iphone</string>
+					<string>Chalkboard-Icon-Small~ipad</string>
+					<string>Chalkboard-Icon-Small@2x~ipad</string>
+					<string>Chalkboard-Icon-Small-40@2x~iphone</string>
+					<string>Chalkboard-Icon-Small-40@3x~iphone</string>
+					<string>Chalkboard-Icon-Small-40~ipad</string>
+					<string>Chalkboard-Icon-Small-40@2x~ipad</string>
+					<string>Chalkboard-Icon-60@2x~iphone</string>
+					<string>Chalkboard-Icon-60@3x~iphone</string>
+					<string>Chalkboard-Icon-76~ipad</string>
+					<string>Chalkboard-Icon-76@2x~ipad</string>
+					<string>Chalkboard-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Ciapre</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Ciapre-Icon-Notification@2x~iphone</string>
+					<string>Ciapre-Icon-Notification@3x~iphone</string>
+					<string>Ciapre-Icon-Notification~ipad</string>
+					<string>Ciapre-Icon-Notification@2x~ipad</string>
+					<string>Ciapre-Icon-Small@2x~iphone</string>
+					<string>Ciapre-Icon-Small@3x~iphone</string>
+					<string>Ciapre-Icon-Small~ipad</string>
+					<string>Ciapre-Icon-Small@2x~ipad</string>
+					<string>Ciapre-Icon-Small-40@2x~iphone</string>
+					<string>Ciapre-Icon-Small-40@3x~iphone</string>
+					<string>Ciapre-Icon-Small-40~ipad</string>
+					<string>Ciapre-Icon-Small-40@2x~ipad</string>
+					<string>Ciapre-Icon-60@2x~iphone</string>
+					<string>Ciapre-Icon-60@3x~iphone</string>
+					<string>Ciapre-Icon-76~ipad</string>
+					<string>Ciapre-Icon-76@2x~ipad</string>
+					<string>Ciapre-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Cobalt2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Cobalt2-Icon-Notification@2x~iphone</string>
+					<string>Cobalt2-Icon-Notification@3x~iphone</string>
+					<string>Cobalt2-Icon-Notification~ipad</string>
+					<string>Cobalt2-Icon-Notification@2x~ipad</string>
+					<string>Cobalt2-Icon-Small@2x~iphone</string>
+					<string>Cobalt2-Icon-Small@3x~iphone</string>
+					<string>Cobalt2-Icon-Small~ipad</string>
+					<string>Cobalt2-Icon-Small@2x~ipad</string>
+					<string>Cobalt2-Icon-Small-40@2x~iphone</string>
+					<string>Cobalt2-Icon-Small-40@3x~iphone</string>
+					<string>Cobalt2-Icon-Small-40~ipad</string>
+					<string>Cobalt2-Icon-Small-40@2x~ipad</string>
+					<string>Cobalt2-Icon-60@2x~iphone</string>
+					<string>Cobalt2-Icon-60@3x~iphone</string>
+					<string>Cobalt2-Icon-76~ipad</string>
+					<string>Cobalt2-Icon-76@2x~ipad</string>
+					<string>Cobalt2-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>CrayonPonyFish</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>CrayonPonyFish-Icon-Notification@2x~iphone</string>
+					<string>CrayonPonyFish-Icon-Notification@3x~iphone</string>
+					<string>CrayonPonyFish-Icon-Notification~ipad</string>
+					<string>CrayonPonyFish-Icon-Notification@2x~ipad</string>
+					<string>CrayonPonyFish-Icon-Small@2x~iphone</string>
+					<string>CrayonPonyFish-Icon-Small@3x~iphone</string>
+					<string>CrayonPonyFish-Icon-Small~ipad</string>
+					<string>CrayonPonyFish-Icon-Small@2x~ipad</string>
+					<string>CrayonPonyFish-Icon-Small-40@2x~iphone</string>
+					<string>CrayonPonyFish-Icon-Small-40@3x~iphone</string>
+					<string>CrayonPonyFish-Icon-Small-40~ipad</string>
+					<string>CrayonPonyFish-Icon-Small-40@2x~ipad</string>
+					<string>CrayonPonyFish-Icon-60@2x~iphone</string>
+					<string>CrayonPonyFish-Icon-60@3x~iphone</string>
+					<string>CrayonPonyFish-Icon-76~ipad</string>
+					<string>CrayonPonyFish-Icon-76@2x~ipad</string>
+					<string>CrayonPonyFish-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Dark Pastel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Dark Pastel-Icon-Notification@2x~iphone</string>
+					<string>Dark Pastel-Icon-Notification@3x~iphone</string>
+					<string>Dark Pastel-Icon-Notification~ipad</string>
+					<string>Dark Pastel-Icon-Notification@2x~ipad</string>
+					<string>Dark Pastel-Icon-Small@2x~iphone</string>
+					<string>Dark Pastel-Icon-Small@3x~iphone</string>
+					<string>Dark Pastel-Icon-Small~ipad</string>
+					<string>Dark Pastel-Icon-Small@2x~ipad</string>
+					<string>Dark Pastel-Icon-Small-40@2x~iphone</string>
+					<string>Dark Pastel-Icon-Small-40@3x~iphone</string>
+					<string>Dark Pastel-Icon-Small-40~ipad</string>
+					<string>Dark Pastel-Icon-Small-40@2x~ipad</string>
+					<string>Dark Pastel-Icon-60@2x~iphone</string>
+					<string>Dark Pastel-Icon-60@3x~iphone</string>
+					<string>Dark Pastel-Icon-76~ipad</string>
+					<string>Dark Pastel-Icon-76@2x~ipad</string>
+					<string>Dark Pastel-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Darkside</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Darkside-Icon-Notification@2x~iphone</string>
+					<string>Darkside-Icon-Notification@3x~iphone</string>
+					<string>Darkside-Icon-Notification~ipad</string>
+					<string>Darkside-Icon-Notification@2x~ipad</string>
+					<string>Darkside-Icon-Small@2x~iphone</string>
+					<string>Darkside-Icon-Small@3x~iphone</string>
+					<string>Darkside-Icon-Small~ipad</string>
+					<string>Darkside-Icon-Small@2x~ipad</string>
+					<string>Darkside-Icon-Small-40@2x~iphone</string>
+					<string>Darkside-Icon-Small-40@3x~iphone</string>
+					<string>Darkside-Icon-Small-40~ipad</string>
+					<string>Darkside-Icon-Small-40@2x~ipad</string>
+					<string>Darkside-Icon-60@2x~iphone</string>
+					<string>Darkside-Icon-60@3x~iphone</string>
+					<string>Darkside-Icon-76~ipad</string>
+					<string>Darkside-Icon-76@2x~ipad</string>
+					<string>Darkside-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Desert</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Desert-Icon-Notification@2x~iphone</string>
+					<string>Desert-Icon-Notification@3x~iphone</string>
+					<string>Desert-Icon-Notification~ipad</string>
+					<string>Desert-Icon-Notification@2x~ipad</string>
+					<string>Desert-Icon-Small@2x~iphone</string>
+					<string>Desert-Icon-Small@3x~iphone</string>
+					<string>Desert-Icon-Small~ipad</string>
+					<string>Desert-Icon-Small@2x~ipad</string>
+					<string>Desert-Icon-Small-40@2x~iphone</string>
+					<string>Desert-Icon-Small-40@3x~iphone</string>
+					<string>Desert-Icon-Small-40~ipad</string>
+					<string>Desert-Icon-Small-40@2x~ipad</string>
+					<string>Desert-Icon-60@2x~iphone</string>
+					<string>Desert-Icon-60@3x~iphone</string>
+					<string>Desert-Icon-76~ipad</string>
+					<string>Desert-Icon-76@2x~ipad</string>
+					<string>Desert-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>DimmedMonokai</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>DimmedMonokai-Icon-Notification@2x~iphone</string>
+					<string>DimmedMonokai-Icon-Notification@3x~iphone</string>
+					<string>DimmedMonokai-Icon-Notification~ipad</string>
+					<string>DimmedMonokai-Icon-Notification@2x~ipad</string>
+					<string>DimmedMonokai-Icon-Small@2x~iphone</string>
+					<string>DimmedMonokai-Icon-Small@3x~iphone</string>
+					<string>DimmedMonokai-Icon-Small~ipad</string>
+					<string>DimmedMonokai-Icon-Small@2x~ipad</string>
+					<string>DimmedMonokai-Icon-Small-40@2x~iphone</string>
+					<string>DimmedMonokai-Icon-Small-40@3x~iphone</string>
+					<string>DimmedMonokai-Icon-Small-40~ipad</string>
+					<string>DimmedMonokai-Icon-Small-40@2x~ipad</string>
+					<string>DimmedMonokai-Icon-60@2x~iphone</string>
+					<string>DimmedMonokai-Icon-60@3x~iphone</string>
+					<string>DimmedMonokai-Icon-76~ipad</string>
+					<string>DimmedMonokai-Icon-76@2x~ipad</string>
+					<string>DimmedMonokai-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Dracula</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Dracula-Icon-Notification@2x~iphone</string>
+					<string>Dracula-Icon-Notification@3x~iphone</string>
+					<string>Dracula-Icon-Notification~ipad</string>
+					<string>Dracula-Icon-Notification@2x~ipad</string>
+					<string>Dracula-Icon-Small@2x~iphone</string>
+					<string>Dracula-Icon-Small@3x~iphone</string>
+					<string>Dracula-Icon-Small~ipad</string>
+					<string>Dracula-Icon-Small@2x~ipad</string>
+					<string>Dracula-Icon-Small-40@2x~iphone</string>
+					<string>Dracula-Icon-Small-40@3x~iphone</string>
+					<string>Dracula-Icon-Small-40~ipad</string>
+					<string>Dracula-Icon-Small-40@2x~ipad</string>
+					<string>Dracula-Icon-60@2x~iphone</string>
+					<string>Dracula-Icon-60@3x~iphone</string>
+					<string>Dracula-Icon-76~ipad</string>
+					<string>Dracula-Icon-76@2x~ipad</string>
+					<string>Dracula-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Earthsong</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Earthsong-Icon-Notification@2x~iphone</string>
+					<string>Earthsong-Icon-Notification@3x~iphone</string>
+					<string>Earthsong-Icon-Notification~ipad</string>
+					<string>Earthsong-Icon-Notification@2x~ipad</string>
+					<string>Earthsong-Icon-Small@2x~iphone</string>
+					<string>Earthsong-Icon-Small@3x~iphone</string>
+					<string>Earthsong-Icon-Small~ipad</string>
+					<string>Earthsong-Icon-Small@2x~ipad</string>
+					<string>Earthsong-Icon-Small-40@2x~iphone</string>
+					<string>Earthsong-Icon-Small-40@3x~iphone</string>
+					<string>Earthsong-Icon-Small-40~ipad</string>
+					<string>Earthsong-Icon-Small-40@2x~ipad</string>
+					<string>Earthsong-Icon-60@2x~iphone</string>
+					<string>Earthsong-Icon-60@3x~iphone</string>
+					<string>Earthsong-Icon-76~ipad</string>
+					<string>Earthsong-Icon-76@2x~ipad</string>
+					<string>Earthsong-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Elemental</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Elemental-Icon-Notification@2x~iphone</string>
+					<string>Elemental-Icon-Notification@3x~iphone</string>
+					<string>Elemental-Icon-Notification~ipad</string>
+					<string>Elemental-Icon-Notification@2x~ipad</string>
+					<string>Elemental-Icon-Small@2x~iphone</string>
+					<string>Elemental-Icon-Small@3x~iphone</string>
+					<string>Elemental-Icon-Small~ipad</string>
+					<string>Elemental-Icon-Small@2x~ipad</string>
+					<string>Elemental-Icon-Small-40@2x~iphone</string>
+					<string>Elemental-Icon-Small-40@3x~iphone</string>
+					<string>Elemental-Icon-Small-40~ipad</string>
+					<string>Elemental-Icon-Small-40@2x~ipad</string>
+					<string>Elemental-Icon-60@2x~iphone</string>
+					<string>Elemental-Icon-60@3x~iphone</string>
+					<string>Elemental-Icon-76~ipad</string>
+					<string>Elemental-Icon-76@2x~ipad</string>
+					<string>Elemental-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Espresso</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Espresso-Icon-Notification@2x~iphone</string>
+					<string>Espresso-Icon-Notification@3x~iphone</string>
+					<string>Espresso-Icon-Notification~ipad</string>
+					<string>Espresso-Icon-Notification@2x~ipad</string>
+					<string>Espresso-Icon-Small@2x~iphone</string>
+					<string>Espresso-Icon-Small@3x~iphone</string>
+					<string>Espresso-Icon-Small~ipad</string>
+					<string>Espresso-Icon-Small@2x~ipad</string>
+					<string>Espresso-Icon-Small-40@2x~iphone</string>
+					<string>Espresso-Icon-Small-40@3x~iphone</string>
+					<string>Espresso-Icon-Small-40~ipad</string>
+					<string>Espresso-Icon-Small-40@2x~ipad</string>
+					<string>Espresso-Icon-60@2x~iphone</string>
+					<string>Espresso-Icon-60@3x~iphone</string>
+					<string>Espresso-Icon-76~ipad</string>
+					<string>Espresso-Icon-76@2x~ipad</string>
+					<string>Espresso-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Espresso Libre</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Espresso Libre-Icon-Notification@2x~iphone</string>
+					<string>Espresso Libre-Icon-Notification@3x~iphone</string>
+					<string>Espresso Libre-Icon-Notification~ipad</string>
+					<string>Espresso Libre-Icon-Notification@2x~ipad</string>
+					<string>Espresso Libre-Icon-Small@2x~iphone</string>
+					<string>Espresso Libre-Icon-Small@3x~iphone</string>
+					<string>Espresso Libre-Icon-Small~ipad</string>
+					<string>Espresso Libre-Icon-Small@2x~ipad</string>
+					<string>Espresso Libre-Icon-Small-40@2x~iphone</string>
+					<string>Espresso Libre-Icon-Small-40@3x~iphone</string>
+					<string>Espresso Libre-Icon-Small-40~ipad</string>
+					<string>Espresso Libre-Icon-Small-40@2x~ipad</string>
+					<string>Espresso Libre-Icon-60@2x~iphone</string>
+					<string>Espresso Libre-Icon-60@3x~iphone</string>
+					<string>Espresso Libre-Icon-76~ipad</string>
+					<string>Espresso Libre-Icon-76@2x~ipad</string>
+					<string>Espresso Libre-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>FishTank</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>FishTank-Icon-Notification@2x~iphone</string>
+					<string>FishTank-Icon-Notification@3x~iphone</string>
+					<string>FishTank-Icon-Notification~ipad</string>
+					<string>FishTank-Icon-Notification@2x~ipad</string>
+					<string>FishTank-Icon-Small@2x~iphone</string>
+					<string>FishTank-Icon-Small@3x~iphone</string>
+					<string>FishTank-Icon-Small~ipad</string>
+					<string>FishTank-Icon-Small@2x~ipad</string>
+					<string>FishTank-Icon-Small-40@2x~iphone</string>
+					<string>FishTank-Icon-Small-40@3x~iphone</string>
+					<string>FishTank-Icon-Small-40~ipad</string>
+					<string>FishTank-Icon-Small-40@2x~ipad</string>
+					<string>FishTank-Icon-60@2x~iphone</string>
+					<string>FishTank-Icon-60@3x~iphone</string>
+					<string>FishTank-Icon-76~ipad</string>
+					<string>FishTank-Icon-76@2x~ipad</string>
+					<string>FishTank-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Flat</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Flat-Icon-Notification@2x~iphone</string>
+					<string>Flat-Icon-Notification@3x~iphone</string>
+					<string>Flat-Icon-Notification~ipad</string>
+					<string>Flat-Icon-Notification@2x~ipad</string>
+					<string>Flat-Icon-Small@2x~iphone</string>
+					<string>Flat-Icon-Small@3x~iphone</string>
+					<string>Flat-Icon-Small~ipad</string>
+					<string>Flat-Icon-Small@2x~ipad</string>
+					<string>Flat-Icon-Small-40@2x~iphone</string>
+					<string>Flat-Icon-Small-40@3x~iphone</string>
+					<string>Flat-Icon-Small-40~ipad</string>
+					<string>Flat-Icon-Small-40@2x~ipad</string>
+					<string>Flat-Icon-60@2x~iphone</string>
+					<string>Flat-Icon-60@3x~iphone</string>
+					<string>Flat-Icon-76~ipad</string>
+					<string>Flat-Icon-76@2x~ipad</string>
+					<string>Flat-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>FrontEndDelight</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>FrontEndDelight-Icon-Notification@2x~iphone</string>
+					<string>FrontEndDelight-Icon-Notification@3x~iphone</string>
+					<string>FrontEndDelight-Icon-Notification~ipad</string>
+					<string>FrontEndDelight-Icon-Notification@2x~ipad</string>
+					<string>FrontEndDelight-Icon-Small@2x~iphone</string>
+					<string>FrontEndDelight-Icon-Small@3x~iphone</string>
+					<string>FrontEndDelight-Icon-Small~ipad</string>
+					<string>FrontEndDelight-Icon-Small@2x~ipad</string>
+					<string>FrontEndDelight-Icon-Small-40@2x~iphone</string>
+					<string>FrontEndDelight-Icon-Small-40@3x~iphone</string>
+					<string>FrontEndDelight-Icon-Small-40~ipad</string>
+					<string>FrontEndDelight-Icon-Small-40@2x~ipad</string>
+					<string>FrontEndDelight-Icon-60@2x~iphone</string>
+					<string>FrontEndDelight-Icon-60@3x~iphone</string>
+					<string>FrontEndDelight-Icon-76~ipad</string>
+					<string>FrontEndDelight-Icon-76@2x~ipad</string>
+					<string>FrontEndDelight-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>FunForrest</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>FunForrest-Icon-Notification@2x~iphone</string>
+					<string>FunForrest-Icon-Notification@3x~iphone</string>
+					<string>FunForrest-Icon-Notification~ipad</string>
+					<string>FunForrest-Icon-Notification@2x~ipad</string>
+					<string>FunForrest-Icon-Small@2x~iphone</string>
+					<string>FunForrest-Icon-Small@3x~iphone</string>
+					<string>FunForrest-Icon-Small~ipad</string>
+					<string>FunForrest-Icon-Small@2x~ipad</string>
+					<string>FunForrest-Icon-Small-40@2x~iphone</string>
+					<string>FunForrest-Icon-Small-40@3x~iphone</string>
+					<string>FunForrest-Icon-Small-40~ipad</string>
+					<string>FunForrest-Icon-Small-40@2x~ipad</string>
+					<string>FunForrest-Icon-60@2x~iphone</string>
+					<string>FunForrest-Icon-60@3x~iphone</string>
+					<string>FunForrest-Icon-76~ipad</string>
+					<string>FunForrest-Icon-76@2x~ipad</string>
+					<string>FunForrest-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Github</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Github-Icon-Notification@2x~iphone</string>
+					<string>Github-Icon-Notification@3x~iphone</string>
+					<string>Github-Icon-Notification~ipad</string>
+					<string>Github-Icon-Notification@2x~ipad</string>
+					<string>Github-Icon-Small@2x~iphone</string>
+					<string>Github-Icon-Small@3x~iphone</string>
+					<string>Github-Icon-Small~ipad</string>
+					<string>Github-Icon-Small@2x~ipad</string>
+					<string>Github-Icon-Small-40@2x~iphone</string>
+					<string>Github-Icon-Small-40@3x~iphone</string>
+					<string>Github-Icon-Small-40~ipad</string>
+					<string>Github-Icon-Small-40@2x~ipad</string>
+					<string>Github-Icon-60@2x~iphone</string>
+					<string>Github-Icon-60@3x~iphone</string>
+					<string>Github-Icon-76~ipad</string>
+					<string>Github-Icon-76@2x~ipad</string>
+					<string>Github-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Grape</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Grape-Icon-Notification@2x~iphone</string>
+					<string>Grape-Icon-Notification@3x~iphone</string>
+					<string>Grape-Icon-Notification~ipad</string>
+					<string>Grape-Icon-Notification@2x~ipad</string>
+					<string>Grape-Icon-Small@2x~iphone</string>
+					<string>Grape-Icon-Small@3x~iphone</string>
+					<string>Grape-Icon-Small~ipad</string>
+					<string>Grape-Icon-Small@2x~ipad</string>
+					<string>Grape-Icon-Small-40@2x~iphone</string>
+					<string>Grape-Icon-Small-40@3x~iphone</string>
+					<string>Grape-Icon-Small-40~ipad</string>
+					<string>Grape-Icon-Small-40@2x~ipad</string>
+					<string>Grape-Icon-60@2x~iphone</string>
+					<string>Grape-Icon-60@3x~iphone</string>
+					<string>Grape-Icon-76~ipad</string>
+					<string>Grape-Icon-76@2x~ipad</string>
+					<string>Grape-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Grass</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Grass-Icon-Notification@2x~iphone</string>
+					<string>Grass-Icon-Notification@3x~iphone</string>
+					<string>Grass-Icon-Notification~ipad</string>
+					<string>Grass-Icon-Notification@2x~ipad</string>
+					<string>Grass-Icon-Small@2x~iphone</string>
+					<string>Grass-Icon-Small@3x~iphone</string>
+					<string>Grass-Icon-Small~ipad</string>
+					<string>Grass-Icon-Small@2x~ipad</string>
+					<string>Grass-Icon-Small-40@2x~iphone</string>
+					<string>Grass-Icon-Small-40@3x~iphone</string>
+					<string>Grass-Icon-Small-40~ipad</string>
+					<string>Grass-Icon-Small-40@2x~ipad</string>
+					<string>Grass-Icon-60@2x~iphone</string>
+					<string>Grass-Icon-60@3x~iphone</string>
+					<string>Grass-Icon-76~ipad</string>
+					<string>Grass-Icon-76@2x~ipad</string>
+					<string>Grass-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Hardcore</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hardcore-Icon-Notification@2x~iphone</string>
+					<string>Hardcore-Icon-Notification@3x~iphone</string>
+					<string>Hardcore-Icon-Notification~ipad</string>
+					<string>Hardcore-Icon-Notification@2x~ipad</string>
+					<string>Hardcore-Icon-Small@2x~iphone</string>
+					<string>Hardcore-Icon-Small@3x~iphone</string>
+					<string>Hardcore-Icon-Small~ipad</string>
+					<string>Hardcore-Icon-Small@2x~ipad</string>
+					<string>Hardcore-Icon-Small-40@2x~iphone</string>
+					<string>Hardcore-Icon-Small-40@3x~iphone</string>
+					<string>Hardcore-Icon-Small-40~ipad</string>
+					<string>Hardcore-Icon-Small-40@2x~ipad</string>
+					<string>Hardcore-Icon-60@2x~iphone</string>
+					<string>Hardcore-Icon-60@3x~iphone</string>
+					<string>Hardcore-Icon-76~ipad</string>
+					<string>Hardcore-Icon-76@2x~ipad</string>
+					<string>Hardcore-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Harper</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Harper-Icon-Notification@2x~iphone</string>
+					<string>Harper-Icon-Notification@3x~iphone</string>
+					<string>Harper-Icon-Notification~ipad</string>
+					<string>Harper-Icon-Notification@2x~ipad</string>
+					<string>Harper-Icon-Small@2x~iphone</string>
+					<string>Harper-Icon-Small@3x~iphone</string>
+					<string>Harper-Icon-Small~ipad</string>
+					<string>Harper-Icon-Small@2x~ipad</string>
+					<string>Harper-Icon-Small-40@2x~iphone</string>
+					<string>Harper-Icon-Small-40@3x~iphone</string>
+					<string>Harper-Icon-Small-40~ipad</string>
+					<string>Harper-Icon-Small-40@2x~ipad</string>
+					<string>Harper-Icon-60@2x~iphone</string>
+					<string>Harper-Icon-60@3x~iphone</string>
+					<string>Harper-Icon-76~ipad</string>
+					<string>Harper-Icon-76@2x~ipad</string>
+					<string>Harper-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Highway</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Highway-Icon-Notification@2x~iphone</string>
+					<string>Highway-Icon-Notification@3x~iphone</string>
+					<string>Highway-Icon-Notification~ipad</string>
+					<string>Highway-Icon-Notification@2x~ipad</string>
+					<string>Highway-Icon-Small@2x~iphone</string>
+					<string>Highway-Icon-Small@3x~iphone</string>
+					<string>Highway-Icon-Small~ipad</string>
+					<string>Highway-Icon-Small@2x~ipad</string>
+					<string>Highway-Icon-Small-40@2x~iphone</string>
+					<string>Highway-Icon-Small-40@3x~iphone</string>
+					<string>Highway-Icon-Small-40~ipad</string>
+					<string>Highway-Icon-Small-40@2x~ipad</string>
+					<string>Highway-Icon-60@2x~iphone</string>
+					<string>Highway-Icon-60@3x~iphone</string>
+					<string>Highway-Icon-76~ipad</string>
+					<string>Highway-Icon-76@2x~ipad</string>
+					<string>Highway-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Hipster Green</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hipster Green-Icon-Notification@2x~iphone</string>
+					<string>Hipster Green-Icon-Notification@3x~iphone</string>
+					<string>Hipster Green-Icon-Notification~ipad</string>
+					<string>Hipster Green-Icon-Notification@2x~ipad</string>
+					<string>Hipster Green-Icon-Small@2x~iphone</string>
+					<string>Hipster Green-Icon-Small@3x~iphone</string>
+					<string>Hipster Green-Icon-Small~ipad</string>
+					<string>Hipster Green-Icon-Small@2x~ipad</string>
+					<string>Hipster Green-Icon-Small-40@2x~iphone</string>
+					<string>Hipster Green-Icon-Small-40@3x~iphone</string>
+					<string>Hipster Green-Icon-Small-40~ipad</string>
+					<string>Hipster Green-Icon-Small-40@2x~ipad</string>
+					<string>Hipster Green-Icon-60@2x~iphone</string>
+					<string>Hipster Green-Icon-60@3x~iphone</string>
+					<string>Hipster Green-Icon-76~ipad</string>
+					<string>Hipster Green-Icon-76@2x~ipad</string>
+					<string>Hipster Green-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Homebrew</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Homebrew-Icon-Notification@2x~iphone</string>
+					<string>Homebrew-Icon-Notification@3x~iphone</string>
+					<string>Homebrew-Icon-Notification~ipad</string>
+					<string>Homebrew-Icon-Notification@2x~ipad</string>
+					<string>Homebrew-Icon-Small@2x~iphone</string>
+					<string>Homebrew-Icon-Small@3x~iphone</string>
+					<string>Homebrew-Icon-Small~ipad</string>
+					<string>Homebrew-Icon-Small@2x~ipad</string>
+					<string>Homebrew-Icon-Small-40@2x~iphone</string>
+					<string>Homebrew-Icon-Small-40@3x~iphone</string>
+					<string>Homebrew-Icon-Small-40~ipad</string>
+					<string>Homebrew-Icon-Small-40@2x~ipad</string>
+					<string>Homebrew-Icon-60@2x~iphone</string>
+					<string>Homebrew-Icon-60@3x~iphone</string>
+					<string>Homebrew-Icon-76~ipad</string>
+					<string>Homebrew-Icon-76@2x~ipad</string>
+					<string>Homebrew-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Hurtado</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hurtado-Icon-Notification@2x~iphone</string>
+					<string>Hurtado-Icon-Notification@3x~iphone</string>
+					<string>Hurtado-Icon-Notification~ipad</string>
+					<string>Hurtado-Icon-Notification@2x~ipad</string>
+					<string>Hurtado-Icon-Small@2x~iphone</string>
+					<string>Hurtado-Icon-Small@3x~iphone</string>
+					<string>Hurtado-Icon-Small~ipad</string>
+					<string>Hurtado-Icon-Small@2x~ipad</string>
+					<string>Hurtado-Icon-Small-40@2x~iphone</string>
+					<string>Hurtado-Icon-Small-40@3x~iphone</string>
+					<string>Hurtado-Icon-Small-40~ipad</string>
+					<string>Hurtado-Icon-Small-40@2x~ipad</string>
+					<string>Hurtado-Icon-60@2x~iphone</string>
+					<string>Hurtado-Icon-60@3x~iphone</string>
+					<string>Hurtado-Icon-76~ipad</string>
+					<string>Hurtado-Icon-76@2x~ipad</string>
+					<string>Hurtado-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Hybrid</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Hybrid-Icon-Notification@2x~iphone</string>
+					<string>Hybrid-Icon-Notification@3x~iphone</string>
+					<string>Hybrid-Icon-Notification~ipad</string>
+					<string>Hybrid-Icon-Notification@2x~ipad</string>
+					<string>Hybrid-Icon-Small@2x~iphone</string>
+					<string>Hybrid-Icon-Small@3x~iphone</string>
+					<string>Hybrid-Icon-Small~ipad</string>
+					<string>Hybrid-Icon-Small@2x~ipad</string>
+					<string>Hybrid-Icon-Small-40@2x~iphone</string>
+					<string>Hybrid-Icon-Small-40@3x~iphone</string>
+					<string>Hybrid-Icon-Small-40~ipad</string>
+					<string>Hybrid-Icon-Small-40@2x~ipad</string>
+					<string>Hybrid-Icon-60@2x~iphone</string>
+					<string>Hybrid-Icon-60@3x~iphone</string>
+					<string>Hybrid-Icon-76~ipad</string>
+					<string>Hybrid-Icon-76@2x~ipad</string>
+					<string>Hybrid-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IC_Green_PPL</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IC_Green_PPL-Icon-Notification@2x~iphone</string>
+					<string>IC_Green_PPL-Icon-Notification@3x~iphone</string>
+					<string>IC_Green_PPL-Icon-Notification~ipad</string>
+					<string>IC_Green_PPL-Icon-Notification@2x~ipad</string>
+					<string>IC_Green_PPL-Icon-Small@2x~iphone</string>
+					<string>IC_Green_PPL-Icon-Small@3x~iphone</string>
+					<string>IC_Green_PPL-Icon-Small~ipad</string>
+					<string>IC_Green_PPL-Icon-Small@2x~ipad</string>
+					<string>IC_Green_PPL-Icon-Small-40@2x~iphone</string>
+					<string>IC_Green_PPL-Icon-Small-40@3x~iphone</string>
+					<string>IC_Green_PPL-Icon-Small-40~ipad</string>
+					<string>IC_Green_PPL-Icon-Small-40@2x~ipad</string>
+					<string>IC_Green_PPL-Icon-60@2x~iphone</string>
+					<string>IC_Green_PPL-Icon-60@3x~iphone</string>
+					<string>IC_Green_PPL-Icon-76~ipad</string>
+					<string>IC_Green_PPL-Icon-76@2x~ipad</string>
+					<string>IC_Green_PPL-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IC_Orange_PPL</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IC_Orange_PPL-Icon-Notification@2x~iphone</string>
+					<string>IC_Orange_PPL-Icon-Notification@3x~iphone</string>
+					<string>IC_Orange_PPL-Icon-Notification~ipad</string>
+					<string>IC_Orange_PPL-Icon-Notification@2x~ipad</string>
+					<string>IC_Orange_PPL-Icon-Small@2x~iphone</string>
+					<string>IC_Orange_PPL-Icon-Small@3x~iphone</string>
+					<string>IC_Orange_PPL-Icon-Small~ipad</string>
+					<string>IC_Orange_PPL-Icon-Small@2x~ipad</string>
+					<string>IC_Orange_PPL-Icon-Small-40@2x~iphone</string>
+					<string>IC_Orange_PPL-Icon-Small-40@3x~iphone</string>
+					<string>IC_Orange_PPL-Icon-Small-40~ipad</string>
+					<string>IC_Orange_PPL-Icon-Small-40@2x~ipad</string>
+					<string>IC_Orange_PPL-Icon-60@2x~iphone</string>
+					<string>IC_Orange_PPL-Icon-60@3x~iphone</string>
+					<string>IC_Orange_PPL-Icon-76~ipad</string>
+					<string>IC_Orange_PPL-Icon-76@2x~ipad</string>
+					<string>IC_Orange_PPL-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>IR_Black</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>IR_Black-Icon-Notification@2x~iphone</string>
+					<string>IR_Black-Icon-Notification@3x~iphone</string>
+					<string>IR_Black-Icon-Notification~ipad</string>
+					<string>IR_Black-Icon-Notification@2x~ipad</string>
+					<string>IR_Black-Icon-Small@2x~iphone</string>
+					<string>IR_Black-Icon-Small@3x~iphone</string>
+					<string>IR_Black-Icon-Small~ipad</string>
+					<string>IR_Black-Icon-Small@2x~ipad</string>
+					<string>IR_Black-Icon-Small-40@2x~iphone</string>
+					<string>IR_Black-Icon-Small-40@3x~iphone</string>
+					<string>IR_Black-Icon-Small-40~ipad</string>
+					<string>IR_Black-Icon-Small-40@2x~ipad</string>
+					<string>IR_Black-Icon-60@2x~iphone</string>
+					<string>IR_Black-Icon-60@3x~iphone</string>
+					<string>IR_Black-Icon-76~ipad</string>
+					<string>IR_Black-Icon-76@2x~ipad</string>
+					<string>IR_Black-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Jackie Brown</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Jackie Brown-Icon-Notification@2x~iphone</string>
+					<string>Jackie Brown-Icon-Notification@3x~iphone</string>
+					<string>Jackie Brown-Icon-Notification~ipad</string>
+					<string>Jackie Brown-Icon-Notification@2x~ipad</string>
+					<string>Jackie Brown-Icon-Small@2x~iphone</string>
+					<string>Jackie Brown-Icon-Small@3x~iphone</string>
+					<string>Jackie Brown-Icon-Small~ipad</string>
+					<string>Jackie Brown-Icon-Small@2x~ipad</string>
+					<string>Jackie Brown-Icon-Small-40@2x~iphone</string>
+					<string>Jackie Brown-Icon-Small-40@3x~iphone</string>
+					<string>Jackie Brown-Icon-Small-40~ipad</string>
+					<string>Jackie Brown-Icon-Small-40@2x~ipad</string>
+					<string>Jackie Brown-Icon-60@2x~iphone</string>
+					<string>Jackie Brown-Icon-60@3x~iphone</string>
+					<string>Jackie Brown-Icon-76~ipad</string>
+					<string>Jackie Brown-Icon-76@2x~ipad</string>
+					<string>Jackie Brown-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Japanesque</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Japanesque-Icon-Notification@2x~iphone</string>
+					<string>Japanesque-Icon-Notification@3x~iphone</string>
+					<string>Japanesque-Icon-Notification~ipad</string>
+					<string>Japanesque-Icon-Notification@2x~ipad</string>
+					<string>Japanesque-Icon-Small@2x~iphone</string>
+					<string>Japanesque-Icon-Small@3x~iphone</string>
+					<string>Japanesque-Icon-Small~ipad</string>
+					<string>Japanesque-Icon-Small@2x~ipad</string>
+					<string>Japanesque-Icon-Small-40@2x~iphone</string>
+					<string>Japanesque-Icon-Small-40@3x~iphone</string>
+					<string>Japanesque-Icon-Small-40~ipad</string>
+					<string>Japanesque-Icon-Small-40@2x~ipad</string>
+					<string>Japanesque-Icon-60@2x~iphone</string>
+					<string>Japanesque-Icon-60@3x~iphone</string>
+					<string>Japanesque-Icon-76~ipad</string>
+					<string>Japanesque-Icon-76@2x~ipad</string>
+					<string>Japanesque-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Jellybeans</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Jellybeans-Icon-Notification@2x~iphone</string>
+					<string>Jellybeans-Icon-Notification@3x~iphone</string>
+					<string>Jellybeans-Icon-Notification~ipad</string>
+					<string>Jellybeans-Icon-Notification@2x~ipad</string>
+					<string>Jellybeans-Icon-Small@2x~iphone</string>
+					<string>Jellybeans-Icon-Small@3x~iphone</string>
+					<string>Jellybeans-Icon-Small~ipad</string>
+					<string>Jellybeans-Icon-Small@2x~ipad</string>
+					<string>Jellybeans-Icon-Small-40@2x~iphone</string>
+					<string>Jellybeans-Icon-Small-40@3x~iphone</string>
+					<string>Jellybeans-Icon-Small-40~ipad</string>
+					<string>Jellybeans-Icon-Small-40@2x~ipad</string>
+					<string>Jellybeans-Icon-60@2x~iphone</string>
+					<string>Jellybeans-Icon-60@3x~iphone</string>
+					<string>Jellybeans-Icon-76~ipad</string>
+					<string>Jellybeans-Icon-76@2x~ipad</string>
+					<string>Jellybeans-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Kibble</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Kibble-Icon-Notification@2x~iphone</string>
+					<string>Kibble-Icon-Notification@3x~iphone</string>
+					<string>Kibble-Icon-Notification~ipad</string>
+					<string>Kibble-Icon-Notification@2x~ipad</string>
+					<string>Kibble-Icon-Small@2x~iphone</string>
+					<string>Kibble-Icon-Small@3x~iphone</string>
+					<string>Kibble-Icon-Small~ipad</string>
+					<string>Kibble-Icon-Small@2x~ipad</string>
+					<string>Kibble-Icon-Small-40@2x~iphone</string>
+					<string>Kibble-Icon-Small-40@3x~iphone</string>
+					<string>Kibble-Icon-Small-40~ipad</string>
+					<string>Kibble-Icon-Small-40@2x~ipad</string>
+					<string>Kibble-Icon-60@2x~iphone</string>
+					<string>Kibble-Icon-60@3x~iphone</string>
+					<string>Kibble-Icon-76~ipad</string>
+					<string>Kibble-Icon-76@2x~ipad</string>
+					<string>Kibble-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Lavandula</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Lavandula-Icon-Notification@2x~iphone</string>
+					<string>Lavandula-Icon-Notification@3x~iphone</string>
+					<string>Lavandula-Icon-Notification~ipad</string>
+					<string>Lavandula-Icon-Notification@2x~ipad</string>
+					<string>Lavandula-Icon-Small@2x~iphone</string>
+					<string>Lavandula-Icon-Small@3x~iphone</string>
+					<string>Lavandula-Icon-Small~ipad</string>
+					<string>Lavandula-Icon-Small@2x~ipad</string>
+					<string>Lavandula-Icon-Small-40@2x~iphone</string>
+					<string>Lavandula-Icon-Small-40@3x~iphone</string>
+					<string>Lavandula-Icon-Small-40~ipad</string>
+					<string>Lavandula-Icon-Small-40@2x~ipad</string>
+					<string>Lavandula-Icon-60@2x~iphone</string>
+					<string>Lavandula-Icon-60@3x~iphone</string>
+					<string>Lavandula-Icon-76~ipad</string>
+					<string>Lavandula-Icon-76@2x~ipad</string>
+					<string>Lavandula-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>LiquidCarbon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>LiquidCarbon-Icon-Notification@2x~iphone</string>
+					<string>LiquidCarbon-Icon-Notification@3x~iphone</string>
+					<string>LiquidCarbon-Icon-Notification~ipad</string>
+					<string>LiquidCarbon-Icon-Notification@2x~ipad</string>
+					<string>LiquidCarbon-Icon-Small@2x~iphone</string>
+					<string>LiquidCarbon-Icon-Small@3x~iphone</string>
+					<string>LiquidCarbon-Icon-Small~ipad</string>
+					<string>LiquidCarbon-Icon-Small@2x~ipad</string>
+					<string>LiquidCarbon-Icon-Small-40@2x~iphone</string>
+					<string>LiquidCarbon-Icon-Small-40@3x~iphone</string>
+					<string>LiquidCarbon-Icon-Small-40~ipad</string>
+					<string>LiquidCarbon-Icon-Small-40@2x~ipad</string>
+					<string>LiquidCarbon-Icon-60@2x~iphone</string>
+					<string>LiquidCarbon-Icon-60@3x~iphone</string>
+					<string>LiquidCarbon-Icon-76~ipad</string>
+					<string>LiquidCarbon-Icon-76@2x~ipad</string>
+					<string>LiquidCarbon-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>LiquidCarbonTransparent</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>LiquidCarbonTransparent-Icon-Notification@2x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-Notification@3x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-Notification~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-Notification@2x~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-Small@2x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-Small@3x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-Small~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-Small@2x~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-Small-40@2x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-Small-40@3x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-Small-40~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-Small-40@2x~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-60@2x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-60@3x~iphone</string>
+					<string>LiquidCarbonTransparent-Icon-76~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-76@2x~ipad</string>
+					<string>LiquidCarbonTransparent-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>LiquidCarbonTransparentInverse</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>LiquidCarbonTransparentInverse-Icon-Notification@2x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Notification@3x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Notification~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Notification@2x~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small@2x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small@3x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small@2x~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small-40@2x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small-40@3x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small-40~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-Small-40@2x~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-60@2x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-60@3x~iphone</string>
+					<string>LiquidCarbonTransparentInverse-Icon-76~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-76@2x~ipad</string>
+					<string>LiquidCarbonTransparentInverse-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Man Page</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Man Page-Icon-Notification@2x~iphone</string>
+					<string>Man Page-Icon-Notification@3x~iphone</string>
+					<string>Man Page-Icon-Notification~ipad</string>
+					<string>Man Page-Icon-Notification@2x~ipad</string>
+					<string>Man Page-Icon-Small@2x~iphone</string>
+					<string>Man Page-Icon-Small@3x~iphone</string>
+					<string>Man Page-Icon-Small~ipad</string>
+					<string>Man Page-Icon-Small@2x~ipad</string>
+					<string>Man Page-Icon-Small-40@2x~iphone</string>
+					<string>Man Page-Icon-Small-40@3x~iphone</string>
+					<string>Man Page-Icon-Small-40~ipad</string>
+					<string>Man Page-Icon-Small-40@2x~ipad</string>
+					<string>Man Page-Icon-60@2x~iphone</string>
+					<string>Man Page-Icon-60@3x~iphone</string>
+					<string>Man Page-Icon-76~ipad</string>
+					<string>Man Page-Icon-76@2x~ipad</string>
+					<string>Man Page-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Mathias</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Mathias-Icon-Notification@2x~iphone</string>
+					<string>Mathias-Icon-Notification@3x~iphone</string>
+					<string>Mathias-Icon-Notification~ipad</string>
+					<string>Mathias-Icon-Notification@2x~ipad</string>
+					<string>Mathias-Icon-Small@2x~iphone</string>
+					<string>Mathias-Icon-Small@3x~iphone</string>
+					<string>Mathias-Icon-Small~ipad</string>
+					<string>Mathias-Icon-Small@2x~ipad</string>
+					<string>Mathias-Icon-Small-40@2x~iphone</string>
+					<string>Mathias-Icon-Small-40@3x~iphone</string>
+					<string>Mathias-Icon-Small-40~ipad</string>
+					<string>Mathias-Icon-Small-40@2x~ipad</string>
+					<string>Mathias-Icon-60@2x~iphone</string>
+					<string>Mathias-Icon-60@3x~iphone</string>
+					<string>Mathias-Icon-76~ipad</string>
+					<string>Mathias-Icon-76@2x~ipad</string>
+					<string>Mathias-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Medallion</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Medallion-Icon-Notification@2x~iphone</string>
+					<string>Medallion-Icon-Notification@3x~iphone</string>
+					<string>Medallion-Icon-Notification~ipad</string>
+					<string>Medallion-Icon-Notification@2x~ipad</string>
+					<string>Medallion-Icon-Small@2x~iphone</string>
+					<string>Medallion-Icon-Small@3x~iphone</string>
+					<string>Medallion-Icon-Small~ipad</string>
+					<string>Medallion-Icon-Small@2x~ipad</string>
+					<string>Medallion-Icon-Small-40@2x~iphone</string>
+					<string>Medallion-Icon-Small-40@3x~iphone</string>
+					<string>Medallion-Icon-Small-40~ipad</string>
+					<string>Medallion-Icon-Small-40@2x~ipad</string>
+					<string>Medallion-Icon-60@2x~iphone</string>
+					<string>Medallion-Icon-60@3x~iphone</string>
+					<string>Medallion-Icon-76~ipad</string>
+					<string>Medallion-Icon-76@2x~ipad</string>
+					<string>Medallion-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Misterioso</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Misterioso-Icon-Notification@2x~iphone</string>
+					<string>Misterioso-Icon-Notification@3x~iphone</string>
+					<string>Misterioso-Icon-Notification~ipad</string>
+					<string>Misterioso-Icon-Notification@2x~ipad</string>
+					<string>Misterioso-Icon-Small@2x~iphone</string>
+					<string>Misterioso-Icon-Small@3x~iphone</string>
+					<string>Misterioso-Icon-Small~ipad</string>
+					<string>Misterioso-Icon-Small@2x~ipad</string>
+					<string>Misterioso-Icon-Small-40@2x~iphone</string>
+					<string>Misterioso-Icon-Small-40@3x~iphone</string>
+					<string>Misterioso-Icon-Small-40~ipad</string>
+					<string>Misterioso-Icon-Small-40@2x~ipad</string>
+					<string>Misterioso-Icon-60@2x~iphone</string>
+					<string>Misterioso-Icon-60@3x~iphone</string>
+					<string>Misterioso-Icon-76~ipad</string>
+					<string>Misterioso-Icon-76@2x~ipad</string>
+					<string>Misterioso-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Molokai</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Molokai-Icon-Notification@2x~iphone</string>
+					<string>Molokai-Icon-Notification@3x~iphone</string>
+					<string>Molokai-Icon-Notification~ipad</string>
+					<string>Molokai-Icon-Notification@2x~ipad</string>
+					<string>Molokai-Icon-Small@2x~iphone</string>
+					<string>Molokai-Icon-Small@3x~iphone</string>
+					<string>Molokai-Icon-Small~ipad</string>
+					<string>Molokai-Icon-Small@2x~ipad</string>
+					<string>Molokai-Icon-Small-40@2x~iphone</string>
+					<string>Molokai-Icon-Small-40@3x~iphone</string>
+					<string>Molokai-Icon-Small-40~ipad</string>
+					<string>Molokai-Icon-Small-40@2x~ipad</string>
+					<string>Molokai-Icon-60@2x~iphone</string>
+					<string>Molokai-Icon-60@3x~iphone</string>
+					<string>Molokai-Icon-76~ipad</string>
+					<string>Molokai-Icon-76@2x~ipad</string>
+					<string>Molokai-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>MonaLisa</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>MonaLisa-Icon-Notification@2x~iphone</string>
+					<string>MonaLisa-Icon-Notification@3x~iphone</string>
+					<string>MonaLisa-Icon-Notification~ipad</string>
+					<string>MonaLisa-Icon-Notification@2x~ipad</string>
+					<string>MonaLisa-Icon-Small@2x~iphone</string>
+					<string>MonaLisa-Icon-Small@3x~iphone</string>
+					<string>MonaLisa-Icon-Small~ipad</string>
+					<string>MonaLisa-Icon-Small@2x~ipad</string>
+					<string>MonaLisa-Icon-Small-40@2x~iphone</string>
+					<string>MonaLisa-Icon-Small-40@3x~iphone</string>
+					<string>MonaLisa-Icon-Small-40~ipad</string>
+					<string>MonaLisa-Icon-Small-40@2x~ipad</string>
+					<string>MonaLisa-Icon-60@2x~iphone</string>
+					<string>MonaLisa-Icon-60@3x~iphone</string>
+					<string>MonaLisa-Icon-76~ipad</string>
+					<string>MonaLisa-Icon-76@2x~ipad</string>
+					<string>MonaLisa-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Monokai Soda</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Monokai Soda-Icon-Notification@2x~iphone</string>
+					<string>Monokai Soda-Icon-Notification@3x~iphone</string>
+					<string>Monokai Soda-Icon-Notification~ipad</string>
+					<string>Monokai Soda-Icon-Notification@2x~ipad</string>
+					<string>Monokai Soda-Icon-Small@2x~iphone</string>
+					<string>Monokai Soda-Icon-Small@3x~iphone</string>
+					<string>Monokai Soda-Icon-Small~ipad</string>
+					<string>Monokai Soda-Icon-Small@2x~ipad</string>
+					<string>Monokai Soda-Icon-Small-40@2x~iphone</string>
+					<string>Monokai Soda-Icon-Small-40@3x~iphone</string>
+					<string>Monokai Soda-Icon-Small-40~ipad</string>
+					<string>Monokai Soda-Icon-Small-40@2x~ipad</string>
+					<string>Monokai Soda-Icon-60@2x~iphone</string>
+					<string>Monokai Soda-Icon-60@3x~iphone</string>
+					<string>Monokai Soda-Icon-76~ipad</string>
+					<string>Monokai Soda-Icon-76@2x~ipad</string>
+					<string>Monokai Soda-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>N0tch2k</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>N0tch2k-Icon-Notification@2x~iphone</string>
+					<string>N0tch2k-Icon-Notification@3x~iphone</string>
+					<string>N0tch2k-Icon-Notification~ipad</string>
+					<string>N0tch2k-Icon-Notification@2x~ipad</string>
+					<string>N0tch2k-Icon-Small@2x~iphone</string>
+					<string>N0tch2k-Icon-Small@3x~iphone</string>
+					<string>N0tch2k-Icon-Small~ipad</string>
+					<string>N0tch2k-Icon-Small@2x~ipad</string>
+					<string>N0tch2k-Icon-Small-40@2x~iphone</string>
+					<string>N0tch2k-Icon-Small-40@3x~iphone</string>
+					<string>N0tch2k-Icon-Small-40~ipad</string>
+					<string>N0tch2k-Icon-Small-40@2x~ipad</string>
+					<string>N0tch2k-Icon-60@2x~iphone</string>
+					<string>N0tch2k-Icon-60@3x~iphone</string>
+					<string>N0tch2k-Icon-76~ipad</string>
+					<string>N0tch2k-Icon-76@2x~ipad</string>
+					<string>N0tch2k-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Neopolitan</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Neopolitan-Icon-Notification@2x~iphone</string>
+					<string>Neopolitan-Icon-Notification@3x~iphone</string>
+					<string>Neopolitan-Icon-Notification~ipad</string>
+					<string>Neopolitan-Icon-Notification@2x~ipad</string>
+					<string>Neopolitan-Icon-Small@2x~iphone</string>
+					<string>Neopolitan-Icon-Small@3x~iphone</string>
+					<string>Neopolitan-Icon-Small~ipad</string>
+					<string>Neopolitan-Icon-Small@2x~ipad</string>
+					<string>Neopolitan-Icon-Small-40@2x~iphone</string>
+					<string>Neopolitan-Icon-Small-40@3x~iphone</string>
+					<string>Neopolitan-Icon-Small-40~ipad</string>
+					<string>Neopolitan-Icon-Small-40@2x~ipad</string>
+					<string>Neopolitan-Icon-60@2x~iphone</string>
+					<string>Neopolitan-Icon-60@3x~iphone</string>
+					<string>Neopolitan-Icon-76~ipad</string>
+					<string>Neopolitan-Icon-76@2x~ipad</string>
+					<string>Neopolitan-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>NightLion v1</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>NightLion v1-Icon-Notification@2x~iphone</string>
+					<string>NightLion v1-Icon-Notification@3x~iphone</string>
+					<string>NightLion v1-Icon-Notification~ipad</string>
+					<string>NightLion v1-Icon-Notification@2x~ipad</string>
+					<string>NightLion v1-Icon-Small@2x~iphone</string>
+					<string>NightLion v1-Icon-Small@3x~iphone</string>
+					<string>NightLion v1-Icon-Small~ipad</string>
+					<string>NightLion v1-Icon-Small@2x~ipad</string>
+					<string>NightLion v1-Icon-Small-40@2x~iphone</string>
+					<string>NightLion v1-Icon-Small-40@3x~iphone</string>
+					<string>NightLion v1-Icon-Small-40~ipad</string>
+					<string>NightLion v1-Icon-Small-40@2x~ipad</string>
+					<string>NightLion v1-Icon-60@2x~iphone</string>
+					<string>NightLion v1-Icon-60@3x~iphone</string>
+					<string>NightLion v1-Icon-76~ipad</string>
+					<string>NightLion v1-Icon-76@2x~ipad</string>
+					<string>NightLion v1-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>NightLion v2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>NightLion v2-Icon-Notification@2x~iphone</string>
+					<string>NightLion v2-Icon-Notification@3x~iphone</string>
+					<string>NightLion v2-Icon-Notification~ipad</string>
+					<string>NightLion v2-Icon-Notification@2x~ipad</string>
+					<string>NightLion v2-Icon-Small@2x~iphone</string>
+					<string>NightLion v2-Icon-Small@3x~iphone</string>
+					<string>NightLion v2-Icon-Small~ipad</string>
+					<string>NightLion v2-Icon-Small@2x~ipad</string>
+					<string>NightLion v2-Icon-Small-40@2x~iphone</string>
+					<string>NightLion v2-Icon-Small-40@3x~iphone</string>
+					<string>NightLion v2-Icon-Small-40~ipad</string>
+					<string>NightLion v2-Icon-Small-40@2x~ipad</string>
+					<string>NightLion v2-Icon-60@2x~iphone</string>
+					<string>NightLion v2-Icon-60@3x~iphone</string>
+					<string>NightLion v2-Icon-76~ipad</string>
+					<string>NightLion v2-Icon-76@2x~ipad</string>
+					<string>NightLion v2-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Novel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Novel-Icon-Notification@2x~iphone</string>
+					<string>Novel-Icon-Notification@3x~iphone</string>
+					<string>Novel-Icon-Notification~ipad</string>
+					<string>Novel-Icon-Notification@2x~ipad</string>
+					<string>Novel-Icon-Small@2x~iphone</string>
+					<string>Novel-Icon-Small@3x~iphone</string>
+					<string>Novel-Icon-Small~ipad</string>
+					<string>Novel-Icon-Small@2x~ipad</string>
+					<string>Novel-Icon-Small-40@2x~iphone</string>
+					<string>Novel-Icon-Small-40@3x~iphone</string>
+					<string>Novel-Icon-Small-40~ipad</string>
+					<string>Novel-Icon-Small-40@2x~ipad</string>
+					<string>Novel-Icon-60@2x~iphone</string>
+					<string>Novel-Icon-60@3x~iphone</string>
+					<string>Novel-Icon-76~ipad</string>
+					<string>Novel-Icon-76@2x~ipad</string>
+					<string>Novel-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Obsidian</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Obsidian-Icon-Notification@2x~iphone</string>
+					<string>Obsidian-Icon-Notification@3x~iphone</string>
+					<string>Obsidian-Icon-Notification~ipad</string>
+					<string>Obsidian-Icon-Notification@2x~ipad</string>
+					<string>Obsidian-Icon-Small@2x~iphone</string>
+					<string>Obsidian-Icon-Small@3x~iphone</string>
+					<string>Obsidian-Icon-Small~ipad</string>
+					<string>Obsidian-Icon-Small@2x~ipad</string>
+					<string>Obsidian-Icon-Small-40@2x~iphone</string>
+					<string>Obsidian-Icon-Small-40@3x~iphone</string>
+					<string>Obsidian-Icon-Small-40~ipad</string>
+					<string>Obsidian-Icon-Small-40@2x~ipad</string>
+					<string>Obsidian-Icon-60@2x~iphone</string>
+					<string>Obsidian-Icon-60@3x~iphone</string>
+					<string>Obsidian-Icon-76~ipad</string>
+					<string>Obsidian-Icon-76@2x~ipad</string>
+					<string>Obsidian-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Ocean</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Ocean-Icon-Notification@2x~iphone</string>
+					<string>Ocean-Icon-Notification@3x~iphone</string>
+					<string>Ocean-Icon-Notification~ipad</string>
+					<string>Ocean-Icon-Notification@2x~ipad</string>
+					<string>Ocean-Icon-Small@2x~iphone</string>
+					<string>Ocean-Icon-Small@3x~iphone</string>
+					<string>Ocean-Icon-Small~ipad</string>
+					<string>Ocean-Icon-Small@2x~ipad</string>
+					<string>Ocean-Icon-Small-40@2x~iphone</string>
+					<string>Ocean-Icon-Small-40@3x~iphone</string>
+					<string>Ocean-Icon-Small-40~ipad</string>
+					<string>Ocean-Icon-Small-40@2x~ipad</string>
+					<string>Ocean-Icon-60@2x~iphone</string>
+					<string>Ocean-Icon-60@3x~iphone</string>
+					<string>Ocean-Icon-76~ipad</string>
+					<string>Ocean-Icon-76@2x~ipad</string>
+					<string>Ocean-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Ollie</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Ollie-Icon-Notification@2x~iphone</string>
+					<string>Ollie-Icon-Notification@3x~iphone</string>
+					<string>Ollie-Icon-Notification~ipad</string>
+					<string>Ollie-Icon-Notification@2x~ipad</string>
+					<string>Ollie-Icon-Small@2x~iphone</string>
+					<string>Ollie-Icon-Small@3x~iphone</string>
+					<string>Ollie-Icon-Small~ipad</string>
+					<string>Ollie-Icon-Small@2x~ipad</string>
+					<string>Ollie-Icon-Small-40@2x~iphone</string>
+					<string>Ollie-Icon-Small-40@3x~iphone</string>
+					<string>Ollie-Icon-Small-40~ipad</string>
+					<string>Ollie-Icon-Small-40@2x~ipad</string>
+					<string>Ollie-Icon-60@2x~iphone</string>
+					<string>Ollie-Icon-60@3x~iphone</string>
+					<string>Ollie-Icon-76~ipad</string>
+					<string>Ollie-Icon-76@2x~ipad</string>
+					<string>Ollie-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Parasio Dark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Parasio Dark-Icon-Notification@2x~iphone</string>
+					<string>Parasio Dark-Icon-Notification@3x~iphone</string>
+					<string>Parasio Dark-Icon-Notification~ipad</string>
+					<string>Parasio Dark-Icon-Notification@2x~ipad</string>
+					<string>Parasio Dark-Icon-Small@2x~iphone</string>
+					<string>Parasio Dark-Icon-Small@3x~iphone</string>
+					<string>Parasio Dark-Icon-Small~ipad</string>
+					<string>Parasio Dark-Icon-Small@2x~ipad</string>
+					<string>Parasio Dark-Icon-Small-40@2x~iphone</string>
+					<string>Parasio Dark-Icon-Small-40@3x~iphone</string>
+					<string>Parasio Dark-Icon-Small-40~ipad</string>
+					<string>Parasio Dark-Icon-Small-40@2x~ipad</string>
+					<string>Parasio Dark-Icon-60@2x~iphone</string>
+					<string>Parasio Dark-Icon-60@3x~iphone</string>
+					<string>Parasio Dark-Icon-76~ipad</string>
+					<string>Parasio Dark-Icon-76@2x~ipad</string>
+					<string>Parasio Dark-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>PaulMillr</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>PaulMillr-Icon-Notification@2x~iphone</string>
+					<string>PaulMillr-Icon-Notification@3x~iphone</string>
+					<string>PaulMillr-Icon-Notification~ipad</string>
+					<string>PaulMillr-Icon-Notification@2x~ipad</string>
+					<string>PaulMillr-Icon-Small@2x~iphone</string>
+					<string>PaulMillr-Icon-Small@3x~iphone</string>
+					<string>PaulMillr-Icon-Small~ipad</string>
+					<string>PaulMillr-Icon-Small@2x~ipad</string>
+					<string>PaulMillr-Icon-Small-40@2x~iphone</string>
+					<string>PaulMillr-Icon-Small-40@3x~iphone</string>
+					<string>PaulMillr-Icon-Small-40~ipad</string>
+					<string>PaulMillr-Icon-Small-40@2x~ipad</string>
+					<string>PaulMillr-Icon-60@2x~iphone</string>
+					<string>PaulMillr-Icon-60@3x~iphone</string>
+					<string>PaulMillr-Icon-76~ipad</string>
+					<string>PaulMillr-Icon-76@2x~ipad</string>
+					<string>PaulMillr-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>PencilDark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>PencilDark-Icon-Notification@2x~iphone</string>
+					<string>PencilDark-Icon-Notification@3x~iphone</string>
+					<string>PencilDark-Icon-Notification~ipad</string>
+					<string>PencilDark-Icon-Notification@2x~ipad</string>
+					<string>PencilDark-Icon-Small@2x~iphone</string>
+					<string>PencilDark-Icon-Small@3x~iphone</string>
+					<string>PencilDark-Icon-Small~ipad</string>
+					<string>PencilDark-Icon-Small@2x~ipad</string>
+					<string>PencilDark-Icon-Small-40@2x~iphone</string>
+					<string>PencilDark-Icon-Small-40@3x~iphone</string>
+					<string>PencilDark-Icon-Small-40~ipad</string>
+					<string>PencilDark-Icon-Small-40@2x~ipad</string>
+					<string>PencilDark-Icon-60@2x~iphone</string>
+					<string>PencilDark-Icon-60@3x~iphone</string>
+					<string>PencilDark-Icon-76~ipad</string>
+					<string>PencilDark-Icon-76@2x~ipad</string>
+					<string>PencilDark-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>PencilLight</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>PencilLight-Icon-Notification@2x~iphone</string>
+					<string>PencilLight-Icon-Notification@3x~iphone</string>
+					<string>PencilLight-Icon-Notification~ipad</string>
+					<string>PencilLight-Icon-Notification@2x~ipad</string>
+					<string>PencilLight-Icon-Small@2x~iphone</string>
+					<string>PencilLight-Icon-Small@3x~iphone</string>
+					<string>PencilLight-Icon-Small~ipad</string>
+					<string>PencilLight-Icon-Small@2x~ipad</string>
+					<string>PencilLight-Icon-Small-40@2x~iphone</string>
+					<string>PencilLight-Icon-Small-40@3x~iphone</string>
+					<string>PencilLight-Icon-Small-40~ipad</string>
+					<string>PencilLight-Icon-Small-40@2x~ipad</string>
+					<string>PencilLight-Icon-60@2x~iphone</string>
+					<string>PencilLight-Icon-60@3x~iphone</string>
+					<string>PencilLight-Icon-76~ipad</string>
+					<string>PencilLight-Icon-76@2x~ipad</string>
+					<string>PencilLight-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Pnevma</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Pnevma-Icon-Notification@2x~iphone</string>
+					<string>Pnevma-Icon-Notification@3x~iphone</string>
+					<string>Pnevma-Icon-Notification~ipad</string>
+					<string>Pnevma-Icon-Notification@2x~ipad</string>
+					<string>Pnevma-Icon-Small@2x~iphone</string>
+					<string>Pnevma-Icon-Small@3x~iphone</string>
+					<string>Pnevma-Icon-Small~ipad</string>
+					<string>Pnevma-Icon-Small@2x~ipad</string>
+					<string>Pnevma-Icon-Small-40@2x~iphone</string>
+					<string>Pnevma-Icon-Small-40@3x~iphone</string>
+					<string>Pnevma-Icon-Small-40~ipad</string>
+					<string>Pnevma-Icon-Small-40@2x~ipad</string>
+					<string>Pnevma-Icon-60@2x~iphone</string>
+					<string>Pnevma-Icon-60@3x~iphone</string>
+					<string>Pnevma-Icon-76~ipad</string>
+					<string>Pnevma-Icon-76@2x~ipad</string>
+					<string>Pnevma-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Pro</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Pro-Icon-Notification@2x~iphone</string>
+					<string>Pro-Icon-Notification@3x~iphone</string>
+					<string>Pro-Icon-Notification~ipad</string>
+					<string>Pro-Icon-Notification@2x~ipad</string>
+					<string>Pro-Icon-Small@2x~iphone</string>
+					<string>Pro-Icon-Small@3x~iphone</string>
+					<string>Pro-Icon-Small~ipad</string>
+					<string>Pro-Icon-Small@2x~ipad</string>
+					<string>Pro-Icon-Small-40@2x~iphone</string>
+					<string>Pro-Icon-Small-40@3x~iphone</string>
+					<string>Pro-Icon-Small-40~ipad</string>
+					<string>Pro-Icon-Small-40@2x~ipad</string>
+					<string>Pro-Icon-60@2x~iphone</string>
+					<string>Pro-Icon-60@3x~iphone</string>
+					<string>Pro-Icon-76~ipad</string>
+					<string>Pro-Icon-76@2x~ipad</string>
+					<string>Pro-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Red Alert</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Red Alert-Icon-Notification@2x~iphone</string>
+					<string>Red Alert-Icon-Notification@3x~iphone</string>
+					<string>Red Alert-Icon-Notification~ipad</string>
+					<string>Red Alert-Icon-Notification@2x~ipad</string>
+					<string>Red Alert-Icon-Small@2x~iphone</string>
+					<string>Red Alert-Icon-Small@3x~iphone</string>
+					<string>Red Alert-Icon-Small~ipad</string>
+					<string>Red Alert-Icon-Small@2x~ipad</string>
+					<string>Red Alert-Icon-Small-40@2x~iphone</string>
+					<string>Red Alert-Icon-Small-40@3x~iphone</string>
+					<string>Red Alert-Icon-Small-40~ipad</string>
+					<string>Red Alert-Icon-Small-40@2x~ipad</string>
+					<string>Red Alert-Icon-60@2x~iphone</string>
+					<string>Red Alert-Icon-60@3x~iphone</string>
+					<string>Red Alert-Icon-76~ipad</string>
+					<string>Red Alert-Icon-76@2x~ipad</string>
+					<string>Red Alert-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Red Sands</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Red Sands-Icon-Notification@2x~iphone</string>
+					<string>Red Sands-Icon-Notification@3x~iphone</string>
+					<string>Red Sands-Icon-Notification~ipad</string>
+					<string>Red Sands-Icon-Notification@2x~ipad</string>
+					<string>Red Sands-Icon-Small@2x~iphone</string>
+					<string>Red Sands-Icon-Small@3x~iphone</string>
+					<string>Red Sands-Icon-Small~ipad</string>
+					<string>Red Sands-Icon-Small@2x~ipad</string>
+					<string>Red Sands-Icon-Small-40@2x~iphone</string>
+					<string>Red Sands-Icon-Small-40@3x~iphone</string>
+					<string>Red Sands-Icon-Small-40~ipad</string>
+					<string>Red Sands-Icon-Small-40@2x~ipad</string>
+					<string>Red Sands-Icon-60@2x~iphone</string>
+					<string>Red Sands-Icon-60@3x~iphone</string>
+					<string>Red Sands-Icon-76~ipad</string>
+					<string>Red Sands-Icon-76@2x~ipad</string>
+					<string>Red Sands-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Rippedcasts</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Rippedcasts-Icon-Notification@2x~iphone</string>
+					<string>Rippedcasts-Icon-Notification@3x~iphone</string>
+					<string>Rippedcasts-Icon-Notification~ipad</string>
+					<string>Rippedcasts-Icon-Notification@2x~ipad</string>
+					<string>Rippedcasts-Icon-Small@2x~iphone</string>
+					<string>Rippedcasts-Icon-Small@3x~iphone</string>
+					<string>Rippedcasts-Icon-Small~ipad</string>
+					<string>Rippedcasts-Icon-Small@2x~ipad</string>
+					<string>Rippedcasts-Icon-Small-40@2x~iphone</string>
+					<string>Rippedcasts-Icon-Small-40@3x~iphone</string>
+					<string>Rippedcasts-Icon-Small-40~ipad</string>
+					<string>Rippedcasts-Icon-Small-40@2x~ipad</string>
+					<string>Rippedcasts-Icon-60@2x~iphone</string>
+					<string>Rippedcasts-Icon-60@3x~iphone</string>
+					<string>Rippedcasts-Icon-76~ipad</string>
+					<string>Rippedcasts-Icon-76@2x~ipad</string>
+					<string>Rippedcasts-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Royal</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Royal-Icon-Notification@2x~iphone</string>
+					<string>Royal-Icon-Notification@3x~iphone</string>
+					<string>Royal-Icon-Notification~ipad</string>
+					<string>Royal-Icon-Notification@2x~ipad</string>
+					<string>Royal-Icon-Small@2x~iphone</string>
+					<string>Royal-Icon-Small@3x~iphone</string>
+					<string>Royal-Icon-Small~ipad</string>
+					<string>Royal-Icon-Small@2x~ipad</string>
+					<string>Royal-Icon-Small-40@2x~iphone</string>
+					<string>Royal-Icon-Small-40@3x~iphone</string>
+					<string>Royal-Icon-Small-40~ipad</string>
+					<string>Royal-Icon-Small-40@2x~ipad</string>
+					<string>Royal-Icon-60@2x~iphone</string>
+					<string>Royal-Icon-60@3x~iphone</string>
+					<string>Royal-Icon-76~ipad</string>
+					<string>Royal-Icon-76@2x~ipad</string>
+					<string>Royal-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>SeaShells</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>SeaShells-Icon-Notification@2x~iphone</string>
+					<string>SeaShells-Icon-Notification@3x~iphone</string>
+					<string>SeaShells-Icon-Notification~ipad</string>
+					<string>SeaShells-Icon-Notification@2x~ipad</string>
+					<string>SeaShells-Icon-Small@2x~iphone</string>
+					<string>SeaShells-Icon-Small@3x~iphone</string>
+					<string>SeaShells-Icon-Small~ipad</string>
+					<string>SeaShells-Icon-Small@2x~ipad</string>
+					<string>SeaShells-Icon-Small-40@2x~iphone</string>
+					<string>SeaShells-Icon-Small-40@3x~iphone</string>
+					<string>SeaShells-Icon-Small-40~ipad</string>
+					<string>SeaShells-Icon-Small-40@2x~ipad</string>
+					<string>SeaShells-Icon-60@2x~iphone</string>
+					<string>SeaShells-Icon-60@3x~iphone</string>
+					<string>SeaShells-Icon-76~ipad</string>
+					<string>SeaShells-Icon-76@2x~ipad</string>
+					<string>SeaShells-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Seafoam Pastel</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Seafoam Pastel-Icon-Notification@2x~iphone</string>
+					<string>Seafoam Pastel-Icon-Notification@3x~iphone</string>
+					<string>Seafoam Pastel-Icon-Notification~ipad</string>
+					<string>Seafoam Pastel-Icon-Notification@2x~ipad</string>
+					<string>Seafoam Pastel-Icon-Small@2x~iphone</string>
+					<string>Seafoam Pastel-Icon-Small@3x~iphone</string>
+					<string>Seafoam Pastel-Icon-Small~ipad</string>
+					<string>Seafoam Pastel-Icon-Small@2x~ipad</string>
+					<string>Seafoam Pastel-Icon-Small-40@2x~iphone</string>
+					<string>Seafoam Pastel-Icon-Small-40@3x~iphone</string>
+					<string>Seafoam Pastel-Icon-Small-40~ipad</string>
+					<string>Seafoam Pastel-Icon-Small-40@2x~ipad</string>
+					<string>Seafoam Pastel-Icon-60@2x~iphone</string>
+					<string>Seafoam Pastel-Icon-60@3x~iphone</string>
+					<string>Seafoam Pastel-Icon-76~ipad</string>
+					<string>Seafoam Pastel-Icon-76@2x~ipad</string>
+					<string>Seafoam Pastel-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Seti</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Seti-Icon-Notification@2x~iphone</string>
+					<string>Seti-Icon-Notification@3x~iphone</string>
+					<string>Seti-Icon-Notification~ipad</string>
+					<string>Seti-Icon-Notification@2x~ipad</string>
+					<string>Seti-Icon-Small@2x~iphone</string>
+					<string>Seti-Icon-Small@3x~iphone</string>
+					<string>Seti-Icon-Small~ipad</string>
+					<string>Seti-Icon-Small@2x~ipad</string>
+					<string>Seti-Icon-Small-40@2x~iphone</string>
+					<string>Seti-Icon-Small-40@3x~iphone</string>
+					<string>Seti-Icon-Small-40~ipad</string>
+					<string>Seti-Icon-Small-40@2x~ipad</string>
+					<string>Seti-Icon-60@2x~iphone</string>
+					<string>Seti-Icon-60@3x~iphone</string>
+					<string>Seti-Icon-76~ipad</string>
+					<string>Seti-Icon-76@2x~ipad</string>
+					<string>Seti-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Shaman</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Shaman-Icon-Notification@2x~iphone</string>
+					<string>Shaman-Icon-Notification@3x~iphone</string>
+					<string>Shaman-Icon-Notification~ipad</string>
+					<string>Shaman-Icon-Notification@2x~ipad</string>
+					<string>Shaman-Icon-Small@2x~iphone</string>
+					<string>Shaman-Icon-Small@3x~iphone</string>
+					<string>Shaman-Icon-Small~ipad</string>
+					<string>Shaman-Icon-Small@2x~ipad</string>
+					<string>Shaman-Icon-Small-40@2x~iphone</string>
+					<string>Shaman-Icon-Small-40@3x~iphone</string>
+					<string>Shaman-Icon-Small-40~ipad</string>
+					<string>Shaman-Icon-Small-40@2x~ipad</string>
+					<string>Shaman-Icon-60@2x~iphone</string>
+					<string>Shaman-Icon-60@3x~iphone</string>
+					<string>Shaman-Icon-76~ipad</string>
+					<string>Shaman-Icon-76@2x~ipad</string>
+					<string>Shaman-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Smyck</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Smyck-Icon-Notification@2x~iphone</string>
+					<string>Smyck-Icon-Notification@3x~iphone</string>
+					<string>Smyck-Icon-Notification~ipad</string>
+					<string>Smyck-Icon-Notification@2x~ipad</string>
+					<string>Smyck-Icon-Small@2x~iphone</string>
+					<string>Smyck-Icon-Small@3x~iphone</string>
+					<string>Smyck-Icon-Small~ipad</string>
+					<string>Smyck-Icon-Small@2x~ipad</string>
+					<string>Smyck-Icon-Small-40@2x~iphone</string>
+					<string>Smyck-Icon-Small-40@3x~iphone</string>
+					<string>Smyck-Icon-Small-40~ipad</string>
+					<string>Smyck-Icon-Small-40@2x~ipad</string>
+					<string>Smyck-Icon-60@2x~iphone</string>
+					<string>Smyck-Icon-60@3x~iphone</string>
+					<string>Smyck-Icon-76~ipad</string>
+					<string>Smyck-Icon-76@2x~ipad</string>
+					<string>Smyck-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>SoftServer</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>SoftServer-Icon-Notification@2x~iphone</string>
+					<string>SoftServer-Icon-Notification@3x~iphone</string>
+					<string>SoftServer-Icon-Notification~ipad</string>
+					<string>SoftServer-Icon-Notification@2x~ipad</string>
+					<string>SoftServer-Icon-Small@2x~iphone</string>
+					<string>SoftServer-Icon-Small@3x~iphone</string>
+					<string>SoftServer-Icon-Small~ipad</string>
+					<string>SoftServer-Icon-Small@2x~ipad</string>
+					<string>SoftServer-Icon-Small-40@2x~iphone</string>
+					<string>SoftServer-Icon-Small-40@3x~iphone</string>
+					<string>SoftServer-Icon-Small-40~ipad</string>
+					<string>SoftServer-Icon-Small-40@2x~ipad</string>
+					<string>SoftServer-Icon-60@2x~iphone</string>
+					<string>SoftServer-Icon-60@3x~iphone</string>
+					<string>SoftServer-Icon-76~ipad</string>
+					<string>SoftServer-Icon-76@2x~ipad</string>
+					<string>SoftServer-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Solarized Darcula</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Solarized Darcula-Icon-Notification@2x~iphone</string>
+					<string>Solarized Darcula-Icon-Notification@3x~iphone</string>
+					<string>Solarized Darcula-Icon-Notification~ipad</string>
+					<string>Solarized Darcula-Icon-Notification@2x~ipad</string>
+					<string>Solarized Darcula-Icon-Small@2x~iphone</string>
+					<string>Solarized Darcula-Icon-Small@3x~iphone</string>
+					<string>Solarized Darcula-Icon-Small~ipad</string>
+					<string>Solarized Darcula-Icon-Small@2x~ipad</string>
+					<string>Solarized Darcula-Icon-Small-40@2x~iphone</string>
+					<string>Solarized Darcula-Icon-Small-40@3x~iphone</string>
+					<string>Solarized Darcula-Icon-Small-40~ipad</string>
+					<string>Solarized Darcula-Icon-Small-40@2x~ipad</string>
+					<string>Solarized Darcula-Icon-60@2x~iphone</string>
+					<string>Solarized Darcula-Icon-60@3x~iphone</string>
+					<string>Solarized Darcula-Icon-76~ipad</string>
+					<string>Solarized Darcula-Icon-76@2x~ipad</string>
+					<string>Solarized Darcula-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Solarized Dark</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Solarized Dark-Icon-Notification@2x~iphone</string>
+					<string>Solarized Dark-Icon-Notification@3x~iphone</string>
+					<string>Solarized Dark-Icon-Notification~ipad</string>
+					<string>Solarized Dark-Icon-Notification@2x~ipad</string>
+					<string>Solarized Dark-Icon-Small@2x~iphone</string>
+					<string>Solarized Dark-Icon-Small@3x~iphone</string>
+					<string>Solarized Dark-Icon-Small~ipad</string>
+					<string>Solarized Dark-Icon-Small@2x~ipad</string>
+					<string>Solarized Dark-Icon-Small-40@2x~iphone</string>
+					<string>Solarized Dark-Icon-Small-40@3x~iphone</string>
+					<string>Solarized Dark-Icon-Small-40~ipad</string>
+					<string>Solarized Dark-Icon-Small-40@2x~ipad</string>
+					<string>Solarized Dark-Icon-60@2x~iphone</string>
+					<string>Solarized Dark-Icon-60@3x~iphone</string>
+					<string>Solarized Dark-Icon-76~ipad</string>
+					<string>Solarized Dark-Icon-76@2x~ipad</string>
+					<string>Solarized Dark-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Solarized Dark Higher Contrast</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Solarized Dark Higher Contrast-Icon-Notification@2x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-Notification@3x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-Notification~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-Notification@2x~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small@2x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small@3x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small@2x~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small-40@2x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small-40@3x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small-40~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-Small-40@2x~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-60@2x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-60@3x~iphone</string>
+					<string>Solarized Dark Higher Contrast-Icon-76~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-76@2x~ipad</string>
+					<string>Solarized Dark Higher Contrast-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Solarized Light</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Solarized Light-Icon-Notification@2x~iphone</string>
+					<string>Solarized Light-Icon-Notification@3x~iphone</string>
+					<string>Solarized Light-Icon-Notification~ipad</string>
+					<string>Solarized Light-Icon-Notification@2x~ipad</string>
+					<string>Solarized Light-Icon-Small@2x~iphone</string>
+					<string>Solarized Light-Icon-Small@3x~iphone</string>
+					<string>Solarized Light-Icon-Small~ipad</string>
+					<string>Solarized Light-Icon-Small@2x~ipad</string>
+					<string>Solarized Light-Icon-Small-40@2x~iphone</string>
+					<string>Solarized Light-Icon-Small-40@3x~iphone</string>
+					<string>Solarized Light-Icon-Small-40~ipad</string>
+					<string>Solarized Light-Icon-Small-40@2x~ipad</string>
+					<string>Solarized Light-Icon-60@2x~iphone</string>
+					<string>Solarized Light-Icon-60@3x~iphone</string>
+					<string>Solarized Light-Icon-76~ipad</string>
+					<string>Solarized Light-Icon-76@2x~ipad</string>
+					<string>Solarized Light-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>SpaceGray</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>SpaceGray-Icon-Notification@2x~iphone</string>
+					<string>SpaceGray-Icon-Notification@3x~iphone</string>
+					<string>SpaceGray-Icon-Notification~ipad</string>
+					<string>SpaceGray-Icon-Notification@2x~ipad</string>
+					<string>SpaceGray-Icon-Small@2x~iphone</string>
+					<string>SpaceGray-Icon-Small@3x~iphone</string>
+					<string>SpaceGray-Icon-Small~ipad</string>
+					<string>SpaceGray-Icon-Small@2x~ipad</string>
+					<string>SpaceGray-Icon-Small-40@2x~iphone</string>
+					<string>SpaceGray-Icon-Small-40@3x~iphone</string>
+					<string>SpaceGray-Icon-Small-40~ipad</string>
+					<string>SpaceGray-Icon-Small-40@2x~ipad</string>
+					<string>SpaceGray-Icon-60@2x~iphone</string>
+					<string>SpaceGray-Icon-60@3x~iphone</string>
+					<string>SpaceGray-Icon-76~ipad</string>
+					<string>SpaceGray-Icon-76@2x~ipad</string>
+					<string>SpaceGray-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Spacedust</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Spacedust-Icon-Notification@2x~iphone</string>
+					<string>Spacedust-Icon-Notification@3x~iphone</string>
+					<string>Spacedust-Icon-Notification~ipad</string>
+					<string>Spacedust-Icon-Notification@2x~ipad</string>
+					<string>Spacedust-Icon-Small@2x~iphone</string>
+					<string>Spacedust-Icon-Small@3x~iphone</string>
+					<string>Spacedust-Icon-Small~ipad</string>
+					<string>Spacedust-Icon-Small@2x~ipad</string>
+					<string>Spacedust-Icon-Small-40@2x~iphone</string>
+					<string>Spacedust-Icon-Small-40@3x~iphone</string>
+					<string>Spacedust-Icon-Small-40~ipad</string>
+					<string>Spacedust-Icon-Small-40@2x~ipad</string>
+					<string>Spacedust-Icon-60@2x~iphone</string>
+					<string>Spacedust-Icon-60@3x~iphone</string>
+					<string>Spacedust-Icon-76~ipad</string>
+					<string>Spacedust-Icon-76@2x~ipad</string>
+					<string>Spacedust-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Spring</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Spring-Icon-Notification@2x~iphone</string>
+					<string>Spring-Icon-Notification@3x~iphone</string>
+					<string>Spring-Icon-Notification~ipad</string>
+					<string>Spring-Icon-Notification@2x~ipad</string>
+					<string>Spring-Icon-Small@2x~iphone</string>
+					<string>Spring-Icon-Small@3x~iphone</string>
+					<string>Spring-Icon-Small~ipad</string>
+					<string>Spring-Icon-Small@2x~ipad</string>
+					<string>Spring-Icon-Small-40@2x~iphone</string>
+					<string>Spring-Icon-Small-40@3x~iphone</string>
+					<string>Spring-Icon-Small-40~ipad</string>
+					<string>Spring-Icon-Small-40@2x~ipad</string>
+					<string>Spring-Icon-60@2x~iphone</string>
+					<string>Spring-Icon-60@3x~iphone</string>
+					<string>Spring-Icon-76~ipad</string>
+					<string>Spring-Icon-76@2x~ipad</string>
+					<string>Spring-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Square</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Square-Icon-Notification@2x~iphone</string>
+					<string>Square-Icon-Notification@3x~iphone</string>
+					<string>Square-Icon-Notification~ipad</string>
+					<string>Square-Icon-Notification@2x~ipad</string>
+					<string>Square-Icon-Small@2x~iphone</string>
+					<string>Square-Icon-Small@3x~iphone</string>
+					<string>Square-Icon-Small~ipad</string>
+					<string>Square-Icon-Small@2x~ipad</string>
+					<string>Square-Icon-Small-40@2x~iphone</string>
+					<string>Square-Icon-Small-40@3x~iphone</string>
+					<string>Square-Icon-Small-40~ipad</string>
+					<string>Square-Icon-Small-40@2x~ipad</string>
+					<string>Square-Icon-60@2x~iphone</string>
+					<string>Square-Icon-60@3x~iphone</string>
+					<string>Square-Icon-76~ipad</string>
+					<string>Square-Icon-76@2x~ipad</string>
+					<string>Square-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Sundried</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Sundried-Icon-Notification@2x~iphone</string>
+					<string>Sundried-Icon-Notification@3x~iphone</string>
+					<string>Sundried-Icon-Notification~ipad</string>
+					<string>Sundried-Icon-Notification@2x~ipad</string>
+					<string>Sundried-Icon-Small@2x~iphone</string>
+					<string>Sundried-Icon-Small@3x~iphone</string>
+					<string>Sundried-Icon-Small~ipad</string>
+					<string>Sundried-Icon-Small@2x~ipad</string>
+					<string>Sundried-Icon-Small-40@2x~iphone</string>
+					<string>Sundried-Icon-Small-40@3x~iphone</string>
+					<string>Sundried-Icon-Small-40~ipad</string>
+					<string>Sundried-Icon-Small-40@2x~ipad</string>
+					<string>Sundried-Icon-60@2x~iphone</string>
+					<string>Sundried-Icon-60@3x~iphone</string>
+					<string>Sundried-Icon-76~ipad</string>
+					<string>Sundried-Icon-76@2x~ipad</string>
+					<string>Sundried-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Symfonic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Symfonic-Icon-Notification@2x~iphone</string>
+					<string>Symfonic-Icon-Notification@3x~iphone</string>
+					<string>Symfonic-Icon-Notification~ipad</string>
+					<string>Symfonic-Icon-Notification@2x~ipad</string>
+					<string>Symfonic-Icon-Small@2x~iphone</string>
+					<string>Symfonic-Icon-Small@3x~iphone</string>
+					<string>Symfonic-Icon-Small~ipad</string>
+					<string>Symfonic-Icon-Small@2x~ipad</string>
+					<string>Symfonic-Icon-Small-40@2x~iphone</string>
+					<string>Symfonic-Icon-Small-40@3x~iphone</string>
+					<string>Symfonic-Icon-Small-40~ipad</string>
+					<string>Symfonic-Icon-Small-40@2x~ipad</string>
+					<string>Symfonic-Icon-60@2x~iphone</string>
+					<string>Symfonic-Icon-60@3x~iphone</string>
+					<string>Symfonic-Icon-76~ipad</string>
+					<string>Symfonic-Icon-76@2x~ipad</string>
+					<string>Symfonic-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Teerb</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Teerb-Icon-Notification@2x~iphone</string>
+					<string>Teerb-Icon-Notification@3x~iphone</string>
+					<string>Teerb-Icon-Notification~ipad</string>
+					<string>Teerb-Icon-Notification@2x~ipad</string>
+					<string>Teerb-Icon-Small@2x~iphone</string>
+					<string>Teerb-Icon-Small@3x~iphone</string>
+					<string>Teerb-Icon-Small~ipad</string>
+					<string>Teerb-Icon-Small@2x~ipad</string>
+					<string>Teerb-Icon-Small-40@2x~iphone</string>
+					<string>Teerb-Icon-Small-40@3x~iphone</string>
+					<string>Teerb-Icon-Small-40~ipad</string>
+					<string>Teerb-Icon-Small-40@2x~ipad</string>
+					<string>Teerb-Icon-60@2x~iphone</string>
+					<string>Teerb-Icon-60@3x~iphone</string>
+					<string>Teerb-Icon-76~ipad</string>
+					<string>Teerb-Icon-76@2x~ipad</string>
+					<string>Teerb-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Terminal Basic</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Terminal Basic-Icon-Notification@2x~iphone</string>
+					<string>Terminal Basic-Icon-Notification@3x~iphone</string>
+					<string>Terminal Basic-Icon-Notification~ipad</string>
+					<string>Terminal Basic-Icon-Notification@2x~ipad</string>
+					<string>Terminal Basic-Icon-Small@2x~iphone</string>
+					<string>Terminal Basic-Icon-Small@3x~iphone</string>
+					<string>Terminal Basic-Icon-Small~ipad</string>
+					<string>Terminal Basic-Icon-Small@2x~ipad</string>
+					<string>Terminal Basic-Icon-Small-40@2x~iphone</string>
+					<string>Terminal Basic-Icon-Small-40@3x~iphone</string>
+					<string>Terminal Basic-Icon-Small-40~ipad</string>
+					<string>Terminal Basic-Icon-Small-40@2x~ipad</string>
+					<string>Terminal Basic-Icon-60@2x~iphone</string>
+					<string>Terminal Basic-Icon-60@3x~iphone</string>
+					<string>Terminal Basic-Icon-76~ipad</string>
+					<string>Terminal Basic-Icon-76@2x~ipad</string>
+					<string>Terminal Basic-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Thayer Bright</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Thayer Bright-Icon-Notification@2x~iphone</string>
+					<string>Thayer Bright-Icon-Notification@3x~iphone</string>
+					<string>Thayer Bright-Icon-Notification~ipad</string>
+					<string>Thayer Bright-Icon-Notification@2x~ipad</string>
+					<string>Thayer Bright-Icon-Small@2x~iphone</string>
+					<string>Thayer Bright-Icon-Small@3x~iphone</string>
+					<string>Thayer Bright-Icon-Small~ipad</string>
+					<string>Thayer Bright-Icon-Small@2x~ipad</string>
+					<string>Thayer Bright-Icon-Small-40@2x~iphone</string>
+					<string>Thayer Bright-Icon-Small-40@3x~iphone</string>
+					<string>Thayer Bright-Icon-Small-40~ipad</string>
+					<string>Thayer Bright-Icon-Small-40@2x~ipad</string>
+					<string>Thayer Bright-Icon-60@2x~iphone</string>
+					<string>Thayer Bright-Icon-60@3x~iphone</string>
+					<string>Thayer Bright-Icon-76~ipad</string>
+					<string>Thayer Bright-Icon-76@2x~ipad</string>
+					<string>Thayer Bright-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Tomorrow</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Tomorrow-Icon-Notification@2x~iphone</string>
+					<string>Tomorrow-Icon-Notification@3x~iphone</string>
+					<string>Tomorrow-Icon-Notification~ipad</string>
+					<string>Tomorrow-Icon-Notification@2x~ipad</string>
+					<string>Tomorrow-Icon-Small@2x~iphone</string>
+					<string>Tomorrow-Icon-Small@3x~iphone</string>
+					<string>Tomorrow-Icon-Small~ipad</string>
+					<string>Tomorrow-Icon-Small@2x~ipad</string>
+					<string>Tomorrow-Icon-Small-40@2x~iphone</string>
+					<string>Tomorrow-Icon-Small-40@3x~iphone</string>
+					<string>Tomorrow-Icon-Small-40~ipad</string>
+					<string>Tomorrow-Icon-Small-40@2x~ipad</string>
+					<string>Tomorrow-Icon-60@2x~iphone</string>
+					<string>Tomorrow-Icon-60@3x~iphone</string>
+					<string>Tomorrow-Icon-76~ipad</string>
+					<string>Tomorrow-Icon-76@2x~ipad</string>
+					<string>Tomorrow-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Tomorrow Night</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Tomorrow Night-Icon-Notification@2x~iphone</string>
+					<string>Tomorrow Night-Icon-Notification@3x~iphone</string>
+					<string>Tomorrow Night-Icon-Notification~ipad</string>
+					<string>Tomorrow Night-Icon-Notification@2x~ipad</string>
+					<string>Tomorrow Night-Icon-Small@2x~iphone</string>
+					<string>Tomorrow Night-Icon-Small@3x~iphone</string>
+					<string>Tomorrow Night-Icon-Small~ipad</string>
+					<string>Tomorrow Night-Icon-Small@2x~ipad</string>
+					<string>Tomorrow Night-Icon-Small-40@2x~iphone</string>
+					<string>Tomorrow Night-Icon-Small-40@3x~iphone</string>
+					<string>Tomorrow Night-Icon-Small-40~ipad</string>
+					<string>Tomorrow Night-Icon-Small-40@2x~ipad</string>
+					<string>Tomorrow Night-Icon-60@2x~iphone</string>
+					<string>Tomorrow Night-Icon-60@3x~iphone</string>
+					<string>Tomorrow Night-Icon-76~ipad</string>
+					<string>Tomorrow Night-Icon-76@2x~ipad</string>
+					<string>Tomorrow Night-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Tomorrow Night Blue</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Tomorrow Night Blue-Icon-Notification@2x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-Notification@3x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-Notification~ipad</string>
+					<string>Tomorrow Night Blue-Icon-Notification@2x~ipad</string>
+					<string>Tomorrow Night Blue-Icon-Small@2x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-Small@3x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-Small~ipad</string>
+					<string>Tomorrow Night Blue-Icon-Small@2x~ipad</string>
+					<string>Tomorrow Night Blue-Icon-Small-40@2x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-Small-40@3x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-Small-40~ipad</string>
+					<string>Tomorrow Night Blue-Icon-Small-40@2x~ipad</string>
+					<string>Tomorrow Night Blue-Icon-60@2x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-60@3x~iphone</string>
+					<string>Tomorrow Night Blue-Icon-76~ipad</string>
+					<string>Tomorrow Night Blue-Icon-76@2x~ipad</string>
+					<string>Tomorrow Night Blue-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Tomorrow Night Bright</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Tomorrow Night Bright-Icon-Notification@2x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-Notification@3x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-Notification~ipad</string>
+					<string>Tomorrow Night Bright-Icon-Notification@2x~ipad</string>
+					<string>Tomorrow Night Bright-Icon-Small@2x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-Small@3x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-Small~ipad</string>
+					<string>Tomorrow Night Bright-Icon-Small@2x~ipad</string>
+					<string>Tomorrow Night Bright-Icon-Small-40@2x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-Small-40@3x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-Small-40~ipad</string>
+					<string>Tomorrow Night Bright-Icon-Small-40@2x~ipad</string>
+					<string>Tomorrow Night Bright-Icon-60@2x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-60@3x~iphone</string>
+					<string>Tomorrow Night Bright-Icon-76~ipad</string>
+					<string>Tomorrow Night Bright-Icon-76@2x~ipad</string>
+					<string>Tomorrow Night Bright-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Tomorrow Night Eighties</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Tomorrow Night Eighties-Icon-Notification@2x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-Notification@3x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-Notification~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-Notification@2x~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-Small@2x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-Small@3x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-Small~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-Small@2x~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-Small-40@2x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-Small-40@3x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-Small-40~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-Small-40@2x~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-60@2x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-60@3x~iphone</string>
+					<string>Tomorrow Night Eighties-Icon-76~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-76@2x~ipad</string>
+					<string>Tomorrow Night Eighties-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>ToyChest</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>ToyChest-Icon-Notification@2x~iphone</string>
+					<string>ToyChest-Icon-Notification@3x~iphone</string>
+					<string>ToyChest-Icon-Notification~ipad</string>
+					<string>ToyChest-Icon-Notification@2x~ipad</string>
+					<string>ToyChest-Icon-Small@2x~iphone</string>
+					<string>ToyChest-Icon-Small@3x~iphone</string>
+					<string>ToyChest-Icon-Small~ipad</string>
+					<string>ToyChest-Icon-Small@2x~ipad</string>
+					<string>ToyChest-Icon-Small-40@2x~iphone</string>
+					<string>ToyChest-Icon-Small-40@3x~iphone</string>
+					<string>ToyChest-Icon-Small-40~ipad</string>
+					<string>ToyChest-Icon-Small-40@2x~ipad</string>
+					<string>ToyChest-Icon-60@2x~iphone</string>
+					<string>ToyChest-Icon-60@3x~iphone</string>
+					<string>ToyChest-Icon-76~ipad</string>
+					<string>ToyChest-Icon-76@2x~ipad</string>
+					<string>ToyChest-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Treehouse</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Treehouse-Icon-Notification@2x~iphone</string>
+					<string>Treehouse-Icon-Notification@3x~iphone</string>
+					<string>Treehouse-Icon-Notification~ipad</string>
+					<string>Treehouse-Icon-Notification@2x~ipad</string>
+					<string>Treehouse-Icon-Small@2x~iphone</string>
+					<string>Treehouse-Icon-Small@3x~iphone</string>
+					<string>Treehouse-Icon-Small~ipad</string>
+					<string>Treehouse-Icon-Small@2x~ipad</string>
+					<string>Treehouse-Icon-Small-40@2x~iphone</string>
+					<string>Treehouse-Icon-Small-40@3x~iphone</string>
+					<string>Treehouse-Icon-Small-40~ipad</string>
+					<string>Treehouse-Icon-Small-40@2x~ipad</string>
+					<string>Treehouse-Icon-60@2x~iphone</string>
+					<string>Treehouse-Icon-60@3x~iphone</string>
+					<string>Treehouse-Icon-76~ipad</string>
+					<string>Treehouse-Icon-76@2x~ipad</string>
+					<string>Treehouse-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Twilight</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Twilight-Icon-Notification@2x~iphone</string>
+					<string>Twilight-Icon-Notification@3x~iphone</string>
+					<string>Twilight-Icon-Notification~ipad</string>
+					<string>Twilight-Icon-Notification@2x~ipad</string>
+					<string>Twilight-Icon-Small@2x~iphone</string>
+					<string>Twilight-Icon-Small@3x~iphone</string>
+					<string>Twilight-Icon-Small~ipad</string>
+					<string>Twilight-Icon-Small@2x~ipad</string>
+					<string>Twilight-Icon-Small-40@2x~iphone</string>
+					<string>Twilight-Icon-Small-40@3x~iphone</string>
+					<string>Twilight-Icon-Small-40~ipad</string>
+					<string>Twilight-Icon-Small-40@2x~ipad</string>
+					<string>Twilight-Icon-60@2x~iphone</string>
+					<string>Twilight-Icon-60@3x~iphone</string>
+					<string>Twilight-Icon-76~ipad</string>
+					<string>Twilight-Icon-76@2x~ipad</string>
+					<string>Twilight-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Urple</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Urple-Icon-Notification@2x~iphone</string>
+					<string>Urple-Icon-Notification@3x~iphone</string>
+					<string>Urple-Icon-Notification~ipad</string>
+					<string>Urple-Icon-Notification@2x~ipad</string>
+					<string>Urple-Icon-Small@2x~iphone</string>
+					<string>Urple-Icon-Small@3x~iphone</string>
+					<string>Urple-Icon-Small~ipad</string>
+					<string>Urple-Icon-Small@2x~ipad</string>
+					<string>Urple-Icon-Small-40@2x~iphone</string>
+					<string>Urple-Icon-Small-40@3x~iphone</string>
+					<string>Urple-Icon-Small-40~ipad</string>
+					<string>Urple-Icon-Small-40@2x~ipad</string>
+					<string>Urple-Icon-60@2x~iphone</string>
+					<string>Urple-Icon-60@3x~iphone</string>
+					<string>Urple-Icon-76~ipad</string>
+					<string>Urple-Icon-76@2x~ipad</string>
+					<string>Urple-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Vaughn</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Vaughn-Icon-Notification@2x~iphone</string>
+					<string>Vaughn-Icon-Notification@3x~iphone</string>
+					<string>Vaughn-Icon-Notification~ipad</string>
+					<string>Vaughn-Icon-Notification@2x~ipad</string>
+					<string>Vaughn-Icon-Small@2x~iphone</string>
+					<string>Vaughn-Icon-Small@3x~iphone</string>
+					<string>Vaughn-Icon-Small~ipad</string>
+					<string>Vaughn-Icon-Small@2x~ipad</string>
+					<string>Vaughn-Icon-Small-40@2x~iphone</string>
+					<string>Vaughn-Icon-Small-40@3x~iphone</string>
+					<string>Vaughn-Icon-Small-40~ipad</string>
+					<string>Vaughn-Icon-Small-40@2x~ipad</string>
+					<string>Vaughn-Icon-60@2x~iphone</string>
+					<string>Vaughn-Icon-60@3x~iphone</string>
+					<string>Vaughn-Icon-76~ipad</string>
+					<string>Vaughn-Icon-76@2x~ipad</string>
+					<string>Vaughn-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>VibrantInk</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>VibrantInk-Icon-Notification@2x~iphone</string>
+					<string>VibrantInk-Icon-Notification@3x~iphone</string>
+					<string>VibrantInk-Icon-Notification~ipad</string>
+					<string>VibrantInk-Icon-Notification@2x~ipad</string>
+					<string>VibrantInk-Icon-Small@2x~iphone</string>
+					<string>VibrantInk-Icon-Small@3x~iphone</string>
+					<string>VibrantInk-Icon-Small~ipad</string>
+					<string>VibrantInk-Icon-Small@2x~ipad</string>
+					<string>VibrantInk-Icon-Small-40@2x~iphone</string>
+					<string>VibrantInk-Icon-Small-40@3x~iphone</string>
+					<string>VibrantInk-Icon-Small-40~ipad</string>
+					<string>VibrantInk-Icon-Small-40@2x~ipad</string>
+					<string>VibrantInk-Icon-60@2x~iphone</string>
+					<string>VibrantInk-Icon-60@3x~iphone</string>
+					<string>VibrantInk-Icon-76~ipad</string>
+					<string>VibrantInk-Icon-76@2x~ipad</string>
+					<string>VibrantInk-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>WarmNeon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>WarmNeon-Icon-Notification@2x~iphone</string>
+					<string>WarmNeon-Icon-Notification@3x~iphone</string>
+					<string>WarmNeon-Icon-Notification~ipad</string>
+					<string>WarmNeon-Icon-Notification@2x~ipad</string>
+					<string>WarmNeon-Icon-Small@2x~iphone</string>
+					<string>WarmNeon-Icon-Small@3x~iphone</string>
+					<string>WarmNeon-Icon-Small~ipad</string>
+					<string>WarmNeon-Icon-Small@2x~ipad</string>
+					<string>WarmNeon-Icon-Small-40@2x~iphone</string>
+					<string>WarmNeon-Icon-Small-40@3x~iphone</string>
+					<string>WarmNeon-Icon-Small-40~ipad</string>
+					<string>WarmNeon-Icon-Small-40@2x~ipad</string>
+					<string>WarmNeon-Icon-60@2x~iphone</string>
+					<string>WarmNeon-Icon-60@3x~iphone</string>
+					<string>WarmNeon-Icon-76~ipad</string>
+					<string>WarmNeon-Icon-76@2x~ipad</string>
+					<string>WarmNeon-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Wez</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Wez-Icon-Notification@2x~iphone</string>
+					<string>Wez-Icon-Notification@3x~iphone</string>
+					<string>Wez-Icon-Notification~ipad</string>
+					<string>Wez-Icon-Notification@2x~ipad</string>
+					<string>Wez-Icon-Small@2x~iphone</string>
+					<string>Wez-Icon-Small@3x~iphone</string>
+					<string>Wez-Icon-Small~ipad</string>
+					<string>Wez-Icon-Small@2x~ipad</string>
+					<string>Wez-Icon-Small-40@2x~iphone</string>
+					<string>Wez-Icon-Small-40@3x~iphone</string>
+					<string>Wez-Icon-Small-40~ipad</string>
+					<string>Wez-Icon-Small-40@2x~ipad</string>
+					<string>Wez-Icon-60@2x~iphone</string>
+					<string>Wez-Icon-60@3x~iphone</string>
+					<string>Wez-Icon-76~ipad</string>
+					<string>Wez-Icon-76@2x~ipad</string>
+					<string>Wez-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Wombat</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Wombat-Icon-Notification@2x~iphone</string>
+					<string>Wombat-Icon-Notification@3x~iphone</string>
+					<string>Wombat-Icon-Notification~ipad</string>
+					<string>Wombat-Icon-Notification@2x~ipad</string>
+					<string>Wombat-Icon-Small@2x~iphone</string>
+					<string>Wombat-Icon-Small@3x~iphone</string>
+					<string>Wombat-Icon-Small~ipad</string>
+					<string>Wombat-Icon-Small@2x~ipad</string>
+					<string>Wombat-Icon-Small-40@2x~iphone</string>
+					<string>Wombat-Icon-Small-40@3x~iphone</string>
+					<string>Wombat-Icon-Small-40~ipad</string>
+					<string>Wombat-Icon-Small-40@2x~ipad</string>
+					<string>Wombat-Icon-60@2x~iphone</string>
+					<string>Wombat-Icon-60@3x~iphone</string>
+					<string>Wombat-Icon-76~ipad</string>
+					<string>Wombat-Icon-76@2x~ipad</string>
+					<string>Wombat-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Wryan</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Wryan-Icon-Notification@2x~iphone</string>
+					<string>Wryan-Icon-Notification@3x~iphone</string>
+					<string>Wryan-Icon-Notification~ipad</string>
+					<string>Wryan-Icon-Notification@2x~ipad</string>
+					<string>Wryan-Icon-Small@2x~iphone</string>
+					<string>Wryan-Icon-Small@3x~iphone</string>
+					<string>Wryan-Icon-Small~ipad</string>
+					<string>Wryan-Icon-Small@2x~ipad</string>
+					<string>Wryan-Icon-Small-40@2x~iphone</string>
+					<string>Wryan-Icon-Small-40@3x~iphone</string>
+					<string>Wryan-Icon-Small-40~ipad</string>
+					<string>Wryan-Icon-Small-40@2x~ipad</string>
+					<string>Wryan-Icon-60@2x~iphone</string>
+					<string>Wryan-Icon-60@3x~iphone</string>
+					<string>Wryan-Icon-76~ipad</string>
+					<string>Wryan-Icon-76@2x~ipad</string>
+					<string>Wryan-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>Zenburn</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>Zenburn-Icon-Notification@2x~iphone</string>
+					<string>Zenburn-Icon-Notification@3x~iphone</string>
+					<string>Zenburn-Icon-Notification~ipad</string>
+					<string>Zenburn-Icon-Notification@2x~ipad</string>
+					<string>Zenburn-Icon-Small@2x~iphone</string>
+					<string>Zenburn-Icon-Small@3x~iphone</string>
+					<string>Zenburn-Icon-Small~ipad</string>
+					<string>Zenburn-Icon-Small@2x~ipad</string>
+					<string>Zenburn-Icon-Small-40@2x~iphone</string>
+					<string>Zenburn-Icon-Small-40@3x~iphone</string>
+					<string>Zenburn-Icon-Small-40~ipad</string>
+					<string>Zenburn-Icon-Small-40@2x~ipad</string>
+					<string>Zenburn-Icon-60@2x~iphone</string>
+					<string>Zenburn-Icon-60@3x~iphone</string>
+					<string>Zenburn-Icon-76~ipad</string>
+					<string>Zenburn-Icon-76@2x~ipad</string>
+					<string>Zenburn-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>idleToes</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>idleToes-Icon-Notification@2x~iphone</string>
+					<string>idleToes-Icon-Notification@3x~iphone</string>
+					<string>idleToes-Icon-Notification~ipad</string>
+					<string>idleToes-Icon-Notification@2x~ipad</string>
+					<string>idleToes-Icon-Small@2x~iphone</string>
+					<string>idleToes-Icon-Small@3x~iphone</string>
+					<string>idleToes-Icon-Small~ipad</string>
+					<string>idleToes-Icon-Small@2x~ipad</string>
+					<string>idleToes-Icon-Small-40@2x~iphone</string>
+					<string>idleToes-Icon-Small-40@3x~iphone</string>
+					<string>idleToes-Icon-Small-40~ipad</string>
+					<string>idleToes-Icon-Small-40@2x~ipad</string>
+					<string>idleToes-Icon-60@2x~iphone</string>
+					<string>idleToes-Icon-60@3x~iphone</string>
+					<string>idleToes-Icon-76~ipad</string>
+					<string>idleToes-Icon-76@2x~ipad</string>
+					<string>idleToes-Icon-83.5@2x~ipad</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Tomorrow Night</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>UINewsstandIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

@@ -69,3 +69,5 @@ fastlane/Preview.html
 fastlane/test_output
 Vendor/bundler
 .bundle
+/Resources/Graphics/AppIcons/
+/Resources/Graphics/CFBundleIconFiles.plist
