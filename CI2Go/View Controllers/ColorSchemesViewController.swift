@@ -52,6 +52,7 @@ class ColorSchemesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let scheme = diffCalculator?.value(atIndexPath: indexPath) else { return }
+        UIApplication.shared.setAlternateIconName(scheme.name, completionHandler: nil)
         scheme.apply()
         navigationController?.popViewController(animated: true)
     }

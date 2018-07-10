@@ -82,7 +82,6 @@ extension ColorScheme {
         setAsCurrent()
         WCSession.default.transferColorScheme(colorScheme: self)
 
-        UIApplication.shared.setAlternateIconName(name, completionHandler: nil)
         resetViews()
     }
 
