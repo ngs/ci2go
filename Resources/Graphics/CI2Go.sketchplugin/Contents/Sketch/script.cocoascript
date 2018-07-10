@@ -84,7 +84,7 @@ var createSymbolMasters = function(projectRoot, document, page) {
       layers: [
         new Shape({
           name: 'Background',
-          frame: new Rectangle(0, 0, W, H),
+          frame: new Rectangle(MARGIN * -0.5, MARGIN * -0.5, W + MARGIN, H + MARGIN),
           style: {
             fills: [{
               color: scheme.background,
@@ -170,7 +170,7 @@ var createPage = (projectRoot, document, master) => {
   var page = new Page({
     name: master.name,
     parent: document,
-    frame: new Rectangle(0, 0, 1024, y),
+    frame: new Rectangle(0, 0, W, y),
     layers: layers
   })
 
