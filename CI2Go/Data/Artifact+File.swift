@@ -11,6 +11,11 @@ import FileKit
 
 extension Artifact {
     var localPath: Path {
+        if
+            let iCloudRoot = FileManager.default.url(forUbiquityContainerIdentifier: nil),
+            let iCloudPath = Path(url: iCloudRoot) {
+            return iCloudPath + "Documents/Artifacts/\(downloadURL.host ?? "localhost")/\(downloadURL.path)"
+        }
         return Path.userDocuments + "Artifacts/\(downloadURL.host ?? "localhost")/\(downloadURL.path)"
     }
 
