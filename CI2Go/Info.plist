@@ -3381,6 +3381,18 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2014-2018 LittleApps Inc. All Rights Reserved.</string>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.com.ci2go.ios.Circle</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>CI2Go</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>Any</string>
+		</dict>
+	</dict>
 	<key>SharedAccessGroup</key>
 	<string>$(AppIdentifierPrefix)com.ci2go.shared</string>
 	<key>UIAppFonts</key>
