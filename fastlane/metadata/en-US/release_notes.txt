@@ -1,5 +1,2 @@
-- Today Extension
-- Add item to connect container via SSH
-- Swipe build artifacts to delete local cache
-- Pull build list to refresh
-- Open build by handling URI scheme: chttps://, ci2go://, ci2go+https://
+- Build Artifacts are now downloaded to iCloud Drive
+- Change Application Icon on changing color scheme

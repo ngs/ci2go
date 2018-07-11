@@ -8,6 +8,11 @@ https://ngs.io/
 Version history
 ---------------
 
+[2.2.0]
+
+- Build Artifacts are now downloaded to iCloud Drive
+- Change Application Icon on changing color scheme
+
 [2.1.0]
 
 - Today Extension
