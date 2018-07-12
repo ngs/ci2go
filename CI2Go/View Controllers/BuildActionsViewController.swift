@@ -158,6 +158,7 @@ class BuildActionsViewController: UITableViewController {
             }))
         }
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        controller.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
         present(controller, animated: true, completion: nil)
     }
 
