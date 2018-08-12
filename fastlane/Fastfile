@@ -115,6 +115,11 @@ platform :ios do
     increment_version_number bump_type: 'minor'
   end
 
+  desc 'Increment patch version'
+  lane :increment_patch_version do
+    increment_version_number bump_type: 'patch'
+  end
+
   desc 'Upload Coverage data to Coveralls'
   lane :send_coveralls do
     coveralls(

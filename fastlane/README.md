@@ -76,6 +76,11 @@ Take screenshots
 fastlane ios increment_minor_version
 ```
 Increment minor version
+### ios increment_patch_version
+```
+fastlane ios increment_patch_version
+```
+Increment patch version
 ### ios send_coveralls
 ```
 fastlane ios send_coveralls
