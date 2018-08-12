@@ -42,11 +42,7 @@ class TodayViewController: UIViewController {
         if let cache = [Build].fromCache() {
             diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, cache)])
         }
-        if let date = [Build].cacheFile.modifiedDate {
-            updatedTimeLabel.text = "Last update " + dateFormatter.string(from: date)
-        } else {
-            updatedTimeLabel.text = ""
-        }
+        updateLastUpdateLabel(date: [Build].cacheFile.modifiedDate)
     }
 
     @IBAction func refresh(_ sender: Any) {
@@ -67,7 +63,7 @@ class TodayViewController: UIViewController {
         guard
             let activeDisplayMode = activeDisplayMode ?? self.extensionContext?.widgetActiveDisplayMode,
             !builds.isEmpty else {
-            return
+                return
         }
         let width = width ?? preferredContentSize.width
 
@@ -114,12 +110,19 @@ class TodayViewController: UIViewController {
             DispatchQueue.main.async {
                 self.diffCalculator.sectionedValues = SectionedValues<Int, Build>([(0, newBuilds)])
                 self.updatePreferredContentSize()
-                self.updatedTimeLabel.text = "Last update: " + self.dateFormatter.string(from: Date())
+                self.updateLastUpdateLabel(date: Date())
                 completionHandler?(.newData)
             }
             }.resume()
     }
 
+    func updateLastUpdateLabel(date: Date?) {
+        if let date = date {
+            updatedTimeLabel.text = "Last update " + dateFormatter.string(from: date)
+        } else {
+            updatedTimeLabel.text = ""
+        }
+    }
 }
 
 extension TodayViewController: NCWidgetProviding {

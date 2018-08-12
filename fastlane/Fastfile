@@ -30,7 +30,10 @@ platform :ios do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     build_app(
       export_method: 'ad-hoc',
-      output_directory: './build/adhoc'
+      output_directory: './build/adhoc',
+      export_options: {
+        iCloudContainerEnvironment: 'Production'
+      }
     )
   end
 
@@ -113,6 +116,11 @@ platform :ios do
   desc 'Increment minor version'
   lane :increment_minor_version do
     increment_version_number bump_type: 'minor'
+  end
+
+  desc 'Increment patch version'
+  lane :increment_patch_version do
+    increment_version_number bump_type: 'patch'
   end
 
   desc 'Upload Coverage data to Coveralls'
