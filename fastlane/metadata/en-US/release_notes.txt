@@ -1,2 +1,2 @@
-- Build Artifacts are now downloaded to iCloud Drive
-- Change Application Icon on changing color scheme
+- Make web view translucent while retrieving CircleCI token
+- Update labelling
