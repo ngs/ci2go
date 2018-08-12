@@ -30,7 +30,10 @@ platform :ios do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     build_app(
       export_method: 'ad-hoc',
-      output_directory: './build/adhoc'
+      output_directory: './build/adhoc',
+      export_options: {
+        iCloudContainerEnvironment: 'Production'
+      }
     )
   end
 
