@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                     return
                 }
                 let isCircle = Hostname(url: navigationAction.request.url)?.isCircleCI == true
-                webView.alpha = isCircle ? 0 : 1
+                webView.alpha = isCircle ? 0.2 : 1
                 webView.isUserInteractionEnabled = !isCircle
                 navigationItem.rightBarButtonItem = UIBarButtonItem(
                     activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
