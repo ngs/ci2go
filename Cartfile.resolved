@@ -1,5 +1,5 @@
 github "AgileBits/onepassword-extension" "bcc4cc97fed9a6e73fa204f2e61138e353cb3ef7"
-github "ashleymills/Reachability.swift" "v4.1.0"
+github "ashleymills/Reachability.swift" "v4.2.1"
 github "daltoniam/Starscream" "3.0.5"
 github "icanzilb/TaskQueue" "1.1.1"
 github "jdg/MBProgressHUD" "1.1.0"
