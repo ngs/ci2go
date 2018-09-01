@@ -75,6 +75,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         doneButtonItem.isEnabled = isTokenValid
         tableView.reloadData()
+        if Keychain.shared.token == nil {
+            logout()
+        }
     }
 
     override func viewDidLoad() {

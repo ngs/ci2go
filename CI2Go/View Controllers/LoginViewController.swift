@@ -35,9 +35,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard
             let url = navigationAction.request.url,
-            Hostname(url: url) == .app,
-            url.path.hasPrefix("/token/"),
-            url.pathComponents.count > 2
+            Hostname(url: url) == .app
             else {
                 if let isMainFrame = navigationAction.targetFrame?.isMainFrame, !isMainFrame {
                     decisionHandler(.cancel)
@@ -51,10 +49,16 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                 decisionHandler(.allow)
                 return
         }
-        let token = url.pathComponents[2]
+        if url.path.hasPrefix("/token/") {
+            let token = url.pathComponents[2]
+            Keychain.shared.token = token
+            WCSession.default.transferToken(token: token)
+        } else if url.path.hasPrefix("/error/") {
+            let error = url.pathComponents[2]
+            Crashlytics.sharedInstance().recordError(JSError.caught(error))
+            Keychain.shared.token = nil
+        }
         decisionHandler(.cancel)
-        Keychain.shared.token = token
-        WCSession.default.transferToken(token: token)
         performSegue(withIdentifier: .unwindSegue, sender: self)
     }
 
