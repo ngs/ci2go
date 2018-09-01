@@ -53,13 +53,14 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
             let token = url.pathComponents[2]
             Keychain.shared.token = token
             WCSession.default.transferToken(token: token)
+            decisionHandler(.cancel)
+            performSegue(withIdentifier: .unwindSegue, sender: self)
         } else if url.path.hasPrefix("/error/") {
             let error = url.pathComponents[2]
             Crashlytics.sharedInstance().recordError(JSError.caught(error))
             Keychain.shared.token = nil
+            navigationController?.popToRootViewController(animated: true)
         }
-        decisionHandler(.cancel)
-        performSegue(withIdentifier: .unwindSegue, sender: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
