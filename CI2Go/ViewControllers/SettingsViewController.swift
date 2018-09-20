@@ -173,7 +173,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
             confirmLogout()
         case let .link(_, url):
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             tableView.deselectRow(at: indexPath, animated: true)
         case let .auth(provider):
             guard let cell = cell as? LoginProviderTableViewCell else {
@@ -203,9 +203,4 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             }
         }
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
