@@ -116,6 +116,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         handler(nil)
     }
 
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     func template(for complication: CLKComplication) -> CLKComplicationTemplate {
         let appNameTextProvider = CLKTextProvider.localizableTextProvider(withStringsFileTextKey: "CI2Go")
         let emptyTextProvider = CLKTextProvider.localizableTextProvider(withStringsFileTextKey: "")
@@ -149,6 +150,40 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             tmpl.imageProvider = CLKImageProvider(onePieceImage: #imageLiteral(resourceName: "appicon-utilitarian"))
             tmpl.textProvider = appNameTextProvider
             return tmpl
+        case .graphicCorner:
+            if #available(watchOSApplicationExtension 5.0, *) {
+                let tmpl = CLKComplicationTemplateGraphicCornerTextImage()
+                tmpl.imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+                tmpl.textProvider = appNameTextProvider
+                return tmpl
+            } else {
+                fatalError()
+            }
+        case .graphicBezel:
+            if #available(watchOSApplicationExtension 5.0, *) {
+                let tmpl = CLKComplicationTemplateGraphicBezelCircularText()
+                tmpl.textProvider = appNameTextProvider
+                return tmpl
+            } else {
+                fatalError()
+            }
+        case .graphicCircular:
+            if #available(watchOSApplicationExtension 5.0, *) {
+                let tmpl = CLKComplicationTemplateGraphicCircularOpenGaugeImage()
+                tmpl.bottomImageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+                return tmpl
+            } else {
+                fatalError()
+            }
+        case .graphicRectangular:
+            if #available(watchOSApplicationExtension 5.0, *) {
+                let tmpl = CLKComplicationTemplateGraphicRectangularLargeImage()
+                tmpl.imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+                tmpl.textProvider = appNameTextProvider
+                return tmpl
+            } else {
+                fatalError()
+            }
         }
     }
 }
