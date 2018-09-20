@@ -5321,20 +5321,20 @@
 		85B4CD8120D23E2D005A6DA9 /* CI2Go */ = {
 			isa = PBXGroup;
 			children = (
-				85CAFBAB20F489EC00F677FB /* App Icons */,
+				85CAFBAB20F489EC00F677FB /* AppIcons */,
 				8582284A20E5D68C0092B8CF /* Assets */,
 				85B4CD8220D23E2D005A6DA9 /* AppDelegate.swift */,
 				8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */,
 				85CAE26820D62013002CD128 /* Constants.swift */,
 				85B4CD8920D23E2F005A6DA9 /* Assets.xcassets */,
-				85CAE12C20D5BAE1002CD128 /* Color Schemes */,
+				85CAE12C20D5BAE1002CD128 /* ColorSchemes */,
 				85CAE22F20D5DBAF002CD128 /* Data */,
 				85CAE22E20D5DBAF002CD128 /* Extensions */,
 				85CAE1A120D5BAE2002CD128 /* Fonts */,
 				85CAE26720D61EFA002CD128 /* Networking */,
 				853D1A7020D6D99800C7F4FC /* Views */,
 				85B4CD8620D23E2D005A6DA9 /* Main.storyboard */,
-				85CAE22D20D5DBAE002CD128 /* View Controllers */,
+				85CAE22D20D5DBAE002CD128 /* ViewControllers */,
 				85CAE25C20D6060A002CD128 /* Supporting Files */,
 			);
 			path = CI2Go;
@@ -6950,7 +6950,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		85CAE12C20D5BAE1002CD128 /* Color Schemes */ = {
+		85CAE12C20D5BAE1002CD128 /* ColorSchemes */ = {
 			isa = PBXGroup;
 			children = (
 				85CAE13920D5BAE1002CD128 /* 3024 Day.itermcolors */,
@@ -7070,7 +7070,7 @@
 				85CAE17020D5BAE1002CD128 /* Wryan.itermcolors */,
 				85CAE13020D5BAE1002CD128 /* Zenburn.itermcolors */,
 			);
-			path = "Color Schemes";
+			path = ColorSchemes;
 			sourceTree = "<group>";
 		};
 		85CAE1A120D5BAE2002CD128 /* Fonts */ = {
@@ -7104,7 +7104,7 @@
 			path = ANSIEscapeHelper;
 			sourceTree = "<group>";
 		};
-		85CAE22D20D5DBAE002CD128 /* View Controllers */ = {
+		85CAE22D20D5DBAE002CD128 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				8566096020D72B7700557249 /* BranchesViewController.swift */,
@@ -7121,7 +7121,7 @@
 				8566096E20D7409000557249 /* SettingsViewController.swift */,
 				8566097020D740A800557249 /* TextViewController.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		85CAE22E20D5DBAF002CD128 /* Extensions */ = {
@@ -7229,7 +7229,7 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		85CAFBAB20F489EC00F677FB /* App Icons */ = {
+		85CAFBAB20F489EC00F677FB /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
 				85CAFBAC20F489EC00F677FB /* Afterglow.appiconset */,
@@ -7349,7 +7349,7 @@
 				85CA049420F489EE00F677FB /* Lavandula.appiconset */,
 				85CA04A820F489EE00F677FB /* Square.appiconset */,
 			);
-			path = "App Icons";
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		85CAFBAC20F489EC00F677FB /* Afterglow.appiconset */ = {
