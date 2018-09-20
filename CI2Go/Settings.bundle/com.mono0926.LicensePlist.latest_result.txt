@@ -1,8 +1,8 @@
-name: CryptoSwift, nameSpecified: , owner: krzyzanowskim, version: 0.11.0
+name: CryptoSwift, nameSpecified: , owner: krzyzanowskim, version: 0.12.0
 
-name: Dwifft, nameSpecified: , owner: jflinter, version: 0.8
+name: Dwifft, nameSpecified: , owner: jflinter, version: 0.9
 
-name: FileKit, nameSpecified: , owner: nvzqz, version: v5.1.0
+name: FileKit, nameSpecified: , owner: nvzqz, version: v5.2.0
 
 name: KeychainAccess, nameSpecified: , owner: kishikawakatsumi, version: v3.1.1
 

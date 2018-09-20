@@ -227,7 +227,7 @@ class DecodingTests: XCTestCase { // swiftlint:disable:this type_body_length
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ try DateDecoder.decode($0) })
         let projects = try! decoder.decode([Project].self, from: data) // swiftlint:disable:this force_try
-        XCTAssertEqual(["master", "campfire", "ruby-2.4.0", "ts-dakoku"], projects[0].branches.map { $0.name })
+        XCTAssertEqual(["campfire", "master", "ruby-2.4.0", "ts-dakoku"], projects[0].branches.map { $0.name }.sorted())
         XCTAssertEqual(["sources.ngs.io", "ci2go", "ci2go.com", "ci2go.com"], projects.map { $0.name })
         XCTAssertEqual([
             "https://github.com/ngs/sources.ngs.io",
