@@ -31,13 +31,15 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         return loadScript(name: "fetchToken")
     }()
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard
             let url = navigationAction.request.url,
-            Hostname(url: url) == .app,
-            url.path.hasPrefix("/token/"),
-            url.pathComponents.count > 2
+            Hostname(url: url) == .app
             else {
                 if let isMainFrame = navigationAction.targetFrame?.isMainFrame, !isMainFrame {
                     decisionHandler(.cancel)
@@ -51,11 +53,18 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                 decisionHandler(.allow)
                 return
         }
-        let token = url.pathComponents[2]
-        decisionHandler(.cancel)
-        Keychain.shared.token = token
-        WCSession.default.transferToken(token: token)
-        performSegue(withIdentifier: .unwindSegue, sender: self)
+        if url.path.hasPrefix("/token/") {
+            let token = url.pathComponents[2]
+            Keychain.shared.token = token
+            WCSession.default.transferToken(token: token)
+            decisionHandler(.cancel)
+            performSegue(withIdentifier: .unwindSegue, sender: self)
+        } else if url.path.hasPrefix("/error/") {
+            let error = url.pathComponents[2]
+            Crashlytics.sharedInstance().recordError(JSError.caught(error))
+            Keychain.shared.token = nil
+            navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +75,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         webView.load(req)
         fillTotpToken()
         foregroundObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIApplicationWillEnterForeground,
+            forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: nil) { [weak self] _ in self?.fillTotpToken() }
     }

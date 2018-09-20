@@ -24,6 +24,10 @@ class ColorSchemesViewController: UITableViewController {
         }
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(

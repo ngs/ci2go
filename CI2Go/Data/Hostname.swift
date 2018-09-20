@@ -12,6 +12,7 @@ enum Hostname: String {
     case github = "github.com"
     case bitbucket = "bitbucket.org"
     case circleci = "circleci.com"
+    case atlassian = "id.atlassian.com"
     case app = "ci2go.app"
 
     init?(url: URL?) {
@@ -25,7 +26,7 @@ enum Hostname: String {
     }
 
     var isAuthProvider: Bool {
-        return self == .github || self == .bitbucket
+        return self == .github || self == .bitbucket || self == .atlassian
     }
 
     var isCircleCI: Bool {

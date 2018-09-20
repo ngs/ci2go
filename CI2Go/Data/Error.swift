@@ -13,6 +13,10 @@ enum APIError: Error {
     case notLoggedIn
 }
 
+enum JSError: Error {
+    case caught(String)
+}
+
 enum DateError: String, Error {
     case invalidDate
 }
