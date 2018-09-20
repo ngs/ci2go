@@ -72,7 +72,7 @@ class EndpointTests: XCTestCase {
     func testGetProjectBuilds() {
         let endpoint: Endpoint<[Build]> = .builds(project: project)
         XCTAssertEqual(
-            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go?offset=0&limit=30")!,
+            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go?limit=30&offset=0")!,
             endpoint.url)
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
@@ -80,7 +80,7 @@ class EndpointTests: XCTestCase {
     func testGetProjectBuildsWithParams() {
         let endpoint: Endpoint<[Build]> = .builds(project: project, offset: 20, limit: 50)
         XCTAssertEqual(
-            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go?offset=20&limit=50")!,
+            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go?limit=50&offset=20")!,
             endpoint.url)
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
@@ -88,7 +88,7 @@ class EndpointTests: XCTestCase {
     func testGetBranchBuilds() {
         let endpoint: Endpoint<[Build]> = .builds(branch: branch)
         XCTAssertEqual(
-            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go/tree/test?offset=0&limit=30")!,
+            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go/tree/test?limit=30&offset=0")!,
             endpoint.url)
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
@@ -96,7 +96,7 @@ class EndpointTests: XCTestCase {
     func testGetBranchBuildsWithParams() {
         let endpoint: Endpoint<[Build]> = .builds(branch: branch, offset: 20, limit: 50)
         XCTAssertEqual(
-            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go/tree/test?offset=20&limit=50")!,
+            URL(string: "https://circleci.com/api/v1.1/project/github/ngs/ci2go/tree/test?limit=50&offset=20")!,
             endpoint.url)
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
@@ -104,7 +104,7 @@ class EndpointTests: XCTestCase {
     func testGetRecentBuilds() {
         let endpoint: Endpoint<[Build]> = .recent
         XCTAssertEqual(
-            URL(string: "https://circleci.com/api/v1.1/recent-builds?offset=0&limit=30")!,
+            URL(string: "https://circleci.com/api/v1.1/recent-builds?limit=30&offset=0")!,
             endpoint.url)
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
@@ -112,7 +112,7 @@ class EndpointTests: XCTestCase {
     func testGetRecentBuildsWithParams() {
         let endpoint: Endpoint<[Build]> = .recent(offset: 20, limit: 50)
         XCTAssertEqual(
-            URL(string: "https://circleci.com/api/v1.1/recent-builds?offset=20&limit=50")!,
+            URL(string: "https://circleci.com/api/v1.1/recent-builds?limit=50&offset=20")!,
             endpoint.url)
         XCTAssertEqual(.get, endpoint.httpMethod)
     }
@@ -136,7 +136,7 @@ class EndpointTests: XCTestCase {
     func testURLRequestWithToken() {
         let endpoint: Endpoint<Build> = .retry(build: build)
         let headers = endpoint.urlRequest(with: "Foo").allHTTPHeaderFields!
-        let keys = Array(headers.keys)
+        let keys = Array(headers.keys).sorted()
         XCTAssertEqual(["Accept", "Authorization"], keys)
         XCTAssertEqual("application/json", headers["Accept"]!)
         XCTAssertEqual("Basic Rm9vOg==", headers["Authorization"]!)

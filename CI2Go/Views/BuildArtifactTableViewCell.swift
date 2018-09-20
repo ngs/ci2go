@@ -16,7 +16,7 @@ class BuildArtifactTableViewCell: CustomTableViewCell {
             imageView?.image = item?.icon
             if let inProgress = item?.artifact?.isInProgress, inProgress {
                 let accessoryView = UIActivityIndicatorView(
-                    activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+                    style: ColorScheme.current.activityIndicatorViewStyle)
                 accessoryView.startAnimating()
                 self.accessoryView = accessoryView
             } else if let exists = item?.artifact?.localPath.exists, !exists {

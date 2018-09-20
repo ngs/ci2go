@@ -14,7 +14,6 @@ import WatchConnectivity
 extension ColorScheme {
     func apply() { // swiftlint:disable:this function_body_length
         let app = UIApplication.shared
-        app.statusBarStyle = statusBarStyle
         app.windows.forEach { $0.tintColor = bold }
 
         let navigationBar = UINavigationBar.appearance() as UINavigationBar
@@ -62,7 +61,7 @@ extension ColorScheme {
         textView.textColor = foreground
 
         let activityIndicatorView = UIActivityIndicatorView.appearance() as UIActivityIndicatorView
-        activityIndicatorView.activityIndicatorViewStyle = activityIndicatorViewStyle
+        activityIndicatorView.style = activityIndicatorViewStyle
 
         let alertView = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
         alertView.tintColor = alertViewTint
@@ -97,11 +96,11 @@ extension ColorScheme {
         return isLight ? .default : .black
     }
 
-    var scrollViewIndicatorStyle: UIScrollViewIndicatorStyle {
+    var scrollViewIndicatorStyle: UIScrollView.IndicatorStyle {
         return isLight ? .black : .white
     }
 
-    var activityIndicatorViewStyle: UIActivityIndicatorViewStyle {
+    var activityIndicatorViewStyle: UIActivityIndicatorView.Style {
         return isLight ? .gray : .white
     }
 

@@ -104,7 +104,7 @@ struct Endpoint<T: Decodable> {
         if let parameters = parameters {
             components.queryItems = parameters.map {
                 URLQueryItem(name: $0.0, value: $0.1)
-            }
+                }.sorted(by: { $0.name < $1.name })
         }
         url = components.url!
     }

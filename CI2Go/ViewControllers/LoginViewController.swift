@@ -31,6 +31,10 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         return loadScript(name: "fetchToken")
     }()
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard
@@ -71,7 +75,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         webView.load(req)
         fillTotpToken()
         foregroundObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIApplicationWillEnterForeground,
+            forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: nil) { [weak self] _ in self?.fillTotpToken() }
     }

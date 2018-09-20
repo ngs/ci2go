@@ -82,6 +82,10 @@ class BuildsViewController: UITableViewController {
 
     // MARK: - UIViewController
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let token = Keychain.shared.token, isValidToken(token) else {
@@ -101,7 +105,7 @@ class BuildsViewController: UITableViewController {
             tableView.reloadRows(at: indexPaths, with: .none)
         }
         foregroundObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIApplicationWillEnterForeground,
+            forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: nil) { [weak self] _ in
                 self?.loadUser()
