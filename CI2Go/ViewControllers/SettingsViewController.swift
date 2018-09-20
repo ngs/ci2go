@@ -71,6 +71,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - UIViewController
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         doneButtonItem.isEnabled = isTokenValid

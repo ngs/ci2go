@@ -31,6 +31,10 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         return loadScript(name: "fetchToken")
     }()
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard

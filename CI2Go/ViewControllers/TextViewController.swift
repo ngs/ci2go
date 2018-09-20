@@ -19,6 +19,10 @@ class TextViewController: UIViewController {
         }
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.isScrollEnabled = false

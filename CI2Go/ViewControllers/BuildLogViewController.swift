@@ -33,6 +33,10 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return ColorScheme.current.statusBarStyle
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ansiHelper = ColorScheme.current.createANSIEscapeHelper()
