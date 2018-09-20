@@ -61,7 +61,7 @@ extension ColorScheme {
         textView.textColor = foreground
 
         let activityIndicatorView = UIActivityIndicatorView.appearance() as UIActivityIndicatorView
-        activityIndicatorView.activityIndicatorViewStyle = activityIndicatorViewStyle
+        activityIndicatorView.style = activityIndicatorViewStyle
 
         let alertView = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]) as UIView
         alertView.tintColor = alertViewTint
@@ -96,11 +96,11 @@ extension ColorScheme {
         return isLight ? .default : .black
     }
 
-    var scrollViewIndicatorStyle: UIScrollViewIndicatorStyle {
+    var scrollViewIndicatorStyle: UIScrollView.IndicatorStyle {
         return isLight ? .black : .white
     }
 
-    var activityIndicatorViewStyle: UIActivityIndicatorViewStyle {
+    var activityIndicatorViewStyle: UIActivityIndicatorView.Style {
         return isLight ? .gray : .white
     }
 

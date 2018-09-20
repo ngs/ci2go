@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIBarButtonItem {
-    convenience init(activityIndicatorStyle: UIActivityIndicatorViewStyle) {
-        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: activityIndicatorStyle)
+    convenience init(activityIndicatorStyle: UIActivityIndicatorView.Style) {
+        let indicatorView = UIActivityIndicatorView(style: activityIndicatorStyle)
         indicatorView.startAnimating()
         self.init(customView: indicatorView)
     }

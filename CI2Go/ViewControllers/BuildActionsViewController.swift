@@ -141,7 +141,7 @@ class BuildActionsViewController: UITableViewController {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if let url = build?.compareURL {
             controller.addAction(UIAlertAction(title: "Open diffs in browser", style: .default, handler: { _ in
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }))
         }
         controller.addAction(UIAlertAction(title: "Rerun job", style: .default, handler: { _ in
@@ -212,7 +212,7 @@ class BuildActionsViewController: UITableViewController {
             let cell = tableView.cellForRow(at: indexPath),
             let item = diffCalculator?.value(atIndexPath: indexPath) else { return }
         if let sshInfo = item.sshInfo {
-            UIApplication.shared.open(sshInfo.url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(sshInfo.url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             tableView.deselectRow(at: indexPath, animated: true)
             return
         }
@@ -223,4 +223,9 @@ class BuildActionsViewController: UITableViewController {
             performSegue(withIdentifier: item.segueIdentifier, sender: cell)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -14,13 +14,13 @@ class LoadingCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        activityIndicatorView.activityIndicatorViewStyle = ColorScheme.current.activityIndicatorViewStyle
+        activityIndicatorView.style = ColorScheme.current.activityIndicatorViewStyle
         activityIndicatorView.startAnimating()
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        activityIndicatorView.activityIndicatorViewStyle = ColorScheme.current.activityIndicatorViewStyle
+        activityIndicatorView.style = ColorScheme.current.activityIndicatorViewStyle
         activityIndicatorView.startAnimating()
     }
 }

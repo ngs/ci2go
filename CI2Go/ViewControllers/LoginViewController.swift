@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         webView.load(req)
         fillTotpToken()
         foregroundObserver = NotificationCenter.default.addObserver(
-            forName: Notification.Name.UIApplicationWillEnterForeground,
+            forName: UIApplication.willEnterForegroundNotification,
             object: nil,
             queue: nil) { [weak self] _ in self?.fillTotpToken() }
     }
