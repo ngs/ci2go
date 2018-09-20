@@ -13,11 +13,11 @@ references:
   steps:
     restore_carthage_cache: &restore_carthage_cache
       restore_cache:
-        key: 1-carthage-{{ checksum "Cartfile.resolved" }}
+        key: 1-carthage-{{ checksum "Cartfile.resolved" }}-{{ checksum ".circleci/bootstrap-carthage.sh" }}
 
     save_carthage_cache: &save_carthage_cache
       save_cache:
-        key: 1-carthage-{{ checksum "Cartfile.resolved" }}
+        key: 1-carthage-{{ checksum "Cartfile.resolved" }}-{{ checksum ".circleci/bootstrap-carthage.sh" }}
         paths:
           - Carthage
 
