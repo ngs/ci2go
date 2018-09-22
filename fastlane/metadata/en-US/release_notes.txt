@@ -1,2 +1,2 @@
-- Make web view translucent while retrieving CircleCI token
-- Update labelling
+- Migrate codebase to Swift 4.2
+- Improve authentication error handling
