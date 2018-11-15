@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  swiftlint: ngs/swiftlint@dev:latest
-  danger: ngs/danger@dev:latest
+  swiftlint: ngs/swiftlint@0.0.1
+  danger: ngs/danger@0.0.1
 
 references:
   base: &base
