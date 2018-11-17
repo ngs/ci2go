@@ -18,6 +18,7 @@
 		8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
 		852350ED20E61A91005BD0E8 /* Hostname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852350EC20E61A91005BD0E8 /* Hostname.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
+		852E13CD219FAE8B00785002 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852E13CC219FAE8B00785002 /* MainSplitViewController.swift */; };
 		8533DE1120DE368F00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */; };
 		8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
 		8533DE1620DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
@@ -2675,6 +2676,7 @@
 		8504A09920DC1DB5001D0C08 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		852350EC20E61A91005BD0E8 /* Hostname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hostname.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		852E13CC219FAE8B00785002 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
 		8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsExtension+Shared.swift"; sourceTree = "<group>"; };
@@ -7120,6 +7122,7 @@
 				8566096C20D7407D00557249 /* ProjectsViewController.swift */,
 				8566096E20D7409000557249 /* SettingsViewController.swift */,
 				8566097020D740A800557249 /* TextViewController.swift */,
+				852E13CC219FAE8B00785002 /* MainSplitViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -11636,6 +11639,7 @@
 				8566096920D7405C00557249 /* BuildsViewController.swift in Sources */,
 				8582284E20E5DA630092B8CF /* UIBarButtonItemExtension.swift in Sources */,
 				853D1A6F20D6CD6400C7F4FC /* ColorScheme+UI.swift in Sources */,
+				852E13CD219FAE8B00785002 /* MainSplitViewController.swift in Sources */,
 				85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */,
 				85CAE25820D60017002CD128 /* BuildAction.swift in Sources */,
 				8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */,

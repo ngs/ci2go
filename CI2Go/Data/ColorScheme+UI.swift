@@ -14,7 +14,10 @@ import WatchConnectivity
 extension ColorScheme {
     func apply() { // swiftlint:disable:this function_body_length
         let app = UIApplication.shared
-        app.windows.forEach { $0.tintColor = bold }
+        app.windows.forEach {
+            $0.tintColor = bold
+            $0.rootViewController?.setNeedsStatusBarAppearanceUpdate()
+        }
 
         let navigationBar = UINavigationBar.appearance() as UINavigationBar
         navigationBar.barTintColor = background
