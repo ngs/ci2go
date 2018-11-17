@@ -7,11 +7,11 @@ orbs:
 references:
   base: &base
     macos:
-      xcode: "10.0.0"
+      xcode: "10.1.0"
     environment:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
-      XCODE_PATH: /Applications/Xcode-10.app
+      XCODE_PATH: /Applications/Xcode.app
       FASTLANE_SKIP_UPDATE_CHECK: 1
 
   steps:
