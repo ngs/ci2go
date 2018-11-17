@@ -32,3 +32,5 @@ func isTOTP(_ token: String) -> Bool {
 }
 
 let shortHashLength = 7
+
+let inAppHost = "ci2go.app"

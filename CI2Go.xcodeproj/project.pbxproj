@@ -19,6 +19,7 @@
 		852350ED20E61A91005BD0E8 /* Hostname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852350EC20E61A91005BD0E8 /* Hostname.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		852E13CD219FAE8B00785002 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852E13CC219FAE8B00785002 /* MainSplitViewController.swift */; };
+		852E13D1219FC0B500785002 /* KeychainWCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852E13D0219FC0B500785002 /* KeychainWCExtension.swift */; };
 		8533DE1120DE368F00CA7E0C /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */; };
 		8533DE1520DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
 		8533DE1620DE392300CA7E0C /* WCSessionDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */; };
@@ -2677,6 +2678,7 @@
 		852350EC20E61A91005BD0E8 /* Hostname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hostname.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		852E13CC219FAE8B00785002 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		852E13D0219FC0B500785002 /* KeychainWCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWCExtension.swift; sourceTree = "<group>"; };
 		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
 		8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsExtension+Shared.swift"; sourceTree = "<group>"; };
@@ -7134,6 +7136,7 @@
 				856609AE20D8D58700557249 /* DateExtension.swift */,
 				8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */,
 				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
+				852E13D0219FC0B500785002 /* KeychainWCExtension.swift */,
 				856609BE20D979B200557249 /* MBProgressHUDExtension.swift */,
 				853D1A6A20D6BEAC00C7F4FC /* PusherExtension.swift */,
 				856609B820D966FC00557249 /* SegueExtension.swift */,
@@ -11667,6 +11670,7 @@
 				853D1A7220D6D9C500C7F4FC /* SettingsTableView.swift in Sources */,
 				8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */,
 				856D904620DAB5770030F432 /* BuildLog.swift in Sources */,
+				852E13D1219FC0B500785002 /* KeychainWCExtension.swift in Sources */,
 				8533DE9320DE445600CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
 				8566096D20D7407D00557249 /* ProjectsViewController.swift in Sources */,
 				85CAE24A20D5F00F002CD128 /* VCS.swift in Sources */,

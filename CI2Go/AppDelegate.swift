@@ -32,22 +32,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                      open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         guard
-            let build = Build(inAppURL: url) ?? Build(webURL: url),
-            let splitVC = window?.rootViewController as? UISplitViewController,
-            let viewController: BuildsViewController = splitVC.viewControllers
-                .map({ (viewController: UIViewController) -> BuildsViewController? in
-                    guard
-                        let nvc = viewController as? UINavigationController,
-                        let viewController = nvc.viewControllers.first as? BuildsViewController
-                        else { return nil }
-                    return viewController
-                })
-                .first(where: { $0 != nil }) as? BuildsViewController
+            let splitVC = window?.rootViewController as? MainSplitViewController,
+            let viewController = splitVC.buildsViewController
             else { return false }
 
-        viewController.navigationController?.popToViewController(viewController, animated: false)
-        viewController.performSegue(withIdentifier: .showBuildDetail, sender: build)
-        return true
+        if let build = Build(inAppURL: url) ?? Build(webURL: url) {
+            viewController.navigationController?.popToViewController(viewController, animated: false)
+            viewController.performSegue(withIdentifier: .showBuildDetail, sender: build)
+            return true
+        }
+        if url.host == inAppHost &&
+            url.pathComponents.count == 3 &&
+            url.pathComponents[1] == "token" {
+            let token = url.pathComponents[2]
+            viewController.logout(showSettings: false)
+            viewController.presentedViewController?.dismiss(animated: false, completion: nil)
+            Keychain.shared.setAndTransfer(token: token)
+            viewController.navigationController?.popToViewController(viewController, animated: false)
+            return true
+        }
+        return false
     }
 
     // MARK: - Split View

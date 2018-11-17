@@ -9,7 +9,6 @@
 import UIKit
 import WebKit
 import KeychainAccess
-import WatchConnectivity
 import OnePasswordExtension
 import Crashlytics
 
@@ -55,8 +54,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         }
         if url.path.hasPrefix("/token/") {
             let token = url.pathComponents[2]
-            Keychain.shared.token = token
-            WCSession.default.transferToken(token: token)
+            Keychain.shared.setAndTransfer(token: token)
             decisionHandler(.cancel)
             performSegue(withIdentifier: .unwindSegue, sender: self)
         } else if url.path.hasPrefix("/error/") {

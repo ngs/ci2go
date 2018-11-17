@@ -66,6 +66,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             values.append((colorSchemeTitle, [.colorScheme]))
             values.append((supportTitle, linkItems))
         }
+        navigationItem.rightBarButtonItem?.isEnabled = isTokenValid
         diffCalculator.sectionedValues = SectionedValues<String?, RowItem>(values)
     }
 
