@@ -207,16 +207,23 @@ class BuildsViewController: UITableViewController {
         pusher.connect()
     }
 
-    func logout() {
+    func logout(showSettings: Bool = true) {
         Pusher.logout()
         builds = []
         Keychain.shared.token = nil
-        DispatchQueue.main.async {
-            self.showSettings()
+        if showSettings {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                self.showSettings()
+            })
         }
     }
 
     func showSettings() {
+        if let settingsViewControler = (presentedViewController as? UINavigationController)?
+            .viewControllers.first as? SettingsViewController {
+            settingsViewControler.refreshData()
+            return
+        }
         performSegue(withIdentifier: .showSettings, sender: nil)
     }
 

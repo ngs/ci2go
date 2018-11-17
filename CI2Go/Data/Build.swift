@@ -115,7 +115,7 @@ struct Build: Decodable, EndpointConvertable {
         let comps = inAppURL.pathComponents
         guard
             let scheme = inAppURL.scheme, scheme == "ci2go",
-            let host = inAppURL.host, host == "ci2go.app",
+            let host = inAppURL.host, host == inAppHost,
             comps.count == 6 && comps[1] == "project",
             let vcs = VCS(rawValue: comps[2]),
             let num = Int(comps[5])
