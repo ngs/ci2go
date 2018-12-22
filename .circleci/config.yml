@@ -3,239 +3,226 @@ version: 2.1
 orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
+  xcode:
+    executors:
+      macos:
+        macos:
+          xcode: "10.1.0"
+        environment:
+          XCODE_PATH: /Applications/Xcode.app
+          FASTLANE_SKIP_UPDATE_CHECK: 1
 
-references:
-  base: &base
-    macos:
-      xcode: "10.1.0"
-    environment:
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
-      XCODE_PATH: /Applications/Xcode.app
-      FASTLANE_SKIP_UPDATE_CHECK: 1
+    jobs:
+      build:
+        executor: macos
+        parameters:
+          target:
+            default: ''
+            description: 'Target to build: `release`, `beta`'
+            type: string
+        steps:
+          - setup
+          - fastlane:
+              lane: << parameters.target >>_match
+          - fastlane:
+              lane: set_build_number
+          - fastlane:
+              lane: << parameters.target >>_build
+          - store_artifacts:
+              path: build
+              destination: build
+          - store_artifacts:
+              path: ~/Library/Logs/gym
+              destination: logs/gym
+          - persist_to_workspace:
+              root: build
+              paths:
+                - << parameters.target >>
 
-  steps:
-    restore_carthage_cache: &restore_carthage_cache
-      restore_cache:
-        key: 1-carthage-{{ checksum "Cartfile.resolved" }}-{{ checksum ".circleci/bootstrap-carthage.sh" }}
+      upload:
+        executor: macos
+        parameters:
+          target:
+            default: ''
+            description: 'Target to build: `release`, `beta`'
+            type: string
+        steps:
+          - checkout
+          - attach_workspace:
+              at: build
+          - bundle_install
+          - fastlane:
+              lane: << parameters.target >>_match
+          - fastlane:
+              lane: << parameters.target >>_upload
 
-    save_carthage_cache: &save_carthage_cache
-      save_cache:
-        key: 1-carthage-{{ checksum "Cartfile.resolved" }}-{{ checksum ".circleci/bootstrap-carthage.sh" }}
-        paths:
-          - Carthage
+      fastlane:
+        executor: macos
+        parameters:
+          lane:
+            default: ''
+            description: 'lane to run'
+            type: string
+        steps:
+          - checkout
+          - bundle_install
+          - fastlane:
+              lane: << parameters.lane >>
 
-    restore_bundler_cache: &restore_bundler_cache
-      restore_cache:
-        key: 1-bundler-{{ checksum "Gemfile.lock" }}
+      tests:
+        executor: macos
+        steps:
+          - setup
+          - fastlane:
+              lane: tests
+          #- fastlane:
+          #   lane: send_coveralls
+          - store_test_results:
+              path: fastlane/test_output
+          - store_artifacts:
+              path: fastlane/test_output
+              destination: test_output
+          - store_artifacts:
+              path: ~/Library/Logs/scan
+              destination: logs/scan
 
-    save_bundler_cache: &save_bundler_cache
-      save_cache:
-        key: 1-bundler-{{ checksum "Gemfile.lock" }}
-        paths:
-          - Vendor/bundler
+      screenshots:
+        executor: macos
+        steps:
+          - setup
+          - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
+          - persist_to_workspace:
+              root: fastlane
+              paths:
+                - screenshots
+          - store_artifacts:
+              path: fastlane/screenshots
+              destination: screenshots
+          - store_artifacts:
+              path: ~/Library/Logs/snapshot
+              destination: logs/snapshot
 
-    store_build_artifacts: &store_build_artifacts
-      store_artifacts:
-        path: build
-        destination: build
+    commands:
+      bundle_install:
+        steps:
+          - restore_cache:
+              key: 1-bundler-{{ checksum "Gemfile.lock" }}
+          - run:
+              name: 'Bundle install'
+              command: bundle install --path Vendor/bundler
+          - save_cache:
+              key: 1-bundler-{{ checksum "Gemfile.lock" }}
+              paths:
+                - Vendor/bundler
 
-    store_gym_logs: &store_gym_logs
-      store_artifacts:
-        path: ~/Library/Logs/gym
-        destination: logs/gym
+      setup:
+        steps:
+          - checkout
+          - restore_cache:
+              key: 1-carthage-{{ checksum "Cartfile.resolved" }}
+          - run:
+              name: 'Setup Carthage'
+              command: |
+                if ! cmp -s Cartfile.resolved Carthage/Cartfile.resolved; then
+                  carthage bootstrap --no-build
+                  # Patch pbxproj https://stackoverflow.com/a/52315766
+                  find Carthage/Checkouts \( -name '*.pbxproj' -o -name '*.xcconfig' \) -print0 | xargs -0 sed -i "" "s/WATCHOS_DEPLOYMENT_TARGET = 2.0/WATCHOS_DEPLOYMENT_TARGET = 5.0/g"
+                  carthage build --platform iOS,watchOS
+                  cp Cartfile.resolved Carthage/Cartfile.resolved
+                fi
+          - save_cache:
+              key: 1-carthage-{{ checksum "Cartfile.resolved" }}
+              paths:
+                - Carthage
+          - bundle_install
 
-    bundle_install: &bundle_install
-      run: bundle install --path Vendor/bundler
-
-    attach_build_workspace: &attach_build_workspace
-      attach_workspace:
-        at: build
-
-jobs:
-  tests:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *restore_carthage_cache
-      - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_carthage_cache
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane set_build_number
-      - run: bundle exec fastlane tests
-      # - run: bundle exec fastlane send_coveralls
-      - store_test_results:
-          path: fastlane/test_output
-      - store_artifacts:
-          path: fastlane/test_output
-          destination: test_output
-      - store_artifacts:
-          path: ~/Library/Logs/scan
-          destination: logs/scan
-
-  screenshots:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *restore_carthage_cache
-      - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_carthage_cache
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane set_build_number
-      - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
-      - persist_to_workspace:
-          root: fastlane
-          paths:
-            - screenshots
-      - store_artifacts:
-          path: fastlane/screenshots
-          destination: screenshots
-      - store_artifacts:
-          path: ~/Library/Logs/snapshot
-          destination: logs/snapshot
-
-  beta_build:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *restore_carthage_cache
-      - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_carthage_cache
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane beta_match
-      - run: bundle exec fastlane set_build_number
-      - run: bundle exec fastlane beta_build
-      - <<: *store_build_artifacts
-      - <<: *store_gym_logs
-      - persist_to_workspace:
-          root: build
-          paths:
-            - adhoc
-
-  beta_upload:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *attach_build_workspace
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane beta_match
-      - run: bundle exec fastlane beta_upload
-
-  release_build:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *restore_carthage_cache
-      - run: .circleci/bootstrap-carthage.sh
-      - <<: *save_carthage_cache
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane release_match
-      - run: bundle exec fastlane set_build_number
-      - run: bundle exec fastlane release_build
-      - <<: *store_build_artifacts
-      - <<: *store_gym_logs
-      - persist_to_workspace:
-          root: build
-          paths:
-            - release
-
-  release_upload:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *attach_build_workspace
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane release_match
-      - run: bundle exec fastlane release_upload
-
-  release_metadata:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane release_metadata
-
-  release_screenshots:
-    <<: *base
-    steps:
-      - checkout
-      - <<: *restore_bundler_cache
-      - <<: *bundle_install
-      - <<: *save_bundler_cache
-      - run: bundle exec fastlane release_screenshots
+      fastlane:
+        parameters:
+          lane:
+            default: ''
+            description: 'lane to run'
+            type: string
+        steps:
+          - run:
+              name: 'fastlane << parameters.lane >>'
+              command: 'bundle exec fastlane << parameters.lane >>'
 
 workflows:
   version: 2
   app:
     jobs:
       - swiftlint/run:
+          name: swiftlint
           filters:
             branches:
               ignore: [screenshots, metadata]
 
       - danger/run:
+          name: danger
           filters:
             branches:
               ignore: [screenshots, metadata]
 
-      - tests:
+      - xcode/tests:
+          name: tests
           requires:
-            - swiftlint/run
-            - danger/run
+            - swiftlint
+            - danger
           filters:
             branches:
               ignore: [screenshots, metadata]
 
-      - screenshots:
+      - xcode/screenshots:
           filters:
             branches:
               only: new-screenshots
 
-      - beta_build:
+      - xcode/build:
+          name: beta_build
+          target: beta
           requires:
             - tests
           filters:
             branches:
               only: [develop]
 
-      - beta_upload:
+      - xcode/upload:
+          name: beta_upload
+          target: beta
           requires:
             - beta_build
+          filters:
+            branches:
+              only: [develop]
 
-      - release_build:
+      - xcode/build:
+          name: release_build
+          target: release
           requires:
             - tests
           filters:
             branches:
               only: [master, /release-.+/]
 
-      - release_upload:
+      - xcode/upload:
+          name: release_upload
+          target: release
           requires:
             - release_build
           filters:
             branches:
               ignore: metadata
 
-      - release_metadata:
+      - xcode/fastlane:
+          name: release_metadata
+          lane: release_metadata
           filters:
             branches:
               only: [master, metadata]
 
-      - release_screenshots:
+      - xcode/fastlane:
+          name: release_screenshots
+          lane: release_screenshots
           filters:
             branches:
               only: screenshots

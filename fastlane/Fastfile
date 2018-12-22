@@ -22,7 +22,7 @@ platform :ios do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     build_app(
       export_method: 'ad-hoc',
-      output_directory: './build/adhoc',
+      output_directory: './build/beta',
       export_options: {
         iCloudContainerEnvironment: 'Production'
       }
@@ -33,7 +33,7 @@ platform :ios do
   lane :beta_upload do
     crashlytics(
       crashlytics_path: 'Vendor/Crashlytics.framework',
-      ipa_path: './build/adhoc/CI2Go.ipa',
+      ipa_path: './build/beta/CI2Go.ipa',
       api_token: '4f9578d15d7c0f51fa422575e9b409e496ebe259',
       notifications: true,
       notes: `git log -1 --pretty=%B`
