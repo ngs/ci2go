@@ -3,12 +3,12 @@ version: 2.1
 orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
-  fastlane: ngs/fastlane@0.0.1
+  fastlane: ngs/fastlane@0.0.2
 
   app:
     orbs:
       carthage: ngs/carthage@0.0.2
-      fastlane: ngs/fastlane@0.0.1
+      fastlane: ngs/fastlane@0.0.2
 
     commands:
       setup:
