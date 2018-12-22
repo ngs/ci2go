@@ -3,22 +3,25 @@ version: 2.1
 orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
-  xcode:
-    orbs:
-      carthage: ngs/carthage@0.0.1
-      # fastlane: ngs/fastlane@dev:local
+  fastlane: ngs/fastlane@dev:local
 
-    executors:
-      macos:
-        macos:
-          xcode: "10.1.0"
-        environment:
-          XCODE_PATH: /Applications/Xcode.app
-          FASTLANE_SKIP_UPDATE_CHECK: 1
+  app:
+    orbs:
+      carthage: ngs/carthage@dev:local
+      fastlane: ngs/fastlane@dev:local
+
+    commands:
+      setup:
+        steps:
+          - checkout
+          - carthage/setup:
+              platforms: iOS,watchOS
+              watch_os: '5.0'
+          - fastlane/bundle-install
 
     jobs:
       build:
-        executor: macos
+        executor: fastlane/macos
         parameters:
           target:
             default: ''
@@ -26,12 +29,12 @@ orbs:
             type: string
         steps:
           - setup
-          - fastlane:
-              lane: << parameters.target >>_match
-          - fastlane:
-              lane: set_build_number
-          - fastlane:
-              lane: << parameters.target >>_build
+          - fastlane/lane:
+              command: << parameters.target >>_match
+          - fastlane/lane:
+              command: set_build_number
+          - fastlane/lane:
+              command: << parameters.target >>_build
           - store_artifacts:
               path: build
               destination: build
@@ -43,7 +46,7 @@ orbs:
               paths: [<< parameters.target >>]
 
       upload:
-        executor: macos
+        executor: fastlane/macos
         parameters:
           target:
             default: ''
@@ -53,33 +56,20 @@ orbs:
           - checkout
           - attach_workspace:
               at: build
-          - bundle_install
-          - fastlane:
-              lane: << parameters.target >>_match
-          - fastlane:
-              lane: << parameters.target >>_upload
-
-      fastlane:
-        executor: macos
-        parameters:
-          lane:
-            default: ''
-            description: 'lane to run'
-            type: string
-        steps:
-          - checkout
-          - bundle_install
-          - fastlane:
-              lane: << parameters.lane >>
+          - fastlane/bundle-install
+          - fastlane/lane:
+              command: << parameters.target >>_match
+          - fastlane/lane:
+              command: << parameters.target >>_upload
 
       tests:
-        executor: macos
+        executor: fastlane/macos
         steps:
           - setup
-          - fastlane:
-              lane: tests
+          - fastlane/lane:
+              command: tests
           #- fastlane:
-          #   lane: send_coveralls
+          #   command: send_coveralls
           - store_test_results:
               path: fastlane/test_output
           - store_artifacts:
@@ -90,53 +80,19 @@ orbs:
               destination: logs/scan
 
       screenshots:
-        executor: macos
+        executor: fastlane/macos
         steps:
           - setup
           - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
           - persist_to_workspace:
               root: fastlane
-              paths:
-                - screenshots
+              paths: [screenshots]
           - store_artifacts:
               path: fastlane/screenshots
               destination: screenshots
           - store_artifacts:
               path: ~/Library/Logs/snapshot
               destination: logs/snapshot
-
-    commands:
-      bundle_install:
-        steps:
-          - restore_cache:
-              key: 1-bundler-{{ checksum "Gemfile.lock" }}
-          - run:
-              name: 'Bundle install'
-              command: bundle install --path Vendor/bundler
-          - save_cache:
-              key: 1-bundler-{{ checksum "Gemfile.lock" }}
-              paths:
-                - Vendor/bundler
-
-      setup:
-        steps:
-          - checkout
-          - carthage/setup:
-              platforms: iOS,watchOS
-              cache_key_prefix: 2-carthage-
-              watch_os: '5.0'
-          - bundle_install
-
-      fastlane:
-        parameters:
-          lane:
-            default: ''
-            description: 'lane to run'
-            type: string
-        steps:
-          - run:
-              name: 'fastlane << parameters.lane >>'
-              command: 'bundle exec fastlane << parameters.lane >>'
 
 workflows:
   version: 2
@@ -154,21 +110,19 @@ workflows:
             branches:
               ignore: [screenshots, metadata]
 
-      - xcode/tests:
+      - app/tests:
           name: tests
-          requires:
-            - swiftlint
-            - danger
+          requires: [swiftlint, danger]
           filters:
             branches:
               ignore: [screenshots, metadata]
 
-      - xcode/screenshots:
+      - app/screenshots:
           filters:
             branches:
               only: new-screenshots
 
-      - xcode/build:
+      - app/build:
           name: beta_build
           target: beta
           requires: [tests]
@@ -176,7 +130,7 @@ workflows:
             branches:
               only: [develop]
 
-      - xcode/upload:
+      - app/upload:
           name: beta_upload
           target: beta
           requires: [beta_build]
@@ -184,7 +138,7 @@ workflows:
             branches:
               only: [develop]
 
-      - xcode/build:
+      - app/build:
           name: release_build
           target: release
           requires: [tests]
@@ -192,25 +146,24 @@ workflows:
             branches:
               only: [master, /release-.+/]
 
-      - xcode/upload:
+      - app/upload:
           name: release_upload
           target: release
-          requires:
-            - release_build
+          requires: [release_build]
           filters:
             branches:
               ignore: metadata
 
-      - xcode/fastlane:
+      - fastlane/lane:
           name: release_metadata
-          lane: release_metadata
+          command: release_metadata
           filters:
             branches:
               only: [master, metadata]
 
-      - xcode/fastlane:
+      - fastlane/lane:
           name: release_screenshots
-          lane: release_screenshots
+          command: release_screenshots
           filters:
             branches:
               only: screenshots
