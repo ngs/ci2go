@@ -5,7 +5,7 @@ orbs:
   danger: ngs/danger@0.0.1
   xcode:
     orbs:
-      carthage: ngs/carthage@dev:local
+      carthage: ngs/carthage@0.0.1
       # fastlane: ngs/fastlane@dev:local
 
     executors:
