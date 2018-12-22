@@ -3,12 +3,12 @@ version: 2.1
 orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
-  fastlane: ngs/fastlane@dev:local
+  fastlane: ngs/fastlane@0.0.1
 
   app:
     orbs:
-      carthage: ngs/carthage@dev:local
-      fastlane: ngs/fastlane@dev:local
+      carthage: ngs/carthage@0.0.2
+      fastlane: ngs/fastlane@0.0.1
 
     commands:
       setup:
@@ -95,7 +95,6 @@ orbs:
               destination: logs/snapshot
 
 workflows:
-  version: 2
   app:
     jobs:
       - swiftlint/run:
