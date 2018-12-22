@@ -4,6 +4,10 @@ orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
   xcode:
+    orbs:
+      carthage: ngs/carthage@dev:local
+      # fastlane: ngs/fastlane@dev:local
+
     executors:
       macos:
         macos:
@@ -114,92 +118,14 @@ orbs:
               paths:
                 - Vendor/bundler
 
-      carthage_if_needed:
-        parameters:
-          command:
-            default: ''
-            description: 'Command to run'
-            type: string
-        steps:
-          - run:
-              name: 'carthage << parameters.command >>'
-              command: 'cmp -s Cartfile.resolved Carthage/Cartfile.resolved || carthage << parameters.command >>'
-
-      replace_target:
-        parameters:
-          os:
-            description: 'Target OS upparcase name: `IPHONEOS`, `MACOSX`, `TVOS`, `WATCHOS`'
-            type: string
-          version:
-            description: 'Target version to replace'
-            type: string
-        steps:
-          - when:
-              condition: << parameters.version >>
-              steps:
-                - run:
-                    name: 'Replace Carthage checouts << parameters.os >>_DEPLOYMENT_TARGET to << parameters.version >>'
-                    command: |
-                      find Carthage/Checkouts \( -name '*.pbxproj' -o -name '*.xcconfig' \) -print0 | \
-                        xargs -0 sed -i "" "s/<< parameters.os >>_DEPLOYMENT_TARGET = [0-9].[0-9]/<< parameters.os >>_DEPLOYMENT_TARGET = << parameters.version >>/g"
-
       setup:
         steps:
           - checkout
-          - carthage_setup:
+          - carthage/setup:
               platforms: iOS,watchOS
               cache_key_prefix: 2-carthage-
               watch_os: '5.0'
           - bundle_install
-
-      carthage_setup:
-        parameters:
-          platforms:
-            default: all
-            description: 'Comma separated target platforms: `all`, `macOS`, `iOS`, `watchOS`, `tvOS`'
-            type: string
-          iphone_os:
-            default: ''
-            description: 'iPhoneOS Deployment Target'
-            type: string
-          mac_os:
-            default: ''
-            description: 'macOS Deployment Target'
-            type: string
-          tv_os:
-            default: ''
-            description: 'tvOS Deployment Target'
-            type: string
-          watch_os:
-            default: ''
-            description: 'watchOS Deployment Target'
-            type: string
-          cache_key_prefix:
-            default: '1-carthage-'
-            description: 'watchOS Deployment Target'
-            type: string
-        steps:
-          - restore_cache:
-              key: << parameters.cache_key_prefix >>{{ checksum "Cartfile.resolved" }}
-          - carthage_if_needed:
-              command: 'bootstrap --no-build'
-          - replace_target:
-              os: IPHONEOS
-              version: << parameters.iphone_os >>
-          - replace_target:
-              os: MACOSX
-              version: << parameters.mac_os >>
-          - replace_target:
-              os: TVOS
-              version: << parameters.tv_os >>
-          - replace_target:
-              os: WATCHOS
-              version: << parameters.watch_os >>
-          - carthage_if_needed:
-              command: 'build --platform << parameters.platforms >>'
-          - run:
-              name: Copy Cartfile.resolved
-              command: '[ -f Carthage/Cartfile.resolved ] || cp Cartfile.resolved Carthage/Cartfile.resolved'
 
       fastlane:
         parameters:
