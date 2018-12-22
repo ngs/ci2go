@@ -24,9 +24,8 @@ orbs:
         executor: fastlane/macos
         parameters:
           target:
-            default: ''
-            description: 'Target to build: `release`, `beta`'
-            type: string
+            type: enum
+            enum: [beta, release]
         steps:
           - setup
           - fastlane/lane:
@@ -49,9 +48,8 @@ orbs:
         executor: fastlane/macos
         parameters:
           target:
-            default: ''
-            description: 'Target to build: `release`, `beta`'
-            type: string
+            type: enum
+            enum: [beta, release]
         steps:
           - checkout
           - attach_workspace:
