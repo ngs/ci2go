@@ -4,93 +4,89 @@ orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
   fastlane: ngs/fastlane@0.0.2
+  carthage: ngs/carthage@0.0.3
 
-  app:
-    orbs:
-      carthage: ngs/carthage@0.0.2
-      fastlane: ngs/fastlane@0.0.2
+commands:
+  setup:
+    steps:
+      - checkout
+      - carthage/setup:
+          platforms: iOS,watchOS
+          watch_os: '5.0'
+      - fastlane/bundle-install
 
-    commands:
-      setup:
-        steps:
-          - checkout
-          - carthage/setup:
-              platforms: iOS,watchOS
-              watch_os: '5.0'
-          - fastlane/bundle-install
+jobs:
+  build:
+    executor: fastlane/macos
+    parameters:
+      target:
+        type: enum
+        enum: [beta, release]
+    steps:
+      - setup
+      - fastlane/lane:
+          command: << parameters.target >>_match
+      - fastlane/lane:
+          command: set_build_number
+      - fastlane/lane:
+          command: << parameters.target >>_build
+      - store_artifacts:
+          path: build
+          destination: build
+      - store_artifacts:
+          path: ~/Library/Logs/gym
+          destination: logs/gym
+      - persist_to_workspace:
+          root: build
+          paths: [<< parameters.target >>]
 
-    jobs:
-      build:
-        executor: fastlane/macos
-        parameters:
-          target:
-            type: enum
-            enum: [beta, release]
-        steps:
-          - setup
-          - fastlane/lane:
-              command: << parameters.target >>_match
-          - fastlane/lane:
-              command: set_build_number
-          - fastlane/lane:
-              command: << parameters.target >>_build
-          - store_artifacts:
-              path: build
-              destination: build
-          - store_artifacts:
-              path: ~/Library/Logs/gym
-              destination: logs/gym
-          - persist_to_workspace:
-              root: build
-              paths: [<< parameters.target >>]
+  upload:
+    executor: fastlane/macos
+    parameters:
+      target:
+        type: enum
+        enum: [beta, release]
+    steps:
+      - checkout
+      - attach_workspace:
+          at: build
+      - fastlane/bundle-install
+      - fastlane/lane:
+          command: << parameters.target >>_match
+      - fastlane/lane:
+          command: << parameters.target >>_upload
 
-      upload:
-        executor: fastlane/macos
-        parameters:
-          target:
-            type: enum
-            enum: [beta, release]
-        steps:
-          - checkout
-          - attach_workspace:
-              at: build
-          - fastlane/bundle-install
-          - fastlane/lane:
-              command: << parameters.target >>_match
-          - fastlane/lane:
-              command: << parameters.target >>_upload
+  tests:
+    executor: fastlane/macos
+    steps:
+      - setup
+      - fastlane/lane:
+          command: tests
+      #- fastlane:
+      #   command: send_coveralls
+      - store_test_results:
+          path: fastlane/test_output
+      - store_artifacts:
+          path: fastlane/test_output
+          destination: test_output
+      - store_artifacts:
+          path: ~/Library/Logs/scan
+          destination: logs/scan
 
-      tests:
-        executor: fastlane/macos
-        steps:
-          - setup
-          - fastlane/lane:
-              command: tests
-          #- fastlane:
-          #   command: send_coveralls
-          - store_test_results:
-              path: fastlane/test_output
-          - store_artifacts:
-              path: fastlane/test_output
-              destination: test_output
-          - store_artifacts:
-              path: ~/Library/Logs/scan
-              destination: logs/scan
-
-      screenshots:
-        executor: fastlane/macos
-        steps:
-          - setup
-          - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
-          - persist_to_workspace:
-              root: fastlane
-              paths: [screenshots]
-          - store_artifacts:
-              path: fastlane/screenshots
-              destination: screenshots
-          - store_artifacts:
-              path: ~/Library/Logs/snapshot
-              destination: logs/snapshot
+  screenshots:
+    executor: fastlane/macos
+    steps:
+      - setup
+      - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
+      - persist_to_workspace:
+          root: fastlane
+          paths: [screenshots]
+      - store_artifacts:
+          path: fastlane/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: ~/Library/Logs/snapshot
+          destination: logs/snapshot
 
 workflows:
   app:
@@ -107,19 +103,18 @@ workflows:
             branches:
               ignore: [screenshots, metadata]
 
-      - app/tests:
-          name: tests
+      - tests:
           requires: [swiftlint, danger]
           filters:
             branches:
               ignore: [screenshots, metadata]
 
-      - app/screenshots:
+      - screenshots:
           filters:
             branches:
               only: new-screenshots
 
-      - app/build:
+      - build:
           name: beta_build
           target: beta
           requires: [tests]
@@ -127,7 +122,7 @@ workflows:
             branches:
               only: [develop]
 
-      - app/upload:
+      - upload:
           name: beta_upload
           target: beta
           requires: [beta_build]
@@ -135,7 +130,7 @@ workflows:
             branches:
               only: [develop]
 
-      - app/build:
+      - build:
           name: release_build
           target: release
           requires: [tests]
@@ -143,7 +138,7 @@ workflows:
             branches:
               only: [master, /release-.+/]
 
-      - app/upload:
+      - upload:
           name: release_upload
           target: release
           requires: [release_build]
