@@ -4,6 +4,7 @@ orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
   fastlane: ngs/fastlane@0.0.2
+  carthage: ngs/carthage@0.0.3
 
 commands:
   setup:
