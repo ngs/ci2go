@@ -3,7 +3,6 @@
 //  Example
 //
 //  Created by Felix Krause on 10/8/15.
-//  Copyright © 2015 Felix Krause. All rights reserved.
 //
 
 // -----------------------------------------------------
@@ -115,10 +114,14 @@ open class Snapshot: NSObject {
         } catch {
             print("Couldn't detect/set locale...")
         }
-        if locale.isEmpty {
+        
+        if locale.isEmpty && !deviceLanguage.isEmpty {
             locale = Locale(identifier: deviceLanguage).identifier
         }
-        app.launchArguments += ["-AppleLocale", "\"\(locale)\""]
+        
+        if !locale.isEmpty {
+            app.launchArguments += ["-AppleLocale", "\"\(locale)\""]
+        }
     }
 
     class func setLaunchArguments(_ app: XCUIApplication) {
@@ -153,7 +156,12 @@ open class Snapshot: NSObject {
         sleep(1) // Waiting for the animation to be finished (kind of)
 
         #if os(OSX)
-            XCUIApplication().typeKey(XCUIKeyboardKeySecondaryFn, modifierFlags: [])
+            guard let app = self.app else {
+                print("XCUIApplication is not set. Please call setupSnapshot(app) before snapshot().")
+                return
+            }
+
+            app.typeKey(XCUIKeyboardKeySecondaryFn, modifierFlags: [])
         #else
             
             guard let app = self.app else {
@@ -161,11 +169,7 @@ open class Snapshot: NSObject {
                 return
             }
             
-            guard let window = app.windows.allElementsBoundByIndex.first(where: { $0.frame.isEmpty == false }) else {
-                print("Couldn't find an element window in XCUIApplication with a non-empty frame.")
-                return
-            }
-
+            let window = app.windows.firstMatch
             let screenshot = window.screenshot()
             guard let simulator = ProcessInfo().environment["SIMULATOR_DEVICE_NAME"], let screenshotsDir = screenshotsDirectory else { return }
             let path = screenshotsDir.appendingPathComponent("\(simulator)-\(name).png")
@@ -183,7 +187,12 @@ open class Snapshot: NSObject {
             return
         #endif
 
-        let networkLoadingIndicator = XCUIApplication().otherElements.deviceStatusBars.networkLoadingIndicators.element
+        guard let app = self.app else {
+            print("XCUIApplication is not set. Please call setupSnapshot(app) before snapshot().")
+            return
+        }
+
+        let networkLoadingIndicator = app.otherElements.deviceStatusBars.networkLoadingIndicators.element
         let networkLoadingIndicatorDisappeared = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: networkLoadingIndicator)
         _ = XCTWaiter.wait(for: [networkLoadingIndicatorDisappeared], timeout: timeout)
     }
@@ -258,7 +267,11 @@ private extension XCUIElementQuery {
     }
 
     var deviceStatusBars: XCUIElementQuery {
-        let deviceWidth = XCUIApplication().frame.width
+        guard let app = Snapshot.app else {
+            fatalError("XCUIApplication is not set. Please call setupSnapshot(app) before snapshot().")
+        }
+
+        let deviceWidth = app.windows.firstMatch.frame.width
 
         let isStatusBar = NSPredicate { (evaluatedObject, _) in
             guard let element = evaluatedObject as? XCUIElementAttributes else { return false }
@@ -278,4 +291,4 @@ private extension CGFloat {
 
 // Please don't remove the lines below
 // They are used to detect outdated configuration files
-// SnapshotHelperVersion [1.10]
+// SnapshotHelperVersion [1.14]

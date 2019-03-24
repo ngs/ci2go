@@ -1,1 +1,1 @@
-- Fix to display build auther name correctly
+- Fix to display build author name correctly
