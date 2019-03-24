@@ -95,19 +95,19 @@ workflows:
           name: swiftlint
           filters:
             branches:
-              ignore: [screenshots, metadata]
+              ignore: [new-screenshots, screenshots, metadata]
 
       - danger/run:
           name: danger
           filters:
             branches:
-              ignore: [screenshots, metadata]
+              ignore: [new-screenshots, screenshots, metadata]
 
       - tests:
           requires: [swiftlint, danger]
           filters:
             branches:
-              ignore: [screenshots, metadata]
+              ignore: [new-screenshot, sscreenshots, metadata]
 
       - screenshots:
           filters:
