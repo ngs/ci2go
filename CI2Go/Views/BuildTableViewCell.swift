@@ -40,7 +40,7 @@ class BuildTableViewCell: CustomTableViewCell {
             buildNumLabel.text = "#\(build.number)"
             projectNameLabel.text = build.project.path
             subjectLabel.text = build.body
-            userLabel.text = build.user?.name ?? build.user?.login
+            userLabel.text = build.committerName
             timeLabel.text = build.timestamp?.timeAgoSinceNow
             statusBackgroundView.mask = statusLabel
             setNeedsLayout()
