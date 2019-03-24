@@ -1,2 +1,1 @@
-- Migrate codebase to Swift 4.2
-- Improve authentication error handling
+- Fix to display build auther name correctly
