@@ -33,7 +33,7 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate {
             setTitle(numText)
             branchLabel.setText(build.branch?.name)
             commitMessageLabel.setText(build.body)
-            authorLabel.setText(build.user?.name)
+            authorLabel.setText(build.committerName)
             timeLabel.setText(build.timestamp?.timeAgoSinceNow)
             clearAllMenuItems()
             addMenuItem(with: .repeat, title: "Retry", action: #selector(retryBuild))

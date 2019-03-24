@@ -217,7 +217,7 @@ extension Build {
     }
 
     var complicationUsernameProvider: CLKTextProvider {
-        return CLKTextProvider.localizableTextProvider(withStringsFileTextKey: user?.name ?? "")
+        return CLKTextProvider.localizableTextProvider(withStringsFileTextKey: committerName)
     }
 
     var complicationStatusTextProvider: CLKTextProvider {

@@ -16,6 +16,7 @@ struct Build: Decodable, EndpointConvertable {
     let buildParameters: BuildParameters
     let steps: [BuildStep]
     let commits: [Commit]
+    let committerName: String
     let body: String
     let jobName: String?
     let workflow: Workflow?
@@ -39,6 +40,7 @@ struct Build: Decodable, EndpointConvertable {
         case buildParameters = "build_parameters"
         case steps
         case commits = "all_commit_details"
+        case committerName = "committer_name"
         case body
         case workflow = "workflows"
         case jobName = "job_name"
@@ -63,6 +65,7 @@ struct Build: Decodable, EndpointConvertable {
         project = try Project(from: decoder)
         number = try values.decode(Int.self, forKey: .number)
         vcsRevision = try? values.decode(String.self, forKey: .vcsRevision)
+        committerName = (try? values.decode(String.self, forKey: .committerName)) ?? ""
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
         hasArtifacts = (try? values.decode(Bool.self, forKey: .hasArtifacts)) ?? false
@@ -144,6 +147,7 @@ struct Build: Decodable, EndpointConvertable {
         buildParameters = [:]
         steps = []
         commits = []
+        committerName = ""
         body = ""
         jobName = nil
         workflow = nil
@@ -168,6 +172,7 @@ struct Build: Decodable, EndpointConvertable {
         buildParameters = build.buildParameters
         steps = newSteps
         commits = build.commits
+        committerName = ""
         body = build.body
         jobName = build.jobName
         workflow = build.workflow
