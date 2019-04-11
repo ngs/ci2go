@@ -11,7 +11,7 @@ import UIKit
 extension Array where Element == Build {
     func merged(with elements: [Element]) -> [Element] {
         return elements.reduce(into: self, { (result, element) in
-            if let index = result.index(where: { element.apiPath == $0.apiPath }) {
+            if let index = result.firstIndex(where: { element.apiPath == $0.apiPath }) {
                 result[index] = element
                 return
             }

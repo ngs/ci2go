@@ -8979,7 +8979,7 @@
 				TargetAttributes = {
 					8555C4ED20EB8C6F003F5C93 = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -8991,7 +8991,7 @@
 					};
 					85B4CD7E20D23E2D005A6DA9 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -9009,7 +9009,7 @@
 					};
 					85B4CD9220D23E30005A6DA9 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						TestTargetID = 85B4CD7E20D23E2D005A6DA9;
 					};
 					85B4CD9D20D23E30005A6DA9 = {
@@ -9026,7 +9026,7 @@
 					};
 					85F93BBB20DDCD0700327DE9 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -11887,7 +11887,7 @@
 				PROVISIONING_PROFILE = "d1378c1a-8696-4b83-972c-301bf4b1dfe1";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle.todayext";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -11917,7 +11917,7 @@
 				PROVISIONING_PROFILE = "01ee9ea5-4cc1-4e1a-bd7a-3177c5f0a5db";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.todayext";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -12065,7 +12065,7 @@
 				PROVISIONING_PROFILE = "476714da-1400-46c1-aa9f-117938ecb9f2";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle";
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -12094,7 +12094,7 @@
 				PROVISIONING_PROFILE = "92dceed1-b4b6-426a-815b-41dab78fc5f7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle";
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -12114,7 +12114,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.CI2GoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
 			};
@@ -12135,7 +12135,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.CI2GoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CI2Go.app/CI2Go";
 			};
@@ -12204,7 +12204,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle.watchkitapp.ext";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};
@@ -12234,7 +12234,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.watchkitapp.ext";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};
