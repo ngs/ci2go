@@ -14,12 +14,27 @@ import WatchConnectivity
 import WebKit
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
-    let links: [(String, URL)] = [
-        ("Trouble signing in?", URL(string: "https://ci2go.app/support/token-uri-scheme/")!),
-        ("Rate CI2Go", URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
-        ("Submit an issue", URL(string: "https://github.com/ngs/ci2go/issues/new")!),
-        ("Contact author", URL(string: "mailto:corp+ci2go@littleapps.jp?subject=CI2Go%20Support")!)
-    ]
+    var links: [(String, URL)] {
+        let deviceSummary = """
+
+
+
+----
+Device: \(UIDevice.current.model) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)
+Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
+"""
+            .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        return [
+            ("Trouble signing in?",
+                URL(string: "https://ci2go.app/support/token-uri-scheme/?b=\(Bundle.main.buildNumber)")!),
+            ("Rate CI2Go",
+                URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
+            ("Submit an issue",
+                URL(string: "https://github.com/ngs/ci2go/issues/new?body=\(deviceSummary)")!),
+            ("Contact author",
+                URL(string: "mailto:support@ci2go.app?subject=CI2Go%20Support&body=\(deviceSummary)")!)
+        ]
+    }
 
     var diffCalculator: TableViewDiffCalculator<String?, RowItem>!
 

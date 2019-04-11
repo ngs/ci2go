@@ -419,6 +419,7 @@
 		85C6619220EAB995007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
 		85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
 		85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619420EACBCE007B58CD /* Build+UIKit.swift */; };
+		85C732D0225F0C2D008FCDBE /* BundleAppInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C732CF225F0C2D008FCDBE /* BundleAppInfoExtension.swift */; };
 		85CA04BC20F489EE00F677FB /* Afterglow-Icon-Small@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 85CAFBAD20F489EC00F677FB /* Afterglow-Icon-Small@3x~iphone.png */; };
 		85CA04BD20F489EE00F677FB /* Afterglow-Icon-Small-40~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 85CAFBAE20F489EC00F677FB /* Afterglow-Icon-Small-40~ipad.png */; };
 		85CA04BE20F489EE00F677FB /* Afterglow-Icon-Small-40@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 85CAFBAF20F489EC00F677FB /* Afterglow-Icon-Small-40@2x~ipad.png */; };
@@ -2778,6 +2779,7 @@
 		85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "totp-bitbucket.org.js"; sourceTree = "<group>"; };
 		85C6619120EAB995007B58CD /* BuildNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildNode.swift; sourceTree = "<group>"; };
 		85C6619420EACBCE007B58CD /* Build+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+UIKit.swift"; sourceTree = "<group>"; };
+		85C732CF225F0C2D008FCDBE /* BundleAppInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleAppInfoExtension.swift; sourceTree = "<group>"; };
 		85CA000020F489EC00F677FB /* CrayonPonyFish-Icon-Small@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CrayonPonyFish-Icon-Small@2x~iphone.png"; sourceTree = "<group>"; };
 		85CA000120F489EC00F677FB /* CrayonPonyFish-Icon-Small-40@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CrayonPonyFish-Icon-Small-40@2x~ipad.png"; sourceTree = "<group>"; };
 		85CA000220F489EC00F677FB /* CrayonPonyFish-Icon-Small-40@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CrayonPonyFish-Icon-Small-40@2x~iphone.png"; sourceTree = "<group>"; };
@@ -7133,6 +7135,7 @@
 			isa = PBXGroup;
 			children = (
 				853D1A5E20D6891E00C7F4FC /* ArrayExtension.swift */,
+				85C732CF225F0C2D008FCDBE /* BundleAppInfoExtension.swift */,
 				856609AE20D8D58700557249 /* DateExtension.swift */,
 				8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */,
 				853D1A6820D6B91100C7F4FC /* KeychainExtension.swift */,
@@ -11635,6 +11638,7 @@
 				85CAE24620D5EDD4002CD128 /* Build.Outcome.swift in Sources */,
 				8504A07220DBD67D001D0C08 /* BuildArtifactsViewController.swift in Sources */,
 				856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */,
+				85C732D0225F0C2D008FCDBE /* BundleAppInfoExtension.swift in Sources */,
 				8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */,
 				85CAE26920D62013002CD128 /* Constants.swift in Sources */,
 				85CAE22B20D5C62D002CD128 /* AMR_ANSIEscapeHelper.m in Sources */,
