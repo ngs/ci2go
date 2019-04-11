@@ -1,1 +1,1 @@
-- Fix to display build author name correctly
+- Migrate codebase to Swift 5
