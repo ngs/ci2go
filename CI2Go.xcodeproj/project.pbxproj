@@ -142,7 +142,6 @@
 		8533DE9120DE443D00CA7E0C /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A6420D6B34A00C7F4FC /* UserDefaultsExtension.swift */; };
 		8533DE9320DE445600CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */; };
 		8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5620D640E900C7F4FC /* URLSessionExtension.swift */; };
-		8533DE9A20DE495600CA7E0C /* NetworkActivityManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */; };
 		8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
 		8533DE9E20DE4C7000CA7E0C /* BuildInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */; };
 		8533DEA020DE4D2A00CA7E0C /* BuildTableRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */; };
@@ -347,7 +346,6 @@
 		8555C5A920EB9067003F5C93 /* UserDefaultsExtension+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */; };
 		8555C5AA20EB907E003F5C93 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
 		8555C5AB20EB907E003F5C93 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */; };
-		8555C5AD20EB912A003F5C93 /* NetworkActivityManagerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */; };
 		8555C5AF20EB9DE8003F5C93 /* BuildArtifactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */; };
 		8555C5B020EB9DE8003F5C93 /* BuildTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566097520D805BB00557249 /* BuildTableViewCell.swift */; };
 		8555C5B220EB9E10003F5C93 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE26820D62013002CD128 /* Constants.swift */; };
@@ -386,7 +384,6 @@
 		856609BF20D979B200557249 /* MBProgressHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609BE20D979B200557249 /* MBProgressHUDExtension.swift */; };
 		856609C220D98C6C00557249 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C020D98C6C00557249 /* ProjectTableViewCell.swift */; };
 		856609C320D98C6C00557249 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609C120D98C6C00557249 /* ProjectTableViewCell.xib */; };
-		856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C620D99FAB00557249 /* NetworkActivityManager.swift */; };
 		856609C920D9A73500557249 /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609C820D9A73500557249 /* AnyDecodable.swift */; };
 		856609CB20D9B88E00557249 /* BranchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CA20D9B88E00557249 /* BranchTableViewCell.swift */; };
 		856609CD20D9C04600557249 /* DateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856609CC20D9C04600557249 /* DateDecoder.swift */; };
@@ -2397,7 +2394,6 @@
 		85CAE12520D5B74F002CD128 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11E20D5B74E002CD128 /* MBProgressHUD.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE11F20D5B74E002CD128 /* FileKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12720D5B74F002CD128 /* PusherSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12020D5B74E002CD128 /* PusherSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		85CAE12820D5B74F002CD128 /* TaskQueue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12120D5B74E002CD128 /* TaskQueue.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12920D5B74F002CD128 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12220D5B74F002CD128 /* Starscream.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE12A20D5B74F002CD128 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE12320D5B74F002CD128 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		85CAE1A920D5BAE2002CD128 /* Tomorrow Night Bright.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE12D20D5BAE1002CD128 /* Tomorrow Night Bright.itermcolors */; };
@@ -2695,7 +2691,6 @@
 		8533DE1020DE368F00CA7E0C /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		8533DE1420DE392300CA7E0C /* WCSessionDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegateExtension.swift; sourceTree = "<group>"; };
 		8533DE9220DE445600CA7E0C /* UserDefaultsExtension+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsExtension+Shared.swift"; sourceTree = "<group>"; };
-		8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManagerStub.swift; sourceTree = "<group>"; };
 		8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionExtension+Keychain.swift"; sourceTree = "<group>"; };
 		8533DE9D20DE4C7000CA7E0C /* BuildInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInterfaceController.swift; sourceTree = "<group>"; };
 		8533DE9F20DE4D2A00CA7E0C /* BuildTableRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTableRowController.swift; sourceTree = "<group>"; };
@@ -2757,7 +2752,6 @@
 		856609BE20D979B200557249 /* MBProgressHUDExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDExtension.swift; sourceTree = "<group>"; };
 		856609C020D98C6C00557249 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		856609C120D98C6C00557249 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
-		856609C620D99FAB00557249 /* NetworkActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivityManager.swift; sourceTree = "<group>"; };
 		856609C820D9A73500557249 /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
 		856609CA20D9B88E00557249 /* BranchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchTableViewCell.swift; sourceTree = "<group>"; };
 		856609CC20D9C04600557249 /* DateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecoder.swift; sourceTree = "<group>"; };
@@ -5211,7 +5205,6 @@
 				85CAE12620D5B74F002CD128 /* FileKit.framework in Frameworks */,
 				85CAE12720D5B74F002CD128 /* PusherSwift.framework in Frameworks */,
 				853D1A6320D6B2FF00C7F4FC /* Fabric.framework in Frameworks */,
-				85CAE12820D5B74F002CD128 /* TaskQueue.framework in Frameworks */,
 				85CAE12920D5B74F002CD128 /* Starscream.framework in Frameworks */,
 				85CAE12A20D5B74F002CD128 /* CryptoSwift.framework in Frameworks */,
 				853D1A6720D6B8CA00C7F4FC /* KeychainAccess.framework in Frameworks */,
@@ -7243,8 +7236,6 @@
 				85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */,
 				853D1A5020D639E000C7F4FC /* Endpoint.swift */,
 				853D1A5220D639EF00C7F4FC /* HTTPMethod.swift */,
-				856609C620D99FAB00557249 /* NetworkActivityManager.swift */,
-				8533DE9920DE495600CA7E0C /* NetworkActivityManagerStub.swift */,
 				8566098820D84CAC00557249 /* PusherEvent.swift */,
 			);
 			path = Networking;
@@ -11526,7 +11517,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/PusherSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/TaskQueue.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Dwifft.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OnePasswordExtension.framework",
@@ -11545,7 +11535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		85D9053B20EAF8D900CBF5B6 /* Update License Plist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -11592,7 +11582,6 @@
 				8555C59720EB9054003F5C93 /* User.swift in Sources */,
 				8555C5B220EB9E10003F5C93 /* Constants.swift in Sources */,
 				8555C5B520EB9EB5003F5C93 /* CustomTableViewCellStub.swift in Sources */,
-				8555C5AD20EB912A003F5C93 /* NetworkActivityManagerStub.swift in Sources */,
 				8555C5A720EB9067003F5C93 /* URLSessionExtension+Keychain.swift in Sources */,
 				8555C57A20EB9054003F5C93 /* Artifact.swift in Sources */,
 				8555C5A520EB9067003F5C93 /* UIScrollViewExtension.swift in Sources */,
@@ -11713,7 +11702,6 @@
 				8555C5C620ECB236003F5C93 /* InvertedMaskLabel.swift in Sources */,
 				8555C4E520EB5F74003F5C93 /* BuildActionsViewController.RowItem.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
-				856609C720D99FAB00557249 /* NetworkActivityManager.swift in Sources */,
 				85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */,
 				85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
@@ -11807,7 +11795,6 @@
 				85F93BE920DDD4CC00327DE9 /* DateDecoder.swift in Sources */,
 				8533DEAC20DE685B00CA7E0C /* UserDefaultsExtension+Shared.swift in Sources */,
 				85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */,
-				8533DE9A20DE495600CA7E0C /* NetworkActivityManagerStub.swift in Sources */,
 				85F93BF320DDD5B600327DE9 /* ColorScheme.swift in Sources */,
 				8533DE9720DE47C200CA7E0C /* URLSessionExtension.swift in Sources */,
 				8533DEB020DF337600CA7E0C /* Build+Cache.swift in Sources */,
@@ -11993,7 +11980,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Vendor/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -12050,7 +12037,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Vendor/**";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

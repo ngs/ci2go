@@ -40,9 +40,7 @@ class ArtifactDownloadManager {
             }
             var comps = URLComponents(url: artifact.downloadURL, resolvingAgainstBaseURL: false)!
             comps.queryItems = [URLQueryItem(name: "circle-token", value: token)]
-            NetworkActivityManager.start()
             URLSession.shared.downloadTask(with: comps.url!) { (tmpFileURL, _, err) in
-                NetworkActivityManager.stop()
                 guard let tmpFileURL = tmpFileURL else {
                     try? artifact.unlinkProgressFile()
                     DispatchQueue.main.async {

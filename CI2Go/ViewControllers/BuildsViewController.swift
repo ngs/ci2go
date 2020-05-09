@@ -193,10 +193,9 @@ class BuildsViewController: UITableViewController {
             let pusher = Pusher.shared,
             pusher.connection.connectionState == .disconnected
             else { return }
-
         let userChannel = pusher.subscribe(channelName)
         userChannel.bind(.call) { _ in self.loadBuilds() }
-        pusher.bind { [weak self] message in
+        pusher.bind { [weak self] (message: Any?) in
             guard
                 let message = message as? [String: Any],
                 let eventName = message["event"] as? String,
