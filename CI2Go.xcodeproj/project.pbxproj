@@ -182,7 +182,6 @@
 		8555C4F620EB8C6F003F5C93 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8555C4F420EB8C6F003F5C93 /* MainInterface.storyboard */; };
 		8555C4FB20EB8C6F003F5C93 /* CI2GoTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8555C4FF20EB9019003F5C93 /* Dwifft.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856609AB20D8C3AE00557249 /* Dwifft.framework */; };
-		8555C50020EB901C003F5C93 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F93BEE20DDD51C00327DE9 /* KeychainAccess.framework */; };
 		8555C50320EB9023003F5C93 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6220D6B2FF00C7F4FC /* Fabric.framework */; };
 		8555C50420EB9023003F5C93 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85CAE22A20D5C62D002CD128 /* Crashlytics.framework */; };
 		8555C50520EB9044003F5C93 /* 3024 Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13920D5BAE1002CD128 /* 3024 Day.itermcolors */; };
@@ -410,6 +409,8 @@
 		85B4CD8D20D23E2F005A6DA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85B4CD8B20D23E2F005A6DA9 /* LaunchScreen.storyboard */; };
 		85B4CD9820D23E30005A6DA9 /* CI2GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CD9720D23E30005A6DA9 /* CI2GoTests.swift */; };
 		85B4CDA320D23E30005A6DA9 /* CI2GoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B4CDA220D23E30005A6DA9 /* CI2GoUITests.swift */; };
+		85BA6E3B24669B8E00E6A116 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */; };
+		85BA6E3C24669B8E00E6A116 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 853D1A6620D6B8CA00C7F4FC /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		85BE576920DDFF26004C92DA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853D1A5020D639E000C7F4FC /* Endpoint.swift */; };
 		85BE576B20DDFF4F004C92DA /* Artifact+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BE576A20DDFF4F004C92DA /* Artifact+File.swift */; };
 		85BE576C20DDFF7E004C92DA /* Artifact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE27220D63429002CD128 /* Artifact.swift */; };
@@ -2640,6 +2641,17 @@
 				8555C4FB20EB8C6F003F5C93 /* CI2GoTodayExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		85BA6E3D24669B8E00E6A116 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				85BA6E3C24669B8E00E6A116 /* KeychainAccess.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		85F93BD320DDCD0700327DE9 /* Embed App Extensions */ = {
@@ -5178,10 +5190,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85BA6E3B24669B8E00E6A116 /* KeychainAccess.framework in Frameworks */,
 				8555C5BB20EBBF44003F5C93 /* FileKit.framework in Frameworks */,
 				8555C4F020EB8C6F003F5C93 /* NotificationCenter.framework in Frameworks */,
 				8555C4FF20EB9019003F5C93 /* Dwifft.framework in Frameworks */,
-				8555C50020EB901C003F5C93 /* KeychainAccess.framework in Frameworks */,
 				8555C50320EB9023003F5C93 /* Fabric.framework in Frameworks */,
 				8555C50420EB9023003F5C93 /* Crashlytics.framework in Frameworks */,
 			);
@@ -8864,6 +8876,7 @@
 				8555C4EA20EB8C6F003F5C93 /* Sources */,
 				8555C4EB20EB8C6F003F5C93 /* Frameworks */,
 				8555C4EC20EB8C6F003F5C93 /* Resources */,
+				85BA6E3D24669B8E00E6A116 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

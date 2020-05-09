@@ -17,11 +17,28 @@ extension MBProgressHUD {
         }
     }
     var icon: Icon? {
+        // swiftlint:disable:next implicit_getter
         get {
-            fatalError("No getter")
+            switch customView?.tag {
+            case 1:
+                return .warning
+            case 2:
+                return .warning
+            default:
+                return .none
+            }
         }
+
         set(icon) {
             customView = UIImageView(image: icon?.image)
+            switch icon {
+            case .warning:
+                self.customView?.tag = 1
+            case .success:
+                self.customView?.tag = 2
+            case .none:
+                self.customView?.tag = 0
+            }
         }
     }
 }
