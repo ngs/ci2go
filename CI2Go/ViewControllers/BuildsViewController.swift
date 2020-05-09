@@ -8,7 +8,6 @@
 
 import UIKit
 import KeychainAccess
-import Crashlytics
 import PusherSwift
 import Dwifft
 import WatchConnectivity
@@ -58,9 +57,7 @@ class BuildsViewController: UITableViewController {
         didSet {
             if currentUser == oldValue { return }
             if let user = currentUser {
-                let crashlytics = Crashlytics.sharedInstance()
-                crashlytics.setUserIdentifier(user.login)
-                crashlytics.setUserName(user.name)
+                Crashlytics.crashlytics().setUserID(user.login)
                 connectPusher()
             } else {
                 Pusher.logout()
@@ -176,7 +173,7 @@ class BuildsViewController: UITableViewController {
     func loadUser() {
         URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, res, err) in
             guard let user = user else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 if let res = res as? HTTPURLResponse, res.statusCode == 401 {
                     self?.logout()
                 }
@@ -248,7 +245,7 @@ class BuildsViewController: UITableViewController {
                 self.currentOffset = more ? newBuilds.count : builds.count
                 self.isLoading = false
                 if let err = err {
-                    Crashlytics.sharedInstance().recordError(err)
+                    Crashlytics.crashlytics().record(error: err)
                     return
                 }
                 self.hasMore = builds.count >= self.limit

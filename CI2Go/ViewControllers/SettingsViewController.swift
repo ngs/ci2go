@@ -8,7 +8,6 @@
 
 import UIKit
 import KeychainAccess
-import Crashlytics
 import Dwifft
 import WatchConnectivity
 import WebKit

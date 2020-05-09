@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import Crashlytics
 import Dwifft
 import QuickLook
 import FileKit
 
 class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDelegate {
-
+    
     var build: Build?
     var path = "" {
         didSet {
@@ -28,13 +27,13 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
     var isLoading = false
     var artifacts: [Artifact] = []
     var quickLookDataSource: SingleQuickLookDataSource?
-
+    
     // MARK: -
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return ColorScheme.current.statusBarStyle
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
@@ -49,7 +48,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         super.viewWillAppear(animated)
         loadArtifacts()
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let nvc = segue.destination as? UINavigationController,
@@ -61,9 +60,9 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         controller.delegate = self
         nvc.viewControllers = [controller]
     }
-
+    
     // MARK: -
-
+    
     func loadArtifacts() {
         guard let build = self.build, artifacts.isEmpty else {
             refreshData()
@@ -77,15 +76,15 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         URLSession.shared.dataTask(endpoint: .artifacts(build: build)) { [weak self] (artifacts, _, _, err) in
             self?.isLoading = false
             guard let artifacts = artifacts else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 return
             }
             self?.path = ""
             self?.artifacts = artifacts
             self?.refreshData()
-            }.resume()
+        }.resume()
     }
-
+    
     func refreshData() {
         if isLoading {
             self.path = ""
@@ -103,7 +102,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
                 .components(separatedBy: "/")
             guard let name = comps.first else { return nil }
             return RowItem(name, artifact: comps.count == 1 ? artifact : nil)
-            }.filter { $0 != nil }.map { $0! }.unique
+        }.filter { $0 != nil }.map { $0! }.unique
         if items.count == 1 && items.first?.artifact == nil {
             self.path = "\(path)\(path.isEmpty ? "" : "/")\(items.first!.name)"
             refreshData()
@@ -113,7 +112,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
             self.diffCalculator?.sectionedValues = SectionedValues<Int, RowItem>([(0, items)])
         }
     }
-
+    
     func downloadAndQuickLook(name: String, artifact: Artifact) {
         if artifact.localPath.exists {
             showQuickLook(name: name, fileURL: artifact.localPath.url)
@@ -124,33 +123,33 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         }
         ArtifactDownloadManager.shared.download(artifact) { [weak self] err in
             if let err = err {
-                Crashlytics.sharedInstance().recordError(err)
+                Crashlytics.crashlytics().record(error: err)
             }
             self?.tableView.reloadData()
         }
         tableView.reloadData()
     }
-
+    
     func showQuickLook(name: String, fileURL: URL) {
         let dataSource = SingleQuickLookDataSource(name: name, fileURL: fileURL)
         quickLookDataSource = dataSource
         performSegue(withIdentifier: .showQuickLook, sender: dataSource)
     }
-
+    
     // MARK: -
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return diffCalculator?.numberOfSections() ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return diffCalculator?.numberOfObjects(inSection: section) ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let item = diffCalculator?.value(atIndexPath: indexPath) else { fatalError() }
         if item.isLoading {
@@ -163,7 +162,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         cell.item = item
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let item = diffCalculator?.value(atIndexPath: indexPath) else { fatalError() }
         if let artifact = item.artifact {
@@ -177,10 +176,10 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         controller.artifacts = artifacts
         navigationController?.pushViewController(controller, animated: true)
     }
-
+    
     override func tableView(_ tableView: UITableView,
                             trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-        ) -> UISwipeActionsConfiguration? {
+    ) -> UISwipeActionsConfiguration? {
         guard
             let item = diffCalculator?.value(atIndexPath: indexPath),
             let artifact = item.artifact,
@@ -211,24 +210,24 @@ extension BuildArtifactsViewController {
         let artifact: Artifact?
         let name: String
         let isLoading: Bool
-
+        
         init(_ name: String = "", artifact: Artifact? = nil, isLoading: Bool = false) {
             self.name = name
             self.artifact = artifact
             self.isLoading = isLoading
         }
-
+        
         static func == (_ lhs: RowItem, _ rhs: RowItem) -> Bool {
             return lhs.name == rhs.name && lhs.isLoading == rhs.isLoading
         }
-
+        
         static func < (lhs: RowItem, rhs: RowItem) -> Bool {
             if lhs.artifact == nil && rhs.artifact != nil {
                 return true
             }
             return lhs.name < rhs.name
         }
-
+        
         var icon: UIImage {
             return artifact != nil ? #imageLiteral(resourceName: "file") : #imageLiteral(resourceName: "folder")
         }

@@ -8,7 +8,6 @@
 
 import KeychainAccess
 import WatchConnectivity
-import Crashlytics
 
 extension AppDelegate: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState,

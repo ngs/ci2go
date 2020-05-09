@@ -8,7 +8,6 @@
 
 import UIKit
 import PusherSwift
-import Crashlytics
 import MBProgressHUD
 
 class BuildLogViewController: UIViewController, UIScrollViewDelegate {
@@ -70,7 +69,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
                 let data = data,
                 let logs = try? decoder.decode([BuildLog].self, from: data)
                 else {
-                    Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                    Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                     DispatchQueue.main.async {
                         let hud = MBProgressHUD.showAdded(
                             to: self.navigationController?.view ?? self.view,

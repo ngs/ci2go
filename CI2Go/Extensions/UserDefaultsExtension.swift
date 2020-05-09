@@ -36,7 +36,6 @@ extension UserDefaults {
     // MARK: -
 
     var colorScheme: ColorScheme {
-        // swiftlint:disable:next implicit_getter
         get {
             if let name = string(forKey: .colorScheme) {
                 return ColorScheme(name) ?? .default
@@ -50,7 +49,6 @@ extension UserDefaults {
     }
 
     var branch: Branch? {
-        // swiftlint:disable:next implicit_getter
         get {
             guard
                 let dictionary = dictionary(forKey: .branch),

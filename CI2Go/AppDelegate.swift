@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
-import Fabric
 import KeychainAccess
 
 @UIApplicationMain
@@ -18,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        Fabric.with([Crashlytics.self])
+        FirebaseApp.configure()
 
         splitViewController?.delegate = self
         splitViewController?.preferredDisplayMode = .allVisible

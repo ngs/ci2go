@@ -25,7 +25,6 @@ extension Keychain {
     }
 
     var token: String? {
-        // swiftlint:disable:next implicit_getter
         get {
             let defaults = UserDefaults.standard
             if let token = defaults.string(forKey: "circleToken"), defaults.bool(forKey: "FASTLANE_SNAPSHOT") {

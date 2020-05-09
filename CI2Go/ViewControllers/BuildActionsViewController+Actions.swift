@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Crashlytics
 import MBProgressHUD
 
 extension BuildActionsViewController {
@@ -35,13 +34,12 @@ extension BuildActionsViewController {
         hud.label.text = "Rerunning job"
         URLSession.shared.dataTask(endpoint: .retry(build: build, ssh: ssh)) { [weak self] (build, _, _, err) in
             DispatchQueue.main.async {
-                let crashlytics = Crashlytics.sharedInstance()
                 hud.mode = .customView
                 hud.hide(animated: true, afterDelay: 1)
                 guard let build = build else {
                     hud.label.text = "Failed to rerun job"
                     hud.icon = .warning
-                    crashlytics.recordError(err ?? APIError.noData)
+                    Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                     return
                 }
                 hud.label.text = "Job queued!"
@@ -70,13 +68,12 @@ extension BuildActionsViewController {
         hud.label.text = "Canceling job"
         URLSession.shared.dataTask(endpoint: .cancel(build: build)) { [weak self] (build, _, _, err) in
             DispatchQueue.main.async {
-                let crashlytics = Crashlytics.sharedInstance()
                 hud.mode = .customView
                 hud.hide(animated: true, afterDelay: 1)
                 guard let build = build else {
                     hud.label.text = "Failed to cancel job"
                     hud.icon = .warning
-                    crashlytics.recordError(err ?? APIError.noData)
+                     Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                     return
                 }
                 hud.label.text = "Job canceled!"

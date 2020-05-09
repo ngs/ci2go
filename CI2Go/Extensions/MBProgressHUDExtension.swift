@@ -17,7 +17,6 @@ extension MBProgressHUD {
         }
     }
     var icon: Icon? {
-        // swiftlint:disable:next implicit_getter
         get {
             switch customView?.tag {
             case 1:

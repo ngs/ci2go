@@ -8,7 +8,6 @@
 
 import UIKit
 import NotificationCenter
-import Crashlytics
 import Dwifft
 import KeychainAccess
 
@@ -77,6 +76,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseApp.configure()
         tableView.register(
             UINib(nibName: BuildTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: BuildTableViewCell.identifier)
@@ -143,7 +143,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
                 self?.activityIndicatorView.stopAnimating()
             }
             guard let builds = builds else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 completionHandler?(.failed)
                 return
             }
