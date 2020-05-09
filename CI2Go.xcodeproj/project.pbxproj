@@ -189,11 +189,11 @@
 		854A39AE24673100007B8D65 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A424673100007B8D65 /* upload-symbols */; };
 		854A39BB246732DF007B8D65 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B0246732DF007B8D65 /* nanopb.xcframework */; };
 		854A39BC246732DF007B8D65 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B0246732DF007B8D65 /* nanopb.xcframework */; };
-		854A39BE246732DF007B8D65 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B1246732DF007B8D65 /* GoogleAppMeasurement.framework */; };
+		854A39BE246732DF007B8D65 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B1246732DF007B8D65 /* GoogleAppMeasurement.framework */; platformFilter = ios; };
 		854A39BF246732DF007B8D65 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B1246732DF007B8D65 /* GoogleAppMeasurement.framework */; };
 		854A39C1246732DF007B8D65 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B2246732DF007B8D65 /* PromisesObjC.xcframework */; };
 		854A39C2246732DF007B8D65 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B2246732DF007B8D65 /* PromisesObjC.xcframework */; };
-		854A39C4246732DF007B8D65 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B3246732DF007B8D65 /* FirebaseAnalytics.framework */; };
+		854A39C4246732DF007B8D65 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B3246732DF007B8D65 /* FirebaseAnalytics.framework */; platformFilter = ios; };
 		854A39C5246732DF007B8D65 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B3246732DF007B8D65 /* FirebaseAnalytics.framework */; };
 		854A39C7246732DF007B8D65 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B4246732DF007B8D65 /* FirebaseCoreDiagnostics.xcframework */; };
 		854A39C8246732DF007B8D65 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B4246732DF007B8D65 /* FirebaseCoreDiagnostics.xcframework */; };
@@ -205,7 +205,7 @@
 		854A39D1246732DF007B8D65 /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B7246732DF007B8D65 /* GoogleDataTransportCCTSupport.xcframework */; };
 		854A39D3246732DF007B8D65 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B8246732DF007B8D65 /* GoogleDataTransport.xcframework */; };
 		854A39D4246732DF007B8D65 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B8246732DF007B8D65 /* GoogleDataTransport.xcframework */; };
-		854A39D6246732DF007B8D65 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B9246732DF007B8D65 /* FIRAnalyticsConnector.framework */; };
+		854A39D6246732DF007B8D65 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B9246732DF007B8D65 /* FIRAnalyticsConnector.framework */; platformFilter = ios; };
 		854A39D7246732DF007B8D65 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B9246732DF007B8D65 /* FIRAnalyticsConnector.framework */; };
 		854A39D9246732DF007B8D65 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39BA246732DF007B8D65 /* GoogleUtilities.xcframework */; };
 		854A39DA246732DF007B8D65 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39BA246732DF007B8D65 /* GoogleUtilities.xcframework */; };
@@ -220,7 +220,7 @@
 		8555C4F020EB8C6F003F5C93 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8555C4EF20EB8C6F003F5C93 /* NotificationCenter.framework */; };
 		8555C4F320EB8C6F003F5C93 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4F220EB8C6F003F5C93 /* TodayViewController.swift */; };
 		8555C4F620EB8C6F003F5C93 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8555C4F420EB8C6F003F5C93 /* MainInterface.storyboard */; };
-		8555C4FB20EB8C6F003F5C93 /* CI2GoTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8555C4FB20EB8C6F003F5C93 /* CI2GoTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8555C4EE20EB8C6F003F5C93 /* CI2GoTodayExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8555C50520EB9044003F5C93 /* 3024 Day.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE13920D5BAE1002CD128 /* 3024 Day.itermcolors */; };
 		8555C50620EB9044003F5C93 /* 3024 Night.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19D20D5BAE2002CD128 /* 3024 Night.itermcolors */; };
 		8555C50720EB9044003F5C93 /* AdventureTime.itermcolors in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE19320D5BAE1002CD128 /* AdventureTime.itermcolors */; };
@@ -2588,7 +2588,7 @@
 		85F93BC620DDCD0700327DE9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC520DDCD0700327DE9 /* NotificationController.swift */; };
 		85F93BC820DDCD0700327DE9 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BC720DDCD0700327DE9 /* ComplicationController.swift */; };
 		85F93BCA20DDCD0700327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BC920DDCD0700327DE9 /* Assets.xcassets */; };
-		85F93BCF20DDCD0700327DE9 /* CI2GoWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */; };
+		85F93BCF20DDCD0700327DE9 /* CI2GoWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */; platformFilter = ios; };
 		85F93BDA20DDD46700327DE9 /* Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE23420D5E8E8002CD128 /* Build.swift */; };
 		85F93BDB20DDD47400327DE9 /* BuildStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25920D60023002CD128 /* BuildStep.swift */; };
 		85F93BDC20DDD47600327DE9 /* BuildAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CAE25720D60017002CD128 /* BuildAction.swift */; };
@@ -11892,6 +11892,7 @@
 /* Begin PBXTargetDependency section */
 		8555C4F920EB8C6F003F5C93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 8555C4ED20EB8C6F003F5C93 /* CI2GoTodayExtension */;
 			targetProxy = 8555C4F820EB8C6F003F5C93 /* PBXContainerItemProxy */;
 		};
@@ -11912,6 +11913,7 @@
 		};
 		85F93BCE20DDCD0700327DE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 85F93BAF20DDCD0500327DE9 /* CI2GoWatch */;
 			targetProxy = 85F93BCD20DDCD0700327DE9 /* PBXContainerItemProxy */;
 		};
@@ -11982,6 +11984,7 @@
 				PROVISIONING_PROFILE = "d1378c1a-8696-4b83-972c-301bf4b1dfe1";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle.todayext";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2GoTodayExtension/CI2GoTodayExtension-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -12017,6 +12020,7 @@
 				PROVISIONING_PROFILE = "01ee9ea5-4cc1-4e1a-bd7a-3177c5f0a5db";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.todayext";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2GoTodayExtension/CI2GoTodayExtension-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -12149,6 +12153,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
@@ -12171,6 +12176,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "476714da-1400-46c1-aa9f-117938ecb9f2";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "match Development com.ci2go.ios.Circle macos";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -12202,9 +12209,11 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.ci2go.macos.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "92dceed1-b4b6-426a-815b-41dab78fc5f7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
