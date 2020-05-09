@@ -4,15 +4,11 @@ orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
   fastlane: ngs/fastlane@0.0.4
-  carthage: ngs/carthage@0.0.3
 
 commands:
   setup:
     steps:
       - checkout
-      - carthage/setup:
-          platforms: iOS,watchOS
-          watch_os: '5.0'
       - fastlane/bundle-install
 
 jobs:

@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Dwifft",
+        "repositoryURL": "https://github.com/jflinter/Dwifft.git",
+        "state": {
+          "branch": "master",
+          "revision": "6fec2bc0246091b3e17a9d42e722fb98e05ac3ff",
+          "version": null
+        }
+      },
+      {
+        "package": "FileKit",
+        "repositoryURL": "https://github.com/nvzqz/FileKit.git",
+        "state": {
+          "branch": null,
+          "revision": "826d9161b184509f80d85c28cd612d630646de98",
+          "version": "6.0.0"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "3d0ea2c0806791abcc5d7f0d9f62f1cfd4a7264d",
+          "version": "4.2.0"
+        }
+      },
+      {
+        "package": "MBProgressHUD",
+        "repositoryURL": "https://github.com/jdg/MBProgressHUD.git",
+        "state": {
+          "branch": null,
+          "revision": "bca42b801100b2b3a4eda0ba8dd33d858c780b0d",
+          "version": "1.2.0"
+        }
+      },
+      {
+        "package": "PusherSwift",
+        "repositoryURL": "https://github.com/pusher/pusher-websocket-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "c1214f865cb7f7cd6db3cbdcfe849ca4c34f8e71",
+          "version": "8.0.0"
+        }
+      },
+      {
+        "package": "Reachability",
+        "repositoryURL": "https://github.com/ashleymills/Reachability.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "98e968e7b6c1318fb61df23e347bc319761e8acb",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "Starscream",
+        "repositoryURL": "https://github.com/daltoniam/Starscream.git",
+        "state": {
+          "branch": null,
+          "revision": "e6b65c6d9077ea48b4a7bdda8994a1d3c6969c8d",
+          "version": "3.1.1"
+        }
+      },
+      {
+        "package": "swift-nio-zlib-support",
+        "repositoryURL": "https://github.com/apple/swift-nio-zlib-support.git",
+        "state": {
+          "branch": null,
+          "revision": "37760e9a52030bb9011972c5213c3350fa9d41fd",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
