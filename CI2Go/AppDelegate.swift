@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             window?.overrideUserInterfaceStyle = .dark
         }
         #endif
+        window?.tintColor = .lightGray
         return true
     }
 

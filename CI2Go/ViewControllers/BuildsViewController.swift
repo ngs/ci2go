@@ -280,7 +280,13 @@ class BuildsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? BuildTableViewCell else { return }
+        guard
+            let cell = tableView.cellForRow(at: indexPath) as? BuildTableViewCell,
+            let status = cell.build?.status,
+            status != .notRun && status != .noTests
+            else {
+                tableView.deselectRow(at: indexPath, animated: true)
+                return }
         performSegue(withIdentifier: .showBuildDetail, sender: cell)
     }
 
