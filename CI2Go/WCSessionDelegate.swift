@@ -31,7 +31,6 @@ extension WCSession {
         let defaults = UserDefaults.shared
         transferUserInfo(
             token: Keychain.shared.token,
-            colorScheme: defaults.colorScheme,
             project: defaults.project,
             branch: defaults.branch
         )
@@ -41,7 +40,6 @@ extension WCSession {
         let defaults = UserDefaults.shared
         transferUserInfo(
             token: token,
-            colorScheme: defaults.colorScheme,
             project: defaults.project,
             branch: defaults.branch
         )
@@ -50,23 +48,12 @@ extension WCSession {
     func transferSelected(project: Project?, branch: Branch?) {
         transferUserInfo(
             token: Keychain.shared.token,
-            colorScheme: UserDefaults.shared.colorScheme,
             project: project,
             branch: branch
         )
     }
 
-    func transferColorScheme(colorScheme: ColorScheme) {
-        let defaults = UserDefaults.shared
-        transferUserInfo(
-            token: Keychain.shared.token,
-            colorScheme: UserDefaults.shared.colorScheme,
-            project: defaults.project,
-            branch: defaults.branch
-        )
-    }
-
-    fileprivate func transferUserInfo(token: String?, colorScheme: ColorScheme, project: Project?, branch: Branch?) {
+    fileprivate func transferUserInfo(token: String?, project: Project?, branch: Branch?) {
         let defaults = UserDefaults.standard
         var userInfo: [String: Any] = [:]
         if let token = token ?? Keychain.shared.token {
@@ -78,7 +65,6 @@ extension WCSession {
         if let project = project {
             userInfo["project"] = project.dictionary
         }
-        userInfo["colorScheme"] = colorScheme.name
         transferUserInfo(userInfo)
         transferCurrentComplicationUserInfo(userInfo)
     }

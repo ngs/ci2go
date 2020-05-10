@@ -12,7 +12,6 @@ import KeychainAccess
 struct UserInfo {
     let project: Project?
     let branch: Branch?
-    let colorScheme: ColorScheme
     let token: String?
 
     init(_ dictionary: [String: Any]) {
@@ -26,11 +25,6 @@ struct UserInfo {
         } else {
             branch = nil
         }
-        if let name = dictionary["colorScheme"] as? String {
-            colorScheme = ColorScheme(name) ?? ColorScheme.default
-        } else {
-            colorScheme = ColorScheme.default
-        }
         token = dictionary["token"] as? String
     }
 
@@ -38,7 +32,6 @@ struct UserInfo {
         let defaults = UserDefaults.shared
         defaults.project = project
         defaults.branch = branch
-        defaults.colorScheme = colorScheme
         Keychain.shared.token = token
     }
 }

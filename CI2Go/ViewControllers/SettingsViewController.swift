@@ -68,17 +68,14 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
     }
 
     func refreshData() {
-        let colorSchemeTitle = "Color Scheme"
         let supportTitle = "Support"
         let linkItems: [RowItem] = links.map { .link($0.0, $0.1) }
         var values = [(String?, [RowItem])]()
         if isTokenValid {
-            values.append((colorSchemeTitle, [.colorScheme]))
             values.append((supportTitle, linkItems))
             values.append((nil, [.logout]))
         } else {
             values.append((nil, [.auth(.github), .auth(.bitbucket)]))
-            values.append((colorSchemeTitle, [.colorScheme]))
             values.append((supportTitle, linkItems))
         }
         navigationItem.rightBarButtonItem?.isEnabled = isTokenValid
@@ -86,10 +83,6 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
     }
 
     // MARK: - UIViewController
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -104,12 +97,13 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
         super.viewDidLoad()
         diffCalculator = TableViewDiffCalculator(tableView: tableView)
         tableView.register(
-            UINib(nibName: ColorSchemeTableViewCell.identifier, bundle: nil),
-            forCellReuseIdentifier: ColorSchemeTableViewCell.identifier)
-        tableView.register(
             LoginProviderTableViewCell.self,
             forCellReuseIdentifier: LoginProviderTableViewCell.identifier)
         refreshData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        isModalInPresentation = !isTokenValid
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -152,22 +146,16 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
         let item = diffCalculator.value(atIndexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)
         switch item {
-        case .colorScheme:
-            guard let cell = cell as? ColorSchemeTableViewCell else {
-                fatalError()
-            }
-            cell.colorScheme = ColorScheme.current
-            return cell
         case .logout:
             let cell = cell ?? CustomTableViewCell(style: .default, reuseIdentifier: item.cellIdentifier)
             cell.textLabel?.text = "Logout"
             cell.textLabel?.textAlignment = .center
-            cell.textLabel?.textColor = ColorScheme.current.red
+            cell.textLabel?.textColor = .systemRed
             return cell
         case let .link(title, _):
             let cell = cell ?? CustomTableViewCell(style: .default, reuseIdentifier: item.cellIdentifier)
             cell.textLabel?.text = title
-            cell.textLabel?.textColor = ColorScheme.current.foreground
+            cell.textLabel?.textColor = .label
             return cell
         case let .auth(provider):
             guard let cell = cell as? LoginProviderTableViewCell else {
@@ -183,8 +171,6 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
         let item = diffCalculator.value(atIndexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: item.cellIdentifier)
         switch item {
-        case .colorScheme:
-            performSegue(withIdentifier: .showThemeList, sender: cell)
         case .logout:
             tableView.deselectRow(at: indexPath, animated: true)
             confirmLogout()
@@ -201,15 +187,12 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
     }
 
     enum RowItem: Equatable {
-        case colorScheme
         case link(String, URL)
         case logout
         case auth(AuthProvider)
 
         var cellIdentifier: String {
             switch self {
-            case .colorScheme:
-                return ColorSchemeTableViewCell.identifier
             case .link:
                 return "LinkCell"
             case .logout:

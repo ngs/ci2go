@@ -28,10 +28,6 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         return loadScript(name: "fetchToken")
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard
@@ -45,8 +41,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                 let isCircle = Hostname(url: navigationAction.request.url)?.isCircleCI == true
                 webView.alpha = isCircle ? 0.2 : 1
                 webView.isUserInteractionEnabled = !isCircle
-                navigationItem.rightBarButtonItem = UIBarButtonItem(
-                    activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+                navigationItem.rightBarButtonItem = UIBarButtonItem(activityIndicatorStyle: .medium)
                 decisionHandler(.allow)
                 return
         }

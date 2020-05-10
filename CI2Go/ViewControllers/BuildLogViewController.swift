@@ -32,13 +32,9 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ansiHelper = ColorScheme.current.createANSIEscapeHelper()
+        ansiHelper = createANSIEscapeHelper()
         title = buildAction?.name
         if buildAction?.status == .running {
             bindPusherEvents()
@@ -95,7 +91,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func showActivityIndicatorItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+            activityIndicatorStyle: .medium)
     }
 
     func bindPusherEvents() {
@@ -187,5 +183,16 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         updateSnapToBottom()
+    }
+
+    func createANSIEscapeHelper() -> AMR_ANSIEscapeHelper {
+        let helper = AMR_ANSIEscapeHelper()
+        for index in 30..<108 {
+            let code = AMR_SGRCode(Int32(index))
+            helper.ansiColors[code] = UIColor.from(sgrCode: code)
+        }
+        helper.defaultStringColor = .label
+        helper.font = UIFont(monotype: 12)
+        return helper
     }
 }

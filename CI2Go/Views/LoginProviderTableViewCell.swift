@@ -18,16 +18,4 @@ class LoginProviderTableViewCell: CustomTableViewCell {
             setNeedsLayout()
         }
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let foreground = ColorScheme.current.foreground
-        let background = ColorScheme.current.background
-        let background2 = ColorScheme.current.tableViewCellSelectedBackground
-        textLabel?.textColor = foreground
-        imageView?.tintColor = foreground
-        backgroundColor = background
-        backgroundView?.backgroundColor = background
-        selectedBackgroundView?.backgroundColor = background2
-    }
 }

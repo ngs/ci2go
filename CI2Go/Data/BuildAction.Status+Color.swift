@@ -10,6 +10,15 @@ import UIKit
 
 extension BuildAction.Status {
     var color: UIColor {
-        return ColorScheme.current.action(status: self)
+        switch self {
+        case .success:
+            return .systemGreen
+        case .running:
+            return .systemBlue
+        case .failed, .timedout:
+            return .systemRed
+        default:
+            return .systemGray
+        }
     }
 }

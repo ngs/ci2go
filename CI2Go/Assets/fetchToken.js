@@ -1,5 +1,16 @@
 (deviceName => {
-  fetch('/api/v1/user/token', {credentials: 'include'})
+    let csrfToken;
+  fetch('https://circleci.com/api/v2/csrf', {credentials: 'include'})
+    .then(r => r.json())
+    .then(json => {
+      csrfToken = json.csrf_token;
+      return fetch('https://circleci.com/api/v1/user/token', {
+        credentials: 'include',
+        headers: {
+          'x-csrftoken': csrfToken
+        }
+      })
+    })
     .then(r => r.json())
     .then(json => {
       if (json && json.message) {
@@ -14,13 +25,13 @@
       return label;
     })
     .then(label =>
-      fetch('/api/v1/user/token', {
+      fetch('https://circleci.com/api/v1/user/token', {
         method: 'POST',
         body: JSON.stringify({label}),
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
-          'X-CSRFToken': CSRFToken,
+          'X-CSRFToken': csrfToken,
         },
       }),
     )

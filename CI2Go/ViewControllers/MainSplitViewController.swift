@@ -9,11 +9,6 @@
 import UIKit
 
 class MainSplitViewController: UISplitViewController {
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     var buildsViewController: BuildsViewController? {
         return viewControllers
             .filter { $0 is UINavigationController }

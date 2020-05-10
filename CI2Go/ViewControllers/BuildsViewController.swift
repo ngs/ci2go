@@ -79,10 +79,6 @@ class BuildsViewController: UITableViewController {
 
     // MARK: - UIViewController
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let token = Keychain.shared.token, isValidToken(token) else {

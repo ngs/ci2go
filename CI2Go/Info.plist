@@ -3344,7 +3344,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2014-2018 LittleApps Inc. All Rights Reserved.</string>
+	<string>© 2014-2020 LittleApps Inc. All Rights Reserved.</string>
 	<key>NSUbiquitousContainers</key>
 	<dict>
 		<key>iCloud.com.ci2go.ios.Circle</key>
@@ -3378,7 +3378,7 @@
 		<string>armv7</string>
 	</array>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

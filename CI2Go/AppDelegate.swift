@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         splitViewController?.delegate = self
         splitViewController?.preferredDisplayMode = .allVisible
 
-        ColorScheme.current.apply()
         activateWCSession()
         return true
     }

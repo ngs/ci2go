@@ -12,9 +12,8 @@ class InversedColorButton: UIButton {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let scheme = ColorScheme.current
-        tintColor = scheme.background
-        backgroundColor = scheme.foreground
+        tintColor = .systemBackground
+        backgroundColor = .darkText
     }
 
 }

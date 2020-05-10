@@ -19,18 +19,8 @@ class UserDefaultsExtensionTests: XCTestCase {
         project = Project(vcs: .github, username: "ngs", name: "ci2go")
         branch = Branch(project, "master")
         let defaults = UserDefaults()
-        defaults.removeObject(forKey: .colorScheme)
         defaults.removeObject(forKey: .branch)
         defaults.removeObject(forKey: .project)
-    }
-
-    func testColorScheme() {
-        let defaults = UserDefaults()
-        XCTAssertEqual(defaults.colorScheme.name, "Github")
-        defaults.set("Foo", forKey: .colorScheme)
-        XCTAssertEqual(defaults.colorScheme.name, "Github")
-        defaults.set("Tomorrow Night", forKey: .colorScheme)
-        XCTAssertEqual(defaults.colorScheme.name, "Tomorrow Night")
     }
 
     func testBranchAndProject() {

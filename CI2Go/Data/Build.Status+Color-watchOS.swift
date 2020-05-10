@@ -12,13 +12,13 @@ extension Build.Status {
     var color: UIColor {
         switch self {
         case .success, .fixed:
-            return .systemGreen
+            return .green
         case .running:
-            return .systemBlue
+            return .blue
         case .failed, .timedout, .infrastructureFail, .noTests:
-            return .systemRed
+            return .red
         default:
-            return .systemGray
+            return .gray
         }
     }
 }

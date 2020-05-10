@@ -28,10 +28,6 @@ class ProjectsViewController: UITableViewController {
 
     // MARK: -
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(

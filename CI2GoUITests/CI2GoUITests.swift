@@ -17,7 +17,7 @@ class CI2GoUITests: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["-colorSchemes=1,2,3,4,5,6,7,8"]
+        app.launchArguments = []
         setupSnapshot(app)
         app.launch()
     }
@@ -39,20 +39,6 @@ class CI2GoUITests: XCTestCase {
 
         snapshot("5-Settings")
 
-        element = app.tables["SettingsTableView"].cells["ColorSchemeTableViewCell"]
-        expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-        XCTAssertTrue(element.exists)
-        element.tap()
-
-        element = app.tables["ColorSchemeTableView"]
-        expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-        XCTAssertTrue(element.exists)
-
-        snapshot("6-ColorScheme")
-
-        app.navigationBars["Select theme"].buttons["Settings"].tap()
         app.navigationBars["Settings"].buttons["Done"].tap()
 
         app.navigationBars["Builds"].buttons["Select Project"].tap()
