@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     static var systemMagenta: UIColor {
-        return UIColor.systemPink
+        return UIColor.systemPurple
     }
 
     static var systemCyan: UIColor {
