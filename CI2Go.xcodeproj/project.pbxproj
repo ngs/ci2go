@@ -2273,7 +2273,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "92dceed1-b4b6-426a-815b-41dab78fc5f7";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.ci2go.ios.Circle";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Production";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
