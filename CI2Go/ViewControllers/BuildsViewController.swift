@@ -46,6 +46,7 @@ class BuildsViewController: UITableViewController {
                 } else {
                     navigationItem.prompt = nil
                 }
+                navigationController?.navigationBar.setNeedsLayout()
             }
             DispatchQueue.global().async {
                 WCSession.default.transferSelected(project: project, branch: branch)
