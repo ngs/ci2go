@@ -60,12 +60,6 @@
 		854A399724672E70007B8D65 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 854A399624672E70007B8D65 /* MBProgressHUD */; };
 		854A39A624673100007B8D65 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39A224673100007B8D65 /* FirebaseCrashlytics.xcframework */; };
 		854A39A724673100007B8D65 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39A224673100007B8D65 /* FirebaseCrashlytics.xcframework */; };
-		854A39A924673100007B8D65 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A324673100007B8D65 /* run */; };
-		854A39AA24673100007B8D65 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A324673100007B8D65 /* run */; };
-		854A39AB24673100007B8D65 /* run in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A324673100007B8D65 /* run */; };
-		854A39AC24673100007B8D65 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A424673100007B8D65 /* upload-symbols */; };
-		854A39AD24673100007B8D65 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A424673100007B8D65 /* upload-symbols */; };
-		854A39AE24673100007B8D65 /* upload-symbols in Resources */ = {isa = PBXBuildFile; fileRef = 854A39A424673100007B8D65 /* upload-symbols */; };
 		854A39BB246732DF007B8D65 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B0246732DF007B8D65 /* nanopb.xcframework */; };
 		854A39BC246732DF007B8D65 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B0246732DF007B8D65 /* nanopb.xcframework */; };
 		854A39BE246732DF007B8D65 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B1246732DF007B8D65 /* GoogleAppMeasurement.framework */; };
@@ -411,8 +405,6 @@
 		854A397B246723F2007B8D65 /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		854A397E24672731007B8D65 /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
 		854A39A224673100007B8D65 /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
-		854A39A324673100007B8D65 /* run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = run; sourceTree = "<group>"; };
-		854A39A424673100007B8D65 /* upload-symbols */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "upload-symbols"; sourceTree = "<group>"; };
 		854A39A524673100007B8D65 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		854A39B0246732DF007B8D65 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
 		854A39B1246732DF007B8D65 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
@@ -703,8 +695,6 @@
 			isa = PBXGroup;
 			children = (
 				854A39A224673100007B8D65 /* FirebaseCrashlytics.xcframework */,
-				854A39A324673100007B8D65 /* run */,
-				854A39A424673100007B8D65 /* upload-symbols */,
 			);
 			path = FirebaseCrashlytics;
 			sourceTree = "<group>";
@@ -1274,9 +1264,7 @@
 				8555C5B820EBA65E003F5C93 /* BuildTableViewCell.xib in Resources */,
 				8555C5BA20EBB4CA003F5C93 /* Assets.xcassets in Resources */,
 				854A39E924673B89007B8D65 /* GoogleService-Info.plist in Resources */,
-				854A39AD24673100007B8D65 /* upload-symbols in Resources */,
 				8555C5AF20EB9DE8003F5C93 /* BuildArtifactTableViewCell.xib in Resources */,
-				854A39AA24673100007B8D65 /* run in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,7 +1274,6 @@
 			files = (
 				85CAE21F20D5BAE2002CD128 /* SourceCodePro-Light.ttf in Resources */,
 				85B4CD8D20D23E2F005A6DA9 /* LaunchScreen.storyboard in Resources */,
-				854A39A924673100007B8D65 /* run in Resources */,
 				85CAE21D20D5BAE2002CD128 /* SourceCodePro-Semibold.ttf in Resources */,
 				8582285220E5E6B60092B8CF /* login-github.com.js in Resources */,
 				8504A07620DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib in Resources */,
@@ -1299,7 +1286,6 @@
 				856609B520D8F84D00557249 /* LoadingCell.xib in Resources */,
 				85CAE22020D5BAE2002CD128 /* SourceCodePro-Black.ttf in Resources */,
 				85D9053D20EAF9D500CBF5B6 /* Settings.bundle in Resources */,
-				854A39AC24673100007B8D65 /* upload-symbols in Resources */,
 				85CAE22220D5BAE2002CD128 /* SourceCodePro-Regular.ttf in Resources */,
 				854A397F24672731007B8D65 /* 1Password.xcassets in Resources */,
 				85B4CD8A20D23E2F005A6DA9 /* Assets.xcassets in Resources */,
@@ -1347,8 +1333,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				854A39AE24673100007B8D65 /* upload-symbols in Resources */,
-				854A39AB24673100007B8D65 /* run in Resources */,
 				85F93BCA20DDCD0700327DE9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
