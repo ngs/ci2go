@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06920DB8F36001D0C08 /* InversedColorButton.swift */; };
 		8504A06C20DB9733001D0C08 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */; };
 		8504A06E20DBAE4C001D0C08 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */; };
 		8504A07020DBAE75001D0C08 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */; };
@@ -368,7 +367,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8504A06920DB8F36001D0C08 /* InversedColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InversedColorButton.swift; sourceTree = "<group>"; };
 		8504A06B20DB9733001D0C08 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		8504A06D20DBAE4C001D0C08 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		8504A06F20DBAE75001D0C08 /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
@@ -649,7 +647,6 @@
 				856609B620D965F800557249 /* BuildTableViewCell.xib */,
 				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
 				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
-				8504A06920DB8F36001D0C08 /* InversedColorButton.swift */,
 				8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */,
 				856609B220D8F5D200557249 /* LoadingCell.swift */,
 				856609B420D8F84D00557249 /* LoadingCell.xib */,
@@ -1494,7 +1491,6 @@
 				8566098920D84CAC00557249 /* PusherEvent.swift in Sources */,
 				85CAE26F20D629B3002CD128 /* Branch.swift in Sources */,
 				856609B320D8F5D200557249 /* LoadingCell.swift in Sources */,
-				8504A06A20DB8F36001D0C08 /* InversedColorButton.swift in Sources */,
 				8582284720E5C8DB0092B8CF /* LoginViewController.swift in Sources */,
 				85CAE26D20D62876002CD128 /* Project.swift in Sources */,
 				853D1A5320D639EF00C7F4FC /* HTTPMethod.swift in Sources */,
