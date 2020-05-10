@@ -35,6 +35,8 @@ extension Build.Status {
             return #imageLiteral(resourceName: "success-utilitarian")
         case .graphicCorner, .graphicBezel, .graphicCircular, .graphicRectangular:
             return #imageLiteral(resourceName: "success-circle-modularLarge-header")
+        @unknown default:
+            fatalError()
         }
     }
 
@@ -52,6 +54,8 @@ extension Build.Status {
             return #imageLiteral(resourceName: "failed-utilitarian")
         case .graphicCorner, .graphicBezel, .graphicCircular, .graphicRectangular:
             return #imageLiteral(resourceName: "failed-circle-modularLarge-header")
+        @unknown default:
+            fatalError()
         }
     }
 }
@@ -100,6 +104,8 @@ extension Build {
             } else {
                 fatalError()
             }
+        @unknown default:
+            fatalError()
         }
     }
 

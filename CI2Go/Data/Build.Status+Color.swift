@@ -10,6 +10,15 @@ import UIKit
 
 extension Build.Status {
     var color: UIColor {
-        return ColorScheme.current.badge(status: self)
+        switch self {
+        case .success, .fixed:
+            return .systemGreen
+        case .running:
+            return .systemBlue
+        case .failed, .timedout, .infrastructureFail, .noTests:
+            return .systemRed
+        default:
+            return .systemGray
+        }
     }
 }

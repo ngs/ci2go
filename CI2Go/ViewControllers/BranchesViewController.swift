@@ -31,10 +31,6 @@ class BranchesViewController: UITableViewController {
         }
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

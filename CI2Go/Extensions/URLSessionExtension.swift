@@ -13,7 +13,6 @@ extension URLSession {
         endpoint: Endpoint<T>,
         token: String?,
         completionHandler: ((T?, Data?, URLResponse?, Error?) -> Void)? = nil) -> URLSessionDataTask {
-        NetworkActivityManager.start()
         return dataTask(
             with: endpoint.urlRequest(with: token),
             completionHandler: { (data, res, err) in
@@ -30,7 +29,6 @@ extension URLSession {
                 } catch {
                     completionHandler(nil, data, res, error)
                 }
-                NetworkActivityManager.stop()
         })
     }
 }

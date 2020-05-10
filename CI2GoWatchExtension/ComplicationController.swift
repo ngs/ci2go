@@ -184,6 +184,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             } else {
                 fatalError()
             }
+        @unknown default:
+            fatalError()
         }
     }
 }

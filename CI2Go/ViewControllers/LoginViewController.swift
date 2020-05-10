@@ -9,8 +9,6 @@
 import UIKit
 import WebKit
 import KeychainAccess
-import OnePasswordExtension
-import Crashlytics
 
 class LoginViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
@@ -30,10 +28,6 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         return loadScript(name: "fetchToken")
     }()
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard
@@ -47,8 +41,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
                 let isCircle = Hostname(url: navigationAction.request.url)?.isCircleCI == true
                 webView.alpha = isCircle ? 0.2 : 1
                 webView.isUserInteractionEnabled = !isCircle
-                navigationItem.rightBarButtonItem = UIBarButtonItem(
-                    activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+                navigationItem.rightBarButtonItem = UIBarButtonItem(activityIndicatorStyle: .medium)
                 decisionHandler(.allow)
                 return
         }
@@ -59,7 +52,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
             performSegue(withIdentifier: .unwindSegue, sender: self)
         } else if url.path.hasPrefix("/error/") {
             let error = url.pathComponents[2]
-            Crashlytics.sharedInstance().recordError(JSError.caught(error))
+            Crashlytics.crashlytics().record(error: JSError.caught(error))
             Keychain.shared.token = nil
             navigationController?.popToRootViewController(animated: true)
         }
@@ -149,7 +142,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
             forURLString: url.absoluteString,
             for: self, sender: sender) { (data, err) in
                 if let err = err {
-                    Crashlytics.sharedInstance().recordError(err)
+                    Crashlytics.crashlytics().record(error: err)
                 }
                 guard
                     let data = data,
@@ -164,7 +157,7 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
     func evaluateJavaScript(_ script: String, completionHandler: ((Error?) -> Void)? = nil) {
         webView.evaluateJavaScript(script) { (res, err) in
             if let err = err {
-                Crashlytics.sharedInstance().recordError(err)
+                Crashlytics.crashlytics().record(error: err)
                 print("\(err), \(script)")
                 completionHandler?(err)
                 return

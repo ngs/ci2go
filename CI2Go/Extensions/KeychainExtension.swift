@@ -28,6 +28,7 @@ extension Keychain {
         get {
             let defaults = UserDefaults.standard
             if let token = defaults.string(forKey: "circleToken"), defaults.bool(forKey: "FASTLANE_SNAPSHOT") {
+                self["token"] = token
                 return token
             }
             return self["token"]

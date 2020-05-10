@@ -12,6 +12,7 @@ enum Hostname: String {
     case github = "github.com"
     case bitbucket = "bitbucket.org"
     case circleci = "circleci.com"
+    case circleci2 = "app.circleci.com"
     case atlassian = "id.atlassian.com"
     case app = "ci2go.app"
 
@@ -30,6 +31,6 @@ enum Hostname: String {
     }
 
     var isCircleCI: Bool {
-        return self == .circleci
+        return self == .circleci || self == .circleci2
     }
 }

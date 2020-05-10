@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,30 +13,31 @@
             <rect key="frame" x="0.0" y="0.0" width="374" height="326"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUILT BY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djU-qJ-lcz">
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUILT BY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djU-qJ-lcz">
                     <rect key="frame" x="0.0" y="175" width="374" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="MoK-9Q-CG0"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ci2go-logo" translatesAutoresizingMaskIntoConstraints="NO" id="gv5-No-j30">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ci2go-logo" translatesAutoresizingMaskIntoConstraints="NO" id="gv5-No-j30">
                     <rect key="frame" x="122" y="60" width="130" height="110"/>
+                    <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="130" id="PA3-1I-p2G"/>
                         <constraint firstAttribute="height" constant="110" id="WCI-qr-jKk"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="littleapps-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fgz-5f-abC">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="littleapps-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fgz-5f-abC">
                     <rect key="frame" x="57" y="205" width="260" height="21"/>
+                    <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="GKX-eS-i4c"/>
                         <constraint firstAttribute="width" constant="260" id="qhP-j8-a6G"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM7-q6-IBp">
                     <rect key="frame" x="0.0" y="266" width="374" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="dkH-LP-6G5"/>
@@ -46,10 +45,10 @@
                     <string key="text">CI2Go 2.1.0 (123)
 © 2014-2018 LittleApps Inc.</string>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="djU-qJ-lcz" firstAttribute="top" secondItem="gv5-No-j30" secondAttribute="bottom" constant="5" id="4r6-on-xXg"/>
                 <constraint firstItem="djU-qJ-lcz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7hP-ll-g4b"/>

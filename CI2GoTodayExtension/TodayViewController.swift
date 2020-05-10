@@ -8,11 +8,55 @@
 
 import UIKit
 import NotificationCenter
-import Crashlytics
 import Dwifft
 import KeychainAccess
 
-class TodayViewController: UIViewController {
+class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataSource, UITableViewDelegate {
+
+    // MARK: NCWidgetProviding -
+
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+        loadBuilds(completionHandler: completionHandler)
+    }
+
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        updatePreferredContentSize(for: activeDisplayMode, width: maxSize.width)
+    }
+
+    // MARK: UITableViewDataSource -
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return diffCalculator.numberOfSections()
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return diffCalculator.numberOfObjects(inSection: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = diffCalculator.value(atIndexPath: indexPath)
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
+            else { fatalError() }
+        cell.build = item
+        cell.tintColor = .darkText
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let item = diffCalculator.value(atIndexPath: indexPath)
+        return BuildTableViewCell.height(for: item)
+    }
+
+    // MARK: UITableViewDelegate -
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let url = diffCalculator.value(atIndexPath: indexPath).inAppURL
+        extensionContext?.open(url, completionHandler: { _ in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
+    }
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var controlViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var controlView: UIStackView!
@@ -32,6 +76,7 @@ class TodayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FirebaseApp.configure()
         tableView.register(
             UINib(nibName: BuildTableViewCell.identifier, bundle: nil),
             forCellReuseIdentifier: BuildTableViewCell.identifier)
@@ -55,6 +100,8 @@ class TodayViewController: UIViewController {
             return 2
         case .expanded:
             return limit
+        @unknown default:
+            fatalError()
         }
     }
 
@@ -96,7 +143,7 @@ class TodayViewController: UIViewController {
                 self?.activityIndicatorView.stopAnimating()
             }
             guard let builds = builds else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 completionHandler?(.failed)
                 return
             }
@@ -122,51 +169,5 @@ class TodayViewController: UIViewController {
         } else {
             updatedTimeLabel.text = ""
         }
-    }
-}
-
-extension TodayViewController: NCWidgetProviding {
-
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        loadBuilds(completionHandler: completionHandler)
-    }
-
-    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-        updatePreferredContentSize(for: activeDisplayMode, width: maxSize.width)
-    }
-}
-
-extension TodayViewController: UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return diffCalculator.numberOfSections()
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return diffCalculator.numberOfObjects(inSection: section)
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = diffCalculator.value(atIndexPath: indexPath)
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
-            else { fatalError() }
-        cell.build = item
-        cell.tintColor = .darkText
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = diffCalculator.value(atIndexPath: indexPath)
-        return BuildTableViewCell.height(for: item)
-    }
-}
-
-extension TodayViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let url = diffCalculator.value(atIndexPath: indexPath).inAppURL
-        extensionContext?.open(url, completionHandler: { _ in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        })
     }
 }

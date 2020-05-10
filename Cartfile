@@ -1,6 +1,0 @@
-github "AgileBits/onepassword-extension" "add-framework-support"
-github "jdg/MBProgressHUD" ~> 1.1.0
-github "jflinter/Dwifft"
-github "kishikawakatsumi/KeychainAccess"
-github "pusher/pusher-websocket-swift" ~> 6.1.0
-github "nvzqz/FileKit"

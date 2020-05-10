@@ -8,7 +8,6 @@
 
 import UIKit
 import Dwifft
-import Crashlytics
 import FileKit
 
 class ProjectsViewController: UITableViewController {
@@ -28,10 +27,6 @@ class ProjectsViewController: UITableViewController {
     }
 
     // MARK: -
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +69,7 @@ class ProjectsViewController: UITableViewController {
         let cacheFile = self.cacheFile
         URLSession.shared.dataTask(endpoint: .projects) { [weak self] (projects, data, _, err) in
             guard let projects = projects, let data = data else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 return
             }
             if let jsonString = String(data: data, encoding: .utf8) {

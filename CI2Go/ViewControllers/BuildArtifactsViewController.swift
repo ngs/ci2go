@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Crashlytics
 import Dwifft
 import QuickLook
 import FileKit
@@ -31,10 +30,6 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
 
     // MARK: -
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
@@ -56,7 +51,6 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
             let dataSource = sender as? SingleQuickLookDataSource
             else { return }
         let controller = QLPreviewController()
-        controller.view.backgroundColor = ColorScheme.current.background
         controller.dataSource = dataSource
         controller.delegate = self
         nvc.viewControllers = [controller]
@@ -77,13 +71,13 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         URLSession.shared.dataTask(endpoint: .artifacts(build: build)) { [weak self] (artifacts, _, _, err) in
             self?.isLoading = false
             guard let artifacts = artifacts else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 return
             }
             self?.path = ""
             self?.artifacts = artifacts
             self?.refreshData()
-            }.resume()
+        }.resume()
     }
 
     func refreshData() {
@@ -103,7 +97,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
                 .components(separatedBy: "/")
             guard let name = comps.first else { return nil }
             return RowItem(name, artifact: comps.count == 1 ? artifact : nil)
-            }.filter { $0 != nil }.map { $0! }.unique
+        }.filter { $0 != nil }.map { $0! }.unique
         if items.count == 1 && items.first?.artifact == nil {
             self.path = "\(path)\(path.isEmpty ? "" : "/")\(items.first!.name)"
             refreshData()
@@ -124,7 +118,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
         }
         ArtifactDownloadManager.shared.download(artifact) { [weak self] err in
             if let err = err {
-                Crashlytics.sharedInstance().recordError(err)
+                Crashlytics.crashlytics().record(error: err)
             }
             self?.tableView.reloadData()
         }
@@ -180,7 +174,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
 
     override func tableView(_ tableView: UITableView,
                             trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-        ) -> UISwipeActionsConfiguration? {
+    ) -> UISwipeActionsConfiguration? {
         guard
             let item = diffCalculator?.value(atIndexPath: indexPath),
             let artifact = item.artifact,
@@ -200,7 +194,7 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
                 }
             }
         }
-        action.backgroundColor = ColorScheme.current.red
+        action.backgroundColor = .systemRed
         action.image = #imageLiteral(resourceName: "trash")
         return UISwipeActionsConfiguration(actions: [action])
     }

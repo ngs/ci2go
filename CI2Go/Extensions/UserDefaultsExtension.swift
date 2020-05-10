@@ -10,7 +10,6 @@ import Foundation
 
 extension UserDefaults {
     enum Key: String {
-        case colorScheme = "CI2GoColorScheme"
         case branch = "CI2GoSelectedBranch2"
         case project = "CI2GoSelectedProject2"
     }
@@ -35,19 +34,6 @@ extension UserDefaults {
 
     // MARK: -
 
-    var colorScheme: ColorScheme {
-        get {
-            if let name = string(forKey: .colorScheme) {
-                return ColorScheme(name) ?? .default
-            }
-            return .default
-        }
-
-        set(value) {
-            set(value.name, forKey: .colorScheme)
-        }
-    }
-
     var branch: Branch? {
         get {
             guard
@@ -56,6 +42,7 @@ extension UserDefaults {
                 else { return nil }
             return branch
         }
+
         set(value) {
             removeObject(forKey: .project)
             set(value?.dictionary, forKey: .branch)
@@ -70,6 +57,7 @@ extension UserDefaults {
                 else { return nil }
             return project
         }
+
         set(value) {
             removeObject(forKey: .branch)
             set(value?.dictionary, forKey: .project)

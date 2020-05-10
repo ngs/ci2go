@@ -1,14 +1,15 @@
 devices([
   "iPhone 8",
   "iPhone 8 Plus",
-  "iPhone SE",
-  "iPhone X",
-  "iPad Pro (12.9-inch) (2nd generation)",
-  "iPad Pro (10.5-inch)",
-  "iPad Pro (12.9-inch) (3rd generation)",
-  "iPhone XS Max",
-  "iPad Pro (9.7-inch)"
-#   "Apple TV 1080p"
+  # "iPhone 11",
+  "iPhone 11 Pro",
+  "iPhone 11 Pro Max",
+  "iPhone SE (2nd generation)",
+  "iPad Pro (9.7-inch)",
+  "iPad (7th generation)",
+  "iPad Pro (11-inch) (2nd generation)",
+  "iPad Pro (12.9-inch) (4th generation)",
+  # "iPad Air (3rd generation)"
 ])
 
 languages(["en-US"])
@@ -22,6 +23,6 @@ launch_arguments ["-circleToken #{ENV.fetch('UI_TEST_CIRCLE_TOKEN')}"]
 # For more information about all available options run
 # fastlane action snapshot
 derived_data_path 'DerivedData'
-namespace_log_files true
+namespace_log_files false
 # ttest_without_building true
 erase_simulator true

@@ -8,7 +8,6 @@
 
 import UIKit
 import KeychainAccess
-import Crashlytics
 import PusherSwift
 import Dwifft
 import WatchConnectivity
@@ -47,6 +46,7 @@ class BuildsViewController: UITableViewController {
                 } else {
                     navigationItem.prompt = nil
                 }
+                navigationController?.navigationBar.setNeedsLayout()
             }
             DispatchQueue.global().async {
                 WCSession.default.transferSelected(project: project, branch: branch)
@@ -58,9 +58,7 @@ class BuildsViewController: UITableViewController {
         didSet {
             if currentUser == oldValue { return }
             if let user = currentUser {
-                let crashlytics = Crashlytics.sharedInstance()
-                crashlytics.setUserIdentifier(user.login)
-                crashlytics.setUserName(user.name)
+                Crashlytics.crashlytics().setUserID(user.login)
                 connectPusher()
             } else {
                 Pusher.logout()
@@ -81,10 +79,6 @@ class BuildsViewController: UITableViewController {
     }
 
     // MARK: - UIViewController
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -176,7 +170,7 @@ class BuildsViewController: UITableViewController {
     func loadUser() {
         URLSession.shared.dataTask(endpoint: .me) { [weak self] (user, _, res, err) in
             guard let user = user else {
-                Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                 if let res = res as? HTTPURLResponse, res.statusCode == 401 {
                     self?.logout()
                 }
@@ -193,10 +187,9 @@ class BuildsViewController: UITableViewController {
             let pusher = Pusher.shared,
             pusher.connection.connectionState == .disconnected
             else { return }
-
         let userChannel = pusher.subscribe(channelName)
         userChannel.bind(.call) { _ in self.loadBuilds() }
-        pusher.bind { [weak self] message in
+        pusher.bind { [weak self] (message: Any?) in
             guard
                 let message = message as? [String: Any],
                 let eventName = message["event"] as? String,
@@ -249,7 +242,7 @@ class BuildsViewController: UITableViewController {
                 self.currentOffset = more ? newBuilds.count : builds.count
                 self.isLoading = false
                 if let err = err {
-                    Crashlytics.sharedInstance().recordError(err)
+                    Crashlytics.crashlytics().record(error: err)
                     return
                 }
                 self.hasMore = builds.count >= self.limit
@@ -274,12 +267,15 @@ class BuildsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
+            cell.accessibilityIdentifier = "activityIndicatorCell"
+            return cell
         }
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
             else { fatalError() }
         cell.build = diffCalculator?.value(atIndexPath: indexPath)
+        cell.accessibilityIdentifier = "buildCell_\(indexPath.row)"
         return cell
     }
 

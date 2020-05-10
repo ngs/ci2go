@@ -17,7 +17,7 @@ class CI2GoUITests: XCTestCase {
         super.setUp()
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["-colorSchemes=1,2,3,4,5,6,7,8"]
+        app.launchArguments = ["UITestingDarkModeEnabled"]
         setupSnapshot(app)
         app.launch()
     }
@@ -30,8 +30,11 @@ class CI2GoUITests: XCTestCase {
         let app = XCUIApplication()
         var element: XCUIElement!
 
-        expectation(for: nonexistencePredicate, evaluatedWith: app.activityIndicators.firstMatch, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
+        expectation(
+            for: existencePredicate,
+            evaluatedWith: app.cells["buildCell_0"],
+            handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
 
         snapshot("0-Build-List")
 
@@ -39,20 +42,6 @@ class CI2GoUITests: XCTestCase {
 
         snapshot("5-Settings")
 
-        element = app.tables["SettingsTableView"].cells["ColorSchemeTableViewCell"]
-        expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-        XCTAssertTrue(element.exists)
-        element.tap()
-
-        element = app.tables["ColorSchemeTableView"]
-        expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-        XCTAssertTrue(element.exists)
-
-        snapshot("6-ColorScheme")
-
-        app.navigationBars["Select theme"].buttons["Settings"].tap()
         app.navigationBars["Settings"].buttons["Done"].tap()
 
         app.navigationBars["Builds"].buttons["Select Project"].tap()
@@ -77,12 +66,9 @@ class CI2GoUITests: XCTestCase {
 
         element.tap()
 
-        expectation(for: nonexistencePredicate, evaluatedWith: app.activityIndicators.firstMatch, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
-
         element = app.tables["BuildsTableView"].cells.element(matching: NSPredicate(block: { (attr, _) -> Bool in
             guard let label = (attr as? XCUIElementAttributes)?.label else { return false }
-            return (label.contains("Success") || label.contains("Fixed"))
+            return (label.contains("Success") || label.contains("Fixed")) && label.contains("tests")
         })).firstMatch
         expectation(for: existencePredicate, evaluatedWith: element, handler: nil)
         waitForExpectations(timeout: 60, handler: nil)
@@ -98,9 +84,6 @@ class CI2GoUITests: XCTestCase {
         XCTAssertTrue(element.exists)
 
         element.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).tap()
-
-        expectation(for: nonexistencePredicate, evaluatedWith: app.activityIndicators.firstMatch, handler: nil)
-        waitForExpectations(timeout: 60, handler: nil)
 
         snapshot("2-Build-Log")
 
@@ -121,6 +104,23 @@ class CI2GoUITests: XCTestCase {
         element.cells["BuildConfigurationCell"].coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0)).tap()
 
         snapshot("4-Build-Config")
+
+        XCUIDevice.shared.press(XCUIDevice.Button.home)
+
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        Snapshot.app = springboard
+        springboard.windows.firstMatch.swipeRight()
+        springboard.windows.firstMatch.swipeRight()
+        springboard.buttons["Edit"].tap()
+        springboard.buttons["Insert CI2Go"].tap()
+        element = springboard.buttons["Reorder CI2Go"]
+        let start = element.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
+        let end = element.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: -5))
+        start.press(forDuration: 1, thenDragTo: end)
+        springboard.buttons["Done"].tap()
+        springboard.swipeDown()
+        springboard.buttons["Show More"].firstMatch.tap()
+        snapshot("6-Today-Widget")
     }
 
 }

@@ -14,4 +14,14 @@
 #import "AMR_ANSIEscapeHelper.h"
 #endif
 
+#ifndef OnePasswordExtension_h
+#define OnePasswordExtension_h
+#import "OnePasswordExtension.h"
+#endif
+
+#ifndef Firebase_h
+#define Firebase_h
+#import "Firebase.h"
+#endif
+
 #endif /* CI2Go_Bridging_Header_h */

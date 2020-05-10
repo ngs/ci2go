@@ -8,6 +8,11 @@ https://ngs.io/
 Version history
 ---------------
 
+[2.3.0]
+
+- Drop color schemes feature
+- Support Dark Mode
+
 [2.2.0]
 
 - Build Artifacts are now downloaded to iCloud Drive

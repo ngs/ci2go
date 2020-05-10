@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,36 +12,37 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NpC-1o-4Ml" id="lEv-HK-qut">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Gyc-Ml-YLS">
-                        <rect key="frame" x="0.0" y="5" width="365" height="69.5"/>
+                        <rect key="frame" x="0.0" y="5" width="365" height="70"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpe-aW-qbe">
-                                <rect key="frame" x="0.0" y="0.0" width="10" height="69.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="10" height="70"/>
                                 <color key="backgroundColor" red="0.0" green="0.81758996210000001" blue="0.00056364551530000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="WGa-6l-WJU"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6zN-eN-Gg9">
-                                <rect key="frame" x="17" y="0.0" width="313" height="69.5"/>
+                                <rect key="frame" x="17" y="0.0" width="313" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="1000" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7D-lg-2kL">
-                                <rect key="frame" x="337" y="0.0" width="28" height="69.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7D-lg-2kL">
+                                <rect key="frame" x="337" y="0.0" width="28" height="70"/>
                                 <string key="text">config
 00:00</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="Gyc-Ml-YLS" firstAttribute="leading" secondItem="lEv-HK-qut" secondAttribute="leading" id="EYe-5V-GUC"/>
                     <constraint firstItem="Gyc-Ml-YLS" firstAttribute="top" secondItem="lEv-HK-qut" secondAttribute="top" constant="5" id="Mcj-Wv-gHu"/>
@@ -56,6 +55,7 @@
                 <outlet property="nameLabel" destination="6zN-eN-Gg9" id="qFP-fR-pz2"/>
                 <outlet property="timeLabel" destination="q7D-lg-2kL" id="7OE-mj-U3E"/>
             </connections>
+            <point key="canvasLocation" x="140" y="154"/>
         </tableViewCell>
     </objects>
 </document>

@@ -8,7 +8,6 @@
 
 import UIKit
 import PusherSwift
-import Crashlytics
 import MBProgressHUD
 
 class BuildLogViewController: UIViewController, UIScrollViewDelegate {
@@ -33,13 +32,9 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ColorScheme.current.statusBarStyle
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ansiHelper = ColorScheme.current.createANSIEscapeHelper()
+        ansiHelper = createANSIEscapeHelper()
         title = buildAction?.name
         if buildAction?.status == .running {
             bindPusherEvents()
@@ -62,17 +57,15 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func downloadLog() {
         guard let outputURL = buildAction?.outputURL else { return }
-        NetworkActivityManager.start()
         showActivityIndicatorItem()
         URLSession.shared.dataTask(with: outputURL) { [weak self] (data, _, err) in
-            NetworkActivityManager.stop()
             guard let `self` = self else { return }
             let decoder = JSONDecoder()
             guard
                 let data = data,
                 let logs = try? decoder.decode([BuildLog].self, from: data)
                 else {
-                    Crashlytics.sharedInstance().recordError(err ?? APIError.noData)
+                    Crashlytics.crashlytics().record(error: err ?? APIError.noData)
                     DispatchQueue.main.async {
                         let hud = MBProgressHUD.showAdded(
                             to: self.navigationController?.view ?? self.view,
@@ -98,7 +91,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func showActivityIndicatorItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            activityIndicatorStyle: ColorScheme.current.activityIndicatorViewStyle)
+            activityIndicatorStyle: .medium)
     }
 
     func bindPusherEvents() {
@@ -190,5 +183,24 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         updateSnapToBottom()
+    }
+
+    func createANSIEscapeHelper() -> AMR_ANSIEscapeHelper {
+        let helper = AMR_ANSIEscapeHelper()
+        var colors: [Int32: UIColor] = [:]
+        for index in 30..<108 {
+            let code = Int32(index)
+            colors[code] = UIColor.from(sgrCode: AMR_SGRCode(rawValue: code))
+        }
+        helper.ansiColors = (colors as NSDictionary).mutableCopy() as? NSMutableDictionary
+        helper.defaultStringColor = .label
+        helper.font = UIFont(monotype: 12)
+        return helper
+    }
+}
+
+extension AMR_SGRCode: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(rawValue.hashValue)
     }
 }

@@ -44,14 +44,14 @@ platform :ios do
   lane :beta_match do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
-    match type: 'adhoc'
+    match type: 'adhoc', readonly: true
   end
 
   desc 'Match App Store Provisioning Profiles'
   lane :release_match do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
-    match type: 'appstore'
+    match type: 'appstore', readonly: true
   end
 
 
