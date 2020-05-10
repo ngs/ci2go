@@ -24,6 +24,8 @@ class BuildActionTableViewCell: CustomTableViewCell {
             let hasOutput = buildAction.hasOutput || buildAction.status == .running
             accessoryType = hasOutput ? .disclosureIndicator : .none
             selectionStyle = hasOutput ? .default : .none
+            selectedBackgroundView = nil
+            backgroundView = nil
             isHidden = false
             setNeedsLayout()
         }

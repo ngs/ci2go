@@ -93,13 +93,6 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         }
         if host.isAuthProvider {
             fillTotpToken()
-            if OnePasswordExtension.shared().isAppExtensionAvailable() {
-                let item = UIBarButtonItem(
-                    image: #imageLiteral(resourceName: "onepassword-navbar"), style: .plain,
-                    target: self, action: #selector(openPasswordManager(_:)))
-                navigationItem.rightBarButtonItem = item
-                return
-            }
         }
         navigationItem.rightBarButtonItem = nil
     }
@@ -130,28 +123,6 @@ class LoginViewController: UIViewController, WKNavigationDelegate {
         let script = self.loadScript(name: "totp-\(host.rawValue)") + "('\(str)')"
         self.evaluateJavaScript(script)
 
-    }
-
-    @objc func openPasswordManager(_ sender: Any?) {
-        guard
-            let url = webView.url,
-            let host = Hostname(url: url),
-            host.isAuthProvider
-            else { return }
-        OnePasswordExtension.shared().findLogin(
-            forURLString: url.absoluteString,
-            for: self, sender: sender) { (data, err) in
-                if let err = err {
-                    Crashlytics.crashlytics().record(error: err)
-                }
-                guard
-                    let data = data,
-                    let username = data["username"] as? String,
-                    let password = data["password"] as? String
-                    else { return }
-                let script = self.loadScript(name: "login-\(host.rawValue)") + "('\(username)', '\(password)')"
-                self.evaluateJavaScript(script)
-        }
     }
 
     func evaluateJavaScript(_ script: String, completionHandler: ((Error?) -> Void)? = nil) {
