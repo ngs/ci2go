@@ -23,6 +23,6 @@ launch_arguments ["-circleToken #{ENV.fetch('UI_TEST_CIRCLE_TOKEN')}"]
 # For more information about all available options run
 # fastlane action snapshot
 derived_data_path 'DerivedData'
-namespace_log_files true
+namespace_log_files false
 # ttest_without_building true
 erase_simulator true
