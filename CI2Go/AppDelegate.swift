@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         splitViewController?.preferredDisplayMode = .allVisible
 
         activateWCSession()
+        #if DEBUG
+        if CommandLine.arguments.contains("UITestingDarkModeEnabled") {
+            window?.overrideUserInterfaceStyle = .dark
+        }
+        #endif
         return true
     }
 
@@ -43,9 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             url.pathComponents[1] == "token" {
             let token = url.pathComponents[2]
             viewController.logout(showSettings: false)
-            viewController.presentedViewController?.dismiss(animated: false, completion: nil)
             Keychain.shared.setAndTransfer(token: token)
+            viewController.presentedViewController?.dismiss(animated: false, completion: nil)
             viewController.navigationController?.popToViewController(viewController, animated: false)
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+                viewController.loadBuilds()
+            }
             return true
         }
         return false

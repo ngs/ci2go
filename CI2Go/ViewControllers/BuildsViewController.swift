@@ -266,12 +266,15 @@ class BuildsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
-            return tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier)!
+            cell.accessibilityIdentifier = "activityIndicatorCell"
+            return cell
         }
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: BuildTableViewCell.identifier) as? BuildTableViewCell
             else { fatalError() }
         cell.build = diffCalculator?.value(atIndexPath: indexPath)
+        cell.accessibilityIdentifier = "buildCell_\(indexPath.row)"
         return cell
     }
 

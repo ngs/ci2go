@@ -57,6 +57,7 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
 
     func logout() {
         Keychain.shared.token = nil
+        isModalInPresentation = true
         let store = WKWebsiteDataStore.default()
         store.fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
             records.forEach { record in
@@ -64,7 +65,7 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
             }
         }
         navigationItem.rightBarButtonItem?.isEnabled = false
-        refreshData()
+        self.refreshData()
     }
 
     func refreshData() {
@@ -72,6 +73,7 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
         let linkItems: [RowItem] = links.map { .link($0.0, $0.1) }
         var values = [(String?, [RowItem])]()
         if isTokenValid {
+            values.append((nil, []))
             values.append((supportTitle, linkItems))
             values.append((nil, [.logout]))
         } else {
