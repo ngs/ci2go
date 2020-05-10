@@ -3,3 +3,4 @@ excluded:
   - Carthage
   - Vendor
   - fastlane
+  - DerivedData

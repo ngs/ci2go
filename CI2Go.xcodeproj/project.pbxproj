@@ -210,6 +210,15 @@
 		85C6619220EAB995007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
 		85C6619320EABB1B007B58CD /* BuildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619120EAB995007B58CD /* BuildNode.swift */; };
 		85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C6619420EACBCE007B58CD /* Build+UIKit.swift */; };
+		85C6C8B32467D6C90048079D /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B6246732DF007B8D65 /* FirebaseCore.xcframework */; };
+		85C6C8B42467D6C90048079D /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B4246732DF007B8D65 /* FirebaseCoreDiagnostics.xcframework */; };
+		85C6C8B52467D6C90048079D /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39A224673100007B8D65 /* FirebaseCrashlytics.xcframework */; };
+		85C6C8B62467D6C90048079D /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B5246732DF007B8D65 /* FirebaseInstallations.xcframework */; };
+		85C6C8B72467D6C90048079D /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B8246732DF007B8D65 /* GoogleDataTransport.xcframework */; };
+		85C6C8B82467D6C90048079D /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B7246732DF007B8D65 /* GoogleDataTransportCCTSupport.xcframework */; };
+		85C6C8B92467D6C90048079D /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39BA246732DF007B8D65 /* GoogleUtilities.xcframework */; };
+		85C6C8BA2467D6C90048079D /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B0246732DF007B8D65 /* nanopb.xcframework */; };
+		85C6C8BB2467D6C90048079D /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854A39B2246732DF007B8D65 /* PromisesObjC.xcframework */; };
 		85C732D0225F0C2D008FCDBE /* BundleAppInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C732CF225F0C2D008FCDBE /* BundleAppInfoExtension.swift */; };
 		85CAE21D20D5BAE2002CD128 /* SourceCodePro-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE1A220D5BAE2002CD128 /* SourceCodePro-Semibold.ttf */; };
 		85CAE21E20D5BAE2002CD128 /* SourceCodePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85CAE1A320D5BAE2002CD128 /* SourceCodePro-Medium.ttf */; };
@@ -610,6 +619,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85C6C8B32467D6C90048079D /* FirebaseCore.xcframework in Frameworks */,
+				85C6C8B42467D6C90048079D /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
+				85C6C8B52467D6C90048079D /* FirebaseCrashlytics.xcframework in Frameworks */,
+				85C6C8B62467D6C90048079D /* FirebaseInstallations.xcframework in Frameworks */,
+				85C6C8B72467D6C90048079D /* GoogleDataTransport.xcframework in Frameworks */,
+				85C6C8B82467D6C90048079D /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
+				85C6C8B92467D6C90048079D /* GoogleUtilities.xcframework in Frameworks */,
+				85C6C8BA2467D6C90048079D /* nanopb.xcframework in Frameworks */,
+				85C6C8BB2467D6C90048079D /* PromisesObjC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1698,14 +1716,8 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = CI2GoTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1733,14 +1745,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = CI2GoTodayExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1799,6 +1805,12 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1862,6 +1874,12 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
+					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1890,12 +1908,6 @@
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = CI2Go/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1924,12 +1936,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = CI2Go/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2038,12 +2044,6 @@
 				CODE_SIGN_ENTITLEMENTS = CI2GoWatchExtension/CI2GoWatchExtension.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = CI2GoWatchExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2059,7 +2059,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -2071,12 +2071,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3Y8APYUG2G;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Vendor",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseAnalytics",
-					"$(PROJECT_DIR)/Vendor/Firebase/FirebaseCrashlytics",
-				);
 				INFOPLIST_FILE = CI2GoWatchExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2092,7 +2086,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -2114,7 +2108,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -2137,7 +2131,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
