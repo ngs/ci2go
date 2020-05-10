@@ -2240,12 +2240,11 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = maccatalyst.com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "476714da-1400-46c1-aa9f-117938ecb9f2";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Development";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2272,12 +2271,11 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = maccatalyst.com.ci2go.ios.Circle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "92dceed1-b4b6-426a-815b-41dab78fc5f7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Production";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2386,11 +2384,10 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = maccatalyst.com.ci2go.ios.Circle;
 				PRODUCT_NAME = CI2Go;
 				PROVISIONING_PROFILE = "476714da-1400-46c1-aa9f-117938ecb9f2";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Development 2";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2418,11 +2415,10 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = maccatalyst.com.ci2go.ios.Circle;
 				PRODUCT_NAME = CI2Go;
 				PROVISIONING_PROFILE = "92dceed1-b4b6-426a-815b-41dab78fc5f7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Production";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Production 2";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
