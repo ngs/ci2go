@@ -132,7 +132,7 @@ workflows:
           requires: [tests]
           filters:
             branches:
-              only: [master, /release-.+/]
+              only: [/release-.+/]
 
       - upload:
           name: release_upload
@@ -147,7 +147,7 @@ workflows:
           command: release_metadata
           filters:
             branches:
-              only: [master, metadata]
+              only: [/release-.+/, metadata]
 
       - fastlane/lane:
           name: release_screenshots
