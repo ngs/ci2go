@@ -1385,7 +1385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n  /usr/local/bin/license-plist \\\n    --cartfile-path $SRCROOT/Cartfile \\\n    --output-path $PRODUCT_NAME/Settings.bundle \\\n    --suppress-opening-directory\nfi";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ] && [ -e /usr/local/bin/license-plist ]; then\n  /usr/local/bin/license-plist \\\n    --package-path $SRCROOT/CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved \\\n    --output-path $PRODUCT_NAME/Settings.bundle \\\n    --suppress-opening-directory\nfi\n";
 		};
 		85D9053E20EAFB2B00CBF5B6 /* Update Root Plist in Settings Bundle */ = {
 			isa = PBXShellScriptBuildPhase;

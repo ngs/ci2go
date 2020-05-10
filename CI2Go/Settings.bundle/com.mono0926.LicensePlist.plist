@@ -5,12 +5,10 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/CryptoSwift</string>
 			<key>Title</key>
-			<string>CryptoSwift</string>
+			<string>Licenses</string>
 			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
+			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
 			<key>File</key>
@@ -46,14 +44,6 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/onepassword-extension</string>
-			<key>Title</key>
-			<string>onepassword-extension</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
 			<string>com.mono0926.LicensePlist/pusher-websocket-swift</string>
 			<key>Title</key>
 			<string>pusher-websocket-swift</string>
@@ -78,9 +68,9 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/TaskQueue</string>
+			<string>com.mono0926.LicensePlist/swift-nio-zlib-support</string>
 			<key>Title</key>
-			<string>TaskQueue</string>
+			<string>swift-nio-zlib-support</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
