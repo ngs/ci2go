@@ -1,7 +1,7 @@
 devices([
   "iPhone 8",
   "iPhone 8 Plus",
-  "iPhone 11",
+  # "iPhone 11",
   "iPhone 11 Pro",
   "iPhone 11 Pro Max",
   "iPhone SE (2nd generation)",
@@ -9,7 +9,7 @@ devices([
   "iPad (7th generation)",
   "iPad Pro (11-inch) (2nd generation)",
   "iPad Pro (12.9-inch) (4th generation)",
-  "iPad Air (3rd generation)"
+  # "iPad Air (3rd generation)"
 ])
 
 languages(["en-US"])
