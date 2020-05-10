@@ -19,6 +19,11 @@ public struct AnyDecodable: Decodable {
             self.intValue = intValue
         }
         init?(stringValue: String) { self.stringValue = stringValue }
+        init?(anyDecodable: [AnyDecodable]) {
+            self.stringValue = anyDecodable
+                .map { "\($0.value)" }
+                .joined(separator: ",")
+        }
     }
 
     public init(from decoder: Decoder) throws {
