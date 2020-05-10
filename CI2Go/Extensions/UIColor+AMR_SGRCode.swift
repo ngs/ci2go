@@ -27,7 +27,7 @@ extension UIColor {
         case AMR_SGRCodeFgGreen:
             return .systemGreen
         case AMR_SGRCodeFgYellow:
-            return .systemYellow
+            return .systemOrange
         case AMR_SGRCodeFgBlue:
             return .systemBlue
         case AMR_SGRCodeFgMagenta:
@@ -46,7 +46,7 @@ extension UIColor {
         case AMR_SGRCodeBgGreen:
             return .systemGreen
         case AMR_SGRCodeBgYellow:
-            return .systemYellow
+            return .systemOrange
         case AMR_SGRCodeBgBlue:
             return .systemBlue
         case AMR_SGRCodeBgMagenta:
@@ -65,7 +65,7 @@ extension UIColor {
         case AMR_SGRCodeFgBrightGreen:
             return .systemGreen
         case AMR_SGRCodeFgBrightYellow:
-            return .systemYellow
+            return .systemOrange
         case AMR_SGRCodeFgBrightBlue:
             return .systemBlue
         case AMR_SGRCodeFgBrightMagenta:
@@ -82,7 +82,7 @@ extension UIColor {
         case AMR_SGRCodeBgBrightGreen:
             return .systemGreen
         case AMR_SGRCodeBgBrightYellow:
-            return .systemYellow
+            return .systemOrange
         case AMR_SGRCodeBgBrightBlue:
             return .systemBlue
         case AMR_SGRCodeBgBrightMagenta:

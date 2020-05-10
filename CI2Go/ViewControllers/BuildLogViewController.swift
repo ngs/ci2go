@@ -187,12 +187,20 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
 
     func createANSIEscapeHelper() -> AMR_ANSIEscapeHelper {
         let helper = AMR_ANSIEscapeHelper()
+        var colors: [Int32: UIColor] = [:]
         for index in 30..<108 {
-            let code = AMR_SGRCode(Int32(index))
-            helper.ansiColors[code] = UIColor.from(sgrCode: code)
+            let code = Int32(index)
+            colors[code] = UIColor.from(sgrCode: AMR_SGRCode(rawValue: code))
         }
+        helper.ansiColors = (colors as NSDictionary).mutableCopy() as? NSMutableDictionary
         helper.defaultStringColor = .label
         helper.font = UIFont(monotype: 12)
         return helper
+    }
+}
+
+extension AMR_SGRCode: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(rawValue.hashValue)
     }
 }
