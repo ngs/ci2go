@@ -2079,7 +2079,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.todayext;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "01ee9ea5-4cc1-4e1a-bd7a-3177c5f0a5db";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.todayext";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.ci2go.ios.Circle.todayext";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2GoTodayExtension/CI2GoTodayExtension-Bridging-Header.h";
@@ -2370,6 +2370,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CI2Go/CI2Go.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2387,7 +2388,7 @@
 				PRODUCT_NAME = CI2Go;
 				PROVISIONING_PROFILE = "476714da-1400-46c1-aa9f-117938ecb9f2";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ci2go.ios.Circle";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Development 2";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "manual Development com.ci2go.ios.Circle macos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2418,7 +2419,7 @@
 				PRODUCT_NAME = CI2Go;
 				PROVISIONING_PROFILE = "92dceed1-b4b6-426a-815b-41dab78fc5f7";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.ci2go.ios.Circle";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "CI2Go Catalyst Production 2";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "manual AppStore com.ci2go.ios.Circle macos";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "CI2Go/CI2Go-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2471,7 +2472,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp.ext;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "9cb5d7bb-eaaf-4372-bed4-43728d5a1191";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.watchkitapp.ext";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.ci2go.ios.Circle.watchkitapp.ext";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -2517,7 +2518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ci2go.ios.Circle.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ca91b809-4679-41c0-8165-ce1b259d6e93";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ci2go.ios.Circle.watchkitapp";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.ci2go.ios.Circle.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;

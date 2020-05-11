@@ -73,7 +73,9 @@ platform :ios do
     end
     build_app(
       export_method: 'app-store',
-      output_directory: './build/release'
+      output_directory: './build/release',
+      catalyst_platform: 'ios',
+      scheme: 'CI2Go'
     )
   end
 
@@ -120,6 +122,44 @@ platform :ios do
     coveralls(
       repo_token: ENV.fetch('COVERALLS_REPO_TOKEN'),
       derived_data_path: 'DerivedData'
+    )
+  end
+end
+
+platform :mac do
+  desc 'Match App Store Provisioning Profiles'
+  lane :develop_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    setup_circle_ci
+    match(
+      type: 'development',
+      app_identifier: %w(com.ci2go.ios.Circle),
+      skip_provisioning_profiles: true,
+      platform: 'macos'
+    )
+  end
+
+  desc 'Match App Store Provisioning Profiles'
+  lane :release_match do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    setup_circle_ci
+    match(
+      type: 'appstore',
+      app_identifier: %w(com.ci2go.ios.Circle),
+      additional_cert_types: %w(mac_installer_distribution developer_id_installer),
+      skip_provisioning_profiles: true,
+      platform: 'macos'
+    )
+  end
+
+  desc 'Build app for release'
+  lane :release_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    build_app(
+      export_method: 'app-store',
+      output_directory: './build/release',
+      catalyst_platform: 'macos',
+      scheme: 'CI2Go mac'
     )
   end
 end

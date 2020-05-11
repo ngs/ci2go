@@ -89,6 +89,25 @@ Upload Coverage data to Coveralls
 
 ----
 
+## Mac
+### mac develop_match
+```
+fastlane mac develop_match
+```
+Match App Store Provisioning Profiles
+### mac release_match
+```
+fastlane mac release_match
+```
+Match App Store Provisioning Profiles
+### mac release_build
+```
+fastlane mac release_build
+```
+Build app for release
+
+----
+
 This README.md is auto-generated and will be re-generated every time [fastlane](https://fastlane.tools) is run.
 More information about fastlane can be found on [fastlane.tools](https://fastlane.tools).
 The documentation of fastlane can be found on [docs.fastlane.tools](https://docs.fastlane.tools).
