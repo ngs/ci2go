@@ -10,10 +10,26 @@ commands:
     steps:
       - checkout
       - fastlane/bundle-install
+      - restore_cache:
+          keys:
+            - v2-spm-{{ checksum "CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" }}
+            - v2-spm
+      - run:
+          name: Resolve Swift Package Dependencies
+          command: xcodebuild -resolvePackageDependencies -scheme CI2Go -project CI2Go.xcodeproj -derivedDataPath $DERIVED_DATA_PATH
+      - save_cache:
+          key: v2-spm-{{ checksum "CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" }}
+          paths:
+            - DerivedData/SourcePackages
 
 jobs:
   build:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     parameters:
       target:
         type: enum
@@ -34,6 +50,9 @@ jobs:
           command: set_build_number
       - fastlane/lane:
           command: << parameters.platform >> << parameters.target >>_build
+      - run:
+          name: Send dSYM to Firebase Crashlytics
+          command: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp CI2Go/GoogleService-Info.plist -p ios build/<< parameters.target >>/CI2Go.app.dSYM.zip
       - store_artifacts:
           path: build
           destination: build
@@ -46,6 +65,13 @@ jobs:
 
   upload:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     parameters:
       target:
         type: enum
@@ -63,6 +89,11 @@ jobs:
 
   tests:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      SCAN_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     steps:
       - setup
       - fastlane/lane:
@@ -80,6 +111,11 @@ jobs:
 
   screenshots:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     steps:
       - setup
       - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
@@ -124,18 +160,18 @@ workflows:
           target: beta
           platform: ios
           requires: [tests]
-          filters:
-            branches:
-              only: [develop]
+
+      - build:
+          name: beta_build_mac
+          target: beta
+          platform: mac
+          requires: [tests]
 
       - upload:
           name: beta_upload
           target: beta
           platform: ios
           requires: [beta_build]
-          filters:
-            branches:
-              only: [develop]
 
       - build:
           name: release_build

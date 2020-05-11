@@ -20,8 +20,25 @@ platform :ios do
   desc 'Build app for beta'
   lane :beta_build do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    {
+      'CI2Go' => 'com.ci2go.ios.Circle',
+      'CI2Go macOS' => 'com.ci2go.ios.Circle',
+      'CI2GoWatch' => 'com.ci2go.ios.Circle.watchkitapp',
+      'CI2GoWatchExtension' => 'com.ci2go.ios.Circle.watchkitapp.ext',
+      'CI2GoTodayExtension' => 'com.ci2go.ios.Circle.todayext',
+    }.each do |target, identifier|
+      update_code_signing_settings(
+        profile_name: "match AdHoc #{identifier}",
+        bundle_identifier: identifier,
+        use_automatic_signing: false,
+        targets: [target],
+        build_configurations: %w(Release),
+        path: 'CI2Go.xcodeproj'
+      )
+    end
     build_app(
       export_method: 'ad-hoc',
+      scheme: 'CI2Go',
       output_directory: './build/beta',
       export_options: {
         iCloudContainerEnvironment: 'Production'
@@ -31,12 +48,16 @@ platform :ios do
 
   desc 'Upload app to Fabric Beta'
   lane :beta_upload do
-    crashlytics(
-      crashlytics_path: 'Vendor/Crashlytics.framework',
-      ipa_path: './build/beta/CI2Go.ipa',
-      api_token: '4f9578d15d7c0f51fa422575e9b409e496ebe259',
-      notifications: true,
-      notes: `git log -1 --pretty=%B`
+    sh 'which firebase || brew install firebase-cli'
+    app = `/usr/libexec/PlistBuddy -c "Print :GOOGLE_APP_ID" "../CI2Go/GoogleService-Info.plist"`.strip
+    ipa_path = File.expand_path '../build/beta/CI2Go.ipa'
+
+    firebase_app_distribution(
+      app: app,
+      ipa_path: ipa_path,
+      release_notes: `git log -1 --pretty=%B`,
+      firebase_cli_token: ENV.fetch('FIREBASE_CLI_TOKEN'),
+      firebase_cli_path: '/usr/local/bin/firebase'
     )
   end
 
@@ -44,14 +65,14 @@ platform :ios do
   lane :beta_match do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
-    match type: 'adhoc', readonly: true
+    match type: 'adhoc'
   end
 
   desc 'Match App Store Provisioning Profiles'
   lane :release_match do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     setup_circle_ci
-    match type: 'appstore', readonly: true
+    match type: 'appstore'
   end
 
 
@@ -60,15 +81,18 @@ platform :ios do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
     {
       'CI2Go' => 'com.ci2go.ios.Circle',
+      'CI2Go mac' => 'com.ci2go.ios.Circle',
       'CI2GoWatch' => 'com.ci2go.ios.Circle.watchkitapp',
       'CI2GoWatchExtension' => 'com.ci2go.ios.Circle.watchkitapp.ext',
       'CI2GoTodayExtension' => 'com.ci2go.ios.Circle.todayext',
     }.each do |target, identifier|
-      profile_name = "match AppStore #{identifier}"
-      disable_automatic_code_signing(
-        profile_name: profile_name,
+      update_code_signing_settings(
+        profile_name: "match AppStore #{identifier}",
         bundle_identifier: identifier,
-        targets: [target]
+        use_automatic_signing: false,
+        targets: [target],
+        build_configurations: %w(Release),
+        path: 'CI2Go.xcodeproj'
       )
     end
     build_app(
@@ -143,6 +167,15 @@ platform :mac do
     )
   end
 
+  desc 'Import code sign certificate from Base64 encoded env vars (for now)'
+  lane :beta_match do
+    import_certificate(
+      certificate_path: '/tmp/certs/mac-beta.p12',
+      keychain_name: 'fastlane_tmp_keychain',
+      certificate_password: ENV['MATCH_PASSWORD']
+    )
+  end
+
   desc 'Match App Store Provisioning Profiles'
   lane :release_match do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
@@ -159,11 +192,47 @@ platform :mac do
   desc 'Build app for release'
   lane :release_build do
     xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    update_code_signing_settings(
+      profile_name: 'manual AppStore com.ci2go.ios.Circle macos',
+      bundle_identifier: 'com.ci2go.ios.Circle',
+      use_automatic_signing: false,
+      targets: ['CI2Go macOS'],
+      build_configurations: %w(Release),
+      path: 'CI2Go.xcodeproj'
+    )
     build_app(
-      export_method: 'app-store',
-      output_directory: './build/release',
       catalyst_platform: 'macos',
-      scheme: 'CI2Go macOS'
+      scheme: 'CI2Go macOS',
+      export_method: 'app-store',
+      output_directory: './build/release'
+    )
+  end
+
+  desc 'Build app for preview'
+  lane :beta_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    update_code_signing_settings(
+      profile_name: 'manual Developer ID com.ci2go.ios.Circle macos',
+      bundle_identifier: 'com.ci2go.ios.Circle',
+      use_automatic_signing: false,
+      targets: ['CI2Go macOS'],
+      build_configurations: %w(Release),
+      path: 'CI2Go.xcodeproj',
+      code_sign_identity: 'Developer ID Application: LittleApps Inc. (3Y8APYUG2G)'
+    )
+    build_app(
+      catalyst_platform: 'macos',
+      scheme: 'CI2Go macOS',
+      export_method: 'developer-id',
+      output_directory: './build/beta',
+      skip_package_pkg: true,
+      export_options: {
+        iCloudContainerEnvironment: 'Production'
+      }
+    )
+    zip(
+      path: './build/beta/CI2Go.app',
+      output_path: './build/beta/CI2Go.app.zip'
     )
   end
 
@@ -202,17 +271,6 @@ platform :mac do
       skip_metadata: true,
       skip_screenshots: false,
       overwrite_screenshots: true
-    )
-  end
-
-  desc 'Build app for preview'
-  lane :beta_build do
-    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
-    build_app(
-      export_method: 'package',
-      output_directory: './build/beta',
-      catalyst_platform: 'macos',
-      scheme: 'CI2Go macOS'
     )
   end
 end
