@@ -136,19 +136,19 @@ workflows:
           name: swiftlint
           filters:
             branches:
-              ignore: [new-screenshots, screenshots, metadata]
+              ignore: [new-screenshots, screenshots, metadata, release-2.3.0]
 
       - danger/run:
           name: danger
           filters:
             branches:
-              ignore: [new-screenshots, screenshots, metadata]
+              ignore: [new-screenshots, screenshots, metadata, release-2.3.0]
 
       - tests:
           requires: [swiftlint, danger]
           filters:
             branches:
-              ignore: [new-screenshot, sscreenshots, metadata]
+              ignore: [new-screenshot, sscreenshots, metadata, release-2.3.0]
 
       - screenshots:
           filters:
@@ -178,15 +178,12 @@ workflows:
           target: release
           platform: ios
           requires: [tests]
-          filters:
-            branches:
-              only: [/release-.+/]
 
       - build:
           name: release_build_mac
           target: release
           platform: mac
-          requires: [tests]
+          # requires: [tests]
           filters:
             branches:
               only: [/release-.+/]
