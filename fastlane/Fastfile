@@ -98,7 +98,11 @@ platform :ios do
 
   desc 'Upload screenshots to App Store'
   lane :release_screenshots do
-    deliver skip_metadata: true, run_precheck_before_submit: false
+    deliver(
+      skip_metadata: true,
+      run_precheck_before_submit: false,
+      overwrite_screenshots: true
+    )
   end
 
   desc 'Take screenshots'
@@ -159,7 +163,56 @@ platform :mac do
       export_method: 'app-store',
       output_directory: './build/release',
       catalyst_platform: 'macos',
-      scheme: 'CI2Go mac'
+      scheme: 'CI2Go macOS'
+    )
+  end
+
+  desc 'Publish app to App Store'
+  lane :release_upload do
+    deliver(
+      platform: 'osx',
+      pkg: './build/release/CI2Go.pkg',
+      metadata_path: './fastlane/metadata~mac',
+      screenshots_path: './fastlane/screenshots~mac',
+      skip_binary_upload: false,
+      skip_metadata: true,
+      skip_screenshots: true
+    )
+  end
+
+  desc 'Upload metadata to App Store'
+  lane :release_metadata do
+    deliver(
+      platform: 'osx',
+      metadata_path: './fastlane/metadata~mac',
+      screenshots_path: './fastlane/screenshots~mac',
+      skip_binary_upload: true,
+      skip_metadata: false,
+      skip_screenshots: true
+    )
+  end
+
+  desc 'Upload screenshots to App Store'
+  lane :release_screenshots do
+    deliver(
+      platform: 'osx',
+      metadata_path: './fastlane/metadata~mac',
+      screenshots_path: './fastlane/screenshots~mac',
+      skip_binary_upload: true,
+      skip_metadata: true,
+      skip_screenshots: false,
+      overwrite_screenshots: true
+    )
+  end
+
+  desc 'Build app for preview'
+  lane :beta_build do
+    xcode_select ENV['XCODE_PATH'] if ENV['XCODE_PATH']
+    build_app(
+      export_method: 'package',
+      output_directory: './build/beta',
+      catalyst_platform: 'macos',
+      scheme: 'CI2Go macOS'
     )
   end
 end

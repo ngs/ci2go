@@ -105,6 +105,26 @@ Match App Store Provisioning Profiles
 fastlane mac release_build
 ```
 Build app for release
+### mac release_upload
+```
+fastlane mac release_upload
+```
+Publish app to App Store
+### mac release_metadata
+```
+fastlane mac release_metadata
+```
+Upload metadata to App Store
+### mac release_screenshots
+```
+fastlane mac release_screenshots
+```
+Upload screenshots to App Store
+### mac preview_build
+```
+fastlane mac preview_build
+```
+Build app for preview
 
 ----
 

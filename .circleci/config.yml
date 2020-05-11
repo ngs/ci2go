@@ -18,14 +18,22 @@ jobs:
       target:
         type: enum
         enum: [beta, release]
+      platform:
+        type: enum
+        enum: [ios, mac]
     steps:
       - setup
+      - run:
+          name: 'Copy Mac Catalyst Provisioning Profiles'
+          command: /bin/bash -c .circleci/copy-provisioning-profiles.sh
       - fastlane/lane:
-          command: << parameters.target >>_match
+          command: ios << parameters.target >>_match
+      - fastlane/lane:
+          command: mac << parameters.target >>_match
       - fastlane/lane:
           command: set_build_number
       - fastlane/lane:
-          command: << parameters.target >>_build
+          command: << parameters.platform >> << parameters.target >>_build
       - store_artifacts:
           path: build
           destination: build
@@ -42,15 +50,16 @@ jobs:
       target:
         type: enum
         enum: [beta, release]
+      platform:
+        type: enum
+        enum: [ios, mac]
     steps:
       - checkout
       - attach_workspace:
           at: build
       - fastlane/bundle-install
       - fastlane/lane:
-          command: << parameters.target >>_match
-      - fastlane/lane:
-          command: << parameters.target >>_upload
+          command: << parameters.platform >> << parameters.target >>_upload
 
   tests:
     executor: fastlane/macos
@@ -113,6 +122,7 @@ workflows:
       - build:
           name: beta_build
           target: beta
+          platform: ios
           requires: [tests]
           filters:
             branches:
@@ -121,6 +131,7 @@ workflows:
       - upload:
           name: beta_upload
           target: beta
+          platform: ios
           requires: [beta_build]
           filters:
             branches:
@@ -129,6 +140,16 @@ workflows:
       - build:
           name: release_build
           target: release
+          platform: ios
+          requires: [tests]
+          filters:
+            branches:
+              only: [/release-.+/]
+
+      - build:
+          name: release_build_mac
+          target: release
+          platform: mac
           requires: [tests]
           filters:
             branches:
@@ -137,20 +158,44 @@ workflows:
       - upload:
           name: release_upload
           target: release
+          platform: ios
           requires: [release_build]
+          filters:
+            branches:
+              ignore: metadata
+
+      - upload:
+          name: release_upload_mac
+          target: release
+          platform: mac
+          requires: [release_build_mac]
           filters:
             branches:
               ignore: metadata
 
       - fastlane/lane:
           name: release_metadata
-          command: release_metadata
+          command: ios release_metadata
           filters:
             branches:
               only: [/release-.+/, metadata]
 
       - fastlane/lane:
-          name: release_screenshots
+          name: release_metadata_mac
+          command: mac release_metadata
+          filters:
+            branches:
+              only: [/release-.+/, metadata]
+
+      - fastlane/lane:
+          name: ios release_screenshots
+          command: release_screenshots
+          filters:
+            branches:
+              only: screenshots
+
+      - fastlane/lane:
+          name: mac release_screenshots
           command: release_screenshots
           filters:
             branches:
