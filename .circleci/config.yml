@@ -14,6 +14,8 @@ commands:
 jobs:
   build:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
     parameters:
       target:
         type: enum
@@ -46,6 +48,8 @@ jobs:
 
   upload:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
     parameters:
       target:
         type: enum
@@ -63,6 +67,8 @@ jobs:
 
   tests:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
     steps:
       - setup
       - fastlane/lane:
@@ -80,6 +86,8 @@ jobs:
 
   screenshots:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
     steps:
       - setup
       - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
@@ -124,9 +132,12 @@ workflows:
           target: beta
           platform: ios
           requires: [tests]
-          filters:
-            branches:
-              only: [develop]
+
+      - build:
+          name: beta_build_mac
+          target: beta
+          platform: mac
+          requires: [tests]
 
       - upload:
           name: beta_upload

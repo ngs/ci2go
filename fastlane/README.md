@@ -95,6 +95,11 @@ Upload Coverage data to Coveralls
 fastlane mac develop_match
 ```
 Match App Store Provisioning Profiles
+### mac beta_match
+```
+fastlane mac beta_match
+```
+Import code sign certificate from Base64 encoded env vars (for now)
 ### mac release_match
 ```
 fastlane mac release_match
@@ -105,6 +110,11 @@ Match App Store Provisioning Profiles
 fastlane mac release_build
 ```
 Build app for release
+### mac beta_build
+```
+fastlane mac beta_build
+```
+Build app for preview
 ### mac release_upload
 ```
 fastlane mac release_upload
@@ -120,11 +130,6 @@ Upload metadata to App Store
 fastlane mac release_screenshots
 ```
 Upload screenshots to App Store
-### mac preview_build
-```
-fastlane mac preview_build
-```
-Build app for preview
 
 ----
 
