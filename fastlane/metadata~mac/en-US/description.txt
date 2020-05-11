@@ -11,4 +11,4 @@ Version history
 [2.3.0]
 
 - Initial release
-- Ported CI2Go the CircleCI client for iOS to macOS using Catalyst
+- Ported iOS app to macOS using Catalyst
