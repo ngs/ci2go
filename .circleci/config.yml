@@ -10,12 +10,25 @@ commands:
     steps:
       - checkout
       - fastlane/bundle-install
+      - restore_cache:
+          keys:
+            - v2-spm-{{ checksum "CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" }}
+            - v2-spm
+      - run:
+          name: Resolve Swift Package Dependencies
+          command: xcodebuild -resolvePackageDependencies -scheme CI2Go -project CI2Go.xcodeproj -derivedDataPath $DERIVED_DATA_PATH
+      - save_cache:
+          key: v2-spm-{{ checksum "CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" }}
+          paths:
+            - DerivedData/SourcePackages
 
 jobs:
   build:
     executor: fastlane/macos
     environment:
       DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
     parameters:
       target:
         type: enum
@@ -50,6 +63,8 @@ jobs:
     executor: fastlane/macos
     environment:
       DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
     parameters:
       target:
         type: enum
@@ -69,6 +84,8 @@ jobs:
     executor: fastlane/macos
     environment:
       DERIVED_DATA_PATH: DerivedData
+      SCAN_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
     steps:
       - setup
       - fastlane/lane:
@@ -88,6 +105,8 @@ jobs:
     executor: fastlane/macos
     environment:
       DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
     steps:
       - setup
       - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
