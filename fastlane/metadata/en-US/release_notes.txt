@@ -1,2 +1,1 @@
-- Drop color schemes feature
-- Support Dark Mode
+- Fixed UI glitch
