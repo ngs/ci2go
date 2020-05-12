@@ -14,7 +14,6 @@
 		8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */; };
 		8504A07620DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */; };
 		8504A09820DBFBE1001D0C08 /* SingleQuickLookDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */; };
-		8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
 		852350ED20E61A91005BD0E8 /* Hostname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852350EC20E61A91005BD0E8 /* Hostname.swift */; };
 		8524870620DAE36800E8CF68 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */; };
 		852E13CD219FAE8B00785002 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852E13CC219FAE8B00785002 /* MainSplitViewController.swift */; };
@@ -292,7 +291,6 @@
 		85F4095024686C7C00C0A76E /* URLSessionExtension+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8533DE9B20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift */; };
 		85F4095124686C7C00C0A76E /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582284F20E5E1F90092B8CF /* AuthProvider.swift */; };
 		85F4095224686C7C00C0A76E /* Picard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C4DF20EB592B003F5C93 /* Picard.swift */; };
-		85F4095324686C7C00C0A76E /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A09920DC1DB5001D0C08 /* CustomTextView.swift */; };
 		85F4095424686C7C00C0A76E /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
 		85F4095524686C7C00C0A76E /* BuildArtifactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */; };
 		85F4095624686C7C00C0A76E /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
@@ -516,7 +514,6 @@
 		8504A07320DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildArtifactTableViewCell.swift; sourceTree = "<group>"; };
 		8504A07520DBD6EB001D0C08 /* BuildArtifactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuildArtifactTableViewCell.xib; sourceTree = "<group>"; };
 		8504A09720DBFBE1001D0C08 /* SingleQuickLookDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQuickLookDataSource.swift; sourceTree = "<group>"; };
-		8504A09920DC1DB5001D0C08 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		852350EC20E61A91005BD0E8 /* Hostname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hostname.swift; sourceTree = "<group>"; };
 		8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		852E13CC219FAE8B00785002 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
@@ -822,7 +819,6 @@
 				8566097520D805BB00557249 /* BuildTableViewCell.swift */,
 				856609B620D965F800557249 /* BuildTableViewCell.xib */,
 				8524870520DAE36800E8CF68 /* CustomTableViewCell.swift */,
-				8504A09920DC1DB5001D0C08 /* CustomTextView.swift */,
 				8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */,
 				856609B220D8F5D200557249 /* LoadingCell.swift */,
 				856609B420D8F84D00557249 /* LoadingCell.xib */,
@@ -1763,7 +1759,6 @@
 				8533DE9C20DE49A900CA7E0C /* URLSessionExtension+Keychain.swift in Sources */,
 				8582285020E5E1F90092B8CF /* AuthProvider.swift in Sources */,
 				8555C4E020EB592B003F5C93 /* Picard.swift in Sources */,
-				8504A09A20DC1DB5001D0C08 /* CustomTextView.swift in Sources */,
 				8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */,
 				8504A07420DBD6DD001D0C08 /* BuildArtifactTableViewCell.swift in Sources */,
 				8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */,
@@ -1880,7 +1875,6 @@
 				85F4095024686C7C00C0A76E /* URLSessionExtension+Keychain.swift in Sources */,
 				85F4095124686C7C00C0A76E /* AuthProvider.swift in Sources */,
 				85F4095224686C7C00C0A76E /* Picard.swift in Sources */,
-				85F4095324686C7C00C0A76E /* CustomTextView.swift in Sources */,
 				85F4095424686C7C00C0A76E /* BuildActionsViewController.swift in Sources */,
 				85F4095524686C7C00C0A76E /* BuildArtifactTableViewCell.swift in Sources */,
 				85F4095624686C7C00C0A76E /* BuildLogViewController.swift in Sources */,
