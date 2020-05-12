@@ -46,17 +46,17 @@ platform :ios do
     )
   end
 
-  desc 'upload app to Firebase Distribution'
+  desc 'Upload app to Firebase Distribution'
   lane :beta_upload do
     sh 'which firebase || brew install firebase-cli'
-    app = `/usr/libexec/plistbuddy -c "print :google_app_id" "../ci2go/googleservice-info.plist"`.strip
-    ipa_path = file.expand_path '../build/beta/ci2go.ipa'
+    app = `/usr/libexec/PlistBuddy -c "print :GOOGLE_APP_ID" "../CI2Go/GoogleService-Info.plist"`.strip
+    ipa_path = File.expand_path '../build/beta/CI2Go.ipa'
 
     firebase_app_distribution(
       app: app,
       ipa_path: ipa_path,
       release_notes: `git log -1 --pretty=%b`,
-      firebase_cli_token: env.fetch('firebase_cli_token'),
+      firebase_cli_token: ENV.fetch('firebase_cli_token'),
       firebase_cli_path: '/usr/local/bin/firebase'
     )
   end

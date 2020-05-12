@@ -6,15 +6,9 @@ base_filters: &base_filters
   branches:
     ignore: [new-screenshots, screenshots, metadata]
 
-release_ios_filters: &release_ios_filters
+release_filters: &release_filters
   tags:
     only: /^v[1-9]+\.[0-9]+\.[0-9]+-rc.*/
-  branches:
-    ignore: /.*/
-
-release_mac_filters: &release_mac_filters
-  tags:
-    only: /^v[1-9]+\.[0-9]+\.[0-9]+-mac-rc.*/
   branches:
     ignore: /.*/
 
@@ -200,7 +194,7 @@ workflows:
           platform: mac
           requires: [beta_build_mac]
           filters:
-            <<: *release_mac_filters
+            <<: *release_filters
 
       - build:
           name: release_build
@@ -208,7 +202,7 @@ workflows:
           platform: ios
           requires: [tests]
           filters:
-            <<: *release_ios_filters
+            <<: *release_filters
 
       - build:
           name: release_build_mac
@@ -216,7 +210,7 @@ workflows:
           platform: mac
           requires: [tests]
           filters:
-            <<: *release_mac_filters
+            <<: *release_filters
 
       - upload:
           name: release_upload
@@ -224,7 +218,7 @@ workflows:
           platform: ios
           requires: [release_build]
           filters:
-            <<: *release_ios_filters
+            <<: *release_filters
 
       - upload:
           name: release_upload_mac
@@ -232,19 +226,19 @@ workflows:
           platform: mac
           requires: [release_build_mac]
           filters:
-            <<: *release_mac_filters
+            <<: *release_filters
 
       - fastlane/lane:
           name: release_metadata
           command: ios release_metadata
           filters:
-            <<: *release_mac_filters
+            <<: *release_filters
 
       - fastlane/lane:
           name: release_metadata_mac
           command: mac release_metadata
           filters:
-            <<: *release_mac_filters
+            <<: *release_filters
 
       - fastlane/lane:
           name: ios release_screenshots
