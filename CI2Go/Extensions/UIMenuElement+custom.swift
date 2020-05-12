@@ -15,23 +15,25 @@ extension UIMenuElement {
             image: nil,
             identifier: .navigate,
             options: .destructive,
-            children: [.back, .reload])
+            children: [
+                .back,
+                .reload])
     }
-    static var preferences: UIMenu {
+    static var logout: UIMenu {
         return UIMenu(
-            title: "Settings",
+            title: "Logout",
             image: nil,
-            identifier: .preferences,
+            identifier: .logout,
             options: .displayInline,
-            children: [.preferencesCommand])
+            children: [.logoutCommand])
     }
-    static var preferencesCommand: UIKeyCommand {
+    static var logoutCommand: UIKeyCommand {
         let command = UIKeyCommand(
-            input: ",",
-            modifierFlags: [.command],
-            action: #selector(AppDelegate.preferencesAction(_:)))
-        command.title = "Settings"
-        command.discoverabilityTitle = "Settings"
+            input: "L",
+            modifierFlags: [.command, .shift, .alternate],
+            action: #selector(AppDelegate.logoutAction(_:)))
+        command.title = "Logout"
+        command.discoverabilityTitle = "Logout"
         return command
     }
     static var back: UIKeyCommand {

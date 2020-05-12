@@ -25,15 +25,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         builder.remove(menu: .format)
         builder.remove(menu: .file)
         builder.remove(menu: .toolbar)
-        builder.remove(menu: .help)
-        builder.insertSibling(.preferences, afterMenu: .about)
+        builder.insertSibling(.logout, afterMenu: .about)
         builder.insertSibling(.navigate, afterMenu: .edit)
+        builder.replaceChildren(ofMenu: .help) { _ in
+            [
+                UIAction(title: "Submit an Issue") { _ in
+                    UIApplication.shared.open(Bundle.main.submitIssueURL)
+                },
+                UIAction(title: "Contact Author") { _ in
+                    UIApplication.shared.open(Bundle.main.contactURL)
+                }
+            ]
+        }
     }
 
     override var keyCommands: [UIKeyCommand]? {
         return [
             .back,
-            .preferencesCommand,
+            .logoutCommand,
             .reload
         ]
     }
@@ -51,10 +60,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             as? ReloadableViewController)?.reload()
     }
 
-    @objc func preferencesAction(_ command: UIKeyCommand) {
-        MainSplitViewController.current?
-            .buildsViewController?
-            .performSegue(withIdentifier: .showSettings, sender: command)
+    @objc func logoutAction(_ command: UIKeyCommand) {
+        guard let splitVC = MainSplitViewController.current else { return }
+        let alertView = UIAlertController(
+            title: "Logging out",
+            message: "Are you sure to logout from CircleCI?",
+            preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel, handler: nil))
+        alertView.addAction(UIAlertAction(
+            title: "Yes, log me out",
+            style: .destructive, handler: { _ in
+                splitVC.buildsViewController?.logout()
+        }))
+        splitVC.present(alertView, animated: true)
     }
 
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {

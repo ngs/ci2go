@@ -14,25 +14,22 @@ import WebKit
 
 class SettingsViewController: UITableViewController, UITextFieldDelegate {
     var links: [(String, URL)] {
-        let deviceSummary = """
 
-
-
-----
-Device: \(UIDevice.current.model) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)
-Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
-"""
-            .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        #if targetEnvironment(macCatalyst)
         return [
             ("Trouble signing in?",
-                URL(string: "https://ci2go.app/support/token-uri-scheme/?b=\(Bundle.main.buildNumber)")!),
-            ("Rate CI2Go",
-                URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
-            ("Submit an issue",
-                URL(string: "https://github.com/ngs/ci2go/issues/new?body=\(deviceSummary)")!),
-            ("Contact author",
-                URL(string: "mailto:support@ci2go.app?subject=CI2Go%20Support&body=\(deviceSummary)")!)
+             URL(string: "https://ci2go.app/support/token-uri-scheme/?b=\(Bundle.main.buildNumber)")!)
         ]
+        #else
+        return [
+            ("Trouble signing in?",
+             URL(string: "https://ci2go.app/support/token-uri-scheme/?b=\(Bundle.main.buildNumber)")!),
+            ("Rate CI2Go",
+             URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
+            ("Submit an issue", Bundle.main.submitIssueURL),
+            ("Contact author", Bundle.main.contactURL)
+        ]
+        #endif
     }
 
     var diffCalculator: TableViewDiffCalculator<String?, RowItem>!
@@ -46,7 +43,7 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
     func confirmLogout() {
         let alert = UIAlertController(
             title: "Logging out",
-            message: "Are you sure to log out from CircleCI?",
+            message: "Are you sure to logout from CircleCI?",
             preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             self.logout()
@@ -69,7 +66,12 @@ Version: \(Bundle.main.appVersion) (\(Bundle.main.buildNumber))
     }
 
     func refreshData() {
-        let supportTitle = "Support"
+        var supportTitle: String?
+        #if targetEnvironment(macCatalyst)
+        supportTitle = nil
+        #else
+        supportTitle = "Support"
+        #endif
         let linkItems: [RowItem] = links.map { .link($0.0, $0.1) }
         var values = [(String?, [RowItem])]()
         if isTokenValid {

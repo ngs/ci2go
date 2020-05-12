@@ -106,6 +106,9 @@ class BuildsViewController: UITableViewController, ReloadableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if targetEnvironment(macCatalyst)
+        navigationItem.leftBarButtonItem = nil
+        #endif
         tableView.register(
             UINib(nibName: LoadingCell.identifier, bundle: nil),
             forCellReuseIdentifier: LoadingCell.identifier)

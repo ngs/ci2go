@@ -12,7 +12,7 @@ class SettingsFooterView: UIView {
     @IBOutlet weak var copyrightLabel: UILabel!
 
     static var height: CGFloat {
-        return 350
+        return 300
     }
 
     override func awakeFromNib() {
