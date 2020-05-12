@@ -24,17 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         builder.remove(menu: .format)
         builder.remove(menu: .file)
-        builder.insertSibling(.reload, afterMenu: .toolbar)
         builder.remove(menu: .toolbar)
+        builder.remove(menu: .help)
         builder.insertSibling(.preferences, afterMenu: .about)
-        builder.insertSibling(.navigation, afterMenu: .application)
+        builder.insertSibling(.navigate, afterMenu: .edit)
     }
 
     override var keyCommands: [UIKeyCommand]? {
         return [
             .back,
             .preferencesCommand,
-            .reloadCommand
+            .reload
         ]
     }
 

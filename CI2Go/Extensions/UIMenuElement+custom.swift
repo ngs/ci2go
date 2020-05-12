@@ -9,13 +9,13 @@
 import UIKit
 
 extension UIMenuElement {
-    static var navigation: UIMenu {
+    static var navigate: UIMenu {
         return UIMenu(
-            title: "Navigation",
+            title: "Navigate",
             image: nil,
-            identifier: .navigation,
+            identifier: .navigate,
             options: .destructive,
-            children: [.back])
+            children: [.back, .reload])
     }
     static var preferences: UIMenu {
         return UIMenu(
@@ -43,15 +43,7 @@ extension UIMenuElement {
         command.discoverabilityTitle = "Back"
         return command
     }
-    static var reload: UIMenu {
-        return UIMenu(
-            title: "Reload",
-            image: nil,
-            identifier: .reload,
-            options: .displayInline,
-            children: [.reloadCommand])
-    }
-    static var reloadCommand: UIKeyCommand {
+    static var reload: UIKeyCommand {
         let command = UIKeyCommand(
             input: "R",
             modifierFlags: [.command],

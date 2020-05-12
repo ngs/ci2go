@@ -35,7 +35,7 @@ Build app for beta
 ```
 fastlane ios beta_upload
 ```
-upload app to Firebase Distribution
+Upload app to Firebase Distribution
 ### ios beta_match
 ```
 fastlane ios beta_match

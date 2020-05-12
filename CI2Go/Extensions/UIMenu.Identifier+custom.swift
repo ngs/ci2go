@@ -15,7 +15,7 @@ extension UIMenu.Identifier {
     static var back: UIMenu.Identifier {
         return UIMenu.Identifier("com.ci2go.menu.Back")
     }
-    static var navigation: UIMenu.Identifier {
-        return UIMenu.Identifier("com.ci2go.menu.Navigation")
+    static var navigate: UIMenu.Identifier {
+        return UIMenu.Identifier("com.ci2go.menu.Navigate")
     }
 }
