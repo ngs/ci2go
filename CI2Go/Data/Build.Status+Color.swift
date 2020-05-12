@@ -17,6 +17,8 @@ extension Build.Status {
             return .systemBlue
         case .failed, .timedout, .infrastructureFail, .noTests:
             return .systemRed
+        case .notRunning:
+            return .systemPurple
         default:
             return .systemGray
         }
