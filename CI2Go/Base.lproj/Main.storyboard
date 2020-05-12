@@ -114,6 +114,7 @@
                             <outlet property="delegate" destination="gJA-ds-gVz" id="HBx-GM-IAT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Nlp-ZP-b6c"/>
                     <connections>
                         <segue destination="pEZ-Gk-DFf" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="oEt-JX-yrx"/>
                     </connections>
@@ -264,7 +265,9 @@
                     <navigationItem key="navigationItem" title="Builds" id="p3H-BP-Kdf">
                         <barButtonItem key="leftBarButtonItem" title="Settings" image="toolbar-cog" largeContentSizeImage="toolbar-cog" id="VYu-4s-khJ">
                             <connections>
-                                <segue destination="kFZ-8K-EBT" kind="presentation" identifier="showSettings" id="Hec-7w-ePI"/>
+                                <segue destination="kFZ-8K-EBT" kind="popoverPresentation" identifier="showSettings" popoverAnchorBarButtonItem="VYu-4s-khJ" id="Hec-7w-ePI">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Project" image="toolbar-code-branch" largeContentSizeImage="toolbar-code-branch" id="LXp-iW-Ynl">
@@ -614,7 +617,7 @@ Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam bl
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e6V-Z6-GmV"/>
+        <segue reference="7uH-cU-Ugy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
