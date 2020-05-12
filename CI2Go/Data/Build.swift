@@ -257,7 +257,8 @@ extension Build: Comparable {
     static func < (lhs: Build, rhs: Build) -> Bool {
         if
             let ltime = lhs.queuedAt,
-            let rtime = rhs.queuedAt {
+            let rtime = rhs.queuedAt,
+            ltime != rtime {
             return ltime < rtime
         }
         if lhs.project == rhs.project {
