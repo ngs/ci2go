@@ -1,1 +1,2 @@
+- Support keyboard shortcuts
 - Fixed UI glitch
