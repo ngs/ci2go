@@ -135,18 +135,24 @@ workflows:
       - swiftlint/run:
           name: swiftlint
           filters:
+            tags:
+              only: /.*/
             branches:
               ignore: [new-screenshots, screenshots, metadata]
 
       - danger/run:
           name: danger
           filters:
+            tags:
+              only: /.*/
             branches:
               ignore: [new-screenshots, screenshots, metadata]
 
       - tests:
           requires: [swiftlint, danger]
           filters:
+            tags:
+              only: /.*/
             branches:
               ignore: [new-screenshot, sscreenshots, metadata]
 
@@ -179,8 +185,10 @@ workflows:
           platform: ios
           requires: [tests]
           filters:
+            tags:
+              only: /^v[1-9]+\.[0-9]+\.[0-9]+-rc.*/
             branches:
-              only: [/release-.+/]
+              ignore: /.*/
 
       - build:
           name: release_build_mac
@@ -188,40 +196,38 @@ workflows:
           platform: mac
           requires: [tests]
           filters:
-            branches:
-              only: [/release-.+/]
+            tags:
+              only: /^v\d\+.\d+\.\d+-mac-rc\d+$/
 
       - upload:
           name: release_upload
           target: release
           platform: ios
           requires: [release_build]
-          filters:
-            branches:
-              ignore: metadata
 
       - upload:
           name: release_upload_mac
           target: release
           platform: mac
           requires: [release_build_mac]
-          filters:
-            branches:
-              ignore: metadata
 
       - fastlane/lane:
           name: release_metadata
           command: ios release_metadata
           filters:
+            tags:
+              only: /^v\d\+.\d+\.\d+-rc\d+$/
             branches:
-              only: [/release-.+/, metadata]
+              only: metadata
 
       - fastlane/lane:
           name: release_metadata_mac
           command: mac release_metadata
           filters:
+            tags:
+              only: /^v\d\+.\d+\.\d+-mac-rc\d+$/
             branches:
-              only: [/release-.+/, metadata]
+              only: metadata
 
       - fastlane/lane:
           name: ios release_screenshots
