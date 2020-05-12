@@ -155,6 +155,10 @@
 		8555C5C420EBD5EA003F5C93 /* FileKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */; };
 		8555C5C620ECB236003F5C93 /* InvertedMaskLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */; };
 		8555C5C720ECB23E003F5C93 /* InvertedMaskLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */; };
+		8556CCC1246A390600D3571D /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8556CCBE246A390600D3571D /* OnePasswordExtension.m */; };
+		8556CCC2246A390600D3571D /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8556CCBE246A390600D3571D /* OnePasswordExtension.m */; };
+		8556CCC3246A390600D3571D /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8556CCBF246A390600D3571D /* 1Password.xcassets */; };
+		8556CCC4246A390600D3571D /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8556CCBF246A390600D3571D /* 1Password.xcassets */; };
 		8566096120D72B7700557249 /* BranchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096020D72B7700557249 /* BranchesViewController.swift */; };
 		8566096320D72B8900557249 /* BuildLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096220D72B8900557249 /* BuildLogViewController.swift */; };
 		8566096620D72B9D00557249 /* BuildActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8566096520D72B9D00557249 /* BuildActionsViewController.swift */; };
@@ -572,6 +576,9 @@
 		8555C5B920EBB4CA003F5C93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8555C5C220EBD5E2003F5C93 /* FileKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileKitExtension.swift; sourceTree = "<group>"; };
 		8555C5C520ECB236003F5C93 /* InvertedMaskLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvertedMaskLabel.swift; sourceTree = "<group>"; };
+		8556CCBE246A390600D3571D /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
+		8556CCBF246A390600D3571D /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = 1Password.xcassets; sourceTree = "<group>"; };
+		8556CCC0246A390600D3571D /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordExtension.h; sourceTree = "<group>"; };
 		8566096020D72B7700557249 /* BranchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchesViewController.swift; sourceTree = "<group>"; };
 		8566096220D72B8900557249 /* BuildLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildLogViewController.swift; sourceTree = "<group>"; };
 		8566096520D72B9D00557249 /* BuildActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildActionsViewController.swift; sourceTree = "<group>"; };
@@ -877,6 +884,16 @@
 			path = CI2GoTodayExtension;
 			sourceTree = "<group>";
 		};
+		8556CCBD246A390600D3571D /* onepassword-app-extension */ = {
+			isa = PBXGroup;
+			children = (
+				8556CCBE246A390600D3571D /* OnePasswordExtension.m */,
+				8556CCBF246A390600D3571D /* 1Password.xcassets */,
+				8556CCC0246A390600D3571D /* OnePasswordExtension.h */,
+			);
+			path = "onepassword-app-extension";
+			sourceTree = "<group>";
+		};
 		8582284A20E5D68C0092B8CF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -991,6 +1008,7 @@
 		85CAE22620D5C62D002CD128 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				8556CCBD246A390600D3571D /* onepassword-app-extension */,
 				854A39A024673100007B8D65 /* Firebase */,
 				85CAE22720D5C62D002CD128 /* ANSIEscapeHelper */,
 			);
@@ -1449,6 +1467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8556CCC3246A390600D3571D /* 1Password.xcassets in Resources */,
 				85CAE21F20D5BAE2002CD128 /* SourceCodePro-Light.ttf in Resources */,
 				85B4CD8D20D23E2F005A6DA9 /* LaunchScreen.storyboard in Resources */,
 				85CAE21D20D5BAE2002CD128 /* SourceCodePro-Semibold.ttf in Resources */,
@@ -1500,6 +1519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8556CCC4246A390600D3571D /* 1Password.xcassets in Resources */,
 				85F4099724686C7C00C0A76E /* SourceCodePro-Light.ttf in Resources */,
 				85F4099824686C7C00C0A76E /* LaunchScreen.storyboard in Resources */,
 				85F4099924686C7C00C0A76E /* SourceCodePro-Semibold.ttf in Resources */,
@@ -1770,6 +1790,7 @@
 				8555C5C620ECB236003F5C93 /* InvertedMaskLabel.swift in Sources */,
 				8555C4E520EB5F74003F5C93 /* BuildActionsViewController.RowItem.swift in Sources */,
 				853D1A5720D640E900C7F4FC /* URLSessionExtension.swift in Sources */,
+				8556CCC1246A390600D3571D /* OnePasswordExtension.m in Sources */,
 				85C6619520EACBCE007B58CD /* Build+UIKit.swift in Sources */,
 				85D9053820EAE8DB00CBF5B6 /* SettingsFooterView.swift in Sources */,
 				85CAE27320D63429002CD128 /* Artifact.swift in Sources */,
@@ -1886,6 +1907,7 @@
 				85F4096E24686C7C00C0A76E /* InvertedMaskLabel.swift in Sources */,
 				85F4096F24686C7C00C0A76E /* BuildActionsViewController.RowItem.swift in Sources */,
 				85F4097024686C7C00C0A76E /* URLSessionExtension.swift in Sources */,
+				8556CCC2246A390600D3571D /* OnePasswordExtension.m in Sources */,
 				85F4097124686C7C00C0A76E /* Build+UIKit.swift in Sources */,
 				85F4097224686C7C00C0A76E /* SettingsFooterView.swift in Sources */,
 				85F4097324686C7C00C0A76E /* Artifact.swift in Sources */,
