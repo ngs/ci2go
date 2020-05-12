@@ -35,7 +35,7 @@ Build app for beta
 ```
 fastlane ios beta_upload
 ```
-Upload app to Fabric Beta
+upload app to Firebase Distribution
 ### ios beta_match
 ```
 fastlane ios beta_match
@@ -120,6 +120,11 @@ Build app for preview
 fastlane mac release_upload
 ```
 Publish app to App Store
+### mac beta_upload
+```
+fastlane mac beta_upload
+```
+upload app to GitHub releases
 ### mac release_metadata
 ```
 fastlane mac release_metadata

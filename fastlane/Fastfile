@@ -46,17 +46,17 @@ platform :ios do
     )
   end
 
-  desc 'Upload app to Fabric Beta'
+  desc 'upload app to Firebase Distribution'
   lane :beta_upload do
     sh 'which firebase || brew install firebase-cli'
-    app = `/usr/libexec/PlistBuddy -c "Print :GOOGLE_APP_ID" "../CI2Go/GoogleService-Info.plist"`.strip
-    ipa_path = File.expand_path '../build/beta/CI2Go.ipa'
+    app = `/usr/libexec/plistbuddy -c "print :google_app_id" "../ci2go/googleservice-info.plist"`.strip
+    ipa_path = file.expand_path '../build/beta/ci2go.ipa'
 
     firebase_app_distribution(
       app: app,
       ipa_path: ipa_path,
-      release_notes: `git log -1 --pretty=%B`,
-      firebase_cli_token: ENV.fetch('FIREBASE_CLI_TOKEN'),
+      release_notes: `git log -1 --pretty=%b`,
+      firebase_cli_token: env.fetch('firebase_cli_token'),
       firebase_cli_path: '/usr/local/bin/firebase'
     )
   end
@@ -247,6 +247,27 @@ platform :mac do
       skip_metadata: true,
       skip_screenshots: true
     )
+  end
+
+  desc 'upload app to GitHub releases'
+  lane :beta_upload do
+    tag_name = ENV['CIRCLE_TAG']
+    if tag_name
+      description = sh("git cat-file -p $(git rev-parse #{tag_name}) | tail -n +6")
+      set_github_release(
+        repository_name: 'ngs/ci2go',
+        name: tag_name,
+        tag_name: tag_name,
+        description: description,
+        commitish: ENV.fetch('CIRCLE_SHA1'),
+        upload_assets: [
+          './build/beta/CI2Go.app.zip',
+          './build/beta/CI2Go.app.dSYM.zip'
+        ]
+      )
+    else
+      puts 'No tag name, skipping.'
+    end
   end
 
   desc 'Upload metadata to App Store'

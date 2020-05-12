@@ -194,6 +194,14 @@ workflows:
           filters:
             <<: *base_filters
 
+      - upload:
+          name: beta_upload_mac
+          target: beta
+          platform: mac
+          requires: [beta_build_mac]
+          filters:
+            <<: *release_mac_filters
+
       - build:
           name: release_build
           target: release
