@@ -244,4 +244,30 @@ class DecodingTests: XCTestCase { // swiftlint:disable:this type_body_length
         XCTAssertEqual("/project/github/ngs/ci2go/tree/%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AFabc", Branch(project, "こんにちはabc").apiPath)
         XCTAssertEqual("/project/github/ngs/ci2go/tree/ruby%2D2%2E4%2E0", Branch(project, "ruby-2.4.0").apiPath)
     }
+
+    func testBuildWithWebURL() {
+        var build = Build(webURL: URL(string: "https://circleci.com/gh/ngs/ci2go/1639")!)
+        XCTAssertEqual(VCS.github, build!.project.vcs)
+        XCTAssertEqual("ngs", build!.project.username)
+        XCTAssertEqual("ci2go", build!.project.name)
+        XCTAssertEqual(1639, build!.number)
+
+        build = Build(webURL: URL(string: "https://circleci.com/bb/ngs/ci2go/1639")!)
+        XCTAssertEqual(VCS.bitbucket, build!.project.vcs)
+        XCTAssertEqual("ngs", build!.project.username)
+        XCTAssertEqual("ci2go", build!.project.name)
+        XCTAssertEqual(1639, build!.number)
+
+        build = Build(webURL: URL(string: "https://app.circleci.com/pipelines/github/ngs/ci2go/jobs/1639")!)
+        XCTAssertEqual(VCS.github, build!.project.vcs)
+        XCTAssertEqual("ngs", build!.project.username)
+        XCTAssertEqual("ci2go", build!.project.name)
+        XCTAssertEqual(1639, build!.number)
+
+        build = Build(webURL: URL(string: "https://app.circleci.com/pipelines/bitbucket/ngs/ci2go/jobs/1639")!)
+        XCTAssertEqual(VCS.bitbucket, build!.project.vcs)
+        XCTAssertEqual("ngs", build!.project.username)
+        XCTAssertEqual("ci2go", build!.project.name)
+        XCTAssertEqual(1639, build!.number)
+    }
 }

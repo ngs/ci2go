@@ -23,6 +23,17 @@ enum VCS: String, Codable {
         }
     }
 
+    init?(longName: String) {
+        switch longName {
+        case VCS.github.longName:
+             self = .github
+        case VCS.bitbucket.longName:
+            self = .bitbucket
+        default:
+            return nil
+        }
+    }
+
     var host: String {
         switch self {
         case .github:
@@ -38,6 +49,15 @@ enum VCS: String, Codable {
             return "gh"
         case .bitbucket:
             return "bb"
+        }
+    }
+
+    var longName: String {
+        switch self {
+        case .github:
+            return "github"
+        case .bitbucket:
+            return "bitbucket"
         }
     }
 }
