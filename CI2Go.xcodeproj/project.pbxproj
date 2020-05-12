@@ -610,6 +610,7 @@
 		8582284F20E5E1F90092B8CF /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		8582285120E5E6B60092B8CF /* login-github.com.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "login-github.com.js"; sourceTree = "<group>"; };
 		8582285320E5E8620092B8CF /* login-bitbucket.org.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "login-bitbucket.org.js"; sourceTree = "<group>"; };
+		85A00D62246A438E00DD5909 /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 		85AF4B6220E091220040214B /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		85B30E6620DF365C00CC7876 /* Build+Complication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Build+Complication.swift"; sourceTree = "<group>"; };
 		85B30E6820DFFB2300CC7876 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -909,6 +910,7 @@
 		85B4CD7620D23E2D005A6DA9 = {
 			isa = PBXGroup;
 			children = (
+				85A00D62246A438E00DD5909 /* fastlane */,
 				85CAE22620D5C62D002CD128 /* Vendor */,
 				85B4CD8120D23E2D005A6DA9 /* CI2Go */,
 				85B4CD9620D23E30005A6DA9 /* CI2GoTests */,
