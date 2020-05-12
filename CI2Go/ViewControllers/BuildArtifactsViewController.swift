@@ -110,6 +110,12 @@ class BuildArtifactsViewController: UITableViewController, QLPreviewControllerDe
 
     func downloadAndQuickLook(name: String, artifact: Artifact) {
         if artifact.localPath.exists {
+            #if targetEnvironment(macCatalyst)
+            if UIApplication.shared.canOpenURL(artifact.localPath.parent.url) {
+                UIApplication.shared.open(artifact.localPath.parent.url)
+                return
+            }
+            #endif
             showQuickLook(name: name, fileURL: artifact.localPath.url)
             return
         }
