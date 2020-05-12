@@ -17,4 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         activateWCSession()
         return true
     }
+    
+    override func buildMenu(with builder: UIMenuBuilder) {
+        builder.remove(menu: .format)
+    }
 }
