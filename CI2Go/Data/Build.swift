@@ -129,14 +129,25 @@ struct Build: Decodable, EndpointConvertable {
 
     init?(webURL: URL) {
         let comps = webURL.pathComponents
-        guard
+        if
             let host = webURL.host, host == "circleci.com",
             comps.count == 5,
             let vcs = VCS(shortName: comps[1]),
-            let num = Int(comps[4])
-            else { return nil }
-        let project = Project(vcs: vcs, username: comps[2], name: comps[3])
-        self.init(project: project, number: num)
+            let num = Int(comps[4]) {
+            let project = Project(vcs: vcs, username: comps[2], name: comps[3])
+            self.init(project: project, number: num)
+        } else if
+            let host = webURL.host, host == "app.circleci.com",
+            comps.count == 7,
+            comps[1] == "pipelines",
+            comps[5] == "jobs",
+            let vcs = VCS(longName: comps[2]),
+            let num = Int(comps[6]) {
+            let project = Project(vcs: vcs, username: comps[3], name: comps[4])
+            self.init(project: project, number: num)
+        } else {
+            return nil
+        }
     }
 
     init(project: Project, number: Int, status: Status = .notRun) {
@@ -257,7 +268,8 @@ extension Build: Comparable {
     static func < (lhs: Build, rhs: Build) -> Bool {
         if
             let ltime = lhs.queuedAt,
-            let rtime = rhs.queuedAt {
+            let rtime = rhs.queuedAt,
+            ltime != rtime {
             return ltime < rtime
         }
         if lhs.project == rhs.project {

@@ -35,7 +35,7 @@ Build app for beta
 ```
 fastlane ios beta_upload
 ```
-Upload app to Fabric Beta
+Upload app to Firebase Distribution
 ### ios beta_match
 ```
 fastlane ios beta_match
@@ -86,6 +86,55 @@ Increment patch version
 fastlane ios send_coveralls
 ```
 Upload Coverage data to Coveralls
+
+----
+
+## Mac
+### mac develop_match
+```
+fastlane mac develop_match
+```
+Match App Store Provisioning Profiles
+### mac beta_match
+```
+fastlane mac beta_match
+```
+Import code sign certificate from Base64 encoded env vars (for now)
+### mac release_match
+```
+fastlane mac release_match
+```
+Match App Store Provisioning Profiles
+### mac release_build
+```
+fastlane mac release_build
+```
+Build app for release
+### mac beta_build
+```
+fastlane mac beta_build
+```
+Build app for preview
+### mac release_upload
+```
+fastlane mac release_upload
+```
+Publish app to App Store
+### mac beta_upload
+```
+fastlane mac beta_upload
+```
+upload app to GitHub releases
+### mac release_metadata
+```
+fastlane mac release_metadata
+```
+Upload metadata to App Store
+### mac release_screenshots
+```
+fastlane mac release_screenshots
+```
+Upload screenshots to App Store
 
 ----
 

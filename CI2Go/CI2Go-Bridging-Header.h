@@ -19,4 +19,9 @@
 #import "Firebase.h"
 #endif
 
+#ifndef OnePasswordExtension_h
+#define OnePasswordExtension_h
+#import "OnePasswordExtension.h"
+#endif
+
 #endif /* CI2Go_Bridging_Header_h */

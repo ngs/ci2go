@@ -10,12 +10,11 @@ import UIKit
 import Dwifft
 import PusherSwift
 
-class BuildActionsViewController: UITableViewController {
+class BuildActionsViewController: UITableViewController, ReloadableViewController {
     var isLoading = false
     var isMutating = false
     var isNavigatingToNext = false
     var diffCalculator: TableViewDiffCalculator<String, RowItem>?
-    var reloadTimer: Timer?
     var pusherChannels: [PusherChannel] = []
 
     var build: Build? {
@@ -43,22 +42,9 @@ class BuildActionsViewController: UITableViewController {
         isNavigatingToNext = false
         loadBuild()
         connectPusher()
-        reloadTimer?.invalidate()
-        reloadTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            guard
-                let tableView = self?.tableView,
-                let indexPaths = tableView.indexPathsForVisibleRows,
-                self?.isMutating == false
-                else { return }
-            let selectedIndexPath = tableView.indexPathForSelectedRow
-            tableView.reloadRows(at: indexPaths, with: .none)
-            tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
-        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        reloadTimer?.invalidate()
-        reloadTimer = nil
         unsubscribePusher()
     }
 
@@ -89,6 +75,10 @@ class BuildActionsViewController: UITableViewController {
         default:
             break
         }
+    }
+
+    func reload() {
+        loadBuild()
     }
 
     // MARK: -

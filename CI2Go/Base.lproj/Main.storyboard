@@ -114,6 +114,7 @@
                             <outlet property="delegate" destination="gJA-ds-gVz" id="HBx-GM-IAT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Nlp-ZP-b6c"/>
                     <connections>
                         <segue destination="pEZ-Gk-DFf" kind="unwind" identifier="unwindSegue" unwindAction="unwindSegue:" id="oEt-JX-yrx"/>
                     </connections>
@@ -269,7 +270,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Project" image="toolbar-code-branch" largeContentSizeImage="toolbar-code-branch" id="LXp-iW-Ynl">
                             <connections>
-                                <segue destination="IfH-1Z-563" kind="presentation" id="Wtu-UZ-4TH"/>
+                                <segue destination="IfH-1Z-563" kind="popoverPresentation" popoverAnchorBarButtonItem="LXp-iW-Ynl" id="Wtu-UZ-4TH">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -425,7 +428,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customClass="CustomTextView" customModule="CI2Go" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
@@ -540,7 +543,7 @@ Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam bl
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6G-5P-hjm" customClass="CustomTextView" customModule="CI2Go" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6G-5P-hjm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
@@ -614,7 +617,7 @@ Aliquam sed dignissim augue. Suspendisse tempor tortor a euismod egestas. Nam bl
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e6V-Z6-GmV"/>
+        <segue reference="7uH-cU-Ugy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

@@ -12,14 +12,13 @@ import PusherSwift
 import Dwifft
 import WatchConnectivity
 
-class BuildsViewController: UITableViewController {
+class BuildsViewController: UITableViewController, ReloadableViewController {
     let apiRequestOperationQueue = OperationQueue()
     var hasMore = false
     var currentOffset = 0
     let limit = 30
     var diffCalculator: TableViewDiffCalculator<Int, Build?>?
     var isMutating = false
-    var reloadTimer: Timer?
     var foregroundObserver: NSObjectProtocol?
 
     var selected: (Project?, Branch?) {
@@ -89,15 +88,6 @@ class BuildsViewController: UITableViewController {
         loadUser()
         loadBuilds()
         connectPusher()
-        reloadTimer?.invalidate()
-        reloadTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            guard
-                let tableView = self?.tableView,
-                let indexPaths = tableView.indexPathsForVisibleRows,
-                self?.isMutating == false && indexPaths.count > 0
-                else { return }
-            tableView.reloadRows(at: indexPaths, with: .none)
-        }
         foregroundObserver = NotificationCenter.default.addObserver(
             forName: UIApplication.willEnterForegroundNotification,
             object: nil,
@@ -108,8 +98,6 @@ class BuildsViewController: UITableViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        reloadTimer?.invalidate()
-        reloadTimer = nil
         if let foregroundObserver = foregroundObserver {
             NotificationCenter.default.removeObserver(foregroundObserver)
         }
@@ -118,6 +106,9 @@ class BuildsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if targetEnvironment(macCatalyst)
+        navigationItem.leftBarButtonItem = nil
+        #endif
         tableView.register(
             UINib(nibName: LoadingCell.identifier, bundle: nil),
             forCellReuseIdentifier: LoadingCell.identifier)
@@ -218,6 +209,10 @@ class BuildsViewController: UITableViewController {
             return
         }
         performSegue(withIdentifier: .showSettings, sender: nil)
+    }
+
+    func reload() {
+        loadBuilds()
     }
 
     @objc func loadBuilds(more: Bool = false) {

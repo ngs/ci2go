@@ -8,7 +8,12 @@ https://ngs.io/
 Version history
 ---------------
 
+[2.4.0]
+
+- Support keyboard shortcuts
+- Fixed UI glitch
+
 [2.3.0]
 
 - Initial release
-- Ported CI2Go the CircleCI client for iOS to macOS using Catalyst
+- Ported iOS app to macOS using Catalyst

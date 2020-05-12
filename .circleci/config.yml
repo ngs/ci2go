@@ -1,5 +1,17 @@
 version: 2.1
 
+base_filters: &base_filters
+  tags:
+    only: /.*/
+  branches:
+    ignore: [new-screenshots, screenshots, metadata]
+
+release_filters: &release_filters
+  tags:
+    only: /^v[1-9]+\.[0-9]+\.[0-9]+-rc.*/
+  branches:
+    ignore: /.*/
+
 orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
@@ -10,22 +22,49 @@ commands:
     steps:
       - checkout
       - fastlane/bundle-install
+      - restore_cache:
+          keys:
+            - v2-spm-{{ checksum "CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" }}
+            - v2-spm
+      - run:
+          name: Resolve Swift Package Dependencies
+          command: xcodebuild -resolvePackageDependencies -scheme CI2Go -project CI2Go.xcodeproj -derivedDataPath $DERIVED_DATA_PATH
+      - save_cache:
+          key: v2-spm-{{ checksum "CI2Go.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" }}
+          paths:
+            - DerivedData/SourcePackages
 
 jobs:
   build:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     parameters:
       target:
         type: enum
         enum: [beta, release]
+      platform:
+        type: enum
+        enum: [ios, mac]
     steps:
       - setup
+      - run:
+          name: 'Copy Mac Catalyst Provisioning Profiles'
+          command: /bin/bash -c .circleci/copy-provisioning-profiles.sh
       - fastlane/lane:
-          command: << parameters.target >>_match
+          command: ios << parameters.target >>_match
+      - fastlane/lane:
+          command: mac << parameters.target >>_match
       - fastlane/lane:
           command: set_build_number
       - fastlane/lane:
-          command: << parameters.target >>_build
+          command: << parameters.platform >> << parameters.target >>_build
+      - run:
+          name: Send dSYM to Firebase Crashlytics
+          command: ./Vendor/Firebase/FirebaseCrashlytics/upload-symbols -gsp CI2Go/GoogleService-Info.plist -p ios build/<< parameters.target >>/CI2Go.app.dSYM.zip
       - store_artifacts:
           path: build
           destination: build
@@ -38,22 +77,35 @@ jobs:
 
   upload:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     parameters:
       target:
         type: enum
         enum: [beta, release]
+      platform:
+        type: enum
+        enum: [ios, mac]
     steps:
       - checkout
       - attach_workspace:
           at: build
       - fastlane/bundle-install
       - fastlane/lane:
-          command: << parameters.target >>_match
-      - fastlane/lane:
-          command: << parameters.target >>_upload
+          command: << parameters.platform >> << parameters.target >>_upload
 
   tests:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      SCAN_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     steps:
       - setup
       - fastlane/lane:
@@ -71,6 +123,11 @@ jobs:
 
   screenshots:
     executor: fastlane/macos
+    environment:
+      DERIVED_DATA_PATH: DerivedData
+      GYM_CLONED_SOURCE_PACKAGES_PATH: DerivedData/SourcePackages
+      MATCH_READONLY: 'true'
+      FASTLANE_SKIP_UPDATE_CHECK: 1
     steps:
       - setup
       - run: 'bundle exec fastlane screenshots | egrep -v $UI_TEST_CIRCLE_TOKEN'
@@ -90,20 +147,17 @@ workflows:
       - swiftlint/run:
           name: swiftlint
           filters:
-            branches:
-              ignore: [new-screenshots, screenshots, metadata]
+            <<: *base_filters
 
       - danger/run:
           name: danger
           filters:
-            branches:
-              ignore: [new-screenshots, screenshots, metadata]
+            <<: *base_filters
 
       - tests:
           requires: [swiftlint, danger]
           filters:
-            branches:
-              ignore: [new-screenshot, sscreenshots, metadata]
+            <<: *base_filters
 
       - screenshots:
           filters:
@@ -113,44 +167,88 @@ workflows:
       - build:
           name: beta_build
           target: beta
+          platform: ios
           requires: [tests]
           filters:
-            branches:
-              only: [develop]
+            <<: *base_filters
+
+      - build:
+          name: beta_build_mac
+          target: beta
+          platform: mac
+          requires: [tests]
+          filters:
+            <<: *base_filters
 
       - upload:
           name: beta_upload
           target: beta
+          platform: ios
           requires: [beta_build]
           filters:
-            branches:
-              only: [develop]
+            <<: *base_filters
+
+      - upload:
+          name: beta_upload_mac
+          target: beta
+          platform: mac
+          requires: [beta_build_mac]
+          filters:
+            <<: *release_filters
 
       - build:
           name: release_build
           target: release
+          platform: ios
           requires: [tests]
           filters:
-            branches:
-              only: [master, /release-.+/]
+            <<: *release_filters
+
+      - build:
+          name: release_build_mac
+          target: release
+          platform: mac
+          requires: [tests]
+          filters:
+            <<: *release_filters
 
       - upload:
           name: release_upload
           target: release
+          platform: ios
           requires: [release_build]
           filters:
-            branches:
-              ignore: metadata
+            <<: *release_filters
+
+      - upload:
+          name: release_upload_mac
+          target: release
+          platform: mac
+          requires: [release_build_mac]
+          filters:
+            <<: *release_filters
 
       - fastlane/lane:
           name: release_metadata
-          command: release_metadata
+          command: ios release_metadata
           filters:
-            branches:
-              only: [master, metadata]
+            <<: *release_filters
 
       - fastlane/lane:
-          name: release_screenshots
+          name: release_metadata_mac
+          command: mac release_metadata
+          filters:
+            <<: *release_filters
+
+      - fastlane/lane:
+          name: ios release_screenshots
+          command: release_screenshots
+          filters:
+            branches:
+              only: screenshots
+
+      - fastlane/lane:
+          name: mac release_screenshots
           command: release_screenshots
           filters:
             branches:

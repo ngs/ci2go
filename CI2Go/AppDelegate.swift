@@ -7,73 +7,85 @@
 //
 
 import UIKit
-import KeychainAccess
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
-    var window: UIWindow?
-
+class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-
-        splitViewController?.delegate = self
-        splitViewController?.preferredDisplayMode = .allVisible
-
         activateWCSession()
-        #if DEBUG
-        if CommandLine.arguments.contains("UITestingDarkModeEnabled") {
-            window?.overrideUserInterfaceStyle = .dark
-        }
-        #endif
-        window?.tintColor = .lightGray
         return true
     }
 
-    func application(_ app: UIApplication,
-                     open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        guard
-            let splitVC = window?.rootViewController as? MainSplitViewController,
-            let viewController = splitVC.buildsViewController
-            else { return false }
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
+        guard builder.system == .main else { return }
 
-        if let build = Build(inAppURL: url) ?? Build(webURL: url) {
-            viewController.navigationController?.popToViewController(viewController, animated: false)
-            viewController.performSegue(withIdentifier: .showBuildDetail, sender: build)
-            return true
+        builder.remove(menu: .format)
+        builder.remove(menu: .file)
+        builder.remove(menu: .toolbar)
+        builder.insertSibling(.logout, afterMenu: .about)
+        builder.insertSibling(.navigate, afterMenu: .edit)
+        builder.replaceChildren(ofMenu: .help) { _ in
+            [
+                UIAction(title: "Submit an Issue") { _ in
+                    UIApplication.shared.open(Bundle.main.submitIssueURL)
+                },
+                UIAction(title: "Contact Author") { _ in
+                    UIApplication.shared.open(Bundle.main.contactURL)
+                }
+            ]
         }
-        if url.host == inAppHost &&
-            url.pathComponents.count == 3 &&
-            url.pathComponents[1] == "token" {
-            let token = url.pathComponents[2]
-            viewController.logout(showSettings: false)
-            Keychain.shared.setAndTransfer(token: token)
-            viewController.presentedViewController?.dismiss(animated: false, completion: nil)
-            viewController.navigationController?.popToViewController(viewController, animated: false)
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                viewController.loadBuilds()
-            }
-            return true
-        }
-        return false
     }
 
-    // MARK: - Split View
-
-    var splitViewController: UISplitViewController? {
-        return window?.rootViewController as? UISplitViewController
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            .back,
+            .logoutCommand,
+            .reload
+        ]
     }
 
-    func splitViewController(
-        _ splitViewController: UISplitViewController,
-        collapseSecondary secondaryViewController: UIViewController,
-        onto primaryViewController: UIViewController) -> Bool {
-        if let secondaryAsNavController = secondaryViewController as? UINavigationController {
-            let viewController = secondaryAsNavController.topViewController
-            return viewController is BuildLogViewController || viewController is TextViewController
+    @objc func backAction(_ command: UIKeyCommand) {
+        MainSplitViewController.current?
+            .firstNavigationController?
+            .popViewController(animated: true)
+    }
+
+    @objc func reloadAction(_ command: UIKeyCommand) {
+        (MainSplitViewController.current?
+            .firstNavigationController?
+            .viewControllers.first
+            as? ReloadableViewController)?.reload()
+    }
+
+    @objc func logoutAction(_ command: UIKeyCommand) {
+        guard let splitVC = MainSplitViewController.current else { return }
+        let alertView = UIAlertController(
+            title: "Logging out",
+            message: "Are you sure to logout from CircleCI?",
+            preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel, handler: nil))
+        alertView.addAction(UIAlertAction(
+            title: "Yes, log me out",
+            style: .destructive, handler: { _ in
+                splitVC.buildsViewController?.logout()
+        }))
+        splitVC.present(alertView, animated: true)
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        guard let splitVC = MainSplitViewController.current else {
+            return false
         }
-        return false
+        if
+            action == #selector(AppDelegate.backAction(_:)),
+            let count = splitVC.firstNavigationController?.viewControllers.count {
+            return count > 1
+        }
+        return super.canPerformAction(action, withSender: sender)
     }
 }

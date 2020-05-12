@@ -24,5 +24,6 @@ class TextViewController: UIViewController {
         textView.isScrollEnabled = false
         textView.text = text
         textView.isScrollEnabled = true
+        textView.font = .monotype
     }
 }

@@ -194,7 +194,7 @@ class BuildLogViewController: UIViewController, UIScrollViewDelegate {
         }
         helper.ansiColors = (colors as NSDictionary).mutableCopy() as? NSMutableDictionary
         helper.defaultStringColor = .label
-        helper.font = UIFont(monotype: 12)
+        helper.font = .monotype
         return helper
     }
 }
