@@ -10,7 +10,7 @@ import UIKit
 import Dwifft
 import PusherSwift
 
-class BuildActionsViewController: UITableViewController {
+class BuildActionsViewController: UITableViewController, ReloadableViewController {
     var isLoading = false
     var isMutating = false
     var isNavigatingToNext = false
@@ -75,6 +75,10 @@ class BuildActionsViewController: UITableViewController {
         default:
             break
         }
+    }
+
+    func reload() {
+        loadBuild()
     }
 
     // MARK: -

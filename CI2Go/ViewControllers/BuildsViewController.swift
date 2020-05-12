@@ -12,7 +12,7 @@ import PusherSwift
 import Dwifft
 import WatchConnectivity
 
-class BuildsViewController: UITableViewController {
+class BuildsViewController: UITableViewController, ReloadableViewController {
     let apiRequestOperationQueue = OperationQueue()
     var hasMore = false
     var currentOffset = 0
@@ -206,6 +206,10 @@ class BuildsViewController: UITableViewController {
             return
         }
         performSegue(withIdentifier: .showSettings, sender: nil)
+    }
+
+    func reload() {
+        loadBuilds()
     }
 
     @objc func loadBuilds(more: Bool = false) {

@@ -265,14 +265,14 @@
                     <navigationItem key="navigationItem" title="Builds" id="p3H-BP-Kdf">
                         <barButtonItem key="leftBarButtonItem" title="Settings" image="toolbar-cog" largeContentSizeImage="toolbar-cog" id="VYu-4s-khJ">
                             <connections>
-                                <segue destination="kFZ-8K-EBT" kind="popoverPresentation" identifier="showSettings" popoverAnchorBarButtonItem="VYu-4s-khJ" id="Hec-7w-ePI">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="kFZ-8K-EBT" kind="presentation" identifier="showSettings" id="Hec-7w-ePI"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Project" image="toolbar-code-branch" largeContentSizeImage="toolbar-code-branch" id="LXp-iW-Ynl">
                             <connections>
-                                <segue destination="IfH-1Z-563" kind="presentation" id="Wtu-UZ-4TH"/>
+                                <segue destination="IfH-1Z-563" kind="popoverPresentation" popoverAnchorBarButtonItem="LXp-iW-Ynl" id="Wtu-UZ-4TH">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -428,7 +428,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customClass="CustomTextView" customModule="CI2Go" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRK-rV-Tuw" customModule="CI2Go" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
