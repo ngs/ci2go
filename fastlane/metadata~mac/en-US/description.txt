@@ -8,6 +8,11 @@ https://ngs.io/
 Version history
 ---------------
 
+[2.4.0]
+
+- Support keyboard shortcuts
+- Fixed UI glitch
+
 [2.3.0]
 
 - Initial release
