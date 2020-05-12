@@ -1,5 +1,23 @@
 version: 2.1
 
+base_filters: &base_filters
+  tags:
+    only: /.*/
+  branches:
+    ignore: [new-screenshots, screenshots, metadata]
+
+release_ios_filters: &release_ios_filters
+  tags:
+    only: /^v[1-9]+\.[0-9]+\.[0-9]+-rc.*/
+  branches:
+    ignore: /.*/
+
+release_mac_filters: &release_mac_filters
+  tags:
+    only: /^v[1-9]+\.[0-9]+\.[0-9]+-mac-rc.*/
+  branches:
+    ignore: /.*/
+
 orbs:
   swiftlint: ngs/swiftlint@0.0.1
   danger: ngs/danger@0.0.1
@@ -135,26 +153,17 @@ workflows:
       - swiftlint/run:
           name: swiftlint
           filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: [new-screenshots, screenshots, metadata]
+            <<: *base_filters
 
       - danger/run:
           name: danger
           filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: [new-screenshots, screenshots, metadata]
+            <<: *base_filters
 
       - tests:
           requires: [swiftlint, danger]
           filters:
-            tags:
-              only: /.*/
-            branches:
-              ignore: [new-screenshot, sscreenshots, metadata]
+            <<: *base_filters
 
       - screenshots:
           filters:
@@ -166,18 +175,24 @@ workflows:
           target: beta
           platform: ios
           requires: [tests]
+          filters:
+            <<: *base_filters
 
       - build:
           name: beta_build_mac
           target: beta
           platform: mac
           requires: [tests]
+          filters:
+            <<: *base_filters
 
       - upload:
           name: beta_upload
           target: beta
           platform: ios
           requires: [beta_build]
+          filters:
+            <<: *base_filters
 
       - build:
           name: release_build
@@ -185,10 +200,7 @@ workflows:
           platform: ios
           requires: [tests]
           filters:
-            tags:
-              only: /^v[1-9]+\.[0-9]+\.[0-9]+-rc.*/
-            branches:
-              ignore: /.*/
+            <<: *release_ios_filters
 
       - build:
           name: release_build_mac
@@ -196,38 +208,35 @@ workflows:
           platform: mac
           requires: [tests]
           filters:
-            tags:
-              only: /^v\d\+.\d+\.\d+-mac-rc\d+$/
+            <<: *release_mac_filters
 
       - upload:
           name: release_upload
           target: release
           platform: ios
           requires: [release_build]
+          filters:
+            <<: *release_ios_filters
 
       - upload:
           name: release_upload_mac
           target: release
           platform: mac
           requires: [release_build_mac]
+          filters:
+            <<: *release_mac_filters
 
       - fastlane/lane:
           name: release_metadata
           command: ios release_metadata
           filters:
-            tags:
-              only: /^v\d\+.\d+\.\d+-rc\d+$/
-            branches:
-              only: metadata
+            <<: *release_mac_filters
 
       - fastlane/lane:
           name: release_metadata_mac
           command: mac release_metadata
           filters:
-            tags:
-              only: /^v\d\+.\d+\.\d+-mac-rc\d+$/
-            branches:
-              only: metadata
+            <<: *release_mac_filters
 
       - fastlane/lane:
           name: ios release_screenshots
