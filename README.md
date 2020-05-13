@@ -12,9 +12,9 @@ CI2Go the CircleCI Client
 
 https://ci2go.app
 
-![](CI2Go/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png)
+![](CI2Go/Assets.xcassets/AppIcon.appiconset/Mac-256.png)
 
-![](fastlane/screenshots~mac/en-US/mac1.png)
+![](https://ci2go.app/img/screens-dark.png)
 
 Author
 ======
