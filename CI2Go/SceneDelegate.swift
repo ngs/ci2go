@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UISplitViewControllerDe
             window?.overrideUserInterfaceStyle = .dark
         }
         #endif
-        window?.tintColor = .lightGray
+        window?.tintColor = .secondaryLabel
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

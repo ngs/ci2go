@@ -58,6 +58,40 @@ class BuildsViewController: UITableViewController, ReloadableViewController {
             if currentUser == oldValue { return }
             if let user = currentUser {
                 Crashlytics.crashlytics().setUserID(user.login)
+                #if !targetEnvironment(macCatalyst)
+                Analytics.setUserID(user.login)
+                if let value = user.isAdmin {
+                    Analytics.setUserProperty(value ? "yes" : "no", forName: "admin")
+                }
+                if let value = user.basicEmailPrefs {
+                    Analytics.setUserProperty(value, forName: "admin")
+                }
+                if let value = user.bitbucketAuthorized {
+                    Analytics.setUserProperty(value ? "yes" : "no", forName: "bitbucket_authorized")
+                }
+                if let value = user.inBetaProgram {
+                    Analytics.setUserProperty(value ? "yes" : "no", forName: "in_beta_program")
+                }
+                if let value = user.signInCount {
+                    Analytics.setUserProperty(String(value), forName: "sign_in_count")
+                }
+                if let value = user.isStudent {
+                    Analytics.setUserProperty(value ? "yes" : "no", forName: "student")
+                }
+                if let value = user.trialEnd {
+                    Analytics.setUserProperty(value.debugDescription, forName: "trial_end")
+                }
+                if let value = user.webUIPipelinesFirstOptIn {
+                    Analytics.setUserProperty(value ? "yes" : "no", forName: "web_ui_pipelines_first_opt_in")
+                }
+                if let value = user.numProjectsFollowed {
+                    Analytics.setUserProperty(String(value), forName: "num_projects_followed")
+                }
+                if let value = user.webUIPipelinesOptOut {
+                    Analytics.setUserProperty(value, forName: "web_ui_pipelines_optout")
+                }
+                Analytics.logEvent("login", parameters: nil)
+                #endif
                 connectPusher()
             } else {
                 Pusher.logout()
@@ -168,7 +202,7 @@ class BuildsViewController: UITableViewController, ReloadableViewController {
                 return
             }
             self?.currentUser = user
-            }.resume()
+        }.resume()
     }
 
     func connectPusher() {
@@ -242,7 +276,7 @@ class BuildsViewController: UITableViewController, ReloadableViewController {
                 }
                 self.hasMore = builds.count >= self.limit
                 self.builds = newBuilds
-                }.resume()
+            }.resume()
         }
     }
 

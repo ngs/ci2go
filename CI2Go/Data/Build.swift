@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Build: Decodable, EndpointConvertable {
+struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_body_length
     typealias BuildParameters = [String: String]
 
     let number: Int
