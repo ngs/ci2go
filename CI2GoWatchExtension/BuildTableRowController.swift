@@ -14,6 +14,8 @@ class BuildTableRowController: NSObject {
     @IBOutlet weak var buildNumLabel: WKInterfaceLabel!
     @IBOutlet weak var repoLabel: WKInterfaceLabel!
     @IBOutlet weak var statusColorBar: WKInterfaceGroup!
+    @IBOutlet weak var branchIcon: WKInterfaceImage!
+    @IBOutlet weak var tagIcon: WKInterfaceImage!
     var build: Build? {
         didSet {
             updateViews()
@@ -25,6 +27,14 @@ class BuildTableRowController: NSObject {
         statusColorBar.setBackgroundColor(build.status.color)
         repoLabel.setText(build.project.path)
         buildNumLabel.setText("#\(build.number)")
-        branchLabel.setText(build.branch?.name ?? "")
+        tagIcon.setHidden(true)
+        branchIcon.setHidden(true)
+        if let vcsTag = build.vcsTag {
+            tagIcon.setHidden(false)
+            branchLabel.setText(vcsTag)
+        } else if let branchName = build.branch?.name {
+            branchIcon.setHidden(false)
+            branchLabel.setText(branchName)
+        }
     }
 }

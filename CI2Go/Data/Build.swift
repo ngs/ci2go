@@ -33,6 +33,7 @@ struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_bo
     let isPlatformV2: Bool
     let hasArtifacts: Bool
     let nodes: [BuildNode]
+    let vcsTag: String?
 
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -58,6 +59,7 @@ struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_bo
         case hasArtifacts = "has_artifacts"
         case nodes = "node"
         case picard = "picard"
+        case vcsTag = "vcs_tag"
     }
 
     public init(from decoder: Decoder) throws { // swiftlint:disable:this function_body_length
@@ -69,6 +71,7 @@ struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_bo
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
         hasArtifacts = (try? values.decode(Bool.self, forKey: .hasArtifacts)) ?? false
+        vcsTag = try? values.decode(String.self, forKey: .vcsTag)
         status = try values.decode(Status.self, forKey: .status)
         user = try? values.decode(User.self, forKey: .user)
         var queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
@@ -172,6 +175,7 @@ struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_bo
         configuration = ""
         isPlatformV2 = false
         hasArtifacts = false
+        vcsTag = nil
         nodes = []
     }
 
@@ -198,6 +202,7 @@ struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_bo
         isPlatformV2 = build.isPlatformV2
         hasArtifacts = build.hasArtifacts
         nodes = build.nodes
+        vcsTag = build.vcsTag
     }
 
     func build(withNewActionStatus status: BuildAction.Status, in nodeIndex: Int, step: Int) -> Build {

@@ -123,8 +123,32 @@
                                             </mask>
                                         </variation>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-tag" translatesAutoresizingMaskIntoConstraints="NO" id="mq3-i3-XxV">
+                                        <rect key="frame" x="19" y="0.0" width="16" height="16"/>
+                                        <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="12" id="CEH-8T-4Ix"/>
+                                            <constraint firstAttribute="height" constant="12" id="Og2-lG-DJW"/>
+                                            <constraint firstAttribute="width" constant="14" id="W0L-Uq-nDA"/>
+                                            <constraint firstAttribute="height" constant="16" id="Xzz-mb-1ZG"/>
+                                            <constraint firstAttribute="width" constant="16" id="qB8-Cp-ddZ"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Og2-lG-DJW"/>
+                                                <exclude reference="W0L-Uq-nDA"/>
+                                                <exclude reference="CEH-8T-4Ix"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <exclude reference="Og2-lG-DJW"/>
+                                                <exclude reference="CEH-8T-4Ix"/>
+                                            </mask>
+                                        </variation>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="feature/fix-foo-bar" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ipa-sh-hgd">
-                                        <rect key="frame" x="19" y="1" width="106" height="14.5"/>
+                                        <rect key="frame" x="38" y="1" width="106" height="14.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="tAP-Et-isM"/>
                                         </constraints>
@@ -142,7 +166,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" text="abcdef0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSP-zV-cMX">
-                                        <rect key="frame" x="128" y="2" width="164.5" height="12"/>
+                                        <rect key="frame" x="147" y="2" width="145.5" height="12"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -302,6 +326,7 @@
                 <bool key="isElement" value="YES"/>
             </accessibility>
             <connections>
+                <outlet property="branchImageView" destination="jfd-do-lb6" id="Mos-bz-H0y"/>
                 <outlet property="branchNameLabel" destination="Ipa-sh-hgd" id="y0c-0E-E7c"/>
                 <outlet property="buildNumLabel" destination="srb-5Z-mGt" id="sAF-jF-FMQ"/>
                 <outlet property="commitLabel" destination="fSP-zV-cMX" id="Dyu-3z-S5O"/>
@@ -313,6 +338,7 @@
                 <outlet property="timeLabel" destination="SDl-Gz-cPY" id="UJN-2F-fWw"/>
                 <outlet property="userLabel" destination="9TZ-Hj-Y0e" id="iQY-KJ-bwE"/>
                 <outlet property="vcsIconImageView" destination="4IK-Cv-1Dz" id="YkT-Kf-utI"/>
+                <outlet property="vcsTagImageView" destination="mq3-i3-XxV" id="64i-5c-LtM"/>
                 <outlet property="workflowLabel" destination="6Rp-fd-W0x" id="EVW-lD-4yM"/>
                 <outlet property="workflowsStackView" destination="Gyd-rp-VAS" id="WLk-KP-kcM"/>
             </connections>
@@ -323,6 +349,7 @@
         <image name="icon-branch" width="16" height="16"/>
         <image name="icon-github" width="16" height="16"/>
         <image name="icon-job" width="16" height="16"/>
+        <image name="icon-tag" width="16" height="16"/>
         <image name="icon-worflows" width="16" height="16"/>
     </resources>
 </document>
