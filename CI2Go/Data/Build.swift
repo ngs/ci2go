@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Build: Decodable, EndpointConvertable {
+struct Build: Decodable, EndpointConvertable { // swiftlint:disable:this type_body_length
     typealias BuildParameters = [String: String]
 
     let number: Int
@@ -33,6 +33,7 @@ struct Build: Decodable, EndpointConvertable {
     let isPlatformV2: Bool
     let hasArtifacts: Bool
     let nodes: [BuildNode]
+    let vcsTag: String?
 
     enum CodingKeys: String, CodingKey {
         case number = "build_num"
@@ -58,6 +59,7 @@ struct Build: Decodable, EndpointConvertable {
         case hasArtifacts = "has_artifacts"
         case nodes = "node"
         case picard = "picard"
+        case vcsTag = "vcs_tag"
     }
 
     public init(from decoder: Decoder) throws { // swiftlint:disable:this function_body_length
@@ -69,6 +71,7 @@ struct Build: Decodable, EndpointConvertable {
         lifecycle = try values.decode(Lifecycle.self, forKey: .lifecycle)
         outcome = (try? values.decode(Outcome.self, forKey: .outcome)) ?? .invalid
         hasArtifacts = (try? values.decode(Bool.self, forKey: .hasArtifacts)) ?? false
+        vcsTag = try? values.decode(String.self, forKey: .vcsTag)
         status = try values.decode(Status.self, forKey: .status)
         user = try? values.decode(User.self, forKey: .user)
         var queuedAt = try? values.decode(Date.self, forKey: .queuedAt)
@@ -91,7 +94,7 @@ struct Build: Decodable, EndpointConvertable {
         steps = (try? values.decode([BuildStep].self, forKey: .steps)) ?? []
         let commits = (try? values.decode([Commit].self, forKey: .commits)) ?? []
         var body = (try? values.decode(String.self, forKey: .body)) ?? ""
-        if let subject = commits.first?.subject, body.isEmpty {
+        if let subject = commits.last?.subject, body.isEmpty {
             body = subject
         }
         if let branchName = try? values.decode(String.self, forKey: .branchName) {
@@ -172,6 +175,7 @@ struct Build: Decodable, EndpointConvertable {
         configuration = ""
         isPlatformV2 = false
         hasArtifacts = false
+        vcsTag = nil
         nodes = []
     }
 
@@ -198,6 +202,7 @@ struct Build: Decodable, EndpointConvertable {
         isPlatformV2 = build.isPlatformV2
         hasArtifacts = build.hasArtifacts
         nodes = build.nodes
+        vcsTag = build.vcsTag
     }
 
     func build(withNewActionStatus status: BuildAction.Status, in nodeIndex: Int, step: Int) -> Build {
@@ -218,7 +223,7 @@ struct Build: Decodable, EndpointConvertable {
     }
 
     var timestamp: Date? {
-        return queuedAt ?? commits.first?.authorDate
+        return queuedAt ?? commits.last?.authorDate
     }
 
     var hasWorkflows: Bool {
@@ -276,8 +281,8 @@ extension Build: Comparable {
             return lhs.number < rhs.number
         }
         if
-            let ltime = lhs.commits.first?.authorDate,
-            let rtime = rhs.commits.first?.authorDate {
+            let ltime = lhs.commits.last?.authorDate,
+            let rtime = rhs.commits.last?.authorDate {
             return ltime < rtime
         }
         return false

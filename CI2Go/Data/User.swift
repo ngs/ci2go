@@ -15,6 +15,16 @@ struct User: Decodable {
     let vcs: VCS?
     let id: Int? // swiftlint:disable:this identifier_name
     let pusherID: String?
+    let isAdmin: Bool?
+    let basicEmailPrefs: String?
+    let bitbucketAuthorized: Bool?
+    let inBetaProgram: Bool?
+    let signInCount: Int?
+    let isStudent: Bool?
+    let trialEnd: Date?
+    let webUIPipelinesOptOut: String?
+    let webUIPipelinesFirstOptIn: Bool?
+    let numProjectsFollowed: Int?
 
     enum CodingKeys: String, CodingKey {
         case login
@@ -23,6 +33,16 @@ struct User: Decodable {
         case vcs = "vcs_type"
         case pusherID = "pusher_id"
         case id // swiftlint:disable:this identifier_name
+        case isAdmin = "admin"
+        case basicEmailPrefs = "basic_email_prefs"
+        case bitbucketAuthorized = "bitbucket_authorized"
+        case inBetaProgram = "in_beta_program"
+        case signInCount = "sign_in_count"
+        case isStudent = "student"
+        case trialEnd = "trial_end"
+        case webUIPipelinesFirstOptIn = "web_ui_pipelines_first_opt_in"
+        case webUIPipelinesOptOut = "web_ui_pipelines_optout"
+        case numProjectsFollowed = "num_projects_followed"
     }
 
     var pusherChannelName: String? {
@@ -38,6 +58,16 @@ struct User: Decodable {
         vcs = try? values.decode(VCS.self, forKey: .vcs)
         pusherID = try? values.decode(String.self, forKey: .pusherID)
         id = try? values.decode(Int.self, forKey: .id)
+        isAdmin = try? values.decode(Bool.self, forKey: .isAdmin)
+        basicEmailPrefs = try? values.decode(String.self, forKey: .basicEmailPrefs)
+        bitbucketAuthorized = try? values.decode(Bool.self, forKey: .bitbucketAuthorized)
+        inBetaProgram = try? values.decode(Bool.self, forKey: .inBetaProgram)
+        signInCount = try? values.decode(Int.self, forKey: .signInCount)
+        isStudent = try? values.decode(Bool.self, forKey: .isStudent)
+        trialEnd = try? values.decode(Date.self, forKey: .trialEnd)
+        webUIPipelinesFirstOptIn = try? values.decode(Bool.self, forKey: .webUIPipelinesFirstOptIn)
+        numProjectsFollowed = try? values.decode(Int.self, forKey: .numProjectsFollowed)
+        webUIPipelinesOptOut = try? values.decode(String.self, forKey: .webUIPipelinesOptOut)
     }
 }
 

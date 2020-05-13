@@ -33,15 +33,19 @@ extension Bundle {
         return value
     }
 
-    var deviceSummary: String {
-        var model = UIDevice.current.model
+    var deviceModel: String {
         #if targetEnvironment(macCatalyst)
-        model = "Mac"
+        return "Mac"
+        #else
+        return UIDevice.current.model
         #endif
+    }
+
+    var deviceSummary: String {
         return """
 
 ----
-Device: \(model) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)
+Device: \(deviceModel) / \(UIDevice.current.systemName) \(UIDevice.current.systemVersion)
 Version: \(appVersion) (\(buildNumber))
 """
 .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
@@ -52,6 +56,8 @@ Version: \(appVersion) (\(buildNumber))
     }
 
     var contactURL: URL {
-        return URL(string: "mailto:support@ci2go.app?subject=CI2Go%20Support&body=\(deviceSummary)")!
+        let device = deviceModel.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let version = "\(appVersion) (\(buildNumber)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        return URL(string: "https://ci2go.app/contact/?device=\(device)&version=\(version))")!
     }
 }

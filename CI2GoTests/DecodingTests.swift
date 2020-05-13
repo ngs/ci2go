@@ -120,7 +120,7 @@ class DecodingTests: XCTestCase { // swiftlint:disable:this type_body_length
         XCTAssertEqual([
             "Initial import",
             "Initial import",
-            "Initial Commit",
+            "Setup project",
             "Create test scheme",
             "Create test scheme",
             "Store CocoaPods Cache",

@@ -20,6 +20,7 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var commitMessageLabel: WKInterfaceLabel!
     @IBOutlet weak var authorLabel: WKInterfaceLabel!
     @IBOutlet weak var branchIcon: WKInterfaceImage!
+    @IBOutlet weak var tagIcon: WKInterfaceImage!
     @IBOutlet weak var timeLabel: WKInterfaceLabel!
 
     var build: Build? {
@@ -31,9 +32,17 @@ class BuildInterfaceController: WKInterfaceController, WCSessionDelegate {
             let numText = "#\(build.number)"
             buildNumLabel.setText(numText)
             setTitle(numText)
-            branchLabel.setText(build.branch?.name)
+            branchIcon.setHidden(true)
+            tagIcon.setHidden(true)
+            if let vcsTag = build.vcsTag {
+                tagIcon.setHidden(false)
+                branchLabel.setText(vcsTag)
+            } else if let branchName = build.branch?.name {
+                branchIcon.setHidden(false)
+                branchLabel.setText(branchName)
+            }
             commitMessageLabel.setText(build.body)
-            authorLabel.setText(build.committerName)
+            authorLabel.setText(build.user?.name ?? build.committerName)
             timeLabel.setText(build.timestamp?.timeAgoSinceNow)
             clearAllMenuItems()
             addMenuItem(with: .repeat, title: "Retry", action: #selector(retryBuild))

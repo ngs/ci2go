@@ -10,6 +10,8 @@ import UIKit
 //import DateTools
 
 class BuildTableViewCell: CustomTableViewCell {
+    @IBOutlet weak var vcsTagImageView: UIImageView!
+    @IBOutlet weak var branchImageView: UIImageView!
 
     @IBOutlet weak var workflowsStackView: UIStackView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -32,15 +34,28 @@ class BuildTableViewCell: CustomTableViewCell {
             }
             isHidden = false
             statusLabel.text = build.status.humanize
-            branchNameLabel.text = build.branch?.name
-            commitLabel.text = String(build.vcsRevision?.prefix(shortHashLength) ?? "")
+            vcsTagImageView.isHidden = true
+            branchImageView.isHidden = true
+            commitLabel.isHidden = false
+            let commit = String(build.vcsRevision?.prefix(shortHashLength) ?? "")
+            if let vcsTag = build.vcsTag {
+                branchNameLabel.text = vcsTag
+                vcsTagImageView.isHidden = false
+            } else if let branchName = build.branch?.name {
+                branchNameLabel.text = branchName
+                branchImageView.isHidden = false
+            } else {
+                commitLabel.isHidden = true
+                branchNameLabel.text = commit
+            }
+            commitLabel.text = commit
             workflowLabel.text = build.workflow?.name
             jobLabel.text = build.workflow?.jobName
             workflowsStackView.isHidden = !build.hasWorkflows
             buildNumLabel.text = "#\(build.number)"
             projectNameLabel.text = build.project.path
             subjectLabel.text = build.body
-            userLabel.text = build.committerName
+            userLabel.text = build.user?.name ?? build.committerName
             timeLabel.text = build.timestamp?.timeAgoSinceNow
             statusBackgroundView.mask = statusLabel
             setNeedsLayout()

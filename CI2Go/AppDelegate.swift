@@ -29,6 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         builder.insertSibling(.navigate, afterMenu: .edit)
         builder.replaceChildren(ofMenu: .help) { _ in
             [
+                UIMenu(
+                    title: "",
+                    image: nil,
+                    identifier: UIMenu.Identifier("com.ci2go.menu.Homepage"),
+                    options: .displayInline,
+                    children: [UIAction(title: "CI2Go Homepage") { _ in
+                        UIApplication.shared.open(URL(string: "https://ci2go.app")!)
+                        }]),
                 UIAction(title: "Submit an Issue") { _ in
                     UIApplication.shared.open(Bundle.main.submitIssueURL)
                 },
