@@ -10,7 +10,7 @@ CI2Go the CircleCI Client
 
 **CI2Go** is a [CircleCI] client for iPhone, iPad, Apple Watch and Mac.
 
-https://ci2go.com
+https://ci2go.app
 
 ![](CI2Go/Assets.xcassets/AppIcon.appiconset/Icon-60@3x.png)
 
