@@ -1,2 +1,1 @@
-- Support keyboard shortcuts
-- Fixed UI glitch
+- Show tag name for tag triggered job
