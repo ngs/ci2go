@@ -51,7 +51,7 @@ extension UIMenuElement {
             modifierFlags: [.command],
             action: #selector(AppDelegate.reloadAction(_:)))
         command.title = "Reload"
-        command.discoverabilityTitle = "Back"
+        command.discoverabilityTitle = "Reload"
         return command
     }
 }

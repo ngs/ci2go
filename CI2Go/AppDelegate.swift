@@ -56,8 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override var keyCommands: [UIKeyCommand]? {
         return [
             .back,
-            .logoutCommand,
-            .reload
+            .reload,
+            .logoutCommand
         ]
     }
 
