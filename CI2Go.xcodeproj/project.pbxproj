@@ -384,6 +384,7 @@
 		85F409AD24686C7C00C0A76E /* totp-bitbucket.org.js in Resources */ = {isa = PBXBuildFile; fileRef = 85C6618F20E61F12007B58CD /* totp-bitbucket.org.js */; };
 		85F409AE24686C7C00C0A76E /* BuildTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609B620D965F800557249 /* BuildTableViewCell.xib */; };
 		85F409AF24686C7C00C0A76E /* BuildActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 856609BC20D96AF700557249 /* BuildActionTableViewCell.xib */; };
+		85F78EA9246D69E600695E77 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F78EA8246D69E600695E77 /* ConstantsTests.swift */; };
 		85F93BAD20DD7A0D00327DE9 /* ArtifactDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */; };
 		85F93BB420DDCD0500327DE9 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB220DDCD0500327DE9 /* Interface.storyboard */; };
 		85F93BB620DDCD0600327DE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85F93BB520DDCD0600327DE9 /* Assets.xcassets */; };
@@ -679,6 +680,7 @@
 		85D9053720EAE8DB00CBF5B6 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		85D9053C20EAF9D400CBF5B6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		85F409BA24686C7C00C0A76E /* CI2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85F78EA8246D69E600695E77 /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		85F93BAC20DD7A0D00327DE9 /* ArtifactDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtifactDownloadManager.swift; sourceTree = "<group>"; };
 		85F93BB020DDCD0500327DE9 /* CI2GoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CI2GoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F93BB320DDCD0500327DE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -975,6 +977,7 @@
 				853D1A4E20D6389D00C7F4FC /* EndpointTests.swift */,
 				853D1A5A20D65E1000C7F4FC /* CompensationTests.swift */,
 				853D1A6C20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift */,
+				85F78EA8246D69E600695E77 /* ConstantsTests.swift */,
 			);
 			path = CI2GoTests;
 			sourceTree = "<group>";
@@ -1832,6 +1835,7 @@
 				85CAE24E20D5F15C002CD128 /* DecodingTests.swift in Sources */,
 				85CAE25020D5F1CE002CD128 /* TestHelper.swift in Sources */,
 				85CAE24020D5ED43002CD128 /* ArrayExtensionTests.swift in Sources */,
+				85F78EA9246D69E600695E77 /* ConstantsTests.swift in Sources */,
 				853D1A5B20D65E1000C7F4FC /* CompensationTests.swift in Sources */,
 				853D1A6D20D6C94100C7F4FC /* UserDefaultsExtensionTests.swift in Sources */,
 				853D1A4F20D6389D00C7F4FC /* EndpointTests.swift in Sources */,

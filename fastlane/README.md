@@ -56,6 +56,11 @@ Build app for beta
 fastlane ios release_upload
 ```
 Publish app to App Store
+### ios release_submit
+```
+fastlane ios release_submit
+```
+
 ### ios release_metadata
 ```
 fastlane ios release_metadata
@@ -135,6 +140,11 @@ Upload metadata to App Store
 fastlane mac release_screenshots
 ```
 Upload screenshots to App Store
+### mac release_submit
+```
+fastlane mac release_submit
+```
+
 
 ----
 

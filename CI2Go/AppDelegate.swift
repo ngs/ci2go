@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.buildMenu(with: builder)
         guard builder.system == .main else { return }
 
+        #if targetEnvironment(macCatalyst)
         builder.remove(menu: .format)
         builder.remove(menu: .file)
         builder.remove(menu: .toolbar)
@@ -37,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     children: [UIAction(title: "CI2Go Homepage") { _ in
                         UIApplication.shared.open(URL(string: "https://ci2go.app")!)
                         }]),
+                UIAction(title: "Rate CI2Go") { _ in
+                    UIApplication.shared.open(
+                        URL(string: "macappstore://apps.apple.com/app/id940028427?action=write-review")!)
+                },
                 UIAction(title: "Submit an Issue") { _ in
                     UIApplication.shared.open(Bundle.main.submitIssueURL)
                 },
@@ -45,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             ]
         }
+        #endif
     }
 
     override var keyCommands: [UIKeyCommand]? {

@@ -20,7 +20,7 @@ func isValidToken(_ token: String) -> Bool {
     return tokenRegularExpression.matches(
         in: token,
         options: .anchored,
-        range: NSRange(location: 0, length: token.lengthOfBytes(using: .utf8))
+        range: NSRange(location: 0, length: token.count)
     ).count == 1 && token.count == 40
 }
 
@@ -28,7 +28,7 @@ func isTOTP(_ token: String) -> Bool {
     return totpRegularExpression.firstMatch(
         in: token,
         options: NSRegularExpression.MatchingOptions(rawValue: 0),
-        range: NSRange(location: 0, length: token.lengthOfBytes(using: .utf8))) != nil
+        range: NSRange(location: 0, length: token.count)) != nil
 }
 
 let shortHashLength = 7
