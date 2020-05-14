@@ -27,7 +27,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             ("Rate CI2Go",
              URL(string: "https://itunes.apple.com/app/id940028427?action=write-review")!),
             ("Submit an issue", Bundle.main.submitIssueURL),
-            ("Contact author", Bundle.main.contactURL)
+            ("Contact author", Bundle.main.contactURL),
+            ("CI2Go Homepage", URL(string: "https://ci2go.app")!)
         ]
         #endif
     }
