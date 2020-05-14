@@ -108,10 +108,9 @@ platform :ios do
   desc 'Publish app to App Store'
   lane :release_upload do
     pilot(
-      skip_waiting_for_build_processing: true,
       distribute_external: true,
       notify_external_testers: true,
-      changelog: `git log -1 --pretty=%B`,
+      skip_waiting_for_build_processing: true,
       testers_file_path: './fastlane/testers.csv',
       ipa: './build/release/CI2Go.ipa'
     )
@@ -264,6 +263,7 @@ platform :mac do
       screenshots_path: './fastlane/screenshots~mac',
       skip_binary_upload: false,
       skip_metadata: true,
+      skip_waiting_for_build_processing: true,
       skip_screenshots: true
     )
   end
