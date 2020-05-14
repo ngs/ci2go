@@ -275,6 +275,7 @@ platform :mac do
         name: tag_name,
         tag_name: tag_name,
         description: description,
+        is_prerelease: true,
         commitish: ENV.fetch('CIRCLE_SHA1'),
         upload_assets: [
           './build/beta/CI2Go.app.zip',
