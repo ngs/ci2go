@@ -117,6 +117,23 @@ platform :ios do
     )
   end
 
+  lane :release_submit do
+    build_number = sh('cat ../build/buildnum.ios.txt').strip
+    deliver(
+      platform: 'ios',
+      skip_binary_upload: true,
+      skip_metadata: false,
+      skip_screenshots: true,
+      submit_for_review: true,
+      automatic_release: true,
+      reject_if_possible: true,
+      build_number: build_number,
+      submission_information: {
+        export_compliance_encryption_updated: false
+      }
+    )
+  end
+
   desc 'Upload metadata to App Store'
   lane :release_metadata do
     deliver skip_screenshots: true
@@ -295,5 +312,30 @@ platform :mac do
       skip_screenshots: false,
       overwrite_screenshots: true
     )
+  end
+
+  lane :release_submit do
+    build_number = sh('cat ../build/buildnum.mac.txt').strip
+    begin
+      deliver(
+        platform: 'osx',
+        metadata_path: './fastlane/metadata~mac',
+        screenshots_path: './fastlane/screenshots~mac',
+        skip_binary_upload: true,
+        skip_metadata: false,
+        skip_screenshots: true,
+        submit_for_review: true,
+        automatic_release: true,
+        reject_if_possible: false,
+        build_number: build_number,
+        submission_information: {
+          export_compliance_encryption_updated: false
+        }
+      )
+    rescue NoMethodError => e
+      puts e
+      raise e unless e.message == %q(undefined method `fetch' for nil:NilClass)
+      puts "... Caught error, but omitting"
+    end
   end
 end
