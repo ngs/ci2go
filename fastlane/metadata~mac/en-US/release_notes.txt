@@ -1,2 +1,1 @@
-- Show tag name for tag triggered job
-- Update menu items
+- Add link to homepage
