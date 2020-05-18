@@ -7,6 +7,7 @@
       "screen-width" : "<=145"
     },
     {
+      "filename" : "appicon-circularSmall+40mm@2x.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
@@ -18,6 +19,7 @@
       "screen-width" : ">145"
     },
     {
+      "filename" : "appicon-circularSmall+44mm@2x.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"

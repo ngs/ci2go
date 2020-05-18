@@ -12,7 +12,7 @@ import PusherSwift
 import Dwifft
 import WatchConnectivity
 
-class BuildsViewController: UITableViewController, ReloadableViewController {
+class BuildsViewController: UITableViewController, ReloadableViewController { // swiftlint:disable:this type_body_length
     let apiRequestOperationQueue = OperationQueue()
     var hasMore = false
     var currentOffset = 0
