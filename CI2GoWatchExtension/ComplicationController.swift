@@ -72,13 +72,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                     return true
                 }
                 return false
-            }
-            .prefix(limit)
-            .map { build in
-                return CLKComplicationTimelineEntry(
-                    date: build.timestamp!,
-                    complicationTemplate: build.template(for: complication)!
-                )
+        }
+        .prefix(limit)
+        .map { build in
+            return CLKComplicationTimelineEntry(
+                date: build.timestamp!,
+                complicationTemplate: build.template(for: complication)!
+            )
         }
         handler(entries)
     }
@@ -92,13 +92,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
                     return true
                 }
                 return false
-            }
-            .prefix(limit)
-            .map { build in
-                return CLKComplicationTimelineEntry(
-                    date: build.timestamp!,
-                    complicationTemplate: build.template(for: complication)!
-                )
+        }
+        .prefix(limit)
+        .map { build in
+            return CLKComplicationTimelineEntry(
+                date: build.timestamp!,
+                complicationTemplate: build.template(for: complication)!
+            )
         }
         handler(entries)
     }
@@ -151,39 +151,24 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             tmpl.textProvider = appNameTextProvider
             return tmpl
         case .graphicCorner:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                let tmpl = CLKComplicationTemplateGraphicCornerTextImage()
-                tmpl.imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
-                tmpl.textProvider = appNameTextProvider
-                return tmpl
-            } else {
-                fatalError()
-            }
+            let tmpl = CLKComplicationTemplateGraphicCornerTextImage()
+            tmpl.imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+            tmpl.textProvider = appNameTextProvider
+            return tmpl
         case .graphicBezel:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                let tmpl = CLKComplicationTemplateGraphicBezelCircularText()
-                tmpl.textProvider = appNameTextProvider
-                return tmpl
-            } else {
-                fatalError()
-            }
+            let tmpl = CLKComplicationTemplateGraphicBezelCircularText()
+            tmpl.textProvider = appNameTextProvider
+            return tmpl
         case .graphicCircular:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                let tmpl = CLKComplicationTemplateGraphicCircularOpenGaugeImage()
-                tmpl.bottomImageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
-                return tmpl
-            } else {
-                fatalError()
-            }
+            let tmpl = CLKComplicationTemplateGraphicCircularStackText()
+            tmpl.line1TextProvider = appNameTextProvider
+            tmpl.line2TextProvider = emptyTextProvider
+            return tmpl
         case .graphicRectangular:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                let tmpl = CLKComplicationTemplateGraphicRectangularLargeImage()
-                tmpl.imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
-                tmpl.textProvider = appNameTextProvider
-                return tmpl
-            } else {
-                fatalError()
-            }
+            let tmpl = CLKComplicationTemplateGraphicRectangularLargeImage()
+            tmpl.imageProvider = CLKFullColorImageProvider(fullColorImage: #imageLiteral(resourceName: "appicon-utilitarian"))
+            tmpl.textProvider = appNameTextProvider
+            return tmpl
         @unknown default:
             fatalError()
         }

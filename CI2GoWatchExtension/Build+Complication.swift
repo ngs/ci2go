@@ -81,29 +81,13 @@ extension Build {
         case .utilitarianSmallFlat, .utilitarianSmall:
             return utilitarianSmallTemplate(for: complication)
         case .graphicCorner:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                return graphicCornerTemplate(for: complication)
-            } else {
-                fatalError()
-            }
+            return graphicCornerTemplate(for: complication)
         case .graphicBezel:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                return graphicBezelTemplate(for: complication)
-            } else {
-                fatalError()
-            }
+            return graphicBezelTemplate(for: complication)
         case .graphicCircular:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                return graphicCircularTemplate(for: complication)
-            } else {
-                fatalError()
-            }
+            return graphicCircularTemplate(for: complication)
         case .graphicRectangular:
-            if #available(watchOSApplicationExtension 5.0, *) {
-                return graphicRectangularTemplate(for: complication)
-            } else {
-                fatalError()
-            }
+            return graphicRectangularTemplate(for: complication)
         @unknown default:
             fatalError()
         }
@@ -160,7 +144,6 @@ extension Build {
         return tmpl
     }
 
-    @available(watchOSApplicationExtension 5.0, *)
     func graphicCornerTemplate(for complication: CLKComplication) -> CLKComplicationTemplateGraphicCornerTextImage {
         let tmpl = CLKComplicationTemplateGraphicCornerTextImage()
         tmpl.imageProvider = complicationFullColorImageProvider(for: complication)
@@ -169,7 +152,6 @@ extension Build {
         return tmpl
     }
 
-    @available(watchOSApplicationExtension 5.0, *)
     func graphicBezelTemplate(for complication: CLKComplication) -> CLKComplicationTemplateGraphicBezelCircularText {
         let tmpl = CLKComplicationTemplateGraphicBezelCircularText()
         tmpl.textProvider = complicationBuildNumberProvider
@@ -178,24 +160,25 @@ extension Build {
 
     }
 
-    @available(watchOSApplicationExtension 5.0, *)
     func graphicCircularTemplate(for complication: CLKComplication)
-        -> CLKComplicationTemplateGraphicCircularOpenGaugeImage {
-        let tmpl = CLKComplicationTemplateGraphicCircularOpenGaugeImage()
-        tmpl.bottomImageProvider = complicationFullColorImageProvider(for: complication)
-        tmpl.tintColor = status.color
-        return tmpl
+        -> CLKComplicationTemplateGraphicCircularStackText {
+            let tmpl = CLKComplicationTemplateGraphicCircularStackText()
+            tmpl.line1TextProvider = complicationBranchNameProvider
+            tmpl.line2TextProvider = complicationBuildNumberProvider
+            tmpl.line2TextProvider.tintColor = status.color
+            return tmpl
     }
 
-    @available(watchOSApplicationExtension 5.0, *)
     func graphicRectangularTemplate(for complication: CLKComplication)
-        -> CLKComplicationTemplateGraphicRectangularLargeImage {
-        let tmpl = CLKComplicationTemplateGraphicRectangularLargeImage()
-        tmpl.imageProvider = complicationFullColorImageProvider(for: complication)
-        tmpl.textProvider = complicationBuildNumberProvider
-        tmpl.tintColor = status.color
-        return tmpl
-
+        -> CLKComplicationTemplateGraphicRectangularStandardBody {
+            let tmpl = CLKComplicationTemplateGraphicRectangularStandardBody()
+            tmpl.headerImageProvider = complicationFullColorImageProvider(for: complication)
+            tmpl.headerTextProvider = complicationBuildNumberProvider
+            tmpl.headerTextProvider.tintColor = status.color
+            tmpl.body1TextProvider = complicationProjectNameProvider
+            tmpl.body2TextProvider = complicationBranchNameProvider
+            tmpl.tintColor = status.color
+            return tmpl
     }
 
     func complicationImageProvider(for complication: CLKComplication) -> CLKImageProvider {
@@ -203,7 +186,8 @@ extension Build {
     }
 
     func complicationFullColorImageProvider(for complication: CLKComplication) -> CLKFullColorImageProvider {
-        return CLKFullColorImageProvider(fullColorImage: status.complicationImage(for: complication))
+        let img = #imageLiteral(resourceName: "success-modularSmall").withTintColor(status.color, renderingMode: .alwaysTemplate)
+        return CLKFullColorImageProvider(fullColorImage: img)
     }
 
     var complicationBuildNumberProvider: CLKTextProvider {
